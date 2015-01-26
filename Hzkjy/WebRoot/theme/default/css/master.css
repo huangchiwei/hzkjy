@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+html { overflow:-moz-scrollbars-vertical;}
+html,body{font-size:12px;font-family:"microsoft yahei",Arial, Helvetica, sans-serif;background-position: top; _height:100%; margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow-x:hidden;}
+td,th,blockquote,p,textarea,input,legend,fieldset,form,code,img,pre,h6,h5,h4,h3,h2,h1,li,ol,ul,dd,dt,dl,div {
+	margin:0;
+	padding:0;
+}
+table {	border-collapse:collapse;border-spacing:0;}
+img {border:0;}
+fieldset {border:0;}
+var {font-style:normal;font-weight:normal;}
+th {font-style:normal;font-weight:normal;}
+strong {font-style:normal;font-weight:normal;}
+em {font-style:normal;font-weight:normal;}
+dfn {font-style:normal;font-weight:normal;}
+code {font-style:normal;font-weight:normal;}
+cite {font-style:normal;font-weight:normal;}
+caption {font-style:normal;font-weight:normal;}
+address {font-style:normal;font-weight:normal;}
+ul {list-style:none;}
+ol {list-style:none;}
+th {text-align:left;}
+caption {text-align:left;}
+h6 {font-size:100%;font-weight:normal;}
+h5 {font-size:100%;font-weight:normal;}
+h4 {font-size:100%;font-weight:normal;}
+h3 {font-size:100%;font-weight:normal;}
+h2 {font-size:100%;font-weight:normal;}
+h1 {font-size:100%;font-weight:normal;}
+q:after {content:'';}
+q:before {content:'';}
+acronym {border:0;font-variant:normal;}
+abbr {border:0;font-variant:normal;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+select {font-family:inherit;font-size:inherit;font-weight:inherit;}
+textarea {font-family:inherit;font-size:inherit;font-weight:inherit;}
+input {font-family:inherit;font-size:inherit;font-weight:inherit;}
+/*to enable resizing for IE*/
+select {	*font-size:100%;}
+textarea {	*font-size:100%;}
+input {	*font-size:100%;}
+/*because legend doesn't inherit in IE */
+.overflow{overflow: hidden;}
+.clear {height:0px;clear:both;width: 100%;}
+*html{background-image:url(about:blank);background-attachment:fixed;}
+.hidden{display:none;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.ma{margin-top: 0;margin-right: auto;margin-bottom: 0;margin-left: auto;}
+.relative{position: relative;}

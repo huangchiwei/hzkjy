@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+.f14px{font-size: 14px;}
+.f16px{font-size: 16px;}
+.f18px{font-size: 18px;}
+.f20px{font-size: 20px;}
+.f22px{font-size: 22px;}
+.f_bold{font-weight:bold;}
+.lh24 { line-height:24px;}
+.lh22 { line-height:22px;}
+.lh20 { line-height:20px;}
+.c_1b6207{ color:#1b6207;}
+.c_f70404{ color:#f70404;}
+.c_db0505{ color:#db0505;}
+.c_727272{ color:#727272;}
+.p_b10 {padding-bottom: 10px;}
+.p_t10 {padding-top: 10px;}
+.lh10 { line-height:10px;}
+.lh20 { line-height:20px;}
+.h30 { height:30px;}
+.h20 { height:20px;}
+.h250 { height:250px;}
+.w_bf_20 {width:20%;}
+.w_bf_70 {width:70%;}
+.w50 { line-height:50px;}
+.w60 { line-height:60px;}
+.w70 { line-height:70px;}
+.w80 { line-height:80px;}
+.w90 { line-height:90px;}
+.w100 {width: 100px;}
+.h250{ height:630px;}
+.m_t10 { margin-top:10px;}

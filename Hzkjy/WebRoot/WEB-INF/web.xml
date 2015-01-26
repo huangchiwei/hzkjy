@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<context-param>
+		 <param-name>webAppRootKey</param-name>
+ 		<param-value>Motorcar</param-value>
+	</context-param>
+ <description>
+              springmvc模板
+    </description>
+	<display-name>Motorcar</display-name>
+    
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/applicationContext.xml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log/log4j.properties</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>springMvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/springmvc-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet> 
+    <servlet-name>ConnectorServlet</servlet-name> 
+    <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+    <init-param> 
+        <param-name>XMLConfig</param-name> 
+        <param-value>/WEB-INF/ckfinder.xml</param-value> 
+    </init-param> 
+    <init-param> 
+        <param-name>debug</param-name> 
+        <param-value>false</param-value> 
+    </init-param> 
+    <load-on-startup>1</load-on-startup> 
+</servlet> 
+<servlet-mapping>
+    <servlet-name>ConnectorServlet</servlet-name> 
+    <url-pattern> /ckfinder/core/connector/java/connector.java </url-pattern> 
+</servlet-mapping>
+  <jsp-config>
+  		<jsp-property-group>
+  			<!-- 拦截所有的jsp文件运用下面配置 -->
+  			<url-pattern>*.jsp</url-pattern>
+  			<!-- 指定包含的页面 -->
+  			<include-prelude>/WEB-INF/jsp/taglib.jsp</include-prelude>
+  		</jsp-property-group>
+  </jsp-config>
+    <!-- 配置错误页面 -->
+    <error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/jsp/error/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error/404.jsp</location>
+	</error-page>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+        <welcome-file>dialog.jsp</welcome-file>
+   
+  </welcome-file-list>
+</web-app>

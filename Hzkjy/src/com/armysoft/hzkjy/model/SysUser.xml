@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SysUserOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">
+		ID,UserNo,Pwd,UserName,Sex,Email,Tel,Phone,QQNum,Status,CreateDate,Creater
+	</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from sys_user where status &lt;&gt; 3
+			<if test="parm.userName != null and parm.userName != ''">
+				and UserName like CONCAT('%', #{parm.userName}, '%')
+			</if>
+			<if test="parm.phone != null and parm.phone != ''">
+				and Phone like CONCAT('%', #{parm.phone}, '%')
+			</if>
+		order by CreateDate desc
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="sysUserMap" type="sysUser">
+		<id column="ID" property="id" />
+		<result column="UserNo" property="userNo" />
+		<result column="Pwd" property="pwd" />
+		<result column="UserName" property="userName" />
+		<result column="Sex" property="sex" />
+		<result column="Email" property="email" />
+		<result column="Tel" property="tel" />
+		<result column="Phone" property="phone" />
+		<result column="QQNum" property="QQNum" />
+		<result column="Status" property="status" />
+		<result column="CreateDate" property="createDate" />
+	</resultMap>
+	<resultMap type="sysUser" id="sysUserPageMap" extends="sysUserMap">
+		<association property="creater" column="Creater" javaType="sysUser" 
+		 select="SysUserOpt.getByUserNo"/>
+	</resultMap>
+	<!-- 根据用户编号查询用户 -->
+	<select id="getByUserNo" parameterType="String" resultMap="sysUserPageMap" >
+		select <include refid="columns" /> from sys_user where UserNo = #{UserNo}
+	</select>
+	<!-- 根据用户状态查询用户 -->
+	<select id="getByStatus" parameterType="int" resultMap="sysUserMap" >
+		select <include refid="columns" /> from sys_user where status = #{status}
+	</select>
+	<!-- 分页查询用户 -->
+	<select id="page" resultMap="sysUserPageMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	
+	<!-- 查询用户数量 -->
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="sysUser">
+		insert into sys_user(UserNo,Pwd,UserName,Sex,Email,Tel,Phone,QQNum,Status,CreateDate,Creater)
+			values(#{userNo},#{pwd},#{userName},#{sex},#{email},#{tel},#{phone},#{QQNum},#{status},#{createDate},#{creater.userNo})
+	</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="sysUser">
+		update sys_user set 
+			UserName = #{userName},
+			Sex = #{sex},
+			Email = #{email},
+			Tel = #{tel},
+			Phone = #{phone},
+			QQNum = #{QQNum}
+		where userNo = #{userNo}
+	</update>
+	<!-- 激活/冻结 -->
+	<update id="changeStatus">
+		update sys_user set 
+			Status = #{status}
+		where userNo = #{userNo}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="String">
+		update sys_user set status = 3 where userNo = #{userNo}
+	</delete>
+	<!-- 修改密码 -->
+	<update id="modifyPwd" parameterType="sysUser">
+		update sys_user set 
+			Pwd = #{pwd}
+		where userNo = #{userNo}
+	</update>
+	<!-- ********************************************* -->
+	<!-- 查询终端管理员 -->
+	<select id="getByTerminalNo" parameterType="String" resultMap="sysUserMap" >
+		select u.UserNo,u.UserName
+		 from sys_user u left join mnt_terminal_user mtu 
+			on u.UserNo = mtu.UserNo
+		  where mtu.TerminalNo = #{terminalNo}
+	</select>
+	<!-- 批量保存终端用户 -->
+	<insert id="insertTerminalUser" parameterType="java.util.Map">
+		insert into mnt_terminal_user(UserNo,TerminalNo,CreateDate)
+			values
+		<foreach collection="list" item="item" index="index" separator="," >  
+        	(#{item},#{terminalNo},now())
+    	</foreach>  
+	</insert>
+	<!-- 批量删除终端用户 -->
+	<delete id="deleteTerminalUser" parameterType="java.util.Map">
+		delete from mnt_terminal_user where terminalNo = #{terminalNo} and UserNo in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<!-- 删除角色的所有用户-->
+	<delete id="deleteByRoleNo">
+		delete from sys_user_role where roleNo = #{roleNo}
+	</delete>
+	
+	<!-- 短信发送 -->
+	<!--<select id="getAllUser" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from sys_user;
+	</select>
+--></mapper>

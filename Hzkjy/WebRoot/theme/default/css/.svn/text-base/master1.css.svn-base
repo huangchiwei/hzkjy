@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+html {overflow-y:scroll;}
+body{font:12px/150% "microsoft yahei",Arial,Verdana;color:#666;_background-image:url(about:blank);_background-attachment:fixed;background-color: #eeeeee;background-image: url(../images1/index_bj.png);background-repeat: repeat-x;background-position: 0px 30px;}
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,address,big,cite,code,del,em,font,img,ins,small,strong,var,b,u,i,center,dl,dt,dd,p,ol,ul,li,fieldset,form,label,legend{margin:0;padding:0}p,ol,ul,li{list-style:none}:focus{outline:0}a img{border:0}img{vertical-align:middle}table{empty-cells:show}ins{text-decoration:none}del{text-decoration:line-through}em{font-style:normal}button::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=button]::-moz-focus-inner,input[type=submit]::-moz-focus-inner,input[type=file]>input[type=button]::-moz-focus-inner{border:0;padding:0}
+
+img {border:0;}
+fieldset {border:0;}
+var {font-style:normal;font-weight:normal;}
+th {font-style:normal;font-weight:normal;}
+strong {font-style:normal;font-weight:normal;}
+dfn {font-style:normal;font-weight:normal;}
+code {font-style:normal;font-weight:normal;}
+cite {font-style:normal;font-weight:normal;}
+caption {font-style:normal;font-weight:normal;}
+address {font-style:normal;font-weight:normal;}
+caption {text-align:left;}
+h6 {font-size:100%;font-weight:normal;}
+h5 {font-size:100%;font-weight:normal;}
+h4 {font-size:100%;font-weight:normal;}
+h3 {font-size:100%;font-weight:normal;}
+h2 {font-size:100%;font-weight:normal;}
+h1 {font-size:100%;font-weight:normal;}
+q:after {content:'';}
+q:before {content:'';}
+acronym {border:0;font-variant:normal;}
+abbr {border:0;font-variant:normal;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+select {font-family:inherit;font-size:inherit;font-weight:inherit;}
+textarea {font-family:inherit;font-size:inherit;font-weight:inherit;}
+input {font-family:inherit;font-size:inherit;font-weight:inherit;}
+/*to enable resizing for IE*/
+select {	*font-size:100%;}
+textarea {	*font-size:100%;}
+input {	*font-size:100%;}
+/*because legend doesn't inherit in IE */
+.overflow{overflow: hidden;clear: both;}
+.clear {height:0px;clear:both;width: 100%;}
+*html{background-image:url(about:blank);background-attachment:fixed;}
+.hidden{display:none;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.ma{margin-top: 0;margin-right: auto;margin-bottom: 0;margin-left: auto;}
+.relative{position: relative;}
+a{text-decoration:none;word-wrap:break-word}
+a:hover{text-decoration:underline}
+li {display: list-item;text-align: -webkit-match-parent;}
+.c_aeaeae{ color:#aeaeae;}
+.c_f07700{ color:#f07700;}
+.c_E4393C{ color:#E4393C;}
+.c_ff0000{ color:#ff0000;}
+.c_cedeff{ color:#cedeff;}
+.c_e8495c{ color:#e8495c;}
+.c_60af47{ color:#60af47;}
+.c_3a87ad{ color:#3a87ad;}
+.c_79653f{ color:#79653f;}
+.c_999{ color:#999;}
+.c_333{ color:#333;}
+.mt_10{ margin-top:10px;}
+.mt_15{
+	margin-top:15px;
+}
+.mt_20{ margin-top:20px;}
+.mt_30{ margin-top:30px;}
+.mb_20{ margin-bottom:20px;}
+.pl_10{ padding-left:10px;}
+.pr_10{ padding-right:10px;}
+.f15{font-size: 15px;}
+.f14{font-size: 14px;}
+.f12{font-size: 12px;}
+.f18{font-size: 18px;}
+.f22{font-size: 22px;}
+strong, b {font-weight: bold;}
+.h_100{ height:100px;}
+.decoration{text-decoration: line-through;}
