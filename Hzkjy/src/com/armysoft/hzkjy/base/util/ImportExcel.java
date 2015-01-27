@@ -1,32 +1,13 @@
 package com.armysoft.hzkjy.base.util;
 
-import jxl.*; 
-import jxl.format.UnderlineStyle;
-import jxl.read.biff.BiffException;
-import jxl.write.*; 
-import java.io.*; 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*; 
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.armysoft.motorcar.model.MemberBasic;
-import com.armysoft.motorcar.service.member.MemberBasicService;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 public class ImportExcel {  
     /** 
-     * 解析Excel文件中的数据并把每行数据封装成一个实�?
-     * @param fis 文件输入�?
+     * 解析Excel文件中的数据并把每行数据封装成一个实�?
+     * @param fis 文件输入�?
      * @return List<MemberBasic> Excel中数据封装实体的集合 
      * @throws ParseException 
      */  
-    public static List<MemberBasic> importMemberBasic(InputStream fis) throws ParseException {  
+   /* public static List<MemberBasic> importMemberBasic(InputStream fis) throws ParseException {  
     	
     	
 
@@ -38,9 +19,9 @@ public class ImportExcel {
             Workbook book = Workbook.getWorkbook(fis);  
             //得到第一个工作表对象  
             Sheet sheet = book.getSheet(0);  
-            //得到第一个工作表中的总行�? 
+            //得到第一个工作表中的总行�? 
             int rowCount = sheet.getRows();  
-            //日期格式�? 
+            //日期格式�? 
             //循环取出Excel中的内容  
             for (int i = 1; i < rowCount; i++) {  
             	Date rhdate =new Date();
@@ -84,5 +65,5 @@ public class ImportExcel {
             e.printStackTrace();  
         }  
         return memberBasicinfos;  
-    }  
+    }  */
 }  
