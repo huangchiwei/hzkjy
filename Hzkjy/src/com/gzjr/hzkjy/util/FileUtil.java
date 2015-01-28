@@ -37,7 +37,7 @@ public class FileUtil {
 	 * void    返回类型
 	 */
 	public void downloadFile(String filePath,String newfileName, HttpServletResponse response) {
-		try {
+		try {//
 			File file = new File(filePath);
 			// 取得文件名。
 			String filename = file.getName();
