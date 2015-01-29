@@ -7,9 +7,9 @@
 	<setting name="lazyLoadingEnabled" value="true"/> 
 	<setting name="aggressiveLazyLoading" value="false"/> 
 </settings>
-
- <typeAliases>
- 
+  <!--  指定包下实体Bean起别名,默认类名作别名 -->
+     <typeAliases>
+        <package name="com.armysoft.hzkjy.model"/>
         <package name="org.armysoft.security.model"/>
     </typeAliases>
 </configuration>

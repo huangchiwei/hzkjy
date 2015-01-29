@@ -48,6 +48,10 @@
 		<property name="mapperLocations">
 		<list>
 			<value>classpath:org/armysoft/security/model/**/*.xml</value>
+		<!--
+	 指定映射文件路径，没指定则默认与接口类同目录下 
+	-->
+			<value>classpath:com/armysoft/hzkjy/model/*.xml</value>	
 		</list>
 	</property>
 	</bean>
