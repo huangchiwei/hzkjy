@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SysModuleOpt">
+
+	<!-- 用来定义可重用的SQL代码段 -->
+	<sql id="columns">
+		ModuleNo,ModName,Url,OrderNo,ParentNo,Level
+	</sql>
+
+	<resultMap id="sysModuleMap" type="sysModule">
+		<id column="ModuleNo" property="moduleNo" />
+		<result column="ModName" property="modName" />
+		<result column="Url" property="url" />
+		<result column="OrderNo" property="orderNo" />
+		<association property="parentNo" column="ParentNo" javaType="sysModule" 
+		 select="SysModuleOpt.getByModuleNo"/>
+	</resultMap>
+	<!-- 根据模块编号查询模块 -->
+	<select id="getByModuleNo" parameterType="String" resultMap="sysModuleMap">
+		select 
+		<include refid="columns"/>
+		from sys_module where ModuleNo = #{ModuleNo}
+	</select>
+
+	<!-- 查询用户拥有的模块 -->
+	<select id="getByUserNo" parameterType="String" resultMap="sysModuleMap">
+		SELECT * from sys_module sm where sm.ModuleNo in(select sp.ModuleNo from sys_permission sp 
+			where sp.ID in(
+							select DISTINCT(srp.PermId) from sys_role_permission srp where srp.RoleNo in(
+								select sur.RoleNo from sys_user_role sur where sur.UserNo = #{userNo}
+							)
+						 )
+
+) ORDER BY sm.ParentNo,sm.OrderNo
+	</select>
+	<!-- 加载所有菜单和权限（角色分配权限时） -->
+	<select id="getModuleAndPermission" parameterType="String" resultType="java.util.Map">
+		SELECT sm.ModuleNo,sm.ModName,sm.ParentNo,sp.ID,sp.PermName,sp.PermType,t.PermId from sys_module sm LEFT JOIN sys_permission sp ON sm.ModuleNo = sp.ModuleNo
+			LEFT JOIN 
+					(select DISTINCT(srp.PermId) from sys_role_permission srp where srp.RoleNo =
+												#{roleNo}
+											
+					) t on t.PermId = sp.ID ORDER BY sm.ParentNo,sm.ModuleNo,sm.OrderNo
+
+	</select>
+	<!-- 根据菜单级别查询菜单 -->
+	<select id="getByModuleLevel" parameterType="int" resultMap="sysModuleMap">
+		select 
+		<include refid="columns"/>
+		from sys_module where Level = #{level} order by OrderNo
+	</select>
+</mapper>

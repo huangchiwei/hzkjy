@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SysPermissionOpt">
+
+	<!-- 用来定义可重用的SQL代码段 -->
+	<sql id="columns">
+		ID,ModuleNo,PermName,PermValue,PermType
+	</sql>
+
+	<resultMap id="sysPermissionMap" type="sysPermission">
+		<id column="id" property="id" />
+		<result column="PermName" property="permName" />
+		<result column="PermValue" property="permValue" />
+		<result column="PermType" property="permType" />
+		<association property="moduleNo" column="ModuleNo" javaType="sysModule" 
+		 select="SysModuleOpt.getByModuleNo"/>
+	</resultMap>
+	<!-- 根据用户查询权限 -->
+	<select id="getByUserNo" parameterType="String" resultType="String">
+		select 
+		sp.PermValue
+		 from sys_permission sp where sp.ID in(
+			select DISTINCT(srp.PermId) from sys_role_permission srp where srp.RoleNo in(
+				select sur.RoleNo from sys_user_role sur where sur.UserNo = #{userNo}
+			)
+		) order by sp.ModuleNo
+	</select>
+
+	<!-- 根据角色查询权限 -->
+	<select id="getByRoleNo" parameterType="String" resultMap="sysPermissionMap">
+		select 
+		<include refid="columns"/>
+		 from sys_permission sp where sp.ID in(
+			select srp.PermId from sys_role_permission srp where srp.RoleNo = #{roleNo}
+		)
+	</select>
+	<!-- ************************************************** -->
+	<!-- 批量保存角色权限 -->
+	<insert id="insertRolePerm" parameterType="java.util.Map">
+		insert into sys_role_permission(RoleNo,PermId)
+			values
+		<foreach collection="list" item="item" index="index" separator="," >  
+        	(#{roleNo},#{item})
+    	</foreach>  
+	</insert>
+	<!-- 批量删除角色权限 -->
+	<delete id="deleteRolePerm">
+		delete from sys_role_permission where roleNo = #{roleNo}
+		and PermId in 
+			<foreach collection="list" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+	</delete>
+	<!-- 删除角色的所有权限 -->
+	<delete id="deletePermByRoleNo" >
+		delete from sys_role_permission where roleNo = #{roleNo}
+	</delete>
+</mapper>

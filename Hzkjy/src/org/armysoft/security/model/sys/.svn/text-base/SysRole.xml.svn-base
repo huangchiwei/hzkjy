@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SysRoleOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">
+		ID,RoleNo,RoleName,Remark,Creater,CreateDate,Modifier,ModifyDate
+	</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from sys_role where 1 = 1
+			<if test="parm.roleName != null and parm.roleName != ''">
+				and RoleName like CONCAT('%', #{parm.roleName}, '%')
+			</if>
+		order by CreateDate desc
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="sysRoleMap" type="sysRole">
+		<id column="ID" property="id" />
+		<result column="RoleNo" property="roleNo" />
+		<result column="RoleName" property="roleName" />
+		<result column="Remark" property="remark" />
+		<result column="CreateDate" property="createDate" />
+		<result column="ModifyDate" property="modifyDate" />
+	</resultMap>
+	<resultMap type="sysRole" id="sysRolePageMap" extends="sysRoleMap">
+		<association property="creater" column="Creater" javaType="sysUser" 
+		 select="SysUserOpt.getByUserNo"/>
+		<association property="modifier" column="Modifier" javaType="sysUser" 
+		 select="SysUserOpt.getByUserNo"/>
+	</resultMap>
+	<!-- 查询所有角色 -->
+	<select id="getAll" resultMap="sysRoleMap" >
+		select <include refid="columns"/> from sys_role
+	</select>
+	<!-- 根据角色编号查询角色 -->
+	<select id="getByRoleNo" parameterType="String" resultMap="sysRoleMap" >
+		select <include refid="columns" /> from sys_role where RoleNo = #{roleNo}
+	</select>
+	
+	<!-- 分页查询角色 -->
+	<select id="page" resultMap="sysRolePageMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	
+	<!-- 查询角色数量 -->
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="sysRole">
+		insert into sys_role(RoleNo,RoleName,Remark,Creater,CreateDate,Modifier,ModifyDate)
+			values(#{roleNo},#{roleName},#{remark},#{creater.userNo},#{createDate},#{modifier.userNo},#{modifyDate})
+	</insert>
+	<!-- 修改 -->
+	<update id="update" parameterType="sysRole">
+		update sys_role set 
+			RoleName = #{roleName},
+			Remark = #{remark},
+			Modifier = #{modifier.userNo},
+			ModifyDate = #{modifyDate} 
+		where RoleNo = #{roleNo}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="String">
+		delete from sys_role where roleNo = #{roleNo}
+	</delete>
+	<!-- ************************************** -->
+	<!-- 查找用户拥有的角色 -->
+	<select id="getByUserNo" parameterType="String" resultMap="sysRoleMap" >
+		select 
+		r.RoleNo,r.RoleName,r.ID
+		 from sys_user u 
+			LEFT JOIN sys_user_role ur on u.UserNo = ur.UserNo
+			LEFT JOIN sys_role r on r.RoleNo = ur.RoleNo
+				where ur.UserNo = #{userNo}
+	</select>
+	<!-- 批量保存用户角色 -->
+	<insert id="insertUserRole" parameterType="java.util.Map">
+		insert into sys_user_role(UserNo,RoleNo)
+			values
+		<foreach collection="list" item="item" index="index" separator="," >  
+        	(#{userNo},#{item})
+    	</foreach>  
+	</insert>
+	<!-- 批量删除用户角色 -->
+	<delete id="deleteUserRole" >
+		delete from sys_user_role where UserNo = #{userNo}
+		and RoleNo in
+			<foreach collection="list" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+	</delete>
+	<!-- 根据用户删除角色 -->
+	<delete id="deleteRoleByUser" >
+		delete from sys_user_role where UserNo = #{userNo}
+	</delete>
+</mapper>

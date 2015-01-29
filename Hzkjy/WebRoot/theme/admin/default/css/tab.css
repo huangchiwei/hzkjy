@@ -1,0 +1,73 @@
+/**tabЧ��*/
+
+#wrapper .div_tabla {
+	list-style-type: none;
+	height: 26px;
+	margin: 6px;
+	padding: 0px;
+	padding-left: 4px;
+	border-bottom-width: 1;
+	border-bottom-style: solid;
+	border-bottom-color: #95b8e7;
+}
+#wrapper .div_icon {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+}
+		#tabs{
+	margin:0;
+	padding:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+        #tabs li {
+	float:left;
+	display:block;
+	padding:5px;
+	margin-right:5px;
+	list-style-type: none;
+	background-repeat: repeat-x;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-top-color: #95b8e7;
+	border-right-color: #95b8e7;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #95b8e7;
+	color: #0E2D5F;
+	background: -webkit-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+  background: -moz-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+  background: -o-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+  background: linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
+  border-radius: 5px 5px 0 0;
+  
+}
+        #tabs li a { color:#3b3b3b; text-decoration:none; }
+        #tabs li.current {
+	background: linear-gradient(to bottom,#EFF5FF 0,#ffffff 100%);
+	
+}
+        #tabs li.current a {font-weight: bold;}
+        #tabs li a.remove { color:#f00; margin-left:10px;}
+        #content { background-color:#e1e1e1;}
+        #content p { margin: 0; padding:5px 0px 10px 0px;background-color:#ffffff;}
+        
+/*        #main { width:900px; margin:0px auto; overflow:hidden;background-color:#F6F6F6; margin-top:20px;
+             -moz-border-radius:10px;  -webkit-border-radius:10px; padding:30px;}
+        #wrapper, #doclist { float:left; margin:0 20px 0 0;}
+        #doclist { width:150px; border-right:solid 1px #dcdcdc;}
+        #doclist ul { margin:0; list-style:none;}
+        #doclist li { margin:10px 0; padding:0;}
+        #documents { margin:0; padding:0;}
+        
+        #wrapper { position: relative;left: 0;overflow: hidden;width: 100%; height-min:100%; margin: 0;padding: 0;}
+            
+        #header{ background-color:#F6F6F6; width:900px; margin:0px auto; margin-top:20px;
+             -moz-border-radius:10px;  -webkit-border-radius:10px; padding:30px; position:relative;}
+        #header h2 {font-size:16px; font-weight:normal; margin:0px; padding:0px;
+        }*/
