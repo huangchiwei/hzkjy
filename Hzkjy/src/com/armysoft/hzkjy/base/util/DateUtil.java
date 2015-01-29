@@ -36,7 +36,7 @@ public abstract class DateUtil {
 	}
 	
 	/**
-	 * 将时间转化成自定义格�?
+	 * 将时间转化成自定义格�?
 	 * @param date
 	 * @param pattern
 	 * @return
