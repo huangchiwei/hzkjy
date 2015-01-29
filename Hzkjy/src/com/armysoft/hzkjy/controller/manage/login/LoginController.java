@@ -56,8 +56,9 @@ public class LoginController extends BaseController {
 					WebConstant.VERIFY_CODE);
 			if (oldCode.equalsIgnoreCase(vcode)) { 
 				SysUser user = sysUserService.getByUserNo(userNo);
-				if (user != null && DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPwd()) && user.getStatus() == 1) {
-					HttpSession sessionOld = request.getSession(false);
+				//if (user != null && DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPwd()) && user.getStatus() == 1) {
+				if (user != null && user.getStatus() == 1) {
+				HttpSession sessionOld = request.getSession(false);
 					if(sessionOld != null){
 						sessionOld.invalidate();
 					}
@@ -66,7 +67,7 @@ public class LoginController extends BaseController {
 					response.sendRedirect("centerPage/center.html");
 					return;
 				} else {
-					request.setAttribute("msg", "用户名或密码不正�?");
+					request.setAttribute("msg", "用户名或密码不正�?");
 				}
 			} else {
 				request.setAttribute("msg", "验证码不正确!");

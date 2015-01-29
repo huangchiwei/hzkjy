@@ -158,3 +158,27 @@ CREATE TABLE `sys_user_role` (
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
+
+CREATE TABLE `news` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL COMMENT '标题',
+  `content` longtext COMMENT '文档内容',
+  `author` varchar(50) DEFAULT NULL COMMENT '作者',
+  `realTime` datetime DEFAULT NULL COMMENT '文档原始时间',
+  `createUser` varchar(100) DEFAULT NULL COMMENT '创建用户',
+  `clicks` int(11) DEFAULT '0' COMMENT '阅读次数',
+  `cateCode` varchar(255) DEFAULT NULL COMMENT '分类',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资讯';
+
+#
+# Source for table news_category
+#
+
+CREATE TABLE `news_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cateName` varchar(255) DEFAULT NULL COMMENT '类别名称',
+  `cateCode` varchar(255) DEFAULT NULL COMMENT '代号',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资讯类型';

@@ -7,6 +7,11 @@
 	<setting name="lazyLoadingEnabled" value="true"/> 
 	<setting name="aggressiveLazyLoading" value="false"/> 
 </settings>
+  <!--  指定包下实体Bean起别名,默认类名作别名 -->
+     <typeAliases>
+        <package name="com.armysoft.hzkjy.model"/>
+    </typeAliases>
+<!--
 
  <typeAliases>
    <typeAlias type="com.armysoft.hzkjy.model.MemberBasic" alias="memberBasic" />
@@ -22,4 +27,4 @@
 	  <mapper resource="com/armysoft/hzkjy/model/SysRole.xml" />
 	  <mapper resource="com/armysoft/hzkjy/model/SysPermission.xml" />
     </mappers>
-</configuration>
+--></configuration>

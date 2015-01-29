@@ -1,4 +1,4 @@
-#Thu Jan 22 10:13:43 CST 2015
+#Thu Jan 29 19:48:20 CST 2015
 eclipse.preferences.version=1
 encoding//WebRoot/js/easyui/easyui-lang-zh_CN.js=UTF-8
 encoding//WebRoot/js/jsp/sys/ModifyPwd.js=UTF-8
@@ -26,3 +26,4 @@ encoding//src/com/armysoft/hzkjy/controller/manage/sys/SysModuleController.java=
 encoding//src/com/armysoft/hzkjy/controller/manage/sys/SysUserController.java=UTF-8
 encoding//src/com/gzjr/hzkjy/util/Constants.java=UTF-8
 encoding//src/com/gzjr/hzkjy/util/FileUtil.java=UTF-8
+encoding/<project>=UTF-8
