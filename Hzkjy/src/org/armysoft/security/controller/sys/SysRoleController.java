@@ -48,7 +48,7 @@ public class SysRoleController extends BaseController {
 	@PermissionsAnno("role_list")
 	@RequestMapping(value = PAGE_LIST)
 	public ModelAndView getByPage(@PathVariable int currentPage,SysRole role){
-		ModelAndView mv = new ModelAndView("admin/sys/SysRoleQ.jsp");
+		ModelAndView mv = new ModelAndView("admin/sys/SysRoleQ");
 		//初始化分页实体
 		Pagination pager =  initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();

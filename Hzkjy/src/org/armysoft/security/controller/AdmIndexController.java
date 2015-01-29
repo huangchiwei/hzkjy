@@ -15,6 +15,6 @@ public class AdmIndexController {
 	public String dispatcher(Model model,@PathVariable String page,HttpServletRequest req){
 		//if("index".equalsIgnoreCase(page))
 			//model.addAttribute("userNo", CookieUtil.getUserCookieValue(req, Constants.ADMIN_KEY));
-		return "base/" + page;
+		return "admin/base/" + page;
 	}
 }

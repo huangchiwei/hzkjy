@@ -58,7 +58,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>springMvc</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
 
 	<servlet> 

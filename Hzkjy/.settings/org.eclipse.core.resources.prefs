@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-#Thu Jan 29 21:45:42 CST 2015
-=======
-#Thu Jan 29 19:48:20 CST 2015
->>>>>>> branch 'master' of https://github.com/huangchiwei/hzkjy.git
+#Thu Jan 29 22:55:45 CST 2015
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/huangchiwei/hzkjy.git
 eclipse.preferences.version=1
 encoding//WebRoot/js/easyui/easyui-lang-zh_CN.js=UTF-8
 encoding//WebRoot/js/jsp/sys/ModifyPwd.js=UTF-8
