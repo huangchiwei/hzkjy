@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="MemberBasicOpt">
+<mapper namespace="MemberFasicOpt">
 
 	<!-- 表列名 -->
 	<sql id="columns">	
@@ -24,7 +24,7 @@
 				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				order by id desc
 	</sql>
 	<!-- 实体映射 -->
-	<resultMap id="memberBasicMap" type="memberBasic">
+	<resultMap id="memberFasicMap" type="memberFasic">
 				<result column="ID" property="id" />
 				<result column="Hybh" property="hybh" />
 				<result column="Qymc" property="qymc" />
@@ -61,15 +61,15 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		and a.hymc  like CONCAT('%', #{fhymc}, '%')
 				</if>
 	</select>
-    <select id="findById" resultMap="memberBasicMap" parameterType="Long">
+    <select id="findById" resultMap="memberFasicMap" parameterType="Long">
 		select * from member_basic where id = #{id}
 	</select>
 	
-	<select id="findByHybh" resultMap="memberBasicMap" parameterType="String">
+	<select id="findByHybh" resultMap="memberFasicMap" parameterType="String">
 		select * from member_basic where Hybh = #{hybh}
 	</select>
 	
-	<select id="findByNewHybh" resultMap="memberBasicMap" parameterType="java.util.Map">
+	<select id="findByNewHybh" resultMap="memberFasicMap" parameterType="java.util.Map">
 		select * from member_basic where substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2} ORDER BY id DESC LIMIT 1 
 	</select>
 	
@@ -81,7 +81,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		select hybh,qymc,qymcpy from member_basic where Zt=#{value} ORDER BY hybh DESC 
 	</select>
 		
-	<select id="page" resultMap="memberBasicMap" parameterType="java.util.Map">
+	<select id="page" resultMap="memberFasicMap" parameterType="java.util.Map">
 		select 
 		<include refid="columns"/>
 		<include refid="condition" />
@@ -92,7 +92,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		<include refid="condition" />
 	</select>
 	<!-- 保存 -->
-	<insert id="insert" parameterType="memberBasic">
+	<insert id="insert" parameterType="memberFasic">
 		insert into member_basic(Hybh,Qymc,Address,Zydy,Mj,Fzr,Zczj,Lxr,Zt,Qymcpy)
 		values(#{hybh} 		
 		, #{qymc} 		
@@ -108,7 +108,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		</insert>
 
 	<!-- 修改 -->
-	<update id="update" parameterType="memberBasic">
+	<update id="update" parameterType="memberFasic">
 		update member_basic set 
 		Hybh=#{hybh}
 		 								,Qymc=#{qymc}

@@ -163,7 +163,6 @@ function loadPageLayer2(title,url){
         &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
         	</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-                    <dt><input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/member/memberBasic/Find.html');"/></dt>
            <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
