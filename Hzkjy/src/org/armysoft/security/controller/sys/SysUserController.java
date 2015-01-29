@@ -50,7 +50,7 @@ public class SysUserController extends BaseController {
 	@PermissionsAnno("user_list")
 	@RequestMapping(value = PAGE_LIST)
 	public ModelAndView getByPage(@PathVariable int currentPage, SysUser user) {
-		ModelAndView mv = new ModelAndView("admin/sys/SysUserQ.jsp");
+		ModelAndView mv = new ModelAndView("admin/sys/SysUserQ");
 		// 初始化分页实体
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -102,7 +102,7 @@ public class SysUserController extends BaseController {
 			
 		mv.addObject("allRoles", result);
 		mv.addObject("viewType", "add");
-		mv.setViewName("admin/sys/SysUserA_U_D.jsp");
+		mv.setViewName("admin/sys/SysUserA_U_D");
 		return mv;
 	}
 
@@ -250,7 +250,7 @@ public class SysUserController extends BaseController {
 	 */
 	@RequestMapping("toModifyPwd")
 	public String toModifyPwd() {
-		return "admin/sys/ModifyPwd.jsp";
+		return "admin/sys/ModifyPwd";
 	}
 
 	/**
@@ -273,6 +273,6 @@ public class SysUserController extends BaseController {
 		} else {
 			request.setAttribute("msg", "修改失败，旧密码不正确！");
 		}
-		return "admin/sys/ModifyPwd.jsp";
+		return "admin/sys/ModifyPwd";
 	}
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="expires" content="0"/> 
 <link href="${ctx}/js/tab/css/tab.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/adminthemes/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/admintheme/default/css/master.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/tab/content.js"></script>
 <script type="text/javascript">

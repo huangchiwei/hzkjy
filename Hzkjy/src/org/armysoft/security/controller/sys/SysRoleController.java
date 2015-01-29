@@ -70,7 +70,7 @@ public class SysRoleController extends BaseController {
 		if(StringUtils.hasText(roleNo)){//修改
 			mv.addObject("role", sysRoleService.getByRoleNo(roleNo));
 		}
-		mv.setViewName("admin/sys/SysRoleA_U.jsp");
+		mv.setViewName("admin/sys/SysRoleA_U");
 		
 		return mv;
 	}
@@ -139,7 +139,7 @@ public class SysRoleController extends BaseController {
 	 */
 	@RequestMapping("toRoleToPerm")
 	public ModelAndView toSysPermissionLeft(String roleNo) {
-		ModelAndView mv = new ModelAndView("admin/sys/SysRoleToPerm.jsp");
+		ModelAndView mv = new ModelAndView("admin/sys/SysRoleToPerm");
 		mv.addObject("role", sysRoleService.getByRoleNo(roleNo));
 		return mv;
 	}

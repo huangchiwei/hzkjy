@@ -8,10 +8,10 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="expires" content="0"/>
-<link href="${ctx}/themes/admin/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="${ctx}/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <link rel="stylesheet" href="${ctx}/js/ztree/zTreeStyle/zTreeStyle.css" type="text/css"/>
 <script type="text/javascript" src="${ctx}/js/ztree/js/jquery.ztree.core-3.5.js"></script>
   <script type="text/javascript">

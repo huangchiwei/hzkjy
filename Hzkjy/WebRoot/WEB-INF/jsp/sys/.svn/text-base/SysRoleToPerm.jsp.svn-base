@@ -4,9 +4,9 @@
 <html>
 <head>
 	<title>permission</title>
-<link href="${ctx}/themes/admin/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/font.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${ctx}/js/ztree/zTreeStyle/zTreeStyle.css" type="text/css"/>
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/ztree/js/jquery.ztree.core-3.5.js"></script>

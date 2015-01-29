@@ -95,10 +95,6 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	
-	 <!-- 开启这个配置，spring才能识别@Scheduled注解   -->
-    <task:annotation-driven scheduler="qbScheduler" mode="proxy"/>  
-    <task:scheduler id="qbScheduler" pool-size="20"/>
-    
     <bean id="permissionAspect" class="org.armysoft.security.aop.PermissionAspect"/>
     <bean id="initResourcesMap" class="org.armysoft.security.InitResourcesMap"/>
 </beans>

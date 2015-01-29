@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>userList</title>
-<link href="${ctx}/themes/admin/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/jsp/base/default_tr.js"></script>
@@ -62,7 +62,7 @@ function changeStatus(userNo,status){
         <dd class="w_bf_20">
           <input name="phone" type="text" class="input_a1" value="${tempUser.phone}"/>
           <div class="search">
-            <input id="search_bt" name="input2" type="image" src="${ctx}/themes/admin/default/images/search.png" align="left" />
+            <input id="search_bt" name="input2" type="image" src="${ctx}/theme/admin/default/images/search.png" align="left" />
           </div>
         </dd>
       </dl>
@@ -103,10 +103,10 @@ function changeStatus(userNo,status){
 	        <td>${user.phone}</td>
 	        <td>
 	          		<c:if test="${user.status == 1}">
-	          			<input type="image" src="${ctx}/themes/admin/default/images/prompt.png" title="激活" <c:if test="${user_chasta == true}">onclick="changeStatus('${user.userNo}',2)"</c:if>/>
+	          			<input type="image" src="${ctx}/theme/admin/default/images/prompt.png" title="激活" <c:if test="${user_chasta == true}">onclick="changeStatus('${user.userNo}',2)"</c:if>/>
 	          		</c:if>
 	          		<c:if test="${user.status == 2}">
-	          			<input type="image" src="${ctx}/themes/admin/default/images/freeze_icon.png" title="冻结" <c:if test="${user_chasta == true}">onclick="changeStatus('${user.userNo}',1)"</c:if>/>
+	          			<input type="image" src="${ctx}/theme/admin/default/images/freeze_icon.png" title="冻结" <c:if test="${user_chasta == true}">onclick="changeStatus('${user.userNo}',1)"</c:if>/>
 	          		</c:if>
 	        </td>
 	        <td>
@@ -115,12 +115,12 @@ function changeStatus(userNo,status){
 	        <td>
 	          	<c:if test="${user_updt == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/themes/admin/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/sysUser/add/new.html?userNo=${user.userNo}'"/>
+		          	 <input type="image" src="${ctx}/theme/admin/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/sysUser/add/new.html?userNo=${user.userNo}'"/>
 		          	</div>
 	          	</c:if>
 	          	<c:if test="${user_del == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/themes/admin/default/images/del_icon.png" title="删除" onclick="delConfirm('${user.userNo}')"/>
+		          	 <input type="image" src="${ctx}/theme/admin/default/images/del_icon.png" title="删除" onclick="delConfirm('${user.userNo}')"/>
 		         	</div>
 	         	</c:if>
 	         </td>

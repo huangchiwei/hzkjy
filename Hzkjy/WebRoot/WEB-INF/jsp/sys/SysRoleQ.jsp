@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>roleList</title>
-<link href="${ctx}/themes/admin/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/jsp/base/default_tr.js"></script>
@@ -55,7 +55,7 @@ function delConfirm(roleNo){
           <input name="roleName" type="text" class="input_a1" value="${tempRole.roleName}"/>
         </dd>
         <dt class="w_bf_20">
-            <input id="search_bt" name="input2" type="image" src="${ctx}/themes/admin/default/images/search.png" align="left" />
+            <input id="search_bt" name="input2" type="image" src="${ctx}/theme/admin/default/images/search.png" align="left" />
         </dt>
       </dl>
     </div>
@@ -102,17 +102,17 @@ function delConfirm(roleNo){
 		        <td>
 		        	  <c:if test="${role_saveperm == true}">
 				          <div class="btn_icon">
-				          	<input type="image" src="${ctx}/themes/admin/default/images/allocation.png" title="分配权限" onclick="javascript:location.href='${ctx}/admin/sysRole/toRoleToPerm.html?roleNo=${role.roleNo}'"/>
+				          	<input type="image" src="${ctx}/theme/admin/default/images/allocation.png" title="分配权限" onclick="javascript:location.href='${ctx}/admin/sysRole/toRoleToPerm.html?roleNo=${role.roleNo}'"/>
 				          </div>
 			          </c:if>
 			          <c:if test="${role_updt == true}">
 				          <div class="btn_icon">
-				          	<input type="image" src="${ctx}/themes/admin/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/sysRole/add/new.html?roleNo=${role.roleNo}'"/>
+				          	<input type="image" src="${ctx}/theme/admin/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/sysRole/add/new.html?roleNo=${role.roleNo}'"/>
 				          </div>
 			          </c:if>
 			          <c:if test="${role_del == true}">
 				          <div class="btn_icon">
-				          	<input type="image" src="${ctx}/themes/admin/default/images/del_icon.png" title="删除" onclick="delConfirm('${role.roleNo}')"/>
+				          	<input type="image" src="${ctx}/theme/admin/default/images/del_icon.png" title="删除" onclick="delConfirm('${role.roleNo}')"/>
 				          </div> 
 			          </c:if>
 		         </td>

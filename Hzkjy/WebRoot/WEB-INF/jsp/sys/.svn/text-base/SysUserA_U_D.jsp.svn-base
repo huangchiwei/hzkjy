@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>content</title>
-<link href="${ctx}/themes/admin/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/themes/admin/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <link type="text/css" rel="stylesheet" href="${ctx}/js/formValidator/style/validatorTidyMode.css" />
 <script src="${ctx}/js/formValidator/formValidator-4.0.1.js" type="text/javascript"></script>
@@ -189,14 +189,14 @@ $(document).ready(function(){
     	<c:when test="${user == null}">
     		<pm:hasPermission permValue="user_save">
     			<p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/themes/admin/default/images/submit.png"/>
+				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/admin/default/images/submit.png"/>
 				</p>
     		</pm:hasPermission>
     	</c:when>
     	<c:when test="${update != null}">
     		<pm:hasPermission permValue="user_updt">
     			<p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/themes/admin/default/images/submit.png"/>
+				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/admin/default/images/submit.png"/>
 				</p>
     		</pm:hasPermission>
     	</c:when>

@@ -64,7 +64,7 @@ public class LoginController extends BaseController {
 				request.setAttribute("msg", "验证码不正确!");
 			}
 			request.setAttribute("userNo", userNo);
-			return "admin/base/login.jsp";
+			return "admin/base/login";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
