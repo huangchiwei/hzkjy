@@ -182,3 +182,62 @@ CREATE TABLE `news_category` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资讯类型';
+
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (1,'组织架构','park_frame','园区风貌');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (2,'园区介绍','park_intro','园区风貌');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (3,'园区荣誉','park_honor','园区风貌');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (4,'园区大事','park_event','园区风貌');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (5,'国家政策','policy_regu','政策法规');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (6,'省市政策','policy_province','政策法规');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (7,'园区政策','policy_park','政策法规');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (8,'科技动态','dynamic_science','新闻动态');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (9,'行业动态','dynamic_industry','新闻动态');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (10,'企业动态','dynamic_enterprise','新闻动态');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (11,'物业招租','info_lease','园区信息');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (12,'工程招标','info_tender','园区信息');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (13,'人员招聘','info_recruit','园区信息');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (14,'展览服务','style_exhibition','企业风采');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (15,'新技术新材料','style_tech','企业风采');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (16,'生物医药与技术','style_medicine','企业风采');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (17,'电子与信息','style_electronic ','企业风采');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (18,'其他','style_other','企业风采');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (19,'入园指南','service_inpark','园区服务');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (20,'出园指南','service_outpark','园区服务');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (21,'证照办理','service_license','园区服务');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (22,'综合服务','service_multiple','园区服务');
+INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (23,'成果转化','service_result','园区服务');
+
+
+
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_03','园区风貌',NULL,3,NULL,1);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_04','政策法规',NULL,4,NULL,1);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_05','新闻动态',NULL,5,NULL,1);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_06','园区信息',NULL,6,NULL,1);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_07','企业风采',NULL,7,NULL,1);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_08','园区服务',NULL,8,NULL,1);
+
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_08','园区介绍','manager/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_09','组织架构','manager/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_10','园区荣誉','manager/news/list/1.html?cateCode=park_honor',3,'Lev1_03',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_11','园区大事','manager/news/list/1.html?cateCode=park_event',4,'Lev1_03',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_12','国家政策','manager/news/list/1.html?cateCode=policy_regu',1,'Lev1_04',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_13','省市政策','manager/news/list/1.html?cateCode=policy_province',2,'Lev1_04',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_14','园区政策','manager/news/list/1.html?cateCode=policy_regu',3,'Lev1_04',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_15','科技动态','manager/news/list/1.html?cateCode=dynamic_science',1,'Lev1_05',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_16','行业动态','manager/news/list/1.html?cateCode=dynamic_industry',2,'Lev1_05',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_17','企业动态','manager/news/list/1.html?cateCode=dynamic_enterprise',3,'Lev1_05',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_18','物业招租','manager/news/list/1.html?cateCode=info_lease',1,'Lev1_06',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_19','工程招标','manager/news/list/1.html?cateCode=info_tender',2,'Lev1_06',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_20','人员招聘','manager/news/list/1.html?cateCode=info_recruit',3,'Lev1_06',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_21','展览服务','manager/news/list/1.html?cateCode=style_exhibition',1,'Lev1_07',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_22','新技术新材料','manager/news/list/1.html?cateCode=style_tech',2,'Lev1_07',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_23','生物医药与技术','manager/news/list/1.html?cateCode=style_medicine',3,'Lev1_07',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_24','电子与信息','manager/news/list/1.html?cateCode=style_electronic',4,'Lev1_07',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_25','其他','manager/news/list/1.html?cateCode=style_other',5,'Lev1_07',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_26','入园指南','manager/news/list/1.html?cateCode=service_inpark',1,'Lev1_08',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_27','出园指南','manager/news/list/1.html?cateCode=service_outpark',2,'Lev1_08',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_28','证照办理','manager/news/list/1.html?cateCode=service_license',3,'Lev1_08',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_29','综合服务','manager/news/list/1.html?cateCode=service_multiple',4,'Lev1_08',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_30','成果转化','manager/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
+
+
