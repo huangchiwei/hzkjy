@@ -59,8 +59,8 @@
 					zTree.expandNode(treeNode);
 					return false;
 				} else {
-			
-				openNew('I2',treeNode.name,"${ctx}/" + treeNode.file + "/1.html");
+					openNew('I2',treeNode.name,"${ctx}/" + treeNode.file);
+				//openNew('I2',treeNode.name,"${ctx}/" + treeNode.file + "/1.html");
 					return true;
 				}
 			}

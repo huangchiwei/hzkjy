@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>userList</title>
-<link href="${ctx}/theme/${cssFile}/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/${cssFile}/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/${cssFile}/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 
@@ -41,14 +41,14 @@ html { overflow:-moz-scrollbars-vertical;}
 <div class="content_box">
   <div class="btn_box">
   	
-  		<input  id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/sys/sysUser/add/new.html'"/>
+  		<input  id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/manager/news/add/new.html?cateCode=${cateCode}'"/>
      
   </div>
   <div class="list_info">
   	<form id="search_form" action="${ctx}/manager/news/list/1.html" method="post">
   	<input type="hidden" name="cateCode" value="${category.cateCode }"/>
   	  </form>
-    <h2>${category.remark }&gt;${category.cateName}</h2>
+    <h2>${category.remark }&gt;&gt;${category.cateName}</h2>
  
   
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
@@ -79,17 +79,12 @@ html { overflow:-moz-scrollbars-vertical;}
 	   
 	       
 	        <td>
-	       
-	          	<c:if test="${us_updt == true}">
-		          	<div class="btn_icon">
+	       <div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/manager/news/update/${o.id}.html'"/>
 		          	</div>
-	          	</c:if>
-	          	<c:if test="${us_del == true}">
-		          	<div class="btn_icon">
+	          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${o.id}')"/>
 		         	</div>
-	         	</c:if>
 	         </td>
 	      </tr>
       </c:forEach>

@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.armysoft.hzkjy.annotation.PermissionsAnno;
+import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.model.MemberFasic;
+import com.armysoft.hzkjy.model.News;
 import com.armysoft.hzkjy.service.member.NewsService;
 
 
@@ -52,8 +54,9 @@ public class  NewsController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("cateCode", cateCode);
+		model.addAttribute("cateCode", cateCode);
         model.addAttribute("list", newsService.getByPage(params, pager));
-        model.addAttribute("category", newsService.getCateName(cateCode));
+        model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("page", pager);
 
 		return "/news/newsQ";
@@ -62,7 +65,9 @@ public class  NewsController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(HttpServletRequest request,Model model,String cateCode) {
-	
+		model.addAttribute("type", "add");
+		model.addAttribute("cateCode", cateCode);
+		 model.addAttribute("category", newsService.getCategory(cateCode));
 		return "/news/newsA_U";
 	}
 	
@@ -78,12 +83,20 @@ public class  NewsController extends BaseController {
 	public String update(@PathVariable("id") Long key,Model model,String cateCode) {
 		model.addAttribute("cateCode", cateCode);
 		model.addAttribute("entity", newsService.findByKey(key));
+		 model.addAttribute("category", newsService.getCategory(cateCode));
+		model.addAttribute("type", "update");
 		return "/news/newsA_U";
 	}
 
 	@RequestMapping(value = SAVE)
-	public String save(MemberFasic entity, Model model,String cateCode) {
-		
+	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type) {
+		String key = super.getCookieValue(request, WebConstant.COOKIE_KEY);
+		entity.setCreateUser(key);
+		if(type.equalsIgnoreCase("add")){
+			newsService.insert(entity);
+		}else if(type.equalsIgnoreCase("update")){
+			newsService.update(entity);	
+		}
 		return "redirect:/manager/news/list/1.html?cateCode="+cateCode;
 	}
 	

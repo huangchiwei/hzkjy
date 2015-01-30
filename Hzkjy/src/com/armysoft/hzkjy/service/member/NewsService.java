@@ -1,11 +1,11 @@
 package com.armysoft.hzkjy.service.member;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.armysoft.core.Pagination;
 import org.armysoft.ibatis.dao.BaseDao;
 import org.springframework.stereotype.Service;
-import com.armysoft.hzkjy.model.MemberBasic;
+
 import com.armysoft.hzkjy.model.MemberFasic;
 import com.armysoft.hzkjy.model.News;
 /**
@@ -27,8 +27,8 @@ public class NewsService extends BaseDao {
 	public List<Map<String, Object>> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
-	public Map<String, Object> getCateName(String cateCode) {
-		return super.nativeSelectOne(nameSpace + ".getCateName", cateCode);
+	public Map<String, Object> getCategory(String cateCode) {
+		return super.nativeSelectOne(nameSpace + ".getCategory", cateCode);
 	}
 
 	/**
