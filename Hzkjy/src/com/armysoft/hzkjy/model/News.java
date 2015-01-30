@@ -20,7 +20,7 @@ public class News implements java.io.Serializable {
 	private Long id;
 	private String title;
 	private String content;
-	private String author;
+	
 	private Date realTime;
 	private String createUser;
 	private Integer clicks;
@@ -44,12 +44,7 @@ public class News implements java.io.Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+	
 	public Date getRealTime() {
 		return realTime;
 	}
