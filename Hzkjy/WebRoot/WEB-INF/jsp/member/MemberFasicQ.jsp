@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="/WEB-INF/tag.tld" prefix="p" %>
 <%@taglib uri="permission-tags" prefix="pm" %>
-<%@taglib uri="htmlControl-tags" prefix="hc" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,11 +24,11 @@ $("#fssq option[value='${fssq}']").attr("selected", true);
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
 });
 function find(){    
-	$("#search_form").attr("action","${ctx}/member/memberBasic/list/1.html");
+	$("#search_form").attr("action","${ctx}/member/memberFasic/list/1.html");
 	document.getElementById("search_form").submit();
     }   
    function out(){    
-	$("#search_form").attr("action","${ctx}/member/memberBasic/outPtqfqk/1.html");
+	$("#search_form").attr("action","${ctx}/member/memberFasic/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
     }   
 var corpNameJson="";
@@ -40,7 +39,7 @@ function loadCorpName(){
 		corpAutocomplete(corpNameJson);
 		}else{
 			$.ajax({
-				url:'${ctx}/member/memberBasic/getSelectedCorpNameList.html?random='+Math.random(),
+				url:'${ctx}/member/memberFasic/getSelectedCorpNameList.html?random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,
@@ -132,7 +131,7 @@ function loadPageLayer2(title,url){
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/member/memberBasic/delete/' + id + '.html';
+		          location.href='${ctx}/member/memberFasic/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);
@@ -151,11 +150,11 @@ function loadPageLayer2(title,url){
 <div class="content_box">
   <div class="btn_box">
 
-  		<input <hc:attribute attrName="disabled" permValue="hy_save"/> id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/member/memberBasic/add/new.html'"/>
+  		<input <hc:attribute attrName="disabled" permValue="hy_save"/> id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/member/memberFasic/add/new.html'"/>
      
   </div>
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/member/memberBasic/list/1.html" method="post">
+  	<form id="search_form" action="${ctx}/member/memberFasic/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div2">
       <dl class="relative h30">
@@ -197,21 +196,21 @@ function loadPageLayer2(title,url){
 	       	<c:set var="hy_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
-	      <tr ondblclick="javascript:location.href='${ctx}/member/memberBasic/add/new.html?id=${mb.id}'">
+	      <tr ondblclick="javascript:location.href='${ctx}/member/memberFasic/add/new.html?id=${mb.id}'">
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
 	        <td>${mb.address}</td>
 	        <td>${mb.zydy}</td>
-	        <td>${mb.mj}</td>
+	        <td>${mb.mj}平方</td>
 	        <td>${mb.fzr}</td>
-	        <td>${mb.zczj}</td>
+	        <td>${mb.zczj}万</td>
 	        <td>${mb.lxr}</td>
 	        <td>${mb.ztName}</td>
 	        <td>
 	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/member/memberBasic/add/new.html?id=${mb.id}'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/member/memberFasic/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
 	          	<c:if test="${hy_del == true}">

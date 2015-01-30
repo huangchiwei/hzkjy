@@ -73,7 +73,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	     </td>
 	     <th>面积：</th>
 	     <td>
-	     <input name="mj"  id="mj" type="text" class="input_a1" value="${model.mj}"/>
+	     <input name="mj"  id="mj" type="text" class="input_a1" value="${model.mj}"/>平方
 	     	</td>
 	     <th>负责人：</th>
 	   	 <td>
@@ -83,7 +83,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th>注册资金：</th>
      <td>
-     	<input name="zczj"  id="zczj" type="text" class="input_a1" value="${model.zczj}"/>
+     	<input name="zczj"  id="zczj" type="text" class="input_a1" value="${model.zczj}"/>万
      </td>
      <th>联系人：</th>
      <td>

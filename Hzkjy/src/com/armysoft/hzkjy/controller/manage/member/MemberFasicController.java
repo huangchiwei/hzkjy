@@ -57,7 +57,7 @@ public class  MemberFasicController extends BaseController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
 	/**
-	 * Ìõ¼ş·ÖÒ³²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯
 	 * @param currentPage
 	 * @param model
 	 * @param entity
@@ -81,7 +81,7 @@ public class  MemberFasicController extends BaseController {
 	}
 
 	/**
-	 * ÏêÇé/×¼±¸ĞŞ¸Ä
+	 * ï¿½ï¿½ï¿½ï¿½/×¼ï¿½ï¿½ï¿½Ş¸ï¿½
 	 * @param key
 	 * @param model
 	 * @return
@@ -93,7 +93,7 @@ public class  MemberFasicController extends BaseController {
 	}
 
 	/**
-	 * ×¼±¸Ìí¼Ó
+	 * ×¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 
@@ -110,12 +110,12 @@ public class  MemberFasicController extends BaseController {
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
 	@ResponseBody
 	public  List<Map<String, Object>> getSelectedCorpNameList() {
-		 List<Map<String,Object>> selectedVCorpInfoList= service.getSelectedCorpNameList("1");
+		 List<Map<String,Object>> selectedVCorpInfoList= service.getSelectedCorpNameList("0");
 		return selectedVCorpInfoList;
 	}
 
 	/**
-	 * ±£´æ
+	 * ï¿½ï¿½ï¿½ï¿½
 	 * @param entity
 	 * @param model
 	 * @return
@@ -157,7 +157,7 @@ public class  MemberFasicController extends BaseController {
 	}
 	
 	/**
-	 * É¾³ı
+	 * É¾ï¿½ï¿½
 	 * @param key
 	 * @return
 	 */
@@ -182,12 +182,12 @@ public class  MemberFasicController extends BaseController {
 //	@RequestMapping(value = "/inputExport.html")
 //	public String  OutPtqfqk(@RequestParam MultipartFile exlFile, String  nd1,String nd, HttpServletRequest request,HttpServletResponse response) throws ParseException, IOException {
 //	        InputStream fis = exlFile.getInputStream();
-//	        //µÃµ½½âÎöExcelµÄÊµÌå¼¯ºÏ  
+//	        //ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Excelï¿½ï¿½Êµï¿½å¼¯ï¿½ï¿½  
 //	        List<MemberFasic> infos = ImportExcel.importMemberBasic(fis);  
 //	        
-//	        //±éÀú½âÎöExcelµÄÊµÌå¼¯ºÏ  
+//	        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Excelï¿½ï¿½Êµï¿½å¼¯ï¿½ï¿½  
 //	        for(MemberFasic info:infos) {  
-//	            //ÅĞ¶ÏÔ±¹¤±àºÅÊÇ·ñ´æÔÚ(´æÔÚ£º×öĞŞ¸Ä²Ù×÷£»²»´æÔÚ£º×öĞÂÔö²Ù×÷)  
+//	            //ï¿½Ğ¶ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ş¸Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)  
 //	        	   String newHybh="";
 //	        	   String newHybh1="44";
 //	        	   String newHybh2="01";
@@ -203,14 +203,14 @@ public class  MemberFasicController extends BaseController {
 //					info.setHybh(newbh.toString());
 //	               }
 //	               
-//	               if(info.getZt().equals("ÔÚÔ°")){
+//	               if(info.getZt().equals("ï¿½ï¿½Ô°")){
 //	            	   info.setZt("1");
 //	               }else{
 //	            	   info.setZt("0");
 //	               }
 //	               
 //	               Cn2Spell cn2Spell = new Cn2Spell();
-//					info.setQymcpy(cn2Spell.converterToFirstSpell(info.getQymc().replace("(","").replace("£©","").replace("£¨","").replace(")","")));
+//					info.setQymcpy(cn2Spell.converterToFirstSpell(info.getQymc().replace("(","").replace("ï¿½ï¿½","").replace("ï¿½ï¿½","").replace(")","")));
 //	        	service.insert(info);
 //	        }  
 //	        request.setAttribute("exl", "ok");
@@ -221,17 +221,17 @@ public class  MemberFasicController extends BaseController {
 	
 	@RequestMapping("/outPtqfqk/1.html")
 	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
-		String title="³öÔ°»ù±¾×ÊÁÏ±í";
+		String title="å‡ºå›­åŸºæœ¬èµ„æ–™è¡¨";
 		List headData =  new ArrayList();
-		headData.add(new Object[] { "Hybh","ÆóÒµ±àºÅ"});
-		headData.add(new Object[] { "Qymc","ÆóÒµÃû³Æ"});
-		headData.add(new Object[] { "Address","µØÖ·"});
-		headData.add(new Object[] { "Zydy","×âÓÃµ¥Î»"});
-		headData.add(new Object[] { "Mj","Ãæ»ı"});
-		headData.add(new Object[] { "Fzr","¸ºÔğÈË"});
-		headData.add(new Object[] { "Zczj","×¢²á×Ê½ğ"});
-		headData.add(new Object[] { "Lxr","ÁªÏµÈË"});
-		headData.add(new Object[] { "ZtName","ÔÚÔ°³öÔ°×´Ì¬"});
+		headData.add(new Object[] { "Hybh","ä¼ä¸šç¼–å·"});
+		headData.add(new Object[] { "Qymc","ä¼ä¸šåç§°"});
+		headData.add(new Object[] { "Address","åœ°å€"});
+		headData.add(new Object[] { "Zydy","ç§Ÿç”¨å•ä½"});
+		headData.add(new Object[] { "Mj","é¢ç§¯"});
+		headData.add(new Object[] { "Fzr","è´Ÿè´£äºº"});
+		headData.add(new Object[] { "Zczj","æ³¨å†Œèµ„é‡‘"});
+		headData.add(new Object[] { "Lxr","è”ç³»äºº"});
+		headData.add(new Object[] { "ZtName","åœ¨å›­å‡ºå›­çŠ¶æ€"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		

@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="/WEB-INF/tag.tld" prefix="p" %>
 <%@taglib uri="permission-tags" prefix="pm" %>
-<%@taglib uri="htmlControl-tags" prefix="hc" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -204,9 +203,9 @@ function loadPageLayer2(title,url){
 	        <td>${mb.qymc}</td>
 	        <td>${mb.address}</td>
 	        <td>${mb.zydy}</td>
-	        <td>${mb.mj}</td>
+	        <td>${mb.mj}平方</td>
 	        <td>${mb.fzr}</td>
-	        <td>${mb.zczj}</td>
+	        <td>${mb.zczj}万</td>
 	        <td>${mb.lxr}</td>
 	        <td>${mb.ztName}</td>
 	        <td>
