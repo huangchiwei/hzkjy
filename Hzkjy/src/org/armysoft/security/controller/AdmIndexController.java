@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdmIndexController {
 
 	@RequestMapping("{page}")
-	public String dispatcher(Model model,@PathVariable String page,HttpServletRequest req){
-		//if("index".equalsIgnoreCase(page))
-			//model.addAttribute("userNo", CookieUtil.getUserCookieValue(req, Constants.ADMIN_KEY));
+	public String dispatcher(Model model, @PathVariable String page,
+			HttpServletRequest req) {
+		// if("index".equalsIgnoreCase(page))
+		// model.addAttribute("userNo", CookieUtil.getUserCookieValue(req,
+		// Constants.ADMIN_KEY));
 		return "admin/base/" + page;
 	}
 }
