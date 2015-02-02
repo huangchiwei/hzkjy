@@ -31,7 +31,7 @@ public class PermissionAspect {
 				String permValue = userNo + Constants.SEPARATOR + method.getAnnotation(PermissionsAnno.class).value();
 		        if(!Constants.getResourcesMap().contains(permValue)){
 		        	throw new NoPermissionExp("用户权限不足！");
-		        }
+		        	}
 			}
 		}
 	}

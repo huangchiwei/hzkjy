@@ -71,7 +71,6 @@ public class SysUserController extends BaseController {
 	 */
 	@RequestMapping(value = ADD)
 	public ModelAndView toAddOrUpdate(String userNo) {
-		System.out.println("准备添加或修改用户");
 		ModelAndView mv = new ModelAndView();
 		List<SysRole> allRoles = sysRoleService.getAll();
 		List<SysRole> userRoles = null;
