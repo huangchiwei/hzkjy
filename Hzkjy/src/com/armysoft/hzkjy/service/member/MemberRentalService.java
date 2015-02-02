@@ -1,11 +1,11 @@
-﻿package com.armysoft.hzkjy.service.member;
+package com.armysoft.hzkjy.service.member;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.armysoft.core.Pagination;
 import org.armysoft.ibatis.dao.BaseDao;
 import org.springframework.stereotype.Service;
-import com.armysoft.hzkjy.model.MemberBasic;
+import com.armysoft.hzkjy.model.MemberRental;
 /***
  * 
  * 
@@ -21,9 +21,9 @@ import com.armysoft.hzkjy.model.MemberBasic;
  *
  */
 @Service
-public class MemberBasicService extends BaseDao {
+public class MemberRentalService extends BaseDao {
 
-	private final String nameSpace = "MemberBasicOpt";
+	private final String nameSpace = "MemberRentalOpt";
 
 	/**
 	 * 条件分页查询题库
@@ -31,7 +31,7 @@ public class MemberBasicService extends BaseDao {
 	 * @param pager
 	 * @return
 	 */
-	public List<MemberBasic> getByPage(Map<String, Object> params, Pagination pager) {
+	public List<MemberRental> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
 
@@ -40,7 +40,7 @@ public class MemberBasicService extends BaseDao {
 	 * @param id
 	 * @return
 	 */
-	public MemberBasic findByKey(Long id) {
+	public MemberRental findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findById", id);
 	}
 	
@@ -48,7 +48,7 @@ public class MemberBasicService extends BaseDao {
 		return super.nativeList(nameSpace + ".getPortal", params);
 		}
 	
-	public MemberBasic findByHybh(String hybh) {
+	public MemberRental findByHybh(String hybh) {
 		return super.nativeSelectOne(nameSpace + ".findByHybh", hybh);
 	}
 	public Integer getCount(Map<String, Object> params){
@@ -56,7 +56,7 @@ public class MemberBasicService extends BaseDao {
 	}
 	
 	
-	public MemberBasic findByNewHybh(String hybh1,String hybh2) {
+	public MemberRental findByNewHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("hybh1", hybh1);
 		params.put("hybh2", hybh2);
@@ -73,22 +73,11 @@ public class MemberBasicService extends BaseDao {
 		params.put("hybh2", hybh2);
 		return super.nativeSelectOne(nameSpace + ".HybhCount", params);
 	}
-	public List<Map<String,Object>>  getSelectedCorpNameList(String value){
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("value", value);
-		return super.nativeList(nameSpace+".getSelectedCorpNameList",params);
-	}
-	
-	public List<Map<String,Object>>  getQyxx(String value){
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("value", value);
-		return super.nativeList(nameSpace+".getQyxx",params);
-	}
 	/**
 	 * 添加数据
 	 * @param question
 	 */
-	public void insert(MemberBasic model) {
+	public void insert(MemberRental model) {
 		super.defInsert(nameSpace, model);
 	}
 	
@@ -96,7 +85,7 @@ public class MemberBasicService extends BaseDao {
 	 * 批量添加
 	 * @param quests
 	 */
-	public void batchInsert(List<MemberBasic> lists) {
+	public void batchInsert(List<MemberRental> lists) {
 		super.nativeInsert(nameSpace + ".batchInsert", lists);
 	}
 
@@ -104,7 +93,7 @@ public class MemberBasicService extends BaseDao {
 	 * 修改
 	 * @param question
 	 */
-	public void update(MemberBasic model) {
+	public void update(MemberRental model) {
 
 		super.defUpdate(nameSpace, model);
 	}

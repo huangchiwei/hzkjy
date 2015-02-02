@@ -80,6 +80,10 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 	<select id="getSelectedCorpNameList" parameterType="String" resultType="java.util.Map" >
 		select hybh,qymc,qymcpy from member_basic where Zt=#{value} ORDER BY hybh DESC 
 	</select>
+	
+	<select id="getQyxx" parameterType="String" resultType="java.util.Map" >
+		select hybh,zydy,mj from member_basic where qymc=#{value} ORDER BY hybh DESC LIMIT 1 
+	</select>
 		
 	<select id="page" resultMap="memberBasicMap" parameterType="java.util.Map">
 		select 
