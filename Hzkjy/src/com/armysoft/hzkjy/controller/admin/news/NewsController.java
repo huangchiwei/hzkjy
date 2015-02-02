@@ -1,4 +1,4 @@
-package com.armysoft.hzkjy.controller.manage.news;
+package com.armysoft.hzkjy.controller.admin.news;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

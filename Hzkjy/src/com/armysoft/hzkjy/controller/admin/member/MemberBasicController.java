@@ -1,4 +1,4 @@
-﻿package com.armysoft.hzkjy.controller.manage.member;
+﻿package com.armysoft.hzkjy.controller.admin.member;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.armysoft.security.annotation.PermissionsAnno;
+
+import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
@@ -38,7 +40,7 @@ import com.armysoft.hzkjy.service.member.MemberBasicService;
 
 
 @Controller
-@RequestMapping("member/memberBasic")
+@RequestMapping("admin/memberBasic")
 public class  MemberBasicController extends BaseController {
 
 	@Resource
@@ -65,12 +67,13 @@ public class  MemberBasicController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		if(fhymc !="" && fhymc !=null){
 		params.put("fhymc", fhymc);
+		request.setAttribute("fhymc", fhymc);
 		}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "member/MemberBasicQ";
+		return "admin/member/MemberBasicQ";
 	}
 
 	/**
@@ -82,7 +85,7 @@ public class  MemberBasicController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "member/MemberBasicV";
+		return "admin/member/MemberBasicV";
 	}
 
 	/**
@@ -97,7 +100,7 @@ public class  MemberBasicController extends BaseController {
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "member/MemberBasicV";
+		return "admin/member/MemberBasicV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
@@ -121,7 +124,7 @@ public class  MemberBasicController extends BaseController {
 		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://member/memberBasic/list/1.html";
+		return "redirect://admin/memberBasic/list/1.html";
 	}
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
@@ -146,7 +149,7 @@ public class  MemberBasicController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://member/memberBasic/list/1.html";
+		return "redirect://admin/memberBasic/list/1.html";
 	}
 	
 	/**
@@ -158,18 +161,18 @@ public class  MemberBasicController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://member/memberBasic/list/1.html";
+		return "redirect://admin/memberBasic/list/1.html";
 	}
 	
 	
 	@RequestMapping(value = "/Zind.html")
 	public String Zind(HttpServletRequest request) {
-		return "member/MemberBasicZ";
+		return "admin/member/MemberBasicZ";
 	}
 	
 	@RequestMapping(value = "/Find.html")
 	public String Find(HttpServletRequest request) {
-		return "member/MemberBasicF";
+		return "admin/member/MemberBasicF";
 	}
 	
 	@RequestMapping(value = "/inputExport.html")
@@ -207,7 +210,7 @@ public class  MemberBasicController extends BaseController {
 	        	service.insert(info);
 	        }  
 	        request.setAttribute("exl", "ok");
-	        return "member/MemberBasicF";
+	        return "admin/member/MemberBasicF";
 		
 	}
 	
@@ -228,7 +231,7 @@ public class  MemberBasicController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		
-		String userNo = super.getCookieValue(request, WebConstant.COOKIE_KEY).toLowerCase();
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);
          ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);

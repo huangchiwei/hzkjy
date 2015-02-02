@@ -1,4 +1,4 @@
-package com.armysoft.hzkjy.controller.manage.member;
+package com.armysoft.hzkjy.controller.admin.member;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.armysoft.security.annotation.PermissionsAnno;
+
+import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel;
@@ -45,7 +47,7 @@ import com.armysoft.hzkjy.service.member.MemberFasicService;
 
 
 @Controller
-@RequestMapping("member/memberFasic")
+@RequestMapping("admin/memberFasic")
 public class  MemberFasicController extends BaseController {
 
 	@Resource
@@ -77,7 +79,7 @@ public class  MemberFasicController extends BaseController {
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "member/MemberFasicQ";
+		return "admin/member/MemberFasicQ";
 	}
 
 	/**
@@ -89,7 +91,7 @@ public class  MemberFasicController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "member/MemberFasicV";
+		return "admin/member/MemberFasicV";
 	}
 
 	/**
@@ -104,7 +106,7 @@ public class  MemberFasicController extends BaseController {
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "member/MemberFasicV";
+		return "admin/member/MemberFasicV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
@@ -128,7 +130,7 @@ public class  MemberFasicController extends BaseController {
 		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://member/MemberFasic/list/1.html";
+		return "redirect://admin/memberFasic/list/1.html";
 	}
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
@@ -153,7 +155,7 @@ public class  MemberFasicController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://member/MemberFasic/list/1.html";
+		return "redirect://admin/memberFasic/list/1.html";
 	}
 	
 	/**
@@ -165,18 +167,18 @@ public class  MemberFasicController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://member/MemberFasic/list/1.html";
+		return "redirect://admin/memberFasic/list/1.html";
 	}
 	
 	
 	@RequestMapping(value = "/Zind.html")
 	public String Zind(HttpServletRequest request) {
-		return "member/MemberFasicZ";
+		return "admin/member/MemberFasicZ";
 	}
 	
 	@RequestMapping(value = "/Find.html")
 	public String Find(HttpServletRequest request) {
-		return "member/MemberFasicF";
+		return "admin/member/MemberFasicF";
 	}
 	
 //	@RequestMapping(value = "/inputExport.html")
@@ -214,7 +216,7 @@ public class  MemberFasicController extends BaseController {
 //	        	service.insert(info);
 //	        }  
 //	        request.setAttribute("exl", "ok");
-//	        return "member/MemberFasicF";
+//	        return "admin/MemberFasicF";
 //		
 //	}
 	
@@ -235,7 +237,8 @@ public class  MemberFasicController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		
-		String userNo = super.getCookieValue(request, WebConstant.COOKIE_KEY).toLowerCase();
+		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);
          ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);

@@ -63,14 +63,14 @@ public class LoginController extends BaseController {
 					response.sendRedirect("centerPage/center.html");
 					return;
 				} else {
-					request.setAttribute("msg", "用户名或密码不正�?");
+					request.setAttribute("msg", "用户名或密码不正确");
 				}
 			} else {
 				request.setAttribute("msg", "验证码不正确!");
 				
 			}
 			request.setAttribute("userNo", userNo);
-			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/admin/base/login.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

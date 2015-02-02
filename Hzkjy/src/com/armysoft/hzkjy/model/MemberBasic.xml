@@ -13,7 +13,7 @@
 		from member_basic 
 		where 1 = 1	 and Zt = '1'
 		<if test="parm.fhymc != null and parm.fhymc != ''">
-		and a.hymc  like CONCAT('%', #{parm.fhymc}, '%')
+		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
 		</if>
 	
 	
@@ -47,7 +47,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 	 from member_basic
 		where 1 = 1	 and Zt = '1'
 		<if test="fhymc != null and fhymc != ''">
-		and a.hymc  like CONCAT('%', #{fhymc}, '%')
+		and qymc  like CONCAT('%', #{fhymc}, '%')
 		</if>
 		
  order by id desc
@@ -58,7 +58,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		from member_basic
 		where 1 = 1	 and Zt = '1'
 		<if test="fhymc != null and fhymc != ''">
-		and a.hymc  like CONCAT('%', #{fhymc}, '%')
+		and qymc  like CONCAT('%', #{fhymc}, '%')
 				</if>
 	</select>
     <select id="findById" resultMap="memberBasicMap" parameterType="Long">
