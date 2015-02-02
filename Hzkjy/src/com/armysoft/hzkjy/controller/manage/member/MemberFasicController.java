@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.armysoft.hzkjy.annotation.PermissionsAnno;
+import org.armysoft.security.annotation.PermissionsAnno;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel;
@@ -57,7 +57,7 @@ public class  MemberFasicController extends BaseController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
 	/**
-	 * ������ҳ��ѯ
+	 * 锟斤拷锟斤拷锟斤拷页锟斤拷询
 	 * @param currentPage
 	 * @param model
 	 * @param entity
@@ -81,7 +81,7 @@ public class  MemberFasicController extends BaseController {
 	}
 
 	/**
-	 * ����/׼���޸�
+	 * 锟斤拷锟斤拷/准锟斤拷锟睫革拷
 	 * @param key
 	 * @param model
 	 * @return
@@ -93,7 +93,7 @@ public class  MemberFasicController extends BaseController {
 	}
 
 	/**
-	 * ׼�����
+	 * 准锟斤拷锟斤拷锟�
 	 * @return
 	 */
 
@@ -115,7 +115,7 @@ public class  MemberFasicController extends BaseController {
 	}
 
 	/**
-	 * ����
+	 * 锟斤拷锟斤拷
 	 * @param entity
 	 * @param model
 	 * @return
@@ -157,7 +157,7 @@ public class  MemberFasicController extends BaseController {
 	}
 	
 	/**
-	 * ɾ��
+	 * 删锟斤拷
 	 * @param key
 	 * @return
 	 */
@@ -182,12 +182,12 @@ public class  MemberFasicController extends BaseController {
 //	@RequestMapping(value = "/inputExport.html")
 //	public String  OutPtqfqk(@RequestParam MultipartFile exlFile, String  nd1,String nd, HttpServletRequest request,HttpServletResponse response) throws ParseException, IOException {
 //	        InputStream fis = exlFile.getInputStream();
-//	        //�õ�����Excel��ʵ�弯��  
+//	        //锟矫碉拷锟斤拷锟斤拷Excel锟斤拷实锟藉集锟斤拷  
 //	        List<MemberFasic> infos = ImportExcel.importMemberBasic(fis);  
 //	        
-//	        //�������Excel��ʵ�弯��  
+//	        //锟斤拷锟斤拷锟斤拷锟紼xcel锟斤拷实锟藉集锟斤拷  
 //	        for(MemberFasic info:infos) {  
-//	            //�ж�Ա������Ƿ����(���ڣ����޸Ĳ����������ڣ�����������)  
+//	            //锟叫讹拷员锟斤拷锟斤拷锟斤拷欠锟斤拷锟斤拷(锟斤拷锟节ｏ拷锟斤拷锟睫改诧拷锟斤拷锟斤拷锟斤拷锟斤拷锟节ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷)  
 //	        	   String newHybh="";
 //	        	   String newHybh1="44";
 //	        	   String newHybh2="01";
@@ -203,14 +203,14 @@ public class  MemberFasicController extends BaseController {
 //					info.setHybh(newbh.toString());
 //	               }
 //	               
-//	               if(info.getZt().equals("��԰")){
+//	               if(info.getZt().equals("锟斤拷园")){
 //	            	   info.setZt("1");
 //	               }else{
 //	            	   info.setZt("0");
 //	               }
 //	               
 //	               Cn2Spell cn2Spell = new Cn2Spell();
-//					info.setQymcpy(cn2Spell.converterToFirstSpell(info.getQymc().replace("(","").replace("��","").replace("��","").replace(")","")));
+//					info.setQymcpy(cn2Spell.converterToFirstSpell(info.getQymc().replace("(","").replace("锟斤拷","").replace("锟斤拷","").replace(")","")));
 //	        	service.insert(info);
 //	        }  
 //	        request.setAttribute("exl", "ok");
