@@ -154,7 +154,7 @@ function loadPageLayer2(title,url){
      
   </div>
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/member/memberFasic/list/1.html" method="post">
+  	<form id="search_form" action="${ctx}/admin/memberFasic/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div2">
       <dl class="relative h30">

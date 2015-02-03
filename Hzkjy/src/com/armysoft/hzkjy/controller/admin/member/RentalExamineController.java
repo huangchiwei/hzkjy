@@ -42,8 +42,8 @@ import com.armysoft.hzkjy.service.member.MemberRentalService;
 
 import com.alibaba.fastjson.JSONObject;
 @Controller
-@RequestMapping("admin/memberRental")
-public class  MemberRentalController extends BaseController {
+@RequestMapping("admin/rentalExamine")
+public class  RentalExamineController extends BaseController {
 
 	@Resource
 	private MemberRentalService service;
@@ -77,7 +77,7 @@ public class  MemberRentalController extends BaseController {
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "admin/member/MemberRentalQ";
+		return "admin/member/RentalExamineQ";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class  MemberRentalController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "admin/member/MemberRentalV";
+		return "admin/member/RentalExamineV";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class  MemberRentalController extends BaseController {
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "admin/member/MemberRentalV";
+		return "admin/member/RentalExamineV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
@@ -142,7 +142,7 @@ public class  MemberRentalController extends BaseController {
 	public String update(@PathVariable("id") Integer key,MemberRental entity, Model model) {
 		entity.setId(key);
 		service.update(entity);
-		return "redirect://admin/memberRental/list/1.html";
+		return "redirect://admin/rentalExamine/list/1.html";
 	}
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
@@ -153,7 +153,7 @@ public class  MemberRentalController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/memberRental/list/1.html";
+		return "redirect://admin/rentalExamine/list/1.html";
 	}
 	
 	/**
@@ -165,7 +165,7 @@ public class  MemberRentalController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/memberRental/list/1.html";
+		return "redirect://admin/rentalExamine/list/1.html";
 	}
 	
 	@RequestMapping(value = "/ZShtg.html")

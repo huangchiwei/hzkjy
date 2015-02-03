@@ -1,6 +1,6 @@
 package com.armysoft.hzkjy.model;
 import java.util.Date;
-public class  MemberRental implements java.io.Serializable {
+public class  RentalExamine implements java.io.Serializable {
      private Integer id;   
 	 private String  hybh;
 	 private String qymc;
