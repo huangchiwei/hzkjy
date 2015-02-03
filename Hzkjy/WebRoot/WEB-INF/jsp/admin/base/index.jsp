@@ -83,15 +83,7 @@ function switchSysBar(){
   <div id="content">
            <!-- Tab content goes here -->
         </div>
-      <script language=Javascript>
-      var srollHeight=$(window).height()-100;
-      var explorer = window.navigator.userAgent ;
-      if (explorer.indexOf("MSIE") >= 0) {  //IE
-    	  srollHeight= document.body.scrollHeight;
-          }
-      
-      $("#content").css("height",srollHeight+"px");
-      </script>
+    
     <%--<iframe id="contentIframe" name="I2" height="100%" width="100%" border="0" frameborder="0" src="${ctx}/admin/content.html" scrolling="auto"> 浏览器不支持嵌入式框架，或被配置为不显示嵌入式框架。</iframe>--%>
     </td>
    

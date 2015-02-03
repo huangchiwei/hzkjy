@@ -14,7 +14,7 @@
 		from news
 		where 1 = 1
 		<if test="parm.cateCode != null and parm.cateCode != ''">
-			and cateCode=#{cateCode}
+			and cateCode=#{parm.cateCode}
 		</if>
 	</sql>
 
@@ -28,14 +28,14 @@
 		select count(*)
 		<include refid="condition" />
 	</select>
-	<select id="findById" resultType="java.util.Map" parameterType="Long">
+	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
 		select * from news where id = #{id}
 	</select>
 	<select id="getCategory" resultType="java.util.Map" parameterType="String">
 		select * from news_category where cateCode = #{cateCode}
 	</select>
 	<!-- 保存 -->
-	<insert id="insert" parameterType="java.util.Map">
+	<insert id="insert" parameterType="news">
 		insert into
 		news(title,content,realTime,createUser,cateCode)
 		values(#{title}
@@ -47,7 +47,7 @@
 		</insert>
 
 	<!-- 修改 -->
-	<update id="update" parameterType="java.util.Map">
+	<update id="update" parameterType="news">
 		update news set
 		title=#{title}
 		,content=#{content}
