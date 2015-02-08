@@ -24,34 +24,10 @@ $("#fssq option[value='${fssq}']").attr("selected", true);
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
 });
 
-
-function loadPageLayer(title,url){
-	var mypop = $.layer({
-	    type: 2,
-	    title: title,
-	    iframe: {src : url},
-	    maxmin: true,
-	    area: ['500px', '120px'],
-	    offset: [($(window).height())/4+200+'px',''],  
-	    end: function(){
-	        mypop = null
-	    }
-	});
-	$(window).on('resize', function(){
-	    if(mypop){
-	        layer.area(mypop, {
-	            top: ($(window).height())/4-70
-	        });
-	    }
-	});
-
-
-}
-
 function tjsh(id){
 
 			$.ajax({
-				url:'${ctx}/admin/rentalExamine/ZShtg.html?id='+id+'&random='+Math.random(),
+				url:'${ctx}/admin/memberRental/ZShtg.html?id='+id+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,
@@ -221,7 +197,7 @@ function loadPageLayer2(title,url){
 	        <th>管理服务费</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
-	        <th width="16%">操作</th>
+	        <th width="10%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -236,7 +212,7 @@ function loadPageLayer2(title,url){
 	       	<c:set var="hy_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
-	      <tr ondblclick="javascript:location.href='${ctx}/admin/memberRental/add/new.html?id=${mb.id}'">
+	      <tr ondblclick="javascript:location.href='${ctx}/admin/enterpriseRental/add/new.html?id=${mb.id}'">
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
@@ -248,11 +224,10 @@ function loadPageLayer2(title,url){
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.shzt}</td>
 	        <td>
-	        <a href="javascript:tjsh('${mb.id}')">审核并发送</a>
-	       <a href="javascript:loadPageLayer('退回并备注退审信息','${ctx}/admin/memberRental/Sh.html?id='+${mb.id});">退回</a>
+	        <a href="javascript:tjsh('${mb.id}')">提交审核</a>
 	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberRental/add/new.html?id=${mb.id}'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="录入缴费信息" onclick="javascript:location.href='${ctx}/admin/enterpriseRental/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
 	          	<c:if test="${hy_del == true}">

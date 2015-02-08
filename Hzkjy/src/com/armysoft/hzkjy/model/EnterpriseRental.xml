@@ -3,19 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="RentalExamineOpt">
+<mapper namespace="EnterpriseRentalOpt">
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz</sql>
+	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz,Jnje,Accessory,Sfqf</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
-		from member_rental
+		from enterprise_rental
 		where 1 = 1
-		and Shzt='已提交'
 	</sql>
 	<!-- 实体映射 -->
-	<resultMap id="memberRentalMap" type="memberRental">
+	<resultMap id="enterpriseRentalMap" type="enterpriseRental">
 				<result column="ID" property="id" />
 				<result column="Hybh" property="hybh" />
 				<result column="Qymc" property="qymc" />
@@ -36,6 +35,10 @@
 			    <result column="Dsyhd" property="dsyhd" />
 			    <result column="Dbyhd" property="dbyhd" />
 			    <result column="Bz" property="bz" />
+			    <result column="Jnje" property="jnje" />
+			    <result column="Accessory" property="accessory" />
+			    <result column="Sfqf" property="sfqf" />
+			    
 			    
 				
 				
@@ -43,8 +46,8 @@
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz
-	 from member_rental
+select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz,Jnje,Accessory,Sfqf
+	 from enterprise_rental
 		where 1 = 1
 		
  order by id desc
@@ -52,18 +55,18 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 			
 	<select id="sumCount" resultType="int" parameterType="java.util.Map">
 		select count(*) 
-		from member_rental
+		from enterprise_rental
 		where 1 = 1	
 	</select>
-    <select id="findById" resultMap="memberRentalMap" parameterType="Long">
-		select * from member_rental where id = #{id}
+    <select id="findById" resultMap="enterpriseRentalMap" parameterType="Long">
+		select * from enterprise_rental where id = #{id}
 	</select>
 	
-	<select id="findByHybh" resultMap="memberRentalMap" parameterType="String">
-		select * from member_rental where Hybh = #{hybh}
+	<select id="findByHybh" resultMap="enterpriseRentalMap" parameterType="String">
+		select * from enterprise_rental where Hybh = #{hybh}
 	</select>
 		
-	<select id="page" resultMap="memberRentalMap" parameterType="java.util.Map">
+	<select id="page" resultMap="enterpriseRentalMap" parameterType="java.util.Map">
 		select 
 		<include refid="columns"/>
 		<include refid="condition" />
@@ -74,10 +77,12 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 		<include refid="condition" />
 	</select>
 	<!-- 保存 -->
-	<insert id="insert" parameterType="memberRental">
-		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz)
+	<insert id="insert" parameterType="enterpriseRental">
+		insert into enterprise_rental(Bz,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Jnje,Accessory,Sfqf)
 	
-		values(#{hybh} 		
+		values(
+		#{bz}, 
+		  #{hybh} 		
 		, #{qymc} 		
 		, #{qyzj} 		
 		, #{glfwf}
@@ -96,12 +101,15 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 	    , #{dsyhd}
 	    , #{dbyhd}
 	    , #{zydy}
-	      , #{bz}
+	    , #{jnje}
+	    , #{accessory}
+	    , #{sfqf}
+
 		  )
 		</insert>
 	<!-- 修改 -->
-	<update id="update" parameterType="memberRental">
-		update member_rental set 
+	<update id="update" parameterType="enterpriseRental">
+		update enterprise_rental set 
 		                                 Hybh=#{hybh}
 		 								,Qymc=#{qymc}
 		 								,Qyzj=#{qyzj}
@@ -120,13 +128,16 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 										,Dsyhd=#{dsyhd}
 										,Dbyhd=#{dbyhd}
 									    ,Zydy=#{zydy}
-									    ,Bz=#{bz}
+									     ,Bz=#{bz}
+									      ,Jnje=#{jnje}
+									       ,Accessory=#{accessory}
+									        ,Sfqf=#{sfqf}
 		 							    where ID = #{id}
 	</update>
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
-		delete from member_rental where ID = #{ID}
+		delete from enterprise_rental where ID = #{ID}
 	</delete>
 	
 	<!-- ********************************************* -->

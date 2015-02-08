@@ -18,7 +18,14 @@ public class  MemberRental implements java.io.Serializable {
 	 private String shzt;
 	 private String fbzt;
 	 private String jfyd;
-	 public String getJfyd() {
+	 private String bz;
+	 public String getBz() {
+		return bz;
+	}
+	public void setBz(String bz) {
+		this.bz = bz;
+	}
+	public String getJfyd() {
 		return jfyd;
 	}
 	public void setJfyd(String jfyd) {

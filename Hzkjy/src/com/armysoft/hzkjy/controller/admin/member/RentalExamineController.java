@@ -35,8 +35,10 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
 
@@ -49,6 +51,8 @@ public class  RentalExamineController extends BaseController {
 	private MemberRentalService service;
 	@Resource
 	private MemberBasicService Mbservice;
+	@Resource
+	private EnterpriseRentalService Erservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -79,6 +83,8 @@ public class  RentalExamineController extends BaseController {
 		model.addAttribute("model", entity);
 		return "admin/member/RentalExamineQ";
 	}
+
+	
 
 	/**
 	 * 详情/准备修改
@@ -172,8 +178,31 @@ public class  RentalExamineController extends BaseController {
 	@ResponseBody
 	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
 		MemberRental mdd= service.findByKey(id);
-        mdd.setShzt("已提交");
+		
+		mdd.setFbzt("已发送");
 		service.update(mdd);
+		EnterpriseRental ert= new EnterpriseRental();
+		ert.setHybh(mdd.getHybh());
+		ert.setQymc(mdd.getQymc());
+		ert.setQyzj(mdd.getQyzj());
+		ert.setGlfwf(mdd.getGlfwf());
+		ert.setQysf(mdd.getQysf());
+		ert.setQydf(mdd.getQydf());
+		ert.setSsyhd(mdd.getSsyhd());
+		ert.setSbyhd(mdd.getSsyhd());
+		ert.setShjyl(mdd.getShjyl());
+		ert.setDhjyl(mdd.getDhjyl());
+		ert.setQymj(mdd.getQymj());
+		ert.setQtfy(mdd.getQtfy());
+		ert.setJfyd(mdd.getJfyd());
+		ert.setDsyhd(mdd.getDsyhd());
+		ert.setDbyhd(mdd.getDbyhd());
+		ert.setZydy(mdd.getZydy());
+		ert.setHjje(mdd.getHjje());
+		ert.setSfqf("0");
+		ert.setAccessory("0");
+		ert.setJnje("0");
+		Erservice.insert(ert);
 		request.setAttribute("exl", "ok");
 		String exl="ok";
 		return exl;

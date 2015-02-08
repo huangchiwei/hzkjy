@@ -10,7 +10,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import java.io.File;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,18 +37,20 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
 
 import com.alibaba.fastjson.JSONObject;
 @Controller
-@RequestMapping("admin/memberRental")
-public class  MemberRentalController extends BaseController {
+@RequestMapping("admin/enterpriseRental")
+public class  EnterpriseRentalController extends BaseController {
 
 	@Resource
-	private MemberRentalService service;
+	private EnterpriseRentalService service;
 	@Resource
 	private MemberBasicService Mbservice;
 	@InitBinder   
@@ -77,7 +81,7 @@ public class  MemberRentalController extends BaseController {
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "admin/member/MemberRentalQ";
+		return "admin/member/EnterpriseRentalQ";
 	}
 
 	/**
@@ -89,7 +93,7 @@ public class  MemberRentalController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "admin/member/MemberRentalV";
+		return "admin/member/EnterpriseRentalV";
 	}
 
 	/**
@@ -100,11 +104,11 @@ public class  MemberRentalController extends BaseController {
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
 		
-		MemberRental mb=service.findByKey(id);
+		EnterpriseRental mb=service.findByKey(id);
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "admin/member/MemberRentalV";
+		return "admin/member/EnterpriseRentalV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
@@ -136,24 +140,91 @@ public class  MemberRentalController extends BaseController {
 	 * @param entity
 	 * @param model
 	 * @return
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
 	@PermissionsAnno("hy_updt")
 	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Integer key,MemberRental entity, Model model) {
+	public String update(@PathVariable("id") Integer key,@RequestParam("files") MultipartFile[] files,EnterpriseRental entity, Model model) throws IllegalStateException, IOException {
 		entity.setId(key);
+		
+		String fileName ;
+		String FmPicture = "";
+			if(files!=null&&files.length>0){
+				for(int i = 0;i<files.length;i++){
+					MultipartFile file = files[i];
+					if (!file.isEmpty()) {
+						String srcFileName= file.getOriginalFilename();
+						String ext = srcFileName.substring(srcFileName.lastIndexOf("."));
+						fileName = UUID.randomUUID() + ext;
+						String strFilePath;
+						String PROJECT_LOCAL_PATH;
+						String NEWS_UPLOADPath ="D:/";
+						String NEWS_IMAGE_FILE_ADDR = this.getClass().getClassLoader().getResource("/").getPath().replace("WEB-INF/classes/", "")+"upFile_Motorcar/news/";
+						 
+					    String DRIVER_UPLOADPath ="D:/";
+						String DRIVER_IMAGE_FILE_ADDR = "upFile_Motorcar/driver/" + convertDate(new Date())+"/";
+						PROJECT_LOCAL_PATH=getRealPath2();
+						
+						if (NEWS_UPLOADPath.equals("/")){
+							strFilePath=PROJECT_LOCAL_PATH+ NEWS_IMAGE_FILE_ADDR+fileName;
+						}else{
+							 String rootPath  = "";
+								rootPath  = NEWS_IMAGE_FILE_ADDR.substring(1,NEWS_IMAGE_FILE_ADDR.indexOf("upFile_Motorcar/news/"))+"upFile_Motorcar/news/";
+								strFilePath=rootPath.replace("/", "\\");
+								strFilePath=strFilePath.replaceAll("%20", " ")+fileName;
+						}
+						File newFile = new File(strFilePath);
+						if(!newFile.getParentFile().exists()){
+							newFile.getParentFile().mkdirs();
+						}
+						file.transferTo(newFile);
+						FmPicture=FmPicture+fileName+",";
+						
+					}
+				}
+				if(FmPicture !=""){
+					entity.setAccessory(FmPicture.substring(0,FmPicture.length()-1));
+				}
+			}
 		service.update(entity);
-		return "redirect://admin/memberRental/list/1.html";
+		return "redirect://admin/enterpriseRental/list/1.html";
 	}
+	public static String convertDate(Date date) {
+		SimpleDateFormat todayDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		return todayDateFormatter.format(date);
+	}
+	  public static String getRealPath2(){
+	    	try{
+	    		String classPath = EnterpriseRental.class.getClassLoader().getResource("/").getPath();
+	    		  String rootPath  = "";
+	    		  //windows下
+	    		  if("\\".equals(File.separator)){   
+	    		   rootPath  = classPath.substring(1,classPath.indexOf("/WEB-INF/classes"));
+	    		   rootPath = rootPath.replace("/", "\\");
+	    		  }
+	    		  //linux下
+	    		  if("/".equals(File.separator)){   
+	    		   rootPath  = classPath.substring(0,classPath.indexOf("/WEB-INF/classes"));
+	    		   rootPath = rootPath.replace("\\", "/");
+	    		  }
+	    		  rootPath=rootPath.replaceAll("%20", " ");
+	    		  return rootPath;
+	    	} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+	    	}
+	    	return "";
+	    }
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
-	public String save(MemberRental entity, Model model) {
+	public String save(EnterpriseRental entity, Model model) {
 		if (entity.getId() == null) {
-			entity.setShzt("未审核");
 			service.insert(entity);
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/memberRental/list/1.html";
+		return "redirect://admin/enterpriseRental/list/1.html";
 	}
 	
 	/**
@@ -165,13 +236,13 @@ public class  MemberRentalController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/memberRental/list/1.html";
+		return "redirect://admin/enterpriseRental/list/1.html";
 	}
 	
 	@RequestMapping(value = "/ZShtg.html")
 	@ResponseBody
 	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
-		MemberRental mdd= service.findByKey(id);
+		EnterpriseRental mdd= service.findByKey(id);
         mdd.setShzt("已提交");
 		service.update(mdd);
 		request.setAttribute("exl", "ok");
@@ -187,7 +258,7 @@ public class  MemberRentalController extends BaseController {
 	public String Shsj(Long id,String bz,HttpServletRequest request) {
 		request.setAttribute("id", id);
 		
-		MemberRental mdd= service.findByKey(id);
+		EnterpriseRental mdd= service.findByKey(id);
 		mdd.setBz(bz);
 		mdd.setShzt("退回");
 		service.update(mdd);
