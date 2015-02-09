@@ -83,7 +83,7 @@ function switchSysBar(){
   <div id="content">
            <!-- Tab content goes here -->
         </div>
-      <script language=Javascript>
+       <script language=Javascript>
       var srollHeight=$(window).height()-100;
       var explorer = window.navigator.userAgent ;
       if (explorer.indexOf("MSIE") >= 0) {  //IE

@@ -1,7 +1,7 @@
 <config>
 	<enabled>true</enabled>
-	<baseDir>C:/hzkjy_upfile/userfiles/</baseDir>
-	<baseURL>/hzkjy/userfiles/</baseURL>
+	<baseDir>C:/Hzkjy_upfile/userfiles/</baseDir>
+	<baseURL>/Hzkjy/userfiles/</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>
 	<imgWidth>1600</imgWidth>

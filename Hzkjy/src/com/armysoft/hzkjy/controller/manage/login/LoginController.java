@@ -1,4 +1,4 @@
-package com.armysoft.hzkjy.controller.manage.login;
+/*package com.armysoft.hzkjy.controller.manage.login;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.armysoft.hzkjy.base.common.WebConstant;
 
-/**
+*//**
  * 登录Controller
  * @author wei
- */
+ *//*
 @Controller
 @RequestMapping("/")
 public class LoginController extends BaseController {
@@ -27,14 +27,14 @@ public class LoginController extends BaseController {
 	@Resource
 	private SysUserService sysUserService;
 
-	/**
+	*//**
 	 * 用户登录
 	 * @param userNo
 	 * @param password
 	 * @param vcode
 	 * @param request
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value="userLogin",method = RequestMethod.POST)
 	public void userLogin(String userNo, String password, String vcode,
 			HttpServletRequest request,HttpServletResponse response) {
@@ -76,12 +76,12 @@ public class LoginController extends BaseController {
 		}
 	}
 
-	/**
+	*//**
 	 * 注销
 	 * @param request
 	 * @param response
 	 * @return
-	 */
+	 *//*
 	@RequestMapping("loginOut")
 	public String loginOut(HttpServletRequest request,HttpServletResponse response){
 		Cookie[] cks = request.getCookies();
@@ -96,3 +96,4 @@ public class LoginController extends BaseController {
 	}
 	
 }
+*/

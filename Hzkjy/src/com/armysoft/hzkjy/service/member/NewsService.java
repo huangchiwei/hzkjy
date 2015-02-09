@@ -36,7 +36,7 @@ public class NewsService extends BaseDao {
 	 * @param id
 	 * @return
 	 */
-	public MemberFasic findByKey(Long id) {
+	public Map<String, Object> findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findByKey", id);
 	}
 
