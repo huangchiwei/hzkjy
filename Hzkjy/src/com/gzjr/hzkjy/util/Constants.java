@@ -39,7 +39,7 @@ public class Constants {
 	public final static String USER_INFO_SESSION = "userSessionInfo";
 	
 	public final static String USER_NAME_SESSION = "USER_NAME_SESSION";//放到session中登录名的key
-	
+	//
 	
 	public final static int FRONT_LIMIT=10;//前台获取记录的条数
 	public final static int FRONT_PAGESIZE=10;//前台分页每一页的记录数

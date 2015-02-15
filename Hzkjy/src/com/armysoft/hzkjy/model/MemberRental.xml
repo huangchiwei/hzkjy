@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberRentalOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from member_rental
+		where 1 = 1
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="memberRentalMap" type="memberRental">
+				<result column="ID" property="id" />
+				<result column="Hybh" property="hybh" />
+				<result column="Qymc" property="qymc" />
+				<result column="Qyzj" property="qyzj" />
+				<result column="Glfwf" property="glfwf" />
+				<result column="Qysf" property="qysf" />
+				<result column="Qydf" property="qydf" />
+				<result column="Ssyhd" property="ssyhd" />
+			    <result column="Sbyhd" property="sbyhd" />
+			    <result column="Shjyl" property="shjyl" />
+			    <result column="Dhjyl" property="dhjyl" />
+			    <result column="Qymj" property="qymj" />
+			    <result column="Qtfy" property="qtfy" />
+			    <result column="Hjje" property="hjje" />
+			    <result column="Shzt" property="shzt" />
+			    <result column="Fbzt" property="fbzt" />
+			    <result column="Jfyd" property="jfyd" />
+			    <result column="Dsyhd" property="dsyhd" />
+			    <result column="Dbyhd" property="dbyhd" />
+			    <result column="Bz" property="bz" />
+			    
+				
+				
+				
+			</resultMap>
+			
+<select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
+select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz
+	 from member_rental
+		where 1 = 1
+		
+ order by id desc
+	</select>			
+			
+	<select id="sumCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		from member_rental
+		where 1 = 1	
+	</select>
+    <select id="findById" resultMap="memberRentalMap" parameterType="Long">
+		select * from member_rental where id = #{id}
+	</select>
+	
+	<select id="findByHybh" resultMap="memberRentalMap" parameterType="String">
+		select * from member_rental where Hybh = #{hybh}
+	</select>
+		
+	<select id="page" resultMap="memberRentalMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="memberRental">
+		insert into member_rental(Bz,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy)
+	
+		values(
+		#{bz}, 
+		#{hybh} 		
+		, #{qymc} 		
+		, #{qyzj} 		
+		, #{glfwf}
+		, #{qysf}
+		, #{qydf}
+		, #{ssyhd}
+		, #{sbyhd}
+		, #{shjyl}
+		, #{dhjyl}
+		, #{qymj}
+		, #{qtfy}
+		, #{hjje}
+	    , #{shzt}
+	    , #{fbzt}
+	    , #{jfyd}
+	    , #{dsyhd}
+	    , #{dbyhd}
+	    , #{zydy}
+		  )
+		</insert>
+	<!-- 修改 -->
+	<update id="update" parameterType="memberRental">
+		update member_rental set 
+		                                 Hybh=#{hybh}
+		 								,Qymc=#{qymc}
+		 								,Qyzj=#{qyzj}
+		 								,Glfwf=#{glfwf}
+		 								,Qysf=#{qysf}
+		 								,Qydf=#{qydf}
+		 								,Ssyhd=#{ssyhd}
+		 								,Sbyhd=#{sbyhd}
+		 								,Shjyl=#{shjyl}
+		 								,Dhjyl=#{dhjyl}
+		 								,Qymj=#{qymj}
+		 								,Hjje=#{hjje}
+		 								,Shzt=#{shzt}
+		 								,Fbzt=#{fbzt}
+										,Jfyd=#{jfyd}
+										,Dsyhd=#{dsyhd}
+										,Dbyhd=#{dbyhd}
+									    ,Zydy=#{zydy}
+									     ,Bz=#{bz}
+		 							    where ID = #{id}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from member_rental where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>

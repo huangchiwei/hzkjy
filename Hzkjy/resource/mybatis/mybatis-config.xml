@@ -7,18 +7,9 @@
 	<setting name="lazyLoadingEnabled" value="true"/> 
 	<setting name="aggressiveLazyLoading" value="false"/> 
 </settings>
-
- <typeAliases>
- 
-        <typeAlias type="com.armysoft.hzkjy.model.SysUser" alias="sysUser" />
-        <typeAlias type="com.armysoft.hzkjy.model.SysModule" alias="sysModule" />
-        <typeAlias type="com.armysoft.hzkjy.model.SysRole" alias="sysRole" />
-        <typeAlias type="com.armysoft.hzkjy.model.SysPermission" alias="sysPermission" />
+  <!--  指定包下实体Bean起别名,默认类名作别名 -->
+     <typeAliases>
+        <package name="com.armysoft.hzkjy.model"/>
+        <package name="org.armysoft.security.model"/>
     </typeAliases>
-	<mappers>
-	  <mapper resource="com/armysoft/hzkjy/model/SysUser.xml" />
-	  <mapper resource="com/armysoft/hzkjy/model/SysModule.xml" />
-	  <mapper resource="com/armysoft/hzkjy/model/SysRole.xml" />
-	  <mapper resource="com/armysoft/hzkjy/model/SysPermission.xml" />
-    </mappers>
 </configuration>

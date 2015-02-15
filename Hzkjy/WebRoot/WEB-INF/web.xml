@@ -6,12 +6,12 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 <context-param>
 		 <param-name>webAppRootKey</param-name>
- 		<param-value>Motorcar</param-value>
+ 		<param-value>Hzkjy</param-value>
 	</context-param>
  <description>
               springmvc模板
     </description>
-	<display-name>Motorcar</display-name>
+	<display-name>Hzkjy</display-name>
     
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -58,26 +58,28 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>springMvc</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
 
-	<servlet> 
-    <servlet-name>ConnectorServlet</servlet-name> 
+	 <servlet>
+    <servlet-name>ConnectorServlet</servlet-name>
     <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
-    <init-param> 
-        <param-name>XMLConfig</param-name> 
-        <param-value>/WEB-INF/ckfinder.xml</param-value> 
-    </init-param> 
-    <init-param> 
-        <param-name>debug</param-name> 
-        <param-value>false</param-value> 
-    </init-param> 
-    <load-on-startup>1</load-on-startup> 
-</servlet> 
-<servlet-mapping>
-    <servlet-name>ConnectorServlet</servlet-name> 
-    <url-pattern> /ckfinder/core/connector/java/connector.java </url-pattern> 
-</servlet-mapping>
+    <init-param>
+      <param-name>XMLConfig</param-name>
+      <param-value>/WEB-INF/config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConnectorServlet</servlet-name>
+    <url-pattern>
+			/js/ckfinder/core/connector/java/connector.java
+		</url-pattern>
+  </servlet-mapping>
   <jsp-config>
   		<jsp-property-group>
   			<!-- 拦截所有的jsp文件运用下面配置 -->

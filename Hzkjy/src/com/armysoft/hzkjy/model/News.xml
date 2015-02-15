@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NewsOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">
+		*
+	</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition">
+		from news
+		where 1 = 1
+		<if test="parm.cateCode != null and parm.cateCode != ''">
+			and cateCode=#{parm.cateCode}
+		</if>
+	</sql>
+
+	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
+		select
+		<include refid="columns" />
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*)
+		<include refid="condition" />
+	</select>
+	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
+		select * from news where id = #{id}
+	</select>
+	<select id="getCategory" resultType="java.util.Map" parameterType="String">
+		select * from news_category where cateCode = #{cateCode}
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="news">
+		insert into
+		news(title,content,realTime,createUser,cateCode)
+		values(#{title}
+		, #{content}
+		, #{realTime}
+		, #{createUser}
+		, #{cateCode}
+		)
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="news">
+		update news set
+		title=#{title}
+		,content=#{content}
+		,realTime=#{realTime}
+		, createUser=#{createUser}		
+		where id = #{id}
+	</update>
+<update id="updateClicks" parameterType="Integer">
+		update news set
+		clicks=#{clicks}	
+		where id = #{id}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from news where
+		id = #{id}
+	</delete>
+
+	<!-- ********************************************* -->
+
+</mapper>

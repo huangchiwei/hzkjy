@@ -1,5 +1,9 @@
-#Thu Jan 22 10:13:43 CST 2015
+#Tue Feb 03 20:45:41 CST 2015
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/huangchiwei/hzkjy.git
 eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/jsp/admin/base/content.jsp=UTF-8
 encoding//WebRoot/js/easyui/easyui-lang-zh_CN.js=UTF-8
 encoding//WebRoot/js/jsp/sys/ModifyPwd.js=UTF-8
 encoding//WebRoot/js/jsp/sys/SysRoleA_U.js=UTF-8
@@ -8,21 +12,14 @@ encoding//WebRoot/js/layer/layerDemo.js=UTF-8
 encoding//WebRoot/theme/default/js/jquery-1.8.2.min.js=UTF-8
 encoding//WebRoot/theme/default/js/time.js=UTF-8
 encoding//resource/log/log4j.properties=UTF-8
-encoding//src/com/armysoft/hzkjy/annotation/PermissionsAnno.java=UTF-8
-encoding//src/com/armysoft/hzkjy/aop/PermissionAdvice.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/common/WebConstant.java=UTF-8
-encoding//src/com/armysoft/hzkjy/base/tag/HtmlControlTag.java=UTF-8
-encoding//src/com/armysoft/hzkjy/base/tag/PermissionTag.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/util/CookieUtil.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/util/ExportExcel.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/util/ExportExcel1.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/util/ImportExcel.java=UTF-8
+encoding//src/com/armysoft/hzkjy/controller/admin/member/MemberFasicController.java=UTF-8
 encoding//src/com/armysoft/hzkjy/controller/base/CenterPageController.java=UTF-8
-encoding//src/com/armysoft/hzkjy/controller/base/VerifyController.java=UTF-8
 encoding//src/com/armysoft/hzkjy/controller/base/common/BaseCon.java=UTF-8
-encoding//src/com/armysoft/hzkjy/controller/interceptor/LoginInterceptor.java=UTF-8
-encoding//src/com/armysoft/hzkjy/controller/manage/login/LoginController.java=UTF-8
-encoding//src/com/armysoft/hzkjy/controller/manage/sys/SysModuleController.java=UTF-8
-encoding//src/com/armysoft/hzkjy/controller/manage/sys/SysUserController.java=UTF-8
 encoding//src/com/gzjr/hzkjy/util/Constants.java=UTF-8
 encoding//src/com/gzjr/hzkjy/util/FileUtil.java=UTF-8
+encoding/<project>=UTF-8

@@ -45,6 +45,15 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
+		<property name="mapperLocations">
+		<list>
+			<value>classpath:org/armysoft/security/model/**/*.xml</value>
+		<!--
+	 指定映射文件路径，没指定则默认与接口类同目录下 
+	-->
+			<value>classpath:com/armysoft/hzkjy/model/*.xml</value>	
+		</list>
+	</property>
 	</bean>
 	<!-- mybatis -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -58,8 +67,6 @@
 	<bean id="baseDao" class="org.armysoft.ibatis.dao.BaseDao"
 		abstract="true">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
-	<bean id="initHandler" class="com.armysoft.hzkjy.init.InitHandler">
 	</bean>
 	<!-- 事务 -->
 	<bean id="transactionManager"
@@ -86,10 +93,12 @@
 		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="manageService" />
 	</aop:config>
 	
-	<context:component-scan
-		base-package="com.armysoft.hzkjy.controller,com.armysoft.hzkjy.service" />
-	<bean class="com.armysoft.hzkjy.aop.PermissionAdvice"/>
-	 <!-- 开启这个配置，spring才能识别@Scheduled注解   -->
-    <task:annotation-driven scheduler="qbScheduler" mode="proxy"/>  
-    <task:scheduler id="qbScheduler" pool-size="20"/>  
+	<!-- 使用annotation 自动注册bean-->
+	<context:component-scan base-package="com.armysoft,org.armysoft">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+    <bean id="permissionAspect" class="org.armysoft.security.aop.PermissionAspect"/>
+    <bean id="initResourcesMap" class="org.armysoft.security.InitResourcesMap"/>
 </beans>

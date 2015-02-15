@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/code/!svn/ver/15668/bs/JrNetMntWeb/WebRoot/WEB-INF/jsp/error
+END
+500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/code/!svn/ver/15663/bs/JrNetMntWeb/WebRoot/WEB-INF/jsp/error/500.jsp
+END
+NoPermission.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/code/!svn/ver/15667/bs/JrNetMntWeb/WebRoot/WEB-INF/jsp/error/NoPermission.jsp
+END
+404.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/code/!svn/ver/15668/bs/JrNetMntWeb/WebRoot/WEB-INF/jsp/error/404.jsp
+END

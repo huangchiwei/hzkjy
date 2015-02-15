@@ -10,7 +10,7 @@ public enum AuthorityEnum {
 	SysUser_delete("删除用户","us_del"),
 	SysUser_update("修改用户","us_updt"),
 	SysUser_save("添加用户","us_save"),
-	SysUser_changeStatus("�?��/冻结用户","us_chasta"),
+	SysUser_changeStatus("�?��/冻结用户","us_chasta"),
 	SysUser_list("用户管理","us_list"),
 	//角色管理
 	SysRole_save("添加角色","ro_save"),

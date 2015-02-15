@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberFasicOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from member_basic 
+		where 1 = 1	 and Zt = '0'
+		<if test="parm.fhymc != null and parm.fhymc != ''">
+		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
+		</if>
+	
+	
+		
+		
+		
+		
+				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				order by id desc
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="memberFasicMap" type="memberFasic">
+				<result column="ID" property="id" />
+				<result column="Hybh" property="hybh" />
+				<result column="Qymc" property="qymc" />
+				<result column="Address" property="address" />
+				<result column="Zydy" property="zydy" />
+				<result column="Mj" property="mj" />
+				<result column="Fzr" property="fzr" />
+				<result column="Zczj" property="zczj" />
+			    <result column="Lxr" property="lxr" />
+			    <result column="Zt" property="zt" />
+			    <result column="Qymcpy" property="qymcpy" />
+			    
+				
+				
+				
+			</resultMap>
+			
+<select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
+select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt
+	 from member_basic
+		where 1 = 1	 and Zt = '0'
+		<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
+		</if>
+		
+ order by id desc
+	</select>			
+			
+	<select id="sumCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		from member_basic
+		where 1 = 1	 and Zt = '0'
+		<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
+				</if>
+	</select>
+    <select id="findById" resultMap="memberFasicMap" parameterType="Long">
+		select * from member_basic where id = #{id}
+	</select>
+	
+	<select id="findByHybh" resultMap="memberFasicMap" parameterType="String">
+		select * from member_basic where Hybh = #{hybh}
+	</select>
+	
+	<select id="findByNewHybh" resultMap="memberFasicMap" parameterType="java.util.Map">
+		select * from member_basic where substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2} ORDER BY id DESC LIMIT 1 
+	</select>
+	
+	<select id="HybhCount" resultType="int" parameterType="java.util.Map">
+		select count(*) from member_basic where  substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2}
+	</select>
+	
+	<select id="getSelectedCorpNameList" parameterType="String" resultType="java.util.Map" >
+		select hybh,qymc,qymcpy from member_basic where Zt=#{value} ORDER BY hybh DESC 
+	</select>
+		
+	<select id="page" resultMap="memberFasicMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="memberFasic">
+		insert into member_basic(Hybh,Qymc,Address,Zydy,Mj,Fzr,Zczj,Lxr,Zt,Qymcpy)
+		values(#{hybh} 		
+		, #{qymc} 		
+		, #{address} 		
+		,       #{zydy}
+		 ,		#{mj}
+		 ,		#{fzr}
+		 ,		#{zczj}
+		 ,		#{lxr}
+		 ,		#{zt}
+		 ,		#{qymcpy}
+		  )
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="memberFasic">
+		update member_basic set 
+		Hybh=#{hybh}
+		 								,Qymc=#{qymc}
+		 								,Address=#{address}
+											,	Zydy=#{zydy}
+		 								,		Mj=#{mj}
+		 								,		Fzr=#{fzr}
+		 								,		Zczj=#{zczj}
+		 								,		Lxr=#{lxr}
+		 								,		Zt=#{zt}
+		 								,		Qymcpy=#{qymcpy}
+		 							where ID = #{id}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from member_basic where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>

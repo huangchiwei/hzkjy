@@ -7,7 +7,7 @@
 
   <tag>
   	<name>hasPermission</name>
-  	<tag-class>com.armysoft.hzkjy.base.tag.PermissionTag</tag-class>
+  	<tag-class>org.armysoft.security.tag.PermissionTag</tag-class>
   	<body-content>JSP</body-content>
   	
   	<attribute>

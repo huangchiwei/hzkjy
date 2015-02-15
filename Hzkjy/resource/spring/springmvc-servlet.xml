@@ -14,15 +14,15 @@
           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
 	default-autowire="byName">
 	<aop:aspectj-autoproxy proxy-target-class="true" />
-
-	<mvc:resources mapping="/js/**" location="/js/" />
+<mvc:resources mapping="/js/**" location="/js/" />	
+	<!--<mvc:resources mapping="/js/**" location="/js/" />
 		<mvc:resources mapping="/css/**" location="/css/"/>
 	<mvc:resources mapping="/theme/**" location="/theme/"/>
 	<mvc:resources mapping="/upFile_Motorcar/**" location="/upFile_Motorcar/"/>
 		<mvc:resources mapping="/ckeditor/**" location="/ckeditor/"/>
 	<mvc:resources mapping="/ckfinder/**" location="/ckfinder/"/>
 	
-	<context:component-scan base-package="com.armysoft.hzkjy.controller" use-default-filters="false">
+	--><context:component-scan base-package="com.armysoft,org.armysoft" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
   	<mvc:annotation-driven />
@@ -33,19 +33,13 @@
 	  	
 	  	<mvc:interceptor>
 	  		<!-- 登录拦截的路径 -->
-	  		<mvc:mapping path="/**"/>
-	  		<bean class="com.armysoft.hzkjy.controller.interceptor.LoginInterceptor">
+	  		<mvc:mapping path="/admin/**"/>
+	  		<bean class="org.armysoft.security.interceptor.LoginInterceptor">
 	  			<property name="uncheckUrls">
 	                 <list>
 	                    <value>/verify</value>
 	                    <value>/userLogin</value>
 	                       <value>/index</value>
-	                       
-	                                
-	                             
-	                             
-	                        
-	                       
 	                    
 	                  </list>
 	               </property>
@@ -55,10 +49,7 @@
 	  	
 	</mvc:interceptors>
 	
-	<context:component-scan base-package="com.gzjr.hzkjy.controller.front,
-	com.gzjr.hzkjy.controller.manage,
-	com.gzjr.hzkjy.controller.interceptor"
-									 />
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
