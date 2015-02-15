@@ -6,18 +6,19 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `member_basic`;
 CREATE TABLE `member_basic` (
   `ID` int(11) NOT NULL auto_increment,
-  `Hybh` varchar(50) default NULL,
-  `Qymc` varchar(100) default NULL,
-  `Qymcpy` varchar(50) default NULL,
-  `Address` varchar(100) default NULL,
-  `Zydy` varchar(50) default NULL,
-  `Mj` varchar(50) default NULL,
-  `Fzr` varchar(50) default NULL,
-  `Zczj` varchar(50) default NULL,
-  `Lxr` varchar(50) default NULL,
-  `Zt` varchar(50) default NULL,
+  `Hybh` varchar(50) default NULL COMMENT '会员编号',
+  `Qymc` varchar(100) default NULL COMMENT '会员名称',
+  `Qymcpy` varchar(50) default NULL COMMENT '会员名称拼音',
+  `Address` varchar(100) default NULL COMMENT '地址',
+  `Zydy` varchar(50) default NULL COMMENT '租用地址',
+  `Mj` varchar(50) default NULL COMMENT '面积',
+  `Fzr` varchar(50) default NULL COMMENT '负责人',
+  `Zczj` varchar(50) default NULL COMMENT '注册资金',
+  `Lxr` varchar(50) default NULL COMMENT '联系人',
+  `Zt` varchar(50) default NULL COMMENT '状态',
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 -- Records of member_basic
