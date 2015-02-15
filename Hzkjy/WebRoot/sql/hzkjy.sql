@@ -242,3 +242,22 @@ INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level
 INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_30','成果转化','manager/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
 
 
+
+CREATE TABLE `member_intellectualpro` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `MemberNo` varchar(255) NOT NULL DEFAULT '' COMMENT '企业编号',
+  `ProjectLevel` int(4) DEFAULT '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
+  `ProjectType` varchar(255) DEFAULT NULL COMMENT '项目类别',
+  `ProjectName` varchar(255) DEFAULT NULL COMMENT '项目名称',
+  `ApplyAmount` float(5,3) DEFAULT '0.000' COMMENT '申报额度(万)',
+  `IsSetUp` int(1) DEFAULT '0' COMMENT '是否立项0不立项 1立项',
+  `SetUpAmount` float(5,3) DEFAULT '0.000' COMMENT '立项资助金额(万)',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='知识产权';
+
+#
+# Dumping data for table member_intellectualpro
+#
+
+INSERT INTO `member_intellectualpro` (`Id`,`MemberNo`,`ProjectLevel`,`ProjectType`,`ProjectName`,`ApplyAmount`,`IsSetUp`,`SetUpAmount`) VALUES (1,'440100001',0,'国家发展改革委办公厅关于组织实施2012年高技术服务业研发及产业化专项的通知','基于云计算的病理和检验大数据管理与分析系统',0,0,0);
+INSERT INTO `member_intellectualpro` (`Id`,`MemberNo`,`ProjectLevel`,`ProjectType`,`ProjectName`,`ApplyAmount`,`IsSetUp`,`SetUpAmount`) VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0);
