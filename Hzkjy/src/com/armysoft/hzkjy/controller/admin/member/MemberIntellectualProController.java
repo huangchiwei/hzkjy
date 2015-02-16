@@ -75,8 +75,9 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Integer key,MemberIntellectualPro entity, Model model) {
+	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity, Model model) {
 		model.addAttribute("type", "U");
+		model.addAttribute("entity",memberIntellectualProService.findByKey(key));
 		return "admin/member/MemberIntellectualProA_U";
 	}
 	

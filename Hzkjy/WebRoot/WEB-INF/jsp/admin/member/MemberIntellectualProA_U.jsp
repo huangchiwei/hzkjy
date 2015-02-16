@@ -47,22 +47,25 @@ html { overflow:-moz-scrollbars-vertical;}
      
      <th>项目类别：</th>
      <td>
-     	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20" readonly="true" />
+     	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/>
      </td>
-     <th>项目名称：</th>
+   
+       <th>申报时间：</th>
      <td>
-    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" maxlength="100" style="width:160px"  />
+     <input id="applyTime" name="applyTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
+     	value="<fmt:formatDate value="${entity.ApplyTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>
+     	
      </td>
-     
     </tr>
 	    <tr>
+	    
 	     <th>申报额度(万)：</th>
 	     <td>
-	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100" style="width:160px"  />
+	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   />
 	     </td>
 	     <th>是否立项：</th>
 	     <td>
-	     <input name="isSetUp"  id="isSetUp" type="text" class="input_a1" value="${entity.IsSetUp}"/>平方
+	     <input name="isSetUp"  id="isSetUp" type="text" class="input_a1" value="${entity.IsSetUp}"/>
 	     	</td>
 	     <th>立项资助金额(万)：</th>
 	   	 <td>
@@ -70,13 +73,11 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 </td>
 	    </tr>
     <tr>
-     <th>申报时间：</th>
-     <td>
-     <input id="applyTime" name="applyTime" size="12" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" 
-     	value="<fmt:formatDate value="${entity.ApplyTime}" pattern="yyyy-MM-dd"/>" maxlength="12"/>
-     	
+   
+      <th>项目名称：</th>
+     <td colspan="5">
+    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" maxlength="500"  size="150"/>
      </td>
-    
     </tr>
    </table>
      

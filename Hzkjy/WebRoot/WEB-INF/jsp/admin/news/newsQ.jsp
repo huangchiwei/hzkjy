@@ -50,7 +50,7 @@ html { overflow:-moz-scrollbars-vertical;}
   	  </form>
     <h2>${category.remark }&gt;&gt;${category.cateName}</h2>
  
-  
+  <br/>
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>

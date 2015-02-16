@@ -48,22 +48,20 @@ html { overflow:-moz-scrollbars-vertical;}
   </div>
   <div class="list_info">
  
-    <h2>按条件查询</h2>
-
+    <h2>列表</h2>
+<br/>
     
  
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>
-	  	<th>&nbsp;</th>
+	  	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 	  	 <th>企业名称</th> 
-	        <th>项目级别</th>
-	        <th>项目类别</th>
-	        <th>项目名称</th>
-	        <th>申报额度(万)</th>
-	       <th>是否立项</th>
-	        <th>立项资助金额(万)</th>
-	            <th>申报时间</th>
+	        <th width="60px;">项目级别</th>
+	        <th width="250px;">项目类别</th>
+	        <th width="200px;">项目名称</th>
+	       <th width="60px;">状态</th>
+	            <th width="80px;">申报时间</th>
 	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
@@ -76,13 +74,14 @@ html { overflow:-moz-scrollbars-vertical;}
 	       	<td><c:if test="${o.ProjectLevel==0}">国家级</c:if><c:if test="${o.ProjectLevel==1}">省级</c:if><c:if test="${o.ProjectLevel==2}">市级</c:if><c:if test="${o.ProjectLevel==3}">区级</c:if></td>
 	       		<td>${o.ProjectType}</td>
 	       			<td>${o.ProjectName}</td>
-	       				<td>${o.ApplyAmount}</td>
-	       					<td>${o.IsSetUp}</td>
-	       						<td><c:if test="${o.SetUpAmount==0}">不立项</c:if><c:if test="${o.SetUpAmount==1}">立项</c:if></td>
+	       				
+	       				<td><c:if test="${o.IsSetUp==0}">不立项</c:if><c:if test="${o.IsSetUp==1}">立项</c:if></td>
+	       					
+	       						
 	       					<td><fmt:formatDate value="${o.ApplyTime}" pattern="yyyy-MM-dd"/></td>	
 	        <td>
 	          		<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberIntellectualPro/update.html?id=${o.Id}'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberIntellectualPro/update/${o.Id}.html'"/>
 		          	</div>
 	           	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${o.Id}')"/>

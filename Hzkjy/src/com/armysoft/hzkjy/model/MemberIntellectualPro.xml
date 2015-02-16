@@ -12,6 +12,7 @@
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_intellectual_pro 
+		order by ApplyTime desc
 	  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				order by id desc
 	</sql>
 
