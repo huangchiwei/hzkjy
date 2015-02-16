@@ -242,8 +242,7 @@ INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level
 INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_30','成果转化','manager/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
 
 
-
-CREATE TABLE `member_intellectualpro` (
+CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `MemberNo` varchar(255) NOT NULL DEFAULT '' COMMENT '企业编号',
   `ProjectLevel` int(4) DEFAULT '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
@@ -252,13 +251,13 @@ CREATE TABLE `member_intellectualpro` (
   `ApplyAmount` float(5,3) DEFAULT '0.000' COMMENT '申报额度(万)',
   `IsSetUp` int(1) DEFAULT '0' COMMENT '是否立项0不立项 1立项',
   `SetUpAmount` float(5,3) DEFAULT '0.000' COMMENT '立项资助金额(万)',
-  `ApplyTime` datetime DEFAULT NULL COMMENT '申报时间',
+  `ApplyTime` date DEFAULT NULL COMMENT '申报时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='知识产权';
 
 #
-# Dumping data for table member_intellectualpro
+# Dumping data for table member_intellectual_pro
 #
 
-INSERT INTO `member_intellectualpro` (`Id`,`MemberNo`,`ProjectLevel`,`ProjectType`,`ProjectName`,`ApplyAmount`,`IsSetUp`,`SetUpAmount`,`ApplyTime`) VALUES (1,'440100001',0,'国家发展改革委办公厅关于组织实施2012年高技术服务业研发及产业化专项的通知','基于云计算的病理和检验大数据管理与分析系统',0,0,0,'2015-01-22 20:15:42');
-INSERT INTO `member_intellectualpro` (`Id`,`MemberNo`,`ProjectLevel`,`ProjectType`,`ProjectName`,`ApplyAmount`,`IsSetUp`,`SetUpAmount`,`ApplyTime`) VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2015-01-22 20:15:42');
+INSERT INTO `member_intellectual_pro` VALUES (1,'440100001',0,'国家发展改革委办公厅关于组织实施2012年高技术服务业研发及产业化专项的通知','基于云计算的病理和检验大数据管理与分析系统',0,0,0,'2015-01-22');
+INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2015-01-22');
