@@ -57,7 +57,11 @@
 		 								,		ApplyTime=#{applyTime}
 		 							where Id = #{id}
 	</update>
-
+	<update id="updateStatus" parameterType="java.util.Map">
+		update member_intellectual_pro set 
+  									Status=#{status}
+		 							where Id = #{id}
+	</update>
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
 		delete from member_intellectual_pro where Id = #{id}

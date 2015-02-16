@@ -19,6 +19,7 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	private Integer isSetUp;         //是否立项0不立项 1立项
 	private Float setUpAmount;        //立项资助金额(万)
 	private Date applyTime;          //申报时间
+	private Integer status;          //状态 0一对一 1一对多
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +73,12 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	}
 	public void setApplyTime(Date applyTime) {
 		this.applyTime = applyTime;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	
 	

@@ -55,7 +55,15 @@ public class  MemberIntellectualProController extends BaseController {
 	}
 
 
-
+    @RequestMapping(value ="/updateStatus/${id}.html" )
+	public String updateStatus(@PathVariable("id") Long key,HttpServletRequest request,Model model,Integer status) {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("id", key);
+    	params.put("status", status);
+    	memberIntellectualProService.updateStatus(params);
+		return "admin/member/MemberIntellectualProA_U";
+	}
+	
 	/**
 	 * 准备添加
 	 * @return

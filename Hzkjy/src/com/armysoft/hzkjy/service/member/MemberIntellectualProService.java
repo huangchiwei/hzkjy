@@ -36,7 +36,10 @@ public class MemberIntellectualProService extends BaseDao {
 		super.defInsert(nameSpace, model);
 	}
 
+	public void updateStatus(Map<String, Object> params) {
 
+		super.nativeUpdate(nameSpace+".updateStatus", params);
+	}
 	/**
 	 * 修改
 	 * @param question
