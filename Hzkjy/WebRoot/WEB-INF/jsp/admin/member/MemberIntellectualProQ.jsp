@@ -79,7 +79,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	       				<td>${o.ApplyAmount}</td>
 	       					<td>${o.IsSetUp}</td>
 	       						<td><c:if test="${o.SetUpAmount==0}">不立项</c:if><c:if test="${o.SetUpAmount==1}">立项</c:if></td>
-	       					<td>${o.ApplyTime}</td>	
+	       					<td><fmt:formatDate value="${o.ApplyTime}" pattern="yyyy-MM-dd"/></td>	
 	        <td>
 	          		<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberIntellectualPro/update.html?id=${o.Id}'"/>
