@@ -23,7 +23,7 @@ function delConfirm(id){
 	      type : 4,
 	      btn : ['是','否'],
 	      yes : function(){
-	          location.href='${ctx}/admin/memberIntellectualPro/delete/' + id + '.html';
+	          location.href='${ctx}/admin/memberPatent/delete/' + id + '.html';
 	      },
 	      no : function(index){
 	         layer.close(index);
@@ -43,7 +43,7 @@ html { overflow:-moz-scrollbars-vertical;}
 <div class="content_box">
   <div class="btn_box">
 
-  		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/memberIntellectualPro/add/new.html'"/>
+  		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/memberPatent/add/new.html'"/>
      
   </div>
   <div class="list_info">
@@ -70,9 +70,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	<tr>
 	  	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 	  	 <th>企业名称</th> 
-	        <th width="60px;">项目级别</th>
-	        <th width="250px;">项目类别</th>
-	        <th width="200px;">项目名称</th>
+	        <th width="60px;">专利类别</th>
+	        <th width="250px;">专利名称</th>
+	        <th width="200px;">专利编号</th>
 	       <th width="60px;">状态</th>
 	            <th width="80px;">申报时间</th>
 	        <th width="6%">操作</th>
@@ -84,17 +84,13 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <tr >
 	           	<td>${sta.index + 1}</td>
 	           	<td>${o.Qymc}</td>
-	       	<td><c:if test="${o.ProjectLevel==0}">国家级</c:if><c:if test="${o.ProjectLevel==1}">省级</c:if><c:if test="${o.ProjectLevel==2}">市级</c:if><c:if test="${o.ProjectLevel==3}">区级</c:if></td>
-	       		<td>${o.ProjectType}</td>
-	       			<td>${o.ProjectName}</td>
-	       				
-	       				<td><c:if test="${o.IsSetUp==0}">不立项</c:if><c:if test="${o.IsSetUp==1}">立项</c:if></td>
-	       					
-	       						
+	       	<td>${o.Type }</td>
+	       		<td>${o.Name}</td>
+	       			<td>${o.PatentNo}</td>	
 	       					<td><fmt:formatDate value="${o.ApplyTime}" pattern="yyyy-MM-dd"/></td>	
 	        <td>
 	          		<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberIntellectualPro/update/${o.Id}.html'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberPatent/update/${o.Id}.html'"/>
 		          	</div>
 	           	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${o.Id}')"/>

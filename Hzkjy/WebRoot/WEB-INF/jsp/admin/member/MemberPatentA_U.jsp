@@ -27,29 +27,17 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
    </div>
-<form id="add_form" action='${ctx}/admin/memberIntellectualPro/save.html' method="post">
+<form id="add_form" action='${ctx}/admin/memberPatent/save.html' method="post">
 <input type="hidden" name="type" value="${type}"/>
   <div class="add_info">
 
    <h2>${type=='A'?'添加':'修改' }专利</h2>
    <table width="98%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-     <th class="w100">项目级别:</th>
+     <th class="w100">专利类别:</th>
      <td>
-     <select name="projectLevel">
- 		<option value="0" <c:if test="${entity.ProjectLevel==0}">selected="selected"</c:if>>国家级</option>    
- 		<option value="1" <c:if test="${entity.ProjectLevel==1}">selected="selected"</c:if>>省级</option>  
- 		<option value="2" <c:if test="${entity.ProjectLevel==2}">selected="selected"</c:if>>市级</option>  
- 		<option value="3" <c:if test="${entity.ProjectLevel==3}">selected="selected"</c:if>>区级</option>  
-     </select>
-   
       </td>
-     
-     <th>项目类别：</th>
-     <td>
-     	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/>
-     </td>
-   
+
        <th>申报时间：</th>
      <td>
      <input id="applyTime" name="applyTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
@@ -57,26 +45,15 @@ html { overflow:-moz-scrollbars-vertical;}
      	
      </td>
     </tr>
-	    <tr>
-	    
-	     <th>申报额度(万)：</th>
-	     <td>
-	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   />
-	     </td>
-	     <th>是否立项：</th>
-	     <td>
-	     <input name="isSetUp"  id="isSetUp" type="text" class="input_a1" value="${entity.IsSetUp}"/>
-	     	</td>
-	     <th>立项资助金额(万)：</th>
-	   	 <td>
-	   	 	<input name="setUpAmount"  id="setUpAmount" type="text" class="input_a1" value="${entity.SetUpAmount}"/>
-	   	 </td>
-	    </tr>
+	 
     <tr>
-   
-      <th>项目名称：</th>
+    <th>专利名称：</th>
+     <td>
+     	<input id="name" name="name" type="text" value="${entity.Name}" maxlength="20"/>
+     </td>
+      <th>专利编号：</th>
      <td colspan="5">
-    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" maxlength="500"  size="150"/>
+    	<input id="patentNo" name="patentNo" type="text" value="${entity.PatentNo}" maxlength="500"  size="150"/>
      </td>
     </tr>
    </table>
