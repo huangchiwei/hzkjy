@@ -3,15 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="MemberIntellectualProOpt">
+<mapper namespace="MemberPatentOpt">
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	Id,MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,ApplyTime
+	Id,MemberNo,Type,Name,PatentNo,ApplyTime
 	</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
-		from member_intellectual_pro  where 1=1
+		from member_patent  where 1=1
 		<if test="parm.startTime!= null and parm.startTime != ''">
 		<if test="parm.endTime!= null and parm.endTime != ''">
 		and ApplyTime between #{parm.startTime} and #{parm.endTime}
@@ -22,7 +22,7 @@
 	</sql>
 
     <select id="findByKey" resultType="java.util.Map" parameterType="Long">
-		select * from member_intellectual_pro where Id = #{id}
+		select * from member_patent where Id = #{id}
 	</select>
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
@@ -42,38 +42,32 @@
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberIntellectualPro">
-		insert into member_intellectual_pro(MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,ApplyTime)
+		insert into member_patent(MemberNo,Type,Name,PatentNo,ApplyTime)
 		values(#{memberNo} 		
-		, #{projectLevel} 		
-		, #{projectType} 		
-		,       #{projectName}
-		 ,		#{applyAmount}
-		 ,		#{isSetUp}
-		 ,		#{setUpAmount}
+		, #{type} 		
+		, #{name} 		
+		,       #{patentNo}
 		 ,		#{applyTime}
 		  )
 		</insert>
 
 	<!-- 修改 -->
 	<update id="update" parameterType="memberIntellectualPro">
-		update member_intellectual_pro set 
-		 										ProjectLevel=#{projectLevel}
-		 								,		ProjectType=#{projectType}
-		 								,		ProjectName=#{projectName}
-		 								,		ApplyAmount=#{applyAmount}
-		 								,		IsSetUp=#{isSetUp}
-		 								,		SetUpAmount=#{setUpAmount}
+		update member_patent set 
+		 										Type=#{type}
+		 								,		Name=#{name}
+		 								,		PatentNo=#{patentNo}
 		 								,		ApplyTime=#{applyTime}
 		 							where Id = #{id}
 	</update>
 	<update id="updateStatus" parameterType="java.util.Map">
-		update member_intellectual_pro set 
+		update member_patent set 
   									Status=#{status}
 		 							where Id = #{id}
 	</update>
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
-		delete from member_intellectual_pro where Id = #{id}
+		delete from member_patent where Id = #{id}
 	</delete>
 	
 	<!-- ********************************************* -->

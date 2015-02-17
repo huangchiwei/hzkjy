@@ -31,7 +31,7 @@ html { overflow:-moz-scrollbars-vertical;}
 <input type="hidden" name="type" value="${type}"/>
   <div class="add_info">
 
-   <h2>${type=='A'?'添加':'修改' }科技项目</h2>
+   <h2>${type=='A'?'添加':'修改' }专利</h2>
    <table width="98%" border="0" cellspacing="0" cellpadding="0">
     <tr>
      <th class="w100">项目级别:</th>

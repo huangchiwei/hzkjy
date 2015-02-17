@@ -26,15 +26,17 @@ import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
+import com.armysoft.hzkjy.model.MemberPatent;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
+import com.armysoft.hzkjy.service.member.MemberPatentService;
 
 
 @Controller
-@RequestMapping("admin/memberIntellectualPro")
-public class  MemberIntellectualProController extends BaseController {
+@RequestMapping("admin/memberPatent")
+public class  MemberPatentController extends BaseController {
 
 	@Resource
-	private MemberIntellectualProService memberIntellectualProService;
+	private MemberPatentService memberPatentService;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -55,7 +57,7 @@ public class  MemberIntellectualProController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("startTime", startTime);
 		params.put("endTime", endTime);
-        model.addAttribute("list", memberIntellectualProService.getByPage(params, pager));
+        model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);
 		model.addAttribute("params", params);
 		return "admin/member/MemberIntellectualProQ";
@@ -67,7 +69,7 @@ public class  MemberIntellectualProController extends BaseController {
     	Map<String, Object> params = new HashMap<String, Object>();
     	params.put("id", key);
     	params.put("status", status);
-    	memberIntellectualProService.updateStatus(params);
+    	memberPatentService.updateStatus(params);
 		return "admin/member/MemberIntellectualProA_U";
 	}
 	
@@ -92,16 +94,16 @@ public class  MemberIntellectualProController extends BaseController {
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity, Model model) {
 		model.addAttribute("type", "U");
-		model.addAttribute("entity",memberIntellectualProService.findByKey(key));
+		model.addAttribute("entity",memberPatentService.findByKey(key));
 		return "admin/member/MemberIntellectualProA_U";
 	}
 	
 	@RequestMapping(value = SAVE)
-	public String save(MemberIntellectualPro entity, Model model,String type) {
+	public String save(MemberPatent entity, Model model,String type) {
 		if(type.equals("U")){
-			memberIntellectualProService.update(entity);
+			memberPatentService.update(entity);
 		}else if(type.equals("A")){
-			memberIntellectualProService.insert(entity);
+			memberPatentService.insert(entity);
 		}
 		return "redirect://admin/memberIntellectualPro/list/1.html";
 	}
@@ -113,7 +115,7 @@ public class  MemberIntellectualProController extends BaseController {
 	 */
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
-		memberIntellectualProService.delete(key);
+		memberPatentService.delete(key);
 		return "redirect://admin/memberIntellectualPro/list/1.html";
 	}
 	
@@ -141,7 +143,7 @@ public class  MemberIntellectualProController extends BaseController {
 		params.put("endTime", endTime);
 		//String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
-		List<Map<String, Object>>  list =memberIntellectualProService.findAll(params);
+		List<Map<String, Object>>  list =memberPatentService.findAll(params);
          ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);
 		
 		exportExcel.exportExcel_Applicant(request, response,list);

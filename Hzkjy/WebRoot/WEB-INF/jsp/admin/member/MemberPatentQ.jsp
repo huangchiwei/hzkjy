@@ -48,7 +48,7 @@ html { overflow:-moz-scrollbars-vertical;}
   </div>
   <div class="list_info">
  
-    <h2>科技项目列表</h2>
+    <h2>专利列表</h2>
         <div class="div2">
       <dl class="relative h30">
         <dd > 

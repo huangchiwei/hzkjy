@@ -7,11 +7,12 @@ import org.armysoft.ibatis.dao.BaseDao;
 import org.springframework.stereotype.Service;
 
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
+import com.armysoft.hzkjy.model.MemberPatent;
 
 @Service
-public class MemberIntellectualProService extends BaseDao {
+public class MemberPatentService extends BaseDao {
 
-	private final String nameSpace = "MemberIntellectualProOpt";
+	private final String nameSpace = "MemberPatentOpt";
 
 
 	public List<Map<String, Object>> getByPage(Map<String, Object> params, Pagination pager) {
@@ -35,7 +36,7 @@ public class MemberIntellectualProService extends BaseDao {
 	 * 添加数据
 	 * @param question
 	 */
-	public void insert(MemberIntellectualPro model) {
+	public void insert(MemberPatent model) {
 		super.defInsert(nameSpace, model);
 	}
 
@@ -47,7 +48,7 @@ public class MemberIntellectualProService extends BaseDao {
 	 * 修改
 	 * @param question
 	 */
-	public void update(MemberIntellectualPro model) {
+	public void update(MemberPatent model) {
 
 		super.defUpdate(nameSpace, model);
 	}

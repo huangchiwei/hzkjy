@@ -243,9 +243,10 @@ INSERT INTO `sys_module` VALUES ('Lev2_29','综合服务','admin/news/list/1.htm
 INSERT INTO `sys_module` VALUES ('Lev2_30','成果转化','admin/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
 
 
+
 CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `MemberNo` varchar(255) NOT NULL DEFAULT '' COMMENT '企业编号',
+  `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
   `ProjectLevel` int(4) DEFAULT '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
   `ProjectType` varchar(255) DEFAULT NULL COMMENT '项目类别',
   `ProjectName` varchar(255) DEFAULT NULL COMMENT '项目名称',
@@ -253,7 +254,7 @@ CREATE TABLE `member_intellectual_pro` (
   `IsSetUp` int(1) DEFAULT '0' COMMENT '是否立项0不立项 1立项',
   `SetUpAmount` float(5,3) DEFAULT '0.000' COMMENT '立项资助金额(万)',
   `ApplyTime` date DEFAULT NULL COMMENT '申报时间',
-  `Status` int(1) DEFAULT '0' COMMENT '状态 0一对一 1一对多',
+  `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='知识产权';
 
@@ -262,3 +263,25 @@ CREATE TABLE `member_intellectual_pro` (
 #
 
 INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2015-01-22',0);
+
+#
+# Source for table member_patent
+#
+
+CREATE TABLE `member_patent` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `MemberNo` varchar(50) DEFAULT NULL COMMENT '企业编号',
+  `Type` varchar(20) DEFAULT NULL COMMENT '专利类别',
+  `Name` varchar(255) DEFAULT NULL COMMENT '专利名称',
+  `PatentNo` varchar(255) DEFAULT NULL COMMENT '专利编号',
+  `ApplyTime` date DEFAULT NULL COMMENT '获取时间',
+  `Status` varchar(255) DEFAULT NULL COMMENT '发送状态',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='专利';
+
+#
+# Dumping data for table member_patent
+#
+
+INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法',' 200910040956.3',NULL,NULL);
+INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7',NULL,NULL);
