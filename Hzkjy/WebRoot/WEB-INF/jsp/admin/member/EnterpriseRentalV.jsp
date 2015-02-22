@@ -113,11 +113,11 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
    </div>
-<form id="add_form" action='<c:if test="${model == null}">${ctx}/admin/memberRental/save.html</c:if><c:if test="${model != null}">${ctx}/admin/memberRental/update/${model.id}.html</c:if>' method="post">
+<form id="add_form" enctype="multipart/form-data" action='<c:if test="${model == null}">${ctx}/admin/enterpriseRental/save.html</c:if><c:if test="${model != null}">${ctx}/admin/enterpriseRental/update/${model.id}.html</c:if>' method="post">
 
   <div class="add_info">
 
-   <h2>新增缴费通知单</h2>
+   <h2>企业缴费单</h2>
    <table width="98%" border="0" cellspacing="0" cellpadding="0">
     <tr>
      <th class="w100">企业名称:</th>
@@ -212,7 +212,12 @@ html { overflow:-moz-scrollbars-vertical;}
      <input style="border:0px;" type="file" name="files" id="files"/>
      </td>
     </tr>
-    
+     <tr>
+    <th>凭证图像</th>
+    <td colspan="5">
+    <img src="${ctx}/hzkjyFj/${model.accessory}" width="600px" height="400px"/>
+     </td>
+    </tr>
    </table>
      
    

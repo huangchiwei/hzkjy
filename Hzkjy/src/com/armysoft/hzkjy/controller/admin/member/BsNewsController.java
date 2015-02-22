@@ -10,9 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
-import java.io.File;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import org.armysoft.security.annotation.PermissionsAnno;
 
@@ -38,22 +35,18 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
-import com.armysoft.hzkjy.model.EnterpriseRental;
+import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.MemberBasic;
-import com.armysoft.hzkjy.model.MemberRental;
-import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
+import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
-import com.armysoft.hzkjy.service.member.MemberRentalService;
 
-import com.alibaba.fastjson.JSONObject;
+
 @Controller
-@RequestMapping("admin/enterpriseRental")
-public class  EnterpriseRentalController extends BaseController {
+@RequestMapping("admin/bsNews")
+public class  BsNewsController extends BaseController {
 
 	@Resource
-	private EnterpriseRentalService service;
-	@Resource
-	private MemberBasicService Mbservice;
+	private BsNewsService service;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -70,8 +63,8 @@ public class  EnterpriseRentalController extends BaseController {
 	 */
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,
-			MemberRental entity, HttpServletRequest request) {
+	public String getByPage(@PathVariable Integer currentPage,String fhymc,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+			BsNews entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 //		if(fhymc !="" && fhymc !=null){
@@ -79,10 +72,10 @@ public class  EnterpriseRentalController extends BaseController {
 //		request.setAttribute("fhymc", fhymc);
 //		}
         model.addAttribute("list", service.getByPage(params, pager));
-		request.setAttribute("zj",service.getCount(params));
+//		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "admin/member/EnterpriseRentalQ";
+		return "admin/member/BsNewsQ";
 	}
 
 	/**
@@ -94,7 +87,7 @@ public class  EnterpriseRentalController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "admin/member/EnterpriseRentalV";
+		return "admin/member/BsNewsV";
 	}
 
 	/**
@@ -105,35 +98,18 @@ public class  EnterpriseRentalController extends BaseController {
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
 		
-		EnterpriseRental mb=service.findByKey(id);
+		BsNews mb=service.findByKey(id);
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "admin/member/EnterpriseRentalV";
+		return "admin/member/BsNewsV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
 	@ResponseBody
 	public  List<Map<String, Object>> getSelectedCorpNameList() {
-		 List<Map<String,Object>> selectedVCorpInfoList= Mbservice.getSelectedCorpNameList("1");
+		 List<Map<String,Object>> selectedVCorpInfoList= service.getSelectedCorpNameList("1");
 		return selectedVCorpInfoList;
-	}
-	
-	@RequestMapping(value = "/getQyxx.html")
-	@ResponseBody
-	public  String getQyxx(HttpServletRequest request) {
-		String qymc = request.getParameter("qymc");
-		 List QyxxList= Mbservice.getQyxx(qymc);
-		 Map map =  new  HashMap(); 
-		 JSONObject jsonObject = new JSONObject();
-		 if(QyxxList.get(0)!=null){
-		 map=(Map) QyxxList.get(0);
-	    System.out.print(map.get("mj"));
-		jsonObject.put("mj", map.get("mj"));
-		jsonObject.put("hybh", map.get("hybh"));
-		jsonObject.put("zydy", map.get("zydy"));
-		 }
-		return jsonObject.toString();
 	}
 
 	/**
@@ -141,95 +117,26 @@ public class  EnterpriseRentalController extends BaseController {
 	 * @param entity
 	 * @param model
 	 * @return
-	 * @throws Exception 
 	 */
 	@PermissionsAnno("hy_updt")
 	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Integer key,@RequestParam("files") MultipartFile[] files,EnterpriseRental entity, Model model,HttpServletRequest request) throws Exception {
+	public String update(@PathVariable("id") Integer key,BsNews entity, Model model) {
 		entity.setId(key);
-		
-		String fileName ;
-		String FmPicture = "";
-			
-		upFile(entity,request);
+//		Cn2Spell cn2Spell = new Cn2Spell();
+//		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
+//		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://admin/enterpriseRental/list/1.html";
+		return "redirect://admin/bsNews/list/1.html";
 	}
-	 public void upFile(EnterpriseRental entity,HttpServletRequest request)throws Exception{
-		  
-			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
-			MultipartFile file = multipartRequest.getFile("files");
-			String fileName ;
-			String srcFileName= file.getOriginalFilename();
-			if (srcFileName==null || srcFileName.equals("")){
-				return ;
-			}
-			String ext = srcFileName.substring(srcFileName.lastIndexOf("."));
-			fileName = UUID.randomUUID() + ext;
-			String strFilePath;
-			String PROJECT_LOCAL_PATH;
-			String NEWS_UPLOADPath ="D:/";
-			String NEWS_IMAGE_FILE_ADDR = this.getClass().getClassLoader().getResource("/").getPath().replace("WEB-INF/classes/", "")+"hzkjyFj/";
-			 
-		    String DRIVER_UPLOADPath ="D:/";
-			String DRIVER_IMAGE_FILE_ADDR = "hzkjyFj/" + convertDate(new Date())+"/";
-			PROJECT_LOCAL_PATH=getRealPath2();
-			
-			if (NEWS_UPLOADPath.equals("/")){
-				strFilePath=PROJECT_LOCAL_PATH+ NEWS_IMAGE_FILE_ADDR+fileName;
-			}else{
-				  String rootPath  = "";
-					rootPath  = NEWS_IMAGE_FILE_ADDR.substring(1,NEWS_IMAGE_FILE_ADDR.indexOf("hzkjyFj/"))+"hzkjyFj/";
-					strFilePath=rootPath.replace("/", "\\");
-					strFilePath=strFilePath.replaceAll("%20", " ")+fileName;
-			}
-			
-			
-			File newFile = new File(strFilePath);
-			if(!newFile.getParentFile().exists()){
-				newFile.getParentFile().mkdirs();
-			}
-			file.transferTo(newFile);
-			entity.setAccessory(fileName);
-//			private String firstImageAddr;//首页新闻图片路径
-//			private String srcFileName;//首页新闻图片原文件名
-//			private int hasImage;//判断此条记录是否有新闻图片，使用0和1来判断
-		}
-	public static String convertDate(Date date) {
-		SimpleDateFormat todayDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		return todayDateFormatter.format(date);
-	}
-	  public static String getRealPath2(){
-	    	try{
-	    		String classPath = EnterpriseRental.class.getClassLoader().getResource("/").getPath();
-	    		  String rootPath  = "";
-	    		  //windows下
-	    		  if("\\".equals(File.separator)){   
-	    		   rootPath  = classPath.substring(1,classPath.indexOf("/WEB-INF/classes"));
-	    		   rootPath = rootPath.replace("/", "\\");
-	    		  }
-	    		  //linux下
-	    		  if("/".equals(File.separator)){   
-	    		   rootPath  = classPath.substring(0,classPath.indexOf("/WEB-INF/classes"));
-	    		   rootPath = rootPath.replace("\\", "/");
-	    		  }
-	    		  rootPath=rootPath.replaceAll("%20", " ");
-	    		  return rootPath;
-	    	} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-	    	}
-	    	return "";
-	    }
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
-	public String save(EnterpriseRental entity, Model model) {
+	public String save(BsNews entity, Model model) {
 		if (entity.getId() == null) {
 			service.insert(entity);
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/enterpriseRental/list/1.html";
+		return "redirect://admin/bsNews/list/1.html";
 	}
 	
 	/**
@@ -241,34 +148,18 @@ public class  EnterpriseRentalController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/enterpriseRental/list/1.html";
+		return "redirect://admin/bsNews/list/1.html";
 	}
 	
-	@RequestMapping(value = "/ZShtg.html")
-	@ResponseBody
-	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
-		EnterpriseRental mdd= service.findByKey(id);
-        mdd.setShzt("已提交");
-		service.update(mdd);
-		request.setAttribute("exl", "ok");
-		String exl="ok";
-		return exl;
+	
+	@RequestMapping(value = "/Zind.html")
+	public String Zind(HttpServletRequest request) {
+		return "admin/member/MemberBasicZ";
 	}
-	@RequestMapping(value = "/Sh.html")
-	public String Sh(Long id,HttpServletRequest request) {
-		request.setAttribute("id", id);
-		return  "admin/member/MemberRentalS";
-	}
-	@RequestMapping(value = "/Shsj.html")
-	public String Shsj(Long id,String bz,HttpServletRequest request) {
-		request.setAttribute("id", id);
-		
-		EnterpriseRental mdd= service.findByKey(id);
-		mdd.setBz(bz);
-		mdd.setShzt("退回");
-		service.update(mdd);
-		request.setAttribute("exl", "ok");
-		return  "admin/member/MemberRentalS";
+	
+	@RequestMapping(value = "/Find.html")
+	public String Find(HttpServletRequest request) {
+		return "admin/member/MemberBasicF";
 	}
 	
 //	@RequestMapping(value = "/inputExport.html")

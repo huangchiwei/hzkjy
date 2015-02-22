@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BsNewsOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from bs_news
+		where 1 = 1	
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="bsNewsMap" type="bsNews">
+				<result column="ID" property="id" />
+				<result column="Title" property="title" />
+				<result column="Receiver" property="receiver" />
+				<result column="Iseveryone" property="iseveryone" />
+				<result column="ActiveTime" property="activeTime" />
+				<result column="Content" property="content" />
+				<result column="Creater" property="creater" />
+				<result column="IsReport" property="isReport" />
+			    <result column="CreateTime" property="createTime" />
+   </resultMap>
+			
+<select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
+select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime
+	from bs_news
+		where 1 = 1	 
+		
+ order by id desc
+	</select>			
+			
+	<select id="sumCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		from bs_news
+		where 1 = 1	
+	</select>
+    <select id="findById" resultMap="bsNewsMap" parameterType="Long">
+		select * from bs_news where id = #{id}
+	</select>
+	
+	<select id="findByHybh" resultMap="bsNewsMap" parameterType="String">
+		select * from bs_news where Hybh = #{hybh}
+	</select>
+	
+	<select id="findByNewHybh" resultMap="memberBasicMap" parameterType="java.util.Map">
+		select * from member_basic where substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2} ORDER BY id DESC LIMIT 1 
+	</select>
+	
+	<select id="HybhCount" resultType="int" parameterType="java.util.Map">
+		select count(*) from member_basic where  substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2}
+	</select>
+	
+	<select id="getSelectedCorpNameList" parameterType="String" resultType="java.util.Map" >
+		select hybh,qymc,qymcpy from member_basic where Zt=#{value} ORDER BY hybh DESC 
+	</select>
+	
+	<select id="getQyxx" parameterType="String" resultType="java.util.Map" >
+		select hybh,zydy,mj from member_basic where qymc=#{value} ORDER BY hybh DESC LIMIT 1 
+	</select>
+		
+	<select id="page" resultMap="bsNewsMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="bsNews">
+		insert into bs_news(Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime)
+		values(#{title} 		
+		, #{receiver} 		
+		, #{iseveryone} 		
+		,       #{activeTime}
+		 ,		#{content}
+		 ,		#{creater}
+		 ,		#{isReport}
+		 ,		#{createTime}
+		  )
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="bsNews">
+		update bs_news set 
+		Title=#{title}
+		 								,Receiver=#{receiver}
+		 								,Iseveryone=#{iseveryone}
+											,	ActiveTime=#{activeTime}
+		 								,		Content=#{content}
+		 								,		Creater=#{creater}
+		 								,		IsReport=#{isReport}
+		 								,		CreateTime=#{createTime}
+		 							where ID = #{id}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from bs_news where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>
