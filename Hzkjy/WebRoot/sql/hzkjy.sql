@@ -19,6 +19,7 @@ CREATE TABLE `member_basic` (
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
+
 -- ----------------------------
 -- Records of member_basic
 -- ----------------------------
@@ -45,11 +46,7 @@ CREATE TABLE `sys_module` (
 -- ----------------------------
 -- Records of sys_module
 -- ----------------------------
-INSERT INTO `sys_module` VALUES ('Lev1_01', '系统管理', null, '1', null, '1');
-INSERT INTO `sys_module` VALUES ('Lev1_02', '会员管理', null, '2', null, '1');
-INSERT INTO `sys_module` VALUES ('Lev2_01', '用户管理', 'sys/sysUser/list', '1', 'Lev1_01', '2');
-INSERT INTO `sys_module` VALUES ('Lev2_02', '角色管理', 'sys/sysRole/list', '2', 'Lev1_01', '2');
-INSERT INTO `sys_module` VALUES ('Lev2_03', '在园企业管理', 'member/memberBasic/list', '1', 'Lev1_02', '2');
+
 
 -- ----------------------------
 -- Table structure for `sys_permission`
@@ -209,35 +206,82 @@ INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (23,'�
 
 
 
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_03','园区风貌',NULL,3,NULL,1);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_04','政策法规',NULL,4,NULL,1);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_05','新闻动态',NULL,5,NULL,1);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_06','园区信息',NULL,6,NULL,1);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_07','企业风采',NULL,7,NULL,1);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_08','园区服务',NULL,8,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_01','系统管理',NULL,1,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_02','会员管理',NULL,2,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_03','园区风貌',NULL,3,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_04','政策法规',NULL,4,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_05','新闻动态',NULL,5,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_06','园区信息',NULL,6,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_07','企业风采',NULL,7,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_08','园区服务',NULL,8,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
+INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
+INSERT INTO `sys_module` VALUES ('Lev2_03','在园企业管理','admin/memberBasic/list/1.html',1,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_04','知识产权','admin/memberIntellectualPro/list/1.html',2,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_08','园区介绍','admin/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
+INSERT INTO `sys_module` VALUES ('Lev2_09','组织架构','admin/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
+INSERT INTO `sys_module` VALUES ('Lev2_10','园区荣誉','admin/news/list/1.html?cateCode=park_honor',3,'Lev1_03',2);
+INSERT INTO `sys_module` VALUES ('Lev2_11','园区大事','admin/news/list/1.html?cateCode=park_event',4,'Lev1_03',2);
+INSERT INTO `sys_module` VALUES ('Lev2_12','国家政策','admin/news/list/1.html?cateCode=policy_regu',1,'Lev1_04',2);
+INSERT INTO `sys_module` VALUES ('Lev2_13','省市政策','admin/news/list/1.html?cateCode=policy_province',2,'Lev1_04',2);
+INSERT INTO `sys_module` VALUES ('Lev2_14','园区政策','admin/news/list/1.html?cateCode=policy_regu',3,'Lev1_04',2);
+INSERT INTO `sys_module` VALUES ('Lev2_15','科技动态','admin/news/list/1.html?cateCode=dynamic_science',1,'Lev1_05',2);
+INSERT INTO `sys_module` VALUES ('Lev2_16','行业动态','admin/news/list/1.html?cateCode=dynamic_industry',2,'Lev1_05',2);
+INSERT INTO `sys_module` VALUES ('Lev2_17','企业动态','admin/news/list/1.html?cateCode=dynamic_enterprise',3,'Lev1_05',2);
+INSERT INTO `sys_module` VALUES ('Lev2_18','物业招租','admin/news/list/1.html?cateCode=info_lease',1,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_19','工程招标','admin/news/list/1.html?cateCode=info_tender',2,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_20','人员招聘','admin/news/list/1.html?cateCode=info_recruit',3,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_21','展览服务','admin/news/list/1.html?cateCode=style_exhibition',1,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_22','新技术新材料','admin/news/list/1.html?cateCode=style_tech',2,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_23','生物医药与技术','admin/news/list/1.html?cateCode=style_medicine',3,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_24','电子与信息','admin/news/list/1.html?cateCode=style_electronic',4,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_25','其他','admin/news/list/1.html?cateCode=style_other',5,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_26','入园指南','admin/news/list/1.html?cateCode=service_inpark',1,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_27','出园指南','admin/news/list/1.html?cateCode=service_outpark',2,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_28','证照办理','admin/news/list/1.html?cateCode=service_license',3,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_29','综合服务','admin/news/list/1.html?cateCode=service_multiple',4,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_30','成果转化','admin/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
 
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_08','园区介绍','manager/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_09','组织架构','manager/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_10','园区荣誉','manager/news/list/1.html?cateCode=park_honor',3,'Lev1_03',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_11','园区大事','manager/news/list/1.html?cateCode=park_event',4,'Lev1_03',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_12','国家政策','manager/news/list/1.html?cateCode=policy_regu',1,'Lev1_04',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_13','省市政策','manager/news/list/1.html?cateCode=policy_province',2,'Lev1_04',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_14','园区政策','manager/news/list/1.html?cateCode=policy_regu',3,'Lev1_04',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_15','科技动态','manager/news/list/1.html?cateCode=dynamic_science',1,'Lev1_05',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_16','行业动态','manager/news/list/1.html?cateCode=dynamic_industry',2,'Lev1_05',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_17','企业动态','manager/news/list/1.html?cateCode=dynamic_enterprise',3,'Lev1_05',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_18','物业招租','manager/news/list/1.html?cateCode=info_lease',1,'Lev1_06',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_19','工程招标','manager/news/list/1.html?cateCode=info_tender',2,'Lev1_06',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_20','人员招聘','manager/news/list/1.html?cateCode=info_recruit',3,'Lev1_06',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_21','展览服务','manager/news/list/1.html?cateCode=style_exhibition',1,'Lev1_07',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_22','新技术新材料','manager/news/list/1.html?cateCode=style_tech',2,'Lev1_07',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_23','生物医药与技术','manager/news/list/1.html?cateCode=style_medicine',3,'Lev1_07',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_24','电子与信息','manager/news/list/1.html?cateCode=style_electronic',4,'Lev1_07',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_25','其他','manager/news/list/1.html?cateCode=style_other',5,'Lev1_07',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_26','入园指南','manager/news/list/1.html?cateCode=service_inpark',1,'Lev1_08',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_27','出园指南','manager/news/list/1.html?cateCode=service_outpark',2,'Lev1_08',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_28','证照办理','manager/news/list/1.html?cateCode=service_license',3,'Lev1_08',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_29','综合服务','manager/news/list/1.html?cateCode=service_multiple',4,'Lev1_08',2);
-INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_30','成果转化','manager/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
 
 
+CREATE TABLE `member_intellectual_pro` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
+  `ProjectLevel` int(4) DEFAULT '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
+  `ProjectType` varchar(255) DEFAULT NULL COMMENT '项目类别',
+  `ProjectName` varchar(255) DEFAULT NULL COMMENT '项目名称',
+  `ApplyAmount` float(5,3) DEFAULT '0.000' COMMENT '申报额度(万)',
+  `IsSetUp` int(1) DEFAULT '0' COMMENT '是否立项0不立项 1立项',
+  `SetUpAmount` float(5,3) DEFAULT '0.000' COMMENT '立项资助金额(万)',
+  `ApplyTime` date DEFAULT NULL COMMENT '申报时间',
+  `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='知识产权';
+
+#
+# Dumping data for table member_intellectual_pro
+#
+
+INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2015-01-22',0);
+
+#
+# Source for table member_patent
+#
+
+CREATE TABLE `member_patent` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `MemberNo` varchar(50) DEFAULT NULL COMMENT '企业编号',
+  `Type` varchar(20) DEFAULT NULL COMMENT '专利类别',
+  `Name` varchar(255) DEFAULT NULL COMMENT '专利名称',
+  `PatentNo` varchar(255) DEFAULT NULL COMMENT '专利编号',
+  `ApplyTime` date DEFAULT NULL COMMENT '获取时间',
+  `Status` varchar(255) DEFAULT NULL COMMENT '发送状态',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='专利';
+
+#
+# Dumping data for table member_patent
+#
+
+INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法',' 200910040956.3',NULL,NULL);
+INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7',NULL,NULL);

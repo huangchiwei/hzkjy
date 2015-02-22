@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberPatentOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	Id,MemberNo,Type,Name,PatentNo,ApplyTime
+	</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from member_patent  where 1=1
+		<if test="parm.startTime!= null and parm.startTime != ''">
+		<if test="parm.endTime!= null and parm.endTime != ''">
+		and ApplyTime between #{parm.startTime} and #{parm.endTime}
+		</if>
+		</if>
+		order by ApplyTime desc
+	  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				order by id desc
+	</sql>
+
+    <select id="findByKey" resultType="java.util.Map" parameterType="Long">
+		select * from member_patent where Id = #{id}
+	</select>
+
+	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
+		select * 
+		<include refid="condition" />
+		
+	</select>
+	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		<include refid="org.armysoft.ibatis.commonsql.mysqlpager"/>
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="memberIntellectualPro">
+		insert into member_patent(MemberNo,Type,Name,PatentNo,ApplyTime)
+		values(#{memberNo} 		
+		, #{type} 		
+		, #{name} 		
+		,       #{patentNo}
+		 ,		#{applyTime}
+		  )
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="memberIntellectualPro">
+		update member_patent set 
+		 										Type=#{type}
+		 								,		Name=#{name}
+		 								,		PatentNo=#{patentNo}
+		 								,		ApplyTime=#{applyTime}
+		 							where Id = #{id}
+	</update>
+	<update id="updateStatus" parameterType="java.util.Map">
+		update member_patent set 
+  									Status=#{status}
+		 							where Id = #{id}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from member_patent where Id = #{id}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>
