@@ -7,11 +7,18 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime</sql>
+	ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime,ReceiverBh</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from bs_news
 		where 1 = 1	
+		<if test="parm.ftitle != null and parm.ftitle != ''">
+		and title  like CONCAT('%', #{parm.ftitle}, '%')
+		</if>
+		<if test="parm.receiverBh != null and parm.receiverBh != ''">
+		and title  = #{parm.receiverBh}
+		</if>
+		
 	</sql>
 	<!-- 实体映射 -->
 	<resultMap id="bsNewsMap" type="bsNews">
@@ -24,10 +31,11 @@
 				<result column="Creater" property="creater" />
 				<result column="IsReport" property="isReport" />
 			    <result column="CreateTime" property="createTime" />
+			      <result column="ReceiverBh" property="receiverBh" />
    </resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime
+select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime,ReceiverBh
 	from bs_news
 		where 1 = 1	 
 		
@@ -47,7 +55,7 @@ select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,Create
 		select * from bs_news where Hybh = #{hybh}
 	</select>
 	
-	<select id="findByNewHybh" resultMap="memberBasicMap" parameterType="java.util.Map">
+	<select id="findByNewHybh" resultMap="bsNewsMap" parameterType="java.util.Map">
 		select * from member_basic where substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2} ORDER BY id DESC LIMIT 1 
 	</select>
 	
@@ -75,8 +83,10 @@ select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,Create
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="bsNews">
-		insert into bs_news(Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime)
-		values(#{title} 		
+		insert into bs_news(ReceiverBh,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime)
+		values(
+		#{receiverBh} 
+		,#{title} 		
 		, #{receiver} 		
 		, #{iseveryone} 		
 		,       #{activeTime}
@@ -90,6 +100,7 @@ select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,Create
 	<!-- 修改 -->
 	<update id="update" parameterType="bsNews">
 		update bs_news set 
+		ReceiverBh=#{receiverBh},
 		Title=#{title}
 		 								,Receiver=#{receiver}
 		 								,Iseveryone=#{iseveryone}

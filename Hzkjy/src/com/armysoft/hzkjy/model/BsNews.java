@@ -48,7 +48,15 @@ public class  BsNews implements java.io.Serializable {
       private   String creater;   
       private   String content;   
       private   Date activeTime;   
-      public Date getActiveTime() {
+      
+      private String receiverBh;
+      public String getReceiverBh() {
+		return receiverBh;
+	}
+	public void setReceiverBh(String receiverBh) {
+		this.receiverBh = receiverBh;
+	}
+	public Date getActiveTime() {
 		return activeTime;
 	}
 	public void setActiveTime(Date activeTime) {

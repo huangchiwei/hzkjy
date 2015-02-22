@@ -24,7 +24,7 @@ $("#fssq option[value='${fssq}']").attr("selected", true);
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
 });
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/memberBasic/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/bsNews/list/1.html");
 	document.getElementById("search_form").submit();
     }   
    function out(){    
@@ -131,7 +131,7 @@ function loadPageLayer2(title,url){
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/admin/memberBasic/delete/' + id + '.html';
+		          location.href='${ctx}/admin/bsNews/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);
@@ -150,7 +150,7 @@ function loadPageLayer2(title,url){
 <div class="content_box">
   <div class="btn_box">
 
-  		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html'"/>
+  		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/bsNews/add/new.html'"/>
      
   </div>
   <div class="list_info">
@@ -159,11 +159,9 @@ function loadPageLayer2(title,url){
     <div class="div2">
       <dl class="relative h30">
         <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;标题：<input type="text" id="ftitle" name="ftitle" value="${ftitle}" />
         	</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-                    <dt><input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/></dt>
-           <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
     </div>
@@ -192,17 +190,23 @@ function loadPageLayer2(title,url){
 	       	<c:set var="hy_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
-	      <tr ondblclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'">
+	      <tr ondblclick="javascript:location.href='${ctx}/admin/bsNews/add/new.html?id=${mb.id}'">
 	           	<td>${sta.index + 1}</td>
-	           	<td>${mb.hybh}</td>
-	        <td>${mb.qymc}</td>
-	        <td>${mb.address}</td>
-	        <td>${mb.zydy}</td>
-	        <td>${mb.mj}</td>
+	           	<td>${mb.title}</td>
+	        <td><fmt:formatDate value="${mb.activeTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+	        <td><fmt:formatDate value="${mb.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+	        <td>
+	        <c:if test="${mb.isReport == 0}">
+	                               否
+	          		</c:if>
+	          <c:if test="${mb.isReport == 1}">
+	                              是
+	          		</c:if>
+	        </td>
 	        <td>
 	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/bsNews/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
 	          	<c:if test="${hy_del == true}">

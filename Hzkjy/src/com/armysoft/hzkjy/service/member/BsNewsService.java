@@ -58,7 +58,7 @@ public class BsNewsService extends BaseDao {
 	}
 	
 	
-	public MemberBasic findByNewHybh(String hybh1,String hybh2) {
+	public BsNews findByNewHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("hybh1", hybh1);
 		params.put("hybh2", hybh2);
@@ -98,7 +98,7 @@ public class BsNewsService extends BaseDao {
 	 * 批量添加
 	 * @param quests
 	 */
-	public void batchInsert(List<MemberBasic> lists) {
+	public void batchInsert(List<BsNews> lists) {
 		super.nativeInsert(nameSpace + ".batchInsert", lists);
 	}
 
