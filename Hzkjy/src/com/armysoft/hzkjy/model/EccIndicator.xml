@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EccIndicatorOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from ecc_indicator
+		where 1 = 1	
+			<if test="parm.fjjzbNy != null and parm.fjjzbNy != ''">
+		and JjzbNy  = #{parm.fjjzbNy}
+		</if>
+		order by Hyfl
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="eccIndicatorMap" type="eccIndicator">
+				<result column="ID" property="id" />
+				<result column="Hybh" property="hybh" />
+				<result column="Rzqy" property="rzqy" />
+				<result column="Hyfl" property="hyfl" />
+				<result column="Zczj" property="zczj" />
+				<result column="JgmzsrBys" property="jgmzsrBys" />
+				<result column="JgmzsrLjs" property="jgmzsrLjs" />
+				<result column="LrzeBys" property="lrzeBys" />
+			    <result column="LrzeLjs" property="lrzeLjs" />
+			    <result column="NsBys" property="nsBys" />
+			    <result column="NsLjs" property="nsLjs" />
+			    <result column="LszeBys" property="lszeBys" />
+			    <result column="LszeLjs" property="lszeLjs" />
+			    <result column="Ch" property="ch" />
+			    <result column="Zgs" property="zgs" />
+			    <result column="Yfjf" property="yfjf" />
+			    <result column="Gxjscpsr" property="gxjscpsr" />
+			    <result column="Gyzcz" property="gyzcz" />
+			    <result column="Gyzjz" property="gyzjz" />
+			    <result column="JjzbNy" property="jjzbNy" />
+			                                                      
+   </resultMap>
+			
+<select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
+select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy
+	from  ecc_indicator
+		where 1 = 1	 
+		
+ order by id desc
+	</select>			
+			
+	<select id="sumCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		from  ecc_indicator
+		where 1 = 1	
+	</select>
+    <select id="findById" resultMap="eccIndicatorMap" parameterType="Long">
+		select * from  ecc_indicator where id = #{id}
+	</select>
+	
+	<select id="findByHybh" resultMap="eccIndicatorMap" parameterType="String">
+		select * from bs_news where Hybh = #{hybh}
+	</select>
+	
+	<select id="findByNewHybh" resultMap="eccIndicatorMap" parameterType="java.util.Map">
+		select * from member_basic where substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2} ORDER BY id DESC LIMIT 1 
+	</select>
+	
+	<select id="HybhCount" resultType="int" parameterType="java.util.Map">
+		select count(*) from member_basic where  substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2}
+	</select>
+	
+	<select id="getSelectedCorpNameList" parameterType="String" resultType="java.util.Map" >
+		select hybh,qymc,qymcpy from member_basic where Zt=#{value} ORDER BY hybh DESC 
+	</select>
+	
+	<select id="getQyxx" parameterType="String" resultType="java.util.Map" >
+		select hybh,zydy,mj from member_basic where qymc=#{value} ORDER BY hybh DESC LIMIT 1 
+	</select>
+		
+	<select id="page" resultMap="eccIndicatorMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="eccIndicator">
+		insert into ecc_indicator(Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy)
+		values(
+		#{hybh} 
+		,#{rzqy} 		
+		, #{hyfl} 		
+		, #{zczj} 		
+		, #{jgmzsrBys}
+		, #{jgmzsrLjs}
+		, #{lrzeBys}
+		, #{lrzeLjs}
+		, #{nsBys}
+		, #{nsLjs} 		
+		, #{lszeBys} 		
+		, #{lszeLjs}
+		, #{ch}
+		, #{zgs}
+		, #{yfjf}
+		, #{gxjscpsr}
+		, #{gyzcz}
+		, #{gyzjz}
+		, #{jjzbNy}
+		  )
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="eccIndicator">
+		update ecc_indicator set 
+		Hybh=#{hybh},
+		Rzqy=#{rzqy},
+		Hyfl=#{hyfl},
+		Zczj=#{zczj},
+		JgmzsrBys=#{jgmzsrBys},
+		JgmzsrLjs=#{jgmzsrLjs},
+		LrzeBys=#{lrzeBys},
+		LrzeLjs=#{lrzeLjs},
+		NsBys=#{nsBys},
+		NsLjs=#{nsLjs},
+		LszeBys=#{lszeBys},
+		LszeLjs=#{lszeLjs},
+		Ch=#{ch},
+		Zgs=#{zgs},
+		Yfjf=#{yfjf},
+		Gxjscpsr=#{gxjscpsr},
+		Gyzcz=#{gyzcz},
+		Gyzjz=#{gyzjz},
+		JjzbNy=#{jjzbNy},
+		where ID = #{id}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from ecc_indicator where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>

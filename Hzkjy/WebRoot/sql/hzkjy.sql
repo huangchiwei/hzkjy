@@ -285,3 +285,30 @@ CREATE TABLE `member_patent` (
 
 INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法',' 200910040956.3',NULL,NULL);
 INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7',NULL,NULL);
+
+
+DROP TABLE IF EXISTS `ecc_indicator`;
+CREATE TABLE `ecc_indicator` (
+  `ID` int(11) NOT NULL auto_increment,
+  `Hybh` varchar(50) default NULL  COMMENT '会员编号',
+  `Rzqy` varchar(100) default NULL COMMENT '入驻企业',
+  `Hyfl` varchar(50) default NULL COMMENT '行业分类',
+  `Zczj` varchar(100) default NULL COMMENT '注册资金',
+  `JgmzsrBys` varchar(50) default NULL COMMENT '技工贸总收入本月数',
+  `JgmzsrLjs` varchar(50) default NULL COMMENT '技工贸总收入累计数',
+  `LrzeBys` varchar(50) default NULL COMMENT '利润总额本月数',
+  `LrzeLjs` varchar(50) default NULL COMMENT '利润总额累计数',
+ `NsBys` varchar(50) default NULL COMMENT '纳税本月数',
+ `NsLjs` varchar(50) default NULL COMMENT '纳税累计数',
+ `LszeBys` varchar(50) default NULL COMMENT '利税总额本月数',
+ `LszeLjs` varchar(50) default NULL COMMENT '利税总额累计数',
+ `Ch` varchar(50) default NULL COMMENT '创汇',
+ `Zgs` varchar(50) default NULL COMMENT '职工数',
+ `Yfjf` varchar(50) default NULL COMMENT '研发经费',
+  `Gxjscpsr` varchar(50) default NULL COMMENT '高新技术产品收入',
+  `Gyzcz` varchar(50) default NULL COMMENT '工业总产值',
+  `Gyzjz` varchar(50) default NULL COMMENT '工业增加值',
+ `JjzbNy` varchar(50) default NULL COMMENT '经济指标年月',
+
+  PRIMARY KEY  (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
