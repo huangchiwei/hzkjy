@@ -17,7 +17,7 @@
 <link type="text/css" rel="stylesheet" href="${ctx}/js/formValidator/style/validatorTidyMode.css" />
 <script src="${ctx}/js/formValidator/formValidator-4.0.1.js" type="text/javascript"></script>
 <script src="${ctx}/js/formValidator/formValidatorRegex.js" type="text/javascript"></script> 
-<script language="javascript" src="${ctx}/js/jsp/member/MemberBasicV.js" type="text/javascript"></script>
+<script language="javascript" src="${ctx}/js/jsp/member/memberRentalV.js" type="text/javascript"></script>
 <script type="text/javascript" src="${ctx }/ckeditor/ckeditor.js"></script>
 		<script type="text/javascript" src="${ctx }/ckfinder/ckfinder.js"></script> 
 		<script type="text/javascript" src="${ctx}/js/jquery_autocomplete/jquery.autocomplete.js"></script>
@@ -55,6 +55,73 @@ function loadQyxx(){
 
 var corpNameJson="";
 
+
+function sumhjje(){
+var qyzj;
+var glfwf;
+var qysf;
+var qydf;
+if($("#qyzj").val()==""){
+	qyzj="0.0";
+	}else{
+	qyzj=$("#qyzj").val();
+	}
+	if($("#glfwf").val()==""){
+	glfwf="0.0";
+	}else{
+	glfwf=$("#glfwf").val();
+	}
+	if($("#qysf").val()==""){
+	qysf="0.0";
+	}else{
+	qysf=$("#qysf").val();
+	}
+	if($("#qydf").val()==""){
+	qydf="0.0";
+	}else{
+	qydf=$("#qydf").val();
+	}
+
+	var sumhjje=parseFloat(qyzj)+parseFloat(glfwf)+parseFloat(qysf)+parseFloat(qydf);
+	  $("#hjje").attr("value",sumhjje);
+	}
+	
+	
+	function sumshjyl(){
+var ssyhd;
+var sbyhd;
+if($("#ssyhd").val()==""){
+	ssyhd="0.0";
+	}else{
+	ssyhd=$("#ssyhd").val();
+	}
+	if($("#sbyhd").val()==""){
+	sbyhd="0.0";
+	}else{
+	sbyhd=$("#sbyhd").val();
+	}
+
+	var sumshjyl=parseFloat(sbyhd)-parseFloat(ssyhd);
+	  $("#shjyl").attr("value",sumshjyl);
+	}
+	
+	function sumdhjyl(){
+var dsyhd;
+var dbyhd;
+if($("#dsyhd").val()==""){
+	dsyhd="0.0";
+	}else{
+	dsyhd=$("#dsyhd").val();
+	}
+	if($("#dbyhd").val()==""){
+	dbyhd="0.0";
+	}else{
+	dbyhd=$("#dbyhd").val();
+	}
+
+		var sumdhjyl=parseFloat(dbyhd)-parseFloat(dsyhd);
+	  $("#dhjyl").attr("value",sumdhjyl);
+	}
 
 function loadCorpName(){
 	if(corpNameJson!=""){
@@ -97,7 +164,11 @@ function corpAutocomplete(data){
 	});
 }
 
-
+function rtnn(val){
+	if(val.value==""){
+	val.value="0.0";
+	}
+	}
 </script>
 
 
@@ -122,55 +193,104 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th class="w100">企业名称:</th>
      <td>
-     	<input id="qymc" name="qymc" type="text" value="${model.qymc}" maxlength="100" style="width:160px" onfocus="loadCorpName();" onblur="loadQyxx();" />
+     	<input id="qymc" name="qymc" type="text" value="${model.qymc}" maxlength="100" onfocus="loadCorpName();" onblur="loadQyxx();" />
      </td>
      
      <th>会员编号：</th>
      <td>
      	<input id="hybh" name="hybh" type="text" value="${model.hybh}" maxlength="20" readonly="true" />
      </td>
-     <th>企业面积：</th>
+    <th>企业面积：</th>
      <td>
-    	<input id="qymj" name="qymj" type="text" value="${model.qymj}" maxlength="100" style="width:160px"  />平方
+    	<input id="qymj" name="qymj" type="text" value="${model.qymj}" maxlength="100"   />平方
      </td>
-     
+  
     </tr>
 	    <tr>
-	     <th>租用单元：</th>
-	     <td>
-	     <input id="zydy" name="zydy" type="text" value="${model.zydy}" maxlength="100" style="width:160px"  />
-	     </td>
+	     
+	     
 	     <th>企业租金：</th>
 	     <td>
-	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}"/>
+	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}"  onblur="rtnn(this);sumhjje();"/>
 	     	</td>
+	     	
+	     <th>租金属期：</th>
+	     <td>
+	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" value="${model.zjsq}"/>
+	     	</td> 	
+	     <th>租金备注：</th>
+	     <td>
+	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" value="${model.zjbz}"/>
+	     	</td> 	
+	    
+	    </tr>
+	    <tr>
+	    
 	     <th>管理服务费：</th>
 	   	 <td>
-	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}"/>
+	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}"  onblur="rtnn(this);sumhjje();"/>
+	   	 </td>
+	     <th>管理费属期：</th>
+	   	 <td>
+	   	 	<input name="glfsq"  id="glfsq" type="text" class="input_a1" value="${model.glfsq}"/>
+	   	 </td>
+	   	  <th>管理费备注：</th>
+	   	 <td>
+	   	 	<input name="glfbz"  id="glfbz" type="text" class="input_a1" value="${model.glfbz}"/>
 	   	 </td>
 	    </tr>
-    <tr>
-     <th>水上月行度：</th>
+	    <tr>
+	    <th>企业水费：</th>
      <td>
-     	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}"/>吨
+     	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}"  onblur="rtnn(this);sumhjje();"/>
+     </td>
+	   <th>水费属期：</th>
+     <td>
+     	<input name="sfsq"  id="sfsq" type="text" class="input_a1" value="${model.sfsq}"/>
+     </td>
+     <th>水费备注：</th>
+     <td>
+     	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+     </td>
+      
+	    </tr>
+	    <tr>
+      <th>水上月行度：</th>
+     <td>
+     	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}"  onblur="rtnn(this);sumshjyl();"/>吨
      </td>
      <th>水本月行度：</th>
      <td>
-     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}"/>吨
+     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}"  onblur="rtnn(this);sumshjyl();"/>吨
      </td>
-     <th>水合计用量：</th>
+    <th>水合计用量：</th>
      <td>
-     	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}"/>吨
+     	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}" />吨
      </td>
     </tr>
     <tr>
+	    <tr>
+	     <th>企业电费：</th>
+     <td>
+     	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}"  onblur="rtnn(this);sumhjje();"/>
+     </td>
+       <th>电费属期：</th>
+     <td>
+     	<input name="dfsq"  id="dfsq" type="text" class="input_a1" value="${model.dfsq}"/>
+     </td>
+       <th>电费备注：</th>
+     <td>
+     	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+     </td>
+	    </tr>
+    
      <th>电上月行度：</th>
      <td>
-     	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}"/>度
+     	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}" onblur="rtnn(this);sumdhjyl();"/>度
      </td>
      <th>电本月行度：</th>
      <td>
-     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}"/>度
+     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}" onblur="rtnn(this);sumdhjyl();"/>度
      </td>
      <th>电合计用量：</th>
      <td>
@@ -180,7 +300,7 @@ html { overflow:-moz-scrollbars-vertical;}
      <tr>
      <th>其它费用：</th>
      <td>
-     	<input name="qtfy"  id="qtfy" type="text" class="input_a1" value="${model.qtfy}"/>
+     	<input name="qtfy"  id="qtfy" type="text" class="input_a1" value="${model.qtfy}"   onblur="rtnn(this);"/>
      </td>
      <th>合计金额：</th>
      <td>
@@ -192,17 +312,16 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
     </tr>
      <tr>
-     <th>企业电费：</th>
+       <th>租用单元：</th>
+	     <td>
+	     <input id="zydy" name="zydy" type="text" value="${model.zydy}" maxlength="100"  />
+	     </td>
+     
+     <th></th>
      <td>
-     	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}"/>
      </td>
-     <th>企业水费：</th>
+      <th></th>
      <td>
-     	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}"/>
-     </td>
-     <th>缴费年月：</th>
-     <td>
-     <input name="jfyd"  id="jfyd" type="text" class="input_a1" onclick="WdatePicker({dateFmt:'yyyy-MM'});"/>
      </td>
     </tr>
     

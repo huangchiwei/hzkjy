@@ -1,7 +1,9 @@
 package com.armysoft.hzkjy.controller.admin.member;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,6 +16,10 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import org.armysoft.core.Pagination;
 import org.armysoft.springmvc.controller.BaseController;
@@ -59,6 +65,7 @@ public class  RentalExamineController extends BaseController {
         dateFormat.setLenient(true);   
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
+	private static String url = null;
 	/**
 	 * 条件分页查询
 	 * @param currentPage
@@ -85,7 +92,94 @@ public class  RentalExamineController extends BaseController {
 	}
 
 	
+	@RequestMapping("printHuiZhiList")
+	@ResponseBody
+	public void printHuiZhiList(String ids, HttpServletRequest request,
+			HttpServletResponse response) throws IOException, JRException {
+		String[] idArr = ids.split(",");
+		List<MemberRental> stuList = service.findByIds(idArr);
+		this.exportPdf(stuList, request, response);
+	}
 
+	@SuppressWarnings("unchecked")
+	public void exportPdf(List<MemberRental> stuList,
+			HttpServletRequest request, HttpServletResponse response)
+			throws JRException, IOException {
+		List<Map> data = new ArrayList<Map>();
+		Map map = null;
+		for (MemberRental stu : stuList) {
+			map = new HashMap();
+			initPdfMap(map, stu);
+			data.add(map);
+		}
+
+		File reportFile = new File(this.getUrl() + "reportHuiZhi_map.jasper");
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(
+				data);
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		// parameters.put("StuIds", dataSource);
+		byte[] bytes = JasperRunManager.runReportToPdf(reportFile
+				.getPath(), parameters, dataSource);
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		OutputStream ouputStream = null;
+		ouputStream = response.getOutputStream();
+		ouputStream.write(bytes);
+		ouputStream.flush();
+		ouputStream.close();
+		/*
+		JasperPrint jasperPrint = JasperFillManager.fillReport(reportFile
+				.getPath(), parameters, dataSource);
+		JRPdfExporter exporter = new JRPdfExporter();
+		resp.setContentType("application/pdf");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setHeader("Content-Disposition", "attachment; filename=\""
+				+ URLEncoder.encode("PDF报表", "UTF-8") + ".pdf\"");
+		OutputStream ouputStream = resp.getOutputStream();
+		exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+		exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, ouputStream);
+		exporter.exportReport();
+		ouputStream.close();
+		*/
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void initPdfMap(Map map, MemberRental mb) {
+		map.put("Id", mb.getId());
+		map.put("Qymc", mb.getQymc() + "");
+		map.put("Qyzj", mb.getQyzj()+"");
+//		String stuDiploma[] = { "初中", "高中", "大专", "本科", "研究生", "博士" };
+//		map.put("StuDiploma", stuDiploma[Integer.valueOf(mb.getStuDiploma())]);
+//		map.put("EduPeriod", mb.getEduPeriod() + "");
+//		map.put("StuNo", mb.getStuNo());
+//		map.put("StuTel", mb.getStuTel());
+//		map.put("StuPhone", mb.getStuPhone());
+//		map.put("StuAddress", mb.getStuAddress());
+//		map.put("StuWorkUnit", mb.getStuWorkUnit() == null ? "" : mb
+//				.getStuWorkUnit());
+//		map.put("StuCertType", mb.getStuCertType() + "");
+//		map.put("StuCertNo", mb.getStuCertNo() + "");
+//		map.put("LicensingDay", new SimpleDateFormat("yyyy-MM-dd").format(mb
+//				.getLicensingDay())
+//				+ "");
+//		map.put("CertStartDay", new SimpleDateFormat("yyyy-MM-dd").format(mb
+//				.getCertStartDay())
+//				+ "");
+//		map.put("CertEndDay", new SimpleDateFormat("yyyy-MM-dd").format(mb
+//				.getCertEndDay())
+//				+ "");
+//		map.put("EduType", mb.getEduType() + "");
+//		map.put("SignDate", new SimpleDateFormat("yyyy-MM-dd").format(mb
+//				.getSignDate()));
+//		String newmm = mb.getStuNo().substring(0, 1)
+//				+ mb.getStuNo().substring(2, 3) + mb.getStuNo().substring(4, 5)
+//				+ mb.getStuNo().substring(6, 7) + mb.getStuNo().substring(8, 9)
+//				+ mb.getStuNo().substring(10, 11)
+//				+ mb.getStuNo().substring(12, 13)
+//				+ mb.getStuNo().substring(14, 15);
+//		map.put("SignPass", newmm);
+	}
 	/**
 	 * 详情/准备修改
 	 * @param key
@@ -97,7 +191,16 @@ public class  RentalExamineController extends BaseController {
 		model.addAttribute("model", service.findByKey(key));
 		return "admin/member/RentalExamineV";
 	}
-
+     
+	
+	private String getUrl() {
+		if (url == null) {
+			String con1 = System.getProperty("mmce");
+			String _url = con1 + "/jasper/hz/";
+			url = _url + "\\";
+		}
+		return url;
+	}
 	/**
 	 * 准备添加
 	 * @return

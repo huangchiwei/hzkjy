@@ -22,8 +22,36 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+
+$('#checkAll').click(function(){
+	$('input[name="qyId"]').attr("checked",this.checked);
+});
 });
 
+
+var myWindow;
+function printHuiZhiList(){
+	var stuInput = $('input[name="stuId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要打印的企业。');
+		return;
+	}
+	ids = ids.substring(0,ids.length - 1);
+	myWindow = $.layer({
+	    type: 2,
+	    maxmin: true,
+	    shadeClose: true,
+	    title: "批量打印",
+	    shade: [0.1,'#fff'],
+	    offset: ['20px',''],
+	    area: ['950px', '650px'],
+	    iframe: {src: "${ctx}/admin/studentSign/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
+	});
+}
 
 function loadPageLayer(title,url){
 	var mypop = $.layer({
@@ -211,6 +239,7 @@ function loadPageLayer2(title,url){
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>
+	  	<th><input type="checkbox" id="checkAll"/>全选</th>
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
@@ -237,6 +266,7 @@ function loadPageLayer2(title,url){
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/memberRental/add/new.html?id=${mb.id}'">
+	      <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
@@ -264,7 +294,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="9"></td>
+        <td colspan="10"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -272,7 +302,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="11">
+			<td colspan="12">
 				<div class="page">
 					<p:pager/>
 				</div>

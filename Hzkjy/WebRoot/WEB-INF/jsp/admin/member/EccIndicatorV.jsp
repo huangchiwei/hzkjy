@@ -17,7 +17,7 @@
 <link href="${ctx}/js/jquery_autocomplete/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 $(document).ready(function(){
-	 $("#hyfl option[value='${model.hyfl}']").attr("selected", true); 
+	 $("#hyfl option[value='${model.hyfl}']").attr("selected", true);  
 	 
 	formInitConfig("add_form",3000);
 	autoValidate();
@@ -251,7 +251,7 @@ html { overflow:-moz-scrollbars-vertical;}
      <td>
      
      <input id="jjzbNy" name="jjzbNy" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" type="text" 
-     	value="<fmt:formatDate value="${model.jjzbNy}" pattern="yyyy-MM"/>" maxlength="20"/>
+     	value="${model.jjzbNy}" maxlength="20"/>
      </td>
       <th></th>
      <td>

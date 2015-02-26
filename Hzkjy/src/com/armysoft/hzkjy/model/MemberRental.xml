@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz</sql>
+	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_rental
@@ -35,6 +35,14 @@
 			    <result column="Dsyhd" property="dsyhd" />
 			    <result column="Dbyhd" property="dbyhd" />
 			    <result column="Bz" property="bz" />
+			    <result column="Zjsq" property="zjsq" />
+			    <result column="Glfsq" property="glfsq" />
+			    <result column="Sfsq" property="sfsq" />
+			    <result column="Dfsq" property="dfsq" />
+			    <result column="Zjbz" property="zjbz" />
+			    <result column="Glfbz" property="glfbz" />
+			    <result column="Sfbz" property="sfbz" />
+			    <result column="Dfbz" property="dfbz" />
 			    
 				
 				
@@ -42,7 +50,7 @@
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz
+select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz
 	 from member_rental
 		where 1 = 1
 		
@@ -54,6 +62,13 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 		from member_rental
 		where 1 = 1	
 	</select>
+	
+	<select id="findByIds" resultMap="memberRentalMap">
+		select * from member_rental where Id in
+			<foreach collection="array" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			</select>
     <select id="findById" resultMap="memberRentalMap" parameterType="Long">
 		select * from member_rental where id = #{id}
 	</select>
@@ -74,7 +89,7 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberRental">
-		insert into member_rental(Bz,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy)
+		insert into member_rental(Bz,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz)
 	
 		values(
 		#{bz}, 
@@ -97,6 +112,14 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 	    , #{dsyhd}
 	    , #{dbyhd}
 	    , #{zydy}
+	    , #{zjsq}
+	     , #{glfsq}
+	     , #{sfsq}
+	     , #{dfsq}
+	     , #{zjbz}
+	     , #{glfbz}
+	     , #{sfbz}
+	     , #{dfbz}
 		  )
 		</insert>
 	<!-- 修改 -->
@@ -121,6 +144,14 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 										,Dbyhd=#{dbyhd}
 									    ,Zydy=#{zydy}
 									     ,Bz=#{bz}
+									     ,Zjsq=#{zjsq}
+									     ,Glfsq=#{glfsq}
+									     ,Sfsq=#{sfsq}
+									     ,Dfsq=#{dfsq}
+									     ,Zjbz=#{zjbz}
+									     ,Glfbz=#{glfbz}
+									     ,Sfbz=#{sfbz}
+									     ,Dfbz=#{dfbz}
 		 							    where ID = #{id}
 	</update>
 

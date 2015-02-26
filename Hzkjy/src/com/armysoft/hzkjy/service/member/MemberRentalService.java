@@ -54,7 +54,9 @@ public class MemberRentalService extends BaseDao {
 	public Integer getCount(Map<String, Object> params){
 		return super.nativeSelectOne(nameSpace + ".sumCount", params);
 	}
-	
+	public List<MemberRental> findByIds(String[] idArr) {
+		return super.nativeList(nameSpace + ".findByIds", idArr);
+	}
 	
 	public MemberRental findByNewHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();

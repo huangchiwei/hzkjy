@@ -19,6 +19,62 @@ public class  MemberRental implements java.io.Serializable {
 	 private String fbzt;
 	 private String jfyd;
 	 private String bz;
+	 private String zjsq;
+	 public String getZjsq() {
+		return zjsq;
+	}
+	public void setZjsq(String zjsq) {
+		this.zjsq = zjsq;
+	}
+	public String getGlfsq() {
+		return glfsq;
+	}
+	public void setGlfsq(String glfsq) {
+		this.glfsq = glfsq;
+	}
+	public String getSfsq() {
+		return sfsq;
+	}
+	public void setSfsq(String sfsq) {
+		this.sfsq = sfsq;
+	}
+	public String getDfsq() {
+		return dfsq;
+	}
+	public void setDfsq(String dfsq) {
+		this.dfsq = dfsq;
+	}
+	public String getZjbz() {
+		return zjbz;
+	}
+	public void setZjbz(String zjbz) {
+		this.zjbz = zjbz;
+	}
+	public String getGlfbz() {
+		return glfbz;
+	}
+	public void setGlfbz(String glfbz) {
+		this.glfbz = glfbz;
+	}
+	public String getSfbz() {
+		return sfbz;
+	}
+	public void setSfbz(String sfbz) {
+		this.sfbz = sfbz;
+	}
+	public String getDfbz() {
+		return dfbz;
+	}
+	public void setDfbz(String dfbz) {
+		this.dfbz = dfbz;
+	}
+	private String glfsq;
+	 private String sfsq;
+	 private String dfsq;
+	 private String zjbz;
+	 private String glfbz;
+	 private String sfbz;
+	 private String dfbz;
 	 public String getBz() {
 		return bz;
 	}
