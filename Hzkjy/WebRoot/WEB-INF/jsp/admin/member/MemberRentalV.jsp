@@ -308,7 +308,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
      <th>缴费年月：</th>
      <td>
-     <input name="jfyd"  id="jfyd" type="text" class="input_a1" onclick="WdatePicker({dateFmt:'yyyy-MM'});"/>
+     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" onclick="WdatePicker({dateFmt:'yyyy-MM'});"/>
      </td>
     </tr>
      <tr>

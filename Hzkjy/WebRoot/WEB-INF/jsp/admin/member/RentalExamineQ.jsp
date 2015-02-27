@@ -31,7 +31,7 @@ $('#checkAll').click(function(){
 
 var myWindow;
 function printHuiZhiList(){
-	var stuInput = $('input[name="stuId"]:checked');
+	var stuInput = $('input[name="qyId"]:checked');
 	var ids = '';
 	$.each(stuInput,function(i,item){
 		ids += item.value + ",";
@@ -49,7 +49,7 @@ function printHuiZhiList(){
 	    shade: [0.1,'#fff'],
 	    offset: ['20px',''],
 	    area: ['950px', '650px'],
-	    iframe: {src: "${ctx}/admin/studentSign/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
+	    iframe: {src: "${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
 	});
 }
 
@@ -229,7 +229,9 @@ function loadPageLayer2(title,url){
         <dd > 
         &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
         	</dd>
+        	
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
+         <dt><input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/></dt>
          <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>

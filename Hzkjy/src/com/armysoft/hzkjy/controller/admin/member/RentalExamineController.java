@@ -149,6 +149,32 @@ public class  RentalExamineController extends BaseController {
 		map.put("Id", mb.getId());
 		map.put("Qymc", mb.getQymc() + "");
 		map.put("Qyzj", mb.getQyzj()+"");
+		map.put("Hybh", mb.getHybh()+"");
+		map.put("Glfwf", mb.getGlfwf()+"");
+		map.put("Qysf", mb.getQysf()+"");
+		map.put("Qydf", mb.getQydf()+"");
+		map.put("Ssyhd", mb.getSsyhd()+"");
+		map.put("Sbyhd", mb.getSbyhd()+"");
+		map.put("Shjyl", mb.getShjyl()+"");
+		map.put("Dhjyl", mb.getDhjyl()+"");
+		map.put("Qymj", mb.getQymj()+"");
+		map.put("Qtfy", mb.getQtfy()+"");
+		map.put("Shzt", mb.getShzt()+"");
+		map.put("Fbzt", mb.getFbzt()+"");
+		map.put("Jfyd", mb.getJfyd()+"");
+		map.put("Dsyhd", mb.getDbyhd()+"");
+		map.put("Dbyhd", mb.getDbyhd()+"");
+		map.put("Zydy", mb.getZydy()+"");
+		map.put("Hjje", mb.getHjje()+"");
+		map.put("Zjsq", mb.getZjsq()+"");
+		map.put("Glfsq", mb.getGlfsq()+"");
+		map.put("Sfsq", mb.getSfsq()+"");
+		map.put("Dfsq", mb.getDfsq()+"");
+		map.put("Zjbz", mb.getZjbz()+"");
+		map.put("Glfbz", mb.getGlfbz()+"");
+		map.put("Sfbz", mb.getSfbz()+"");
+		map.put("Dfbz", mb.getDfbz()+"");
+		
 //		String stuDiploma[] = { "初中", "高中", "大专", "本科", "研究生", "博士" };
 //		map.put("StuDiploma", stuDiploma[Integer.valueOf(mb.getStuDiploma())]);
 //		map.put("EduPeriod", mb.getEduPeriod() + "");
@@ -195,7 +221,7 @@ public class  RentalExamineController extends BaseController {
 	
 	private String getUrl() {
 		if (url == null) {
-			String con1 = System.getProperty("mmce");
+			String con1 = System.getProperty("Hzkjy");
 			String _url = con1 + "/jasper/hz/";
 			url = _url + "\\";
 		}
