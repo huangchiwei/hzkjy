@@ -61,7 +61,7 @@ public class  MemberBasicController extends BaseController {
 	 */
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,String fhymc,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+	public String getByPage(@PathVariable Integer currentPage,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			MemberBasic entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -69,6 +69,22 @@ public class  MemberBasicController extends BaseController {
 		params.put("fhymc", fhymc);
 		request.setAttribute("fhymc", fhymc);
 		}
+		if(frysjf !="" && frysjf !=null){
+			params.put("frysjf", frysjf);
+			request.setAttribute("frysjf", frysjf);
+			}
+		if(frysje !="" && frysje !=null){
+			params.put("frysje", frysje);
+			request.setAttribute("frysje", frysje);
+			}
+		if(fhtqxf !="" && fhtqxf !=null){
+			params.put("fhtqxf", fhtqxf);
+			request.setAttribute("fhtqxf", fhtqxf);
+			}
+		if(fhtqxe !="" && fhtqxe !=null){
+			params.put("fhtqxe", fhtqxe);
+			request.setAttribute("fhtqxe", fhtqxe);
+			}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
@@ -216,7 +232,7 @@ public class  MemberBasicController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,HttpServletRequest request,HttpServletResponse response) {
 		String title="园区基本资料表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
@@ -228,9 +244,15 @@ public class  MemberBasicController extends BaseController {
 		headData.add(new Object[] { "Zczj","注册资金"});
 		headData.add(new Object[] { "Lxr","联系人"});
 		headData.add(new Object[] { "ZtName","在园出园状态"});
+		headData.add(new Object[] { "Rysj","入园时间"});
+		headData.add(new Object[] { "Htqxf","合同期限至"});
+		headData.add(new Object[] { "Htqxe","合同期限"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
-		
+		params.put("frysjf", frysjf);
+		params.put("frysje", frysje);
+		params.put("fhtqxf", fhtqxf);
+		params.put("fhtqxe", fhtqxe);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);

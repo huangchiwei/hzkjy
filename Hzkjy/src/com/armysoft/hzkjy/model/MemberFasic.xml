@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt</sql>
+	case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt,Rysj,Htqxf,Htqxe</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_basic 
@@ -16,7 +16,21 @@
 		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
 		</if>
 	
-	
+	<if test="parm.frysjf != null and parm.frysjf != ''">
+			and str_to_date(Rysj,'%Y-%m-%d') &gt;= str_to_date(#{parm.frysjf},'%Y-%m-%d') 
+		</if>
+		
+		<if test="parm.frysje != null and parm.frysje != ''">
+		and str_to_date(Rysj,'%Y-%m-%d') &lt;= str_to_date(#{parm.frysje},'%Y-%m-%d') 
+		</if>
+		
+		<if test="parm.fhtqxf != null and parm.fhtqxf != ''"> 
+		and str_to_date(Htqxf,'%Y-%m-%d') &gt;= str_to_date(#{parm.fhtqxf},'%Y-%m-%d') 
+		</if>
+		
+		<if test="parm.fhtqxe != null and parm.fhtqxe != ''">
+		and str_to_date(Htqxe,'%Y-%m-%d') &lt;= str_to_date(#{parm.fhtqxe},'%Y-%m-%d') 
+		</if>
 		
 		
 		
@@ -36,7 +50,9 @@
 			    <result column="Lxr" property="lxr" />
 			    <result column="Zt" property="zt" />
 			    <result column="Qymcpy" property="qymcpy" />
-			    
+			    <result column="Rysj" property="rysj" />
+			    <result column="Htqxf" property="htqxf" />
+			    <result column="Htqxe" property="htqxe" />
 				
 				
 				
@@ -49,7 +65,21 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		<if test="fhymc != null and fhymc != ''">
 		and qymc  like CONCAT('%', #{fhymc}, '%')
 		</if>
+		<if test="frysjf != null and frysjf != ''">
+			and str_to_date(Rysj,'%Y-%m-%d') &gt;= str_to_date(#{frysjf},'%Y-%m-%d') 
+		</if>
 		
+		<if test="frysje != null and frysje != ''">
+		and str_to_date(Rysj,'%Y-%m-%d') &lt;= str_to_date(#{frysje},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhtqxf != null and fhtqxf != ''"> 
+		and str_to_date(Htqxf,'%Y-%m-%d') &gt;= str_to_date(#{fhtqxf},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhtqxe != null and fhtqxe != ''">
+		and str_to_date(Htqxe,'%Y-%m-%d') &lt;= str_to_date(#{fhtqxe},'%Y-%m-%d') 
+		</if>
  order by id desc
 	</select>			
 			
@@ -60,6 +90,21 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		<if test="fhymc != null and fhymc != ''">
 		and qymc  like CONCAT('%', #{fhymc}, '%')
 				</if>
+		<if test="frysjf != null and frysjf != ''">
+			and str_to_date(Rysj,'%Y-%m-%d') &gt;= str_to_date(#{frysjf},'%Y-%m-%d') 
+		</if>
+		
+		<if test="frysje != null and frysje != ''">
+		and str_to_date(Rysj,'%Y-%m-%d') &lt;= str_to_date(#{frysje},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhtqxf != null and fhtqxf != ''"> 
+		and str_to_date(Htqxf,'%Y-%m-%d') &gt;= str_to_date(#{fhtqxf},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhtqxe != null and fhtqxe != ''">
+		and str_to_date(Htqxe,'%Y-%m-%d') &lt;= str_to_date(#{fhtqxe},'%Y-%m-%d') 
+		</if>		
 	</select>
     <select id="findById" resultMap="memberFasicMap" parameterType="Long">
 		select * from member_basic where id = #{id}
@@ -93,7 +138,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberFasic">
-		insert into member_basic(Hybh,Qymc,Address,Zydy,Mj,Fzr,Zczj,Lxr,Zt,Qymcpy)
+		insert into member_basic(Hybh,Qymc,Address,Zydy,Mj,Fzr,Zczj,Lxr,Zt,Qymcpy,Rysj,Htqxf,Htqxe)
 		values(#{hybh} 		
 		, #{qymc} 		
 		, #{address} 		
@@ -104,6 +149,9 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		 ,		#{lxr}
 		 ,		#{zt}
 		 ,		#{qymcpy}
+		 ,		#{rysj}
+		 ,		#{htqxf}
+		 ,		#{htqxe}
 		  )
 		</insert>
 
@@ -120,6 +168,9 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		 								,		Lxr=#{lxr}
 		 								,		Zt=#{zt}
 		 								,		Qymcpy=#{qymcpy}
+		 								,		Rysj=#{rysj}
+		 								,		Htqxf=#{htqxf}
+		 								,		Htqxe=#{htqxe}
 		 							where ID = #{id}
 	</update>
 
