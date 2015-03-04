@@ -10,8 +10,9 @@
 <link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
+
 
 
 
@@ -28,7 +29,8 @@ html { overflow:-moz-scrollbars-vertical;}
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
    </div>
 <form id="add_form" action='${ctx}/admin/memberPatent/save.html' method="post">
-<input type="hidden" name="type" value="${type}"/>
+<input type="hidden" name="ptype" value="${ptype}"/>
+<input type="hidden" name="id" value="${entity.Id}"/>
   <div class="add_info">
 
    <h2>${type=='A'?'添加':'修改' }专利</h2>
@@ -36,6 +38,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th class="w100">专利类别:</th>
      <td>
+     <input id="type" name="type" type="text" value="${entity.Type}" />
       </td>
 
        <th>申报时间：</th>
@@ -49,17 +52,14 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
     <th>专利名称：</th>
      <td>
-     	<input id="name" name="name" type="text" value="${entity.Name}" maxlength="20"/>
+     	<input id="name" name="name" type="text" value="${entity.Name}" />
      </td>
       <th>专利编号：</th>
-     <td colspan="5">
-    	<input id="patentNo" name="patentNo" type="text" value="${entity.PatentNo}" maxlength="500"  size="150"/>
+     <td >
+    	<input id="patentNo" name="patentNo" type="text" value="${entity.PatentNo}"/>
      </td>
     </tr>
-   </table>
-     
-   
-    
+   </table>   
     	<p class="div_submit">
 				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
 				</p>

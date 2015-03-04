@@ -28,7 +28,11 @@ import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 
-
+/**
+ * 科技项目
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("admin/memberIntellectualPro")
 public class  MemberIntellectualProController extends BaseController {
@@ -97,10 +101,12 @@ public class  MemberIntellectualProController extends BaseController {
 	}
 	
 	@RequestMapping(value = SAVE)
-	public String save(MemberIntellectualPro entity, Model model,String type) {
+	public String save(HttpServletRequest request,MemberIntellectualPro entity, Model model,String type) {
 		if(type.equals("U")){
 			memberIntellectualProService.update(entity);
 		}else if(type.equals("A")){
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+			entity.setMemberNo(userNo);
 			memberIntellectualProService.insert(entity);
 		}
 		return "redirect://admin/memberIntellectualPro/list/1.html";

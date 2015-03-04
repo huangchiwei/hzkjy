@@ -10,10 +10,32 @@
 <link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
+
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
-
-
+<script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" >
+function validate(){
+	var re1="/^-?\d+$/";
+	var re2="/^(-?\d+)(\.\d+)?$/";
+	var applyAmount=$("#applyAmount").val();
+	var setUpAmount=$("#setUpAmount").val();
+	if(applyAmount!=""){
+		if(!re1.test(applyAmount)&&!re2.test(applyAmount)){
+			alert("申报额度(万)必须为整数或浮点 ");
+			$("#applyAmount").focus();
+				return false;
+			}
+		}
+	if(setUpAmount!=""){
+		if(!re1.test(setUpAmount)&&!re2.test(setUpAmount)){
+			alert("立项资助金额(万)必须为整数或浮点 ");
+			$("#setUpAmount").focus();
+				return false;
+			}
+		}
+	document.forms[0].submit();
+}
+</script>
 
 <style type="text/css">
 html { overflow:-moz-scrollbars-vertical;}
@@ -27,8 +49,9 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
    </div>
-<form id="add_form" action='${ctx}/admin/memberIntellectualPro/save.html' method="post">
+<form id="add_form" name="add_form" action='${ctx}/admin/memberIntellectualPro/save.html' method="post">
 <input type="hidden" name="type" value="${type}"/>
+<input type="hidden" name="id" value="${entity.Id}"/>
   <div class="add_info">
 
    <h2>${type=='A'?'添加':'修改' }科技项目</h2>
@@ -50,22 +73,30 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/>
      </td>
    
-       <th>申报时间：</th>
+       
+    </tr>
+	    <tr>
+	    <th>申报时间：</th>
      <td>
      <input id="applyTime" name="applyTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
      	value="<fmt:formatDate value="${entity.ApplyTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>
      	
      </td>
-    </tr>
-	    <tr>
-	    
 	     <th>申报额度(万)：</th>
 	     <td>
 	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   />
 	     </td>
-	     <th>是否立项：</th>
+	     
+	    </tr>
+	    <tr>
+	    <th>是否立项：</th>
 	     <td>
-	     <input name="isSetUp"  id="isSetUp" type="text" class="input_a1" value="${entity.IsSetUp}"/>
+	       <select name="isSetUp">
+ 		<option value="1" <c:if test="${entity.IsSetUp==1}">selected="selected"</c:if>>立项</option>    
+ 		<option value="0" <c:if test="${entity.IsSetUp==0}">selected="selected"</c:if>>不立项</option>  
+ 		
+     </select>
+	    
 	     	</td>
 	     <th>立项资助金额(万)：</th>
 	   	 <td>
@@ -75,8 +106,8 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
    
       <th>项目名称：</th>
-     <td colspan="5">
-    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" maxlength="500"  size="150"/>
+     <td colspan="3">
+    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" />
      </td>
     </tr>
    </table>
@@ -84,7 +115,7 @@ html { overflow:-moz-scrollbars-vertical;}
    
     
     	<p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
+				    <img id="sumbit_bt"   onclick="validate();" src="${ctx}/theme/default/images/submit.png"/>
 				</p>
   
   </div>

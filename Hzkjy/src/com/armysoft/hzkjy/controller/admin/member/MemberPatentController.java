@@ -30,7 +30,11 @@ import com.armysoft.hzkjy.model.MemberPatent;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 import com.armysoft.hzkjy.service.member.MemberPatentService;
 
-
+/**
+ * 专利
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("admin/memberPatent")
 public class  MemberPatentController extends BaseController {
@@ -60,7 +64,7 @@ public class  MemberPatentController extends BaseController {
         model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);
 		model.addAttribute("params", params);
-		return "admin/member/MemberIntellectualProQ";
+		return "admin/member/MemberPatentQ";
 	}
 
 
@@ -70,7 +74,7 @@ public class  MemberPatentController extends BaseController {
     	params.put("id", key);
     	params.put("status", status);
     	memberPatentService.updateStatus(params);
-		return "admin/member/MemberIntellectualProA_U";
+		return "admin/member/MemberPatentA_U";
 	}
 	
 	/**
@@ -80,8 +84,8 @@ public class  MemberPatentController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
-		model.addAttribute("type", "A");
-		return "admin/member/MemberIntellectualProA_U";
+		model.addAttribute("ptype", "A");
+		return "admin/member/MemberPatentA_U";
 	}
 	
 
@@ -93,19 +97,21 @@ public class  MemberPatentController extends BaseController {
 	 */
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity, Model model) {
-		model.addAttribute("type", "U");
+		model.addAttribute("ptype", "U");
 		model.addAttribute("entity",memberPatentService.findByKey(key));
-		return "admin/member/MemberIntellectualProA_U";
+		return "admin/member/MemberPatentA_U";
 	}
 	
 	@RequestMapping(value = SAVE)
-	public String save(MemberPatent entity, Model model,String type) {
-		if(type.equals("U")){
+	public String save(HttpServletRequest request,MemberPatent entity, Model model,String ptype) {
+		if(ptype.equals("U")){
 			memberPatentService.update(entity);
-		}else if(type.equals("A")){
+		}else if(ptype.equals("A")){
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+			entity.setMemberNo(userNo);
 			memberPatentService.insert(entity);
 		}
-		return "redirect://admin/memberIntellectualPro/list/1.html";
+		return "redirect://admin/memberPatent/list/1.html";
 	}
 	
 	/**
@@ -116,7 +122,7 @@ public class  MemberPatentController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		memberPatentService.delete(key);
-		return "redirect://admin/memberIntellectualPro/list/1.html";
+		return "redirect://admin/memberPatent/list/1.html";
 	}
 	
 	/**

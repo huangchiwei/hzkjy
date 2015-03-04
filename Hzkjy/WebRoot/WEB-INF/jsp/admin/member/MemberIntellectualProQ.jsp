@@ -10,7 +10,7 @@
 <link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
-
+<script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript">
 function delConfirm(id){
@@ -40,6 +40,7 @@ html { overflow:-moz-scrollbars-vertical;}
 </head>
 
 <body>
+
 <div class="content_box">
   <div class="btn_box">
 
@@ -56,7 +57,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	value="<fmt:formatDate value="${params.startTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>到<input id="endTime" name="endTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
      	value="<fmt:formatDate value="${params.endTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>
         	</dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
+         <dt><input id="add_bt" type="button" value="查询" class="initial" /></dt>
                  
            <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
@@ -71,11 +72,11 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 	  	 <th>企业名称</th> 
 	        <th width="60px;">项目级别</th>
-	        <th width="250px;">项目类别</th>
-	        <th width="200px;">项目名称</th>
+	      
+	        <th >项目名称</th>
 	       <th width="60px;">状态</th>
 	            <th width="80px;">申报时间</th>
-	        <th width="6%">操作</th>
+	        <th width="60">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -85,7 +86,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	           	<td>${sta.index + 1}</td>
 	           	<td>${o.Qymc}</td>
 	       	<td><c:if test="${o.ProjectLevel==0}">国家级</c:if><c:if test="${o.ProjectLevel==1}">省级</c:if><c:if test="${o.ProjectLevel==2}">市级</c:if><c:if test="${o.ProjectLevel==3}">区级</c:if></td>
-	       		<td>${o.ProjectType}</td>
+	       		
 	       			<td>${o.ProjectName}</td>
 	       				
 	       				<td><c:if test="${o.IsSetUp==0}">不立项</c:if><c:if test="${o.IsSetUp==1}">立项</c:if></td>
@@ -112,8 +113,9 @@ html { overflow:-moz-scrollbars-vertical;}
     	<div class="page">
 					<p:pager/>
 				</div>
-				   </form>
+				  </form>
   </div>
 </div>
+ 
 </body>
 </html>

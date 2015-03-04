@@ -256,7 +256,7 @@ CREATE TABLE `member_intellectual_pro` (
   `ApplyTime` date DEFAULT NULL COMMENT '申报时间',
   `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='知识产权';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='科技项目';
 
 #
 # Dumping data for table member_intellectual_pro
