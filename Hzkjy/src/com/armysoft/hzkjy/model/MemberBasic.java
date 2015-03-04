@@ -1,4 +1,7 @@
 ﻿package com.armysoft.hzkjy.model;
+
+import java.util.Date;
+
 public class  MemberBasic implements java.io.Serializable {
       private   Integer id;   
 	  public Integer getId() {
@@ -72,6 +75,28 @@ public class  MemberBasic implements java.io.Serializable {
 	  private String zt;
 	  private String qymcpy;
 	  private String ztName;
+	  
+	  public Date getRysj() {
+		return rysj;
+	}
+	public void setRysj(Date rysj) {
+		this.rysj = rysj;
+	}
+	public Date getHtqxf() {
+		return htqxf;
+	}
+	public void setHtqxf(Date htqxf) {
+		this.htqxf = htqxf;
+	}
+	public Date getHtqxe() {
+		return htqxe;
+	}
+	public void setHtqxe(Date htqxe) {
+		this.htqxe = htqxe;
+	}
+	private   Date rysj;
+	private   Date htqxf;
+	  private   Date htqxe;
 	public String getZtName() {
 		return ztName;
 	}

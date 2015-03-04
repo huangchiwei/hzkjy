@@ -97,6 +97,23 @@ html { overflow:-moz-scrollbars-vertical;}
         </select>
      </td>
     </tr>
+     <tr>
+     <th>入园时间：</th>
+     <td>
+     	<input id="rysj" name="rysj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.rysj}"
+								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
+     </td>
+     <th>合同期限：</th>
+     <td>
+     	<input id="htqxf" name="htqxf" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.htqxf}"
+								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
+     </td>
+     <th>至</th>
+     <td>
+     		<input id="htqxe" name="htqxe" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.htqxe}"
+								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
+     </td>
+    </tr>
    </table>
      
    

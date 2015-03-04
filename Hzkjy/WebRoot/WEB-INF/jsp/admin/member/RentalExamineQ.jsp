@@ -20,8 +20,6 @@ html { overflow:-moz-scrollbars-vertical;}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-$("#fssq option[value='${fssq}']").attr("selected", true); 
-$("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
 
 $('#checkAll').click(function(){
 	$('input[name="qyId"]').attr("checked",this.checked);
@@ -47,34 +45,13 @@ function printHuiZhiList(){
 	    shadeClose: true,
 	    title: "批量打印",
 	    shade: [0.1,'#fff'],
-	    offset: ['20px',''],
-	    area: ['950px', '650px'],
+	    offset: ['10px',''],
+	    area: ['500px', '400px'],
 	    iframe: {src: "${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
 	});
 }
 
-function loadPageLayer(title,url){
-	var mypop = $.layer({
-	    type: 2,
-	    title: title,
-	    iframe: {src : url},
-	    maxmin: true,
-	    area: ['500px', '120px'],
-	    offset: [($(window).height())/4+200+'px',''],  
-	    end: function(){
-	        mypop = null
-	    }
-	});
-	$(window).on('resize', function(){
-	    if(mypop){
-	        layer.area(mypop, {
-	            top: ($(window).height())/4-70
-	        });
-	    }
-	});
 
-
-}
 
 function tjsh(id){
 
@@ -143,52 +120,10 @@ function corpAutocomplete(data){
 	});
 }
 
-function loadPageLayer(title,url){
-	var mypop = $.layer({
-	    type: 2,
-	    title: title,
-	    iframe: {src : url},
-	    maxmin: true,
-	    area: ['680px', '140px'],
-	    offset: [($(window).height())/4-70+'px',''],  
-	    end: function(){
-	        mypop = null
-	    }
-	});
-	$(window).on('resize', function(){
-	    if(mypop){
-	        layer.area(mypop, {
-	            top: ($(window).height())/4-70
-	        });
-	    }
-	});
 
 
-}
 
 
-function loadPageLayer2(title,url){
-	var mypop = $.layer({
-	    type: 2,
-	    title: title,
-	    iframe: {src : url},
-	    maxmin: true,
-	    area: ['680px', '220px'],
-	    offset: [($(window).height())/4+10+'px',''],  
-	    end: function(){
-	        mypop = null
-	    }
-	});
-	$(window).on('resize', function(){
-	    if(mypop){
-	        layer.area(mypop, {
-	            top: ($(window).height())/4+10
-	        });
-	    }
-	});
-
-
-}
 	function delConfirm(id){
 		$.layer({
 		  shade : [0], //不显示遮罩

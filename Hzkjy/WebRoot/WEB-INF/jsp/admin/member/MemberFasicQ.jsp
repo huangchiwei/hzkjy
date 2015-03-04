@@ -27,6 +27,13 @@ function find(){
 	$("#search_form").attr("action","${ctx}/admin/memberFasic/list/1.html");
 	document.getElementById("search_form").submit();
     }   
+     function clean(){    
+	$("#fhymc").val("");
+	$("#frysjf").val("");
+	$("#frysje").val("");
+	$("#fhtqxf").val("");
+	$("#fhtqxe").val("");
+    } 
    function out(){    
 	$("#search_form").attr("action","${ctx}/admin/memberFasic/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
@@ -161,7 +168,23 @@ function loadPageLayer2(title,url){
         <dd > 
         &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
         	</dd>
+         <dd > 
+        &nbsp;&nbsp;&nbsp;&nbsp;入园时间：<input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
+								 class="input_a1" maxlength="20"/>至
+								<input id="frysje" name="frysje" type="text" onclick="WdatePicker();" value="${frysje}"
+								 class="input_a1" maxlength="20"/>
+								</dd>	
+      
+    </dl>
+    <dl class="relative h30">
+        <dd > 
+        &nbsp;&nbsp;&nbsp;&nbsp;合同期限：<input id="fhtqxf" name="fhtqxf" type="text" onclick="WdatePicker();" value="${fhtqxf}"
+							 class="input_a1" maxlength="20"/>至
+								<input id="fhtqxe" name="fhtqxe" type="text" onclick="WdatePicker();" value="${fhtqxe}"
+								" class="input_a1" maxlength="20"/>
+								</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
+         <dt><input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/></dt>
            <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
@@ -176,9 +199,8 @@ function loadPageLayer2(title,url){
 	  	 <th>企业名称</th> 
 	        <th>地址</th>
 	        <th>租用单元</th>
-	        <th>面积</th>
-	        <th>负责人</th>
-	       <th>注册资金</th>
+	       <th>入园时间</th>
+	       <th>合同期限</th>
 	        <th>联系人</th>
 	            <th>状态</th>
 	        <th width="6%">操作</th>
@@ -202,9 +224,11 @@ function loadPageLayer2(title,url){
 	        <td>${mb.qymc}</td>
 	        <td>${mb.address}</td>
 	        <td>${mb.zydy}</td>
-	        <td>${mb.mj}平方</td>
-	        <td>${mb.fzr}</td>
-	        <td>${mb.zczj}万</td>
+	        <td><fmt:formatDate value="${mb.rysj}"
+								pattern="yyyy-MM-dd" /></td>
+	        <td><fmt:formatDate value="${mb.htqxf}"
+								pattern="yyyy-MM-dd" />至<fmt:formatDate value="${mb.htqxe}"
+								pattern="yyyy-MM-dd" /></td>
 	        <td>${mb.lxr}</td>
 	        <td>${mb.ztName}</td>
 	        <td>
@@ -222,7 +246,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="9"></td>
+        <td colspan="8"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -230,7 +254,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="11">
+			<td colspan="10">
 				<div class="page">
 					<p:pager/>
 				</div>

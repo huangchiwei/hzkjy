@@ -225,6 +225,11 @@ public class  EnterpriseRentalController extends BaseController {
 	@RequestMapping(value = SAVE)
 	public String save(EnterpriseRental entity, Model model) {
 		if (entity.getId() == null) {
+			if(Double.valueOf(entity.getHjje())-Double.valueOf(entity.getJnje()) == Double.valueOf(0)){
+				entity.setSfqf("1");
+			}else{
+				entity.setSfqf("0");
+			}
 			service.insert(entity);
 		} else {
 			service.update(entity);

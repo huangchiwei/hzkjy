@@ -308,7 +308,7 @@ public class  RentalExamineController extends BaseController {
 	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
 		MemberRental mdd= service.findByKey(id);
 		
-		mdd.setFbzt("已发送");
+		mdd.setFbzt("已审核");
 		service.update(mdd);
 		EnterpriseRental ert= new EnterpriseRental();
 		ert.setHybh(mdd.getHybh());
