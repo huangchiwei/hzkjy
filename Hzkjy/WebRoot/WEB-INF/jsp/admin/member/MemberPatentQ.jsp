@@ -10,7 +10,7 @@
 <link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
-
+<script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript">
 function delConfirm(id){
@@ -71,11 +71,11 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 	  	 <th>企业名称</th> 
 	        <th width="60px;">专利类别</th>
-	        <th width="250px;">专利名称</th>
-	        <th width="200px;">专利编号</th>
-	       <th width="60px;">状态</th>
+	        <th >专利名称</th>
+	        <th width="100px;">专利编号</th>
+	       
 	            <th width="80px;">申报时间</th>
-	        <th width="6%">操作</th>
+	        <th width="60">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>

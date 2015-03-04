@@ -7,18 +7,18 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	Id,MemberNo,Type,Name,PatentNo,ApplyTime
+	mp.*,mb.Qymc
 	</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
-		from member_patent  where 1=1
+		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh
 		<if test="parm.startTime!= null and parm.startTime != ''">
 		<if test="parm.endTime!= null and parm.endTime != ''">
-		and ApplyTime between #{parm.startTime} and #{parm.endTime}
+		and mp.ApplyTime between #{parm.startTime} and #{parm.endTime}
 		</if>
 		</if>
-		order by ApplyTime desc
-	  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				  				order by id desc
+		order by mp.ApplyTime desc
+	  				
 	</sql>
 
     <select id="findByKey" resultType="java.util.Map" parameterType="Long">
