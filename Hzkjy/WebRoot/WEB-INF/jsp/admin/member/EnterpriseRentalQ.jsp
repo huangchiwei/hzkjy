@@ -27,7 +27,7 @@ $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true);
 function tjsh(id){
 
 			$.ajax({
-				url:'${ctx}/admin/memberRental/ZShtg.html?id='+id+'&random='+Math.random(),
+				url:'${ctx}/admin/enterpriseRental/ZShtg.html?id='+id+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,
@@ -147,7 +147,7 @@ function loadPageLayer2(title,url){
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/admin/memberRental/delete/' + id + '.html';
+		          location.href='${ctx}/admin/enterpriseRental/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);

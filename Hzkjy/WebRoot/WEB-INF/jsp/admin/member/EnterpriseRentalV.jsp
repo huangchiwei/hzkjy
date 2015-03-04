@@ -216,6 +216,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <th>凭证图像</th>
     <td colspan="5">
     <img src="${ctx}/hzkjyFj/${model.accessory}" width="600px" height="400px"/>
+    <input type="hidden" name="accessory" id="accessory" value="${model.accessory}"/>
      </td>
     </tr>
    </table>
