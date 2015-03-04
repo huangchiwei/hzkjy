@@ -59,12 +59,16 @@ public class  MemberBasicController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("hy_list") 
+	@PermissionsAnno("mb_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			MemberBasic entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		params.put("fhybh", userNo);
+		}
 		if(fhymc !="" && fhymc !=null){
 		params.put("fhymc", fhymc);
 		request.setAttribute("fhymc", fhymc);
@@ -132,7 +136,7 @@ public class  MemberBasicController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@PermissionsAnno("hy_updt")
+	@PermissionsAnno("mb_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,MemberBasic entity, Model model) {
 		entity.setId(key);
@@ -142,7 +146,7 @@ public class  MemberBasicController extends BaseController {
 		service.update(entity);
 		return "redirect://admin/memberBasic/list/1.html";
 	}
-	@PermissionsAnno("hy_save")
+	@PermissionsAnno("mb_save")
 	@RequestMapping(value = SAVE)
 	public String save(MemberBasic entity, Model model) {
 		if (entity.getId() == null) {
@@ -173,7 +177,7 @@ public class  MemberBasicController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("hy_del")
+	@PermissionsAnno("mb_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);

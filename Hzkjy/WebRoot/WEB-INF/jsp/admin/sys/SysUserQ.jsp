@@ -84,14 +84,14 @@ function changeStatus(userNo,status){
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	    <pm:hasPermission permValue="user_updt">
-	       	<c:set var="user_updt" value="true"/>
+	    <pm:hasPermission permValue="us_updt">
+	       	<c:set var="us_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="user_del">
-	       	<c:set var="user_del" value="true"/>
+	    <pm:hasPermission permValue="us_del">
+	       	<c:set var="us_del" value="true"/>
 	    </pm:hasPermission>
-	   <pm:hasPermission permValue="user_chasta">
-	   		<c:set var="user_chasta" value="true"/>
+	   <pm:hasPermission permValue="us_chasta">
+	   		<c:set var="us_chasta" value="true"/>
 	   </pm:hasPermission>
       <c:forEach items="${users}" var="user" varStatus="sta">
 	      <tr>
@@ -113,12 +113,12 @@ function changeStatus(userNo,status){
 	         	<fmt:formatDate value="${user.createDate}"
 								pattern="yyyy-MM-dd" /></td>
 	        <td>
-	          	<c:if test="${user_updt == true}">
+	          	<c:if test="${us_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/admin/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/sysUser/add/new.html?userNo=${user.userNo}'"/>
 		          	</div>
 	          	</c:if>
-	          	<c:if test="${user_del == true}">
+	          	<c:if test="${us_del == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/admin/default/images/del_icon.png" title="删除" onclick="delConfirm('${user.userNo}')"/>
 		         	</div>

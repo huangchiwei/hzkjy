@@ -380,17 +380,25 @@ public class  RentalExamineController extends BaseController {
 	
 	@RequestMapping("/outPtqfqk/1.html")
 	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
-		String title="园区基本资料表";
+		String title="缴费表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
 		headData.add(new Object[] { "Qymc","企业名称"});
-		headData.add(new Object[] { "Address","地址"});
-		headData.add(new Object[] { "Zydy","租用单位"});
-		headData.add(new Object[] { "Mj","面积"});
-		headData.add(new Object[] { "Fzr","负责人"});
-		headData.add(new Object[] { "Zczj","注册资金"});
-		headData.add(new Object[] { "Lxr","联系人"});
-		headData.add(new Object[] { "ZtName","在园出园状态"});
+		headData.add(new Object[] { "Qyzj","企业租金"});
+		headData.add(new Object[] { "Glfwf","管理服务费"});
+		headData.add(new Object[] { "Qysf","企业水费"});
+		headData.add(new Object[] { "Qydf","企业电费"});
+		headData.add(new Object[] { "Ssyhd","水上月行度"});
+		headData.add(new Object[] { "Sbyhd","水本月行度"});
+		headData.add(new Object[] { "Shjyl","水合计用量"});
+		headData.add(new Object[] { "Dhjyl","电合计用量"});
+		headData.add(new Object[] { "Qymj","企业面积"});
+		headData.add(new Object[] { "Qtfy","其它费用"});
+		headData.add(new Object[] { "Hjje","合计金额"});
+		headData.add(new Object[] { "Jfyd","缴费月度"});
+		headData.add(new Object[] { "Dsyhd","电上月行度"});
+		headData.add(new Object[] { "Dbyhd","电本月行度"});
+		headData.add(new Object[] { "Zydy","租用单元"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		

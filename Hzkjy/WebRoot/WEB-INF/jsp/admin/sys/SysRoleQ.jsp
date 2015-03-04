@@ -76,13 +76,13 @@ function delConfirm(roleNo){
     	</thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  	<pm:hasPermission permValue="role_saveperm">
+	  	<pm:hasPermission permValue="ro_saveperm">
 	       	<c:set var="role_saveperm" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="role_updt">
+	    <pm:hasPermission permValue="ro_updt">
 	       	<c:set var="role_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="role_del">
+	    <pm:hasPermission permValue="ro_del">
 	       	<c:set var="role_del" value="true"/>
 	    </pm:hasPermission>
 	      <c:forEach items="${roles}" var="role" varStatus="sta">

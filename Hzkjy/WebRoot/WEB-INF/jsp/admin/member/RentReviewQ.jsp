@@ -23,21 +23,30 @@ $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
 });
+
+function tjsh(id){
+
+			$.ajax({
+				url:'${ctx}/admin/rentReview/ZShtg.html?id='+id+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+          
+	document.getElementById("search_form").submit();
+		
+}
+
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/memberBasic/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/rentReview/list/1.html");
 	document.getElementById("search_form").submit();
     }   
-    function clean(){    
-	$("#fhymc").val("");
-	$("#frysjf").val("");
-	$("#frysje").val("");
-	$("#fhtqxf").val("");
-	$("#fhtqxe").val("");
-    } 
    function out(){    
-	$("#search_form").attr("action","${ctx}/admin/memberBasic/outPtqfqk/1.html");
+	$("#search_form").attr("action","${ctx}/admin/rentReview/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
     }   
+
 var corpNameJson="";
 
 
@@ -138,7 +147,7 @@ function loadPageLayer2(title,url){
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/admin/memberBasic/delete/' + id + '.html';
+		          location.href='${ctx}/admin/enterpriseRental/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);
@@ -155,38 +164,16 @@ function loadPageLayer2(title,url){
 
 <body>
 <div class="content_box">
-  <div class="btn_box">
-
-  		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html'"/>
-     
-  </div>
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
+  	<form id="search_form" action="${ctx}/admin/rentReview/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div2">
       <dl class="relative h30">
         <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 style="width:160px" onfocus="loadCorpName();"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
         	</dd>
-        		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;入园时间：<input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
-								 class="input_a1" maxlength="20"/>至
-								<input id="frysje" name="frysje" type="text" onclick="WdatePicker();" value="${frysje}"
-								 class="input_a1" maxlength="20"/>
-								</dd>
-  
-    </dl>
-     <dl class="relative h30"> 
-        		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;合同期限：<input id="fhtqxf" name="fhtqxf" type="text" onclick="WdatePicker();" value="${fhtqxf}"
-							 class="input_a1" maxlength="20"/>至
-								<input id="fhtqxe" name="fhtqxe" type="text" onclick="WdatePicker();" value="${fhtqxe}"
-								" class="input_a1" maxlength="20"/>
-								</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-         <dt><input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/></dt>
-                    <dt><input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/></dt>
-           <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
+         <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
     </div>
@@ -198,47 +185,47 @@ function loadPageLayer2(title,url){
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
-	        <th>地址</th>
 	        <th>租用单元</th>
-	        <th>入园时间</th>
-	       <th>合同期限</th>
-	        <th>联系人</th>
-	            <th>状态</th>
-	        <th width="6%">操作</th>
+	        <th>租金</th>
+	        <th>水费</th>
+	        <th>电费</th>
+	        <th>管理服务费</th>
+	        <th>缴费年月</th>
+	        <th>审核状态</th>
+	        <th width="10%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  <pm:hasPermission permValue="mb_save">
-	       	<c:set var="mb_save" value="true"/>
+	  <pm:hasPermission permValue="hy_save">
+	       	<c:set var="hy_save" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="mb_updt">
-	       	<c:set var="mb_updt" value="true"/>
+	    <pm:hasPermission permValue="hy_updt">
+	       	<c:set var="hy_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="mb_del">
-	       	<c:set var="mb_del" value="true"/>
+	    <pm:hasPermission permValue="hy_del">
+	       	<c:set var="hy_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
-	      <tr ondblclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'">
+	      <tr ondblclick="javascript:location.href='${ctx}/admin/enterpriseRental/add/new.html?id=${mb.id}'">
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
-	        <td>${mb.address}</td>
-	        <td>${mb.zydy}</td>
-	        <td><fmt:formatDate value="${mb.rysj}"
-								pattern="yyyy-MM-dd" /></td>
-	        <td><fmt:formatDate value="${mb.htqxf}"
-								pattern="yyyy-MM-dd" />至<fmt:formatDate value="${mb.htqxe}"
-								pattern="yyyy-MM-dd" /></td>
-	        <td>${mb.lxr}</td>
-	        <td>${mb.ztName}</td>
+	        <td>${mb.zydy}元</td>
+	        <td>${mb.qyzj}元</td>
+	        <td>${mb.qysf}元</td>
+	        <td>${mb.qydf}元</td>
+	        <td>${mb.glfwf}元</td>
+	        <td>${mb.jfyd}</td>
+	        <td>${mb.shzt}</td>
 	        <td>
-	          	<c:if test="${mb_updt == true}">
+	        <a href="javascript:tjsh('${mb.id}')">审核</a>
+	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="录入缴费信息" onclick="javascript:location.href='${ctx}/admin/enterpriseRental/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
-	          	<c:if test="${mb_del == true}">
+	          	<c:if test="${hy_del == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
 		         	</div>
@@ -247,7 +234,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="8"></td>
+        <td colspan="9"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -255,7 +242,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="10">
+			<td colspan="11">
 				<div class="page">
 					<p:pager/>
 				</div>

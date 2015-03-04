@@ -72,7 +72,7 @@ function find(){
 	document.getElementById("search_form").submit();
     }   
    function out(){    
-	$("#search_form").attr("action","${ctx}/admin/memberBasic/outPtqfqk/1.html");
+	$("#search_form").attr("action","${ctx}/admin/rentalExamine/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
     }   
 
@@ -157,7 +157,7 @@ function corpAutocomplete(data){
      
   </div>
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/memberRental/list/1.html" method="post">
+  	<form id="search_form" action="${ctx}/admin/rentalExamine/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div2">
       <dl class="relative h30">

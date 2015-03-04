@@ -187,14 +187,14 @@ $(document).ready(function(){
     </table>
     <c:choose>
     	<c:when test="${user == null}">
-    		<pm:hasPermission permValue="user_save">
+    		<pm:hasPermission permValue="us_save">
     			<p class="div_submit">
 				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/admin/default/images/submit.png"/>
 				</p>
     		</pm:hasPermission>
     	</c:when>
     	<c:when test="${update != null}">
-    		<pm:hasPermission permValue="user_updt">
+    		<pm:hasPermission permValue="us_updt">
     			<p class="div_submit">
 				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/admin/default/images/submit.png"/>
 				</p>

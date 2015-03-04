@@ -43,7 +43,7 @@ function find(){
 	document.getElementById("search_form").submit();
     }   
    function out(){    
-	$("#search_form").attr("action","${ctx}/admin/memberBasic/outPtqfqk/1.html");
+	$("#search_form").attr("action","${ctx}/admin/enterpriseRental/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
     }   
 
@@ -164,13 +164,8 @@ function loadPageLayer2(title,url){
 
 <body>
 <div class="content_box">
-  <div class="btn_box">
-
-  		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/memberRental/add/new.html'"/>
-     
-  </div>
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/memberRental/list/1.html" method="post">
+  	<form id="search_form" action="${ctx}/admin/enterpriseRental/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div2">
       <dl class="relative h30">

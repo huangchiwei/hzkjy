@@ -1,11 +1,10 @@
 package com.armysoft.hzkjy.controller.base.common;
 
 public enum AuthorityEnum {
-	MemberDuesDetail_detail("审核用户","md_det"),
 	//用户管理
-	MemberBasic_delete("删除会员","hy_del"),
-	MemberBasic_update("修改会员","hy_updt"),
-	MemberBasic_save("修改会员","hy_save"),
+	MemberBasic_delete("删除会员","mb_del"),
+	MemberBasic_update("修改会员","mb_updt"),
+	MemberBasic_save("修改会员","mb_save"),
 	MemberBasic_list("会员管理","hy_list"),
 	SysUser_delete("删除用户","us_del"),
 	SysUser_update("修改用户","us_updt"),

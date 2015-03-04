@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="EnterpriseRentalOpt">
+<mapper namespace="RentReviewOpt">
 
 	<!-- 表列名 -->
 	<sql id="columns">	
@@ -12,9 +12,6 @@
 	<sql id="condition" >
 		from enterprise_rental
 		where 1 = 1
-		<if test="parm.fhybh != null and parm.fhybh!= ''">
-		and hybh  = #{parm.fhybh}
-		</if>
 	</sql>
 	<!-- 实体映射 -->
 	<resultMap id="enterpriseRentalMap" type="enterpriseRental">
@@ -54,18 +51,12 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 		where 1 = 1
 		
  order by id desc
- <if test="fhybh != null and fhybh!= ''">
-		and hybh  = #{fhymc}
-		</if>
 	</select>			
 			
 	<select id="sumCount" resultType="int" parameterType="java.util.Map">
 		select count(*) 
 		from enterprise_rental
 		where 1 = 1	
-		<if test="fhybh != null and fhybh!= ''">
-		and hybh  = #{fhymc}
-		</if>
 	</select>
     <select id="findById" resultMap="enterpriseRentalMap" parameterType="Long">
 		select * from enterprise_rental where id = #{id}

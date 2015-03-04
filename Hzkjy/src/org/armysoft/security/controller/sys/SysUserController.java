@@ -47,7 +47,7 @@ public class SysUserController extends BaseController {
 	 * @param user
 	 * @return
 	 */
-	@PermissionsAnno("user_list")
+	@PermissionsAnno("us_list")
 	@RequestMapping(value = PAGE_LIST)
 	public ModelAndView getByPage(@PathVariable int currentPage, SysUser user) {
 		ModelAndView mv = new ModelAndView("admin/sys/SysUserQ");
@@ -111,7 +111,7 @@ public class SysUserController extends BaseController {
 	 * @param user
 	 * @return
 	 */
-	@PermissionsAnno("user_save")
+	@PermissionsAnno("us_save")
 	@RequestMapping(value = SAVE)
 	public String save(SysUser user, HttpServletRequest request) {
 		user.setCreateDate(new Date());
@@ -136,7 +136,7 @@ public class SysUserController extends BaseController {
 	 * @param user
 	 * @return
 	 */
-	@PermissionsAnno("user_updt")
+	@PermissionsAnno("us_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") String userNo, SysUser user,
 			HttpServletRequest request) {
@@ -190,7 +190,7 @@ public class SysUserController extends BaseController {
 	 * @param userNo
 	 * @return
 	 */
-	@PermissionsAnno("user_del")
+	@PermissionsAnno("us_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") String userNo) {
 		if(!"admin".equalsIgnoreCase(userNo)){

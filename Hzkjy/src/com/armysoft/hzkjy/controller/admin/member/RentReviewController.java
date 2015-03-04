@@ -44,14 +44,15 @@ import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
+import com.armysoft.hzkjy.service.member.RentReviewService;
 
 import com.alibaba.fastjson.JSONObject;
 @Controller
-@RequestMapping("admin/enterpriseRental")
-public class  EnterpriseRentalController extends BaseController {
+@RequestMapping("admin/rentReview")
+public class  RentReviewController extends BaseController {
 
 	@Resource
-	private EnterpriseRentalService service;
+	private RentReviewService service;
 	@Resource
 	private MemberBasicService Mbservice;
 	@InitBinder   
@@ -74,15 +75,15 @@ public class  EnterpriseRentalController extends BaseController {
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
-		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
-		params.put("fhybh", userNo);
-		}
+//		if(fhymc !="" && fhymc !=null){
+//		params.put("fhymc", fhymc);
+//		request.setAttribute("fhymc", fhymc);
+//		}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "admin/member/EnterpriseRentalQ";
+		return "admin/member/RentReviewQ";
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class  EnterpriseRentalController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "admin/member/EnterpriseRentalV";
+		return "admin/member/RentReviewV";
 	}
 
 	/**
@@ -109,7 +110,7 @@ public class  EnterpriseRentalController extends BaseController {
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "admin/member/EnterpriseRentalV";
+		return "admin/member/RentReviewV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
@@ -158,7 +159,7 @@ public class  EnterpriseRentalController extends BaseController {
 			entity.setSfqf("0");
 		}
 		service.update(entity);
-		return "redirect://admin/enterpriseRental/list/1.html";
+		return "redirect://admin/rentReview/list/1.html";
 	}
 	 public void upFile(EnterpriseRental entity,HttpServletRequest request)throws Exception{
 		  
@@ -239,7 +240,7 @@ public class  EnterpriseRentalController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/enterpriseRental/list/1.html";
+		return "redirect://admin/rentReview/list/1.html";
 	}
 	
 	/**
@@ -251,14 +252,14 @@ public class  EnterpriseRentalController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/enterpriseRental/list/1.html";
+		return "redirect://admin/rentReview/list/1.html";
 	}
 	
 	@RequestMapping(value = "/ZShtg.html")
 	@ResponseBody
 	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
 		EnterpriseRental mdd= service.findByKey(id);
-        mdd.setShzt("已提交");
+        mdd.setShzt("已审核");
 		service.update(mdd);
 		request.setAttribute("exl", "ok");
 		String exl="ok";

@@ -43,7 +43,7 @@ function find(){
 	document.getElementById("search_form").submit();
     }   
    function out(){    
-	$("#search_form").attr("action","${ctx}/admin/memberBasic/outPtqfqk/1.html");
+	$("#search_form").attr("action","${ctx}/admin/memberRental/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
     }   
 

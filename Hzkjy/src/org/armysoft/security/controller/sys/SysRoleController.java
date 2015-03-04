@@ -45,7 +45,7 @@ public class SysRoleController extends BaseController {
 	/**
 	 * 条件分页查询角色
 	 */
-	@PermissionsAnno("role_list")
+	@PermissionsAnno("ro_list")
 	@RequestMapping(value = PAGE_LIST)
 	public ModelAndView getByPage(@PathVariable int currentPage,SysRole role){
 		ModelAndView mv = new ModelAndView("admin/sys/SysRoleQ");
@@ -80,7 +80,7 @@ public class SysRoleController extends BaseController {
 	 * @param role
 	 * @return
 	 */
-	@PermissionsAnno("role_save")
+	@PermissionsAnno("ro_save")
 	@RequestMapping(value = SAVE)
 	public String add(SysRole role,HttpServletRequest request){
 		role.setModifier(sysUserService.getByUserNo(super.getCookieValue(request, Constants.ADMIN_KEY)));
@@ -96,7 +96,7 @@ public class SysRoleController extends BaseController {
 	 * @param role
 	 * @return
 	 */
-	@PermissionsAnno("role_updt")
+	@PermissionsAnno("ro_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id")String roleNo,SysRole role,HttpServletRequest request){
 		role.setRoleNo(roleNo);
@@ -111,7 +111,7 @@ public class SysRoleController extends BaseController {
 	 * @param roleNo
 	 * @return
 	 */
-	@PermissionsAnno("role_del")
+	@PermissionsAnno("ro_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id")String roleNo){
 		sysRoleService.delete(roleNo);
@@ -150,7 +150,7 @@ public class SysRoleController extends BaseController {
 	 * @param permIds
 	 * @return
 	 */
-	@PermissionsAnno("role_saveperm")
+	@PermissionsAnno("ro_saveperm")
 	@RequestMapping("saveRolePerm")
 	public String updateRolePermission(String roleNo,String permIds) {
 		String[] perms = null;
