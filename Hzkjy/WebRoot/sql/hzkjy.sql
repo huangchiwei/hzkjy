@@ -142,6 +142,8 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1', 'admin', '4297f44b13955235245b2497399d7a93', 'administrator', '1', '123@qq.com', null, '1591000000', null, '1', '2014-05-28 00:00:00', 'admin');
+INSERT INTO `sys_user` VALUES (2,'440100001','e10adc3949ba59abbe56e057f20f883e','广州军软',1,'1246251343@qq.com','','13418056821','',1,'2015-03-01 19:41:53','admin');
+
 -- ----------------------------
 -- Table structure for `sys_user_role`
 -- ----------------------------
@@ -256,13 +258,15 @@ CREATE TABLE `member_intellectual_pro` (
   `ApplyTime` date DEFAULT NULL COMMENT '申报时间',
   `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='科技项目';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='科技项目';
 
 #
 # Dumping data for table member_intellectual_pro
 #
 
-INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2015-01-22',0);
+INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2014-01-22',0);
+INSERT INTO `member_intellectual_pro` VALUES (3,'440100001',0,'33','33',3,1,3,'2015-03-01',0);
+INSERT INTO `member_intellectual_pro` VALUES (8,'440100001',0,'f','2',1,1,1,'2015-03-05',0);
 
 #
 # Source for table member_patent
@@ -275,16 +279,17 @@ CREATE TABLE `member_patent` (
   `Name` varchar(255) DEFAULT NULL COMMENT '专利名称',
   `PatentNo` varchar(255) DEFAULT NULL COMMENT '专利编号',
   `ApplyTime` date DEFAULT NULL COMMENT '获取时间',
-  `Status` varchar(255) DEFAULT NULL COMMENT '发送状态',
+  `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='专利';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='专利';
 
 #
 # Dumping data for table member_patent
 #
 
-INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法',' 200910040956.3',NULL,NULL);
-INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7',NULL,NULL);
+INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法','200910040956.3','2015-01-22',NULL);
+INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7','2015-02-22',NULL);
+INSERT INTO `member_patent` VALUES (3,'440100001','发明专利','ff','fff','2015-03-01',0);
 
 
 DROP TABLE IF EXISTS `ecc_indicator`;

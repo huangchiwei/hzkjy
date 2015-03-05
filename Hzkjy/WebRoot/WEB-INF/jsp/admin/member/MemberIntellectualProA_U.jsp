@@ -115,7 +115,7 @@ html { overflow:-moz-scrollbars-vertical;}
    
     
     	<p class="div_submit">
-				    <img id="sumbit_bt"   onclick="validate();" src="${ctx}/theme/default/images/submit.png"/>
+				   <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
 				</p>
   
   </div>

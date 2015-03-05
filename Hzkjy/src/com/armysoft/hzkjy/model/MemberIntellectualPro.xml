@@ -27,7 +27,13 @@
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
 		select * 
-		<include refid="condition" />
+		from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh
+		<if test="startTime!= null and startTime != ''">
+		<if test="endTime!= null and endTime != ''">
+		and mip.ApplyTime between #{startTime} and #{endTime}
+		</if>
+		</if>
+		order by mip.ApplyTime desc
 		
 	</select>
 	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">

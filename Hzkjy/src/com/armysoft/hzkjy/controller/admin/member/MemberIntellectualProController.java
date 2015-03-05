@@ -131,7 +131,7 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @param response
 	 */
 	@RequestMapping("/outExcel/1.html")
-	public void OutPtqfqk(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
+	public void outExcel(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
 		String title="琶洲园区企业科技项目申报情况";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业名称"});

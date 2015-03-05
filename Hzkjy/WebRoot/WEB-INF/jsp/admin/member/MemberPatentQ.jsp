@@ -13,6 +13,14 @@
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript">
+function find(){    
+	$("#search_form").attr("action","${ctx}/admin/memberPatent/list/1.html");
+	document.getElementById("search_form").submit();
+    }  
+function out(){    
+	$("#search_form").attr("action","${ctx}/admin/memberPatent/outExcel/1.html");
+	document.getElementById("search_form").submit();
+    } 
 function delConfirm(id){
 	$.layer({
 	  shade : [0], //不显示遮罩
@@ -40,6 +48,7 @@ html { overflow:-moz-scrollbars-vertical;}
 </head>
 
 <body>
+
 <div class="content_box">
   <div class="btn_box">
 
@@ -51,11 +60,11 @@ html { overflow:-moz-scrollbars-vertical;}
     <h2>专利列表</h2>
         <div class="div2">
       <dl class="relative h30">
-        <dd > 
+        <dd > <form id="search_form" action="${ctx}/admin/memberPatent/list/1.html" method="post">
         &nbsp;&nbsp;&nbsp;&nbsp;申请时间： <input id="startTime" name="startTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
-     	value="<fmt:formatDate value="${params.startTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>到<input id="endTime" name="endTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
-     	value="<fmt:formatDate value="${params.endTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>
-        	</dd>
+     	value="${params.startTime}" maxlength="10"/>到<input id="endTime" name="endTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
+     	value="${params.endTime}" maxlength="10"/>
+        	</form></dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
                  
            <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
@@ -104,12 +113,13 @@ html { overflow:-moz-scrollbars-vertical;}
 	
 	</tfoot>
     </table>
-     	<form id="search_form" action="${ctx}/admin/memberIntellectualPro/list/1.html" method="post">
+     	
     	<div class="page">
 					<p:pager/>
 				</div>
-				   </form>
+				   
   </div>
 </div>
+
 </body>
 </html>

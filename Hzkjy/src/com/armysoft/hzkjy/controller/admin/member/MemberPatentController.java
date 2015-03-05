@@ -133,16 +133,15 @@ public class  MemberPatentController extends BaseController {
 	 * @param response
 	 */
 	@RequestMapping("/outExcel/1.html")
-	public void OutPtqfqk(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
-		String title="琶洲园区企业科技项目申报情况";
+	public void outExcel(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
+		String title="琶洲园区企业专利申报情况";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业名称"});
-		headData.add(new Object[] { "ProjectLevel","项目级别"});
-		headData.add(new Object[] { "ProjectType","项目类别"});
-		headData.add(new Object[] { "ProjectName","项目名称"});
-		headData.add(new Object[] { "ApplyAmount","申报额度"});
-		headData.add(new Object[] { "IsSetUp","是否立项"});
-		headData.add(new Object[] { "SetUpAmount","立项资助金额"});
+		headData.add(new Object[] { "Type","专利类别"});
+		headData.add(new Object[] { "Name","专利名称"});
+		headData.add(new Object[] { "PatentNo","专利编号"});
+		headData.add(new Object[] { "ApplyTime","获取时间"});
+
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("startTime", startTime);
