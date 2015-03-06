@@ -35,6 +35,7 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
@@ -65,14 +66,19 @@ public class  MemberRentalController extends BaseController {
 	 */
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,
+	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
-//		if(fhymc !="" && fhymc !=null){
-//		params.put("fhymc", fhymc);
-//		request.setAttribute("fhymc", fhymc);
-//		}
+		if(fhymc !="" && fhymc !=null){
+		params.put("fhymc", fhymc);
+		request.setAttribute("fhymc", fhymc);
+		}
+		if(fjfyd !="" && fjfyd !=null){
+			params.put("fjfyd", fjfyd);
+			request.setAttribute("fjfyd", fjfyd);
+			}
+		
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
@@ -148,7 +154,7 @@ public class  MemberRentalController extends BaseController {
 	@RequestMapping(value = SAVE)
 	public String save(MemberRental entity, Model model) {
 		if (entity.getId() == null) {
-			entity.setShzt("未审核");
+			entity.setShzt("未提交");
 			service.insert(entity);
 		} else {
 			service.update(entity);
@@ -168,16 +174,32 @@ public class  MemberRentalController extends BaseController {
 		return "redirect://admin/memberRental/list/1.html";
 	}
 	
-	@RequestMapping(value = "/ZShtg.html")
+//	@RequestMapping(value = "/ZShtg.html")
+//	@ResponseBody
+//	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
+//		MemberRental mdd= service.findByKey(id);
+//        mdd.setShzt("已提交");
+//		service.update(mdd);
+//		request.setAttribute("exl", "ok");
+//		String exl="ok";
+//		return exl;
+//	}
+	@RequestMapping("ZShtg.html")
 	@ResponseBody
-	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
-		MemberRental mdd= service.findByKey(id);
-        mdd.setShzt("已提交");
-		service.update(mdd);
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("已提交");
+			service.update(mdd);
+		}
+		
 		request.setAttribute("exl", "ok");
 		String exl="ok";
 		return exl;
 	}
+	
 	@RequestMapping(value = "/Sh.html")
 	public String Sh(Long id,HttpServletRequest request) {
 		request.setAttribute("id", id);
@@ -236,7 +258,7 @@ public class  MemberRentalController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
 		String title="缴费表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
@@ -257,7 +279,8 @@ public class  MemberRentalController extends BaseController {
 		headData.add(new Object[] { "Dbyhd","电本月行度"});
 		headData.add(new Object[] { "Zydy","租用单元"});
 		Map<String, Object> params = new HashMap<String, Object>();
-		
+		params.put("fhymc", fhymc);
+		params.put("fjfyd", fjfyd);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);

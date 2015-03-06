@@ -70,7 +70,7 @@ public class  EnterpriseRentalController extends BaseController {
 	 */
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,
+	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -78,6 +78,14 @@ public class  EnterpriseRentalController extends BaseController {
 		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
 		params.put("fhybh", userNo);
 		}
+		if(fhymc !="" && fhymc !=null){
+			params.put("fhymc", fhymc);
+			request.setAttribute("fhymc", fhymc);
+			}
+			if(fjfyd !="" && fjfyd !=null){
+				params.put("fjfyd", fjfyd);
+				request.setAttribute("fjfyd", fjfyd);
+				}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
@@ -254,12 +262,18 @@ public class  EnterpriseRentalController extends BaseController {
 		return "redirect://admin/enterpriseRental/list/1.html";
 	}
 	
-	@RequestMapping(value = "/ZShtg.html")
+	
+	@RequestMapping("ZShtg.html")
 	@ResponseBody
-	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
-		EnterpriseRental mdd= service.findByKey(id);
-        mdd.setShzt("已提交");
-		service.update(mdd);
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EnterpriseRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("已提交");
+			service.update(mdd);
+		}
+		
 		request.setAttribute("exl", "ok");
 		String exl="ok";
 		return exl;
@@ -322,7 +336,7 @@ public class  EnterpriseRentalController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
 		String title="缴费表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
@@ -343,9 +357,13 @@ public class  EnterpriseRentalController extends BaseController {
 		headData.add(new Object[] { "Dbyhd","电本月行度"});
 		headData.add(new Object[] { "Zydy","租用单元"});
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("fhymc", fhymc);
-		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		params.put("fhybh", userNo);
+		}
+		params.put("fhymc", fhymc);
+		params.put("fjfyd", fjfyd);
+		
 		
 		List list =service.getCyqy(params);
          ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);

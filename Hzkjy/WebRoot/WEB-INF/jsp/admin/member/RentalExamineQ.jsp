@@ -50,25 +50,68 @@ function printHuiZhiList(){
 	    iframe: {src: "${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
 	});
 }
-
-
-
-function tjsh(id){
-
-			$.ajax({
-				url:'${ctx}/admin/rentalExamine/ZShtg.html?id='+id+'&random='+Math.random(),
+function pltjsh(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要审核的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/rentalExamine/ZShtg.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,
 		  		
 		  	});
-          
 	document.getElementById("search_form").submit();
-		
+}
+function pltzjf(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要通知的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/rentalExamine/Pltz.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
 }
 
+function pltssh(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要退回的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/rentalExamine/Thtg.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
+
+
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/memberRental/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/rentalExamine/list/1.html");
 	document.getElementById("search_form").submit();
     }   
    function out(){    
@@ -164,9 +207,15 @@ function corpAutocomplete(data){
         <dd > 
         &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
         	</dd>
-        	
+        <dd >  	
+        &nbsp;&nbsp;&nbsp;&nbsp;费用所属年月：<input id="fjfyd" name="fjfyd" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
+								 class="input_a1" maxlength="20"/>
+								</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
          <dt><input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/></dt>
+         <dt><input id="" type="button" value="批量发送" class="initial" onclick="pltzjf()"/></dt>
+         <dt><input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/></dt>
+         <dt><input id="" type="button" value="批量退回" class="initial" onclick="pltssh()"/></dt>
          <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
@@ -187,7 +236,7 @@ function corpAutocomplete(data){
 	        <th>管理服务费</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
-	        <th width="16%">操作</th>
+	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -215,8 +264,6 @@ function corpAutocomplete(data){
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.shzt}</td>
 	        <td>
-	        <a href="javascript:tjsh('${mb.id}')">审核并发送</a>
-	       <a href="javascript:loadPageLayer('退回并备注退审信息','${ctx}/admin/memberRental/Sh.html?id='+${mb.id});">退回</a>
 	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberRental/add/new.html?id=${mb.id}'"/>

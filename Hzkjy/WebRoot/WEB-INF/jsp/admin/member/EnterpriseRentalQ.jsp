@@ -22,6 +22,10 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+
+$('#checkAll').click(function(){
+	$('input[name="qyId"]').attr("checked",this.checked);
+});
 });
 
 function tjsh(id){
@@ -39,7 +43,7 @@ function tjsh(id){
 }
 
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/memberRental/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/enterpriseRental/list/1.html");
 	document.getElementById("search_form").submit();
     }   
    function out(){    
@@ -114,6 +118,25 @@ function loadPageLayer(title,url){
 
 }
 
+function pltjsh(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要提交的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/enterpriseRental/ZShtg.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 
 function loadPageLayer2(title,url){
 	var mypop = $.layer({
@@ -172,7 +195,13 @@ function loadPageLayer2(title,url){
         <dd > 
         &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
         	</dd>
+       <dd >  	
+        &nbsp;&nbsp;&nbsp;&nbsp;费用所属年月：<input id="fjfyd" name="fjfyd" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
+								 class="input_a1" maxlength="20"/>
+								</dd> 	
+        	
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
+         <dt><input id="" type="button" value="批量提交" class="initial" onclick="pltjsh()"/></dt>
          <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
@@ -182,6 +211,7 @@ function loadPageLayer2(title,url){
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>
+	  	<th><input type="checkbox" id="checkAll"/>全选</th>
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
@@ -192,7 +222,7 @@ function loadPageLayer2(title,url){
 	        <th>管理服务费</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
-	        <th width="10%">操作</th>
+	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -208,6 +238,7 @@ function loadPageLayer2(title,url){
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/enterpriseRental/add/new.html?id=${mb.id}'">
+	      <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
@@ -217,9 +248,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.qydf}元</td>
 	        <td>${mb.glfwf}元</td>
 	        <td>${mb.jfyd}</td>
-	        <td>${mb.shzt}</td>
+	        <td>${mb.fbzt}</td>
 	        <td>
-	        <a href="javascript:tjsh('${mb.id}')">提交审核</a>
 	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="录入缴费信息" onclick="javascript:location.href='${ctx}/admin/enterpriseRental/add/new.html?id=${mb.id}'"/>
@@ -234,7 +264,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="9"></td>
+        <td colspan="10"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -242,7 +272,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="11">
+			<td colspan="12">
 				<div class="page">
 					<p:pager/>
 				</div>

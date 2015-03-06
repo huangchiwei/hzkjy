@@ -71,14 +71,24 @@ public class  RentReviewController extends BaseController {
 	 */
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,
+	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,String fsfqf,
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
-//		if(fhymc !="" && fhymc !=null){
-//		params.put("fhymc", fhymc);
-//		request.setAttribute("fhymc", fhymc);
-//		}
+		if(fhymc !="" && fhymc !=null){
+			params.put("fhymc", fhymc);
+			request.setAttribute("fhymc", fhymc);
+			}
+			if(fjfyd !="" && fjfyd !=null){
+				params.put("fjfyd", fjfyd);
+				request.setAttribute("fjfyd", fjfyd);
+				}
+			if(fsfqf !="" && fsfqf !=null){
+				params.put("fsfqf", fsfqf);
+				request.setAttribute("fsfqf", fsfqf);
+				}
+			
+			
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
@@ -255,12 +265,17 @@ public class  RentReviewController extends BaseController {
 		return "redirect://admin/rentReview/list/1.html";
 	}
 	
-	@RequestMapping(value = "/ZShtg.html")
+	@RequestMapping("ZShtg.html")
 	@ResponseBody
-	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
-		EnterpriseRental mdd= service.findByKey(id);
-        mdd.setShzt("已审核");
-		service.update(mdd);
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EnterpriseRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setFbzt("已审核");
+			service.update(mdd);
+		}
+		
 		request.setAttribute("exl", "ok");
 		String exl="ok";
 		return exl;
@@ -323,7 +338,7 @@ public class  RentReviewController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fhymc,String fjfyd,String fsfqf,HttpServletRequest request,HttpServletResponse response) {
 		String title="缴费表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
@@ -345,6 +360,8 @@ public class  RentReviewController extends BaseController {
 		headData.add(new Object[] { "Zydy","租用单元"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
+		params.put("fjfyd", fjfyd);
+		params.put("fsfqf", fsfqf);
 		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		

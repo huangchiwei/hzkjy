@@ -12,6 +12,15 @@
 	<sql id="condition" >
 		from enterprise_rental
 		where 1 = 1
+			<if test="parm.fhymc != null and parm.fhymc != ''">
+		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
+		</if>
+			<if test="parm.fjfyd != null and parm.fjfyd!= ''">
+		and Jfyd  = #{parm.fjfyd}
+		</if>
+		<if test="parm.fsfqf != null and parm.fsfqf!= ''">
+		and Sfqf  = #{parm.fsfqf}
+		</if>
 	</sql>
 	<!-- 实体映射 -->
 	<resultMap id="enterpriseRentalMap" type="enterpriseRental">
@@ -49,7 +58,15 @@
 select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz,Jnje,Accessory,Sfqf
 	 from enterprise_rental
 		where 1 = 1
-		
+			<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
+		</if>
+			<if test="fjfyd != null and fjfyd!= ''">
+		and Jfyd  = #{fjfyd}
+		</if>
+		<if test="fsfqf != null and fsfqf!= ''">
+		and Sfqf  = #{fsfqf}
+		</if>
  order by id desc
 	</select>			
 			
@@ -57,6 +74,15 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 		select count(*) 
 		from enterprise_rental
 		where 1 = 1	
+		<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
+		</if>
+			<if test="fjfyd != null and fjfyd!= ''">
+		and Jfyd  = #{fjfyd}
+		</if>
+		<if test="fsfqf != null and fsfqf!= ''">
+		and Sfqf  = #{fsfqf}
+		</if>
 	</select>
     <select id="findById" resultMap="enterpriseRentalMap" parameterType="Long">
 		select * from enterprise_rental where id = #{id}

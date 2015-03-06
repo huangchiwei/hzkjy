@@ -8,7 +8,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,9 +43,11 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
@@ -59,6 +63,9 @@ public class  RentalExamineController extends BaseController {
 	private MemberBasicService Mbservice;
 	@Resource
 	private EnterpriseRentalService Erservice;
+	
+	@Resource
+	private BsNewsService Bsservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -76,14 +83,18 @@ public class  RentalExamineController extends BaseController {
 	 */
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,
+	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
-//		if(fhymc !="" && fhymc !=null){
-//		params.put("fhymc", fhymc);
-//		request.setAttribute("fhymc", fhymc);
-//		}
+		if(fhymc !="" && fhymc !=null){
+			params.put("fhymc", fhymc);
+			request.setAttribute("fhymc", fhymc);
+			}
+			if(fjfyd !="" && fjfyd !=null){
+				params.put("fjfyd", fjfyd);
+				request.setAttribute("fjfyd", fjfyd);
+				}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
@@ -99,6 +110,92 @@ public class  RentalExamineController extends BaseController {
 		String[] idArr = ids.split(",");
 		List<MemberRental> stuList = service.findByIds(idArr);
 		this.exportPdf(stuList, request, response);
+	}
+	
+	@RequestMapping("ZShtg.html")
+	@ResponseBody
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			service.update(mdd);
+			EnterpriseRental ert= new EnterpriseRental();
+			ert.setHybh(mdd.getHybh());
+			ert.setQymc(mdd.getQymc());
+			ert.setQyzj(mdd.getQyzj());
+			ert.setGlfwf(mdd.getGlfwf());
+			ert.setQysf(mdd.getQysf());
+			ert.setQydf(mdd.getQydf());
+			ert.setSsyhd(mdd.getSsyhd());
+			ert.setSbyhd(mdd.getSsyhd());
+			ert.setShjyl(mdd.getShjyl());
+			ert.setDhjyl(mdd.getDhjyl());
+			ert.setQymj(mdd.getQymj());
+			ert.setQtfy(mdd.getQtfy());
+			ert.setJfyd(mdd.getJfyd());
+			ert.setDsyhd(mdd.getDsyhd());
+			ert.setDbyhd(mdd.getDbyhd());
+			ert.setZydy(mdd.getZydy());
+			ert.setFbzt("未提交");
+			ert.setHjje(mdd.getHjje());
+			ert.setSfqf("0");
+			ert.setAccessory("0");
+			ert.setJnje("0");
+			Erservice.insert(ert);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
+	
+	@RequestMapping("Pltz.html")
+	@ResponseBody
+	public String Pltz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			bs.setTitle(mdd.getJfyd()+"缴费通知");
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getQymc());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			String content="你好:"+mdd.getQymc()+",海珠科技园通知您缴交"+mdd.getJfyd()+"租金费用："+mdd.getHjje();
+			bs.setContent(content);
+			Bsservice.insert(bs);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
+	
+	@RequestMapping("Thtg.html")
+	@ResponseBody
+	public String Thtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("退回");
+			service.update(mdd);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -303,39 +400,7 @@ public class  RentalExamineController extends BaseController {
 		return "redirect://admin/rentalExamine/list/1.html";
 	}
 	
-	@RequestMapping(value = "/ZShtg.html")
-	@ResponseBody
-	public String ZShtg(Long id,String examineTime,HttpServletRequest request) throws ParseException {
-		MemberRental mdd= service.findByKey(id);
-		
-		mdd.setFbzt("已审核");
-		service.update(mdd);
-		EnterpriseRental ert= new EnterpriseRental();
-		ert.setHybh(mdd.getHybh());
-		ert.setQymc(mdd.getQymc());
-		ert.setQyzj(mdd.getQyzj());
-		ert.setGlfwf(mdd.getGlfwf());
-		ert.setQysf(mdd.getQysf());
-		ert.setQydf(mdd.getQydf());
-		ert.setSsyhd(mdd.getSsyhd());
-		ert.setSbyhd(mdd.getSsyhd());
-		ert.setShjyl(mdd.getShjyl());
-		ert.setDhjyl(mdd.getDhjyl());
-		ert.setQymj(mdd.getQymj());
-		ert.setQtfy(mdd.getQtfy());
-		ert.setJfyd(mdd.getJfyd());
-		ert.setDsyhd(mdd.getDsyhd());
-		ert.setDbyhd(mdd.getDbyhd());
-		ert.setZydy(mdd.getZydy());
-		ert.setHjje(mdd.getHjje());
-		ert.setSfqf("0");
-		ert.setAccessory("0");
-		ert.setJnje("0");
-		Erservice.insert(ert);
-		request.setAttribute("exl", "ok");
-		String exl="ok";
-		return exl;
-	}
+	
 
 	
 //	@RequestMapping(value = "/inputExport.html")
@@ -379,7 +444,7 @@ public class  RentalExamineController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
 		String title="缴费表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
@@ -401,6 +466,7 @@ public class  RentalExamineController extends BaseController {
 		headData.add(new Object[] { "Zydy","租用单元"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
+		params.put("fjfyd", fjfyd);
 		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
