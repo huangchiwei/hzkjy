@@ -216,9 +216,11 @@ INSERT INTO `sys_module` VALUES ('Lev1_05','新闻动态',NULL,5,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_06','园区信息',NULL,6,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_07','企业风采',NULL,7,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_08','园区服务',NULL,8,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,9,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_10','通知管理',NULL,10,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,11,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
-INSERT INTO `sys_module` VALUES ('Lev2_03','在园企业管理','admin/memberBasic/list/1.html',1,'Lev1_02',2);
 INSERT INTO `sys_module` VALUES ('Lev2_04','知识产权','admin/memberIntellectualPro/list/1.html',2,'Lev1_02',2);
 INSERT INTO `sys_module` VALUES ('Lev2_08','园区介绍','admin/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_09','组织架构','admin/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
@@ -243,9 +245,14 @@ INSERT INTO `sys_module` VALUES ('Lev2_27','出园指南','admin/news/list/1.htm
 INSERT INTO `sys_module` VALUES ('Lev2_28','证照办理','admin/news/list/1.html?cateCode=service_license',3,'Lev1_08',2);
 INSERT INTO `sys_module` VALUES ('Lev2_29','综合服务','admin/news/list/1.html?cateCode=service_multiple',4,'Lev1_08',2);
 INSERT INTO `sys_module` VALUES ('Lev2_30','成果转化','admin/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
-
-
-
+INSERT INTO `sys_module` VALUES ('Lev2_31','在园企业管理','admin/memberBasic/list/1.html',1,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_32','出园企业管理','admin/memberFasic/list/1.html',2,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_33','租金录入','admin/memberRental/list/1.html',1,'Lev1_09',2);
+INSERT INTO `sys_module` VALUES ('Lev2_34','审核租金','admin/rentalExamine/list/1.html',2,'Lev1_09',2);
+INSERT INTO `sys_module` VALUES ('Lev2_35','企业租金录入','admin/enterpriseRental/list/1.html',3,'Lev1_09',2);
+INSERT INTO `sys_module` VALUES ('Lev2_36','企业缴费审核','admin/rentReview/list/1.html',4,'Lev1_09',2);
+INSERT INTO `sys_module` VALUES ('Lev2_37','通知管理','admin/bsNews/list/1.html',1,'Lev1_10',2);
+INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
 CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
@@ -314,6 +321,7 @@ CREATE TABLE `ecc_indicator` (
   `Gyzcz` varchar(50) default NULL COMMENT '工业总产值',
   `Gyzjz` varchar(50) default NULL COMMENT '工业增加值',
  `JjzbNy` varchar(50) default NULL COMMENT '经济指标年月',
+ `Shzt` varchar(50) default NULL COMMENT '审核状态',
 
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

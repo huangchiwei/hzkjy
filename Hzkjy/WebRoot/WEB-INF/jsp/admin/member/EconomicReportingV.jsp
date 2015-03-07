@@ -106,7 +106,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
    </div>
-<form id="add_form" action='${ctx }/admin/eccIndicator/save.html' method="post">
+<form id="add_form" action='${ctx }/admin/economicReporting/save.html' method="post">
 	<input type="hidden" name="id" value="${model.id}"/>
   <div class="add_info">
 
@@ -249,8 +249,8 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>填报年月：</th>
      <td>
      
-     <input id="jjzbNy" name="jjzbNy" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" type="text" 
-     	value="${model.jjzbNy}" maxlength="20"/>
+     <input id="jjzbNy" name="jjzbNy" size="22" class="Wdate" type="text" 
+     	value="${model.jjzbNy}" maxlength="20" readonly="true"/>
      </td>
       <th></th>
      <td>

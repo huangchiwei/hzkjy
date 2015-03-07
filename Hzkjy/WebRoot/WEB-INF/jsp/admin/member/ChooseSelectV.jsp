@@ -24,8 +24,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	 $("#zt option[value='${model.zt}']").attr("selected", true); 
-	 $("#hyfl option[value='${model.hyfl}']").attr("selected", true); 
-	 
 	formInitConfig("add_form",3000);
 	autoValidate();
 		
@@ -116,20 +114,6 @@ html { overflow:-moz-scrollbars-vertical;}
 								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
      </td>
     </tr>
-    <tr>
-    <th>行业分类：</th>
-     <td>
-     	 <select name="hyfl"  id="hyfl" style="text-align:center">
-          <option value="1">生物/医药技术业</option>
-          <option value="2">电子与信息业</option>
-          <option value="3">新材料技术/新材料业</option>
-          <option value="4">展览服务</option>
-          <option value="5">其他</option>
-          <option value="6">工业</option>
-          
-        </select>
-     </td>
-        </tr>
    </table>
      
    

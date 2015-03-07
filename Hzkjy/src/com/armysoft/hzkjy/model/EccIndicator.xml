@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy</sql>
+	ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from ecc_indicator
@@ -39,11 +39,12 @@
 			    <result column="Gyzcz" property="gyzcz" />
 			    <result column="Gyzjz" property="gyzjz" />
 			    <result column="JjzbNy" property="jjzbNy" />
+			    <result column="Shzt" property="shzt" />
 			                                                      
    </resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy
+select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt
 	from  ecc_indicator
 		where 1 = 1	 
 		
@@ -79,6 +80,42 @@ select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,
 		select hybh,zydy,mj from member_basic where qymc=#{value} ORDER BY hybh DESC LIMIT 1 
 	</select>
 		
+	<select id="countHyfl" resultType="String" parameterType="java.util.Map">
+select count(*) 
+from ecc_indicator where 1=1
+<if test="jjzbNy != null and jjzbNy != ''">
+		and JjzbNy  = #{jjzbNy}
+		</if>
+		<if test="type != null and type != ''">
+		and Hyfl  = #{type}
+		</if>
+</select>
+		
+		
+    <select id="getHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 
+       select * from ecc_indicator
+		where 1 = 1		
+			<if test="jjzbNy != null and jjzbNy != ''">
+		and JjzbNy  = #{jjzbNy}
+		</if>
+		<if test="type != null and type != ''">
+		and Hyfl  = #{type}
+		</if>
+		order by id desc 
+		</select>	
+		
+		 <select id="countHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 
+       select sum() from ecc_indicator
+		where 1 = 1		
+			<if test="jjzbNy != null and jjzbNy != ''">
+		and JjzbNy  = #{jjzbNy}
+		</if>
+		<if test="type != null and type != ''">
+		and Hyfl  = #{type}
+		</if>
+		order by id desc 
+		</select>	
+				
 	<select id="page" resultMap="eccIndicatorMap" parameterType="java.util.Map">
 		select 
 		<include refid="columns"/>
@@ -91,7 +128,7 @@ select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="eccIndicator">
-		insert into ecc_indicator(Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy)
+		insert into ecc_indicator(Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt)
 		values(
 		#{hybh} 
 		,#{rzqy} 		
@@ -112,6 +149,7 @@ select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,
 		, #{gyzcz}
 		, #{gyzjz}
 		, #{jjzbNy}
+		, #{shzt}
 		  )
 		</insert>
 
@@ -137,6 +175,7 @@ select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,
 		Gyzcz=#{gyzcz},
 		Gyzjz=#{gyzjz},
 		JjzbNy=#{jjzbNy},
+		Shzt=#{shzt}
 		where ID = #{id}
 	</update>
 	<!-- 删除 -->

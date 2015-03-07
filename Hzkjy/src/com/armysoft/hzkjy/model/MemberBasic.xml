@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt,Rysj,Htqxf,Htqxe</sql>
+	case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt,Rysj,Htqxf,Htqxe,Hyfl</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_basic 
@@ -59,11 +59,11 @@
 			    <result column="Rysj" property="rysj" />
 			    <result column="Htqxf" property="htqxf" />
 			    <result column="Htqxe" property="htqxe" />
-				
+				 <result column="Hyfl" property="hyfl" />
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt,Rysj,Htqxf,Htqxe
+select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,Qymcpy ,Address ,Zydy ,Mj ,Fzr,Zczj,Lxr,Zt,Rysj,Htqxf,Htqxe,Hyfl
 	 from member_basic
 		where 1 = 1	 and Zt = '1'
 		<if test="fhymc != null and fhymc != ''">
@@ -156,7 +156,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberBasic">
-		insert into member_basic(Hybh,Qymc,Address,Zydy,Mj,Fzr,Zczj,Lxr,Zt,Qymcpy,Rysj,Htqxf,Htqxe)
+		insert into member_basic(Hybh,Qymc,Address,Zydy,Mj,Fzr,Zczj,Lxr,Zt,Qymcpy,Rysj,Htqxf,Htqxe,Hyfl)
 		values(#{hybh} 		
 		, #{qymc} 		
 		, #{address} 		
@@ -170,6 +170,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		 ,		#{rysj}
 		 ,		#{htqxf}
 		 ,		#{htqxe}
+		 ,		#{hyfl}
 		  )
 		</insert>
 
@@ -189,6 +190,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName, ID ,Hybh ,Qymc ,
 		 								,		Rysj=#{rysj}
 		 								,		Htqxf=#{htqxf}
 		 								,		Htqxe=#{htqxe}
+		 								,		Hyfl=#{hyfl}
 		 							where ID = #{id}
 	</update>
 

@@ -143,4 +143,11 @@ public class  EccIndicator implements java.io.Serializable {
       private String gyzcz;
       private String gyzjz;
       private String jjzbNy;
+      private String shzt;
+	public String getShzt() {
+		return shzt;
+	}
+	public void setShzt(String shzt) {
+		this.shzt = shzt;
+	}
 }

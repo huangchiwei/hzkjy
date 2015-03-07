@@ -12,7 +12,6 @@
 	<sql id="condition" >
 		from member_rental
 		where 1 = 1
-		and Shzt='已提交'
 			<if test="parm.fhymc != null and parm.fhymc != ''">
 		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
 		</if>

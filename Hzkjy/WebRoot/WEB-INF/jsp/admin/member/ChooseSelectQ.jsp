@@ -22,11 +22,23 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+
+
+$('#checkAll').click(function(){
+	$('input[name="qyId"]').attr("checked",this.checked);
+});
 });
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/eccIndicator/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/memberBasic/list/1.html");
 	document.getElementById("search_form").submit();
     }   
+    function clean(){    
+	$("#fhymc").val("");
+	$("#frysjf").val("");
+	$("#frysje").val("");
+	$("#fhtqxf").val("");
+	$("#fhtqxe").val("");
+    } 
    function out(){    
 	$("#search_form").attr("action","${ctx}/admin/memberBasic/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
@@ -131,7 +143,7 @@ function loadPageLayer2(title,url){
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/admin/bsNews/delete/' + id + '.html';
+		          location.href='${ctx}/admin/memberBasic/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);
@@ -142,103 +154,110 @@ function loadPageLayer2(title,url){
 	function changeStatus(userNo,status){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
-
+   
+   
+    function pltjsh(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要设置的企业。');
+		return;
+	}
+	var settime = $("#fjjzbNy").val();
+	if(settime == ''){
+		alert('请设置经济月报年月');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/chooseSelect/ZShtg.html?ids='+ids+'&settime='+settime+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
 <body>
 <div class="content_box">
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/eccIndicator/list/1.html" method="post">
-    
-    
-    <h2>按条件查询</h2>
+  	<form id="search_form" action="${ctx}/admin/chooseSelect/list/1.html" method="post">
+    <h2>经济月报设置</h2>
     <div class="div2">
       <dl class="relative h30">
-        <dd > 
-         &nbsp;&nbsp;&nbsp;&nbsp;经济指标年月： <input id="fjjzbNy" name="fjjzbNy" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" type="text" 
-     	value="${fjjzbNy}" maxlength="20"/>
-        	</dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-      
+        		 <dd > 
+        &nbsp;&nbsp;&nbsp;&nbsp;设置经济月报年月：<input id="fjjzbNy" name="fjjzbNy" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjjzbNy}"
+								 class="input_a1" maxlength="20"/>
+								</dd>
+								 <dt><input id="" type="button" value="批量设置" class="initial" onclick="pltjsh()"/></dt>
     </dl>
     </div>
+    
     </form>
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
-	    <tr>
-	    <td colspan="18" align="left">单位名称（公章）：广州市海珠科技产业园有限公司</td>
-	   </tr>
-	  	<tr >
-	  	<td rowspan="3">行业分类</td>
-	  	 <td rowspan="3">编号</td> 
-	  	 <td rowspan="3">入驻企业</td> 
-	  	 <td colspan="15">${fjjzbNy} 底累计</td>
-	  	</tr>
 	  	<tr>
-	  	<td rowspan="2">注册资金(万元)</td>
-	  	<td colspan="2">技工贸总收入</td>
-	  	<td colspan="2">利润总额</td>
-	  	<td colspan="2">纳税</td>
-	  	<td colspan="2">利税总额</td>
-	  	<td rowspan="2">创汇</td>
-	  	<td rowspan="2">职工数</td>
-	  	<td rowspan="2">研发经费</td>
-	  	<td rowspan="2">高新技术产品收入</td>
-	  	<td rowspan="2">工业总产值</td>
-	  	<td rowspan="2">工业增加值</td>
-	  	</tr>
-	  	<tr>
-	  	<td>本月数</td>
-	  	<td>累计数</td>
-	  	<td>本月数</td>
-	  	<td>累计数</td>
-	    <td>本月数</td>
-	  	<td>累计数</td>
-	  	<td>本月数</td>
-	  	<td>累计数</td>
+	  		  	<th><input type="checkbox" id="checkAll"/>全选</th>
+	  	<th>序号</th>
+	  	 <th>企业编号</th> 
+	  	 <th>企业名称</th> 
+	        <th>地址</th>
+	        <th>租用单元</th>
+	        <th>入园时间</th>
+	       <th>合同期限</th>
+	        <th>联系人</th>
+	            <th>状态</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  <pm:hasPermission permValue="hy_save">
-	       	<c:set var="hy_save" value="true"/>
+	  <pm:hasPermission permValue="mb_save">
+	       	<c:set var="mb_save" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="hy_updt">
-	       	<c:set var="hy_updt" value="true"/>
+	    <pm:hasPermission permValue="mb_updt">
+	       	<c:set var="mb_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="hy_del">
-	       	<c:set var="hy_del" value="true"/>
+	    <pm:hasPermission permValue="mb_del">
+	       	<c:set var="mb_del" value="true"/>
 	    </pm:hasPermission>
-	 <c:if test="${Hyfl1count!='0'}">
-      <c:forEach items="${Hyfl1List}" var="mb" varStatus="sta">
+      <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr>
-	           
-	       <c:if test="${sta.index=='0'}">
-	        <td rowspan="${Hyfl1count}">生物/医药技术业</td>
-	        </c:if>
-	         <td>${mb.Hybh}</td>
-	        <td>${mb.Rzqy}</td>
-	        <td>${mb.Zczj}</td>
-	        <td>${mb.JgmzsrBys}</td> 
-	        <td>${mb.JgmzsrLjs}</td>
-	        <td>${mb.LrzeBys}</td>  
-	        <td>${mb.LrzeLjs}</td>
-	        <td>${mb.NsBys}</td>    
-	        <td>${mb.NsLjs}</td>
-	        <td>${mb.LszeBys}</td>    
-	        <td>${mb.LszeLjs}</td>     
-	         <td>${mb.Ch}</td>
-	         <td>${mb.Zgs}</td>
-	         <td>${mb.Yfjf}</td>
-	         <td>${mb.Gxjscpsr}</td>
-	         <td>${mb.Gyzcz}</td>
-	         <td>${mb.Gyzjz}</td>
+	        <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>
+	           	<td>${sta.index + 1}</td>
+	           	<td>${mb.hybh}</td>
+	        <td>${mb.qymc}</td>
+	        <td>${mb.address}</td>
+	        <td>${mb.zydy}</td>
+	        <td><fmt:formatDate value="${mb.rysj}"
+								pattern="yyyy-MM-dd" /></td>
+	        <td><fmt:formatDate value="${mb.htqxf}"
+								pattern="yyyy-MM-dd" />至<fmt:formatDate value="${mb.htqxe}"
+								pattern="yyyy-MM-dd" /></td>
+	        <td>${mb.lxr}</td>
+	        <td>${mb.ztName}</td>
 	      </tr>
       </c:forEach>
-      </c:if>
-      
+      <tr>
+        <td colspan="8"></td>
+      <td>总计</td>
+      <td>${zj!=''?zj:'0'}家</td>
+    
+      </tr>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="10">
+				<div class="page">
+					<p:pager/>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
     </table>
   </div>
 </div>

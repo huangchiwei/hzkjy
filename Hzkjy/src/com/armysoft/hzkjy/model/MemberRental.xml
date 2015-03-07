@@ -12,6 +12,7 @@
 	<sql id="condition" >
 		from member_rental
 		where 1 = 1
+		
 			<if test="parm.fhymc != null and parm.fhymc != ''">
 		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
 		</if>
@@ -58,7 +59,7 @@
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
 select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz
 	 from member_rental
-		where 1 = 1
+	where 1=1
 			<if test="fhymc != null and fhymc != ''">
 		and qymc  like CONCAT('%', #{fhymc}, '%')
 		</if>

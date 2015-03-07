@@ -5,10 +5,7 @@ import java.util.Map;
 import org.armysoft.core.Pagination;
 import org.armysoft.ibatis.dao.BaseDao;
 import org.springframework.stereotype.Service;
-
-import com.armysoft.hzkjy.model.BsNews;
-import com.armysoft.hzkjy.model.EccIndicator;
-import com.armysoft.hzkjy.model.MemberBasic;
+import com.armysoft.hzkjy.model.MemberRental;
 /***
  * 
  * 
@@ -24,9 +21,9 @@ import com.armysoft.hzkjy.model.MemberBasic;
  *
  */
 @Service
-public class EccIndicatorService extends BaseDao {
+public class RentalExamineService extends BaseDao {
 
-	private final String nameSpace = "EccIndicatorOpt";
+	private final String nameSpace = "RentalExamineOpt";
 
 	/**
 	 * 条件分页查询题库
@@ -34,7 +31,7 @@ public class EccIndicatorService extends BaseDao {
 	 * @param pager
 	 * @return
 	 */
-	public List<EccIndicator> getByPage(Map<String, Object> params, Pagination pager) {
+	public List<MemberRental> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
 
@@ -43,21 +40,25 @@ public class EccIndicatorService extends BaseDao {
 	 * @param id
 	 * @return
 	 */
-	public EccIndicator findByKey(Long id) {
+	public MemberRental findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findById", id);
 	}
 	
+	public List  getPortalList(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getPortal", params);
+		}
 	
-	
-	public EccIndicator findByHybh(String hybh) {
+	public MemberRental findByHybh(String hybh) {
 		return super.nativeSelectOne(nameSpace + ".findByHybh", hybh);
 	}
 	public Integer getCount(Map<String, Object> params){
 		return super.nativeSelectOne(nameSpace + ".sumCount", params);
 	}
+	public List<MemberRental> findByIds(String[] idArr) {
+		return super.nativeList(nameSpace + ".findByIds", idArr);
+	}
 	
-	
-	public BsNews findByNewHybh(String hybh1,String hybh2) {
+	public MemberRental findByNewHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("hybh1", hybh1);
 		params.put("hybh2", hybh2);
@@ -74,22 +75,11 @@ public class EccIndicatorService extends BaseDao {
 		params.put("hybh2", hybh2);
 		return super.nativeSelectOne(nameSpace + ".HybhCount", params);
 	}
-	public List<Map<String,Object>>  getSelectedCorpNameList(String value){
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("value", value);
-		return super.nativeList(nameSpace+".getSelectedCorpNameList",params);
-	}
-	
-	public List<Map<String,Object>>  getQyxx(String value){
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("value", value);
-		return super.nativeList(nameSpace+".getQyxx",params);
-	}
 	/**
 	 * 添加数据
 	 * @param question
 	 */
-	public void insert(EccIndicator model) {
+	public void insert(MemberRental model) {
 		super.defInsert(nameSpace, model);
 	}
 	
@@ -97,7 +87,7 @@ public class EccIndicatorService extends BaseDao {
 	 * 批量添加
 	 * @param quests
 	 */
-	public void batchInsert(List<BsNews> lists) {
+	public void batchInsert(List<MemberRental> lists) {
 		super.nativeInsert(nameSpace + ".batchInsert", lists);
 	}
 
@@ -105,7 +95,7 @@ public class EccIndicatorService extends BaseDao {
 	 * 修改
 	 * @param question
 	 */
-	public void update(EccIndicator model) {
+	public void update(MemberRental model) {
 
 		super.defUpdate(nameSpace, model);
 	}
@@ -118,31 +108,4 @@ public class EccIndicatorService extends BaseDao {
 		super.defDelete(nameSpace, id);
 	}
 
-	
-	public String countHyfl(String jjzbNy,String type) {
-		Map<String,Object> params = new HashMap<String, Object>();
-		params.put("jjzbNy", jjzbNy);
-		params.put("type", type);
-		List<Map<String,Object>> list=null;
-		
-	   return super.nativeSelectOne(nameSpace + ".countHyfl", params);
-		
-		
-	}
-	public  List countHyflList(String jjzbNy,String type) {
-		Map<String,Object> params = new HashMap<String, Object>();
-		params.put("jjzbNy", jjzbNy);
-		params.put("type", type);
-		
-	   return super.nativeList(nameSpace + ".countHyflList", params);
-		
-		
-	}
-	
-	public List  getHyflList(String jjzbNy,String type) {
-		Map<String,Object> params = new HashMap<String, Object>();
-		params.put("jjzbNy", jjzbNy);
-		params.put("type", type);
-		return super.nativeList(nameSpace + ".getHyflList", params);
-		}
 }

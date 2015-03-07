@@ -75,8 +75,15 @@ public class  MemberBasic implements java.io.Serializable {
 	  private String zt;
 	  private String qymcpy;
 	  private String ztName;
+	  private String hyfl;
 	  
-	  public Date getRysj() {
+	  public String getHyfl() {
+		return hyfl;
+	}
+	public void setHyfl(String hyfl) {
+		this.hyfl = hyfl;
+	}
+	public Date getRysj() {
 		return rysj;
 	}
 	public void setRysj(Date rysj) {

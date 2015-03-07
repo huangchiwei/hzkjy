@@ -47,10 +47,12 @@ import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.model.RentalExamine;
 import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
+import com.armysoft.hzkjy.service.member.RentalExamineService;
 
 import com.alibaba.fastjson.JSONObject;
 @Controller
@@ -58,7 +60,7 @@ import com.alibaba.fastjson.JSONObject;
 public class  RentalExamineController extends BaseController {
 
 	@Resource
-	private MemberRentalService service;
+	private RentalExamineService service;
 	@Resource
 	private MemberBasicService Mbservice;
 	@Resource
@@ -84,7 +86,7 @@ public class  RentalExamineController extends BaseController {
 	@PermissionsAnno("hy_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
-			MemberRental entity, HttpServletRequest request) {
+			RentalExamine entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		if(fhymc !="" && fhymc !=null){
@@ -119,6 +121,7 @@ public class  RentalExamineController extends BaseController {
 		
 		for(int id=0;id<idArr.length;id++){
 			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("已审核");
 			service.update(mdd);
 			EnterpriseRental ert= new EnterpriseRental();
 			ert.setHybh(mdd.getHybh());

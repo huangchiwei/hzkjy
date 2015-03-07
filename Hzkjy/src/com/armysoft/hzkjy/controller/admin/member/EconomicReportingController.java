@@ -37,6 +37,7 @@ import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.EccIndicator;
+import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.EccIndicatorService;
@@ -44,8 +45,8 @@ import com.armysoft.hzkjy.service.member.MemberBasicService;
 
 
 @Controller
-@RequestMapping("admin/eccIndicator")
-public class  EccIndicatorController extends BaseController {
+@RequestMapping("admin/economicReporting")
+public class  EconomicReportingController extends BaseController {
 
 	@Resource
 	private EccIndicatorService service;
@@ -67,18 +68,13 @@ public class  EccIndicatorController extends BaseController {
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String fjjzbNy,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			EccIndicator entity, HttpServletRequest request) {
-		if(fjjzbNy !="" && fjjzbNy !=null){
-			request.setAttribute("fjjzbNy", fjjzbNy);
-			}else{
-				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");  
-				java.util.Date date=new java.util.Date();  
-				fjjzbNy=sdf.format(date); 
-			}
-		String Hyfl1count=service.countHyfl(fjjzbNy,"1");
-		List<Map<String,Object>> Hyfl1List= service.getHyflList(fjjzbNy,"1");
-		request.setAttribute("Hyfl1count", Hyfl1count);
-		request.setAttribute("Hyfl1List", Hyfl1List);
+		Pagination pager = initPage(currentPage);
+		Map<String, Object> params = new HashMap<String, Object>();
 		
+		if(fjjzbNy !="" && fjjzbNy !=null){
+			params.put("fjjzbNy", fjjzbNy);
+			request.setAttribute("fjjzbNy", fjjzbNy);
+			}
 //		if(ftitle !="" && ftitle !=null){
 //		params.put("ftitle", ftitle);
 //		request.setAttribute("ftitle", ftitle);
@@ -87,11 +83,11 @@ public class  EccIndicatorController extends BaseController {
 //		if(!userNo.equals("admin")){
 //			params.put("receiverBh", userNo);
 //			}
-//        model.addAttribute("list", service.getByPage(params, pager));
-////		request.setAttribute("zj",service.getCount(params));
-//		model.addAttribute("page", pager);
+        model.addAttribute("list", service.getByPage(params, pager));
+//		request.setAttribute("zj",service.getCount(params));
+		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
-		return "admin/member/EccIndicatorQ";
+		return "admin/member/EconomicReportingQ";
 	}
 
 	/**
@@ -103,7 +99,7 @@ public class  EccIndicatorController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key, Model model,HttpServletRequest request) {
 		model.addAttribute("model", service.findByKey(key));
-		return "admin/member/EccIndicatorV";
+		return "admin/member/EconomicReportingV";
 	}
 
 	/**
@@ -118,7 +114,7 @@ public class  EccIndicatorController extends BaseController {
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		return "admin/member/EccIndicatorV";
+		return "admin/member/EconomicReportingV";
 	}
 	
 	@RequestMapping(value = "/getSelectedCorpNameList.html")
@@ -142,7 +138,7 @@ public class  EccIndicatorController extends BaseController {
 //		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 //		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://admin/eccIndicator/list/1.html";
+		return "redirect://admin/economicReporting/list/1.html";
 	}
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
@@ -153,7 +149,7 @@ public class  EccIndicatorController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/eccIndicator/list/1.html";
+		return "redirect://admin/economicReporting/list/1.html";
 	}
 	
 	/**
@@ -165,7 +161,7 @@ public class  EccIndicatorController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/eccIndicator/list/1.html";
+		return "redirect://admin/economicReporting/list/1.html";
 	}
 	
 	
@@ -179,6 +175,52 @@ public class  EccIndicatorController extends BaseController {
 		return "admin/member/MemberBasicF";
 	}
 	
+	
+	@RequestMapping("ZShtt.html")
+	@ResponseBody
+	public String ZShtt(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EccIndicator mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("已提交");
+			service.update(mdd);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
+	@RequestMapping("ZShtg.html")
+	@ResponseBody
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EccIndicator mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("已审核");
+			service.update(mdd);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
+	@RequestMapping("ZShth.html")
+	@ResponseBody
+	public String ZShth(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EccIndicator mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("退回");
+			service.update(mdd);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
 //	@RequestMapping(value = "/inputExport.html")
 //	public String  OutPtqfqk(@RequestParam MultipartFile exlFile, String  nd1,String nd, HttpServletRequest request,HttpServletResponse response) throws ParseException, IOException {
 //	        InputStream fis = exlFile.getInputStream();

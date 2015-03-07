@@ -22,9 +22,12 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+$('#checkAll').click(function(){
+	$('input[name="qyId"]').attr("checked",this.checked);
+});
 });
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/eccIndicator/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/economicReporting/list/1.html");
 	document.getElementById("search_form").submit();
     }   
    function out(){    
@@ -131,7 +134,7 @@ function loadPageLayer2(title,url){
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/admin/bsNews/delete/' + id + '.html';
+		          location.href='${ctx}/admin/economicReporting/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);
@@ -143,13 +146,71 @@ function loadPageLayer2(title,url){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
 
+
+function pZShtg(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要审核的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/economicReporting/ZShtg.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
+function pZShth(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要退回的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/economicReporting/ZShth.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
+function pZShtt(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要提交的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/economicReporting/ZShtt.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
 <body>
 <div class="content_box">
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/eccIndicator/list/1.html" method="post">
+  	<form id="search_form" action="${ctx}/admin/economicReporting/list/1.html" method="post">
     
     
     <h2>按条件查询</h2>
@@ -160,43 +221,28 @@ function loadPageLayer2(title,url){
      	value="${fjjzbNy}" maxlength="20"/>
         	</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
+          <dt><input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/></dt>
+          <dt><input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/></dt>
+          <dt><input id="" type="button" value="批量退回" class="initial" onclick="pZShth();"/></dt>
       
     </dl>
     </div>
     </form>
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
-	    <tr>
-	    <td colspan="18" align="left">单位名称（公章）：广州市海珠科技产业园有限公司</td>
-	   </tr>
-	  	<tr >
-	  	<td rowspan="3">行业分类</td>
-	  	 <td rowspan="3">编号</td> 
-	  	 <td rowspan="3">入驻企业</td> 
-	  	 <td colspan="15">${fjjzbNy} 底累计</td>
-	  	</tr>
 	  	<tr>
-	  	<td rowspan="2">注册资金(万元)</td>
-	  	<td colspan="2">技工贸总收入</td>
-	  	<td colspan="2">利润总额</td>
-	  	<td colspan="2">纳税</td>
-	  	<td colspan="2">利税总额</td>
-	  	<td rowspan="2">创汇</td>
-	  	<td rowspan="2">职工数</td>
-	  	<td rowspan="2">研发经费</td>
-	  	<td rowspan="2">高新技术产品收入</td>
-	  	<td rowspan="2">工业总产值</td>
-	  	<td rowspan="2">工业增加值</td>
-	  	</tr>
-	  	<tr>
-	  	<td>本月数</td>
-	  	<td>累计数</td>
-	  	<td>本月数</td>
-	  	<td>累计数</td>
-	    <td>本月数</td>
-	  	<td>累计数</td>
-	  	<td>本月数</td>
-	  	<td>累计数</td>
+	  	<th><input type="checkbox" id="checkAll"/>全选</th>
+	  	 <th>会员分类</th> 
+	  	 <th>序号</th> 
+	        <th>入园企业</th>
+	        <th>注册资金</th>
+	        <th>技工贸总收入本月数</th>
+	        <th>技工贸总收入累计数</th>
+	        <th>利润总额本月数</th>
+	        <th>利润总额累计数</th>
+	        <th>经济指标年月</th>
+	        <th>状态</th>
+	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -210,35 +256,49 @@ function loadPageLayer2(title,url){
 	    <pm:hasPermission permValue="hy_del">
 	       	<c:set var="hy_del" value="true"/>
 	    </pm:hasPermission>
-	 <c:if test="${Hyfl1count!='0'}">
-      <c:forEach items="${Hyfl1List}" var="mb" varStatus="sta">
-	      <tr>
-	           
-	       <c:if test="${sta.index=='0'}">
-	        <td rowspan="${Hyfl1count}">生物/医药技术业</td>
-	        </c:if>
-	         <td>${mb.Hybh}</td>
-	        <td>${mb.Rzqy}</td>
-	        <td>${mb.Zczj}</td>
-	        <td>${mb.JgmzsrBys}</td> 
-	        <td>${mb.JgmzsrLjs}</td>
-	        <td>${mb.LrzeBys}</td>  
-	        <td>${mb.LrzeLjs}</td>
-	        <td>${mb.NsBys}</td>    
-	        <td>${mb.NsLjs}</td>
-	        <td>${mb.LszeBys}</td>    
-	        <td>${mb.LszeLjs}</td>     
-	         <td>${mb.Ch}</td>
-	         <td>${mb.Zgs}</td>
-	         <td>${mb.Yfjf}</td>
-	         <td>${mb.Gxjscpsr}</td>
-	         <td>${mb.Gyzcz}</td>
-	         <td>${mb.Gyzjz}</td>
+      <c:forEach items="${list}" var="mb" varStatus="sta">
+	      <tr ondblclick="javascript:location.href='${ctx}/admin/economicReporting/add/new.html?id=${mb.id}'">
+	        <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>   
+	        <td>
+	        <c:if test="${mb.hyfl=='1'}">生物/医药技术业</c:if>
+	        <c:if test="${mb.hyfl=='2'}">电子与信息业</c:if>
+	        <c:if test="${mb.hyfl=='3'}">新材料技术/新材料业</c:if>
+	        <c:if test="${mb.hyfl=='4'}">展览服务</c:if>
+	        <c:if test="${mb.hyfl=='5'}">其他</c:if>
+	        <c:if test="${mb.hyfl=='6'}">工业</c:if></td>
+	        <td>${sta.index + 1}</td>
+	        <td>${mb.rzqy}</td>
+	        <td>${mb.zczj}</td>
+	        <td>${mb.jgmzsrBys}</td> 
+	        <td>${mb.jgmzsrLjs}</td>
+	        <td>${mb.lrzeBys}</td>  
+	        <td>${mb.lrzeLjs}</td>
+	         <td>${mb.jjzbNy}</td>
+	          <td>${mb.shzt}</td>
+	          <td>
+	          	<c:if test="${hy_updt == true}">
+		          	<div class="btn_icon">
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="填报" onclick="javascript:location.href='${ctx}/admin/economicReporting/add/new.html?id=${mb.id}'"/>
+		          	</div>
+	          	</c:if>
+	          	<c:if test="${hy_del == true}">
+		          	<div class="btn_icon">
+		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
+		         	</div>
+	         	</c:if>
+	         </td>
 	      </tr>
       </c:forEach>
-      </c:if>
-      
 	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="18">
+				<div class="page">
+					<p:pager/>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
     </table>
   </div>
 </div>
