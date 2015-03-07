@@ -237,7 +237,141 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       </c:if>
-      
+       <c:if test="${Hyfl2count!='0'}">
+      <c:forEach items="${Hyfl2List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl2count}">电子与信息业</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+      </c:if>
+       <c:if test="${Hyfl3count!='0'}">
+      <c:forEach items="${Hyfl3List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl3count}">新材料技术/新材料业</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+      </c:if>
+       <c:if test="${Hyfl4count!='0'}">
+      <c:forEach items="${Hyfl4List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl4count}">展览服务</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+      </c:if>
+       <c:if test="${Hyfl5count!='0'}">
+      <c:forEach items="${Hyfl5List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl5count}">其他</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+      </c:if>
+       <c:if test="${Hyfl6count!='0'}">
+      <c:forEach items="${Hyfl6List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl6count}">工业</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+      </c:if>
 	</tbody>
     </table>
   </div>

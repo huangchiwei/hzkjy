@@ -79,6 +79,31 @@ public class  EccIndicatorController extends BaseController {
 		request.setAttribute("Hyfl1count", Hyfl1count);
 		request.setAttribute("Hyfl1List", Hyfl1List);
 		
+		String Hyfl2count=service.countHyfl(fjjzbNy,"2");
+		List<Map<String,Object>> Hyfl2List= service.getHyflList(fjjzbNy,"2");
+		request.setAttribute("Hyfl2count", Hyfl2count);
+		request.setAttribute("Hyfl2List", Hyfl2List);
+		
+		String Hyfl3count=service.countHyfl(fjjzbNy,"3");
+		List<Map<String,Object>> Hyfl3List= service.getHyflList(fjjzbNy,"3");
+		request.setAttribute("Hyfl3count", Hyfl3count);
+		request.setAttribute("Hyfl3List", Hyfl3List);
+		
+		String Hyfl4count=service.countHyfl(fjjzbNy,"1");
+		List<Map<String,Object>> Hyfl4List= service.getHyflList(fjjzbNy,"4");
+		request.setAttribute("Hyfl4count", Hyfl4count);
+		request.setAttribute("Hyfl4List", Hyfl4List);
+		
+		String Hyfl5count=service.countHyfl(fjjzbNy,"1");
+		List<Map<String,Object>> Hyfl5List= service.getHyflList(fjjzbNy,"5");
+		request.setAttribute("Hyfl5count", Hyfl5count);
+		request.setAttribute("Hyfl5List", Hyfl5List);
+		
+		String Hyfl6count=service.countHyfl(fjjzbNy,"6");
+		List<Map<String,Object>> Hyfl6List= service.getHyflList(fjjzbNy,"6");
+		request.setAttribute("Hyfl6count", Hyfl6count);
+		request.setAttribute("Hyfl6List", Hyfl6List);
+		
 //		if(ftitle !="" && ftitle !=null){
 //		params.put("ftitle", ftitle);
 //		request.setAttribute("ftitle", ftitle);
