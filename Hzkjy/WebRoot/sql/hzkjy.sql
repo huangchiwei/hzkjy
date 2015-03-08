@@ -16,10 +16,27 @@ CREATE TABLE `member_basic` (
   `Zczj` varchar(50) default NULL COMMENT '注册资金',
   `Lxr` varchar(50) default NULL COMMENT '联系人',
   `Zt` varchar(50) default NULL COMMENT '状态',
+  `Rysj` datetime default NULL COMMENT '入园时间',
+  `Htqxf` datetime default NULL COMMENT '合同期限始',
+  `Htqxe` datetime default NULL COMMENT '合同期限终',
+  `Hyfl` varchar(200) default NULL COMMENT '行业分类',
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
-
+DROP TABLE IF EXISTS `bs_news`;
+CREATE TABLE `bs_news` (
+  `ID` int(11) NOT NULL auto_increment,
+  `Title` varchar(50) default NULL COMMENT '标题',
+  `Receiver` varchar(100) default NULL COMMENT '接收者',
+  `Iseveryone` varchar(50) default NULL COMMENT '是否全部发送',
+  `ActiveTime` datetime default NULL COMMENT '有限时间',
+  `Content` longtext default NULL COMMENT '内容',
+  `Creater` varchar(50) default NULL COMMENT '创建人',
+  `IsReport` varchar(50) default NULL COMMENT '是否发布',
+  `CreateTime` datetime default NULL COMMENT '创建时间',
+  `ReceiverBh` varchar(50) default NULL COMMENT '接受者编号',
+  PRIMARY KEY  (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Records of member_basic
 -- ----------------------------
@@ -252,7 +269,9 @@ INSERT INTO `sys_module` VALUES ('Lev2_34','审核租金','admin/rentalExamine/l
 INSERT INTO `sys_module` VALUES ('Lev2_35','企业租金录入','admin/enterpriseRental/list/1.html',3,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_36','企业缴费审核','admin/rentReview/list/1.html',4,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_37','通知管理','admin/bsNews/list/1.html',1,'Lev1_10',2);
-INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
+INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报统计','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
+INSERT INTO `sys_module` VALUES ('Lev2_39','经济月报设置','admin/chooseSelect/list/1.html',2,'Lev1_11',2);
+INSERT INTO `sys_module` VALUES ('Lev2_40','经济月报填报','admin/economicReporting/list/1.html',3,'Lev1_11',2);
 CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
@@ -325,3 +344,119 @@ CREATE TABLE `ecc_indicator` (
 
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : test
+Source Server Version : 50096
+Source Host           : localhost:3306
+Source Database       : hzkjy
+
+Target Server Type    : MYSQL
+Target Server Version : 50096
+File Encoding         : 65001
+
+Date: 2015-03-08 21:00:50
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `member_rental`
+-- ----------------------------
+DROP TABLE IF EXISTS `member_rental`;
+CREATE TABLE `member_rental` (
+  `ID` int(11) NOT NULL auto_increment,
+  `Hybh` varchar(50) default NULL COMMENT '会员编号',
+  `Qymc` varchar(100) default NULL COMMENT '企业名称',
+  `Qyzj` decimal(10,0) default NULL COMMENT '企业租金',
+  `Glfwf` decimal(10,0) default NULL COMMENT '管理服务费',
+  `Qysf` decimal(10,0) default NULL COMMENT '企业水费',
+  `Qydf` decimal(10,0) default NULL COMMENT '企业电费',
+  `Ssyhd` decimal(10,0) default NULL COMMENT '水上月行度',
+  `Sbyhd` decimal(10,0) default NULL COMMENT '水本月行度',
+  `Shjyl` decimal(10,0) default NULL COMMENT '水合计用量',
+  `Dhjyl` decimal(10,0) default NULL COMMENT '电合计用量',
+  `Qymj` decimal(10,0) default NULL COMMENT '企业面积',
+  `Qtfy` decimal(10,0) default NULL COMMENT '其它费用',
+  `Hjje` decimal(10,0) default NULL COMMENT '合计金额',
+  `Shzt` varchar(50) default NULL COMMENT '审核状态',
+  `Fbzt` varchar(50) default NULL COMMENT '发布状态',
+  `Jfyd` varchar(50) default NULL COMMENT '缴费月度',
+  `Dsyhd` decimal(10,0) default NULL COMMENT '电上月行度',
+  `Dbyhd` decimal(10,0) default NULL COMMENT '电本月行度',
+  `Zydy` varchar(50) default NULL COMMENT '用租单元',
+  `Bz` varchar(255) default NULL COMMENT '注备',
+  `Zjsq` varchar(255) default NULL COMMENT '租金属期',
+  `Glfsq` varchar(255) default NULL COMMENT '管理费属期',
+  `Sfsq` varchar(255) default NULL COMMENT '水费属期',
+  `Dfsq` varchar(255) default NULL COMMENT '电费属期',
+  `Zjbz` varchar(255) default NULL COMMENT '租金备注',
+  `Glfbz` varchar(255) default NULL COMMENT '管理费备注',
+  `Sfbz` varchar(255) default NULL COMMENT '水费备注',
+  `Dfbz` varchar(255) default NULL COMMENT '电费备注',
+  PRIMARY KEY  (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of member_rental
+-- ----------------------------
+INSERT INTO `member_rental` VALUES ('2', '440100001', '广州军软', '5530', '3160', '85', '27', '0', '15', '15', '21', '100', '0', '8802', '已审核', '未提交', '2014-12', '21301', '21322', '3001', null, '14/12/1~14/12/31', '14/12/1~14/12/31', '14/10/23~14/11/22', '14/10/23~14/11/22', '', '', '分摊洗手间水费', '已含公摊费用');
+INSERT INTO `member_rental` VALUES ('3', '440100001', '广州军软', '333', '33', '33', '33', '33', '33', '0', '0', '100', '33', '432', '已审核', '未提交', '2015-02', '33', '33', '3001', null, '33', '33', '33', '33', '33', '33', '33', '33');
+
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : test
+Source Server Version : 50096
+Source Host           : localhost:3306
+Source Database       : hzkjy
+
+Target Server Type    : MYSQL
+Target Server Version : 50096
+File Encoding         : 65001
+
+Date: 2015-03-08 21:01:42
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `enterprise_rental`
+-- ----------------------------
+DROP TABLE IF EXISTS `enterprise_rental`;
+CREATE TABLE `enterprise_rental` (
+  `ID` int(11) NOT NULL auto_increment,
+  `Hybh` varchar(50) default NULL COMMENT '会员编号',
+  `Qymc` varchar(100) default NULL COMMENT '企业名称',
+  `Qyzj` decimal(10,0) default NULL COMMENT '企业租金',
+  `Glfwf` decimal(10,0) default NULL COMMENT '管理服务费',
+  `Qysf` decimal(10,0) default NULL COMMENT '企业水费',
+  `Qydf` decimal(10,0) default NULL COMMENT '企业电费',
+  `Ssyhd` decimal(10,0) default NULL COMMENT '水上月行度',
+  `Sbyhd` decimal(10,0) default NULL COMMENT '水本月行度',
+  `Shjyl` decimal(10,0) default NULL COMMENT '水合计用量',
+  `Dhjyl` decimal(10,0) default NULL COMMENT '电合计用量',
+  `Qymj` decimal(10,0) default NULL COMMENT '企业面积',
+  `Qtfy` decimal(10,0) default NULL COMMENT '其它费用',
+  `Shzt` varchar(50) default NULL COMMENT '审核状态',
+  `Fbzt` varchar(50) default NULL COMMENT '发布状态',
+  `Jfyd` varchar(50) default NULL COMMENT '缴费月度',
+  `Dsyhd` decimal(10,0) default NULL COMMENT '电上月行度',
+  `Dbyhd` decimal(10,0) default NULL COMMENT '电本月行度',
+  `Zydy` varchar(50) default NULL COMMENT '用租单元',
+  `Hjje` decimal(10,0) default NULL COMMENT '合计金额',
+  `Jnje` decimal(10,0) default NULL COMMENT '缴纳金额',
+  `Accessory` varchar(50) default NULL COMMENT '缴费依据',
+  `Sfqf` varchar(50) default NULL COMMENT '是否欠费',
+  `Bz` varchar(255) default NULL COMMENT '备注',
+  PRIMARY KEY  (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of enterprise_rental
+-- ----------------------------
+INSERT INTO `enterprise_rental` VALUES ('36', '440100001', '广州军软', '5530', '3160', '85', '27', '0', '0', '15', '21', '100', '0', null, '未提交', '2014-12', '21301', '21322', '3001', '8802', '0', '0', '0', null);
+INSERT INTO `enterprise_rental` VALUES ('37', '440100001', '广州军软', '333', '33', '33', '33', '33', '33', '0', '0', '100', '33', null, '未提交', '2015-02', '33', '33', '3001', '432', '0', '0', '0', null);
+
