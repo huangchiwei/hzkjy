@@ -34,6 +34,7 @@ import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
+import com.armysoft.hzkjy.base.util.ExportExcel2;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.EccIndicator;
@@ -76,33 +77,46 @@ public class  EccIndicatorController extends BaseController {
 			}
 		String Hyfl1count=service.countHyfl(fjjzbNy,"1");
 		List<Map<String,Object>> Hyfl1List= service.getHyflList(fjjzbNy,"1");
+		
 		request.setAttribute("Hyfl1count", Hyfl1count);
 		request.setAttribute("Hyfl1List", Hyfl1List);
+		List<Map<String,Object>> countHyfl1List= service.countHyflList(fjjzbNy,"1");
+		request.setAttribute("countHyfl1List", countHyfl1List);
 		
 		String Hyfl2count=service.countHyfl(fjjzbNy,"2");
 		List<Map<String,Object>> Hyfl2List= service.getHyflList(fjjzbNy,"2");
 		request.setAttribute("Hyfl2count", Hyfl2count);
 		request.setAttribute("Hyfl2List", Hyfl2List);
+		List<Map<String,Object>> countHyfl2List= service.countHyflList(fjjzbNy,"2");
+		request.setAttribute("countHyfl2List", countHyfl2List);
 		
 		String Hyfl3count=service.countHyfl(fjjzbNy,"3");
 		List<Map<String,Object>> Hyfl3List= service.getHyflList(fjjzbNy,"3");
 		request.setAttribute("Hyfl3count", Hyfl3count);
 		request.setAttribute("Hyfl3List", Hyfl3List);
+		List<Map<String,Object>> countHyfl3List= service.countHyflList(fjjzbNy,"3");
+		request.setAttribute("countHyfl3List", countHyfl3List);
 		
-		String Hyfl4count=service.countHyfl(fjjzbNy,"1");
+		String Hyfl4count=service.countHyfl(fjjzbNy,"4");
 		List<Map<String,Object>> Hyfl4List= service.getHyflList(fjjzbNy,"4");
 		request.setAttribute("Hyfl4count", Hyfl4count);
 		request.setAttribute("Hyfl4List", Hyfl4List);
+		List<Map<String,Object>> countHyfl4List= service.countHyflList(fjjzbNy,"4");
+		request.setAttribute("countHyfl4List", countHyfl4List);
 		
-		String Hyfl5count=service.countHyfl(fjjzbNy,"1");
+		String Hyfl5count=service.countHyfl(fjjzbNy,"5");
 		List<Map<String,Object>> Hyfl5List= service.getHyflList(fjjzbNy,"5");
 		request.setAttribute("Hyfl5count", Hyfl5count);
 		request.setAttribute("Hyfl5List", Hyfl5List);
+		List<Map<String,Object>> countHyfl5List= service.countHyflList(fjjzbNy,"5");
+		request.setAttribute("countHyfl5List", countHyfl5List);
 		
 		String Hyfl6count=service.countHyfl(fjjzbNy,"6");
 		List<Map<String,Object>> Hyfl6List= service.getHyflList(fjjzbNy,"6");
 		request.setAttribute("Hyfl6count", Hyfl6count);
 		request.setAttribute("Hyfl6List", Hyfl6List);
+		List<Map<String,Object>> countHyfl6List= service.countHyflList(fjjzbNy,"6");
+		request.setAttribute("countHyfl6List", countHyfl6List);
 		
 //		if(ftitle !="" && ftitle !=null){
 //		params.put("ftitle", ftitle);
@@ -245,27 +259,40 @@ public class  EccIndicatorController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,HttpServletRequest request,HttpServletResponse response) {
-		String title="园区基本资料表";
+	public void OutPtqfqk(Model model,String fjjzbNy,HttpServletRequest request,HttpServletResponse response) {
+		String title="广州市海珠区科技产业基地入驻企业经济指标月报表";
 		List headData =  new ArrayList();
-		headData.add(new Object[] { "Hybh","企业编号"});
-		headData.add(new Object[] { "Qymc","企业名称"});
-		headData.add(new Object[] { "Address","地址"});
-		headData.add(new Object[] { "Zydy","租用单位"});
-		headData.add(new Object[] { "Mj","面积"});
-		headData.add(new Object[] { "Fzr","负责人"});
-		headData.add(new Object[] { "Zczj","注册资金"});
-		headData.add(new Object[] { "Lxr","联系人"});
-		headData.add(new Object[] { "ZtName","在园出园状态"});
+		headData.add(new Object[] { "HyflName","行业分类"});
+		headData.add(new Object[] { "Hybh","编号"});
+		headData.add(new Object[] { "Rzqy","入驻企业"});
+		headData.add(new Object[] { "Zczj","注册资金(万元)"});
+		headData.add(new Object[] { "JgmzsrBys","本月数"});//技工贸总收入
+		headData.add(new Object[] { "JgmzsrLjs","累计数"});//技工贸总收入
+		headData.add(new Object[] { "LrzeBys","本月数"});//利润总额
+		headData.add(new Object[] { "LrzeLjs","累计数"});//利润总额<td>${mb.NsBys}</td>    
+		headData.add(new Object[] { "NsBys","本月数"});//纳税
+		headData.add(new Object[] { "NsLjs","累计数"});//纳税
+		headData.add(new Object[] { "LszeBys","本月数"});//纳税
+		headData.add(new Object[] { "LszeLjs","累计数"});//纳税
+		headData.add(new Object[] { "Ch","创汇"});//创汇
+		headData.add(new Object[] { "Zgs","职工数"});//职工数
+		headData.add(new Object[] { "Yfjf","研发经费"});//职工数
+		headData.add(new Object[] { "Gxjscpsr","高新技术产品收入"});//高新技术产品收入
+		headData.add(new Object[] { "Gyzcz","工业总产值"});//工业总产值
+		headData.add(new Object[] { "Gyzjz","工业增加值"});//工业增加值
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("fhymc", fhymc);
-		
+		params.put("fjjzbNy",fjjzbNy);
+		List Hyfl1List= service.getHyflList(fjjzbNy,"1");
+		List Hyfl2List= service.getHyflList(fjjzbNy,"2");
+		List Hyfl3List= service.getHyflList(fjjzbNy,"3");
+		List Hyfl4List= service.getHyflList(fjjzbNy,"4");
+		List Hyfl5List= service.getHyflList(fjjzbNy,"5");
+		List Hyfl6List= service.getHyflList(fjjzbNy,"6");
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
-		List list =service.getCyqy(params);
-         ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);
+         ExportExcel2 exportExcel = new ExportExcel2(title,title, headData);
 		
-		exportExcel.exportExcel_Applicant(request, response,list);
+		exportExcel.exportExcel_Applicant(request, response,Hyfl1List,Hyfl2List,Hyfl3List,Hyfl4List,Hyfl5List,Hyfl6List,fjjzbNy);
 		
 	}
 

@@ -44,7 +44,7 @@
    </resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt
+select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt
 	from  ecc_indicator
 		where 1 = 1	 
 		
@@ -93,7 +93,8 @@ from ecc_indicator where 1=1
 		
 		
     <select id="getHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 
-       select * from ecc_indicator
+       select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt
+	from  ecc_indicator
 		where 1 = 1		
 			<if test="jjzbNy != null and jjzbNy != ''">
 		and JjzbNy  = #{jjzbNy}
@@ -105,7 +106,22 @@ from ecc_indicator where 1=1
 		</select>	
 		
 		 <select id="countHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 
-       select sum() from ecc_indicator
+          select sum(Zczj)  sumZczj ,
+                 sum(JgmzsrBys)  sumJgmzsrBys,
+                 sum(JgmzsrLjs)  sumJgmzsrLjs,
+                 sum(LrzeBys)  sumLrzeBys,
+                 sum(LrzeLjs)  sumLrzeLjs ,
+                 sum(NsBys)  sumNsBys ,
+                 sum(NsLjs)  sumNsLjs,
+                 sum(LszeBys)  sumLszeBys,
+                 sum(LszeLjs)  sumLszeLjs,
+                 sum(Ch)  sumCh,
+                 sum(Zgs)  sumZgs,
+                 sum(Yfjf)  sumYfjf,
+                 sum(Gxjscpsr)  sumGxjscpsr,
+                 sum(Gyzcz)  sumGyzcz,
+                 sum(Gyzjz)  sumGyzjz
+                 from ecc_indicator
 		where 1 = 1		
 			<if test="jjzbNy != null and jjzbNy != ''">
 		and JjzbNy  = #{jjzbNy}
