@@ -24,12 +24,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
+import com.armysoft.hzkjy.base.util.ExportExcel_InteProCount;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 
 /**
- * 科技项目
+ * 科技项目，知识产权统计
  * @author Administrator
  *
  */
@@ -134,12 +135,13 @@ public class  MemberIntellectualProController extends BaseController {
 	public void outExcel(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
 		String title="琶洲园区企业科技项目申报情况";
 		List headData =  new ArrayList();
-		headData.add(new Object[] { "Hybh","企业名称"});
+		headData.add(new Object[] { "RowNo","序号"});
+		headData.add(new Object[] { "Qymc","企业"});
 		headData.add(new Object[] { "ProjectLevel","项目级别"});
 		headData.add(new Object[] { "ProjectType","项目类别"});
 		headData.add(new Object[] { "ProjectName","项目名称"});
 		headData.add(new Object[] { "ApplyAmount","申报额度"});
-		headData.add(new Object[] { "IsSetUp","是否立项"});
+		headData.add(new Object[] { "IsSetUp","立项"});
 		headData.add(new Object[] { "SetUpAmount","立项资助金额"});
 		
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -153,4 +155,80 @@ public class  MemberIntellectualProController extends BaseController {
 		exportExcel.exportExcel_Applicant(request, response,list);
 		
 	}
+	/**
+	 * 知识产权统计
+	 * @param request
+	 * @param model
+	 * @param year
+	 * @return
+	 */
+	  @RequestMapping(value ="/inteProCount.html" )
+		public String inteProCount(HttpServletRequest request,Model model,String year) {
+	    	Map<String, Object> params = new HashMap<String, Object>();	   
+	    	if(year!=null&&year.isEmpty()==false){
+	    		params.put("year", year);
+	    	}else{	
+	    		params.put("year", new Date().getYear());
+	    	}
+	    	
+	    	
+	    	//memberIntellectualProService.inteProCount(params);
+			return "admin/member/MemberIntelProCount";
+		}
+	  @RequestMapping(value ="/outInteProCount/1.html" )
+		public void OutInteProCount(HttpServletRequest request,HttpServletResponse response,Model model,String year) {
+	    	Map<String, Object> params = new HashMap<String, Object>();	   
+	    	if(year!=null&&year.isEmpty()==false){
+	    		params.put("year", year);
+	    	}else{	
+	    		params.put("year", new Date().getYear());
+	    	}
+	    	
+	    	String title="企业知识产权情况";
+			List headData =  new ArrayList();
+			headData.add(new Object[] { "name","指标名称"});
+			headData.add(new Object[] { "unit","计量单位"});
+			headData.add(new Object[] { "number","数量"});
+			
+		
+			
+			List<Map<String, Object>>  list =new ArrayList<Map<String, Object>>();//memberIntellectualProService.findAll(params);
+			list.add(memberIntellectualProService.createMap("知识产权授权数(1-6月)", "件", "0"));
+			list.add(memberIntellectualProService.createMap("其中:发明专利(1-6月)", "件", "0"));
+			list.add(memberIntellectualProService.createMap("实用新型(1-6月)", "件", "0"));
+			list.add(memberIntellectualProService.createMap("外观设计(1-6月)", "个", "0"));
+			list.add(memberIntellectualProService.createMap("软件著作权(1-6月)", "个", "0"));
+			list.add(memberIntellectualProService.createMap("知识产权授权数(7-12月)", "件", "0"));
+			list.add(memberIntellectualProService.createMap("其中:发明专利(7-12月)", "件", "0"));
+			list.add(memberIntellectualProService.createMap("实用新型(7-12月)", "件", "0"));
+			list.add(memberIntellectualProService.createMap("外观设计(7-12月)", "个", "0"));
+			list.add(memberIntellectualProService.createMap("软件著作权(7-12月)", "个", "0"));
+			list.add(memberIntellectualProService.createMap("到上一年为止拥有有效知识产权数", "件", "0"));
+			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", "0"));
+			list.add(memberIntellectualProService.createMap("实用新型", "件", "0"));
+			list.add(memberIntellectualProService.createMap("外观设计", "个", "0"));
+			list.add(memberIntellectualProService.createMap("软件著作权", "个", "0"));
+			list.add(memberIntellectualProService.createMap("现拥有有效知识产权数", "件", "0"));
+			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", "0"));
+			list.add(memberIntellectualProService.createMap("实用新型", "件", "0"));
+			list.add(memberIntellectualProService.createMap("外观设计", "个", "0"));
+			list.add(memberIntellectualProService.createMap("软件著作权", "个", "0"));
+			list.add(memberIntellectualProService.createMap("获得奖项总数(1-6月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("其中:国家级奖项(1-6月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("省级奖项(1-6月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("市级奖项(1-6月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("获得奖项总数(7-12月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("其中:国家级奖项(7-12月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("省级奖项(7-12月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("市级奖项(7-12月)", "项", "0"));
+				
+			
+			
+			
+			
+			ExportExcel_InteProCount ee = new ExportExcel_InteProCount(title,title, headData);
+			
+			ee.exportExcel_Applicant(request, response,list);
+	    
+		}
 }

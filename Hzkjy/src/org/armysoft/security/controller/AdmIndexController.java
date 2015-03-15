@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.armysoft.hzkjy.base.common.Constants;
+import com.armysoft.hzkjy.base.common.CookieUtil;
+
 @Controller
 @RequestMapping("admin")
 public class AdmIndexController {
@@ -15,8 +18,8 @@ public class AdmIndexController {
 	public String dispatcher(Model model, @PathVariable String page,
 			HttpServletRequest req) {
 		// if("index".equalsIgnoreCase(page))
-		// model.addAttribute("userNo", CookieUtil.getUserCookieValue(req,
-		// Constants.ADMIN_KEY));
+		 model.addAttribute("userNo", CookieUtil.getUserCookieValue(req,
+		 Constants.ADMIN_KEY));
 		return "admin/base/" + page;
 	}
 }

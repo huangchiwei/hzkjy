@@ -1,4 +1,5 @@
 package com.armysoft.hzkjy.service.member;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +30,13 @@ public class MemberIntellectualProService extends BaseDao {
 	public Map<String, Object> findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findByKey", id);
 	}
-
+	public Map<String, Object> createMap(String name,String unit,String number) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("name", name);
+		params.put("unit", unit);
+		params.put("number", number);
+		return params;
+	}
 
 	/**
 	 * 添加数据
