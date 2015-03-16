@@ -26,7 +26,10 @@
 	</select>
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
-		select * 
+		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,mip.ApplyTime,
+		case when mip.IsSetUp='1' then '立项' else '不立项' end IsSetUp ,
+		case when mip.ProjectLevel='0' then '国家级' when mip.ProjectLevel='1' then '省级' when mip.ProjectLevel='2' then '市级' else '区级' end ProjectLevel,
+		 mb.Qymc
 		from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh
 		<if test="startTime!= null and startTime != ''">
 		<if test="endTime!= null and endTime != ''">
@@ -34,6 +37,7 @@
 		</if>
 		</if>
 		order by mip.ApplyTime desc
+		) ttable,(select @rowNO :=0) b 
 		
 	</select>
 	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">

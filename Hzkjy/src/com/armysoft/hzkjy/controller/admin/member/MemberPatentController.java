@@ -134,9 +134,10 @@ public class  MemberPatentController extends BaseController {
 	 */
 	@RequestMapping("/outExcel/1.html")
 	public void outExcel(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
-		String title="琶洲园区企业专利申报情况";
+		String title="琶洲园区企业专利获得情况";
 		List headData =  new ArrayList();
-		headData.add(new Object[] { "Hybh","企业名称"});
+		headData.add(new Object[] { "RowNo","序号"});
+		headData.add(new Object[] { "Qymc","企业"});
 		headData.add(new Object[] { "Type","专利类别"});
 		headData.add(new Object[] { "Name","专利名称"});
 		headData.add(new Object[] { "PatentNo","专利编号"});

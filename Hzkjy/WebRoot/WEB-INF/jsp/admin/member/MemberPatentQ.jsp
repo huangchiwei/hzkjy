@@ -77,7 +77,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>
-	  	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+	  	<th>序号</th>
 	  	 <th>企业名称</th> 
 	        <th width="60px;">专利类别</th>
 	        <th >专利名称</th>
