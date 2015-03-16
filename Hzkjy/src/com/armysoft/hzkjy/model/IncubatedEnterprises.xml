@@ -110,26 +110,35 @@ select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze
 	<!-- 修改 -->
 	<update id="update" parameterType="incubatedEnterprises">
 		update incubated_enterprises set 
-		Hybh=#{hybh}
-		 								,Qymc=#{qymc}
-		 								,Address=#{address}
-											,	Zydy=#{zydy}
-		 								,		Mj=#{mj}
-		 								,		Fzr=#{fzr}
-		 								,		Zczj=#{zczj}
-		 								,		Lxr=#{lxr}
-		 								,		Zt=#{zt}
-		 								,		Qymcpy=#{qymcpy}
-		 								,		Rysj=#{rysj}
-		 								,		Htqxf=#{htqxf}
-		 								,		Htqxe=#{htqxe}
-		 								,		Hyfl=#{hyfl}
+		Qymc=#{qymc}	
+		,Zzjgdm=#{zzjgdm} 		
+		,Frdb=#{frdb} 		
+		 ,Zczb=#{zczb}
+		 ,Frlxdh=#{frlxdh}
+		 ,Qyclsj=#{qyclsj}
+		 ,Lxr=#{lxr}
+		 ,Qyrzsj=#{qyrzsj}
+		 ,Lxrlxdh=#{lxrlxdh}
+		 ,Qydjzclx=#{qydjzclx}
+		 ,Htstze=#{htstze}
+		 ,Dzys=#{dzys}
+		 ,Xnyjdxs=#{xnyjdxs}
+		 ,Qyssjsly=#{qyssjsly}
+		 ,Gxjsqy=#{gxjsqy}
+		 ,Lxryqy=#{lxryqy}
+		 ,Hylb=#{hylb}
+		 ,Synyxzscq=#{synyxzscq}
+		 ,Fmzl=	#{fmzl}
+		 ,Wgsj=	#{wgsj}
+		 ,Syxx=	#{syxx}
+		 ,Rjzzq=#{rjzzq}
+		 ,Ssn=#{ssn}
 		 							where ID = #{id}
 	</update>
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
-		delete from member_basic where ID = #{ID}
+		delete from incubated_enterprises where ID = #{ID}
 	</delete>
 	
 	<!-- ********************************************* -->
