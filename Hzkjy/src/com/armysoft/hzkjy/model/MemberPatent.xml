@@ -17,6 +17,9 @@
 		and mp.ApplyTime between #{parm.startTime} and #{parm.endTime}
 		</if>
 		</if>
+		<if test="parm.memberNo null and parm.memberNo != ''">
+		and mp.MemberNo=#{parm.memberNo}
+		</if>
 		order by mp.ApplyTime desc
 	  				
 	</sql>

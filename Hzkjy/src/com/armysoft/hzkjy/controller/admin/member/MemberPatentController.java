@@ -61,6 +61,9 @@ public class  MemberPatentController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("startTime", startTime);
 		params.put("endTime", endTime);
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		if(!userNo.equals("admin"))
+		params.put("memberNo", userNo);
         model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);
 		model.addAttribute("params", params);
