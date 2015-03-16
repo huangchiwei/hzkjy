@@ -60,7 +60,12 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
  order by id desc
 	</select>			
 			
-			
+				<select id="findByIds" resultMap="memberRentalMap">
+		select * from member_rental where Id in
+			<foreach collection="array" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			</select>
 	
 	<select id="sumCount" resultType="int" parameterType="java.util.Map">
 		select count(*) 

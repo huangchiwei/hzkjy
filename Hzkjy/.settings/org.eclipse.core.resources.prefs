@@ -1,4 +1,4 @@
-#Mon Feb 16 09:03:23 CST 2015
+#Mon Mar 16 14:07:33 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/huangchiwei/hzkjy.git
@@ -10,6 +10,7 @@ encoding//WebRoot/js/jsp/sys/ModifyPwd.js=UTF-8
 encoding//WebRoot/js/jsp/sys/SysRoleA_U.js=UTF-8
 encoding//WebRoot/js/jsp/sys/SysUserA_U_D.js=UTF-8
 encoding//WebRoot/js/layer/layerDemo.js=UTF-8
+encoding//WebRoot/sql/hzkjy.sql=UTF-8
 encoding//WebRoot/theme/default/js/jquery-1.8.2.min.js=UTF-8
 encoding//WebRoot/theme/default/js/time.js=UTF-8
 encoding//resource/log/log4j.properties=UTF-8

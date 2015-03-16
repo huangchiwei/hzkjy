@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="IncubatedEnterprisesOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from incubated_enterprises
+		where 1 = 1
+			<if test="parm.fssn != null and parm.fssn!= ''">
+		and ssn  = #{parm.fssn}
+		</if>
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="incubatedEnterprisesMap" type="incubatedEnterprises">
+				<result column="ID" property="id" />
+				<result column="Qymc" property="hybh" />
+				<result column="Zzjgdm" property="qymc" />
+				<result column="Frdb" property="address" />
+				<result column="Zczb" property="zydy" />
+				<result column="Frlxdh" property="mj" />
+				<result column="Qyclsj" property="fzr" />
+				<result column="Lxr" property="zczj" />
+			    <result column="Qyrzsj" property="lxr" />
+			    <result column="Lxrlxdh" property="zt" />
+			    <result column="Qydjzclx" property="qymcpy" />
+			    <result column="Htstze" property="rysj" />
+			    <result column="Dzys" property="htqxf" />
+			    <result column="Xnyjdxs" property="htqxe" />
+				 <result column="Qyssjsly" property="hyfl" />
+				 <result column="Gxjsqy" property="rysj" />
+			    <result column="Lxryqy" property="htqxf" />
+			    <result column="Hylb" property="htqxe" />
+				 <result column="Synyxzscq" property="hyfl" />
+				 <result column="Fmzl" property="hyfl" />
+				 <result column="Wgsj" property="hyfl" />
+				 <result column="Syxx" property="hyfl" />
+				 <result column="Rjzzq" property="hyfl" />
+				 <result column="Ssn" property="hyfl" />
+			</resultMap>
+			
+<select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
+select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn
+	 from incubated_enterprises
+		where 1 = 1	
+	    <if test="fssn != null and fssn!= ''">
+		and ssn  = #{fssn}
+		</if>
+ order by id desc
+	</select>			
+			
+	<select id="sumCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		from incubated_enterprises
+		where 1 = 1
+		 <if test="fssn != null and fssn!= ''">
+		and ssn  = #{fssn}
+		</if>
+		
+	</select>
+    <select id="findById" resultMap="incubatedEnterprisesMap" parameterType="Long">
+		select * from incubated_enterprises where id = #{id}
+	</select>
+	
+		
+	<select id="page" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="incubatedEnterprises">
+		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn)
+		values(#{qymc} 		
+		, #{zzjgdm} 		
+		, #{frdb} 		
+		 ,      #{zczb}
+		 ,		#{frlxdh}
+		 ,		#{qyclsj}
+		 ,		#{lxr}
+		 ,		#{qyrzsj}
+		 ,		#{lxrlxdh}
+		 ,		#{qydjzclx}
+		 ,		#{htstze}
+		 ,		#{dzys}
+		 ,		#{xnyjdxs}
+		 ,		#{qyssjsly}
+		 ,		#{gxjsqy}
+		 ,		#{lxryqy}
+		 ,		#{hylb}
+		 ,		#{synyxzscq}
+		 ,		#{fmzl}
+		 ,		#{wgsj}
+		 ,		#{syxx}
+		 ,		#{rjzzq}
+		 ,		#{ssn}
+		  )
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="incubatedEnterprises">
+		update incubated_enterprises set 
+		Hybh=#{hybh}
+		 								,Qymc=#{qymc}
+		 								,Address=#{address}
+											,	Zydy=#{zydy}
+		 								,		Mj=#{mj}
+		 								,		Fzr=#{fzr}
+		 								,		Zczj=#{zczj}
+		 								,		Lxr=#{lxr}
+		 								,		Zt=#{zt}
+		 								,		Qymcpy=#{qymcpy}
+		 								,		Rysj=#{rysj}
+		 								,		Htqxf=#{htqxf}
+		 								,		Htqxe=#{htqxe}
+		 								,		Hyfl=#{hyfl}
+		 							where ID = #{id}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from member_basic where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>

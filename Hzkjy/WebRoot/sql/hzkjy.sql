@@ -236,9 +236,10 @@ INSERT INTO `sys_module` VALUES ('Lev1_08','园区服务',NULL,8,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,9,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_10','通知管理',NULL,10,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,11,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_12','知识产权',NULL,12,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
-INSERT INTO `sys_module` VALUES ('Lev2_04','知识产权','admin/memberIntellectualPro/list/1.html',2,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_04','科技项目','admin/memberIntellectualPro/list/1.html',1,'Lev1_12',2);
 INSERT INTO `sys_module` VALUES ('Lev2_08','园区介绍','admin/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_09','组织架构','admin/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_10','园区荣誉','admin/news/list/1.html?cateCode=park_honor',3,'Lev1_03',2);
@@ -272,6 +273,7 @@ INSERT INTO `sys_module` VALUES ('Lev2_37','通知管理','admin/bsNews/list/1.h
 INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报统计','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
 INSERT INTO `sys_module` VALUES ('Lev2_39','经济月报设置','admin/chooseSelect/list/1.html',2,'Lev1_11',2);
 INSERT INTO `sys_module` VALUES ('Lev2_40','经济月报填报','admin/economicReporting/list/1.html',3,'Lev1_11',2);
+INSERT INTO `sys_module` VALUES ('Lev2_41','专利','admin/memberPatent/list/1.html',2,'Lev1_12',2);
 CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
@@ -460,3 +462,30 @@ CREATE TABLE `enterprise_rental` (
 INSERT INTO `enterprise_rental` VALUES ('36', '440100001', '广州军软', '5530', '3160', '85', '27', '0', '0', '15', '21', '100', '0', null, '未提交', '2014-12', '21301', '21322', '3001', '8802', '0', '0', '0', null);
 INSERT INTO `enterprise_rental` VALUES ('37', '440100001', '广州军软', '333', '33', '33', '33', '33', '33', '0', '0', '100', '33', null, '未提交', '2015-02', '33', '33', '3001', '432', '0', '0', '0', null);
 
+DROP TABLE IF EXISTS `incubated_enterprises`;
+CREATE TABLE `incubated_enterprises` (
+  `ID` int(11) NOT NULL auto_increment,
+  `Qymc` varchar(100) default NULL COMMENT '会员名称',
+  `Zzjgdm` varchar(50) default NULL COMMENT '组织机构代码',
+  `Frdb` varchar(100) default NULL COMMENT '法人代表',
+  `Zczb` varchar(50) default NULL COMMENT '注册资本',
+  `Frlxdh` varchar(50) default NULL COMMENT '法人联系电话',
+  `Qyclsj` datetime default NULL COMMENT '企业成立时间',
+  `Lxr` varchar(50) default NULL COMMENT '联系人',
+  `Qyrzsj` datetime default NULL COMMENT '企业入驻时间',
+  `Lxrlxdh` varchar(50) default NULL COMMENT '联系人联系电话',
+  `Qydjzclx` varchar(50) default NULL COMMENT '企业登记注册类型',
+  `Htstze` varchar(50) default NULL COMMENT '获天使或风险投资额（千元）',
+  `Dzys` varchar(50) default NULL COMMENT '大专以上（人）',
+  `Xnyjdxs` varchar(200) default NULL COMMENT '吸纳应届大学毕业生（人）',
+`Qyssjsly` varchar(200) default NULL COMMENT '企业所属技术领域',
+`Gxjsqy` varchar(200) default NULL COMMENT '高新技术企业',
+`Lxryqy` varchar(200) default NULL COMMENT '留学人员企业',
+`Hylb` varchar(200) default NULL COMMENT '行业类别',
+`Synyxzscq` varchar(200) default NULL COMMENT '到上一年为止拥有有效知识产权（件）',
+`Fmzl` varchar(200) default NULL COMMENT '发明专利（件）',
+`Wgsj` varchar(200) default NULL COMMENT '外观设计（个）',
+`Syxx` varchar(200) default NULL COMMENT '实用新型（件）',
+`Rjzzq` varchar(200) default NULL COMMENT '软件著作权（个）',
+  PRIMARY KEY  (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
