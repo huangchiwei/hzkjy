@@ -14,7 +14,7 @@
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" >
-function validate(){
+<%--function validate(){
 	var re1="/^-?\d+$/";
 	var re2="/^(-?\d+)(\.\d+)?$/";
 	var applyAmount=$("#applyAmount").val();
@@ -32,7 +32,26 @@ function validate(){
 			$("#setUpAmount").focus();
 				return false;
 			}
-		}
+		}--%>
+		
+		var applyAmount=$("#applyAmount");
+		if(applyAmount.val()==""){
+			alert("申报额度(万)不为空!");
+			applyAmount.focus();
+			return false;
+			}
+		var setUpAmount=$("#setUpAmount");
+		if(setUpAmount.val()==""){
+			alert("立项资助金额(万)不为空!");
+			setUpAmount.focus();
+			return false;
+			}
+		var projectName=$("#projectName");
+		if(projectName.val()==""){
+			alert("项目名称不为空!");
+			projectName.focus();
+			return false;
+			}
 	document.forms[0].submit();
 }
 </script>
@@ -70,52 +89,56 @@ html { overflow:-moz-scrollbars-vertical;}
      
      <th>项目类别：</th>
      <td>
-     	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/>
+     	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/><font color="red">*</font>
      </td>
    
-       
-    </tr>
-	    <tr>
-	    <th>申报时间：</th>
-     <td>
-     <input id="applyTime" name="applyTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
-     	value="<fmt:formatDate value="${entity.ApplyTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>
-     	
-     </td>
 	     <th>申报额度(万)：</th>
 	     <td>
-	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   />
+	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   /><font color="red">*</font>
 	     </td>
 	     
-	    </tr>
+       
+    </tr>
+	   
 	    <tr>
-	    <th>是否立项：</th>
+	      <th> 年份：</th>
+     <td>
+ <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+     	value="${entity.Year}" maxlength="10"/>
+     	
+     </td>
+    <th> 月份：</th>
+    <td><select name="month" id="month">
+    <option value="0" <c:if test="${entity.Month==0}">selected="selected"</c:if>>1~6月</option>
+    <option value="1" <c:if test="${entity.Month==1}">selected="selected"</c:if>>7~12月</option></select></td>
+     <th>是否立项：</th>
 	     <td>
 	       <select name="isSetUp">
- 		<option value="1" <c:if test="${entity.IsSetUp==1}">selected="selected"</c:if>>立项</option>    
- 		<option value="0" <c:if test="${entity.IsSetUp==0}">selected="selected"</c:if>>不立项</option>  
- 		
+ 		<option value="2" <c:if test="${entity.IsSetUp==1}">selected="selected"</c:if>>是</option>    
+ 		<option value="1" <c:if test="${entity.IsSetUp==0}">selected="selected"</c:if>>否</option>  
+ 		<option value="0" <c:if test="${entity.IsSetUp==0}">selected="selected"</c:if>>未知</option>  
      </select>
-	    
+	    <font color="red">*</font>
 	     	</td>
+	    </tr>
+	    <tr>
+	   
 	     <th>立项资助金额(万)：</th>
 	   	 <td>
-	   	 	<input name="setUpAmount"  id="setUpAmount" type="text" class="input_a1" value="${entity.SetUpAmount}"/>
+	   	 	<input name="setUpAmount"  id="setUpAmount" type="text" class="input_a1" value="${entity.SetUpAmount}"/><font color="red">*</font>
 	   	 </td>
-	    </tr>
-    <tr>
-   
-      <th>项目名称：</th>
+	   	   <th>项目名称：</th>
      <td colspan="3">
-    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" />
+    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" /><font color="red">*</font>
      </td>
-    </tr>
+	    </tr>
+ 
    </table>
      
    
     
     	<p class="div_submit">
-				   <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
+				   <img src="${ctx}/theme/default/images/submit.png" onclick="validate()"/>
 				</p>
   
   </div>

@@ -14,6 +14,24 @@
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 
 
+<script type="text/javascript" >
+	
+		var name=$("#name");
+		if(name.val()==""){
+			alert("专利名称不为空!");
+			name.focus();
+			return false;
+			}
+		var patentNo=$("#patentNo");
+		if(patentNo.val()==""){
+			alert("专利编号不为空!");
+			patentNo.focus();
+			return false;
+			}
+		
+	document.forms[0].submit();
+}
+</script>
 
 
 <style type="text/css">
@@ -38,25 +56,35 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th class="w100">专利类别:</th>
      <td>
-     <input id="type" name="type" type="text" value="${entity.Type}" />
+       <select name="type">
+ 		<option value="0" <c:if test="${entity.ProjectLevel==0}">selected="selected"</c:if>>发明专利</option>    
+ 		<option value="1" <c:if test="${entity.ProjectLevel==1}">selected="selected"</c:if>>实用新型</option>  
+ 		<option value="2" <c:if test="${entity.ProjectLevel==2}">selected="selected"</c:if>>外观设计</option>  
+ 		<option value="3" <c:if test="${entity.ProjectLevel==3}">selected="selected"</c:if>>软件著作权</option>  
+     </select>
+  
       </td>
 
-       <th>申报时间：</th>
+       <th> 年份：</th>
      <td>
-     <input id="applyTime" name="applyTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
-     	value="<fmt:formatDate value="${entity.ApplyTime}" pattern="yyyy-MM-dd"/>" maxlength="10"/>
+ <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+     	value="${entity.Year}" maxlength="10"/>
      	
      </td>
+    <th> 月份：</th>
+    <td><select name="month" id="month">
+    <option value="0" <c:if test="${entity.Month==0}">selected="selected"</c:if>>1~6月</option>
+    <option value="1" <c:if test="${entity.Month==1}">selected="selected"</c:if>>7~12月</option></select></td>
     </tr>
 	 
     <tr>
     <th>专利名称：</th>
      <td>
-     	<input id="name" name="name" type="text" value="${entity.Name}" />
+     	<input id="name" name="name" type="text" value="${entity.Name}" /><font color="red">*</font>
      </td>
       <th>专利编号：</th>
-     <td >
-    	<input id="patentNo" name="patentNo" type="text" value="${entity.PatentNo}"/>
+     <td colspan="3">
+    	<input id="patentNo" name="patentNo" type="text" value="${entity.PatentNo}"/><font color="red">*</font>
      </td>
     </tr>
    </table>   

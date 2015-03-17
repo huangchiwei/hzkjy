@@ -61,9 +61,9 @@ html { overflow:-moz-scrollbars-vertical;}
         <div class="div2">
       <dl class="relative h30">
         <dd > <form id="search_form" action="${ctx}/admin/memberPatent/list/1.html" method="post">
-        &nbsp;&nbsp;&nbsp;&nbsp;申请时间： <input id="startTime" name="startTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
-     	value="${params.startTime}" maxlength="10"/>到<input id="endTime" name="endTime"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" type="text" 
-     	value="${params.endTime}" maxlength="10"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;年份： <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+     	value="${params.startTime}" maxlength="10"/>
+     	月份：<select name="month" id="month"><option value="0">1~6月</option><option value="1">7~12月</option></select>
         	</form></dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
                  
