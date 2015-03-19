@@ -63,43 +63,43 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th class="w100">企业名称:</th>
      <td>
-     	<input id="qymc" name="qymc" type="text" class="input_a1" value="${model.qymc}" maxlength="100" />
+     	<input id="qymc" name="qymc" type="text" class="input_a1" value="${model.qymc!=null && model.qymc!=''?model.qymc:mc.qymc}" maxlength="100" />
      </td>
      
      <th colspan="2">组织机构代码：</th>
      <td>
-     	<input id="zzjgdm" name="zzjgdm" type="text" class="input_a1" value="${model.zzjgdm}" maxlength="20" />
+     	<input id="zzjgdm" name="zzjgdm" type="text" class="input_a1" value="${model.zzjgdm!=null && model.zzjgdm!=''?model.zzjgdm:mc.zzjgdm}" maxlength="20" />
      </td>
    </tr>
 	    <tr>
 	     <th>法人代表：</th>
 	     <td>
-	     <input id="frdb" name="frdb" type="text" class="input_a1" value="${model.frdb}" maxlength="100"  />
+	     <input id="frdb" name="frdb" type="text" class="input_a1" value="${model.frdb!=null && model.frdb!=''?model.frdb:mc.frdb}" maxlength="100"  />
 	     </td>
 	     <th colspan="2">注册资本：</th>
 	     <td>
-	     <input name="zczb"  id="zczb" type="text" class="input_a1" value="${model.zczb}"/>
+	     <input name="zczb"  id="zczb" type="text" class="input_a1" value="${model.zczb!=null && model.zczb!=''?model.zczb:mc.zczb}"/>
 	     	</td>
 	    </tr>
     <tr>
      <th>联系电话：</th>
      <td>
-     	<input name="frlxdh"  id="frlxdh" type="text" class="input_a1" value="${model.frlxdh}"/>
+     	<input name="frlxdh"  id="frlxdh" type="text" class="input_a1" value="${model.frlxdh!=null && model.frlxdh!=''?model.frlxdh:mc.frlxdh}"/>
      </td>
      <th colspan="2">企业成立时间：</th>
      <td>
-     <input id="qyclsj" name="qyclsj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.qyclsj}"
+     <input id="qyclsj" name="qyclsj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.qyclsj!=null && model.qyclsj!=''?model.qyclsj:mc.qyclsj}"
 								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
      </td>
     </tr>
      <tr>
      <th>联系人：</th>
      <td>
-		<input name="lxr"  id="lxr" type="text" class="input_a1" value="${model.lxr}"/>
+		<input name="lxr"  id="lxr" type="text" class="input_a1" value="${model.lxr!=null && model.lxr!=''?model.lxr:mc.lxr}"/>
      </td>
      <th colspan="2">企业入驻时间：</th>
      <td>
-     	<input id="qyrzsj" name="qyrzsj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.qyrzsj}"
+     	<input id="qyrzsj" name="qyrzsj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.qyrzsj!=null && model.qyrzsj!=''?model.qyrzsj:mc.qyrzsj}"
 								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
      </td>
     </tr>
@@ -107,11 +107,11 @@ html { overflow:-moz-scrollbars-vertical;}
      <tr>
      <th>联系电话：</th>
      <td>
-		<input name="lxrlxdh"  id="lxrlxdh" type="text" class="input_a1" value="${model.lxrlxdh}"/>
+		<input name="lxrlxdh"  id="lxrlxdh" type="text" class="input_a1" value="${model.lxrlxdh!=null && model.lxrlxdh!=''?model.lxrlxdh:mc.lxrdh}"/>
      </td>
      <th colspan="2">企业登记注册类型：</th>
      <td>
-     <input name="qydjzclx"  id="qydjzclx" type="text" class="input_a1" value="${model.qydjzclx}"/>
+     <input name="qydjzclx"  id="qydjzclx" type="text" class="input_a1" value="${model.qydjzclx!=null && model.qydjzclx!=''?model.qydjzclx:mc.qydjzclx}"/>
      </td>
     </tr>
     

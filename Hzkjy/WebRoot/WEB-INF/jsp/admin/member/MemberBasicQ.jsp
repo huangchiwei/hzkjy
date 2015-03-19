@@ -21,7 +21,8 @@ html { overflow:-moz-scrollbars-vertical;}
 <script type="text/javascript">
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
-$("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+$("#fsfjjyb option[value='${fsfjjyb}']").attr("selected", true); 
+$("#fzt option[value='${fzt}']").attr("selected", true); 
 });
 function find(){    
 	$("#search_form").attr("action","${ctx}/admin/memberBasic/list/1.html");
@@ -168,13 +169,27 @@ function loadPageLayer2(title,url){
         <dd > 
         &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 style="width:160px" onfocus="loadCorpName();"/>
         	</dd>
+        	   							 <dd > &nbsp;&nbsp;&nbsp;&nbsp;状态：
+   <select name="fzt"  id="fzt" style="text-align:center">
+         <option value="">所有</option>
+          <option value="1">在园</option>
+          <option value="0">出园</option>
+        </select>
+        </dd>	
+        							 <dd > &nbsp;&nbsp;&nbsp;&nbsp;经济月报：
+   <select name="fsfjjyb"  id="fsfjjyb" style="text-align:center">
+         <option value="">所有</option>
+          <option value="1">需要</option>
+          <option value="0">不需要</option>
+        </select>
+        </dd>	
         		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;入园时间：<input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
+        &nbsp;&nbsp;&nbsp;&nbsp;入驻时间：<input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
 								 class="input_a1" maxlength="20"/>至
 								<input id="frysje" name="frysje" type="text" onclick="WdatePicker();" value="${frysje}"
 								 class="input_a1" maxlength="20"/>
 								</dd>
-  
+		
     </dl>
      <dl class="relative h30"> 
         		 <dd > 
@@ -195,15 +210,16 @@ function loadPageLayer2(title,url){
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>
-	  	<th>序号</th>
-	  	 <th>企业编号</th> 
-	  	 <th>企业名称</th> 
-	        <th>地址</th>
-	        <th>租用单元</th>
-	        <th>入园时间</th>
-	       <th>合同期限</th>
-	        <th>联系人</th>
-	            <th>状态</th>
+	  	     <th>序号</th>
+	  		 <th>企业编号</th> 
+	  		 <th>企业名称</th> 
+	  	     <th>租用地址</th>
+	         <th>入驻时间</th>
+	  	     <th>合同期限</th>
+	         <th>状态</th>
+	         <th>联系人</th>
+	         <th>联系电话</th> 
+	         <th>经济月报</th> 
 	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
@@ -220,18 +236,19 @@ function loadPageLayer2(title,url){
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'">
-	           	<td>${sta.index + 1}</td>
-	           	<td>${mb.hybh}</td>
-	        <td>${mb.qymc}</td>
-	        <td>${mb.address}</td>
-	        <td>${mb.zydy}</td>
-	        <td><fmt:formatDate value="${mb.rysj}"
+	        <td>${sta.index + 1}</td>
+	      	<td>${mb.hybh}</td>
+	      	<td>${mb.qymc}</td>
+	        <td>${mb.zydy}</td>  	
+	        <td><fmt:formatDate value="${mb.qyrzsj}"
 								pattern="yyyy-MM-dd" /></td>
 	        <td><fmt:formatDate value="${mb.htqxf}"
 								pattern="yyyy-MM-dd" />至<fmt:formatDate value="${mb.htqxe}"
 								pattern="yyyy-MM-dd" /></td>
+			<td>${mb.ztName}</td>					
 	        <td>${mb.lxr}</td>
-	        <td>${mb.ztName}</td>
+	        <td>${mb.lxrdh}</td>
+	        <td>${mb.sfjjybName}</td>
 	        <td>
 	          	<c:if test="${mb_updt == true}">
 		          	<div class="btn_icon">
@@ -247,7 +264,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="8"></td>
+        <td colspan="9"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -255,7 +272,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="10">
+			<td colspan="11">
 				<div class="page">
 					<p:pager/>
 				</div>

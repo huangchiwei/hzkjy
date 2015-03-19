@@ -61,7 +61,7 @@ public class  MemberBasicController extends BaseController {
 	 */
 	@PermissionsAnno("mb_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+	public String getByPage(@PathVariable Integer currentPage,String fzt,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			MemberBasic entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -89,6 +89,15 @@ public class  MemberBasicController extends BaseController {
 			params.put("fhtqxe", fhtqxe);
 			request.setAttribute("fhtqxe", fhtqxe);
 			}
+		if(fsfjjyb !="" && fsfjjyb !=null){
+			params.put("fsfjjyb", fsfjjyb);
+			request.setAttribute("fsfjjyb",fsfjjyb);
+			}
+		if(fzt !="" && fzt !=null){
+			params.put("fzt", fzt);
+			request.setAttribute("fzt",fzt);
+			}
+		
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
@@ -236,27 +245,27 @@ public class  MemberBasicController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,HttpServletRequest request,HttpServletResponse response) {
 		String title="园区基本资料表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
 		headData.add(new Object[] { "Qymc","企业名称"});
-		headData.add(new Object[] { "Address","地址"});
-		headData.add(new Object[] { "Zydy","租用单位"});
-		headData.add(new Object[] { "Mj","面积"});
-		headData.add(new Object[] { "Fzr","负责人"});
-		headData.add(new Object[] { "Zczj","注册资金"});
-		headData.add(new Object[] { "Lxr","联系人"});
-		headData.add(new Object[] { "ZtName","在园出园状态"});
-		headData.add(new Object[] { "Rysj","入园时间"});
+		headData.add(new Object[] { "Zydy","租用地址"});
+		headData.add(new Object[] { "Qyrzsj","入驻时间"});
 		headData.add(new Object[] { "Htqxf","合同期限至"});
 		headData.add(new Object[] { "Htqxe","合同期限"});
+		headData.add(new Object[] { "ZtName","状态"});
+		headData.add(new Object[] { "Lxr","联系人"});
+		headData.add(new Object[] { "Lxrdh","联系电话"});
+		headData.add(new Object[] { "SfjjybName","经济月报"});
+		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		params.put("frysjf", frysjf);
 		params.put("frysje", frysje);
 		params.put("fhtqxf", fhtqxf);
 		params.put("fhtqxe", fhtqxe);
+		params.put("fsfjjyb", fsfjjyb);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);
