@@ -76,6 +76,7 @@
 	  		success:function(data){
 	  			var t = $("#tree");
 				t = $.fn.zTree.init(t, setting, data);
+				t.expandAll(false);
 	  		},
 	  		error:function(){
 	  			alert('功能菜单加载异常');

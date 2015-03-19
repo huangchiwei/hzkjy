@@ -12,10 +12,14 @@
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh
-		<if test="parm.startTime!= null and parm.startTime != ''">
-		<if test="parm.endTime!= null and parm.endTime != ''">
-		and mp.ApplyTime between #{parm.startTime} and #{parm.endTime}
+		<if test="parm.year!= null and parm.year != ''">
+		and mp.Year=#{parm.year}
 		</if>
+		<if test="parm.month!= null and parm.month != ''">
+		and mp.Month=#{parm.month}
+		</if>
+		<if test="parm.memberNo null and parm.memberNo != ''">
+		and mp.MemberNo=#{parm.memberNo}
 		</if>
 		order by mp.ApplyTime desc
 	  				
@@ -28,12 +32,14 @@
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
 		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mp.*, mb.Qymc 
 		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh
-		<if test="startTime!= null and startTime != ''">
-		<if test="endTime!= null and endTime != ''">
-		and mp.ApplyTime between #{startTime} and #{endTime}
+		<if test="year!= null and year != ''">
+		and mp.Year=#{year}
 		</if>
+		<if test="month!= null and month != ''">
+		and mp.Month=#{month}
 		</if>
-		order by mp.ApplyTime desc
+		order by mp.Year desc,mp.Month desc
+		
 		) ttable,(select @rowNO :=0) b 
 		
 	</select>
@@ -54,7 +60,8 @@
 		, #{type} 		
 		, #{name} 		
 		,       #{patentNo}
-		 ,		#{applyTime}
+		 ,		#{year}
+		  ,		#{month}
 		  )
 		</insert>
 
@@ -64,7 +71,8 @@
 		 										Type=#{type}
 		 								,		Name=#{name}
 		 								,		PatentNo=#{patentNo}
-		 								,		ApplyTime=#{applyTime}
+		 								,		Year=#{year}
+		 								,		Month=#{month}
 		 							where Id = #{id}
 	</update>
 	<update id="updateStatus" parameterType="java.util.Map">

@@ -12,11 +12,16 @@
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh
-		<if test="parm.startTime!= null and parm.startTime != ''">
-		<if test="parm.endTime!= null and parm.endTime != ''">
-		and mip.ApplyTime between #{parm.startTime} and #{parm.endTime}
+		<if test="parm.year!= null and parm.year != ''">
+		and mip.Year=#{parm.year}
 		</if>
+		<if test="parm.month!= null and parm.month != ''">
+		and mip.Month=#{parm.month}
 		</if>
+		<if test="parm.memberNo null and parm.memberNo != ''">
+		and mb.MemberNo=#{parm.memberNo}
+		</if>
+		
 		order by mip.ApplyTime desc
 
 	</sql>
@@ -27,16 +32,17 @@
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
 		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,mip.ApplyTime,
-		case when mip.IsSetUp='1' then '立项' else '不立项' end IsSetUp ,
+		case when mip.IsSetUp='0' then '未知' when mip.IsSetUp='1' then '否' else '是' end IsSetUp ,
 		case when mip.ProjectLevel='0' then '国家级' when mip.ProjectLevel='1' then '省级' when mip.ProjectLevel='2' then '市级' else '区级' end ProjectLevel,
 		 mb.Qymc
 		from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh
-		<if test="startTime!= null and startTime != ''">
-		<if test="endTime!= null and endTime != ''">
-		and mip.ApplyTime between #{startTime} and #{endTime}
+		<if test="year!= null and year != ''">
+		and mip.Year=#{year}
 		</if>
+		<if test="month!= null and month != ''">
+		and mip.Month=#{month}
 		</if>
-		order by mip.ApplyTime desc
+		order by mip.Year desc,mip.Month desc
 		) ttable,(select @rowNO :=0) b 
 		
 	</select>
@@ -52,7 +58,7 @@
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberIntellectualPro">
-		insert into member_intellectual_pro(MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,ApplyTime)
+		insert into member_intellectual_pro(MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,Year,Month)
 		values(#{memberNo} 		
 		, #{projectLevel} 		
 		, #{projectType} 		
@@ -60,7 +66,8 @@
 		 ,		#{applyAmount}
 		 ,		#{isSetUp}
 		 ,		#{setUpAmount}
-		 ,		#{applyTime}
+		 ,		#{year}
+		  ,		#{month}
 		  )
 		</insert>
 
@@ -73,7 +80,8 @@
 		 								,		ApplyAmount=#{applyAmount}
 		 								,		IsSetUp=#{isSetUp}
 		 								,		SetUpAmount=#{setUpAmount}
-		 								,		ApplyTime=#{applyTime}
+		 								,		Year=#{year}
+		 								,		Month=#{month}
 		 							where Id = #{id}
 	</update>
 	<update id="updateStatus" parameterType="java.util.Map">

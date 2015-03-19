@@ -273,7 +273,14 @@ INSERT INTO `sys_module` VALUES ('Lev2_37','通知管理','admin/bsNews/list/1.h
 INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报统计','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
 INSERT INTO `sys_module` VALUES ('Lev2_39','经济月报设置','admin/chooseSelect/list/1.html',2,'Lev1_11',2);
 INSERT INTO `sys_module` VALUES ('Lev2_40','经济月报填报','admin/economicReporting/list/1.html',3,'Lev1_11',2);
+<<<<<<< HEAD
 INSERT INTO `sys_module` VALUES ('Lev2_41','专利','admin/memberPatent/list/1.html',2,'Lev1_12',2);
+=======
+INSERT INTO `sys_module` VALUES ('Lev2_41','知识产权统计','admin/memberIntellectualPro/inteProCount.html',1,'Lev1_12',2);
+INSERT INTO `sys_module` VALUES ('Lev2_42','科技项目','admin/memberIntellectualPro/list/1.html',2,'Lev1_12',2);
+INSERT INTO `sys_module` VALUES ('Lev2_43','专利','admin/memberPatent/list/1.html',3,'Lev1_12',2);
+
+>>>>>>> branch 'master' of https://github.com/huangchiwei/hzkjy.git
 CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',

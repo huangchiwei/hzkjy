@@ -76,6 +76,16 @@
 			QQNum = #{QQNum}
 		where userNo = #{userNo}
 	</update>
+	<update id="updateUserCenter" parameterType="sysUser">
+		update sys_user set 
+			
+			Sex = #{sex},
+			Email = #{email},
+			Tel = #{tel},
+			Phone = #{phone},
+			QQNum = #{QQNum}
+		where userNo = #{userNo}
+	</update>
 	<!-- 激活/冻结 -->
 	<update id="changeStatus">
 		update sys_user set 

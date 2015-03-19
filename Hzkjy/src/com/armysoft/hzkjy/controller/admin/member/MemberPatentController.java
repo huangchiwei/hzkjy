@@ -56,11 +56,14 @@ public class  MemberPatentController extends BaseController {
 	 * @return
 	 */
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage, HttpServletRequest request, Model model,String startTime,String endTime) {
+	public String getByPage(@PathVariable Integer currentPage, HttpServletRequest request, Model model,String year,String month) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("startTime", startTime);
-		params.put("endTime", endTime);
+		params.put("year", year);
+		params.put("month", month);
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		if(!userNo.equals("admin"))
+		params.put("memberNo", userNo);
         model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);
 		model.addAttribute("params", params);
@@ -133,8 +136,8 @@ public class  MemberPatentController extends BaseController {
 	 * @param response
 	 */
 	@RequestMapping("/outExcel/1.html")
-	public void outExcel(Model model,String startTime,String endTime,HttpServletRequest request,HttpServletResponse response) {
-		String title="琶洲园区企业专利获得情况";
+	public void outExcel(Model model,Integer year,Integer month,HttpServletRequest request,HttpServletResponse response) {
+		String title=year+"琶洲园区企业专利获得情况"+(month==0?"1~6月":"7~12月");
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "RowNo","序号"});
 		headData.add(new Object[] { "Qymc","企业"});
@@ -145,8 +148,8 @@ public class  MemberPatentController extends BaseController {
 
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("startTime", startTime);
-		params.put("endTime", endTime);
+		params.put("year", year);
+		params.put("month", month);
 		//String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List<Map<String, Object>>  list =memberPatentService.findAll(params);

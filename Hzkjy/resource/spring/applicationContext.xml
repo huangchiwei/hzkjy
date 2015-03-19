@@ -18,10 +18,10 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="username" value="jxhlf" />
+		<property name="username" value="root" />
 		<property name="password" value="123456" />
 		<property name="url"
-			value="jdbc:mysql://121.12.125.10:3306/sq_xiaofan?Unicode=true&amp;characterEncoding=UTF-8" />
+			value="jdbc:mysql://localhost:3306/hzkjy?Unicode=true&amp;characterEncoding=UTF-8" />
 
 		<property name="maxActive" value="20" />
 		<property name="initialSize" value="1" />

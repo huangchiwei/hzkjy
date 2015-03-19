@@ -1,0 +1,50 @@
+/**tabЧ��*/
+
+#wrapper .div_tabla {
+	list-style-type: none;
+	height: 32px;
+	margin: 6px;
+	padding: 0px;
+	padding-left: 4px;
+	background-image:url(../images/admin_t_bj.png);
+}
+#wrapper .div_icon {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+#tabs{
+	margin:0;
+	padding:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#tabs li {
+	float:left;
+	margin-right:5px;
+	list-style-type: none;
+	margin-top:4px;
+	background-image:url(../images/admin_tab_hover.png);
+}
+#tabs li a { height:28px;width:105px;line-height:28px;display:block; font-size:14px;}
+#tabs li.current {background-image:url(../images/admin_tab.png); height:28px;width:105px;line-height:28px;display:block;}
+#tabs li.current a {font-weight: bold;}
+#tabs li a.remove { color:#f00; margin-left:10px;}
+.float_img {position: absolute;top: 10px;right: 6px;cursor:pointer;}
+#content { background-color:#e1e1e1;}
+#content p { margin: 0; padding:5px 0px 10px 0px;background-color:#ffffff;}
+        
+/*        #main { width:900px; margin:0px auto; overflow:hidden;background-color:#F6F6F6; margin-top:20px;
+             -moz-border-radius:10px;  -webkit-border-radius:10px; padding:30px;}
+        #wrapper, #doclist { float:left; margin:0 20px 0 0;}
+        #doclist { width:150px; border-right:solid 1px #dcdcdc;}
+        #doclist ul { margin:0; list-style:none;}
+        #doclist li { margin:10px 0; padding:0;}
+        #documents { margin:0; padding:0;}
+        
+        #wrapper { position: relative;left: 0;overflow: hidden;width: 100%; height-min:100%; margin: 0;padding: 0;}
+            
+        #header{ background-color:#F6F6F6; width:900px; margin:0px auto; margin-top:20px;
+             -moz-border-radius:10px;  -webkit-border-radius:10px; padding:30px; position:relative;}
+        #header h2 {font-size:16px; font-weight:normal; margin:0px; padding:0px;
+        }*/

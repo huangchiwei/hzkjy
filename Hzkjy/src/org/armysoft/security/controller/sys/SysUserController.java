@@ -20,6 +20,7 @@ import org.armysoft.security.service.sys.SysRoleService;
 import org.armysoft.security.service.sys.SysUserService;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.armysoft.hzkjy.base.common.Constants;
+import com.armysoft.hzkjy.base.common.CookieUtil;
 
 @Controller
 @RequestMapping("admin/sysUser")
@@ -49,7 +51,15 @@ public class SysUserController extends BaseController {
 	 */
 	@PermissionsAnno("us_list")
 	@RequestMapping(value = PAGE_LIST)
-	public ModelAndView getByPage(@PathVariable int currentPage, SysUser user) {
+	public ModelAndView getByPage(@PathVariable int currentPage, SysUser user,HttpServletRequest request) {
+		String userNo = CookieUtil.getUserCookieValue(request,Constants.ADMIN_KEY);
+		if(!"admin".equalsIgnoreCase(userNo)){
+			ModelAndView mv = new ModelAndView("admin/sys/SysUserCenter");
+			mv.addObject("user", sysUserService.getByUserNo(userNo));
+			
+			return mv;
+		}
+		
 		ModelAndView mv = new ModelAndView("admin/sys/SysUserQ");
 		// 初始化分页实体
 		Pagination pager = initPage(currentPage);
@@ -61,7 +71,16 @@ public class SysUserController extends BaseController {
 		mv.addObject("tempUser", user);
 		return mv;
 	}
-
+	@PermissionsAnno("us_updt")
+	@RequestMapping(value = "updateUserCenter")
+	public String updateUserCenter( SysUser user,HttpServletRequest request,Model model) {
+		String userNo = CookieUtil.getUserCookieValue(request,Constants.ADMIN_KEY);
+		user.setUserNo(userNo);
+		sysUserService.updateUserCenter(user);
+		model.addAttribute("user", sysUserService.getByUserNo(userNo));
+		model.addAttribute("msg", "保存成功");
+		return "admin/sys/SysUserCenter";
+	}
 
 	/**
 	 * 准备添加或修改用户

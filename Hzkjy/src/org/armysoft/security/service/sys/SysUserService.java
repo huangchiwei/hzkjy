@@ -24,7 +24,7 @@ public class SysUserService extends BaseDao {
 	private SysRoleService sysRoleService;
 
 	/**
-	 * 条件分页查询用户
+	 * 条件分页查询用户n
 	 * @param params
 	 * @param pager
 	 * @return
@@ -64,7 +64,10 @@ public class SysUserService extends BaseDao {
 		sysRoleService.deleteUserRole(user.getUserNo(), delRoles);
 		super.nativeUpdate(nameSpace + ".update", user);
 	}
-
+	public void updateUserCenter(SysUser user) {
+		
+		super.nativeUpdate(nameSpace + ".updateUserCenter", user);
+	}
 	/**
 	 * 删除用户
 	 * 
