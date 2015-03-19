@@ -18,7 +18,8 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	private Float applyAmount;      //申报额度(万)
 	private Integer isSetUp;         //是否立项0不立项 1立项
 	private Float setUpAmount;        //立项资助金额(万)
-	private Date applyTime;          //申报时间
+	private Integer year;          //年份
+	private Integer month;          //月份
 	private Integer status;          //发送状态 0一对一 1一对多
 	public Long getId() {
 		return id;
@@ -68,11 +69,18 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	public void setSetUpAmount(Float setUpAmount) {
 		this.setUpAmount = setUpAmount;
 	}
-	public Date getApplyTime() {
-		return applyTime;
+	
+	public Integer getYear() {
+		return year;
 	}
-	public void setApplyTime(Date applyTime) {
-		this.applyTime = applyTime;
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	public Integer getMonth() {
+		return month;
+	}
+	public void setMonth(Integer month) {
+		this.month = month;
 	}
 	public Integer getStatus() {
 		return status;

@@ -62,8 +62,11 @@ html { overflow:-moz-scrollbars-vertical;}
       <dl class="relative h30">
         <dd > <form id="search_form" action="${ctx}/admin/memberPatent/list/1.html" method="post">
         &nbsp;&nbsp;&nbsp;&nbsp;年份： <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
-     	value="${params.startTime}" maxlength="10"/>
-     	月份：<select name="month" id="month"><option value="0">1~6月</option><option value="1">7~12月</option></select>
+     	value="${params.year}" maxlength="10"/>
+     	月份：<select name="month" id="month">
+     	<option value="0" <c:if test="${params.month==0}">selected="selected"</c:if>>1~6月</option>
+     	<option value="1" <c:if test="${params.month==1}">selected="selected"</c:if>>7~12月</option>
+     	</select>
         	</form></dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
                  
@@ -83,7 +86,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	        <th >专利名称</th>
 	        <th width="100px;">专利编号</th>
 	       
-	            <th width="80px;">申报时间</th>
+	           
 	        <th width="60">操作</th>
 	  	</tr>
 	  </thead>
@@ -96,7 +99,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	       	<td>${o.Type }</td>
 	       		<td>${o.Name}</td>
 	       			<td>${o.PatentNo}</td>	
-	       					<td><fmt:formatDate value="${o.ApplyTime}" pattern="yyyy-MM-dd"/></td>	
+	       				
 	        <td>
 	          		<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberPatent/update/${o.Id}.html'"/>

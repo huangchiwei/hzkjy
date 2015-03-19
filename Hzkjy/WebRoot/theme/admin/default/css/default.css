@@ -10,14 +10,13 @@
 .login_bj{
 	background-image:url(../images/bj.png);
 	background-repeat: repeat-x;
-	height: 800px;
 }
 .login {
 	background-image:url(../images/login.png);
 	background-repeat: no-repeat;
-	height: 800px;
+	height: 759px;
 	top: 0px;
-	width: 1224px;
+	width: 1023px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -26,12 +25,12 @@
 	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 308px;
-	padding-left: 265px;
+	padding-top: 307px;
+	padding-left: 220px;
 }
 .login_box  .li {padding-top: 5px;}
 .login_box  .li2 {
-	padding-top: 16px;
+	padding-top: 17px;
 }
 .login_box  .li3 {
 	padding-top: 18px;
@@ -59,13 +58,19 @@
 	background-color: #1262b7;
 	height: 70px;
 }
+
 .top_logo{
 	background-image: url(../images/top_logo.png);
 	background-repeat: no-repeat;
 	height: 70px;
-	width: 852px;
+	width: 842px;
+	line-height: 70px;
+	padding-left: 10px;
+	font-size: 20px;
+	font-weight: 500;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
 }
-
 .top_toolbar{
 	position: absolute;
 	top: 0px;
@@ -81,10 +86,11 @@
 	margin-bottom: 10px;
 	padding-left: 30px;
 	color: #232323;
-	margin-left: 40px;
+	font-size: 12px;
 }
 .top_toolbar .div{
 	height: 26px;
+	font-size: 12px;
 }
 .top_toolbar .div .user {
 	background-image: url(../images/top_icon.png);
@@ -124,7 +130,7 @@
 	color: #FFFFFF;
 	float: left;
 	background-position: 0px -87px;
-	padding-right: 20px;
+	padding-right: 10px;
 }
 .top_toolbar .div a {
 	height: 26px;
@@ -146,11 +152,13 @@
 	background-image: url(../images/submenu_top.png);
 	background-repeat: no-repeat;
 	height: 32px;
-	width: 233px;
+	width: 200px;
 }
 .box_p .submenu_box{
 	border: 1px solid #d0d0d0;
 	background-color: #FFFFFF;
+	overflow-x:hidden;
+	height: 700px;
 }
 .box_p .submenu_box ul#menu, ul#menu ul {
 	list-style-type:none;
@@ -197,21 +205,18 @@
 }
 /*bot_style*/
 .bot{
-	position:relative;
 	background-color: #1262b7;
 	text-align: right;
 	color: #FFFFFF;
 	clear: both;
-	z-index: 10;
 	height: 38px;
-	margin-top: -40px;
 	line-height: 38px;
 	padding-right: 20px;
+	font-size: 12px;
 }
 
 /*content_style*/
 .content_box{
-	padding: 5px;
 	background-color: #FFFFFF;
 	overflow: hidden;
 }
@@ -523,7 +528,7 @@
 .content_box .btn_box  {
 	overflow: hidden;
 	position: absolute;
-	top: 2px;
+	top: 4px;
 	right: 2px;
 }
 .content_box .btn_box2 {
@@ -533,16 +538,16 @@
 	left: 210px;
 }
 .initial{
-	background-image:url(../images/onmousemove_btn.png);
-	font-size: 12px;
-	font-family:Arial, Helvetica, sans-serif;
-	color:#000000;
-	width: 60px;
+	background-color: #216dc0;
+	padding-top: 4px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	color: #FFFFFF;
+	font-weight: bold;
 	border: 1px none #FFFFFF;
-	text-align: center;
-	line-height: 20px;
-	height: 25px;
-	FONT-WEIGHT: bold;
+	border-radius:5px;
+	cursor:pointer;
 } 
 .initial2{
 	background-image:url(../images/onmousemove_btn.png);
@@ -595,6 +600,13 @@
 	padding-left: 10px;
 	font-size: 14px;
 }
+.content_box .div_input{
+	padding: 10px;
+}
+.content_box .div_input em{
+	padding-left: 10px;
+	padding-right: 5px;
+}
 .content_box .add_info .div {
 	border-bottom-width: 1px;
 	border-bottom-style: dashed;
@@ -643,7 +655,7 @@
 	float: left;
 }
 .input_a1 {
-	padding: 1px;
+	padding: 4px;
 }
 .input_btn_a1 {
 	border-radius:5px;
@@ -786,15 +798,36 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #545454;
-	line-height: 24px;
-	height: 24px;
+	line-height: 28px;
+	height: 28px;
 	background-color: #FFFFFF;
+	padding: 5px;
+}
+.content_box  .list_info  table td a{
+	color: #003399;
+	padding-right: 2px;
+	padding-left: 2px;
+	text-decoration: none;
+	height: 20px;
+	line-height: 20px;
+	margin-right: 2px;
+}
+.content_box  .list_info  table td a:hover{
+	color: #FFFFFF;
+	padding-right: 2px;
+	padding-left: 2px;
+	text-decoration: none;
+	background-color: #FF3333;
 }
 .content_box  .list_info  table  td .btn_icon {
 	float: left;
 	margin: 5px;
 }
-
+.content_box  .list_info  table  td .btn_k {
+	padding: 5px;
+	margin-right: auto;
+	margin-left: auto;
+}
 /*分页样式*/
 /*CSS manu style pagination*/
 
@@ -875,4 +908,32 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	position: absolute;
 	right: 0px;
 	top: 0px;
+}
+.wra_bother{
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+}
+.admin_table{
+	padding: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.admin_table h1{
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+}
+.content_box .div_input .kan_box{
+	padding: 10px;
 }

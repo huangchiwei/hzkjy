@@ -16,7 +16,8 @@ public class MemberPatent implements java.io.Serializable {
 	private String type;    
 	private String name;    
 	private String patentNo;
-	private Date applyTime;
+	private Integer year;          //年份
+	private Integer month;          //月份
 	private Integer status;          //发送状态 0一对一 1一对多
 	public Long getId() {
 		return id;
@@ -48,11 +49,18 @@ public class MemberPatent implements java.io.Serializable {
 	public void setPatentNo(String patentNo) {
 		this.patentNo = patentNo;
 	}
-	public Date getApplyTime() {
-		return applyTime;
+	
+	public Integer getYear() {
+		return year;
 	}
-	public void setApplyTime(Date applyTime) {
-		this.applyTime = applyTime;
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	public Integer getMonth() {
+		return month;
+	}
+	public void setMonth(Integer month) {
+		this.month = month;
 	}
 	public Integer getStatus() {
 		return status;

@@ -4,12 +4,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     
-    <title>登录</title>
+    <title>广州市海珠科技产业园后管理系统</title>
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
 <meta http-equiv="expires" content="0"/>
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+
+<link href="theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
  	<script type="text/javascript">
@@ -32,7 +35,7 @@
      <li class="li2"><input id="password" name="password" type="password" style="width:190px;" class="input"/></li>
      <li class="li3 relative">
        <input id="vcode" name="vcode" maxlength="4" style="width:60px;" class="input"/>
-       <div class="div_img"><img src="${ctx}/verify/getVerifyCode.html" width="71"  style="margin-top:10px;cursor: pointer;" height="28" title="验证码" id="vimg"/></div>
+       <div class="div_img"><img src="${ctx}/verify/getVerifyCode.html" name="vimg" width="80" height="32" id="vimg"  style="cursor: pointer;" title="验证码"/></div>
      </li>
      <li style="margin-top:25px;">
      	<input id="login_bt" type="image" src="${ctx}/theme/admin/default/images/login_button.png" onmousemove="this.src='${ctx}/theme/admin/default/images/login_button_move.png'" onmouseout="this.src='${ctx}/theme/admin/default/images/login_button.png'" />

@@ -18,11 +18,11 @@
 		<if test="parm.month!= null and parm.month != ''">
 		and mip.Month=#{parm.month}
 		</if>
-		<if test="parm.memberNo null and parm.memberNo != ''">
-		and mb.MemberNo=#{parm.memberNo}
+		<if test="parm.memberNo!=null and parm.memberNo != ''">
+		and mip.MemberNo=#{parm.memberNo}
 		</if>
 		
-		order by mip.ApplyTime desc
+		order by mip.Year desc,mip.Month
 
 	</sql>
 

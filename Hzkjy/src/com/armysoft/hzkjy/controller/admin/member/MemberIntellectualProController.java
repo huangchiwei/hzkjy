@@ -3,6 +3,7 @@ package com.armysoft.hzkjy.controller.admin.member;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -54,12 +55,17 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-    @RequestMapping(value = PAGE_LIST)
+    @SuppressWarnings("deprecation")
+	@RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage, HttpServletRequest request, Model model,String year,String month) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
+		if(year!=null)
 		params.put("year", year);
+		else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
+		if(month!=null)
 		params.put("month", month);
+		else params.put("month", 0);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(!userNo.equals("admin"))
 		params.put("memberNo", userNo);

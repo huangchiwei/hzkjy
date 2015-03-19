@@ -180,9 +180,9 @@ function removeElement(tab,plugin){
                     "</a></li>");
             }else{
             	  // add new tab and related content
-                $("#tabs").append("<li class='current'><a class='tab' id='" +
+                $("#tabs").append("<li class='current relative'><a class='tab' id='" +
                 		tabName + "' href='#'>" + plugin + 
-                    "</a><a href='#' class='remove'>X</a></li>");
+                    "</a><img src='../theme/admin/default/images/close.gif' class='float_img'></li>");
             }
           
 
@@ -222,7 +222,7 @@ $(document).ready(function() {
                 }
             });
 
-            $('#tabs a.remove').live('click', function() {
+            $('#tabs img').live('click', function() {
                 // Get the tab name
                 var tabName = $(this).parent().find(".tab").attr("id");
                 //freeOcx(tabName);  

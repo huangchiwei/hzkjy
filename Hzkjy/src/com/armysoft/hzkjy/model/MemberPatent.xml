@@ -11,17 +11,17 @@
 	</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
-		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh
+		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh 
 		<if test="parm.year!= null and parm.year != ''">
 		and mp.Year=#{parm.year}
 		</if>
 		<if test="parm.month!= null and parm.month != ''">
 		and mp.Month=#{parm.month}
 		</if>
-		<if test="parm.memberNo null and parm.memberNo != ''">
+		<if test="parm.memberNo!=null and parm.memberNo != ''">
 		and mp.MemberNo=#{parm.memberNo}
 		</if>
-		order by mp.ApplyTime desc
+		order by mp.Year desc,mp.Month desc
 	  				
 	</sql>
 

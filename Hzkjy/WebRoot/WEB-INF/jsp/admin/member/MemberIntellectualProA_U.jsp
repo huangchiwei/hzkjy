@@ -14,8 +14,8 @@
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" >
-<%--function validate(){
-	var re1="/^-?\d+$/";
+function validate(){
+	<%--var re1="/^-?\d+$/";
 	var re2="/^(-?\d+)(\.\d+)?$/";
 	var applyAmount=$("#applyAmount").val();
 	var setUpAmount=$("#setUpAmount").val();
@@ -33,7 +33,12 @@
 				return false;
 			}
 		}--%>
-		
+		var projectType=$("#projectType");
+		if(projectType.val()==""){
+			alert("项目类别不为空!");
+			projectType.focus();
+			return false;
+			}
 		var applyAmount=$("#applyAmount");
 		if(applyAmount.val()==""){
 			alert("申报额度(万)不为空!");
