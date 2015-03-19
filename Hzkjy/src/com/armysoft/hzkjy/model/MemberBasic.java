@@ -35,6 +35,20 @@ public class MemberBasic implements java.io.Serializable {
 	private String wgsj;
 	private String syxx;
 	private String rjzzq;
+	private String ztName;
+	private String sfjjybName;
+	public String getZtName() {
+		return ztName;
+	}
+	public void setZtName(String ztName) {
+		this.ztName = ztName;
+	}
+	public String getSfjjybName() {
+		return sfjjybName;
+	}
+	public void setSfjjybName(String sfjjybName) {
+		this.sfjjybName = sfjjybName;
+	}
 	public Integer getId() {
 		return id;
 	}

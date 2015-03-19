@@ -73,7 +73,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
 			MemberBasic mb=mbservice.findByHybh(userNo);
 			params.put("fqqymc", mb.getQymc());
-	
+			
 			}
 		if(fssn !="" && fssn !=null){
 			params.put("fssn", fssn);
@@ -113,6 +113,12 @@ public class  IncubatedEnterprisesController extends BaseController {
 		IncubatedEnterprises mb=service.findByKey(id);
 		if(mb!=null){
 			model.addAttribute("model", mb);
+		}else{
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+				MemberBasic mc=mbservice.findByHybh(userNo);
+				model.addAttribute("mc", mc);
+				}
 		}
 		return "admin/member/IncubatedEnterprisesV";
 	}
