@@ -50,8 +50,8 @@ public class ImportExcel {
                 memberBasic.setAddress(cells[1].getContents());
                 memberBasic.setZydy(cells[2].getContents());
                 memberBasic.setMj(cells[3].getContents());
-                memberBasic.setFzr(cells[4].getContents());
-                memberBasic.setZczj(cells[5].getContents()); 
+                memberBasic.setFrdb(cells[4].getContents());
+                memberBasic.setZczb(cells[5].getContents()); 
                 memberBasic.setLxr(cells[6].getContents());
                 memberBasic.setZt(cells[7].getContents());
                 

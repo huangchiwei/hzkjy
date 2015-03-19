@@ -28,11 +28,8 @@ function find(){
 	document.getElementById("search_form").submit();
     }   
     function clean(){    
-	$("#fhymc").val("");
-	$("#frysjf").val("");
-	$("#frysje").val("");
-	$("#fhtqxf").val("");
-	$("#fhtqxe").val("");
+	$("#fqymc").val("");
+	$("#fssn").val("");
     } 
    function out(){    
 	$("#search_form").attr("action","${ctx}/admin/incubatedEnterprises/outPtqfqk/1.html");
@@ -178,7 +175,8 @@ function loadPageLayer2(title,url){
 	        <c:if test="${mb.qyssjsly==5}">其他 </c:if> 
 	        <c:if test="${mb.qyssjsly==6}">工业</c:if> 
 	         </td>
-	        <td>${mb.ztName}</td>
+	        <td>${mb.frdb}</td>
+	        <td>${mb.ssn}</td>
 	        <td>
 	          	<c:if test="${mb_updt == true}">
 		          	<div class="btn_icon">
@@ -194,7 +192,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="8"></td>
+        <td colspan="7"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -202,7 +200,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="10">
+			<td colspan="9">
 				<div class="page">
 					<p:pager/>
 				</div>

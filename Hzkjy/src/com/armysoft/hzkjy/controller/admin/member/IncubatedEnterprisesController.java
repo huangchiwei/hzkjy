@@ -47,6 +47,8 @@ public class  IncubatedEnterprisesController extends BaseController {
 
 	@Resource
 	private IncubatedEnterprisesService service;
+	@Resource
+	private MemberBasicService  mbservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -63,33 +65,23 @@ public class  IncubatedEnterprisesController extends BaseController {
 	 */
 	@PermissionsAnno("mb_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+	public String getByPage(@PathVariable Integer currentPage,String fqymc,String fssn,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			IncubatedEnterprises entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
-		params.put("fhybh", userNo);
-		}
-		if(fhymc !="" && fhymc !=null){
-		params.put("fhymc", fhymc);
-		request.setAttribute("fhymc", fhymc);
-		}
-		if(frysjf !="" && frysjf !=null){
-			params.put("frysjf", frysjf);
-			request.setAttribute("frysjf", frysjf);
+			MemberBasic mb=mbservice.findByHybh(userNo);
+			params.put("fqqymc", mb.getQymc());
+	
 			}
-		if(frysje !="" && frysje !=null){
-			params.put("frysje", frysje);
-			request.setAttribute("frysje", frysje);
+		if(fssn !="" && fssn !=null){
+			params.put("fssn", fssn);
+			request.setAttribute("fssn", fssn);
 			}
-		if(fhtqxf !="" && fhtqxf !=null){
-			params.put("fhtqxf", fhtqxf);
-			request.setAttribute("fhtqxf", fhtqxf);
-			}
-		if(fhtqxe !="" && fhtqxe !=null){
-			params.put("fhtqxe", fhtqxe);
-			request.setAttribute("fhtqxe", fhtqxe);
+		if(fqymc!="" && fqymc!=null){
+			params.put("fqymc",fqymc);
+			request.setAttribute("fqymc", fqymc);
 			}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
@@ -165,8 +157,8 @@ public class  IncubatedEnterprisesController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,HttpServletRequest request,HttpServletResponse response) {
-		String title="园区基本资料表";
+	public void OutPtqfqk(Model model,String fqymc,String fssn,String frysje, String fhtqxf,String fhtqxe,HttpServletRequest request,HttpServletResponse response) {
+		String title="科技企业孵化器在孵企业情况表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
 		headData.add(new Object[] { "Qymc","企业名称"});
@@ -181,11 +173,8 @@ public class  IncubatedEnterprisesController extends BaseController {
 		headData.add(new Object[] { "Htqxf","合同期限至"});
 		headData.add(new Object[] { "Htqxe","合同期限"});
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("fhymc", fhymc);
-		params.put("frysjf", frysjf);
-		params.put("frysje", frysje);
-		params.put("fhtqxf", fhtqxf);
-		params.put("fhtqxe", fhtqxe);
+		params.put("fssn", fssn);
+		params.put("fqymc",fqymc);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);

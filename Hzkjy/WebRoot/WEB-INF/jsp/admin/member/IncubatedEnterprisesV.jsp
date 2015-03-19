@@ -56,8 +56,8 @@ html { overflow:-moz-scrollbars-vertical;}
 					class="ListTable">
         <tr>
      <th>年份：</th>
-       <td><input id="ssn" name="ssn" type="text" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy'});" value="<fmt:formatDate value="${model.ssn}"
-								pattern="yyyy" />" class="input_a1" maxlength="20"/></td>
+       <td><input id="ssn" name="ssn" type="text" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy'});" value="${model.ssn}"
+							 class="input_a1" maxlength="20"/></td>
      <th colspan="3"></th>
     </tr>
     <tr>

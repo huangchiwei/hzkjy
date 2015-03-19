@@ -15,41 +15,53 @@
 			<if test="parm.fssn != null and parm.fssn!= ''">
 		and ssn  = #{parm.fssn}
 		</if>
+		<if test="parm.fqymc != null and parm.fqymc!= ''">
+		and qymc  like CONCAT('%', #{parm.fqymc}, '%')
+		</if>
+			<if test="parm.fqqymc != null and parm.fqqymc!= ''">
+		and qymc  = #{parm.fqqymc}
+		</if>
 	</sql>
 	<!-- 实体映射 -->
 	<resultMap id="incubatedEnterprisesMap" type="incubatedEnterprises">
 				<result column="ID" property="id" />
-				<result column="Qymc" property="hybh" />
-				<result column="Zzjgdm" property="qymc" />
-				<result column="Frdb" property="address" />
-				<result column="Zczb" property="zydy" />
-				<result column="Frlxdh" property="mj" />
-				<result column="Qyclsj" property="fzr" />
-				<result column="Lxr" property="zczj" />
-			    <result column="Qyrzsj" property="lxr" />
-			    <result column="Lxrlxdh" property="zt" />
-			    <result column="Qydjzclx" property="qymcpy" />
-			    <result column="Htstze" property="rysj" />
-			    <result column="Dzys" property="htqxf" />
-			    <result column="Xnyjdxs" property="htqxe" />
-				 <result column="Qyssjsly" property="hyfl" />
-				 <result column="Gxjsqy" property="rysj" />
-			    <result column="Lxryqy" property="htqxf" />
-			    <result column="Hylb" property="htqxe" />
-				 <result column="Synyxzscq" property="hyfl" />
-				 <result column="Fmzl" property="hyfl" />
-				 <result column="Wgsj" property="hyfl" />
-				 <result column="Syxx" property="hyfl" />
-				 <result column="Rjzzq" property="hyfl" />
-				 <result column="Ssn" property="hyfl" />
+				<result column="Qymc" property="qymc" />
+				<result column="Zzjgdm" property="zzjgdm" />
+				<result column="Frdb" property="frdb" />
+				<result column="Zczb" property="zczb" />
+				<result column="Frlxdh" property="frlxdh" />
+				<result column="Qyclsj" property="qyclsj" />
+				<result column="Lxr" property="lxr" />
+			    <result column="Qyrzsj" property="qyrzsj" />
+			    <result column="Lxrlxdh" property="lxrlxdh" />
+			    <result column="Qydjzclx" property="qydjzclx" />
+			    <result column="Htstze" property="htstze" />
+			    <result column="Dzys" property="dzys" />
+			    <result column="Xnyjdxs" property="xnyjdxs" />
+				 <result column="Qyssjsly" property="qyssjsly" />
+				 <result column="Gxjsqy" property="gxjsqy" />
+			    <result column="Lxryqy" property="lxryqy" />
+			    <result column="Hylb" property="hylb" />
+				 <result column="Synyxzscq" property="synyxzscq" />
+				 <result column="Fmzl" property="fmzl" />
+				 <result column="Wgsj" property="wgsj" />
+				 <result column="Syxx" property="syxx" />
+				 <result column="Rjzzq" property="rjzzq" />
+				 <result column="Ssn" property="ssn" />
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
 select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn
 	 from incubated_enterprises
 		where 1 = 1	
+		<if test="fqymc != null and fqymc!= ''">
+		and qymc  like CONCAT('%', #{fqymc}, '%')
+		</if>
 	    <if test="fssn != null and fssn!= ''">
 		and ssn  = #{fssn}
+		</if>
+		 <if test="fqqymc != null and fqqymc!= ''">
+		and qymc  = #{fqqymc}
 		</if>
  order by id desc
 	</select>			
@@ -61,7 +73,12 @@ select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze
 		 <if test="fssn != null and fssn!= ''">
 		and ssn  = #{fssn}
 		</if>
-		
+			<if test="fqymc != null and fqymc!= ''">
+		and qymc  like CONCAT('%', #{fqymc}, '%')
+		</if>
+			 <if test="fqqymc != null and fqqymc!= ''">
+		and qymc  = #{fqqymc}
+		</if>
 	</select>
     <select id="findById" resultMap="incubatedEnterprisesMap" parameterType="Long">
 		select * from incubated_enterprises where id = #{id}
