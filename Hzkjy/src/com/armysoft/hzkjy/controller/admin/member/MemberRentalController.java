@@ -122,7 +122,7 @@ public class  MemberRentalController extends BaseController {
 	
 	@RequestMapping(value = "/getQyxx.html")
 	@ResponseBody
-	public  String getQyxx(HttpServletRequest request) {
+	public  String getQyxx(HttpServletRequest request,HttpServletResponse response) {
 		String qymc = request.getParameter("qymc");
 		 List QyxxList= Mbservice.getQyxx(qymc);
 		 Map map =  new  HashMap(); 
@@ -134,7 +134,14 @@ public class  MemberRentalController extends BaseController {
 		jsonObject.put("hybh", map.get("hybh"));
 		jsonObject.put("zydy", map.get("zydy"));
 		 }
-		return jsonObject.toString();
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 
 	/**

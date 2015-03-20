@@ -9,10 +9,6 @@
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/tab.css" rel="stylesheet" type="text/css" />
-
-<link href="theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="theme/admin/default/css/tab.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
  <script type="text/javascript" src="${ctx}/js/tab/content.js"></script>
 <script language=Javascript>
@@ -81,9 +77,9 @@ function switchSysBar(){
                 <a href="#" onclick="closeAllTab();openNew('welcome','${ctx}/admin/welcome.html');"><img src="${ctx}/theme/admin/default/images/close_all.png" alt="关闭所有页面" border="0"></a></div>
               </div>
             </div>
-            <div id="content" class="wra_bother" style="height:734px;">
-              <!-- Tab content goes here -->
-            <p id="tabundefined_content"><iframe scrolling="auto" frameborder="0" id="iframeundefined" src="${ctx}/admin/welcome.html" style="width:100%;height:100%;"></iframe></p></div>
+            <div id="content" class="wra_bother" style="height:85%;">
+          <p id="tabundefined_content"><iframe scrolling="auto" frameborder="0" id="iframeundefined" src="${ctx}/admin/welcome.html" style="width:100%;height:100%;"></iframe></p>
+          </div>
           </td>
         </tr>
       </tbody></table>

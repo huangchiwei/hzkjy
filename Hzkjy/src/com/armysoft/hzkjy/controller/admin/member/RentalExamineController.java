@@ -135,7 +135,6 @@ public class  RentalExamineController extends BaseController {
 			ert.setShjyl(mdd.getShjyl());
 			ert.setDhjyl(mdd.getDhjyl());
 			ert.setQymj(mdd.getQymj());
-			ert.setQtfy(mdd.getQtfy());
 			ert.setJfyd(mdd.getJfyd());
 			ert.setDsyhd(mdd.getDsyhd());
 			ert.setDbyhd(mdd.getDbyhd());
@@ -258,7 +257,6 @@ public class  RentalExamineController extends BaseController {
 		map.put("Shjyl", mb.getShjyl()+"");
 		map.put("Dhjyl", mb.getDhjyl()+"");
 		map.put("Qymj", mb.getQymj()+"");
-		map.put("Qtfy", mb.getQtfy()+"");
 		map.put("Shzt", mb.getShzt()+"");
 		map.put("Fbzt", mb.getFbzt()+"");
 		map.put("Jfyd", mb.getJfyd()+"");
