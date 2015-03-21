@@ -319,6 +319,20 @@ public class MemberRental implements java.io.Serializable {
 	private String zxyjsq;
 	private String hjjeznj;
 	private String bz;
+	private String qydfdj;
+	public String getQydfdj() {
+		return qydfdj;
+	}
+	public void setQydfdj(String qydfdj) {
+		this.qydfdj = qydfdj;
+	}
+	public String getQysfdj() {
+		return qysfdj;
+	}
+	public void setQysfdj(String qysfdj) {
+		this.qysfdj = qysfdj;
+	}
+	private String qysfdj;
 	public String getBz() {
 		return bz;
 	}

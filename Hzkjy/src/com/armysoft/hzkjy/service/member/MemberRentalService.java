@@ -43,7 +43,12 @@ public class MemberRentalService extends BaseDao {
 	public MemberRental findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findById", id);
 	}
-	
+	public MemberRental findByBhny(String hybh,String jfny) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("hybh",hybh);
+		params.put("jfny", jfny);
+		return super.nativeSelectOne(nameSpace + ".findByBhny", params);
+	}
 	public List  getPortalList(Map<String, Object> params) {
 		return super.nativeList(nameSpace + ".getPortal", params);
 		}

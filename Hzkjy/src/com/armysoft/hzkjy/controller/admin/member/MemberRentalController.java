@@ -2,6 +2,7 @@ package com.armysoft.hzkjy.controller.admin.member;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +36,7 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.base.util.NumberToCN;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
@@ -134,6 +136,107 @@ public class  MemberRentalController extends BaseController {
 		jsonObject.put("hybh", map.get("hybh"));
 		jsonObject.put("zydy", map.get("zydy"));
 		 }
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	
+	@RequestMapping(value = "/getHjje.html")
+	@ResponseBody
+	public  String getHjjezw(HttpServletRequest request,HttpServletResponse response) {
+		String hjje = request.getParameter("hjje");
+		
+		 double money = Double.valueOf(hjje);
+	        BigDecimal numberOfMoney = new BigDecimal(money);
+	       String s = NumberToCN.number2CNMontrayUnit(numberOfMoney);
+		 JSONObject jsonObject = new JSONObject();
+		jsonObject.put("hjjezw",s );
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	
+	@RequestMapping(value = "/getSqsj.html")
+	@ResponseBody
+	public  String getSqsj(HttpServletRequest request,HttpServletResponse response) {
+		String hybh = request.getParameter("hybh");
+		String jfyd = request.getParameter("jfyd");
+		Integer nyear;
+		Integer nmonth;
+		String nym;
+		System.out.println(jfyd.substring(5, 7));
+		if(jfyd.substring(5, 7).equals("01")){
+			nyear=Integer.valueOf(jfyd.substring(0, 4))-1;
+			nmonth=12;
+			nym=String.valueOf(nyear)+"-"+String.valueOf(nmonth);
+		}else{
+			nyear=Integer.valueOf(jfyd.substring(0, 4));
+			nmonth=Integer.valueOf(jfyd.substring(5, 7))-1;
+			if(nmonth<10){
+				nym=String.valueOf(nyear)+"-0"+String.valueOf(nmonth);
+			}else{
+				nym=String.valueOf(nyear)+"-"+String.valueOf(nmonth);
+			}
+			
+		}
+		MemberRental mr=service.findByBhny(hybh, nym);
+		JSONObject jsonObject = new JSONObject();
+		if(mr!=null){
+			jsonObject.put("qyzj",mr.getQyzj());
+			jsonObject.put("qyzjdj",mr.getQyzjdj());
+			jsonObject.put("zjsq",mr.getZjsq());
+			jsonObject.put("qyzjznj",mr.getQyzjznj());
+			jsonObject.put("zjbz",mr.getZjbz());
+			
+			
+			
+			
+			jsonObject.put("glfwf",mr.getGlfwf());
+			jsonObject.put("glfwfdj",mr.getGlfwfdj());
+			jsonObject.put("glfsq",mr.getGlfsq());
+			jsonObject.put("glfwfznj",mr.getGlfwfznj());
+			jsonObject.put("glfbz",mr.getGlfbz());
+			
+			
+			
+			
+			jsonObject.put("zlbzj",mr.getZlbzj());
+			jsonObject.put("zlbzjdj",mr.getZlbzjdj());
+			jsonObject.put("zlbzjsq",mr.getZlbzjsq());
+			jsonObject.put("zlbzjznj",mr.getZlbzjznj());
+			jsonObject.put("zlbzjbz",mr.getZlbzjbz());
+			
+			
+			
+			
+			jsonObject.put("zxyj",mr.getZxyj());
+			jsonObject.put("zxyjdj",mr.getZxyjdj());
+			jsonObject.put("zxyjsq",mr.getZxyjsq());
+			jsonObject.put("zxyjznj",mr.getZxyjznj());
+			jsonObject.put("zxyjbz",mr.getZxyjbz());
+			
+			jsonObject.put("sfsq",mr.getSfsq());
+			jsonObject.put("dfsq",mr.getDfsq());
+			
+			
+			jsonObject.put("qysfdj",mr.getQysfdj());
+			jsonObject.put("qydfdj",mr.getQydfdj());
+			jsonObject.put("dsyhd",mr.getDhjyl());
+			jsonObject.put("ssyhd",mr.getShjyl());
+			
+		}
+		 
+		
 		 response.setContentType("text/html;charset=UTF-8");   
 		 try {
 			response.getWriter().print(jsonObject.toString());
