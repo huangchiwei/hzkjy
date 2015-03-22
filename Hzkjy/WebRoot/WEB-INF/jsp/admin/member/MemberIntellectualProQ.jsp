@@ -14,11 +14,11 @@
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript">
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/memberIntellectualPro/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/memberIntellectualPro/list/1.html?random=" + Math.random());
 	document.getElementById("search_form").submit();
     }   
 function out(){    
-	$("#search_form").attr("action","${ctx}/admin/memberIntellectualPro/outExcel/1.html");
+	$("#search_form").attr("action","${ctx}/admin/memberIntellectualPro/outExcel/1.html?random=" + Math.random());
 	document.getElementById("search_form").submit();
     }  
 function delConfirm(id){

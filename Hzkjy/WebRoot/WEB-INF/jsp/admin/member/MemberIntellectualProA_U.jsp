@@ -15,24 +15,10 @@
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" >
 function validate(){
-	<%--var re1="/^-?\d+$/";
-	var re2="/^(-?\d+)(\.\d+)?$/";
-	var applyAmount=$("#applyAmount").val();
-	var setUpAmount=$("#setUpAmount").val();
-	if(applyAmount!=""){
-		if(!re1.test(applyAmount)&&!re2.test(applyAmount)){
-			alert("申报额度(万)必须为整数或浮点 ");
-			$("#applyAmount").focus();
-				return false;
-			}
-		}
-	if(setUpAmount!=""){
-		if(!re1.test(setUpAmount)&&!re2.test(setUpAmount)){
-			alert("立项资助金额(万)必须为整数或浮点 ");
-			$("#setUpAmount").focus();
-				return false;
-			}
-		}--%>
+	var re1=/^-?\d+$/;
+	var re2=/^(-?\d+)(\.\d+)?$/;
+	
+	
 		var projectType=$("#projectType");
 		if(projectType.val()==""){
 			alert("项目类别不为空!");
@@ -45,12 +31,36 @@ function validate(){
 			applyAmount.focus();
 			return false;
 			}
+		
+		if(applyAmount.val()!=""){
+			if(!re1.test(applyAmount.val())&&!re2.test(applyAmount.val())){
+				alert("申报额度(万)必须为整数或浮点 ");
+				applyAmount.focus();
+					return false;
+				}
+			}
+		var year=$("#year");
+		if(year.val()==""){
+			alert("年份不为空!");
+			year.focus();
+			return false;
+			}
+		
 		var setUpAmount=$("#setUpAmount");
 		if(setUpAmount.val()==""){
 			alert("立项资助金额(万)不为空!");
 			setUpAmount.focus();
 			return false;
 			}
+		
+		if(setUpAmount.val()!=""){
+			if(!re1.test(setUpAmount.val())&&!re2.test(setUpAmount.val())){
+				alert("立项资助金额(万)必须为整数或浮点 ");
+				setUpAmount.focus();
+					return false;
+				}
+			}
+		
 		var projectName=$("#projectName");
 		if(projectName.val()==""){
 			alert("项目名称不为空!");
@@ -109,7 +119,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <th> 年份：</th>
      <td>
  <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
-     	value="${entity.Year}" maxlength="10"/>
+     	value="${entity.Year}" maxlength="10"/><font color="red">*</font>
      	
      </td>
     <th> 月份：</th>

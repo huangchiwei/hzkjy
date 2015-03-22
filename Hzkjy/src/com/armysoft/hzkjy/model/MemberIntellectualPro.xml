@@ -31,7 +31,7 @@
 	</select>
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
-		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,mip.ApplyTime,
+		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,
 		case when mip.IsSetUp='0' then '未知' when mip.IsSetUp='1' then '否' else '是' end IsSetUp ,
 		case when mip.ProjectLevel='0' then '国家级' when mip.ProjectLevel='1' then '省级' when mip.ProjectLevel='2' then '市级' else '区级' end ProjectLevel,
 		 mb.Qymc

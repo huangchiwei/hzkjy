@@ -63,9 +63,10 @@ public class  MemberIntellectualProController extends BaseController {
 		if(year!=null)
 		params.put("year", year);
 		else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
+		
 		if(month!=null)
 		params.put("month", month);
-		else params.put("month", 0);
+		else params.put("month", "1");
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(!userNo.equals("admin"))
 		params.put("memberNo", userNo);
@@ -149,13 +150,13 @@ public class  MemberIntellectualProController extends BaseController {
 		headData.add(new Object[] { "ProjectLevel","项目级别"});
 		headData.add(new Object[] { "ProjectType","项目类别"});
 		headData.add(new Object[] { "ProjectName","项目名称"});
-		headData.add(new Object[] { "ApplyAmount","申报额度"});
+		headData.add(new Object[] { "ApplyAmount","申报额度(万)"});
 		headData.add(new Object[] { "IsSetUp","立项"});
-		headData.add(new Object[] { "SetUpAmount","立项资助金额"});
+		headData.add(new Object[] { "SetUpAmount","立项资助金额(万)"});
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("startTime", year);
-		params.put("endTime", month);
+		params.put("year", year+"");
+		params.put("month", month+"");
 		//String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List<Map<String, Object>>  list =memberIntellectualProService.findAll(params);

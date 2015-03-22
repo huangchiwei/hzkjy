@@ -14,11 +14,11 @@
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript">
 function find(){    
-	$("#search_form").attr("action","${ctx}/admin/memberPatent/list/1.html");
+	$("#search_form").attr("action","${ctx}/admin/memberPatent/list/1.html?random=" + Math.random());
 	document.getElementById("search_form").submit();
     }  
 function out(){    
-	$("#search_form").attr("action","${ctx}/admin/memberPatent/outExcel/1.html");
+	$("#search_form").attr("action","${ctx}/admin/memberPatent/outExcel/1.html?random=" + Math.random());
 	document.getElementById("search_form").submit();
     } 
 function delConfirm(id){
@@ -96,7 +96,12 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <tr >
 	           	<td>${sta.index + 1}</td>
 	           	<td>${o.Qymc}</td>
-	       	<td>${o.Type }</td>
+	       	<td>
+	       	<c:if test="${o.Type==0 }">发明专利</c:if>
+	       	<c:if test="${o.Type==1 }">实用新型</c:if>
+	       	<c:if test="${o.Type==2 }">外观设计</c:if>
+	       	<c:if test="${o.Type==3 }">软件著作权</c:if>
+	       	</td>
 	       		<td>${o.Name}</td>
 	       			<td>${o.PatentNo}</td>	
 	       				
