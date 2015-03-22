@@ -12,6 +12,24 @@
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
+				<script language="JavaScript" type="text/javascript" src="${ctx}/js/jquery-1.2.6.pack.js"></script>
+				<script language="JavaScript" type="text/javascript" src="${ctx}/js/jquery.messager.js"></script>
+		<script type="text/javascript">
+			var tcbt='${tcbt}'; 
+			var tcnr='${tcnr}'; 
+				var tcid='${tcid}'; 
+		$(document).ready(function(){
+		if(tcbt !=''){
+		 $.messager.lays(300, 200);
+		 
+		 tcbt=  '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcbt+'</a></br>';
+		 tcnr= '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcnr+'</a>';
+		 
+				$.messager.show('<font color="red">您有新的通知</font>', tcbt+tcnr+'', 0);
+		}
+		       
+		});
+		</script>
 
 </head>
 
