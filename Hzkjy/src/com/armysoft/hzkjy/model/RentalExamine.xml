@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz</sql>
+	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_rental
@@ -33,14 +33,44 @@
 			    <result column="Shjyl" property="shjyl" />
 			    <result column="Dhjyl" property="dhjyl" />
 			    <result column="Qymj" property="qymj" />
-			    <result column="Qtfy" property="qtfy" />
 			    <result column="Hjje" property="hjje" />
 			    <result column="Shzt" property="shzt" />
 			    <result column="Fbzt" property="fbzt" />
 			    <result column="Jfyd" property="jfyd" />
 			    <result column="Dsyhd" property="dsyhd" />
 			    <result column="Dbyhd" property="dbyhd" />
-			    <result column="Bz" property="bz" />
+			    <result column="Zjsq" property="zjsq" />
+			    <result column="Glfsq" property="glfsq" />
+			    <result column="Sfsq" property="sfsq" />
+			    <result column="Dfsq" property="dfsq" />
+			    <result column="Zjbz" property="zjbz" />
+			    <result column="Glfbz" property="glfbz" />
+			    <result column="Sfbz" property="sfbz" />
+			    <result column="Dfbz" property="dfbz" />
+			    
+					
+					
+			    <result column="Zlbzj" property="zlbzj" />
+			    <result column="Zxyj" property="zxyj" />
+			    <result column="Glfwfdj" property="glfwfdj" />
+			    <result column="Qyzjdj" property="qyzjdj" />
+			    <result column="Zlbzjdj" property="zlbzjdj" />
+			    <result column="Zxyjdj" property="zxyjdj" />
+			    <result column="Qyzjznj" property="qyzjznj" />
+			    <result column="Glfwfznj" property="glfwfznj" />
+			    <result column="Qysfznj" property="qysfznj" />
+			    <result column="Zlbzjznj" property="zlbzjznj" />
+			    <result column="Zxyjznj" property="zxyjznj" />
+			    <result column="Qydfznj" property="qydfznj" />
+			    <result column="Hjjedx" property="hjjedx" />
+			    <result column="Zlbzjsq" property="zlbzjsq" />
+			    <result column="Zxyjsq" property="zxyjsq" />	
+			    <result column="Zlbzjbz" property="zlbzjbz" />	
+			    <result column="Zxyjbz" property="zxyjbz" />	
+			     <result column="Hjjeznj" property="hjjeznj" />		
+				 <result column="Bz" property="bz" />	
+				 <result column="Qydfdj" property="qydfdj" />		
+				 <result column="Qysfdj" property="qysfdj" />
 			    
 				
 				
@@ -48,7 +78,7 @@
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz
+select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj
 	 from member_rental
 		where 1 = 1
 			<if test="fhymc != null and fhymc != ''">
@@ -98,9 +128,10 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberRental">
-		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Bz)
+		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj)
 	
-		values(#{hybh} 		
+		values(
+		#{hybh} 		
 		, #{qymc} 		
 		, #{qyzj} 		
 		, #{glfwf}
@@ -111,7 +142,6 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 		, #{shjyl}
 		, #{dhjyl}
 		, #{qymj}
-		, #{qtfy}
 		, #{hjje}
 	    , #{shzt}
 	    , #{fbzt}
@@ -119,7 +149,36 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 	    , #{dsyhd}
 	    , #{dbyhd}
 	    , #{zydy}
-	      , #{bz}
+	    , #{zjsq}
+	     , #{glfsq}
+	     , #{sfsq}
+	     , #{dfsq}
+	     , #{zjbz}
+	     , #{glfbz}
+	     , #{sfbz}
+	     , #{dfbz}
+	      , #{zlbzj}
+	     , #{zxyj}
+	     , #{glfwfdj}
+	     , #{qyzjdj}
+	     , #{zlbzjdj}
+	     , #{zxyjdj}
+	     , #{qyzjznj}
+	     , #{glfwfznj}
+	     , #{qysfznj}
+	     , #{zlbzjznj}
+	     , #{zxyjznj}
+	     , #{qydfznj}
+	     , #{hjjedx}
+	     , #{zlbzjsq}
+	     , #{zxyjsq}
+	     , #{zlbzjbz}
+	     , #{zxyjbz}
+	      , #{hjjeznj}
+	        , #{bz}
+	         , #{qydfdj}
+	          , #{qysfdj}
+
 		  )
 		</insert>
 	<!-- 修改 -->
@@ -143,9 +202,38 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Qtfy,Hjje
 										,Dsyhd=#{dsyhd}
 										,Dbyhd=#{dbyhd}
 									    ,Zydy=#{zydy}
-									    ,Bz=#{bz}
+									     ,Bz=#{bz}
+									     ,Zjsq=#{zjsq}
+									     ,Glfsq=#{glfsq}
+									     ,Sfsq=#{sfsq}
+									     ,Dfsq=#{dfsq}
+									     ,Zjbz=#{zjbz}
+									     ,Glfbz=#{glfbz}
+									     ,Sfbz=#{sfbz}
+									     ,Dfbz=#{dfbz}
+									       ,Zlbzj =#{zlbzj}
+	     ,Zxyj =#{zxyj}
+	     ,Glfwfdj =#{glfwfdj}
+	     ,Qyzjdj =#{qyzjdj}
+	     ,Zlbzjdj =#{zlbzjdj}
+	     ,Zxyjdj =#{zxyjdj}
+	     ,Qyzjznj =#{qyzjznj}
+	     ,Glfwfznj =#{glfwfznj}
+	     ,Qysfznj =#{qysfznj}
+	     ,Zlbzjznj =#{zlbzjznj}
+	     ,Zxyjznj =#{zxyjznj}
+	     ,Qydfznj =#{qydfznj}
+	     ,Hjjedx =#{hjjedx}
+	     ,Zlbzjsq =#{zlbzjsq}
+	     ,Zxyjsq =#{zxyjsq}
+	     ,Zlbzjbz =#{zlbzjbz}
+	     ,Zxyjbz =#{zxyjbz}
+	     ,Hjjeznj =#{hjjeznj}		    
+	   ,Bz =#{bz}	
+	   ,Qydfdj =#{qydfdj}	
+	   ,Qysfdj =#{qysfdj}	
 		 							    where ID = #{id}
-	</update>
+		 							    </update>
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">

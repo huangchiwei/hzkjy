@@ -270,7 +270,7 @@ public class  EnterpriseRentalController extends BaseController {
 		
 		for(int id=0;id<idArr.length;id++){
 			EnterpriseRental mdd= service.findByKey(Long.valueOf(idArr[id]));
-			mdd.setShzt("已提交");
+			mdd.setFbzt("已提交");
 			service.update(mdd);
 		}
 		

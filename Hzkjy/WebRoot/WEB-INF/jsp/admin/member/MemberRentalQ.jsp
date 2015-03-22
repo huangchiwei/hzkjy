@@ -27,6 +27,29 @@ $('#checkAll').click(function(){
 	$('input[name="qyId"]').attr("checked",this.checked);
 });
 });
+var myWindow;
+function printHuiZhiList(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要打印的企业。');
+		return;
+	}
+	ids = ids.substring(0,ids.length - 1);
+	myWindow = $.layer({
+	    type: 2,
+	    maxmin: true,
+	    shadeClose: true,
+	    title: "批量打印",
+	    shade: [0.1,'#fff'],
+	    offset: ['10px',''],
+	    area: ['500px', '400px'],
+	    iframe: {src: "${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
+	});
+}
 
 function tjsh(id){
 
@@ -182,6 +205,25 @@ function loadPageLayer2(title,url){
 	function changeStatus(userNo,status){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
+	function pltzjf(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要通知的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/rentalExamine/Pltz.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 
 </script>
 </head>
@@ -208,6 +250,8 @@ function loadPageLayer2(title,url){
    	
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
          <dt><input id="" type="button" value="批量提交" class="initial" onclick="pltjsh()"/></dt>
+         <dt><input id="" type="button" value="通知发送" class="initial" onclick="pltzjf()"/></dt>
+          <dt><input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/></dt>
          <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
       
     </dl>
@@ -228,6 +272,7 @@ function loadPageLayer2(title,url){
 	        <th>管理服务费</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
+	        <th>发布状态</th>
 	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
@@ -255,6 +300,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.glfwf}元</td>
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.shzt}</td>
+	        <td>${mb.fbzt}</td>
 	        <td>
 	          	<c:if test="${hy_updt == true}">
 		          	<div class="btn_icon">
@@ -270,7 +316,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="10"></td>
+        <td colspan="11"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -278,7 +324,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="12">
+			<td colspan="13">
 				<div class="page">
 					<p:pager/>
 				</div>

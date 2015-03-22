@@ -265,6 +265,7 @@ public class  MemberRentalController extends BaseController {
 	public String save(MemberRental entity, Model model) {
 		if (entity.getId() == null) {
 			entity.setShzt("未提交");
+			entity.setFbzt("未发布");
 			service.insert(entity);
 		} else {
 			service.update(entity);

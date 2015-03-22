@@ -7,9 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>content</title>
-<link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/adminthemes/css/style.css" type="text/css"
+			rel="stylesheet" />
+		<link href="${ctx}/adminthemes/default/css/master.css"
+			rel="stylesheet" type="text/css" />
+		<link href="${ctx}/adminthemes/default/css/default.css"
+			rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx }/js/jquery.select.js" charset="GBK"></script>
@@ -109,112 +112,266 @@ html { overflow:-moz-scrollbars-vertical;}
 
 <body>
 
-<div class="content_box">
-    <div class="btn_box">
-  <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
-   </div>
+<div class="admin_table">
 <form id="add_form" enctype="multipart/form-data" action='<c:if test="${model == null}">${ctx}/admin/enterpriseRental/save.html</c:if><c:if test="${model != null}">${ctx}/admin/enterpriseRental/update/${model.id}.html</c:if>' method="post">
 
   <div class="add_info">
-
-   <h2>企业缴费单</h2>
-   <table width="98%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-     <th class="w100">企业名称:</th>
-     <td>
-     	<input id="qymc" name="qymc" type="text" value="${model.qymc}" maxlength="100" style="width:160px" readonly="true"/>
-     </td>
-     
-     <th>会员编号：</th>
-     <td>
-     	<input id="hybh" name="hybh" type="text" value="${model.hybh}" maxlength="20" readonly="true" />
-     </td>
-     <th>企业面积：</th>
-     <td>
-    	<input id="qymj" name="qymj" type="text" value="${model.qymj}" maxlength="100" style="width:160px"  readonly="true"/>平方
-     </td>
-     
-    </tr>
-	    <tr>
-	     <th>租用单元：</th>
-	     <td>
-	     <input id="zydy" name="zydy" type="text" value="${model.zydy}" maxlength="100" style="width:160px"  readonly="true"/>
-	     </td>
-	     <th>企业租金：</th>
-	     <td>
-	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}" readonly="true"/>
-	     	</td>
-	     <th>管理服务费：</th>
-	   	 <td>
-	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}" readonly="true"/>
-	   	 </td>
-	    </tr>
-    <tr>
-     <th>水上月行度：</th>
-     <td>
-     	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}" readonly="true"/>吨
-     </td>
-     <th>水本月行度：</th>
-     <td>
-     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}" readonly="true"/>吨
-     </td>
-     <th>水合计用量：</th>
-     <td>
-     	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}" readonly="true"/>吨
-     </td>
-    </tr>
-    <tr>
-     <th>电上月行度：</th>
-     <td>
-     	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}" readonly="true"/>度
-     </td>
-     <th>电本月行度：</th>
-     <td>
-     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}" readonly="true"/>度
-     </td>
-     <th>电合计用量：</th>
-     <td>
-     	<input name="dhjyl"  id="dhjyl" type="text" class="input_a1" value="${model.dhjyl}" readonly="true"/>度
-     </td>
-    </tr>
-     <tr>
-     <th>其它费用：</th>
-     <td>
-     	<input name="qtfy"  id="qtfy" type="text" class="input_a1" value="${model.qtfy}" readonly="true"/>
-     </td>
-     <th>合计金额：</th>
-     <td>
-     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="${model.hjje}" readonly="true"/>
+ <h2>新增缴费通知单</h2>
+    <table id="questTable" border="0" cellspacing="0" cellpadding="0"
+					class="ListTable">
+	<tr align="center">
+     <th>房号:</th>
+     <td colspan="2">
+     	<input id="zydy" name="zydy" type="text" value="${model.zydy}" class="input_a1"  maxlength="100" />
      </td>
      <th>缴费年月：</th>
-     <td>
-     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" readonly="true"/>
+     <th align="center">会员编号：</th>
+     <td colspan="2">
+     	<input id="hybh" name="hybh" type="text" value="${model.hybh}" class="input_a1"  maxlength="20" readonly="true" />
      </td>
+
+  
+    </tr>	
+    <tr align="center">
+     <th>用户:</th>
+     <td colspan="2">
+     	<input id="qymc" name="qymc" type="text" value="${model.qymc}"  class="input_a1"  maxlength="100"  onfocus="loadCorpName();" onblur="loadQyxx();" />
+     </td>
+     <td>
+     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" onclick="WdatePicker({dateFmt:'yyyy-MM'});" onchange="loadSqsj();"/>
+     </td>
+     <th>建筑面积：</th>
+     <td colspan="2">
+     	<input id="qymj" name="qymj" type="text" value="${model.qymj}" class="input_a1"  maxlength="20" onchange="sumfy();"/>㎡
+     </td>
+
+  
+    </tr>	
+    <tr align="center">
+     <th>序号：</th>
+     <th>单价：</th>
+     <th>项目：</th>
+     <th>属期：</th>
+     <th>金    额    （元）：</th>
+     <th>滞纳金 （元）：</th>
+     <th>备注：</th>			
+	</tr>			
+
+	     <tr align="center">
+	     <td>1</td>
+	      <th>租金：</th>
+	         <td>
+	     <input name="qyzjdj"  id="qyzjdj" type="text" class="input_a1" value="${model.qyzjdj}" onchange="sumzj();"/>元/平方
+	     	</td>
+	 
+	        <td>
+	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" value="${model.zjsq}" />
+	     	</td> 
+	     <td>
+	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}"/>
+	     	</td>
+	  	   <td>
+	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}"/>
+	     	</td> 
+	     <td>
+	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" value="${model.zjbz}"/> 
+	     	</td> 	
+	    
+	    </tr>
+	    <tr align="center">
+	    <td>2</td>
+	    <th>管理服务费：</th>
+	     <td>
+	     <input name="glfwfdj"  id="glfwfdj" type="text" class="input_a1" value="${model.glfwfdj}" />元/平方
+	     	</td>
+	     
+	      <td>
+	   	 	<input name="glfsq"  id="glfsq" type="text" class="input_a1" value="${model.glfsq}"/>
+	   	 </td>
+	   	 <td>
+	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}" />
+	   	 </td>
+	      <td>
+	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}"/>
+	   	 </td> 
+	   	 <td>
+	   	 	<input name="glfbz"  id="glfbz" type="text" class="input_a1" value="${model.glfbz}"/>
+	   	 </td>
+	    </tr>
+	    
+	     <tr align="center">
+	     <td>3</td>
+	     <th>租赁保证金：</th>
+	     <td>
+	     <input name="zlbzjdj"  id="zlbzjdj" type="text" class="input_a1" value="${model.zlbzjdj}"/>元/平方
+	     	</td>
+	     
+	      <td>
+	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" class="input_a1" value="${model.zlbzjsq}"/>
+	   	 </td>
+	   	 <td>
+	   	 	<input name="zlbzj"  id="zlbzj" type="text" class="input_a1" value="${model.zlbzj}" />
+	   	 </td>
+	      <td>
+	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}"/>
+	   	 </td> 
+	   	 <td>
+	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" class="input_a1" value="${model.zlbzjbz}"/>
+	   	 </td>
+	    </tr>
+	    
+	     <tr align="center">
+	     <td>4</td>
+	      <th>装修押金：</th>
+	     <td>
+	     <input name="zxyjdj"  id="zxyjdj" type="text" class="input_a1" value="${model.zxyjdj}" />元/平方
+	     	</td>
+	    
+	      <td>
+	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" class="input_a1" value="${model.zxyjsq}"/>
+	   	 </td>
+	   	 <td>
+	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="${model.zxyj}"/>
+	   	 </td>
+	      <td>
+	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}"/>
+	   	 </td> 
+	   	 <td>
+	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" class="input_a1" value="${model.zxyjbz}"/>
+	   	 </td>
+	    </tr>
+	    
+	         <tr align="center">
+	         <td>5</td>
+	             <th>水费：</th>
+	     <td>
+	     	</td>
+	 
+	      <td>
+	   	 	<input name="sfsq"  id="sfsq" type="text" class="input_a1" value="${model.sfsq}"/>
+	   	 </td>
+	   	 <td>
+	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}"/>
+	   	 </td>
+	      <td>
+	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}"/>
+	   	 </td> 
+	   	 <td>
+	   	 	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+	   	 </td>
+	    </tr>
+	    
+	        <tr align="center">
+	        <td>6</td>
+	           <th>电费：</th>
+	     <td>
+	     	</td>
+	  
+	      <td>
+	   	 	<input name="dfsq"  id="dfsq" type="text" class="input_a1" value="${model.dfsq}"/>
+	   	 </td>
+	   	 <td>
+	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}"  onblur="rtnn(this);sumhjje();"/>
+	   	 </td>
+	      <td>
+	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}"/>
+	   	 </td> 
+	   	 <td>
+	   	 	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+	   	 </td>
+	    </tr>
+	          <tr>
+     <td colspan="4">小写：</td>
+     <td align="center">
+     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="${model.hjje}" onchange="loadHjjezw();"/>
+     </td>
+    
+       <td align="center"><input name="hjjeznj"  id="hjjeznj" type="text" class="input_a1" value="${model.hjjeznj!='' && model.hjjeznj != null ? model.hjjeznj:'0.0'}" /></td>
+      <td align="center"><input name="bz"  id="bz" type="text" class="input_a1" value="${model.bz}"/></td>
     </tr>
      <tr>
-     <th>企业电费：</th>
-     <td>
-     	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}" readonly="true"/>
-     </td>
-     <th>企业水费：</th>
-     <td>
-     	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}" readonly="true"/>
-     </td>
-     <th></th>
-     <td>
+     <td colspan="3">合计金额（人民币大写）：</td>
+     <td colspan="4">
+     	<input name="hjjedx"  id="hjjedx" type="text" class="input_a1" value="${model.hjjedx}" style="width:400px" />
      </td>
     </tr>
+    <tr>
+    	  <td colspan="7"><textarea name="a" style="width:90%;height:45px;color:red;">说明：1、费用采用现金或支票、公对公转账形式支付，租金水电费支票抬头写：广州市海珠科技产业园有限公司；帐号：635357744247 ，中国银行海珠支行                                                                                        2、请于每月5日前交纳以上列表之费用，逾期按每日5‰收取滞纳金；                                                                                                                                                                         3、如已交纳该款，可不予理会此单； </textarea></td>
+    </tr>
+    <tr>
+    	  <td colspan="7">附件：</td>
+    </tr>
+      <tr>
+    	  <th>项目</th>
+    	  <th>上月行度</th>
+    	  <th>本月行度</th>
+    	  <th>合计用量</th>
+    	  <th>单价</th>
+    	  <th>金额（元）</th>
+    	  <th>备注</th>
+    </tr>
+    
+
+	    <tr>
+	    <th>水：</th>
+	     <td>
+     	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}" />吨
+     </td>
+     <td>
+     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}"/>吨
+     </td>
+      <td>
+     	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}"/>吨
+     </td>
+     <td>
+     	<input name="qysfdj"  id="qysfdj" type="text" class="input_a1" value="${model.qysfdj}"/>元/吨
+     </td>
+       <td>
+     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="${model.qysf}" />
+     </td>
+     
+     <td>
+     	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+     </td>
+      
+	    </tr>
+	    
+	  
+	    <tr>
+	    <th>电：</th>
+	   <td>
+     	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}"/>度
+     </td>
+     <td>
+     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}"/>度
+     </td>
+     <td>
+     	<input name="dhjyl"  id="dhjyl" type="text" class="input_a1" value="${model.dhjyl}" />度
+     </td>
+     <td>
+     	<input name="qydfdj"  id="qydfdj" type="text" class="input_a1" value="${model.qydfdj}"/>元/度
+     </td>
+       <td>
+     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" value="${model.qydf}" />
+     </td>
+     
+     <td>
+     	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+     </td>
+      
+	    </tr>  
+    
     <tr>
     <th>企业实缴金额</th>
     <td><input name="jnje"  id="jnje" type="text" class="input_a1" value="${model.jnje}"/></td>
      <th>缴费凭证上传：</th>
-     <td  colspan="3">
+     <td  colspan="4">
      <input style="border:0px;" type="file" name="files" id="files"/>
      </td>
     </tr>
      <tr>
     <th>凭证图像</th>
-    <td colspan="5">
+    <td colspan="6">
     <img src="${ctx}/hzkjyFj/${model.accessory}" width="600px" height="400px"/>
     <input type="hidden" name="accessory" id="accessory" value="${model.accessory}"/>
      </td>
