@@ -269,51 +269,56 @@ INSERT INTO `sys_module` VALUES ('Lev2_42','科技项目','admin/memberIntellect
 INSERT INTO `sys_module` VALUES ('Lev2_43','专利','admin/memberPatent/list/1.html',3,'Lev1_12',2);
 
 
-
 CREATE TABLE `member_intellectual_pro` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
-  `ProjectLevel` int(4) DEFAULT '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
-  `ProjectType` varchar(255) DEFAULT NULL COMMENT '项目类别',
-  `ProjectName` varchar(255) DEFAULT NULL COMMENT '项目名称',
-  `ApplyAmount` float(5,3) DEFAULT '0.000' COMMENT '申报额度(万)',
-  `IsSetUp` int(1) DEFAULT '0' COMMENT '是否立项0不立项 1立项',
-  `SetUpAmount` float(5,3) DEFAULT '0.000' COMMENT '立项资助金额(万)',
-  `ApplyTime` date DEFAULT NULL COMMENT '申报时间',
-  `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='科技项目';
+  `Id` int(11) NOT NULL auto_increment,
+  `MemberNo` varchar(50) NOT NULL default '' COMMENT '企业编号',
+  `ProjectLevel` int(4) default '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
+  `ProjectType` varchar(255) default NULL COMMENT '项目类别',
+  `ProjectName` varchar(255) default NULL COMMENT '项目名称',
+  `ApplyAmount` float(7,3) default '0.000' COMMENT '申报额度(万)',
+  `IsSetUp` int(1) default '0' COMMENT '是否立项 0未知 1否 2是',
+  `SetUpAmount` float(7,3) default '0.000' COMMENT '立项资助金额(万)',
+  `Status` int(1) default '0' COMMENT '审核状态 1通过 0不通过',
+  `Year` int(11) default '0' COMMENT '年份',
+  `Month` int(1) default '0' COMMENT '1为7-12月 0为1-6月',
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='科技项目';
 
 #
 # Dumping data for table member_intellectual_pro
 #
 
-INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,'2014-01-22',0);
-INSERT INTO `member_intellectual_pro` VALUES (3,'440100001',0,'33','33',3,1,3,'2015-03-01',0);
-INSERT INTO `member_intellectual_pro` VALUES (8,'440100001',0,'f','2',1,1,1,'2015-03-05',0);
+INSERT INTO `member_intellectual_pro` VALUES (2,'440100001',1,'关于申报2013年广东省企业500强广东省制造业百强企业、广东省服务业百强企业的通知','广东省企业500强',0,0,0,0,2012,1);
+INSERT INTO `member_intellectual_pro` VALUES (3,'440100001',0,'33','33',3,2,3,0,2015,0);
+INSERT INTO `member_intellectual_pro` VALUES (8,'440100001',0,'f','3',1,2,1,0,2015,0);
+INSERT INTO `member_intellectual_pro` VALUES (9,'admin',2,'test1','tes1_content',3,2,3,0,2015,0);
+INSERT INTO `member_intellectual_pro` VALUES (10,'admin',3,'test2','test2_name',333.3,1,333,0,2015,1);
 
 #
 # Source for table member_patent
 #
 
 CREATE TABLE `member_patent` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `MemberNo` varchar(50) DEFAULT NULL COMMENT '企业编号',
-  `Type` varchar(20) DEFAULT NULL COMMENT '专利类别',
-  `Name` varchar(255) DEFAULT NULL COMMENT '专利名称',
-  `PatentNo` varchar(255) DEFAULT NULL COMMENT '专利编号',
-  `ApplyTime` date DEFAULT NULL COMMENT '获取时间',
-  `Status` int(1) DEFAULT '0' COMMENT '发送状态 0一对一 1一对多',
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='专利';
+  `Id` int(11) NOT NULL auto_increment,
+  `MemberNo` varchar(50) default NULL COMMENT '企业编号',
+  `Type` varchar(20) default NULL COMMENT '专利类别 0发明专利 1实用新型 2外观设计  3软件著作权',
+  `Name` varchar(255) default NULL COMMENT '专利名称',
+  `PatentNo` varchar(255) default NULL COMMENT '专利编号',
+  `Status` int(1) default '0' COMMENT '审核状态 1通过 0不通过',
+  `Year` int(11) default NULL COMMENT '年份',
+  `Month` int(1) default NULL COMMENT '1为7-12月 0为1-6月',
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='专利';
 
 #
 # Dumping data for table member_patent
 #
 
-INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法','200910040956.3','2015-01-22',NULL);
-INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7','2015-02-22',NULL);
-INSERT INTO `member_patent` VALUES (3,'440100001','发明专利','ff','fff','2015-03-01',0);
+INSERT INTO `member_patent` VALUES (1,'440100001','发明专利','军团菌种快速检测试剂盒及其检测方法','200910040956.3',0,2011,1);
+INSERT INTO `member_patent` VALUES (2,'440100001','发明专利','军团菌选择性分离培养基','200910040282.7',0,2013,0);
+INSERT INTO `member_patent` VALUES (3,'440100001','发明专利','ff','fff',0,2010,0);
+INSERT INTO `member_patent` VALUES (4,'admin','2','test1_name','test000001',0,2015,0);
+INSERT INTO `member_patent` VALUES (5,'admin','0','test2_name','test2000001',0,2015,1);
 
 
 DROP TABLE IF EXISTS `ecc_indicator`;
