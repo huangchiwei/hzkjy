@@ -301,6 +301,21 @@ public class  RentalExamineController extends BaseController {
 		map.put("Glfbz", mb.getGlfbz()+"");
 		map.put("Sfbz", mb.getSfbz()+"");
 		map.put("Dfbz", mb.getDfbz()+"");
+		map.put("Zlbzj", mb.getZlbzj()+"");
+		map.put("Zlbzjsq", mb.getZlbzjsq()+"");
+		map.put("Zlbzjznj", mb.getZlbzjznj()+"");
+		map.put("Zlbzjbz",mb.getZlbzjbz()+"");
+		map.put("Zxyj",mb.getZxyj()+"");
+		map.put("Zxyjsq",mb.getZxyjsq()+"");
+		map.put("Zxyjznj",mb.getZxyjznj()+"");
+		map.put("Zxyjbz",mb.getZxyjbz()+"");
+		map.put("Qyzjznj",mb.getQyzjznj()+"");
+		map.put("Glfwfznj",mb.getGlfwfznj()+"");
+		map.put("Qysfznj",mb.getQysfznj()+"");
+		map.put("Qydfznj",mb.getQydfznj()+"");
+		map.put("Hjjedx",mb.getHjjedx()+"");
+		map.put("Qysfdj",mb.getQysfdj()+"");
+		map.put("Qydfdj",mb.getQydfdj()+"");
 		
 //		String stuDiploma[] = { "初中", "高中", "大专", "本科", "研究生", "博士" };
 //		map.put("StuDiploma", stuDiploma[Integer.valueOf(mb.getStuDiploma())]);

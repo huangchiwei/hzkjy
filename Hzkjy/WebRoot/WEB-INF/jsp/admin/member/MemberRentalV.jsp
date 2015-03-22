@@ -378,6 +378,14 @@ function rtnn(val){
 	sumzxyjdj();
 	}
 	
+	function onchangebz(){
+	 var sfbz=$("#sfbz").val();
+	 $("#lsfbz").attr("value",sfbz);
+	  var dfbz=$("#dfbz").val();
+	 $("#ldfbz").attr("value",dfbz);
+	 
+	}
+	
 </script>
 
 
@@ -535,7 +543,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+	   	 	<input name="lsfbz"  id="lsfbz" type="text" class="input_a1" value="${model.sfbz}"/>
 	   	 </td>
 	    </tr>
 	    
@@ -555,7 +563,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+	   	 	<input name="ldfbz"  id="ldfbz" type="text" class="input_a1" value="${model.dfbz}"/>
 	   	 </td>
 	    </tr>
 	          <tr>
@@ -609,7 +617,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
      
      <td>
-     	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+     	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}" onchange="onchangebz();"/>
      </td>
       
 	    </tr>
@@ -630,11 +638,11 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="qydfdj"  id="qydfdj" type="text" class="input_a1" value="${model.qydfdj}" onchange="sumqydf();"/>元/度
      </td>
        <td>
-     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" value="${model.qydf}" />
+     	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}" />
      </td>
      
      <td>
-     	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+     	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}" onchange="onchangebz();"/>
      </td>
       
 	    </tr>  
