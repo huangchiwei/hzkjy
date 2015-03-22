@@ -43,4 +43,15 @@ public class SysModuleService extends BaseDao {
 	public List<SysModule> getByModuleLevel(Integer level){
 		return super.nativeList(nameSpace + ".getByModuleLevel", level);
 	}
+	public boolean assertHasChildren(List<SysModule> rootList,List<SysModule> childrenList){
+		for(SysModule root:rootList){
+			 for(SysModule element:childrenList){
+				 if(element.getParentNo().getModuleNo().equals(root.getModuleNo())){
+					 return true;
+				 } 
+			 }
+		}
+		return false;
+		
+	}
 }

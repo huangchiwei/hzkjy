@@ -33,7 +33,7 @@ public class SysModuleController extends BaseController {
 	 * @param request
 	 * @return 
 	 */
-	@RequestMapping("loadModuleTreeByUserNo")
+/*	@RequestMapping("loadModuleTreeByUserNo")
 	@ResponseBody
 	public List<Map<String,Object>> loadModuleTreeByUserNo(
 			HttpServletRequest request) {
@@ -79,8 +79,78 @@ public class SysModuleController extends BaseController {
 			}
 		}
         return jsonRes;
+	}*/
+	
+	@RequestMapping("loadModuleTreeByUserNo")
+	@ResponseBody
+	public List<Map<String,Object>> loadModuleTreeByUserNo(
+			HttpServletRequest request) {
+		 List<Map<String, Object>> treeList=  new ArrayList<Map<String, Object>>();
+			//所有一级菜单
+			List<SysModule> rootList = sysModuleService.getByModuleLevel(1);
+			//用户拥有的菜单
+			List<SysModule> allList = null;
+			String userNo = "admin";//super.getCookieValue(request, Constants.ADMIN_KEY);
+			if("admin".equalsIgnoreCase(userNo)){
+				allList = sysModuleService.getByModuleLevel(2);
+			}else{
+				allList = sysModuleService.getByUserNo(userNo);
+			}
+		// List<Map<String, Object>> rootList=epubBookService.getCatalogLevel(bookNo,"0");
+		// List<Map<String, Object>> allList=epubBookService.getCatalogWithoutParentId(bookNo,"0");
+		 addChildrenTree(rootList,allList,treeList);
+ 
+	        return treeList;
 	}
-
+	
+public void addChildrenTree(List<SysModule> rootList,List<SysModule> childrenList, List<Map<String, Object>> treeList){
+		
+		boolean isExit=false;
+		for(SysModule root:rootList){
+		
+			 for(SysModule element:childrenList){
+				 if(element.getParentNo().getModuleNo().equals(root.getModuleNo())){
+					
+					 HashMap<String, Object> child=new HashMap<String, Object>();
+					 child.put("id", element.getModuleNo());
+					 child.put("pId", element.getParentNo() == null ? "0" : element.getParentNo().getModuleNo());
+					 child.put("name", element.getModName());
+					 if(element.getUrl() != null)
+							child.put("file", element.getUrl());
+						if(element.getParentNo() == null)
+							child.put("open", true);
+				
+					
+					
+					List<SysModule> tempList=new ArrayList<SysModule>();
+					tempList.add(element);
+					isExit=sysModuleService.assertHasChildren(tempList,childrenList);
+					if(isExit){
+						addChildrenTree(tempList,childrenList,treeList);  //递归添加
+					}
+					else{
+						treeList.add(child);
+					}
+				 }
+			 }
+			
+				 //存放父节点
+					Map<String, Object> parent=new HashMap<String, Object>();
+					
+					parent.put("id", root.getModuleNo());
+					parent.put("pId", root.getParentNo() == null ? "0" : root.getParentNo().getModuleNo());
+					parent.put("name", root.getModName());
+					if(root.getUrl() != null)
+						parent.put("file", root.getUrl());
+					if(root.getParentNo() == null)
+						parent.put("open", true);
+				
+					treeList.add(parent);
+		
+		 }
+		 
+		
+	}
 	/**
 	 * 加载所有菜单模块和权限树（角色分配权限时）
 	 * @param roleNo

@@ -51,6 +51,7 @@ public class  NewsController extends BaseController {
 	 * @param request
 	 * @return
 	 */
+	@PermissionsAnno("news_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
@@ -64,7 +65,7 @@ public class  NewsController extends BaseController {
 		return "/admin/news/newsQ";
 	}
 
-
+	@PermissionsAnno("news_add")
 	@RequestMapping(value = ADD)
 	public String toAdd(HttpServletRequest request,Model model,String cateCode) {
 		model.addAttribute("type", "add");
@@ -89,7 +90,7 @@ public class  NewsController extends BaseController {
 		model.addAttribute("type", "update");
 		return "/admin/news/newsA_U";
 	}
-
+	@PermissionsAnno("news_save")
 	@RequestMapping(value = SAVE)
 	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type) {
 		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
