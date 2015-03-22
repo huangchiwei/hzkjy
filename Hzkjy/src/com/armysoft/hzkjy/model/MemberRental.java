@@ -4,7 +4,72 @@ import java.util.Date;
 
 public class MemberRental implements java.io.Serializable {
 	private Integer id;
-    public Integer getId() {
+    private String hybh;
+	private String qymc;
+	private String qyzj;
+	private String glfwf;
+	private String qysf;
+	private String qydf;
+	private String ssyhd;
+	private String sbyhd;
+	private String shjyl;
+	private String dhjyl;
+	private String qymj;
+	private String hjje;
+	private String shzt;
+	private String fbzt;
+	private String jfyd;
+	private String zjsq;
+	private String glfsq;
+	private String sfsq;
+	private String dfsq;
+	private String zjbz;
+	private String glfbz;
+	private String sfbz;
+	private String dfbz;
+	private String dsyhd;
+	private String dbyhd;
+	private String zydy;
+    private String zlbzj;
+	private String zxyj;
+	private String glfwfdj;
+	private String qyzjdj;
+	private String zlbzjdj;
+	private String zxyjdj;
+	private String qyzjznj;
+	private String glfwfznj;
+	private String qysfznj;
+	private String zlbzjznj;
+	private String zxyjznj;
+	private String qydfznj;
+	private String hjjedx;
+	private String zlbzjbz;
+	private String zxyjbz;
+	private String zlbzjsq;
+	private String zxyjsq;
+	private String hjjeznj;
+	private String bz;
+	private String qydfdj;
+	public String getQydfdj() {
+		return qydfdj;
+	}
+	public void setQydfdj(String qydfdj) {
+		this.qydfdj = qydfdj;
+	}
+	public String getQysfdj() {
+		return qysfdj;
+	}
+	public void setQysfdj(String qysfdj) {
+		this.qysfdj = qysfdj;
+	}
+	private String qysfdj;
+	public String getBz() {
+		return bz;
+	}
+	public void setBz(String bz) {
+		this.bz = bz;
+	}
+	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -274,71 +339,5 @@ public class MemberRental implements java.io.Serializable {
 	public void setHjjeznj(String hjjeznj) {
 		this.hjjeznj = hjjeznj;
 	}
-	private String hybh;
-	private String qymc;
-	private String qyzj;
-	private String glfwf;
-	private String qysf;
-	private String qydf;
-	private String ssyhd;
-	private String sbyhd;
-	private String shjyl;
-	private String dhjyl;
-	private String qymj;
-	private String hjje;
-	private String shzt;
-	private String fbzt;
-	private String jfyd;
-	private String zjsq;
-	private String glfsq;
-	private String sfsq;
-	private String dfsq;
-	private String zjbz;
-	private String glfbz;
-	private String sfbz;
-	private String dfbz;
-	private String dsyhd;
-	private String dbyhd;
-	private String zydy;
-    private String zlbzj;
-	private String zxyj;
-	private String glfwfdj;
-	private String qyzjdj;
-	private String zlbzjdj;
-	private String zxyjdj;
-	private String qyzjznj;
-	private String glfwfznj;
-	private String qysfznj;
-	private String zlbzjznj;
-	private String zxyjznj;
-	private String qydfznj;
-	private String hjjedx;
-	private String zlbzjbz;
-	private String zxyjbz;
-	private String zlbzjsq;
-	private String zxyjsq;
-	private String hjjeznj;
-	private String bz;
-	private String qydfdj;
-	public String getQydfdj() {
-		return qydfdj;
-	}
-	public void setQydfdj(String qydfdj) {
-		this.qydfdj = qydfdj;
-	}
-	public String getQysfdj() {
-		return qysfdj;
-	}
-	public void setQysfdj(String qysfdj) {
-		this.qysfdj = qysfdj;
-	}
-	private String qysfdj;
-	public String getBz() {
-		return bz;
-	}
-	public void setBz(String bz) {
-		this.bz = bz;
-	}
-
 	
 }

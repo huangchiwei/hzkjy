@@ -213,7 +213,6 @@ function corpAutocomplete(data){
 								</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
          <dt><input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/></dt>
-         <dt><input id="" type="button" value="批量发送" class="initial" onclick="pltzjf()"/></dt>
          <dt><input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/></dt>
          <dt><input id="" type="button" value="批量退回" class="initial" onclick="pltssh()"/></dt>
          <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>

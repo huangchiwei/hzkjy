@@ -221,18 +221,17 @@ INSERT INTO `news_category` VALUES (26,'培训通知','train_notice','交流培�
 INSERT INTO `news_category` VALUES (27,'培训课件','train_file','交流培训');
 
 
-
-INSERT INTO `sys_module` VALUES ('Lev1_01','系统管理',NULL,1,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_10','通知管理',NULL,1,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_02','会员管理',NULL,2,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_03','园区风貌',NULL,3,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_05','最新公告','admin/news/list/1.html?cateCode=notice_lastest',5,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_06','企业服务',NULL,6,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_07','交流培训',NULL,7,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_08','政策法规',NULL,8,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,12,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_10','通知管理',NULL,11,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,13,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_12','知识产权',NULL,14,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,3,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,4,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_12','知识产权',NULL,5,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_03','园区风貌',NULL,6,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_05','最新公告','admin/news/list/1.html?cateCode=notice_lastest',7,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_06','企业服务',NULL,8,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_07','交流培训',NULL,9,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_08','政策法规',NULL,10,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_01','系统管理',NULL,11,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_08','园区介绍','admin/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
@@ -254,8 +253,8 @@ INSERT INTO `sys_module` VALUES ('Lev2_23','培训课件','admin/news/list/1.htm
 INSERT INTO `sys_module` VALUES ('Lev2_24','国家政策','admin/news/list/1.html?cateCode=policy_regu',1,'Lev1_08',2);
 INSERT INTO `sys_module` VALUES ('Lev2_25','省市政策','admin/news/list/1.html?cateCode=policy_province',2,'Lev1_08',2);
 INSERT INTO `sys_module` VALUES ('Lev2_26','园区政策','admin/news/list/1.html?cateCode=policy_park',3,'Lev1_08',2);
-INSERT INTO `sys_module` VALUES ('Lev2_31','在园企业管理','admin/memberBasic/list/1.html',1,'Lev1_02',2);
-INSERT INTO `sys_module` VALUES ('Lev2_32','出园企业管理','admin/memberFasic/list/1.html',2,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_31','企业管理','admin/memberBasic/list/1.html',1,'Lev1_02',2);
+INSERT INTO `sys_module` VALUES ('Lev2_32','孵化企业填报','admin/incubatedEnterprises/list/1.html',2,'Lev1_02',2);
 INSERT INTO `sys_module` VALUES ('Lev2_33','租金录入','admin/memberRental/list/1.html',1,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_34','审核租金','admin/rentalExamine/list/1.html',2,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_35','企业租金录入','admin/enterpriseRental/list/1.html',3,'Lev1_09',2);
@@ -371,29 +370,49 @@ CREATE TABLE `member_rental` (
   `Qyzj` decimal(10,0) default NULL COMMENT '企业租金',
   `Glfwf` decimal(10,0) default NULL COMMENT '管理服务费',
   `Qysf` decimal(10,0) default NULL COMMENT '企业水费',
-  `Qydf` decimal(10,0) default NULL COMMENT '企业电费',
+   `Qydf` decimal(10,0) default NULL COMMENT '企业电费',
+  `Zlbzj` decimal(10,0) default NULL COMMENT '租赁保证金', 
+  `Zxyj` decimal(10,0) default NULL COMMENT '装修押金', 
+  `Glfwfdj` decimal(10,0) default NULL COMMENT '管理服务费平方/元', 
+  `Qyzjdj` decimal(10,0) default NULL COMMENT '企业租金平方/元', 
+  `Zlbzjdj` decimal(10,0) default NULL COMMENT '租赁保证金平方/元', 
+  `Zxyjdj` decimal(10,0) default NULL COMMENT '装修押金平方/元', 
+  `Qydfdj` decimal(10,0) default NULL COMMENT '企业电费平方/元', 
+   `Qysfdj` decimal(10,0) default NULL COMMENT '企业水费平方/元', 
+   
+  `Qyzjznj` decimal(10,0) default NULL COMMENT '企业租金滞纳金 ',
+  `Glfwfznj` decimal(10,0) default NULL COMMENT '管理服务费滞纳金 ',
+  `Qysfznj` decimal(10,0) default NULL COMMENT '企业水费滞纳金 ',
+  `Zlbzjznj` decimal(10,0) default NULL COMMENT '租赁保证金滞纳金 ', 
+  `Zxyjznj` decimal(10,0) default NULL COMMENT '装修押金滞纳金 ', 
+  `Qydfznj` decimal(10,0) default NULL COMMENT '企业电费滞纳金 ', 
+   `Hjjeznj` decimal(10,0) default NULL COMMENT '合计金额滞纳金 ', 
   `Ssyhd` decimal(10,0) default NULL COMMENT '水上月行度',
   `Sbyhd` decimal(10,0) default NULL COMMENT '水本月行度',
   `Shjyl` decimal(10,0) default NULL COMMENT '水合计用量',
   `Dhjyl` decimal(10,0) default NULL COMMENT '电合计用量',
   `Qymj` decimal(10,0) default NULL COMMENT '企业面积',
-  `Qtfy` decimal(10,0) default NULL COMMENT '其它费用',
   `Hjje` decimal(10,0) default NULL COMMENT '合计金额',
+  `Hjjedx` varchar(255) default NULL COMMENT '合计金额大写',
   `Shzt` varchar(50) default NULL COMMENT '审核状态',
   `Fbzt` varchar(50) default NULL COMMENT '发布状态',
   `Jfyd` varchar(50) default NULL COMMENT '缴费月度',
   `Dsyhd` decimal(10,0) default NULL COMMENT '电上月行度',
   `Dbyhd` decimal(10,0) default NULL COMMENT '电本月行度',
-  `Zydy` varchar(50) default NULL COMMENT '用租单元',
+  `Zydy` varchar(50) default NULL COMMENT '租用地址',
   `Bz` varchar(255) default NULL COMMENT '注备',
   `Zjsq` varchar(255) default NULL COMMENT '租金属期',
   `Glfsq` varchar(255) default NULL COMMENT '管理费属期',
   `Sfsq` varchar(255) default NULL COMMENT '水费属期',
   `Dfsq` varchar(255) default NULL COMMENT '电费属期',
+  `Zlbzjsq`  varchar(255) default NULL COMMENT '租赁保证金属期', 
+  `Zxyjsq` varchar(255) default NULL COMMENT '装修押金属期', 
   `Zjbz` varchar(255) default NULL COMMENT '租金备注',
   `Glfbz` varchar(255) default NULL COMMENT '管理费备注',
   `Sfbz` varchar(255) default NULL COMMENT '水费备注',
   `Dfbz` varchar(255) default NULL COMMENT '电费备注',
+  `Zlbzjbz` varchar(255) default NULL COMMENT '租赁保证金备注', 
+  `Zxyjbz` varchar(255)  default NULL COMMENT '装修押金备注', 
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -425,30 +444,58 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `enterprise_rental`;
 CREATE TABLE `enterprise_rental` (
-  `ID` int(11) NOT NULL auto_increment,
+   `ID` int(11) NOT NULL auto_increment,
   `Hybh` varchar(50) default NULL COMMENT '会员编号',
   `Qymc` varchar(100) default NULL COMMENT '企业名称',
   `Qyzj` decimal(10,0) default NULL COMMENT '企业租金',
   `Glfwf` decimal(10,0) default NULL COMMENT '管理服务费',
   `Qysf` decimal(10,0) default NULL COMMENT '企业水费',
-  `Qydf` decimal(10,0) default NULL COMMENT '企业电费',
+   `Qydf` decimal(10,0) default NULL COMMENT '企业电费',
+  `Zlbzj` decimal(10,0) default NULL COMMENT '租赁保证金',
+  `Zxyj` decimal(10,0) default NULL COMMENT '装修押金',
+  `Glfwfdj` decimal(10,0) default NULL COMMENT '管理服务费平方/元',
+  `Qyzjdj` decimal(10,0) default NULL COMMENT '企业租金平方/元',
+  `Zlbzjdj` decimal(10,0) default NULL COMMENT '租赁保证金平方/元',
+  `Zxyjdj` decimal(10,0) default NULL COMMENT '装修押金平方/元',
+  `Qydfdj` decimal(10,0) default NULL COMMENT '企业电费平方/元',
+   `Qysfdj` decimal(10,0) default NULL COMMENT '企业水费平方/元',
+   
+  `Qyzjznj` decimal(10,0) default NULL COMMENT '企业租金滞纳金 ',
+  `Glfwfznj` decimal(10,0) default NULL COMMENT '管理服务费滞纳金 ',
+  `Qysfznj` decimal(10,0) default NULL COMMENT '企业水费滞纳金 ',
+  `Zlbzjznj` decimal(10,0) default NULL COMMENT '租赁保证金滞纳金 ',
+  `Zxyjznj` decimal(10,0) default NULL COMMENT '装修押金滞纳金 ',
+  `Qydfznj` decimal(10,0) default NULL COMMENT '企业电费滞纳金 ',
+   `Hjjeznj` decimal(10,0) default NULL COMMENT '合计金额滞纳金 ',
   `Ssyhd` decimal(10,0) default NULL COMMENT '水上月行度',
   `Sbyhd` decimal(10,0) default NULL COMMENT '水本月行度',
   `Shjyl` decimal(10,0) default NULL COMMENT '水合计用量',
   `Dhjyl` decimal(10,0) default NULL COMMENT '电合计用量',
   `Qymj` decimal(10,0) default NULL COMMENT '企业面积',
-  `Qtfy` decimal(10,0) default NULL COMMENT '其它费用',
+  `Hjje` decimal(10,0) default NULL COMMENT '合计金额',
+  `Hjjedx` varchar(255) default NULL COMMENT '合计金额大写',
   `Shzt` varchar(50) default NULL COMMENT '审核状态',
   `Fbzt` varchar(50) default NULL COMMENT '发布状态',
   `Jfyd` varchar(50) default NULL COMMENT '缴费月度',
   `Dsyhd` decimal(10,0) default NULL COMMENT '电上月行度',
   `Dbyhd` decimal(10,0) default NULL COMMENT '电本月行度',
-  `Zydy` varchar(50) default NULL COMMENT '用租单元',
-  `Hjje` decimal(10,0) default NULL COMMENT '合计金额',
+  `Zydy` varchar(50) default NULL COMMENT '租用地址',
+  `Bz` varchar(255) default NULL COMMENT '注备',
+  `Zjsq` varchar(255) default NULL COMMENT '租金属期',
+  `Glfsq` varchar(255) default NULL COMMENT '管理费属期',
+  `Sfsq` varchar(255) default NULL COMMENT '水费属期',
+  `Dfsq` varchar(255) default NULL COMMENT '电费属期',
+  `Zlbzjsq`  varchar(255) default NULL COMMENT '租赁保证金属期',
+  `Zxyjsq` varchar(255) default NULL COMMENT '装修押金属期',
+  `Zjbz` varchar(255) default NULL COMMENT '租金备注',
+  `Glfbz` varchar(255) default NULL COMMENT '管理费备注',
+  `Sfbz` varchar(255) default NULL COMMENT '水费备注',
+  `Dfbz` varchar(255) default NULL COMMENT '电费备注',
+  `Zlbzjbz` varchar(255) default NULL COMMENT '租赁保证金备注',
+  `Zxyjbz` varchar(255)  default NULL COMMENT '装修押金备注', 
   `Jnje` decimal(10,0) default NULL COMMENT '缴纳金额',
   `Accessory` varchar(50) default NULL COMMENT '缴费依据',
   `Sfqf` varchar(50) default NULL COMMENT '是否欠费',
-  `Bz` varchar(255) default NULL COMMENT '备注',
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
