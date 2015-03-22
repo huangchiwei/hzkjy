@@ -50,6 +50,15 @@ select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,Create
     <select id="findById" resultMap="bsNewsMap" parameterType="Long">
 		select * from bs_news where id = #{id}
 	</select>
+	<select id="findByUser" resultMap="bsNewsMap" parameterType="java.util.Map">
+		select * from bs_news  where 1=1 and ( IsReport='1'  
+		<if test="User !=  '' and User != null and User != 'admin'">
+		and ReceiverBh = #{User}
+		</if>
+		)
+		or (Iseveryone='1')
+		order by id desc LIMIT 1
+	</select>
 	
 	<select id="findByHybh" resultMap="bsNewsMap" parameterType="String">
 		select * from bs_news where Hybh = #{hybh}
