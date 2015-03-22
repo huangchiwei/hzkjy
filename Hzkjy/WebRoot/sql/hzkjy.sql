@@ -184,6 +184,7 @@ CREATE TABLE `news` (
   `createUser` varchar(100) DEFAULT NULL COMMENT '创建用户',
   `clicks` int(11) DEFAULT '0' COMMENT '阅读次数',
   `cateCode` varchar(255) DEFAULT NULL COMMENT '分类',
+  `filePath` varchar(255) default NULL COMMENT '附件路径',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资讯';
 
@@ -269,7 +270,7 @@ INSERT INTO `sys_module` VALUES ('Lev2_43','专利','admin/memberPatent/list/1.h
 
 
 CREATE TABLE `member_intellectual_pro` (
-  `Id` int(11) NOT NULL auto_increment,
+ `Id` int(11) NOT NULL auto_increment,
   `MemberNo` varchar(50) NOT NULL default '' COMMENT '企业编号',
   `ProjectLevel` int(4) default '0' COMMENT '项目级别 0国家级 1省级 2市级 3区级',
   `ProjectType` varchar(255) default NULL COMMENT '项目类别',
