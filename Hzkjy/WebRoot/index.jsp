@@ -1,1 +1,1 @@
-<c:redirect url="/admin/index.html"/>
+<c:redirect url="/portal/index.html"/>
