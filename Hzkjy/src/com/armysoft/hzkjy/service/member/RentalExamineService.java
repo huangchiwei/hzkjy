@@ -51,6 +51,8 @@ public class RentalExamineService extends BaseDao {
 	public MemberRental findByHybh(String hybh) {
 		return super.nativeSelectOne(nameSpace + ".findByHybh", hybh);
 	}
+	
+	
 	public Integer getCount(Map<String, Object> params){
 		return super.nativeSelectOne(nameSpace + ".sumCount", params);
 	}
