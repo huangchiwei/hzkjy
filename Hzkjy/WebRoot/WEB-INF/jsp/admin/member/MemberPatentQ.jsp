@@ -13,6 +13,12 @@
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#checkAll').click(function(){
+		$('input[name="qyId"]').attr("checked",this.checked);
+	});
+	});
 function find(){    
 	$("#search_form").attr("action","${ctx}/admin/memberPatent/list/1.html?random=" + Math.random());
 	document.getElementById("search_form").submit();
@@ -38,6 +44,45 @@ function delConfirm(id){
 	      }
 	  }
 	});
+}
+
+function pass(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要审核的科技项目。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/memberPatent/pass.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
+function rollBack(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要退回的科技项目。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/memberPatent/rollBack.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
 }
 </script>
 
@@ -71,7 +116,9 @@ html { overflow:-moz-scrollbars-vertical;}
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
                  
            <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-      
+       <c:if test="${cookie.value=='admin'}"> <dt><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/></dt>
+          <dt><input id="" type="button" value="批量退回" class="initial" onclick="rollBack();"/></dt>
+          </c:if>
     </dl>
     </div>
 <br/>
@@ -80,12 +127,13 @@ html { overflow:-moz-scrollbars-vertical;}
     <table width="98%" border="1" cellpadding="0" cellspacing="0">
 	  <thead>
 	  	<tr>
+	  	<th><input type="checkbox" id="checkAll"/>全选</th>
 	  	<th>序号</th>
 	  	 <th>企业名称</th> 
 	        <th width="60px;">专利类别</th>
 	        <th >专利名称</th>
 	        <th width="100px;">专利编号</th>
-	       
+	       	<th width="60">审核状态</th>
 	           
 	        <th width="60">操作</th>
 	  	</tr>
@@ -94,6 +142,7 @@ html { overflow:-moz-scrollbars-vertical;}
 
       <c:forEach items="${list}" var="o" varStatus="sta">
 	      <tr >
+	         <td><input type="checkbox" value="${o.Id}" name="qyId"/></td>   
 	           	<td>${sta.index + 1}</td>
 	           	<td>${o.Qymc}</td>
 	       	<td>
@@ -104,7 +153,10 @@ html { overflow:-moz-scrollbars-vertical;}
 	       	</td>
 	       		<td>${o.Name}</td>
 	       			<td>${o.PatentNo}</td>	
-	       				
+	       				  	<td>
+	   	<c:if test="${o.Status==1}">通过</c:if>
+	   		<c:if test="${o.Status==0}">不通过</c:if>
+	   	</td>
 	        <td>
 	          		<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberPatent/update/${o.Id}.html'"/>

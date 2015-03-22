@@ -21,7 +21,9 @@ public class MemberIntellectualProService extends BaseDao {
 	public List<Map<String, Object>> findAll(Map<String, Object> params) {
 		return super.nativeList(nameSpace+".findAll", params);
 	}
-
+	public Map<String, Object> getCurrentYear(Map<String, Object> params) {
+		return super.nativeSelectOne(nameSpace + ".getCurrentYear", params);
+	}
 	/**
 	 * 根据id查询
 	 * @param id

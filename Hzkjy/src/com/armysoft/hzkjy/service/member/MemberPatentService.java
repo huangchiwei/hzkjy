@@ -30,7 +30,15 @@ public class MemberPatentService extends BaseDao {
 	public Map<String, Object> findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findByKey", id);
 	}
-
+	public Map<String, Object> getCurrentYear(Map<String, Object> params) {
+		return super.nativeSelectOne(nameSpace + ".getCurrentYear", params);
+	}
+	public Map<String, Object> getToLastYear(Map<String, Object> params) {
+		return super.nativeSelectOne(nameSpace + ".getToLastYear", params);
+	}
+	public Map<String, Object> getAllYear(Map<String, Object> params) {
+		return super.nativeSelectOne(nameSpace + ".getAllYear", params);
+	}
 
 	/**
 	 * 添加数据

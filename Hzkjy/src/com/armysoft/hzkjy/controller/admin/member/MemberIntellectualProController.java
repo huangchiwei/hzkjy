@@ -1,6 +1,7 @@
 package com.armysoft.hzkjy.controller.admin.member;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.armysoft.core.Pagination;
+import org.armysoft.security.annotation.PermissionsAnno;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -22,13 +24,16 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ExportExcel_InteProCount;
+import com.armysoft.hzkjy.model.EccIndicator;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
+import com.armysoft.hzkjy.service.member.MemberPatentService;
 
 /**
  * 科技项目，知识产权统计
@@ -41,6 +46,8 @@ public class  MemberIntellectualProController extends BaseController {
 
 	@Resource
 	private MemberIntellectualProService memberIntellectualProService;
+	@Resource
+	private MemberPatentService memberPatentService;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -133,7 +140,37 @@ public class  MemberIntellectualProController extends BaseController {
 		memberIntellectualProService.delete(key);
 		return "redirect://admin/memberIntellectualPro/list/1.html";
 	}
-	
+	@PermissionsAnno("pass")
+	@RequestMapping("pass.html")
+	@ResponseBody
+	public String pass(String ids,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			Map<String, Object> params = new HashMap<String, Object>();
+	    	params.put("id", idArr[id].trim());
+	    	params.put("status", "1");
+	    	memberIntellectualProService.updateStatus(params);
+		}
+
+		return "";
+	}
+	@PermissionsAnno("rollBack")
+	@RequestMapping("rollBack.html")
+	@ResponseBody
+	public String roolBack(String ids,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			Map<String, Object> params = new HashMap<String, Object>();
+	    	params.put("id", idArr[id].trim());
+	    	params.put("status", "0");
+	    	memberIntellectualProService.updateStatus(params);
+		}
+		
+		
+		return "";
+	}
 	/**
 	 * 导出excel
 	 * @param model
@@ -172,15 +209,29 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @param year
 	 * @return
 	 */
+	@PermissionsAnno("inteProCount")
 	  @RequestMapping(value ="/inteProCount.html" )
 		public String inteProCount(HttpServletRequest request,Model model,String year) {
 	    	Map<String, Object> params = new HashMap<String, Object>();	   
 	    	if(year!=null&&year.isEmpty()==false){
 	    		params.put("year", year);
 	    	}else{	
-	    		params.put("year", new Date().getYear());
+	    		params.put("year", Calendar.getInstance().get(Calendar.YEAR));
 	    	}
+	    	model.addAttribute("params", params);
 	    	
+	    	//该年度知识产权授权
+	    	Map<String, Object> currentYear = memberPatentService.getCurrentYear(params);
+	    	model.addAttribute("currentYear", currentYear);
+	    	//到上一年为止知识产权授权
+	    	Map<String, Object> toLastYear = memberPatentService.getToLastYear(params);
+	    	model.addAttribute("toLastYear", toLastYear);
+	    	//现拥有有效知识产权
+	    	Map<String, Object> allYear = memberPatentService.getAllYear(params);
+	    	model.addAttribute("allYear", allYear);
+	    	//该年获得奖项
+	    	Map<String, Object> inteCurrentYear = memberIntellectualProService.getCurrentYear(params);
+	    	model.addAttribute("inteCurrentYear", inteCurrentYear);
 	    	
 	    	//memberIntellectualProService.inteProCount(params);
 			return "admin/member/MemberIntelProCount";
@@ -191,10 +242,22 @@ public class  MemberIntellectualProController extends BaseController {
 	    	if(year!=null&&year.isEmpty()==false){
 	    		params.put("year", year);
 	    	}else{	
-	    		params.put("year", new Date().getYear());
+	    		params.put("year", Calendar.getInstance().get(Calendar.YEAR));
 	    	}
+	    	//该年度知识产权授权
+	    	Map<String, Object> currentYear = memberPatentService.getCurrentYear(params);
+	    	//model.addAttribute("currentYear", currentYear);
+	    	//到上一年为止知识产权授权
+	    	Map<String, Object> toLastYear = memberPatentService.getToLastYear(params);
+	    	//model.addAttribute("toLastYear", toLastYear);
+	    	//现拥有有效知识产权
+	    	Map<String, Object> allYear = memberPatentService.getAllYear(params);
+	    	//model.addAttribute("allYear", allYear);
+	    	//该年获得奖项
+	    	Map<String, Object> inteCurrentYear = memberIntellectualProService.getCurrentYear(params);
+	    	//model.addAttribute("inteCurrentYear", inteCurrentYear);
 	    	
-	    	String title="企业知识产权情况";
+	    	String title=params.get("year").toString()+"年企业知识产权情况";
 			List headData =  new ArrayList();
 			headData.add(new Object[] { "name","指标名称"});
 			headData.add(new Object[] { "unit","计量单位"});
@@ -203,34 +266,34 @@ public class  MemberIntellectualProController extends BaseController {
 		
 			
 			List<Map<String, Object>>  list =new ArrayList<Map<String, Object>>();//memberIntellectualProService.findAll(params);
-			list.add(memberIntellectualProService.createMap("知识产权授权数(1-6月)", "件", "0"));
-			list.add(memberIntellectualProService.createMap("其中:发明专利(1-6月)", "件", "0"));
-			list.add(memberIntellectualProService.createMap("实用新型(1-6月)", "件", "0"));
-			list.add(memberIntellectualProService.createMap("外观设计(1-6月)", "个", "0"));
-			list.add(memberIntellectualProService.createMap("软件著作权(1-6月)", "个", "0"));
-			list.add(memberIntellectualProService.createMap("知识产权授权数(7-12月)", "件", "0"));
-			list.add(memberIntellectualProService.createMap("其中:发明专利(7-12月)", "件", "0"));
-			list.add(memberIntellectualProService.createMap("实用新型(7-12月)", "件", "0"));
-			list.add(memberIntellectualProService.createMap("外观设计(7-12月)", "个", "0"));
-			list.add(memberIntellectualProService.createMap("软件著作权(7-12月)", "个", "0"));
-			list.add(memberIntellectualProService.createMap("到上一年为止拥有有效知识产权数", "件", "0"));
-			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", "0"));
-			list.add(memberIntellectualProService.createMap("实用新型", "件", "0"));
-			list.add(memberIntellectualProService.createMap("外观设计", "个", "0"));
-			list.add(memberIntellectualProService.createMap("软件著作权", "个", "0"));
-			list.add(memberIntellectualProService.createMap("现拥有有效知识产权数", "件", "0"));
-			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", "0"));
-			list.add(memberIntellectualProService.createMap("实用新型", "件", "0"));
-			list.add(memberIntellectualProService.createMap("外观设计", "个", "0"));
-			list.add(memberIntellectualProService.createMap("软件著作权", "个", "0"));
-			list.add(memberIntellectualProService.createMap("获得奖项总数(1-6月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("其中:国家级奖项(1-6月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("省级奖项(1-6月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("市级奖项(1-6月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("获得奖项总数(7-12月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("其中:国家级奖项(7-12月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("省级奖项(7-12月)", "项", "0"));
-			list.add(memberIntellectualProService.createMap("市级奖项(7-12月)", "项", "0"));
+			list.add(memberIntellectualProService.createMap("知识产权授权数(1-6月)", "件", currentYear.get("type_0_Count").toString()));
+			list.add(memberIntellectualProService.createMap("其中:发明专利(1-6月)", "件", currentYear.get("type_0_Invention").toString()));
+			list.add(memberIntellectualProService.createMap("实用新型(1-6月)", "件", currentYear.get("type_0_Practical").toString()));
+			list.add(memberIntellectualProService.createMap("外观设计(1-6月)", "个", currentYear.get("type_0_Appearance").toString()));
+			list.add(memberIntellectualProService.createMap("软件著作权(1-6月)", "个", currentYear.get("type_0_Work").toString()));
+			list.add(memberIntellectualProService.createMap("知识产权授权数(7-12月)", "件",  currentYear.get("type_1_Count").toString()));
+			list.add(memberIntellectualProService.createMap("其中:发明专利(7-12月)", "件", currentYear.get("type_1_Invention").toString()));
+			list.add(memberIntellectualProService.createMap("实用新型(7-12月)", "件",  currentYear.get("type_1_Practical").toString()));
+			list.add(memberIntellectualProService.createMap("外观设计(7-12月)", "个",  currentYear.get("type_1_Appearance").toString()));
+			list.add(memberIntellectualProService.createMap("软件著作权(7-12月)", "个",  currentYear.get("type_1_Work").toString()));
+			list.add(memberIntellectualProService.createMap("到上一年为止拥有有效知识产权数", "件", toLastYear.get("type_last_Count").toString()));
+			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", toLastYear.get("type_last_Invention").toString()));
+			list.add(memberIntellectualProService.createMap("实用新型", "件", toLastYear.get("type_last_Practical").toString()));
+			list.add(memberIntellectualProService.createMap("外观设计", "个", toLastYear.get("type_last_Appearance").toString()));
+			list.add(memberIntellectualProService.createMap("软件著作权", "个", toLastYear.get("type_last_Work").toString()));
+			list.add(memberIntellectualProService.createMap("现拥有有效知识产权数", "件", allYear.get("type_all_Count").toString()));
+			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", allYear.get("type_all_Invention").toString()));
+			list.add(memberIntellectualProService.createMap("实用新型", "件", allYear.get("type_all_Practical").toString()));
+			list.add(memberIntellectualProService.createMap("外观设计", "个", allYear.get("type_all_Appearance").toString()));
+			list.add(memberIntellectualProService.createMap("软件著作权", "个", allYear.get("type_all_Work").toString()));
+			list.add(memberIntellectualProService.createMap("获得奖项总数(1-6月)", "项", inteCurrentYear.get("ProjectLevel_0_count").toString()));
+			list.add(memberIntellectualProService.createMap("其中:国家级奖项(1-6月)", "项", inteCurrentYear.get("ProjectLevel_0_country").toString()));
+			list.add(memberIntellectualProService.createMap("省级奖项(1-6月)", "项", inteCurrentYear.get("ProjectLevel_0_province").toString()));
+			list.add(memberIntellectualProService.createMap("市级奖项(1-6月)", "项", inteCurrentYear.get("ProjectLevel_0_city").toString()));
+			list.add(memberIntellectualProService.createMap("获得奖项总数(7-12月)", "项", inteCurrentYear.get("ProjectLevel_1_count").toString()));
+			list.add(memberIntellectualProService.createMap("其中:国家级奖项(7-12月)", "项", inteCurrentYear.get("ProjectLevel_1_country").toString()));
+			list.add(memberIntellectualProService.createMap("省级奖项(7-12月)", "项",inteCurrentYear.get("ProjectLevel_1_province").toString()));
+			list.add(memberIntellectualProService.createMap("市级奖项(7-12月)", "项", inteCurrentYear.get("ProjectLevel_1_city").toString()));
 				
 			
 			

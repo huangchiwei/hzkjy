@@ -21,7 +21,7 @@
 		<if test="parm.memberNo!=null and parm.memberNo != ''">
 		and mp.MemberNo=#{parm.memberNo}
 		</if>
-		order by mp.Year desc,mp.Month desc
+		order by mp.Status asc
 	  				
 	</sql>
 
@@ -29,6 +29,39 @@
 		select * from member_patent where Id = #{id}
 	</select>
 
+  <select id="getCurrentYear" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select count(*)  type_0_Count from member_patent where Year=#{year} and Month=0 and Status=1) t1,
+(select count(*)  type_0_Invention from member_patent where Year=#{year} and Month=0 and Type=0 and Status=1)  t2,
+(select count(*)  type_0_Practical from member_patent where Year=#{year} and Month=0 and Type=1 and Status=1)  t3,
+(select count(*)  type_0_Appearance from member_patent where Year=#{year} and Month=0 and Type=2 and Status=1)  t4,
+(select count(*)  type_0_Work from member_patent where Year=#{year} and Month=0 and Type=3 and Status=1)  t5,
+
+(select count(*)  type_1_Count from member_patent where Year=#{year} and Month=1 and Status=1) f1,
+(select count(*)  type_1_Invention from member_patent where Year=#{year} and Month=1 and Type=0 and Status=1)  f2,
+(select count(*)  type_1_Practical from member_patent where Year=#{year} and Month=1 and Type=1 and Status=1)  f3,
+(select count(*)  type_1_Appearance from member_patent where Year=#{year} and Month=1 and Type=2 and Status=1)  f4,
+(select count(*)  type_1_Work from member_patent where Year=#{year} and Month=1 and Type=3 and Status=1)  f5
+	</select>
+	
+	<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
+	select * from (select count(*)  type_last_Count from member_patent where Year&lt;#{year} and Status=1) t1,
+(select count(*)  type_last_Invention from member_patent where Year&lt;#{year} and Type=0 and Status=1)  t2,
+(select count(*)  type_last_Practical from member_patent where Year&lt;#{year} and Type=1 and Status=1)  t3,
+(select count(*)  type_last_Appearance from member_patent where Year&lt;#{year} and Type=2 and Status=1)  t4,
+(select count(*)  type_last_Work from member_patent where Year&lt;#{year} and  Type=3 and Status=1)  t5
+
+
+	</select>
+	
+		<select id="getAllYear" resultType="java.util.Map" parameterType="java.util.Map">
+	select * from (select count(*)  type_all_Count from member_patent where  Status=1 ) t1,
+(select count(*)  type_all_Invention from member_patent where  Type=0 and Status=1)  t2,
+(select count(*)  type_all_Practical from member_patent where  Type=1 and Status=1)  t3,
+(select count(*)  type_all_Appearance from member_patent where Type=2 and Status=1)  t4,
+(select count(*)  type_all_Work from member_patent where  Type=3 and Status=1)  t5
+
+
+	</select>
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
 		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mp.MemberNo,case when 
 		mp.Type=0 then '发明专利' when mp.Type=1 then '实用新型' when mp.Type=2 then '外观设计' 

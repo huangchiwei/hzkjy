@@ -1,6 +1,7 @@
 package com.armysoft.hzkjy.controller.admin.member;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.armysoft.core.Pagination;
+import org.armysoft.security.annotation.PermissionsAnno;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
@@ -131,6 +134,37 @@ public class  MemberPatentController extends BaseController {
 	public String delete(@PathVariable("id") Long key) {
 		memberPatentService.delete(key);
 		return "redirect://admin/memberPatent/list/1.html";
+	}
+	@PermissionsAnno("pass")
+	@RequestMapping("pass.html")
+	@ResponseBody
+	public String pass(String ids,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			Map<String, Object> params = new HashMap<String, Object>();
+	    	params.put("id", idArr[id].trim());
+	    	params.put("status", "1");
+	    	memberPatentService.updateStatus(params);
+		}
+
+		return "";
+	}
+	@PermissionsAnno("rollBack")
+	@RequestMapping("rollBack.html")
+	@ResponseBody
+	public String roolBack(String ids,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			Map<String, Object> params = new HashMap<String, Object>();
+	    	params.put("id", idArr[id].trim());
+	    	params.put("status", "0");
+	    	memberPatentService.updateStatus(params);
+		}
+		
+		
+		return "";
 	}
 	
 	/**

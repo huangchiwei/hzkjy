@@ -39,8 +39,8 @@ function out(){
     <div class="div2">
       <dl class="relative h30">
         <dd > 
-         &nbsp;&nbsp;&nbsp;&nbsp;年度： <input id="year" name="year" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy'})" type="text" 
-     	value="${year}" maxlength="20"/>
+         &nbsp;&nbsp;&nbsp;&nbsp;年度： <input id="year" name="year"  size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+     	value="${params.year}" maxlength="20"/>
         	</dd>
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
          <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
@@ -55,93 +55,93 @@ function out(){
 	    </tr>
 	    <tr><td>指标名称</td><td>计量单位</td><td>数量</td></tr>
 	    <tr>
-	    <td>知识产权授权数(1-6月)</td><td>件</td><td></td>
+	    <td>知识产权授权数(1-6月)</td><td>件</td><td>${currentYear.type_0_Count}</td>
 	    </tr>
 	    <tr>
-	    <td>其中:发明专利(1-6月)</td><td>件</td><td></td>
+	    <td>其中:发明专利(1-6月)</td><td>件</td><td>${currentYear.type_0_Invention}</td>
 	    </tr>
 	    <tr>
-	    <td>实用新型(1-6月)</td><td>件</td><td></td>
+	    <td>实用新型(1-6月)</td><td>件</td><td>${currentYear.type_0_Practical}</td>
 	    </tr>
 	    <tr>
-	    <td>外观设计(1-6月)</td><td>个</td><td></td>
+	    <td>外观设计(1-6月)</td><td>个</td><td>${currentYear.type_0_Appearance}</td>
 	    </tr>
 	    <tr>
-	    <td>软件著作权(1-6月)</td><td>个</td><td></td>
-	    </tr>
-	    
-	    <tr>
-	    <td>知识产权授权数(7-12月)</td><td>件</td><td></td>
-	    </tr>
-	    <tr>
-	    <td>其中:发明专利(7-12月)</td><td>件</td><td></td>
-	    </tr>
-	    <tr>
-	    <td>实用新型(7-12月)</td><td>件</td><td></td>
-	    </tr>
-	    <tr>
-	    <td>外观设计(7-12月)</td><td>个</td><td></td>
-	    </tr>
-	    <tr>
-	    <td>软件著作权(7-12月)</td><td>个</td><td></td>
+	    <td>软件著作权(1-6月)</td><td>个</td><td>${currentYear.type_0_Work}</td>
 	    </tr>
 	    
 	    <tr>
-	    <td>到上一年为止拥有有效知识产权数</td><td>件</td><td></td>
+	    <td>知识产权授权数(7-12月)</td><td>件</td><td>${currentYear.type_1_Count}</td>
+	    </tr>
+	    <tr>
+	    <td>其中:发明专利(7-12月)</td><td>件</td><td>${currentYear.type_1_Invention}</td>
+	    </tr>
+	    <tr>
+	    <td>实用新型(7-12月)</td><td>件</td><td>${currentYear.type_1_Practical}</td>
+	    </tr>
+	    <tr>
+	    <td>外观设计(7-12月)</td><td>个</td><td>${currentYear.type_1_Appearance}</td>
+	    </tr>
+	    <tr>
+	    <td>软件著作权(7-12月)</td><td>个</td><td>${currentYear.type_1_Work}</td>
+	    </tr>
+	    
+	    <tr>
+	    <td>到上一年为止拥有有效知识产权数</td><td>件</td><td>${toLastYear.type_last_Count }</td>
 	    </tr>	    
 	    <tr>
-	    <td>其中:发明专利</td><td>件</td><td></td>
+	    <td>其中:发明专利</td><td>件</td><td>${toLastYear.type_last_Invention }</td>
 	    </tr>
 	    <tr>
-	    <td>实用新型</td><td>件</td><td></td>
+	    <td>实用新型</td><td>件</td><td>${toLastYear.type_last_Practical }</td>
 	    </tr>
 	    <tr>
-	    <td>外观设计</td><td>个</td><td></td>
+	    <td>外观设计</td><td>个</td><td>${toLastYear.type_last_Appearance }</td>
 	    </tr>
 	    <tr>
-	    <td>软件著作权</td><td>个</td><td></td>
+	    <td>软件著作权</td><td>个</td><td>${toLastYear.type_last_Work }</td>
 	    </tr>
 	    
 	     <tr>
-	    <td>现拥有有效知识产权数</td><td>件</td><td></td>
+	    <td>现拥有有效知识产权数</td><td>件</td><td>${allYear.type_all_Count }</td>
 	    </tr>
 	      <tr>
-	    <td>其中:发明专利</td><td>件</td><td></td>
+	    <td>其中:发明专利</td><td>件</td><td>${allYear.type_all_Invention }</td>
 	    </tr>
 	    <tr>
-	    <td>实用新型</td><td>件</td><td></td>
+	    <td>实用新型</td><td>件</td><td>${allYear.type_all_Practical }</td>
 	    </tr>
 	    <tr>
-	    <td>外观设计</td><td>个</td><td></td>
+	    <td>外观设计</td><td>个</td><td>${allYear.type_all_Appearance}</td>
 	    </tr>
 	    <tr>
-	    <td>软件著作权</td><td>个</td><td></td>
+	    <td>软件著作权</td><td>个</td><td>${allYear.type_all_Work }</td>
 	    </tr>
 	    
 	    <tr>
-	    <td>获得奖项总数(1-6月)</td><td>项</td><td></td>
+	    <td>获得奖项总数(1-6月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_0_count }</td>
 	    </tr>
 	    <tr>
-	    <td>其中:国家级奖项(1-6月)</td><td>项</td><td></td>
+	    <td>其中:国家级奖项(1-6月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_0_country }</td>
 	    </tr>	    
 	    <tr>
-	    <td>省级奖项(1-6月)</td><td>项</td><td></td>
+	    <td>省级奖项(1-6月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_0_province}</td>
 	    </tr>
 	    <tr>
-	    <td>市级奖项(1-6月)</td><td>项</td><td></td>
+	    <td>市级奖项(1-6月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_0_city}</td>
 	    </tr>
 	    
 	     <tr>
-	    <td>获得奖项总数(7-12月)</td><td>项</td><td></td>
+	    <td>获得奖项总数(7-12月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_1_count }</td>
 	    </tr>
 	    <tr>
-	    <td>其中:国家级奖项(7-12月)</td><td>项</td><td></td>
+	    <td>其中:国家级奖项(7-12月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_1_country }</td>
 	    </tr>	    
 	    <tr>
-	    <td>省级奖项(7-12月)</td><td>项</td><td></td>
+	    <td>省级奖项(7-12月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_1_province}</td>
 	    </tr>
 	    <tr>
-	    <td>市级奖项(7-12月)</td><td>项</td><td></td>
+	    <td>市级奖项(7-12月)</td><td>项</td><td>${inteCurrentYear.ProjectLevel_1_city}</td>
 	    </tr>
 	    
 	    </thead></table>

@@ -22,13 +22,29 @@
 		and mip.MemberNo=#{parm.memberNo}
 		</if>
 		
-		order by mip.Year desc,mip.Month
+		order by mip.Status asc
 
 	</sql>
-
+	
+	
     <select id="findByKey" resultType="java.util.Map" parameterType="Long">
 		select * from member_intellectual_pro where Id = #{id}
 	</select>
+	
+	<select id="getCurrentYear" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select count(*) ProjectLevel_0_count from member_intellectual_pro where Year=#{year} and Month=0 
+and Status=1 and IsSetUp=2) t1,(select count(*) ProjectLevel_0_country from member_intellectual_pro where Year=#{year} and Month=0 
+and Status=1 and IsSetUp=2 and ProjectLevel=0) t2,(select count(*) ProjectLevel_0_province from member_intellectual_pro where Year=#{year} and Month=0 
+and Status=1 and IsSetUp=2 and ProjectLevel=1) t3,(select count(*) ProjectLevel_0_city from member_intellectual_pro where Year=#{year} and Month=0 
+and Status=1 and IsSetUp=2 and ProjectLevel=2) t4,
+(select count(*) ProjectLevel_1_count from member_intellectual_pro where Year=#{year} and Month=1 
+and Status=1 and IsSetUp=2) f1,(select count(*) ProjectLevel_1_country from member_intellectual_pro where Year=#{year} and Month=1 
+and Status=1 and IsSetUp=2 and ProjectLevel=0) f2,(select count(*) ProjectLevel_1_province from member_intellectual_pro where Year=#{year} and Month=1 
+and Status=1 and IsSetUp=2 and ProjectLevel=1) f3,(select count(*) ProjectLevel_1_city from member_intellectual_pro where Year=#{year} and Month=1 
+and Status=1 and IsSetUp=2 and ProjectLevel=2) f4
+
+	</select>
+	
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
 		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,
@@ -46,6 +62,8 @@
 		) ttable,(select @rowNO :=0) b 
 		
 	</select>
+	
+	
 	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
 		select 
 		<include refid="columns"/>
