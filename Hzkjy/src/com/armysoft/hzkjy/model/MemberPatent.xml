@@ -30,7 +30,9 @@
 	</select>
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
-		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mp.*, mb.Qymc 
+		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mp.MemberNo,case when 
+		mp.Type=0 then '发明专利' when mp.Type=1 then '实用新型' when mp.Type=2 then '外观设计' 
+		when mp.Type=3 then '软件著作权' end Type,mp.Name,mp.PatentNo, mb.Qymc 
 		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh
 		<if test="year!= null and year != ''">
 		and mp.Year=#{year}
@@ -55,7 +57,7 @@
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberIntellectualPro">
-		insert into member_patent(MemberNo,Type,Name,PatentNo,ApplyTime)
+		insert into member_patent(MemberNo,Type,Name,PatentNo,Year,Month)
 		values(#{memberNo} 		
 		, #{type} 		
 		, #{name} 		

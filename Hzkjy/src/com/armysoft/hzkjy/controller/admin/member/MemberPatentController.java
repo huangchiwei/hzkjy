@@ -65,7 +65,7 @@ public class  MemberPatentController extends BaseController {
 			else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
 			if(month!=null)
 			params.put("month", month);
-			else params.put("month", 0);
+			else params.put("month", "1");
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(!userNo.equals("admin"))
 		params.put("memberNo", userNo);
@@ -149,12 +149,12 @@ public class  MemberPatentController extends BaseController {
 		headData.add(new Object[] { "Type","专利类别"});
 		headData.add(new Object[] { "Name","专利名称"});
 		headData.add(new Object[] { "PatentNo","专利编号"});
-		headData.add(new Object[] { "ApplyTime","获取时间"});
+		//headData.add(new Object[] { "ApplyTime","获取时间"});
 
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("year", year);
-		params.put("month", month);
+		params.put("year", year+"");
+		params.put("month", month+"");
 		//String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List<Map<String, Object>>  list =memberPatentService.findAll(params);

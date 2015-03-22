@@ -15,7 +15,13 @@
 
 
 <script type="text/javascript" >
-	
+function validate(){
+		var year=$("#year");
+		if(year.val()==""){
+			alert("年份不为空!");
+			year.focus();
+			return false;
+			}
 		var name=$("#name");
 		if(name.val()==""){
 			alert("专利名称不为空!");
@@ -68,7 +74,7 @@ html { overflow:-moz-scrollbars-vertical;}
        <th> 年份：</th>
      <td>
  <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
-     	value="${entity.Year}" maxlength="10"/>
+     	value="${entity.Year}" maxlength="10"/><font color="red">*</font>
      	
      </td>
     <th> 月份：</th>
@@ -89,7 +95,7 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>
    </table>   
     	<p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
+				    <img src="${ctx}/theme/default/images/submit.png" onclick="validate()"/>
 				</p>
   
   </div>
