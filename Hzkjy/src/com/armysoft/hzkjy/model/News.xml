@@ -31,20 +31,39 @@
 	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
 		select * from news where id = #{id}
 	</select>
-	<select id="getCategory" resultType="java.util.Map" parameterType="String">
+	<select id="getCategory" resultType="java.util.Map"
+		parameterType="String">
 		select * from news_category where cateCode = #{cateCode}
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="news">
-		insert into
-		news(title,content,realTime,createUser,cateCode)
-		values(#{title}
-		, #{content}
-		, #{realTime}
-		, #{createUser}
-		, #{cateCode}
-		)
-		</insert>
+		<choose>
+			<when test="filePath != null and filePath != ''">
+				insert into
+				news(title,content,realTime,createUser,cateCode,filePath)
+				values(#{title}
+				, #{content}
+				, #{realTime}
+				, #{createUser}
+				, #{cateCode}
+				, #{filePath}
+				)
+	</when>
+			<otherwise>
+				insert into
+				news(title,content,realTime,createUser,cateCode)
+				values(#{title}
+				, #{content}
+				, #{realTime}
+				, #{createUser}
+				, #{cateCode}
+
+				)
+	</otherwise>
+		</choose>
+
+
+	</insert>
 
 	<!-- 修改 -->
 	<update id="update" parameterType="news">
@@ -52,18 +71,22 @@
 		title=#{title}
 		,content=#{content}
 		,realTime=#{realTime}
-		, createUser=#{createUser}		
+		, createUser=#{createUser}
+		<if test="filePath != null and filePath != ''">
+			,filePath=#{filePath}
+		</if>
 		where id = #{id}
 	</update>
-<update id="updateClicks" parameterType="Integer">
+	<update id="updateClicks" parameterType="Integer">
 		update news set
-		clicks=#{clicks}	
+		clicks=#{clicks}
 		where id = #{id}
 	</update>
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
 		delete from news where
-		id = #{id}
+		id =
+		#{id}
 	</delete>
 
 	<!-- ********************************************* -->

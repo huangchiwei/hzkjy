@@ -1,5 +1,10 @@
 package com.armysoft.hzkjy.controller.admin.news;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +14,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.armysoft.core.Pagination;
 import org.armysoft.springmvc.controller.BaseController;
@@ -20,6 +26,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import org.armysoft.security.annotation.PermissionsAnno;
 
@@ -92,7 +100,26 @@ public class  NewsController extends BaseController {
 	}
 	@PermissionsAnno("news_save")
 	@RequestMapping(value = SAVE)
-	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type) {
+	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type,String flag) {
+		if(flag!=null&&flag.equals("1")){
+			//上传附件
+			  MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
+			  MultipartFile file = multipartRequest.getFile("file");  
+			  if (!file.isEmpty()) {
+				  String filePath="/userfiles/trainFile/"+new Date().getTime()+"_"+file.getOriginalFilename();
+				  entity.setFilePath(filePath);
+				  try {
+						file.transferTo(new File(request.getSession().getServletContext().getRealPath(filePath)));
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			  }
+		}
+		
 		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
 		entity.setCreateUser(key);
 		if(type.equalsIgnoreCase("add")){
@@ -102,7 +129,33 @@ public class  NewsController extends BaseController {
 		}
 		return "redirect:/admin/news/list/1.html?cateCode="+cateCode;
 	}
-	
+	 @RequestMapping(value = "/downLoad/{id}.html")
+	  public void downLoad(HttpServletResponse response,HttpServletRequest request,@PathVariable("id") Long id)
+	  {
+		  try
+		    {
+			  Map<String, Object> news=newsService.findByKey(id);
+		      response.setContentType("application/x-download");
+		      String realPath = request.getSession().getServletContext().getRealPath(news.get("filePath").toString());
+		     String fileName=news.get("filePath").toString().substring(news.get("filePath").toString().lastIndexOf("/")+1);
+		     // realPath = URLEncoder.encode(realPath, "UTF-8");
+		      response.addHeader("Content-Disposition", "attachment;filename=" +fileName );
+		      OutputStream out = response.getOutputStream();
+		      InputStream inputStream = new FileInputStream(realPath);
+		      byte[] buffer = new byte[1024];
+		      int i = -1;
+		      while ((i = inputStream.read(buffer)) != -1) {
+		       out.write(buffer, 0, i);
+		       }
+		      out.flush();
+		      out.close();
+		    }
+		    catch (Exception e) {
+		      e.printStackTrace();
+		    }
+
+	    
+	  }
 	/**
 	 * ɾ��
 	 * @param key

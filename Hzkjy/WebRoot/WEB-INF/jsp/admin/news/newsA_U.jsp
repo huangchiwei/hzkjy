@@ -14,7 +14,9 @@
 <script type="text/javascript" src="${ctx }/js/ckfinder/ckfinder.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
-
+function changeFlag(){
+	 $("#flag").attr("value","1");
+}
 
 </script>
 
@@ -32,7 +34,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/news/list/1.html?cateCode=${cateCode}'"/>
    </div>
-<form id="add_form" action='${ctx }/admin/news/save.html' method="post">
+<form id="add_form" action='${ctx }/admin/news/save.html'  method="post" enctype="multipart/form-data">
 	<input type="hidden" name="type" value="${type}"/>
 	<input type="hidden" name="id" value="${entity.id}"/>
 	<input type="hidden" name="cateCode" value="${cateCode}"/>
@@ -67,7 +69,17 @@ html { overflow:-moz-scrollbars-vertical;}
 	  <td colspan="3"><textarea id="content" name="content" rows="3" cols="120" >${entity.content }</textarea>
 	  </td>
 	  </tr>
-   
+      <c:if test="${cateCode=='train_file'}">
+  <tr >
+      <th>附件上传：</th>
+     <td  colspan="6">
+     <input  id="flag" name="flag" type="hidden"   value="0"/>
+      <input  id="file" name="file" type="file"  onchange="changeFlag()" value="${entity.filePath}"/>
+      <font color="red"><c:if test="${ empty entity.filePath }">未上传附件</c:if>
+      <c:if test="${not empty entity.filePath }">已上传的附件(限一份):<a href="${ctx}/admin/news/downLoad/${entity.id}.html">${fn:substringAfter(entity.filePath, '/userfiles/trainFile/')}</a></c:if></font> 
+     </td>
+    </tr>
+    </c:if>
    
    </table>
   

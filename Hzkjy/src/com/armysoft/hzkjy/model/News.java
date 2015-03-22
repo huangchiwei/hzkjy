@@ -25,6 +25,7 @@ public class News implements java.io.Serializable {
 	private String createUser;
 	private Integer clicks;
 	private String cateCode;
+	private String filePath;
 	// Constructors
 	public Long getId() {
 		return id;
@@ -68,6 +69,12 @@ public class News implements java.io.Serializable {
 	}
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	
