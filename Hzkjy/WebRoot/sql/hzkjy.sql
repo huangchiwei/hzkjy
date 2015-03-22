@@ -199,70 +199,61 @@ CREATE TABLE `news_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资讯类型';
 
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (1,'组织架构','park_frame','园区风貌');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (2,'园区介绍','park_intro','园区风貌');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (3,'园区荣誉','park_honor','园区风貌');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (4,'园区大事','park_event','园区风貌');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (5,'国家政策','policy_regu','政策法规');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (6,'省市政策','policy_province','政策法规');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (7,'园区政策','policy_park','政策法规');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (8,'科技动态','dynamic_science','新闻动态');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (9,'行业动态','dynamic_industry','新闻动态');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (10,'企业动态','dynamic_enterprise','新闻动态');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (11,'物业招租','info_lease','园区信息');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (12,'工程招标','info_tender','园区信息');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (13,'人员招聘','info_recruit','园区信息');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (14,'展览服务','style_exhibition','企业风采');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (15,'新技术新材料','style_tech','企业风采');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (16,'生物医药与技术','style_medicine','企业风采');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (17,'电子与信息','style_electronic ','企业风采');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (18,'其他','style_other','企业风采');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (19,'入园指南','service_inpark','园区服务');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (20,'出园指南','service_outpark','园区服务');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (21,'证照办理','service_license','园区服务');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (22,'综合服务','service_multiple','园区服务');
-INSERT INTO `news_category` (`id`,`cateName`,`cateCode`,`remark`) VALUES (23,'成果转化','service_result','园区服务');
+
+
+INSERT INTO `news_category` VALUES (1,'组织架构','park_frame','园区风貌');
+INSERT INTO `news_category` VALUES (2,'园区介绍','park_intro','园区风貌');
+INSERT INTO `news_category` VALUES (3,'园区位置','park_site','园区风貌');
+INSERT INTO `news_category` VALUES (4,'创业环境','park_envir','园区风貌');
+INSERT INTO `news_category` VALUES (5,'国家政策','policy_regu','政策法规');
+INSERT INTO `news_category` VALUES (6,'省市政策','policy_province','政策法规');
+INSERT INTO `news_category` VALUES (7,'园区政策','policy_park','政策法规');
+INSERT INTO `news_category` VALUES (8,'最新公告','notice_lastest','最新公告');
+INSERT INTO `news_category` VALUES (11,'招商信息','service_business','企业服务');
+INSERT INTO `news_category` VALUES (19,'入园导向>入园指南','service_inpark_guide','企业服务');
+INSERT INTO `news_category` VALUES (20,'出园导向>出园指南','service_outpark_guide','企业服务');
+INSERT INTO `news_category` VALUES (21,'基础服务','service_base','企业服务');
+INSERT INTO `news_category` VALUES (22,'人力资源','service_human','企业服务');
+INSERT INTO `news_category` VALUES (23,'项目申报','service_apply','企业服务');
+INSERT INTO `news_category` VALUES (24,'入园导向>入园流程','service_inpark_process','企业服务');
+INSERT INTO `news_category` VALUES (25,'出园导向>出园流程','service_outpark_process','企业服务');
+INSERT INTO `news_category` VALUES (26,'培训通知','train_notice','交流培训');
+INSERT INTO `news_category` VALUES (27,'培训课件','train_file','交流培训');
 
 
 
 INSERT INTO `sys_module` VALUES ('Lev1_01','系统管理',NULL,1,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_02','会员管理',NULL,2,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_03','园区风貌',NULL,3,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_04','政策法规',NULL,4,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_05','新闻动态',NULL,5,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_06','园区信息',NULL,6,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_07','企业风采',NULL,7,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_08','园区服务',NULL,8,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,9,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_10','通知管理',NULL,10,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,11,NULL,1);
-INSERT INTO `sys_module` VALUES ('Lev1_12','知识产权',NULL,12,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_05','最新公告','admin/news/list/1.html?cateCode=notice_lastest',5,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_06','企业服务',NULL,6,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_07','交流培训',NULL,7,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_08','政策法规',NULL,8,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,12,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_10','通知管理',NULL,11,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,13,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_12','知识产权',NULL,14,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
-INSERT INTO `sys_module` VALUES ('Lev2_04','科技项目','admin/memberIntellectualPro/list/1.html',1,'Lev1_12',2);
 INSERT INTO `sys_module` VALUES ('Lev2_08','园区介绍','admin/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_09','组织架构','admin/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
-INSERT INTO `sys_module` VALUES ('Lev2_10','园区荣誉','admin/news/list/1.html?cateCode=park_honor',3,'Lev1_03',2);
-INSERT INTO `sys_module` VALUES ('Lev2_11','园区大事','admin/news/list/1.html?cateCode=park_event',4,'Lev1_03',2);
-INSERT INTO `sys_module` VALUES ('Lev2_12','国家政策','admin/news/list/1.html?cateCode=policy_regu',1,'Lev1_04',2);
-INSERT INTO `sys_module` VALUES ('Lev2_13','省市政策','admin/news/list/1.html?cateCode=policy_province',2,'Lev1_04',2);
-INSERT INTO `sys_module` VALUES ('Lev2_14','园区政策','admin/news/list/1.html?cateCode=policy_regu',3,'Lev1_04',2);
-INSERT INTO `sys_module` VALUES ('Lev2_15','科技动态','admin/news/list/1.html?cateCode=dynamic_science',1,'Lev1_05',2);
-INSERT INTO `sys_module` VALUES ('Lev2_16','行业动态','admin/news/list/1.html?cateCode=dynamic_industry',2,'Lev1_05',2);
-INSERT INTO `sys_module` VALUES ('Lev2_17','企业动态','admin/news/list/1.html?cateCode=dynamic_enterprise',3,'Lev1_05',2);
-INSERT INTO `sys_module` VALUES ('Lev2_18','物业招租','admin/news/list/1.html?cateCode=info_lease',1,'Lev1_06',2);
-INSERT INTO `sys_module` VALUES ('Lev2_19','工程招标','admin/news/list/1.html?cateCode=info_tender',2,'Lev1_06',2);
-INSERT INTO `sys_module` VALUES ('Lev2_20','人员招聘','admin/news/list/1.html?cateCode=info_recruit',3,'Lev1_06',2);
-INSERT INTO `sys_module` VALUES ('Lev2_21','展览服务','admin/news/list/1.html?cateCode=style_exhibition',1,'Lev1_07',2);
-INSERT INTO `sys_module` VALUES ('Lev2_22','新技术新材料','admin/news/list/1.html?cateCode=style_tech',2,'Lev1_07',2);
-INSERT INTO `sys_module` VALUES ('Lev2_23','生物医药与技术','admin/news/list/1.html?cateCode=style_medicine',3,'Lev1_07',2);
-INSERT INTO `sys_module` VALUES ('Lev2_24','电子与信息','admin/news/list/1.html?cateCode=style_electronic',4,'Lev1_07',2);
-INSERT INTO `sys_module` VALUES ('Lev2_25','其他','admin/news/list/1.html?cateCode=style_other',5,'Lev1_07',2);
-INSERT INTO `sys_module` VALUES ('Lev2_26','入园指南','admin/news/list/1.html?cateCode=service_inpark',1,'Lev1_08',2);
-INSERT INTO `sys_module` VALUES ('Lev2_27','出园指南','admin/news/list/1.html?cateCode=service_outpark',2,'Lev1_08',2);
-INSERT INTO `sys_module` VALUES ('Lev2_28','证照办理','admin/news/list/1.html?cateCode=service_license',3,'Lev1_08',2);
-INSERT INTO `sys_module` VALUES ('Lev2_29','综合服务','admin/news/list/1.html?cateCode=service_multiple',4,'Lev1_08',2);
-INSERT INTO `sys_module` VALUES ('Lev2_30','成果转化','admin/news/list/1.html?cateCode=service_result',5,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_10','园区位置','admin/news/list/1.html?cateCode=park_site',3,'Lev1_03',2);
+INSERT INTO `sys_module` VALUES ('Lev2_11','创业环境','admin/news/list/1.html?cateCode=park_envir',4,'Lev1_03',2);
+INSERT INTO `sys_module` VALUES ('Lev2_14','入园导向','',1,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_14_1','入园指南','admin/news/list/1.html?cateCode=service_inpark_guide',1,'Lev2_14',2);
+INSERT INTO `sys_module` VALUES ('Lev2_14_2','入园流程','admin/news/list/1.html?cateCode=service_inpark_process',2,'Lev2_14',2);
+INSERT INTO `sys_module` VALUES ('Lev2_15','出园导向','',2,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_15_1','出园指南','admin/news/list/1.html?cateCode=service_outpark_guide',1,'Lev2_15',2);
+INSERT INTO `sys_module` VALUES ('Lev2_15_2','出园流程','admin/news/list/1.html?cateCode=service_outpark_process',2,'Lev2_15',2);
+INSERT INTO `sys_module` VALUES ('Lev2_16','基础服务','admin/news/list/1.html?cateCode=service_base',3,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_17','人力资源','admin/news/list/1.html?cateCode=service_human',4,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_18','项目申报','admin/news/list/1.html?cateCode=service_apply',5,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_20','招商信息','admin/news/list/1.html?cateCode=service_business',6,'Lev1_06',2);
+INSERT INTO `sys_module` VALUES ('Lev2_22','培训通知','admin/news/list/1.html?cateCode=train_notice',1,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_23','培训课件','admin/news/list/1.html?cateCode=train_file',2,'Lev1_07',2);
+INSERT INTO `sys_module` VALUES ('Lev2_24','国家政策','admin/news/list/1.html?cateCode=policy_regu',1,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_25','省市政策','admin/news/list/1.html?cateCode=policy_province',2,'Lev1_08',2);
+INSERT INTO `sys_module` VALUES ('Lev2_26','园区政策','admin/news/list/1.html?cateCode=policy_park',3,'Lev1_08',2);
 INSERT INTO `sys_module` VALUES ('Lev2_31','在园企业管理','admin/memberBasic/list/1.html',1,'Lev1_02',2);
 INSERT INTO `sys_module` VALUES ('Lev2_32','出园企业管理','admin/memberFasic/list/1.html',2,'Lev1_02',2);
 INSERT INTO `sys_module` VALUES ('Lev2_33','租金录入','admin/memberRental/list/1.html',1,'Lev1_09',2);
@@ -273,14 +264,12 @@ INSERT INTO `sys_module` VALUES ('Lev2_37','通知管理','admin/bsNews/list/1.h
 INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报统计','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
 INSERT INTO `sys_module` VALUES ('Lev2_39','经济月报设置','admin/chooseSelect/list/1.html',2,'Lev1_11',2);
 INSERT INTO `sys_module` VALUES ('Lev2_40','经济月报填报','admin/economicReporting/list/1.html',3,'Lev1_11',2);
-<<<<<<< HEAD
-INSERT INTO `sys_module` VALUES ('Lev2_41','专利','admin/memberPatent/list/1.html',2,'Lev1_12',2);
-=======
 INSERT INTO `sys_module` VALUES ('Lev2_41','知识产权统计','admin/memberIntellectualPro/inteProCount.html',1,'Lev1_12',2);
 INSERT INTO `sys_module` VALUES ('Lev2_42','科技项目','admin/memberIntellectualPro/list/1.html',2,'Lev1_12',2);
 INSERT INTO `sys_module` VALUES ('Lev2_43','专利','admin/memberPatent/list/1.html',3,'Lev1_12',2);
 
->>>>>>> branch 'master' of https://github.com/huangchiwei/hzkjy.git
+
+
 CREATE TABLE `member_intellectual_pro` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `MemberNo` varchar(50) NOT NULL DEFAULT '' COMMENT '企业编号',
