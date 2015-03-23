@@ -39,7 +39,7 @@ function loadQyxx(){
  dwmc=$("#qymc").val();
  if(dwmc !=""){
  $.ajax({
-				url:'${ctx}/admin/memberRental/getQyxx.html?qymc='+dwmc+'&random='+Math.random(),
+				url:'${ctx}/admin/memberRental/getQyxx.html?qymc='+encodeURI(dwmc)+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,

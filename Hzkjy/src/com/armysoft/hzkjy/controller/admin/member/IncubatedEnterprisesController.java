@@ -63,7 +63,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("mb_list") 
+	@PermissionsAnno("fhqytb_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String fqymc,String fssn,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			IncubatedEnterprises entity, HttpServletRequest request) {
@@ -129,14 +129,14 @@ public class  IncubatedEnterprisesController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@PermissionsAnno("mb_updt")
+	@PermissionsAnno("fhqytb_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,IncubatedEnterprises entity, Model model) {
 		entity.setId(key);
 		service.update(entity);
 		return "redirect://admin/incubatedEnterprises/list/1.html";
 	}
-	@PermissionsAnno("mb_save")
+	@PermissionsAnno("fhqytb_save")
 	@RequestMapping(value = SAVE)
 	public String save(IncubatedEnterprises entity, Model model) {
 		if (entity.getId() == null) {
@@ -152,7 +152,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("mb_del")
+	@PermissionsAnno("fhqytb_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);

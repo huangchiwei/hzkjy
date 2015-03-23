@@ -32,6 +32,7 @@ import com.armysoft.hzkjy.base.util.ExportExcel_InteProCount;
 import com.armysoft.hzkjy.model.EccIndicator;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
+import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 import com.armysoft.hzkjy.service.member.MemberPatentService;
 
@@ -48,6 +49,8 @@ public class  MemberIntellectualProController extends BaseController {
 	private MemberIntellectualProService memberIntellectualProService;
 	@Resource
 	private MemberPatentService memberPatentService;
+	@Resource
+	private MemberBasicService memberBasicService;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -101,6 +104,12 @@ public class  MemberIntellectualProController extends BaseController {
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
 		model.addAttribute("type", "A");
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		if(userNo.equals("admin")){
+			List<Map<String,Object>> list=memberBasicService.getAllMember();
+			model.addAttribute("list", list);
+		}
+				
 		return "admin/member/MemberIntellectualProA_U";
 	}
 	
@@ -112,7 +121,12 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity, Model model) {
+	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity,HttpServletRequest request, Model model) {
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		if(userNo.equals("admin")){
+			List<Map<String,Object>> list=memberBasicService.getAllMember();
+			model.addAttribute("list", list);
+		}
 		model.addAttribute("type", "U");
 		model.addAttribute("entity",memberIntellectualProService.findByKey(key));
 		return "admin/member/MemberIntellectualProA_U";
@@ -123,8 +137,10 @@ public class  MemberIntellectualProController extends BaseController {
 		if(type.equals("U")){
 			memberIntellectualProService.update(entity);
 		}else if(type.equals("A")){
-			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-			entity.setMemberNo(userNo);
+			if(entity.getMemberNo()==null||entity.getMemberNo().isEmpty()){
+				String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+				entity.setMemberNo(userNo);
+			}
 			memberIntellectualProService.insert(entity);
 		}
 		return "redirect://admin/memberIntellectualPro/list/1.html";
