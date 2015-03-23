@@ -34,7 +34,12 @@ function validate(){
 			patentNo.focus();
 			return false;
 			}
-		
+		var memberNo=$("#memberNo");
+		if(memberNo.val()==""){
+			alert("请选择所属企业!");
+			memberNo.focus();
+			return false;
+			}
 	document.forms[0].submit();
 }
 </script>
@@ -89,9 +94,21 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input id="name" name="name" type="text" value="${entity.Name}" /><font color="red">*</font>
      </td>
       <th>专利编号：</th>
-     <td colspan="3">
+     <td >
     	<input id="patentNo" name="patentNo" type="text" value="${entity.PatentNo}"/><font color="red">*</font>
      </td>
+       <c:if test="${cookie.admin_key.value=='admin'}">
+      <th>所属企业</th>
+     <td >
+     <select name="memberNo" id="memberNo">
+     <option value="">--请选择--</option>
+     <c:forEach items="${list}" varStatus="i" var="o" >  
+     <option value="${o.Hybh }"  <c:if test="${o.Hybh==entity.MemberNo}">selected="selected"</c:if>>${o.Qymc }</option>
+     </c:forEach>
+     </select>
+    	<font color="red">*</font>
+     </td>
+    </c:if>
     </tr>
    </table>   
     	<p class="div_submit">

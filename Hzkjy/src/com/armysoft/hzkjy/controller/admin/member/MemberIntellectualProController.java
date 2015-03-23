@@ -65,6 +65,7 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @param request
 	 * @return
 	 */
+	@PermissionsAnno("intel_list")
     @SuppressWarnings("deprecation")
 	@RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage, HttpServletRequest request, Model model,String year,String month) {
@@ -225,7 +226,7 @@ public class  MemberIntellectualProController extends BaseController {
 	 * @param year
 	 * @return
 	 */
-	@PermissionsAnno("inteProCount")
+	@PermissionsAnno("inteProCount_list")
 	  @RequestMapping(value ="/inteProCount.html" )
 		public String inteProCount(HttpServletRequest request,Model model,String year) {
 	    	Map<String, Object> params = new HashMap<String, Object>();	   
@@ -235,7 +236,10 @@ public class  MemberIntellectualProController extends BaseController {
 	    		params.put("year", Calendar.getInstance().get(Calendar.YEAR));
 	    	}
 	    	model.addAttribute("params", params);
-	    	
+	    	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+			if(userNo.equals("admin")==false){
+				params.put("memberNo", userNo);
+			}
 	    	//该年度知识产权授权
 	    	Map<String, Object> currentYear = memberPatentService.getCurrentYear(params);
 	    	model.addAttribute("currentYear", currentYear);
@@ -260,6 +264,10 @@ public class  MemberIntellectualProController extends BaseController {
 	    	}else{	
 	    		params.put("year", Calendar.getInstance().get(Calendar.YEAR));
 	    	}
+	    	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+			if(userNo.equals("admin")==false){
+				params.put("memberNo", userNo);
+			}
 	    	//该年度知识产权授权
 	    	Map<String, Object> currentYear = memberPatentService.getCurrentYear(params);
 	    	//model.addAttribute("currentYear", currentYear);

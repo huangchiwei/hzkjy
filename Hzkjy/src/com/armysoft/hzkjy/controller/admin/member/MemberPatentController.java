@@ -31,6 +31,7 @@ import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
 import com.armysoft.hzkjy.model.MemberPatent;
+import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 import com.armysoft.hzkjy.service.member.MemberPatentService;
 
@@ -45,6 +46,8 @@ public class  MemberPatentController extends BaseController {
 
 	@Resource
 	private MemberPatentService memberPatentService;
+	@Resource
+	private MemberBasicService memberBasicService;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -59,6 +62,7 @@ public class  MemberPatentController extends BaseController {
 	 * @param request
 	 * @return
 	 */
+	@PermissionsAnno("patent_list")
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage, HttpServletRequest request, Model model,String year,String month) {
 		Pagination pager = initPage(currentPage);
@@ -95,6 +99,11 @@ public class  MemberPatentController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		if(userNo.equals("admin")){
+			List<Map<String,Object>> list=memberBasicService.getAllMember();
+			model.addAttribute("list", list);
+		}
 		model.addAttribute("ptype", "A");
 		return "admin/member/MemberPatentA_U";
 	}
@@ -107,7 +116,12 @@ public class  MemberPatentController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity, Model model) {
+	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity,HttpServletRequest request, Model model) {
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		if(userNo.equals("admin")){
+			List<Map<String,Object>> list=memberBasicService.getAllMember();
+			model.addAttribute("list", list);
+		}
 		model.addAttribute("ptype", "U");
 		model.addAttribute("entity",memberPatentService.findByKey(key));
 		return "admin/member/MemberPatentA_U";
@@ -118,8 +132,10 @@ public class  MemberPatentController extends BaseController {
 		if(ptype.equals("U")){
 			memberPatentService.update(entity);
 		}else if(ptype.equals("A")){
-			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-			entity.setMemberNo(userNo);
+			if(entity.getMemberNo()==null||entity.getMemberNo().isEmpty()){
+				String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+				entity.setMemberNo(userNo);
+			}
 			memberPatentService.insert(entity);
 		}
 		return "redirect://admin/memberPatent/list/1.html";
