@@ -76,6 +76,7 @@ and Status=1 and IsSetUp=2 and ProjectLevel=2) f4
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberIntellectualPro">
+	
 		insert into member_intellectual_pro(MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,Year,Month)
 		values(#{memberNo} 		
 		, #{projectLevel} 		
@@ -86,6 +87,7 @@ and Status=1 and IsSetUp=2 and ProjectLevel=2) f4
 		 ,		#{setUpAmount}
 		 ,		#{year}
 		  ,		#{month}
+		  
 		  )
 		</insert>
 
@@ -100,6 +102,9 @@ and Status=1 and IsSetUp=2 and ProjectLevel=2) f4
 		 								,		SetUpAmount=#{setUpAmount}
 		 								,		Year=#{year}
 		 								,		Month=#{month}
+		 								<if test="memberNo!= null and memberNo != ''">
+										, MemberNo=#{memberNo}
+										</if>
 		 							where Id = #{id}
 	</update>
 	<update id="updateStatus" parameterType="java.util.Map">

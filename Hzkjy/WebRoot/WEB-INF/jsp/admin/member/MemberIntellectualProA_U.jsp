@@ -67,6 +67,12 @@ function validate(){
 			projectName.focus();
 			return false;
 			}
+		var memberNo=$("#memberNo");
+		if(memberNo.val()==""){
+			alert("请选择所属企业!");
+			memberNo.focus();
+			return false;
+			}
 	document.forms[0].submit();
 }
 </script>
@@ -143,9 +149,21 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="setUpAmount"  id="setUpAmount" type="text" class="input_a1" value="${entity.SetUpAmount}"/><font color="red">*</font>
 	   	 </td>
 	   	   <th>项目名称：</th>
-     <td colspan="3">
+     <td >
     	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" /><font color="red">*</font>
      </td>
+    <c:if test="${cookie.admin_key.value=='admin'}">
+      <th>所属企业</th>
+     <td >
+     <select name="memberNo" id="memberNo">
+     <option value="">--请选择--</option>
+     <c:forEach items="${list}" varStatus="i" var="o" >  
+     <option value="${o.Hybh }"  <c:if test="${o.Hybh==entity.MemberNo}">selected="selected"</c:if>>${o.Qymc }</option>
+     </c:forEach>
+     </select>
+    	<font color="red">*</font>
+     </td>
+    </c:if>
 	    </tr>
  
    </table>

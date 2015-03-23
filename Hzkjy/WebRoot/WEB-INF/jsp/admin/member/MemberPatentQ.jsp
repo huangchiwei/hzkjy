@@ -116,7 +116,7 @@ html { overflow:-moz-scrollbars-vertical;}
          <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
                  
            <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-       <c:if test="${cookie.value=='admin'}"> <dt><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/></dt>
+       <c:if test="${cookie.admin_key.value=='admin'}"> <dt><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/></dt>
           <dt><input id="" type="button" value="批量退回" class="initial" onclick="rollBack();"/></dt>
           </c:if>
     </dl>

@@ -34,7 +34,10 @@ public class MemberBasicService extends BaseDao {
 	public List<MemberBasic> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
-
+	public List<Map<String,Object>> getAllMember() {
+		return super.nativeList(nameSpace+".getAllMember", null);
+	}
+	
 	/**
 	 * 根据id查询
 	 * @param id
