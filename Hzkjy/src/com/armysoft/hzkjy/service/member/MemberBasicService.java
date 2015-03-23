@@ -1,10 +1,19 @@
 ﻿package com.armysoft.hzkjy.service.member;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.armysoft.core.Pagination;
 import org.armysoft.ibatis.dao.BaseDao;
+import org.armysoft.security.model.sys.SysUser;
+import org.armysoft.security.service.sys.SysUserService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
+import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.model.MemberBasic;
 /***
  * 
@@ -24,6 +33,8 @@ import com.armysoft.hzkjy.model.MemberBasic;
 public class MemberBasicService extends BaseDao {
 
 	private final String nameSpace = "MemberBasicOpt";
+	@Resource
+	private SysUserService sysUserService;
 
 	/**
 	 * 条件分页查询题库
@@ -34,7 +45,10 @@ public class MemberBasicService extends BaseDao {
 	public List<MemberBasic> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
-
+	public List<Map<String,Object>> getAllMember() {
+		return super.nativeList(nameSpace+".getAllMember", null);
+	}
+	
 	/**
 	 * 根据id查询
 	 * @param id
@@ -90,6 +104,20 @@ public class MemberBasicService extends BaseDao {
 	 */
 	public void insert(MemberBasic model) {
 		super.defInsert(nameSpace, model);
+	}
+	
+	/**
+	 * 添加数据
+	 * @param question
+	 */
+	public void insertMemberAndUser(MemberBasic model) {
+		super.defInsert(nameSpace, model);
+		SysUser user = new SysUser();
+		user.setUserNo(model.getHybh());
+		user.setPwd(DigestUtils.md5DigestAsHex(Constants.DEFAULT_PASSWORD.getBytes()));
+		user.setStatus(1);
+		user.setCreateDate(new Date());
+		sysUserService.insert(user, null);
 	}
 	
 	/**

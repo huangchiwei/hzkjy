@@ -602,3 +602,174 @@
 	text-align: center;
 	color: #FFFFFF;
 }
+/*会员注册*/
+.reg_location{
+	line-height: 40px;
+	height: 40px;
+	background-image: url(../images/reg_bj.png);
+	background-repeat: repeat-x;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+.reg_location h1 {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #2c83ea;
+	float: left;
+	line-height: 38px;
+	font-size: 14px;
+	font-weight: bold;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.reg_location .location {
+	margin-left: auto;
+	width: 400px;
+	text-align: right;
+}
+.reg_box {
+	margin-bottom: 15px;
+	padding: 15px;
+	border: 1px solid #dedede;
+}
+.reg_box .reg_b_ts {
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 15px;
+}
+.reg_box .reg_b_ts h1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 100px;
+	margin-right: auto;
+	background-color: #e5716d;
+	text-align: center;
+	padding: 10px;
+	border-radius:5px 5px 0px 0px;
+}
+.reg_box .reg_b_ts .reg_b_ts_b {
+	border: 2px solid #E5716D;
+	padding: 15px;
+	background-color: #fdffe7;
+}
+.reg_box .reg_b_ts .reg_b_ts_b p {
+	line-height: 32px;
+	font-size: 14px;
+	color: #333333;
+}
+.reg_box .reg_b_ts .reg_b_ts_b h2 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333333;
+	line-height: 35px;
+}
+.reg_box .zl_title {
+	line-height: 40px;
+	margin-bottom: 15px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #D7D7D7;
+	font-size: 14px;
+	color: #333333;
+}
+.reg_box .zl_box {
+	padding: 50px;
+}
+.reg_box .zl_box .li {
+	overflow: hidden;
+	line-height: 40px;
+	padding-bottom: 15px;
+}
+.reg_box .zl_box .li .span {
+	width: 200px;
+	display: block;
+	font-size: 14px;
+	padding-right: 10px;
+	text-align: right;
+	float: left;
+}
+.reg_box .zl_box .li .input {
+	float: left;
+	border: 1px solid #d1d1d1;
+	padding: 9px;
+	font-size: 14px;
+	color: #000066;
+}
+.reg_box .zl_box .li em {
+	padding-left: 10px;
+}
+.reg_box .zl_box .li .btn_box {
+	float: left;
+	padding-left: 210px;
+}
+.reg_box  .zl_box  .li  .btn_box  .tj {
+	width: 250px;
+	padding: 10px;
+	background-color: #1C53A7;
+	font-size: 18px;
+	color: #FFFFFF;
+	border: 1px none #FFFFFF;
+	border-radius:5px;
+	cursor:pointer;
+	opacity:1;
+
+
+
+filter(alpha=100);}
+.reg_box   .zl_box   .li   .btn_box   .tj:hover {
+	width: 250px;
+	padding: 10px;
+	background-color: #E5716D;
+	font-size: 18px;
+	color: #FFFFFF;
+	border: 1px none #FFFFFF;
+	border-radius:5px;
+	cursor:pointer;
+
+
+
+
+
+
+filter(alpha=50);
+}
+.reg_ok {
+	margin-bottom: 15px;
+	padding-top: 50px;
+	padding-right: 250px;
+	padding-bottom: 50px;
+	padding-left: 250px;
+}
+.reg_ok  h1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 100px;
+	margin-right: auto;
+	background-color: #1f71ca;
+	text-align: center;
+	padding: 10px;
+	border-radius:5px 5px 0px 0px;
+}
+.reg_ok .reg_b_ts_b {
+	border: 2px solid #1F71CA;
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	padding-left: 200px;
+	background-image: url(../images/reg_ok.png);
+	background-repeat: no-repeat;
+	background-position: 50px;
+}
+.reg_ok .reg_b_ts_b h2 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333333;
+	line-height: 35px;
+}
+.reg_ok .reg_b_ts_b p {
+	line-height: 30px;
+	font-size: 14px;
+	color: #333333;
+}

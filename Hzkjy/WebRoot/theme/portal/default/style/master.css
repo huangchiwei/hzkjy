@@ -51,11 +51,15 @@ a {color:#333333;text-decoration:none;}
 a:visited {text-decoration:none;}
 a:hover {color:#333333;text-decoration:underline;}
 .c_aeaeae{ color:#aeaeae;}
-.c_f07700{ color:#f07700;}
+.c_f07700{
+	color:#fe5256;
+}
 .c_E4393C{ color:#E4393C;}
 .c_ff0000{ color:#ff0000;}
 .c_009933{ color:#009933;}
-.c_2c6abf{ color:#358902;}
+.c_2c6abf{
+	color:#1f71ca;
+}
 .c_999{ color:#999;}
 .c_333{ color:#333;}
 .mt_10{margin-top:10px;}

@@ -78,6 +78,9 @@
 				 <result column="Rjzzq" property="rjzzq" />
 			</resultMap>
 
+<select id="getAllMember" resultType="java.util.Map" parameterType="java.util.Map">
+select Hybh,Qymc from member_basic where Hybh!='admin'
+</select>
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
 select case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb='1' then '需要' else '不需要' end SfjjybName,ID,Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq
 	 from member_basic
