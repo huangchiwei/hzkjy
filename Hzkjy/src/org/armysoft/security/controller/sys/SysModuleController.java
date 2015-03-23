@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.armysoft.hzkjy.base.common.Constants;
+
 /**
  * 模块Controller
  * 
@@ -28,12 +30,12 @@ public class SysModuleController extends BaseController {
 	@Resource
 	private SysModuleService sysModuleService;
 	
-	/**
-	 * 根据用户加载功能菜单树（左侧菜单）
+	
+	/*** 根据用户加载功能菜单树（左侧菜单）
 	 * @param request
 	 * @return 
 	 */
-/*	@RequestMapping("loadModuleTreeByUserNo")
+	 /**@RequestMapping("loadModuleTreeByUserNo")
 	@ResponseBody
 	public List<Map<String,Object>> loadModuleTreeByUserNo(
 			HttpServletRequest request) {
@@ -90,18 +92,59 @@ public class SysModuleController extends BaseController {
 			List<SysModule> rootList = sysModuleService.getByModuleLevel(1);
 			//用户拥有的菜单
 			List<SysModule> allList = null;
-			String userNo = "admin";//super.getCookieValue(request, Constants.ADMIN_KEY);
+			//String userNo = "admin";//super.getCookieValue(request, Constants.ADMIN_KEY);
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 			if("admin".equalsIgnoreCase(userNo)){
 				allList = sysModuleService.getByModuleLevel(2);
+				 addChildrenTree(rootList,allList,treeList);
+                 return treeList;
 			}else{
 				allList = sysModuleService.getByUserNo(userNo);
+				return addUserTree(rootList,allList,treeList);
 			}
 		// List<Map<String, Object>> rootList=epubBookService.getCatalogLevel(bookNo,"0");
 		// List<Map<String, Object>> allList=epubBookService.getCatalogWithoutParentId(bookNo,"0");
-		 addChildrenTree(rootList,allList,treeList);
- 
-	        return treeList;
+		 
+   
+	
 	}
+	
+public List<Map<String, Object>> addUserTree(List<SysModule> rootList,List<SysModule> childrenList, List<Map<String, Object>> treeList){
+		
+	//JSONArray jsonRes = new JSONArray();
+	List<Map<String,Object>> jsonRes = new ArrayList<Map<String,Object>>();
+	for(SysModule m1 : rootList){
+		boolean flag = false;
+		for(SysModule m2 : childrenList){
+			if(m2.getParentNo().getModuleNo().equals(m1.getModuleNo())){
+				if(!flag) flag = true;
+				//JSONObject child = new JSONObject();
+				Map<String,Object> child = new HashMap<String, Object>();
+				child.put("id", m2.getModuleNo());
+				child.put("pId", m2.getParentNo() == null ? "0" : m2.getParentNo().getModuleNo());
+				child.put("name", m2.getModName());
+				if(m2.getUrl() != null)
+					child.put("file", m2.getUrl());
+				if(m2.getParentNo() == null)
+					child.put("open", true);
+				jsonRes.add(child);
+			}
+		}
+		if(flag){
+			Map<String,Object> parent = new HashMap<String, Object>();
+			parent.put("id", m1.getModuleNo());
+			parent.put("pId", m1.getParentNo() == null ? "0" : m1.getParentNo().getModuleNo());
+			parent.put("name", m1.getModName());
+			if(m1.getUrl() != null)
+				parent.put("file", m1.getUrl());
+			if(m1.getParentNo() == null)
+				parent.put("open", true);
+			jsonRes.add(parent);
+		}
+	}
+    return jsonRes;
+		
+	}	
 	
 public void addChildrenTree(List<SysModule> rootList,List<SysModule> childrenList, List<Map<String, Object>> treeList){
 		

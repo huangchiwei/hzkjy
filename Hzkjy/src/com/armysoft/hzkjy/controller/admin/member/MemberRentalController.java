@@ -2,7 +2,9 @@ package com.armysoft.hzkjy.controller.admin.member;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -124,8 +126,8 @@ public class  MemberRentalController extends BaseController {
 	
 	@RequestMapping(value = "/getQyxx.html")
 	@ResponseBody
-	public  String getQyxx(HttpServletRequest request,HttpServletResponse response) {
-		String qymc = request.getParameter("qymc");
+	public  String getQyxx(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
+		String qymc = URLDecoder.decode(request.getParameter("qymc"), "utf-8");
 		 List QyxxList= Mbservice.getQyxx(qymc);
 		 Map map =  new  HashMap(); 
 		 JSONObject jsonObject = new JSONObject();
