@@ -180,14 +180,14 @@ function loadPageLayer2(title,url){
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  <pm:hasPermission permValue="hy_save">
-	       	<c:set var="hy_save" value="true"/>
+	  <pm:hasPermission permValue="tzgl_save">
+	       	<c:set var="tzgl_save" value="true"/>
 	    </pm:hasPermission>
 	    <pm:hasPermission permValue="hy_updt">
-	       	<c:set var="hy_updt" value="true"/>
+	       	<c:set var="tzgl_updt" value="true"/>
 	    </pm:hasPermission>
 	    <pm:hasPermission permValue="hy_del">
-	       	<c:set var="hy_del" value="true"/>
+	       	<c:set var="tzgl_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/bsNews/add/new.html?id=${mb.id}'">
@@ -204,12 +204,12 @@ function loadPageLayer2(title,url){
 	          		</c:if>
 	        </td>
 	        <td>
-	          	<c:if test="${hy_updt == true}">
+	          	<c:if test="${tzgl_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/bsNews/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
-	          	<c:if test="${hy_del == true}">
+	          	<c:if test="${tzgl_del == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
 		         	</div>

@@ -68,7 +68,7 @@ public class  MemberRentalController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("hy_list") 
+	@PermissionsAnno("zjlr_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
 			MemberRental entity, HttpServletRequest request) {
@@ -255,14 +255,14 @@ public class  MemberRentalController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@PermissionsAnno("hy_updt")
+	@PermissionsAnno("zjlr_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,MemberRental entity, Model model) {
 		entity.setId(key);
 		service.update(entity);
 		return "redirect://admin/memberRental/list/1.html";
 	}
-	@PermissionsAnno("hy_save")
+	@PermissionsAnno("zjlr_save")
 	@RequestMapping(value = SAVE)
 	public String save(MemberRental entity, Model model) {
 		if (entity.getId() == null) {
@@ -280,7 +280,7 @@ public class  MemberRentalController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("hy_del")
+	@PermissionsAnno("zjlr_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);

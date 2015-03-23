@@ -61,7 +61,7 @@ public class  BsNewsController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("hy_list") 
+	@PermissionsAnno("tzgl_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String ftitle,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			BsNews entity, HttpServletRequest request) {
@@ -122,7 +122,7 @@ public class  BsNewsController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@PermissionsAnno("hy_updt")
+	@PermissionsAnno("tzgl_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,BsNews entity, Model model) {
 		entity.setId(key);
@@ -132,7 +132,7 @@ public class  BsNewsController extends BaseController {
 		service.update(entity);
 		return "redirect://admin/bsNews/list/1.html";
 	}
-	@PermissionsAnno("hy_save")
+	@PermissionsAnno("tzgl_save")
 	@RequestMapping(value = SAVE)
 	public String save(BsNews entity, Model model) {
 		if (entity.getId() == null) {
@@ -153,7 +153,7 @@ public class  BsNewsController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("hy_del")
+	@PermissionsAnno("tzgl_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);

@@ -103,6 +103,9 @@ html { overflow:-moz-scrollbars-vertical;}
 </head>
 
 <body>
+ <pm:hasPermission permValue="tzgl_updt">
+	       	<c:set var="tzgl_updt" value="true"/>
+	       	    </pm:hasPermission>
 <div class="content_box">
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
@@ -177,10 +180,11 @@ html { overflow:-moz-scrollbars-vertical;}
    
    
    </table>
-  
+  	<c:if test="${tzgl_updt == true}">
    <p class="div_submit">
 				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
 				</p>
+					</c:if>
   </div>
   </form>
 </div>

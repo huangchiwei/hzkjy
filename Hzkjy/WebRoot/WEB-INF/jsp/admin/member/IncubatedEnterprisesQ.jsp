@@ -149,14 +149,14 @@ function loadPageLayer2(title,url){
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  <pm:hasPermission permValue="mb_save">
-	       	<c:set var="mb_save" value="true"/>
+	  <pm:hasPermission permValue="fhqytb_save">
+	       	<c:set var="fhqytb_save" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="mb_updt">
-	       	<c:set var="mb_updt" value="true"/>
+	    <pm:hasPermission permValue="fhqytb_updt">
+	       	<c:set var="fhqytb_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="mb_del">
-	       	<c:set var="mb_del" value="true"/>
+	    <pm:hasPermission permValue="fhqytb_del">
+	       	<c:set var="fhqytb_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/incubatedEnterprises/add/new.html?id=${mb.id}'">
@@ -178,12 +178,12 @@ function loadPageLayer2(title,url){
 	        <td>${mb.frdb}</td>
 	        <td>${mb.ssn}</td>
 	        <td>
-	          	<c:if test="${mb_updt == true}">
+	          	<c:if test="${fhqytb_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/incubatedEnterprises/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
-	          	<c:if test="${mb_del == true}">
+	          	<c:if test="${fhqytb_del == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
 		         	</div>

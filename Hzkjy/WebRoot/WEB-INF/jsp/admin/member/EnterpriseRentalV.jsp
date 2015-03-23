@@ -149,9 +149,8 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>	
     <tr align="center">
      <th>序号：</th>
-     <th>单价：</th>
-     <th>项目：</th>
-     <th>属期：</th>
+     <th >项目：</th>
+     <th colspan="2">属期：</th>
      <th>金    额    （元）：</th>
      <th>滞纳金 （元）：</th>
      <th>备注：</th>			
@@ -160,11 +159,8 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>1</td>
 	      <th>租金：</th>
-	         <td>
-	     <input name="qyzjdj"  id="qyzjdj" type="text" class="input_a1" value="${model.qyzjdj}" onchange="sumzj();"/>元/平方
-	     	</td>
-	 
-	        <td>
+	     <td colspan="2">
+	    <input name="qyzjdj"  id="qyzjdj" type="hidden" class="input_a1" value="${model.qyzjdj}" onchange="sumzj();"/>
 	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" value="${model.zjsq}" />
 	     	</td> 
 	     <td>
@@ -181,11 +177,8 @@ html { overflow:-moz-scrollbars-vertical;}
 	    <tr align="center">
 	    <td>2</td>
 	    <th>管理服务费：</th>
-	     <td>
-	     <input name="glfwfdj"  id="glfwfdj" type="text" class="input_a1" value="${model.glfwfdj}" />元/平方
-	     	</td>
-	     
-	      <td>
+	     <td colspan="2">
+	       <input name="glfwfdj"  id="glfwfdj" type="hidden" class="input_a1" value="${model.glfwfdj}" />
 	   	 	<input name="glfsq"  id="glfsq" type="text" class="input_a1" value="${model.glfsq}"/>
 	   	 </td>
 	   	 <td>
@@ -202,11 +195,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>3</td>
 	     <th>租赁保证金：</th>
-	     <td>
-	     <input name="zlbzjdj"  id="zlbzjdj" type="text" class="input_a1" value="${model.zlbzjdj}"/>元/平方
-	     	</td>
 	     
-	      <td>
+	      <td colspan="2">
+	      <input name="zlbzjdj"  id="zlbzjdj" type="hidden" class="input_a1" value="${model.zlbzjdj}"/>
 	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" class="input_a1" value="${model.zlbzjsq}"/>
 	   	 </td>
 	   	 <td>
@@ -223,11 +214,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>4</td>
 	      <th>装修押金：</th>
-	     <td>
-	     <input name="zxyjdj"  id="zxyjdj" type="text" class="input_a1" value="${model.zxyjdj}" />元/平方
-	     	</td>
 	    
-	      <td>
+	      <td colspan="2">
+	       <input name="zxyjdj"  id="zxyjdj" type="hidden" class="input_a1" value="${model.zxyjdj}" />
 	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" class="input_a1" value="${model.zxyjsq}"/>
 	   	 </td>
 	   	 <td>
@@ -244,10 +233,8 @@ html { overflow:-moz-scrollbars-vertical;}
 	         <tr align="center">
 	         <td>5</td>
 	             <th>水费：</th>
-	     <td>
-	     	</td>
 	 
-	      <td>
+	      <td colspan="2">
 	   	 	<input name="sfsq"  id="sfsq" type="text" class="input_a1" value="${model.sfsq}"/>
 	   	 </td>
 	   	 <td>
@@ -264,10 +251,8 @@ html { overflow:-moz-scrollbars-vertical;}
 	        <tr align="center">
 	        <td>6</td>
 	           <th>电费：</th>
-	     <td>
-	     	</td>
 	  
-	      <td>
+	      <td colspan="2">
 	   	 	<input name="dfsq"  id="dfsq" type="text" class="input_a1" value="${model.dfsq}"/>
 	   	 </td>
 	   	 <td>

@@ -65,7 +65,7 @@ public class  ChooseSelectController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("mb_list") 
+	@PermissionsAnno("jjybsz_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			MemberBasic entity, HttpServletRequest request) {
@@ -142,7 +142,7 @@ public class  ChooseSelectController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@PermissionsAnno("mb_updt")
+	@PermissionsAnno("jjybsz_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,MemberBasic entity, Model model) {
 		entity.setId(key);
@@ -152,7 +152,7 @@ public class  ChooseSelectController extends BaseController {
 		service.update(entity);
 		return "redirect://admin/memberBasic/list/1.html";
 	}
-	@PermissionsAnno("mb_save")
+	@PermissionsAnno("jjybsz_save")
 	@RequestMapping(value = SAVE)
 	public String save(MemberBasic entity, Model model) {
 		if (entity.getId() == null) {
@@ -183,7 +183,7 @@ public class  ChooseSelectController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("mb_del")
+	@PermissionsAnno("jjybsz_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
