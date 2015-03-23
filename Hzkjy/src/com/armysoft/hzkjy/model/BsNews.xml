@@ -16,7 +16,7 @@
 		and title  like CONCAT('%', #{parm.ftitle}, '%')
 		</if>
 		<if test="parm.receiverBh != null and parm.receiverBh != ''">
-		and title  = #{parm.receiverBh}
+		and ReceiverBh  = #{parm.receiverBh}
 		</if>
 		
 	</sql>
