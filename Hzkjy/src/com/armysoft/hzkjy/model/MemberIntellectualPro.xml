@@ -6,117 +6,167 @@
 <mapper namespace="MemberIntellectualProOpt">
 
 	<!-- 表列名 -->
-	<sql id="columns">	
-	mip.*,mb.Qymc
+	<sql id="columns">
+		mip.*,mb.Qymc
 	</sql>
 	<!-- 通用条件sql语句 -->
-	<sql id="condition" >
-		from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh
+	<sql id="condition">
+		from member_intellectual_pro mip,member_basic mb where
+		mip.MemberNo=mb.Hybh
 		<if test="parm.year!= null and parm.year != ''">
-		and mip.Year=#{parm.year}
+			and mip.Year=#{parm.year}
 		</if>
 		<if test="parm.month!= null and parm.month != ''">
-		and mip.Month=#{parm.month}
+			and mip.Month=#{parm.month}
 		</if>
 		<if test="parm.memberNo!=null and parm.memberNo != ''">
-		and mip.MemberNo=#{parm.memberNo}
+			and mip.MemberNo=#{parm.memberNo}
 		</if>
-		
+
 		order by mip.Status asc
 
 	</sql>
-	
-	
-    <select id="findByKey" resultType="java.util.Map" parameterType="Long">
+
+
+	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
 		select * from member_intellectual_pro where Id = #{id}
 	</select>
-	
-	<select id="getCurrentYear" resultType="java.util.Map" parameterType="java.util.Map">
-		select * from (select count(*) ProjectLevel_0_count from member_intellectual_pro where Year=#{year} and Month=0 
-and Status=1 and IsSetUp=2) t1,(select count(*) ProjectLevel_0_country from member_intellectual_pro where Year=#{year} and Month=0 
-and Status=1 and IsSetUp=2 and ProjectLevel=0) t2,(select count(*) ProjectLevel_0_province from member_intellectual_pro where Year=#{year} and Month=0 
-and Status=1 and IsSetUp=2 and ProjectLevel=1) t3,(select count(*) ProjectLevel_0_city from member_intellectual_pro where Year=#{year} and Month=0 
-and Status=1 and IsSetUp=2 and ProjectLevel=2) t4,
-(select count(*) ProjectLevel_1_count from member_intellectual_pro where Year=#{year} and Month=1 
-and Status=1 and IsSetUp=2) f1,(select count(*) ProjectLevel_1_country from member_intellectual_pro where Year=#{year} and Month=1 
-and Status=1 and IsSetUp=2 and ProjectLevel=0) f2,(select count(*) ProjectLevel_1_province from member_intellectual_pro where Year=#{year} and Month=1 
-and Status=1 and IsSetUp=2 and ProjectLevel=1) f3,(select count(*) ProjectLevel_1_city from member_intellectual_pro where Year=#{year} and Month=1 
-and Status=1 and IsSetUp=2 and ProjectLevel=2) f4
+
+	<select id="getCurrentYear" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from (select count(*) ProjectLevel_0_count from
+		member_intellectual_pro where Year=#{year} and Month=0
+		and Status=1 and IsSetUp=2
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t1,(select count(*) ProjectLevel_0_country from
+		member_intellectual_pro where Year=#{year} and Month=0
+		and Status=1 and IsSetUp=2 and ProjectLevel=0
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t2,(select count(*) ProjectLevel_0_province from
+		member_intellectual_pro where Year=#{year} and Month=0
+		and Status=1 and IsSetUp=2 and ProjectLevel=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t3,(select count(*) ProjectLevel_0_city from member_intellectual_pro
+		where Year=#{year} and Month=0
+		and Status=1 and IsSetUp=2 and ProjectLevel=2
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t4,
+		(select count(*) ProjectLevel_1_count from member_intellectual_pro where
+		Year=#{year} and Month=1
+		and Status=1 and IsSetUp=2
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f1,(select count(*) ProjectLevel_1_country from
+		member_intellectual_pro where Year=#{year} and Month=1
+		and Status=1 and IsSetUp=2 and ProjectLevel=0
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f2,(select count(*) ProjectLevel_1_province from
+		member_intellectual_pro where Year=#{year} and Month=1
+		and Status=1 and IsSetUp=2 and ProjectLevel=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f3,(select count(*) ProjectLevel_1_city from member_intellectual_pro
+		where Year=#{year} and Month=1
+		and Status=1 and IsSetUp=2 and ProjectLevel=2
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f4
 
 	</select>
-	
+
 
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
-		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,
-		case when mip.IsSetUp='0' then '未知' when mip.IsSetUp='1' then '否' else '是' end IsSetUp ,
-		case when mip.ProjectLevel='0' then '国家级' when mip.ProjectLevel='1' then '省级' when mip.ProjectLevel='2' then '市级' else '区级' end ProjectLevel,
-		 mb.Qymc
-		from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh
+		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select
+		mip.MemberNo,mip.ProjectType,mip.ProjectName,mip.ApplyAmount,mip.SetUpAmount,
+		case when mip.IsSetUp='0' then '未知' when mip.IsSetUp='1' then '否' else
+		'是' end IsSetUp ,
+		case when mip.ProjectLevel='0' then '国家级' when
+		mip.ProjectLevel='1' then '省级' when mip.ProjectLevel='2' then '市级'
+		else '区级' end ProjectLevel,
+		mb.Qymc
+		from member_intellectual_pro mip,member_basic mb where
+		mip.MemberNo=mb.Hybh
 		<if test="year!= null and year != ''">
-		and mip.Year=#{year}
+			and mip.Year=#{year}
 		</if>
 		<if test="month!= null and month != ''">
-		and mip.Month=#{month}
+			and mip.Month=#{month}
 		</if>
 		order by mip.Year desc,mip.Month desc
-		) ttable,(select @rowNO :=0) b 
-		
+		) ttable,(select @rowNO :=0) b
+
 	</select>
-	
-	
+
+
 	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
-		select 
-		<include refid="columns"/>
+		select
+		<include refid="columns" />
 		<include refid="condition" />
-		<include refid="org.armysoft.ibatis.commonsql.mysqlpager"/>
+		<include refid="org.armysoft.ibatis.commonsql.mysqlpager" />
 	</select>
 	<select id="pageCount" resultType="int" parameterType="java.util.Map">
-		select count(*) 
+		select count(*)
 		<include refid="condition" />
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberIntellectualPro">
-	
-		insert into member_intellectual_pro(MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,Year,Month)
-		values(#{memberNo} 		
-		, #{projectLevel} 		
-		, #{projectType} 		
-		,       #{projectName}
-		 ,		#{applyAmount}
-		 ,		#{isSetUp}
-		 ,		#{setUpAmount}
-		 ,		#{year}
-		  ,		#{month}
-		  
-		  )
+
+		insert into
+		member_intellectual_pro(MemberNo,ProjectLevel,ProjectType,ProjectName,ApplyAmount,IsSetUp,SetUpAmount,Year,Month)
+		values(#{memberNo}
+		, #{projectLevel}
+		, #{projectType}
+		, #{projectName}
+		, #{applyAmount}
+		, #{isSetUp}
+		, #{setUpAmount}
+		, #{year}
+		, #{month}
+
+		)
 		</insert>
 
 	<!-- 修改 -->
 	<update id="update" parameterType="memberIntellectualPro">
-		update member_intellectual_pro set 
-		 										ProjectLevel=#{projectLevel}
-		 								,		ProjectType=#{projectType}
-		 								,		ProjectName=#{projectName}
-		 								,		ApplyAmount=#{applyAmount}
-		 								,		IsSetUp=#{isSetUp}
-		 								,		SetUpAmount=#{setUpAmount}
-		 								,		Year=#{year}
-		 								,		Month=#{month}
-		 								<if test="memberNo!= null and memberNo != ''">
-										, MemberNo=#{memberNo}
+		update member_intellectual_pro set
+		ProjectLevel=#{projectLevel}
+		, ProjectType=#{projectType}
+		, ProjectName=#{projectName}
+		, ApplyAmount=#{applyAmount}
+		, IsSetUp=#{isSetUp}
+		, SetUpAmount=#{setUpAmount}
+		, Year=#{year}
+		, Month=#{month}
+		<if test="memberNo!= null and memberNo != ''">
+			, MemberNo=#{memberNo}
 										</if>
-		 							where Id = #{id}
+		where Id = #{id}
 	</update>
 	<update id="updateStatus" parameterType="java.util.Map">
-		update member_intellectual_pro set 
-  									Status=#{status}
-		 							where Id = #{id}
+		update
+		member_intellectual_pro set
+		Status=#{status}
+		where Id = #{id}
 	</update>
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
-		delete from member_intellectual_pro where Id = #{id}
+		delete from
+		member_intellectual_pro where Id = #{id}
 	</delete>
-	
+
 	<!-- ********************************************* -->
 
 </mapper>

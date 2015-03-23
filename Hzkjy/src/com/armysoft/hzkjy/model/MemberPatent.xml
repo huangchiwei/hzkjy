@@ -6,120 +6,224 @@
 <mapper namespace="MemberPatentOpt">
 
 	<!-- 表列名 -->
-	<sql id="columns">	
-	mp.*,mb.Qymc
+	<sql id="columns">
+		mp.*,mb.Qymc
 	</sql>
 	<!-- 通用条件sql语句 -->
-	<sql id="condition" >
-		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh 
+	<sql id="condition">
+		from member_patent mp,member_basic mb where mp.MemberNo=mb.Hybh
 		<if test="parm.year!= null and parm.year != ''">
-		and mp.Year=#{parm.year}
+			and mp.Year=#{parm.year}
 		</if>
 		<if test="parm.month!= null and parm.month != ''">
-		and mp.Month=#{parm.month}
+			and mp.Month=#{parm.month}
 		</if>
 		<if test="parm.memberNo!=null and parm.memberNo != ''">
-		and mp.MemberNo=#{parm.memberNo}
+			and mp.MemberNo=#{parm.memberNo}
 		</if>
 		order by mp.Status asc
-	  				
+
 	</sql>
 
-    <select id="findByKey" resultType="java.util.Map" parameterType="Long">
+	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
 		select * from member_patent where Id = #{id}
 	</select>
 
-  <select id="getCurrentYear" resultType="java.util.Map" parameterType="java.util.Map">
-		select * from (select count(*)  type_0_Count from member_patent where Year=#{year} and Month=0 and Status=1) t1,
-(select count(*)  type_0_Invention from member_patent where Year=#{year} and Month=0 and Type=0 and Status=1)  t2,
-(select count(*)  type_0_Practical from member_patent where Year=#{year} and Month=0 and Type=1 and Status=1)  t3,
-(select count(*)  type_0_Appearance from member_patent where Year=#{year} and Month=0 and Type=2 and Status=1)  t4,
-(select count(*)  type_0_Work from member_patent where Year=#{year} and Month=0 and Type=3 and Status=1)  t5,
+	<select id="getCurrentYear" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from (select count(*) type_0_Count from member_patent where
+		Year=#{year} and Month=0 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t1,
+		(select count(*) type_0_Invention from member_patent where Year=#{year} and
+		Month=0 and Type=0 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t2,
+		(select count(*) type_0_Practical from member_patent where Year=#{year} and
+		Month=0 and Type=1 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t3,
+		(select count(*) type_0_Appearance from member_patent where Year=#{year} and
+		Month=0 and Type=2 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t4,
+		(select count(*) type_0_Work from member_patent where Year=#{year} and
+		Month=0 and Type=3 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t5,
 
-(select count(*)  type_1_Count from member_patent where Year=#{year} and Month=1 and Status=1) f1,
-(select count(*)  type_1_Invention from member_patent where Year=#{year} and Month=1 and Type=0 and Status=1)  f2,
-(select count(*)  type_1_Practical from member_patent where Year=#{year} and Month=1 and Type=1 and Status=1)  f3,
-(select count(*)  type_1_Appearance from member_patent where Year=#{year} and Month=1 and Type=2 and Status=1)  f4,
-(select count(*)  type_1_Work from member_patent where Year=#{year} and Month=1 and Type=3 and Status=1)  f5
+		(select count(*) type_1_Count from member_patent where Year=#{year} and
+		Month=1 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f1,
+		(select count(*) type_1_Invention from member_patent where Year=#{year} and
+		Month=1 and Type=0 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f2,
+		(select count(*) type_1_Practical from member_patent where Year=#{year} and
+		Month=1 and Type=1 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f3,
+		(select count(*) type_1_Appearance from member_patent where Year=#{year} and
+		Month=1 and Type=2 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f4,
+		(select count(*) type_1_Work from member_patent where Year=#{year} and
+		Month=1 and Type=3 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) f5
 	</select>
-	
-	<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
-	select * from (select count(*)  type_last_Count from member_patent where Year&lt;#{year} and Status=1) t1,
-(select count(*)  type_last_Invention from member_patent where Year&lt;#{year} and Type=0 and Status=1)  t2,
-(select count(*)  type_last_Practical from member_patent where Year&lt;#{year} and Type=1 and Status=1)  t3,
-(select count(*)  type_last_Appearance from member_patent where Year&lt;#{year} and Type=2 and Status=1)  t4,
-(select count(*)  type_last_Work from member_patent where Year&lt;#{year} and  Type=3 and Status=1)  t5
+
+	<select id="getToLastYear" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from (select count(*) type_last_Count from member_patent
+		where Year&lt;#{year} and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>)
+		t1,
+		(select count(*) type_last_Invention from member_patent where Year&lt;#{year}
+		and Type=0 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>)
+		t2,
+		(select count(*) type_last_Practical from member_patent where Year&lt;#{year}
+		and Type=1 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>)
+		t3,
+		(select count(*) type_last_Appearance from member_patent where
+		Year&lt;#{year} and Type=2 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>)
+		t4,
+		(select count(*) type_last_Work from member_patent where Year&lt;#{year} and
+		Type=3 and Status=1) t5
 
 
 	</select>
-	
-		<select id="getAllYear" resultType="java.util.Map" parameterType="java.util.Map">
-	select * from (select count(*)  type_all_Count from member_patent where  Status=1 ) t1,
-(select count(*)  type_all_Invention from member_patent where  Type=0 and Status=1)  t2,
-(select count(*)  type_all_Practical from member_patent where  Type=1 and Status=1)  t3,
-(select count(*)  type_all_Appearance from member_patent where Type=2 and Status=1)  t4,
-(select count(*)  type_all_Work from member_patent where  Type=3 and Status=1)  t5
+
+	<select id="getAllYear" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from (select count(*) type_all_Count from member_patent where
+		Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t1,
+		(select count(*) type_all_Invention from member_patent where Type=0 and
+		Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t2,
+		(select count(*) type_all_Practical from member_patent where Type=1 and
+		Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t3,
+		(select count(*) type_all_Appearance from member_patent where Type=2 and
+		Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t4,
+		(select count(*) type_all_Work from member_patent where Type=3 and Status=1
+		<if test="memberNo!= null and memberNo != ''">
+			and MemberNo=#{memberNo}
+										</if>
+		) t5
 
 
 	</select>
 	<select id="findAll" resultType="java.util.Map" parameterType="java.util.Map">
-		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select mp.MemberNo,case when 
-		mp.Type=0 then '发明专利' when mp.Type=1 then '实用新型' when mp.Type=2 then '外观设计' 
-		when mp.Type=3 then '软件著作权' end Type,mp.Name,mp.PatentNo, mb.Qymc 
-		from member_patent mp,member_basic mb   where mp.MemberNo=mb.Hybh
+		select (@rowNO := @rowNo+1) AS RowNo, ttable.* from (select
+		mp.MemberNo,case when
+		mp.Type=0 then '发明专利' when mp.Type=1 then '实用新型' when mp.Type=2 then '外观设计'
+		when mp.Type=3 then '软件著作权' end Type,mp.Name,mp.PatentNo, mb.Qymc
+		from member_patent mp,member_basic mb where mp.MemberNo=mb.Hybh
 		<if test="year!= null and year != ''">
-		and mp.Year=#{year}
+			and mp.Year=#{year}
 		</if>
 		<if test="month!= null and month != ''">
-		and mp.Month=#{month}
+			and mp.Month=#{month}
 		</if>
 		order by mp.Year desc,mp.Month desc
-		
-		) ttable,(select @rowNO :=0) b 
-		
+
+		) ttable,(select @rowNO :=0) b
+
 	</select>
 	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
-		select 
-		<include refid="columns"/>
+		select
+		<include refid="columns" />
 		<include refid="condition" />
-		<include refid="org.armysoft.ibatis.commonsql.mysqlpager"/>
+		<include refid="org.armysoft.ibatis.commonsql.mysqlpager" />
 	</select>
 	<select id="pageCount" resultType="int" parameterType="java.util.Map">
-		select count(*) 
+		select count(*)
 		<include refid="condition" />
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberIntellectualPro">
-		insert into member_patent(MemberNo,Type,Name,PatentNo,Year,Month)
-		values(#{memberNo} 		
-		, #{type} 		
-		, #{name} 		
-		,       #{patentNo}
-		 ,		#{year}
-		  ,		#{month}
-		  )
+		insert into
+		member_patent(MemberNo,Type,Name,PatentNo,Year,Month)
+		values(#{memberNo}
+		, #{type}
+		, #{name}
+		, #{patentNo}
+		, #{year}
+		, #{month}
+		)
 		</insert>
 
 	<!-- 修改 -->
 	<update id="update" parameterType="memberIntellectualPro">
-		update member_patent set 
-		 										Type=#{type}
-		 								,		Name=#{name}
-		 								,		PatentNo=#{patentNo}
-		 								,		Year=#{year}
-		 								,		Month=#{month}
-		 							where Id = #{id}
+		update member_patent set
+		Type=#{type}
+		, Name=#{name}
+		, PatentNo=#{patentNo}
+		, Year=#{year}
+		, Month=#{month}
+		<if test="memberNo!= null and memberNo != ''">
+			, MemberNo=#{memberNo}
+										</if>
+		where Id = #{id}
 	</update>
 	<update id="updateStatus" parameterType="java.util.Map">
-		update member_patent set 
-  									Status=#{status}
-		 							where Id = #{id}
+		update member_patent set
+		Status=#{status}
+		where Id = #{id}
 	</update>
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
-		delete from member_patent where Id = #{id}
+		delete from member_patent
+		where Id = #{id}
 	</delete>
-	
+
 	<!-- ********************************************* -->
 
 </mapper>

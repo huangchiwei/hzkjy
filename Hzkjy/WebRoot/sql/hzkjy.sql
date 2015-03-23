@@ -82,14 +82,28 @@ CREATE TABLE `sys_permission` (
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES ('16', 'Lev2_01', '用户管理', 'us_list', '0');
-INSERT INTO `sys_permission` VALUES ('17', 'Lev2_02', '角色管理', 'ro_list', '0');
-INSERT INTO `sys_permission` VALUES ('18', 'Lev2_01', '删除用户', 'us_del', '1');
-INSERT INTO `sys_permission` VALUES ('19', 'Lev2_01', '修改用户', 'us_updt', '1');
-INSERT INTO `sys_permission` VALUES ('20', 'Lev2_01', '添加用户', 'us_save', '1');
-INSERT INTO `sys_permission` VALUES ('21', 'Lev2_02', '添加角色', 'ro_save', '1');
-INSERT INTO `sys_permission` VALUES ('22', 'Lev2_02', '修改角色', 'ro_updt', '1');
-INSERT INTO `sys_permission` VALUES ('23', 'Lev2_02', '删除角色', 'ro_del', '1');
+
+INSERT INTO `sys_permission` VALUES (16,'Lev2_01','用户管理','us_list',0);
+INSERT INTO `sys_permission` VALUES (17,'Lev2_02','角色管理','ro_list',0);
+INSERT INTO `sys_permission` VALUES (18,'Lev2_01','删除用户','us_del',1);
+INSERT INTO `sys_permission` VALUES (19,'Lev2_01','修改用户','us_updt',1);
+INSERT INTO `sys_permission` VALUES (20,'Lev2_01','添加用户','us_save',1);
+INSERT INTO `sys_permission` VALUES (21,'Lev2_02','添加角色','ro_save',1);
+INSERT INTO `sys_permission` VALUES (22,'Lev2_02','修改角色','ro_updt',1);
+INSERT INTO `sys_permission` VALUES (23,'Lev2_02','删除角色','ro_del',1);
+INSERT INTO `sys_permission` VALUES (24,'Lev2_31','会员管理','mb_list',0);
+INSERT INTO `sys_permission` VALUES (25,'Lev2_02','分配权限','ro_saveperm',1);
+INSERT INTO `sys_permission` VALUES (26,'Lev2_31','修改会员','mb_updt',1);
+INSERT INTO `sys_permission` VALUES (27,'Lev2_31','添加会员','mb_save',1);
+INSERT INTO `sys_permission` VALUES (28,'Lev2_03','删除会员','mb_del',1);
+INSERT INTO `sys_permission` VALUES (30,'Lev2_08','园区介绍','news_list',0);
+INSERT INTO `sys_permission` VALUES (31,'Lev2_32','孵化企业填报','fhqytb_list',0);
+INSERT INTO `sys_permission` VALUES (32,'Lev2_32','修改资料','fhqytb_updt',1);
+INSERT INTO `sys_permission` VALUES (33,'Lev2_32','添加资料','fhqytb_save',1);
+INSERT INTO `sys_permission` VALUES (34,'Lev2_32','删除资料','fhqytb_del',1);
+INSERT INTO `sys_permission` VALUES (35,'Lev2_41','知识产权统计','inteProCount_list',0);
+INSERT INTO `sys_permission` VALUES (36,'Lev2_42','科技项目','intel_list',0);
+INSERT INTO `sys_permission` VALUES (37,'Lev2_43','专利','patent_list',0);
 
 -- ----------------------------
 -- Table structure for `sys_role`
