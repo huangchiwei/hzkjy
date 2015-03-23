@@ -64,7 +64,7 @@ public class  EconomicReportingController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("hy_list") 
+	@PermissionsAnno("jjybtb_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String fjjzbNy,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			EccIndicator entity, HttpServletRequest request) {
@@ -130,7 +130,7 @@ public class  EconomicReportingController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@PermissionsAnno("hy_updt")
+	@PermissionsAnno("jjybtb_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,EccIndicator entity, Model model) {
 		entity.setId(key);
@@ -140,7 +140,7 @@ public class  EconomicReportingController extends BaseController {
 		service.update(entity);
 		return "redirect://admin/economicReporting/list/1.html";
 	}
-	@PermissionsAnno("hy_save")
+	@PermissionsAnno("jjybtb_save")
 	@RequestMapping(value = SAVE)
 	public String save(EccIndicator entity, Model model) {
 		if (entity.getId() == null) {
@@ -157,7 +157,7 @@ public class  EconomicReportingController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("hy_del")
+	@PermissionsAnno("jjybtb_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);

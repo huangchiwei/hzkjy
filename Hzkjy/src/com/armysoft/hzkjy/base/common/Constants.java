@@ -20,6 +20,8 @@ public final class Constants {
 	/** 分隔符 */
 	public static final String SEPARATOR = "_";
 	public static final Integer USER_ACTIVE = 1;
+	/**默认密码*/
+	public static final String DEFAULT_PASSWORD = "88888888";
 	public static String systemPath = "D:/gzjkjy_upfile/";
 	/** 网络访问文件夹*/
 	public final static String NET_FOLDER = "/gzjkjy_upfile/";

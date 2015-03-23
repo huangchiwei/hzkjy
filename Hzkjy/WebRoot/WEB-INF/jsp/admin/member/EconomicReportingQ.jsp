@@ -247,14 +247,14 @@ function pZShtt(){
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  <pm:hasPermission permValue="hy_save">
-	       	<c:set var="hy_save" value="true"/>
+	  <pm:hasPermission permValue="jjybtb_save">
+	       	<c:set var="jjybtb_save" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="hy_updt">
-	       	<c:set var="hy_updt" value="true"/>
+	    <pm:hasPermission permValue="jjybtb_updt">
+	       	<c:set var="jjybtb_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="hy_del">
-	       	<c:set var="hy_del" value="true"/>
+	    <pm:hasPermission permValue="jjybtb_del">
+	       	<c:set var="jjybtb_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/economicReporting/add/new.html?id=${mb.id}'">
@@ -276,12 +276,12 @@ function pZShtt(){
 	         <td>${mb.jjzbNy}</td>
 	          <td>${mb.shzt}</td>
 	          <td>
-	          	<c:if test="${hy_updt == true}">
+	          	<c:if test="${jjybtb_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="填报" onclick="javascript:location.href='${ctx}/admin/economicReporting/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
-	          	<c:if test="${hy_del == true}">
+	          	<c:if test="${jjybtb_del == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
 		         	</div>

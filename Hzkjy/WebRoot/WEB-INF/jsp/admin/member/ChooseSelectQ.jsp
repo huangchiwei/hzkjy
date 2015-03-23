@@ -216,14 +216,14 @@ function loadPageLayer2(title,url){
 	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
-	  <pm:hasPermission permValue="mb_save">
-	       	<c:set var="mb_save" value="true"/>
+	  <pm:hasPermission permValue="jjybsz_save">
+	       	<c:set var="jjybsz_save" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="mb_updt">
-	       	<c:set var="mb_updt" value="true"/>
+	    <pm:hasPermission permValue="jjybsz_updt">
+	       	<c:set var="jjybsz_updt" value="true"/>
 	    </pm:hasPermission>
-	    <pm:hasPermission permValue="mb_del">
-	       	<c:set var="mb_del" value="true"/>
+	    <pm:hasPermission permValue="jjybsz_del">
+	       	<c:set var="jjybsz_del" value="true"/>
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr>

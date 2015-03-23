@@ -176,7 +176,7 @@ if($("#qyzj").val()==""){
 	}
 
 	var sumhjje=parseFloat(qyzj)+parseFloat(glfwf)+parseFloat(qysf)+parseFloat(qydf)+parseFloat(zlbzj)+parseFloat(zxyj);
-	  $("#hjje").attr("value",sumhjje);
+	  $("#hjje").attr("value",sumhjje.toFixed(1));
 	  loadHjjezw();
 	}
 	
@@ -264,7 +264,6 @@ function rtnn(val){
 	val.value="0.0";
 	}
 	}
-	
 	function sumzj(){
 	var qyzjdj;
    if($("#qyzjdj").val()==""){
@@ -279,7 +278,7 @@ function rtnn(val){
 	}
 	
 		var sumzj=parseFloat(qyzjdj)*parseFloat(qymj);
-	  $("#qyzj").attr("value",sumzj);
+	  $("#qyzj").attr("value",sumzj.toFixed(1));
 	    sumhjje();
 	}	
 	function sumglfwfdj(){
@@ -296,7 +295,7 @@ function rtnn(val){
 	}
 	
 		var sumglfwfdj=parseFloat(glfwfdj)*parseFloat(qymj);
-	  $("#glfwf").attr("value",sumglfwfdj);
+	  $("#glfwf").attr("value",sumglfwfdj.toFixed(1));
 	    sumhjje();
 	}
 	function sumzlbzjdj(){
@@ -312,8 +311,8 @@ function rtnn(val){
 	qymj=$("#qymj").val();
 	}
 	
-		var sumzlbzjdj=parseFloat(zlbzjdj)*parseFloat(qymj);
-	  $("#zlbzj").attr("value",sumzlbzjdj);
+		var sumzlbzjdj=parseFloat(zlbzjdj)*parseFloat(qymj)*parseFloat(2);
+	  $("#zlbzj").attr("value",sumzlbzjdj.toFixed(1));
 	    sumhjje();
 	}
 	function sumzxyjdj(){
@@ -330,7 +329,7 @@ function rtnn(val){
 	}
 	
 		var sumzxyjdj=parseFloat(zxyjdj)*parseFloat(qymj);
-	  $("#zxyj").attr("value",sumzxyjdj);
+	  $("#zxyj").attr("value",sumzxyjdj.toFixed(1));
 	  sumhjje();
 	}
 	
@@ -349,8 +348,8 @@ function rtnn(val){
 	shjyl=$("#shjyl").val();
 	}
 		var sumqysf=parseFloat(qysfdj)*parseFloat(shjyl);
-	  $("#qysf").attr("value",sumqysf);
-	  $("#lqysf").attr("value",sumqysf);
+	  $("#qysf").attr("value",sumqysf.toFixed(1));
+	  $("#lqysf").attr("value",sumqysf.toFixed(1));
 	    sumhjje();
 	}
 		function sumqydf(){ 
@@ -367,8 +366,8 @@ function rtnn(val){
 	}
 	
 		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
-	  $("#qydf").attr("value",sumqydf);
-	  $("#lqydf").attr("value",sumqydf);
+	  $("#qydf").attr("value",sumqydf.toFixed(1));
+	  $("#lqydf").attr("value",sumqydf.toFixed(1));
 	    sumhjje();
 	}
 	function sumfy(){
@@ -413,6 +412,8 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>缴费年月：</th>
      <th align="center">会员编号：</th>
      <td colspan="2">
+     <input id="shzt" name="shzt" type="hidden" value="${model.shzt}" />
+      <input id="fbzt" name="fbzt" type="hidden" value="${model.fbzt}" />
      	<input id="hybh" name="hybh" type="text" value="${model.hybh}" class="input_a1"  maxlength="20" readonly="true" />
      </td>
 
@@ -435,9 +436,9 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>	
     <tr align="center">
      <th>序号：</th>
+      <th>项目：</th>
      <th>单价：</th>
-     <th>项目：</th>
-     <th>属期：</th>
+    <th>属期：</th>
      <th>金    额    （元）：</th>
      <th>滞纳金 （元）：</th>
      <th>备注：</th>			
@@ -454,7 +455,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" value="${model.zjsq}" />
 	     	</td> 
 	     <td>
-	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}"  onblur="rtnn(this);sumhjje();"/>
+	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qyzj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	     	</td>
 	  	   <td>
 	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}"/>
@@ -475,7 +476,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="glfsq"  id="glfsq" type="text" class="input_a1" value="${model.glfsq}"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}"  onblur="rtnn(this);sumhjje();"/>
+	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.glfwf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
 	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}"/>
@@ -496,7 +497,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" class="input_a1" value="${model.zlbzjsq}"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="zlbzj"  id="zlbzj" type="text" class="input_a1" value="${model.zlbzj}"  onblur="rtnn(this);sumhjje();"/>
+	   	 	<input name="zlbzj"  id="zlbzj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.zlbzj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
 	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}"/>
@@ -517,7 +518,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" class="input_a1" value="${model.zxyjsq}"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="${model.zxyj}"  onblur="rtnn(this);sumhjje();"/>
+	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.zxyj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
 	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}"/>
@@ -537,7 +538,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="sfsq"  id="sfsq" type="text" class="input_a1" value="${model.sfsq}"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}"  onblur="rtnn(this);sumhjje();"/>
+	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qysf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
 	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}"/>
@@ -557,7 +558,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="dfsq"  id="dfsq" type="text" class="input_a1" value="${model.dfsq}"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}"  onblur="rtnn(this);sumhjje();"/>
+	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qydf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
 	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}"/>
@@ -569,7 +570,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	          <tr>
      <td colspan="4">小写：</td>
      <td align="center">
-     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="${model.hjje}" onchange="loadHjjezw();"/>
+     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="<fmt:formatNumber value="${model.hjje}" pattern="#.#" minFractionDigits="1" />" onchange="loadHjjezw();"/>
      </td>
     
        <td align="center"><input name="hjjeznj"  id="hjjeznj" type="text" class="input_a1" value="${model.hjjeznj!='' && model.hjjeznj != null ? model.hjjeznj:'0.0'}" /></td>
@@ -604,7 +605,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}"  onblur="rtnn(this);sumshjyl();"/>吨
      </td>
      <td>
-     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}"  onblur="rtnn(this);sumshjyl();"/>吨
+     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}"  onblur="rtnn(this);sumshjyl();sumqysf();"/>吨
      </td>
       <td>
      	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}" onchange="sumqysf();"/>吨
@@ -613,7 +614,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="qysfdj"  id="qysfdj" type="text" class="input_a1" value="${model.qysfdj}" onchange="sumqysf();"/>元/吨
      </td>
        <td>
-     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="${model.qysf}" />
+     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qysf}" pattern="#.#" minFractionDigits="1" />" />
      </td>
      
      <td>
@@ -629,7 +630,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}" onblur="rtnn(this);sumdhjyl();"/>度
      </td>
      <td>
-     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}" onblur="rtnn(this);sumdhjyl();"/>度
+     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}" onblur="rtnn(this);sumdhjyl();sumqydf();"/>度
      </td>
      <td>
      	<input name="dhjyl"  id="dhjyl" type="text" class="input_a1" value="${model.dhjyl}"  onchange="sumqydf();"/>度
@@ -638,9 +639,9 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="qydfdj"  id="qydfdj" type="text" class="input_a1" value="${model.qydfdj}" onchange="sumqydf();"/>元/度
      </td>
        <td>
-     	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}" />
+     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qydf}" pattern="#.#" minFractionDigits="1" />" />
      </td>
-     
+      
      <td>
      	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}" onchange="onchangebz();"/>
      </td>
@@ -650,9 +651,13 @@ html { overflow:-moz-scrollbars-vertical;}
      
    
     
-    	<p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
-				</p>
+    	
+       <div class="div_submit">
+					<input id="sumbit_bt" name="" type="submit" value="提  交"
+						class="photo_btn" />
+					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
+						class="photo_btn" />
+				</div>
   
   </div>
   </form>

@@ -69,7 +69,7 @@ public class  RentReviewController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("hy_list") 
+	@PermissionsAnno("qyjfsh_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,String fsfqf,
 			MemberRental entity, HttpServletRequest request) {
@@ -154,7 +154,7 @@ public class  RentReviewController extends BaseController {
 	 * @return
 	 * @throws Exception 
 	 */
-	@PermissionsAnno("hy_updt")
+	@PermissionsAnno("qyjfsh_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,@RequestParam("files") MultipartFile[] files,EnterpriseRental entity, Model model,HttpServletRequest request) throws Exception {
 		entity.setId(key);
@@ -237,7 +237,7 @@ public class  RentReviewController extends BaseController {
 	    	}
 	    	return "";
 	    }
-	@PermissionsAnno("hy_save")
+	@PermissionsAnno("qyjfsh_save")
 	@RequestMapping(value = SAVE)
 	public String save(EnterpriseRental entity, Model model) {
 		if (entity.getId() == null) {
@@ -258,7 +258,7 @@ public class  RentReviewController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("hy_del")
+	@PermissionsAnno("qyjfsh_del")
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
