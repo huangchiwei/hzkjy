@@ -158,12 +158,11 @@
 	border: 1px solid #d0d0d0;
 	background-color: #FFFFFF;
 	overflow-x:hidden;
-	height: 700px;
 }
 .box_p .submenu_box ul#menu, ul#menu ul {
 	list-style-type:none;
 	width: 100%;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	display: inline;
 }
 
@@ -528,8 +527,8 @@
 .content_box .btn_box  {
 	overflow: hidden;
 	position: absolute;
-	top: 4px;
-	right: 2px;
+	top: 18px;
+	right: 18px;
 }
 .content_box .btn_box2 {
 	overflow: hidden;
@@ -566,8 +565,21 @@
 	border: 1px solid #c9cdd1;
 	padding-bottom: 10px;
 }
+.content_box .list_info3 {
+	padding: 0px;
+}
 .content_box .list_info {
 	padding-bottom: 10px;
+}
+.content_box .list_info3 h2 {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #c9cdd1;
+	background-color: #f2f2f2;
+	line-height: 30px;
+	padding-left: 10px;
+	font-size: 14px;
+	margin-bottom: 10px;
 }
 .content_box .add_info h2 {
 	border-bottom-width: 1px;
@@ -779,7 +791,7 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	margin: 5px;
 }
 
-.content_box  .list_info table {
+.content_box .list_info table {
 	font-size: 12px;
 	background-color: #CCCCCC;
 	width: 100%;
@@ -802,22 +814,6 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	height: 28px;
 	background-color: #FFFFFF;
 	padding: 5px;
-}
-.content_box  .list_info  table td a{
-	color: #003399;
-	padding-right: 2px;
-	padding-left: 2px;
-	text-decoration: none;
-	height: 20px;
-	line-height: 20px;
-	margin-right: 2px;
-}
-.content_box  .list_info  table td a:hover{
-	color: #FFFFFF;
-	padding-right: 2px;
-	padding-left: 2px;
-	text-decoration: none;
-	background-color: #FF3333;
 }
 .content_box  .list_info  table  td .btn_icon {
 	float: left;
@@ -884,9 +880,7 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	COLOR: #ddd;
 	PADDING-TOP: 2px;
 	BORDER-BOTTOM: #eee 1px solid;
-	border-radius:5px;
-}
-
+	border-radius:5px;}
 
 
 
@@ -910,15 +904,9 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	top: 0px;
 }
 .wra_bother{
-	border-top-width: 1px;
-	border-right-width: 1px;
-	border-left-width: 1px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-left-style: solid;
-	border-top-color: #CCCCCC;
-	border-right-color: #CCCCCC;
-	border-left-color: #CCCCCC;
+	margin-right: 5px;
+	margin-left: 5px;
+	border: 1px solid #CCCCCC;
 }
 .admin_table{
 	padding: 15px;

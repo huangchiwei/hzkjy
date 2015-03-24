@@ -5,9 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>userList</title>
-<link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 
@@ -38,6 +37,7 @@ html { overflow:-moz-scrollbars-vertical;}
 </head>
 
 <body>
+<div class="admin_table">
 <div class="content_box">
   <div class="btn_box">
   	
@@ -51,7 +51,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <h2>${category.remark }&gt;&gt;${category.cateName}</h2>
  
   <br/>
-    <table width="98%" border="1" cellpadding="0" cellspacing="0">
+      <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
 	  		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -101,5 +101,6 @@ html { overflow:-moz-scrollbars-vertical;}
     </table>
   </div>
 </div>
+ </div>
 </body>
 </html>

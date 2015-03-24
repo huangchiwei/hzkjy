@@ -1,4 +1,8 @@
 /*表格项目样式*/
+.table_scroll{
+	height: 400px;
+	overflow-x:hidden;
+}
 .ListTable {
 	border-collapse: collapse; /*table-layout:fixed;*/
 	width:100%;
@@ -140,16 +144,18 @@
 .ListTable3 td{
 	color:#444;
 	padding:5px;
-	border:1px solid #CCCCCC;
 	word-wrap:break-word;
+	border: 1px solid #dbdbdb;
 }
 .ListTable3 th{
 	color:#444;
 	padding:5px;
-	border:1px solid #CCCCCC;
 	word-wrap:break-word;
 	background-color: #F2F2F2;
-	text-align: right;
+	text-align: left;
+	font-size: 14px;
+	font-weight: bold;
+	border: 1px solid #dbdbdb;
 }
 .ListTable3 td .inputbox{
 	border:1px solid #DEDEDE;
@@ -159,4 +165,3 @@
 .ListTable3  td  em{
 	padding-left: 10px;
 }
-

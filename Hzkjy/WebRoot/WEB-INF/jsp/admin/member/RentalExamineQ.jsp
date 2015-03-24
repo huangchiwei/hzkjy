@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>userList</title>
-<link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
@@ -193,6 +193,7 @@ function corpAutocomplete(data){
 </head>
 
 <body>
+<div class="admin_table">
 <div class="content_box">
   <div class="btn_box">
 
@@ -221,7 +222,7 @@ function corpAutocomplete(data){
     </div>
     
     </form>
-    <table width="98%" border="1" cellpadding="0" cellspacing="0">
+      <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
 	  	<th><input type="checkbox" id="checkAll"/>全选</th>
@@ -294,6 +295,7 @@ function corpAutocomplete(data){
 	</tfoot>
     </table>
   </div>
+</div>
 </div>
 </body>
 </html>

@@ -6,9 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>userList</title>
-<link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 
@@ -29,7 +28,7 @@ function out(){
 </head>
 
 <body>
-
+<div class="admin_table">
 <div class="content_box">
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/memberIntellectualPro/inteProCount.html" method="post">
@@ -48,7 +47,7 @@ function out(){
     </dl>
     </div>
     </form>
-     <table width="98%" border="1" cellpadding="0" cellspacing="0">
+  <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	    <tr>
 	    <td colspan="3" style="text-align:left"><b>企业知识产权情况</b></td>
@@ -147,6 +146,7 @@ function out(){
 	    </thead></table>
    
   </div>
+    </div>
 </div>
 </body>
 </html>

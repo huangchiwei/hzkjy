@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DbMessageOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	ID,Messagename,Message</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from db_message
+		where 1 = 1
+		
+		
+   </sql>
+	<!-- 实体映射 -->
+	<resultMap id="dbMessageMap" type="dbMessage">
+				<result column="ID" property="id" />
+				<result column="Messagename" property="messagename" />
+				<result column="Message" property="message" />
+			</resultMap>
+
+
+	
+    <select id="findById" resultMap="dbMessageMap" parameterType="Long">
+		select * from db_message where id = #{id}
+	</select>
+	
+
+		
+	<select id="page" resultMap="dbMessageMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="dbMessage">
+		insert into db_message(Messagename,Message)
+		values(#{messagename} 		
+		, #{message} 
+		  )
+		</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="dbMessage">
+	
+  
+		update db_message set 
+		Messagename=#{messagename}
+		,Message=#{message}
+		 							where ID = #{id}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from db_message where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>

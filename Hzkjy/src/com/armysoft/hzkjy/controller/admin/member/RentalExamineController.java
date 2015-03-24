@@ -44,11 +44,13 @@ import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.BsNews;
+import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.model.RentalExamine;
 import com.armysoft.hzkjy.service.member.BsNewsService;
+import com.armysoft.hzkjy.service.member.DbMessageService;
 import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
@@ -68,6 +70,8 @@ public class  RentalExamineController extends BaseController {
 	
 	@Resource
 	private BsNewsService Bsservice;
+	@Resource
+	private DbMessageService dbservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -203,7 +207,8 @@ public class  RentalExamineController extends BaseController {
 			bs.setReceiver(mdd.getQymc());
 			bs.setReceiverBh(mdd.getHybh());
 			bs.setIsReport("1");
-			String content="你好:"+mdd.getQymc()+",海珠科技园通知您缴交"+mdd.getJfyd()+"租金费用："+mdd.getHjje();
+			DbMessage dbmessage=dbservice.findByKey(Long.valueOf(2));
+			String content=dbmessage.getMessage();
 			bs.setContent(content);
 			Bsservice.insert(bs);
 		}
