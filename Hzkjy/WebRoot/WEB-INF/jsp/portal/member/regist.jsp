@@ -19,13 +19,11 @@ $(function(){
 	$("#sumbit_bt").click(function(){
 		var msg = '';
 		if($.trim($("#qymc").val()) == ''){
-			msg = '企业名称';
+			msg = '请填写企业名称';
 			$("#qymc").focus();
-		}else if($("#zczb").val() != ''){
-			if(!/^\d$/.test($("#zczb").val())){
-				msg = '请填写正确的注册资金';
-				$("#zczb").focus();
-			}
+		}else if($("#zczb").val() != '' && (!/^\d+$/.test($("#zczb").val()))){
+			msg = '请填写正确的注册资金';
+			$("#zczb").focus();
 		}else if($.trim($("#zzjgdm").val()) == ''){
 			msg = '请填写组织机构代码';
 			$("#zzjgdm").focus();
@@ -41,11 +39,9 @@ $(function(){
 		}else if ((!/^0\d{2,3}-?\d{7,8}$/.test($("#frlxdh").val())) && (!/^1[3|4|5|8]\d{9}$/.test($("#frlxdh").val()))){
 			msg = "法人电话格式不正确!";
 			$("#frlxdh").focus();
-		}else if($('#lxrdh').val() != ''){
-			if ((!/^0\d{2,3}-?\d{7,8}$/.test($("#lxrdh").val())) && (!/^1[3|4|5|8]\d{9}$/.test($("#lxrdh").val()))){
-				msg = "企业联系电话格式不正确!";
-				$("#lxrdh").focus();
-			}
+		}else if($('#lxrdh').val() != '' && (!/^0\d{2,3}-?\d{7,8}$/.test($("#lxrdh").val())) && (!/^1[3|4|5|8]\d{9}$/.test($("#lxrdh").val()))){
+			msg = "企业联系电话格式不正确!";
+			$("#lxrdh").focus();
 		}
 		if(msg == ''){
 			return true;
@@ -60,6 +56,7 @@ $(function(){
 
 <body>
 <form action="${ctx}/portal/memberBasic/regist.html" method="post">
+<input name="token" value="${token}" type="hidden"/>
 <jsp:include page="/WEB-INF/jsp/portal/common/head.jsp" />
 
 <div class="content">
@@ -93,13 +90,8 @@ $(function(){
      <div class="li"><span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;法人姓名：</span><input name="frdb" id="frdb" type="text" class="input" size="25" />
      <em>（固定电话和手机,样式:076912121212或1352323121）</em>
      </div>
-     <div class="li"><span class="span">职务：</span><input name="" type="text" class="input" size="25" />
-     <em>&nbsp;</em>
-     </div>
      <div class="li"><span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;法人电话：</span><input name="frlxdh" id="frlxdh" type="text" class="input" size="25" /><em>方便确认企业联系法人</em>
        
-     </div>
-     <div class="li"><span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;电子邮箱：</span><input name="" type="text" size="30" value="" class="input"/>
      </div>
      <div class="li"><span class="span">行业类别：</span><select name="hylb" class="input">
 	<option value="5">其他</option>

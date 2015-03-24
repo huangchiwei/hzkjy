@@ -1,5 +1,8 @@
 package com.armysoft.hzkjy.controller.portal;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,16 +43,17 @@ public class LoginController extends BaseController {
 	 */
 	@RequestMapping(value = "userLogin", method = RequestMethod.POST)
 	@ResponseBody
-	public String userLogin(
+	public Map<String,String> userLogin(
 			String userNo,
 			String password,
-			String vcode,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			@CookieValue(value = Constants.ADMIN_KEY, required = false) String key) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("flag", "1");
 		try {
 			if (StringUtils.hasText(key)) {// 已经登录
-				return "redirect:/portal/index.html";
+				return map;
 			}
 
 			SysUser user = sysUserService.getByUserNo(userNo);
@@ -63,10 +67,10 @@ public class LoginController extends BaseController {
 				request.getSession(true);
 				super.setCookie(response, Constants.ADMIN_KEY, userNo);
 			} else {
-				request.setAttribute("msg", "用户名或密码不正确!");
-				request.setAttribute("userNo", userNo);
+				map.put("flag", "0");
+				map.put("msg", "用户名或密码不正确!");
 			}
-			return "redirect:/portal/index.html";
+			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
