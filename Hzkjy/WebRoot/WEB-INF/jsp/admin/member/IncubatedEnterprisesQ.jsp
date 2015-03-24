@@ -117,19 +117,14 @@ function loadPageLayer2(title,url){
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/incubatedEnterprises/list/1.html" method="post">
     <h2>按条件查询</h2>
-    <div class="div2">
-      <dl class="relative h30">
-        <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fqymc" name="fqymc" value="${fqymc}" size=40 style="width:160px"/>
-        	</dd>
-        		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;年份：<input id="fssn" name="fssn" type="text" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy'});" value="${fssn}"
+      <div class="div_input">
+        <em>企业名称：</em><input type="text" id="fqymc" name="fqymc" value="${fqymc}" class="input_a1" size=20 />
+        
+        <em>年份：</em><input id="fssn" name="fssn" type="text" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy'});" size=15  value="${fssn}"
 								 class="input_a1" maxlength="20"/>
-								</dd>
-								 <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-         <dt><input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/></dt>
-           <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-    </dl>
+							<input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+         <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
+           <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
     </div>
     
     </form>

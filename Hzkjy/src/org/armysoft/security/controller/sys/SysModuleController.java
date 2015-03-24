@@ -94,13 +94,17 @@ public class SysModuleController extends BaseController {
 			List<SysModule> allList = null;
 			//String userNo = "admin";//super.getCookieValue(request, Constants.ADMIN_KEY);
 			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+			
 			if("admin".equalsIgnoreCase(userNo)){
 				allList = sysModuleService.getByModuleLevel(2);
-				 addChildrenTree(rootList,allList,treeList);
-                 return treeList;
+				return addUserTree(rootList,allList,treeList);
+//				 addChildrenTree(rootList,allList,treeList);
+//                 return treeList;
 			}else{
 				allList = sysModuleService.getByUserNo(userNo);
 				return addUserTree(rootList,allList,treeList);
+//				 addChildrenTree(rootList,allList,treeList);
+//                 return treeList;
 			}
 		// List<Map<String, Object>> rootList=epubBookService.getCatalogLevel(bookNo,"0");
 		// List<Map<String, Object>> allList=epubBookService.getCatalogWithoutParentId(bookNo,"0");
