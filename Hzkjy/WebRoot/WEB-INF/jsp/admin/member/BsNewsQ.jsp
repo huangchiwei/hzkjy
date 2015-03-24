@@ -156,14 +156,9 @@ function loadPageLayer2(title,url){
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
     <h2>按条件查询</h2>
-    <div class="div2">
-      <dl class="relative h30">
-        <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;标题：<input type="text" id="ftitle" name="ftitle" value="${ftitle}" />
-        	</dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-      
-    </dl>
+    <div class="div_input">
+        <em>标题：</em><input type="text" id="ftitle" name="ftitle"  class="input_a1" size="20" value="${ftitle}" />
+       <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
     </div>
     
     </form>

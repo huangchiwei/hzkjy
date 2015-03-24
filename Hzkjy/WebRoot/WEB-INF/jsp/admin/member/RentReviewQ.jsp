@@ -191,28 +191,23 @@ function loadPageLayer2(title,url){
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/rentReview/list/1.html" method="post">
     <h2>按条件查询</h2>
-    <div class="div2">
-      <dl class="relative h30">
-        <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 onfocus="loadCorpName();"/>
-        	</dd>
-        <dd >  	
-        &nbsp;&nbsp;&nbsp;&nbsp;费用所属年月：<input id="fjfyd" name="fjfyd" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
+      <div class="div_input">
+       <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=20 class="input_a1" onfocus="loadCorpName();"/>
+        <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" class="input_a1" type="text"  size=15 onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" maxlength="20"/>
-								</dd> 	
-							 <dd > 	
-		 &nbsp;&nbsp;&nbsp;&nbsp;缴费状态：<select name="fsfqf"  id="fsfqf" style="text-align:center">
+							
+							
+		 <em>缴费状态：</em><select name="fsfqf"  class="input_a1" id="fsfqf" style="text-align:center">
 		 <option value=""></option>
           <option value="1">已缴费</option>
           <option value="0">未缴费</option>
         </select>
-        			</dd> 	
+      	
         	
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-           <dt><input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/></dt>
-         <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-      
-    </dl>
+         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+        <input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/>
+        <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+ 
     </div>
     
     </form>

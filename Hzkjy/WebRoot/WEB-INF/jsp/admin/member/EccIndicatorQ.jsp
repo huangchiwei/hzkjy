@@ -154,16 +154,12 @@ function loadPageLayer2(title,url){
     
     
     <h2>按条件查询</h2>
-    <div class="div2">
-      <dl class="relative h30">
-        <dd > 
-         &nbsp;&nbsp;&nbsp;&nbsp;经济指标年月： <input id="fjjzbNy" name="fjjzbNy" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" type="text" 
+      <div class="div_input">
+         <em>经济指标年月：</em> <input id="fjjzbNy" name="fjjzbNy" class="input_a1" size=15 onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" type="text" 
      	value="${fjjzbNy}" maxlength="20"/>
-        	</dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-         <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-      
-    </dl>
+         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+
     </div>
     </form>
    <table width="98%" border="0" cellpadding="0" cellspacing="1">

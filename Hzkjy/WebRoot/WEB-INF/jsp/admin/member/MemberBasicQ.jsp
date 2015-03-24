@@ -165,46 +165,35 @@ function loadPageLayer2(title,url){
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
     <h2>按条件查询</h2>
-    <div class="div2">
-      <dl class="relative h30">
-        <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;企业名称：<input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=40 style="width:160px" onfocus="loadCorpName();"/>
-        	</dd>
-        	   							 <dd > &nbsp;&nbsp;&nbsp;&nbsp;状态：
-   <select name="fzt"  id="fzt" style="text-align:center">
+    <div class="div_input">
+        <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}"  class="input_a1" size="20" onfocus="loadCorpName();"/>
+         <em>状态：</em>
+   <select name="fzt"  id="fzt" style="text-align:center" class="input_a1">
          <option value="">所有</option>
           <option value="1">在园</option>
           <option value="0">出园</option>
         </select>
-        </dd>	
-        							 <dd > &nbsp;&nbsp;&nbsp;&nbsp;经济月报：
-   <select name="fsfjjyb"  id="fsfjjyb" style="text-align:center">
+        							<em>经济月报：</em>
+   <select name="fsfjjyb"  id="fsfjjyb" style="text-align:center" class="input_a1">
          <option value="">所有</option>
           <option value="1">需要</option>
           <option value="0">不需要</option>
         </select>
-        </dd>	
-        		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;入驻时间：<input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
-								 class="input_a1" maxlength="20"/>至
+        <em>入驻时间：</em><input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
+							 size="15"	 class="input_a1" maxlength="20"/><em>至<em>
 								<input id="frysje" name="frysje" type="text" onclick="WdatePicker();" value="${frysje}"
-								 class="input_a1" maxlength="20"/>
-								</dd>
-		
-    </dl>
-     <dl class="relative h30"> 
-        		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;合同期限：<input id="fhtqxf" name="fhtqxf" type="text" onclick="WdatePicker();" value="${fhtqxf}"
-							 class="input_a1" maxlength="20"/>至
+								 size="15" class="input_a1" maxlength="20"/>
+						</div>
+     <div class="div_input">
+        <em>合同期限：</em><input id="fhtqxf" name="fhtqxf" type="text" onclick="WdatePicker();" value="${fhtqxf}"
+							 size="15" class="input_a1" maxlength="20"/> <em>至</em>
 								<input id="fhtqxe" name="fhtqxe" type="text" onclick="WdatePicker();" value="${fhtqxe}"
-								" class="input_a1" maxlength="20"/>
-								</dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-         <dt><input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/></dt>
-                    <dt><input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/></dt>
-           <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-      
-    </dl>
+								 size="15" class="input_a1" maxlength="20"/>
+         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+         <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
+         <input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/>
+         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+ 
     </div>
     
     </form>
