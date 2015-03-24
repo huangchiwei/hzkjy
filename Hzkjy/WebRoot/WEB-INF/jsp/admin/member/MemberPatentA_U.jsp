@@ -147,7 +147,7 @@ html { overflow:-moz-scrollbars-vertical;}
        <c:if test="${cookie.admin_key.value=='admin'}">
       <th>所属企业</th>
      <td >
-     <input type="text" id="memberNo" name="memberNo" value="${entity.Qymc}"  class="input_a1" size="20" onfocus="loadCorpName();"/>
+     <input type="text" id="memberNo" name="memberNo" value="${entity.MemberNo}"  class="input_a1" size="20" onfocus="loadCorpName();"/>
      <%--
      <select name="memberNo" id="memberNo">
      <option value="">--请选择--</option>
