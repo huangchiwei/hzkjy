@@ -29,7 +29,8 @@
 
 
 	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
-		select * from member_intellectual_pro where Id = #{id}
+	select mip.*,mb.Qymc from member_intellectual_pro mip,member_basic mb where mip.MemberNo=mb.Hybh and mip.Id = #{id}
+		
 	</select>
 
 	<select id="getCurrentYear" resultType="java.util.Map"

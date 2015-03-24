@@ -99,11 +99,11 @@ public class  MemberPatentController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
-		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+	/*	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(userNo.equals("admin")){
 			List<Map<String,Object>> list=memberBasicService.getAllMember();
 			model.addAttribute("list", list);
-		}
+		}*/
 		model.addAttribute("ptype", "A");
 		return "admin/member/MemberPatentA_U";
 	}
@@ -117,15 +117,17 @@ public class  MemberPatentController extends BaseController {
 	 */
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Long key,MemberIntellectualPro entity,HttpServletRequest request, Model model) {
-		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		/*String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(userNo.equals("admin")){
 			List<Map<String,Object>> list=memberBasicService.getAllMember();
 			model.addAttribute("list", list);
-		}
+		}*/
 		model.addAttribute("ptype", "U");
 		model.addAttribute("entity",memberPatentService.findByKey(key));
 		return "admin/member/MemberPatentA_U";
 	}
+	
+	
 	
 	@RequestMapping(value = SAVE)
 	public String save(HttpServletRequest request,MemberPatent entity, Model model,String ptype) {

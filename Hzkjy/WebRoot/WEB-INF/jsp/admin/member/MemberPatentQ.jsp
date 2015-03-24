@@ -105,7 +105,7 @@ html { overflow:-moz-scrollbars-vertical;}
         <div class="div2">
       <dl class="relative h30">
         <dd > <form id="search_form" action="${ctx}/admin/memberPatent/list/1.html" method="post">
-        &nbsp;&nbsp;&nbsp;&nbsp;年份： <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+        &nbsp;&nbsp;&nbsp;&nbsp;年份： <input id="year" name="year" size="15" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
      	value="${params.year}" maxlength="10"/>
      	月份：<select name="month" id="month">
      	<option value="0" <c:if test="${params.month==0}">selected="selected"</c:if>>1~6月</option>

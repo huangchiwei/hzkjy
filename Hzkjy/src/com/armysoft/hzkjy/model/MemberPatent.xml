@@ -26,7 +26,7 @@
 	</sql>
 
 	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
-		select * from member_patent where Id = #{id}
+		select mp.*,mb.Qymc from member_patent mp,member_basic mb where mp.MemberNo=mb.Hybh and mp.Id = #{id}
 	</select>
 
 	<select id="getCurrentYear" resultType="java.util.Map"

@@ -138,7 +138,12 @@ public class  MemberBasicController extends BaseController {
 		 List<Map<String,Object>> selectedVCorpInfoList= service.getSelectedCorpNameList("1");
 		return selectedVCorpInfoList;
 	}
-
+	@RequestMapping(value = "/getAllMember.html")
+	@ResponseBody
+	public  List<Map<String, Object>> getAllMember() {
+		 List<Map<String,Object>> list=service.getAllMember();
+		return list;
+	}
 	/**
 	 * 保存
 	 * @param entity
