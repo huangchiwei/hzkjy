@@ -16,7 +16,7 @@
 <!--导航样式-->
 <div class="nav_box">
 <div class="lanren">
-    <a href='javascript:' class="thisclass relative">首&nbsp;&nbsp;页<div class="img_float"></div></a>
+    <a href='#' onclick="javascript:location.href='${ctx}/portal/index.html'" class="thisclass relative">首&nbsp;&nbsp;页<div class="img_float"></div></a>
     <a href='javascript:' class="relative">园区概况<div class="img_float"></div></a>
     <a href='javascript:' class="relative">政府政策<div class="img_float"></div></a>
     <a href='javascript:' class="relative">新闻动态<div class="img_float"></div></a>

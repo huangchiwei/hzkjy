@@ -14,6 +14,35 @@ $(function(){
 	lanren.click(function(){
 		$(this).addClass("thisclass").siblings().removeClass("thisclass");
 	});
+	$('#login_btn').click(function(){
+		var msg = '';
+		if($.trim($("#userNo").val()) == ''){
+			msg = '请输入登录账号';
+			$("#userNo").focus();
+		}else if($("#password").val() == ''){
+			msg = '请输入登录密码';
+			$("#password").focus();
+		}
+		if(msg != ''){
+			alert(msg);
+			return;
+		}
+		$.ajax({
+				url:'${ctx}/portal/userLogin.html',
+		  		type:'post',
+		  		dataType:'json',
+		  		data:'userNo=' + $("#userNo").val() + "&password=" + $("#password").val(),
+		  		async:true,
+		  		success:function(data){
+		  			if(data.flag == "1"){
+		  				location.href = "${ctx}/admin/index.html";
+		  			}else{
+		  				alert(data.msg);
+		  			}
+		  			
+		  		}
+		  	});
+	});
 });
 </script>
 <script type="text/javascript" src="${ctx}/theme/portal/default/js/lrtk.js"></script>
@@ -156,11 +185,11 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="login">
     <ul>
-     <li class="account"><input type="text"  class="input" value="请输入您的账号"/>
+     <li class="account"><input id="userNo" name="userNo" type="text" class="input"/>
      </li>
-     <li class="password"><input name="" type="password"  class="input" value="密码" />
+     <li class="password"><input id="password" name="password" type="password" class="input"/>
      </li>
-     <li class="btn"><input name="" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
+     <li class="btn"><input id="login_btn" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
      </li>
     </ul>
    </div>

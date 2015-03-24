@@ -3,8 +3,10 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -36,7 +38,10 @@ public class MemberBasicController extends BaseController {
 	}
 
 	@RequestMapping("toRegist")
-	public String toRegist(){
+	public String toRegist(Model model,HttpServletRequest req){
+		String token = UUID.randomUUID().toString();
+		req.getSession().setAttribute("token", token);
+		model.addAttribute("token", token);
 		return "portal/member/regist";
 	}
 	
@@ -47,10 +52,10 @@ public class MemberBasicController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("regist")
-	public String regist(MemberBasic entity, Model model) {
-		if (entity.getId() == null) {
-			Cn2Spell cn2Spell = new Cn2Spell();
-			entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
+	public String regist(MemberBasic entity,String token, Model model,HttpServletRequest req) {
+		Object oldToken = req.getSession().getAttribute("token");
+		if(oldToken != null && oldToken.toString().equals(token)){
+			entity.setQymcpy(Cn2Spell.converterToFirstSpell(entity.getQymc()));
 			String newHybh = "";
 			String newHybh1 = "44";
 			String newHybh2 = "01";
@@ -67,9 +72,8 @@ public class MemberBasicController extends BaseController {
 			service.insertMemberAndUser(entity);
 			model.addAttribute("userNo", entity.getHybh());
 			model.addAttribute("password", Constants.DEFAULT_PASSWORD);
+			req.getSession().removeAttribute("token");
 			return "portal/member/reg_ok";
-		} else {
-			service.update(entity);
 		}
 		return "redirect:/portal/index.html";
 	}

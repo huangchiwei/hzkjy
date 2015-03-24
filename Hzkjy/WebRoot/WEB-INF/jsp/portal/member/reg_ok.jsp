@@ -9,8 +9,6 @@
 		<link href="${ctx}/theme/portal/default/style/default.css"
 			rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript"
-			src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 		<script>
 	$(function() {
 		var lanren = $(".lanren a");
@@ -30,7 +28,7 @@
 </script>
 	</head>
 
-	<body onload="delayURL()">
+	<body>
 		<jsp:include page="/WEB-INF/jsp/portal/common/head.jsp" />
 		<div class="content">
 			<div class="reg_location">
@@ -52,21 +50,21 @@
 					</h2>
 					<p>
 						您的登录账号：
-						<font class="c_ff0000"><b>ff0000</b>
+						<font class="c_ff0000"><b>${userNo}</b>
 						</font>
 					</p>
 					<p>
 						您的登录密码：
-						<font class="c_ff0000"><b>123456</b>
+						<font class="c_ff0000"><b>${password}</b>
 						</font>
 					</p>
 					<p>
 						<font class="c_2c6abf"><b>请保存好您的账号与密码！</b>
 						</font>
 					</p>
-					<p>
-						将在<strong id='time'>3</strong >秒钟为您跳转.....
-					</p>
+					<div class="btn_box">
+					<input onclick="javascript:location.href='${ctx}/portal/index.html'" id="sumbit_bt" type="button" class="tj" value="马上登录" />
+     				</div>
 				</div>
 
 
