@@ -2,21 +2,24 @@
 .top {
 	background-image: url(../images/top_bj.png);
 	background-repeat: repeat-x;
-	height: 105px;
+	height: 175px;
 }
 .top .top_970 {
 	width: 970px;
 	margin-right: auto;
 	margin-left: auto;
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+	height: 175px;
 }
 .top .top_970 .logo {
 	float: left;
 	padding-top: 14px;
 }
 .top .top_970 .top_right {
-	width: 240px;
+	width: 230px;
 	margin-left: auto;
-	padding-top: 14px;
+	padding-top: 100px;
 }
 .top .top_970 .top_right .i_s_d {
 	overflow: hidden;
@@ -72,17 +75,17 @@
 .nav_box{
 	background-image: url(../images/nav_a.png);
 	background-repeat: repeat-x;
-	height: 50px;
+	height: 40px;
 }
 .lanren{
 	width:970px;
-	height:50px;
-	line-height:50px;
+	height:40px;
+	line-height:40px;
 	margin:0 auto;
 }
 .lanren a{
-	height:50px;
-	line-height:50px;
+	height:40px;
+	line-height:40px;
 	color:#fff;
 	text-decoration:none;
 	display:block;
@@ -100,7 +103,7 @@
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	height: 49px;
+	height: 40px;
 }
 
 .lanren a:hover{
@@ -601,6 +604,7 @@
 	padding: 25px;
 	text-align: center;
 	color: #FFFFFF;
+	line-height: 28px;
 }
 /*会员注册*/
 .reg_location{
