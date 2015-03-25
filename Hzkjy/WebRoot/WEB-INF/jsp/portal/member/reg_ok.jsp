@@ -4,18 +4,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>广州市海珠科技产业园有限公司</title>
-		<link href="${ctx}/theme/portal/default/style/master.css"
-			rel="stylesheet" type="text/css" />
-		<link href="${ctx}/theme/portal/default/style/default.css"
-			rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
+	
 		<script>
-	$(function() {
-		var lanren = $(".lanren a");
-		lanren.click(function() {
-			$(this).addClass("thisclass").siblings().removeClass("thisclass");
-		});
-	});
+	
 	function delayURL() {//定时
 		var time = document.getElementById("time");
 		if (time.innerHTML > 0) {
@@ -29,8 +20,7 @@
 	</head>
 
 	<body>
-		<jsp:include page="/WEB-INF/jsp/portal/common/head.jsp" />
-		<div class="content">
+	<div class="content">
 			<div class="reg_location">
 				<h1>
 					会员注册成功
@@ -71,9 +61,5 @@
 			</div>
 		</div>
 
-		<!--bot-->
-		<div class="bot">
-			copyright ? 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号
-		</div>
 	</body>
 </html>
