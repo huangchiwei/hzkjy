@@ -150,7 +150,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="left_box2_2">
     <div class="l_b_l_t relative">
-     <h1>交流培训</h1>
+     <h1>政府政策</h1>
      <div class="more"><a href="#">更多&gt;&gt;</a></div>
     </div>
     <div class="l_b_l_b">
