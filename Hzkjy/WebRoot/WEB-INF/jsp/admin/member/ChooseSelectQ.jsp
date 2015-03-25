@@ -179,6 +179,25 @@ function loadPageLayer2(title,url){
 		  	});
 	document.getElementById("search_form").submit();
 }
+function pltzjf(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要通知的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/chooseSelect/Pltz.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
@@ -188,14 +207,11 @@ function loadPageLayer2(title,url){
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/chooseSelect/list/1.html" method="post">
     <h2>经济月报设置</h2>
-    <div class="div2">
-      <dl class="relative h30">
-        		 <dd > 
-        &nbsp;&nbsp;&nbsp;&nbsp;设置经济月报年月：<input id="fjjzbNy" name="fjjzbNy" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjjzbNy}"
+    <div class="div_input">
+        <em>设置经济月报年月：</em><input id="fjjzbNy" size=15 name="fjjzbNy" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjjzbNy}"
 								 class="input_a1" maxlength="20"/>
-								</dd>
-								 <dt><input id="" type="button" value="批量设置" class="initial" onclick="pltjsh()"/></dt>
-    </dl>
+								 <input id="" type="button" value="批量设置" class="initial" onclick="pltjsh()"/>
+								  <input id="" type="button" value="通知发送" class="initial" onclick="pltzjf()"/>
     </div>
     
     </form>
@@ -233,7 +249,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.qymc}</td>
 	        <td>${mb.address}</td>
 	        <td>${mb.zydy}</td>
-	        <td><fmt:formatDate value="${mb.rysj}"
+	        <td><fmt:formatDate value="${mb.qyrzsj}"
 								pattern="yyyy-MM-dd" /></td>
 	        <td><fmt:formatDate value="${mb.htqxf}"
 								pattern="yyyy-MM-dd" />至<fmt:formatDate value="${mb.htqxe}"

@@ -7,7 +7,8 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt</sql>
+	ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt,ChLjs,YfjfLjs,GxjscpsrLjs,GyzczLjs,GyzjzLjs,Tbr,Dwfzr,Tjfzr,Tbrlxdh,Tbrq</sql>
+
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from ecc_indicator
@@ -40,17 +41,33 @@
 			    <result column="Gyzjz" property="gyzjz" />
 			    <result column="JjzbNy" property="jjzbNy" />
 			    <result column="Shzt" property="shzt" />
+			     <result column="ChLjs" property="chLjs" />
+			      <result column="YfjfLjs" property="yfjfLjs" />
+			       <result column="GxjscpsrLjs" property="gxjscpsrLjs" />
+			        <result column="GyzczLjs" property="gyzczLjs" />
+			         <result column="GyzjzLjs" property="gyzjzLjs" />
+			          <result column="Tbr" property="tbr" />
+			           <result column="Dwfzr" property="dwfzr" />
+			            <result column="Tjfzr" property="tjfzr" />
+			             <result column="Tbrlxdh" property="tbrlxdh" />
+			             <result column="Tbrq" property="tbrq" />
+			
 			                                                      
    </resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt
+select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt,ChLjs,YfjfLjs,GxjscpsrLjs,GyzczLjs,GyzjzLjs,Tbr,Dwfzr,Tjfzr,Tbrlxdh,Tbrq
 	from  ecc_indicator
 		where 1 = 1	 
 		
  order by id desc
 	</select>			
-			
+			<select id="findByIds" resultMap="eccIndicatorMap">
+		select * from ecc_indicator where Id in
+			<foreach collection="array" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			</select>
 	<select id="sumCount" resultType="int" parameterType="java.util.Map">
 		select count(*) 
 		from  ecc_indicator
@@ -93,7 +110,7 @@ from ecc_indicator where 1=1
 		
 		
     <select id="getHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 
-       select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt
+       select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt,ChLjs,YfjfLjs,GxjscpsrLjs,GyzczLjs,GyzjzLjs,Tbr,Dwfzr,Tjfzr,Tbrlxdh,Tbrq
 	from  ecc_indicator
 		where 1 = 1		
 			<if test="jjzbNy != null and jjzbNy != ''">
@@ -144,7 +161,7 @@ from ecc_indicator where 1=1
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="eccIndicator">
-		insert into ecc_indicator(Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt)
+		insert into ecc_indicator(Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt,ChLjs,YfjfLjs,GxjscpsrLjs,GyzczLjs,GyzjzLjs,Tbr,Dwfzr,Tjfzr,Tbrlxdh,Tbrq)
 		values(
 		#{hybh} 
 		,#{rzqy} 		
@@ -166,6 +183,19 @@ from ecc_indicator where 1=1
 		, #{gyzjz}
 		, #{jjzbNy}
 		, #{shzt}
+		
+		, #{chLjs}
+		, #{yfjfLjs}
+		, #{gxjscpsrLjs}
+		, #{gyzczLjs}
+		, #{gyzjzLjs}
+		, #{tbr}
+		, #{dwfzr}
+		, #{tjfzr}
+		, #{tbrlxdh}
+		, #{tbrq}
+		
+		    	
 		  )
 		</insert>
 
@@ -191,7 +221,20 @@ from ecc_indicator where 1=1
 		Gyzcz=#{gyzcz},
 		Gyzjz=#{gyzjz},
 		JjzbNy=#{jjzbNy},
-		Shzt=#{shzt}
+		Shzt=#{shzt},
+		
+			ChLjs=#{chLjs},
+		    YfjfLjs=#{yfjfLjs},
+		    GxjscpsrLjs=#{gxjscpsrLjs},
+		    GyzczLjs=#{gyzczLjs},
+		    GyzjzLjs=#{gyzjzLjs},
+		    Tbr=#{tbr},
+		    Dwfzr=#{dwfzr},
+		    Tjfzr=#{tjfzr},
+		    Tbrlxdh=#{tbrlxdh},
+			Tbrq=#{tbrq}
+		
+		
 		where ID = #{id}
 	</update>
 	<!-- 删除 -->

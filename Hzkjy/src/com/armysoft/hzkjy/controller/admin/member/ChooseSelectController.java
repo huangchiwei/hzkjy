@@ -1,12 +1,16 @@
 package com.armysoft.hzkjy.controller.admin.member;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +18,10 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import org.armysoft.core.Pagination;
 import org.armysoft.springmvc.controller.BaseController;
@@ -35,10 +43,14 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.BsNews;
+import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.EccIndicator;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.BsNewsService;
+import com.armysoft.hzkjy.service.member.DbMessageService;
 import com.armysoft.hzkjy.service.member.EccIndicatorService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 
@@ -51,12 +63,17 @@ public class  ChooseSelectController extends BaseController {
 	private MemberBasicService service;
 	@Resource
 	private EccIndicatorService Eccservice;
+	@Resource
+	private DbMessageService dbservice;
+	@Resource
+	private BsNewsService Bsservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
         dateFormat.setLenient(true);   
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
+	private static String url = null;
 	/**
 	 * 条件分页查询
 	 * @param currentPage
@@ -177,7 +194,149 @@ public class  ChooseSelectController extends BaseController {
 		}
 		return "redirect://admin/memberBasic/list/1.html";
 	}
+	@RequestMapping("printHuiZhiList")
+	@ResponseBody
+	public void printHuiZhiList(String ids, HttpServletRequest request,
+			HttpServletResponse response) throws IOException, JRException {
+		String[] idArr = ids.split(",");
+		List<EccIndicator> stuList = Eccservice.findByIds(idArr);
+		this.exportPdf(stuList, request, response);
+	}
 	
+	@SuppressWarnings("unchecked")
+	public void exportPdf(List<EccIndicator> stuList,
+			HttpServletRequest request, HttpServletResponse response)
+			throws JRException, IOException {
+		List<Map> data = new ArrayList<Map>();
+		Map map = null;
+		for (EccIndicator stu : stuList) {
+			map = new HashMap();
+			initPdfMap(map, stu);
+			data.add(map);
+		}
+
+		File reportFile = new File(this.getUrl() + "HuiZhi_map.jasper");
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(
+				data);
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		// parameters.put("StuIds", dataSource);
+		byte[] bytes = JasperRunManager.runReportToPdf(reportFile
+				.getPath(), parameters, dataSource);
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		OutputStream ouputStream = null;
+		ouputStream = response.getOutputStream();
+		ouputStream.write(bytes);
+		ouputStream.flush();
+		ouputStream.close();
+		/*
+		JasperPrint jasperPrint = JasperFillManager.fillReport(reportFile
+				.getPath(), parameters, dataSource);
+		JRPdfExporter exporter = new JRPdfExporter();
+		resp.setContentType("application/pdf");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setHeader("Content-Disposition", "attachment; filename=\""
+				+ URLEncoder.encode("PDF报表", "UTF-8") + ".pdf\"");
+		OutputStream ouputStream = resp.getOutputStream();
+		exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+		exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, ouputStream);
+		exporter.exportReport();
+		ouputStream.close();
+		*/
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void initPdfMap(Map map, EccIndicator mb) {
+		map.put("Id", mb.getId());
+		map.put("Rzqy", mb.getRzqy() + "");
+		map.put("Hybh", mb.getHybh() + "");
+		String Hyfl = "";
+		if(mb.getHyfl().equals("1")){
+			Hyfl="生物/医药技术业";
+		}else if(mb.getHyfl().equals("2")){
+			Hyfl="电子与信息业";
+		}else if(mb.getHyfl().equals("3")){
+			Hyfl="新材料技术/新材料业";
+		}else if(mb.getHyfl().equals("4")){
+			Hyfl="展览服务";
+		}else if(mb.getHyfl().equals("5")){
+			Hyfl="其他";
+		}else if(mb.getHyfl().equals("6")){
+			Hyfl="工业";
+		}
+		map.put("Hyfl", Hyfl);
+		map.put("Zczj", mb.getZczj() + "");
+		map.put("JgmzsrBys", mb.getJgmzsrBys() + "");
+		map.put("JgmzsrLjs", mb.getJgmzsrLjs() + "");
+		map.put("LrzeBys", mb.getLrzeBys() + "");
+		map.put("LrzeLjs", mb.getLrzeLjs() + "");
+		map.put("NsBys", mb.getNsBys() + "");
+		map.put("NsLjs", mb.getNsLjs() + "");
+		map.put("LszeBys", mb.getLszeBys() + "");
+		map.put("LszeLjs", mb.getLszeLjs() + "");
+		map.put("Ch", mb.getCh() + "");
+		map.put("Zgs", mb.getZgs() + "");
+		map.put("Yfjf", mb.getYfjf()+ "");
+		map.put("Gxjscpsr", mb.getGxjscpsr() + "");
+		map.put("Gyzcz", mb.getGyzcz() + "");
+		map.put("Gyzjz", mb.getGyzjz() + "");
+		map.put("JjzbN", mb.getJjzbNy().substring(0, 4) + "");
+		map.put("JjzbY", mb.getJjzbNy().substring(5, 7) + "");
+		map.put("Shzt", mb.getShzt() + "");
+		map.put("ChLjs", mb.getChLjs() + "");
+		map.put("YfjfLjs", mb.getYfjfLjs() + "");
+		map.put("GxjscpsrLjs", mb.getGxjscpsrLjs() + "");
+		map.put("GyzczLjs", mb.getGyzczLjs() + "");
+		map.put("GyzjzLjs", mb.getGyzjzLjs() + "");
+		map.put("Tbr", mb.getTbr() + "");
+		map.put("Dwfzr", mb.getDwfzr() + "");
+		map.put("Tjfzr", mb.getTjfzr() + "");
+		map.put("Tbrlxdh", mb.getTbrlxdh() + "");
+		map.put("Tbrq", mb.getTbrq() + "");
+
+	}
+	
+	private String getUrl() {
+		if (url == null) {
+			String con1 = System.getProperty("Hzkjy");
+			String _url = con1 + "/jasper/hz/";
+			url = _url + "\\";
+		}
+		return url;
+	}
+	@RequestMapping("Pltz.html")
+	@ResponseBody
+	public String Pltz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			MemberBasic mdd= service.findByKey(Long.valueOf(idArr[id]));
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			bs.setTitle("经济月报通知");
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getQymc());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			DbMessage dbmessage=dbservice.findByKey(Long.valueOf(1));
+			String content=dbmessage.getMessage();
+			bs.setContent(content);
+			Bsservice.insert(bs);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
 	/**
 	 * 删除
 	 * @param key

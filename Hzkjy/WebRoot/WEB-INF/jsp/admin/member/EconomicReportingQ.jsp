@@ -25,6 +25,30 @@ $('#checkAll').click(function(){
 	$('input[name="qyId"]').attr("checked",this.checked);
 });
 });
+var myWindow;
+function printHuiZhiList(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要打印的企业。');
+		return;
+	}
+	ids = ids.substring(0,ids.length - 1);
+	myWindow = $.layer({
+	    type: 2,
+	    maxmin: true,
+	    shadeClose: true,
+	    title: "批量打印",
+	    shade: [0.1,'#fff'],
+	    offset: ['10px',''],
+	    area: ['500px', '400px'],
+	    iframe: {src: "${ctx}/admin/chooseSelect/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
+	});
+}
+
 function find(){    
 	$("#search_form").attr("action","${ctx}/admin/economicReporting/list/1.html");
 	document.getElementById("search_form").submit();
@@ -223,6 +247,7 @@ function pZShtt(){
           <input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/>
           <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
           <input id="" type="button" value="批量退回" class="initial" onclick="pZShth();"/>
+          <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
       
  
     </div>

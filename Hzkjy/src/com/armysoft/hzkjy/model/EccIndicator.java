@@ -88,6 +88,12 @@ public class  EccIndicator implements java.io.Serializable {
 	public void setCh(String ch) {
 		this.ch = ch;
 	}
+	public String getChLjs() {
+		return chLjs;
+	}
+	public void setChLjs(String chLjs) {
+		this.chLjs = chLjs;
+	}
 	public String getZgs() {
 		return zgs;
 	}
@@ -100,11 +106,23 @@ public class  EccIndicator implements java.io.Serializable {
 	public void setYfjf(String yfjf) {
 		this.yfjf = yfjf;
 	}
+	public String getYfjfLjs() {
+		return yfjfLjs;
+	}
+	public void setYfjfLjs(String yfjfLjs) {
+		this.yfjfLjs = yfjfLjs;
+	}
 	public String getGxjscpsr() {
 		return gxjscpsr;
 	}
 	public void setGxjscpsr(String gxjscpsr) {
 		this.gxjscpsr = gxjscpsr;
+	}
+	public String getGxjscpsrLjs() {
+		return gxjscpsrLjs;
+	}
+	public void setGxjscpsrLjs(String gxjscpsrLjs) {
+		this.gxjscpsrLjs = gxjscpsrLjs;
 	}
 	public String getGyzcz() {
 		return gyzcz;
@@ -112,17 +130,65 @@ public class  EccIndicator implements java.io.Serializable {
 	public void setGyzcz(String gyzcz) {
 		this.gyzcz = gyzcz;
 	}
+	public String getGyzczLjs() {
+		return gyzczLjs;
+	}
+	public void setGyzczLjs(String gyzczLjs) {
+		this.gyzczLjs = gyzczLjs;
+	}
 	public String getGyzjz() {
 		return gyzjz;
 	}
 	public void setGyzjz(String gyzjz) {
 		this.gyzjz = gyzjz;
 	}
+	public String getGyzjzLjs() {
+		return gyzjzLjs;
+	}
+	public void setGyzjzLjs(String gyzjzLjs) {
+		this.gyzjzLjs = gyzjzLjs;
+	}
 	public String getJjzbNy() {
 		return jjzbNy;
 	}
 	public void setJjzbNy(String jjzbNy) {
 		this.jjzbNy = jjzbNy;
+	}
+	public String getShzt() {
+		return shzt;
+	}
+	public void setShzt(String shzt) {
+		this.shzt = shzt;
+	}
+	public String getTbr() {
+		return tbr;
+	}
+	public void setTbr(String tbr) {
+		this.tbr = tbr;
+	}
+	public String getDwfzr() {
+		return dwfzr;
+	}
+	public void setDwfzr(String dwfzr) {
+		this.dwfzr = dwfzr;
+	}
+	public String getTjfzr() {
+		return tjfzr;
+	}
+	public void setTjfzr(String tjfzr) {
+		this.tjfzr = tjfzr;
+	}
+	public String getTbrlxdh() {
+		return tbrlxdh;
+	}
+	public void setTbrlxdh(String tbrlxdh) {
+		this.tbrlxdh = tbrlxdh;
+	}
+	public String getTbrq() {
+		return tbrq;
+	}
+	public void setTbrq(String tbrq) {
+		this.tbrq = tbrq;
 	}
 	private   String hybh;
       private String rzqy;
@@ -137,17 +203,22 @@ public class  EccIndicator implements java.io.Serializable {
       private String lszeBys; 
       private String lszeLjs;
       private String ch; 
+      private String chLjs; 
       private String zgs;
       private String yfjf;
+      private String yfjfLjs;
       private String gxjscpsr;
+      private String gxjscpsrLjs;
       private String gyzcz;
+      private String gyzczLjs;
       private String gyzjz;
+      private String gyzjzLjs;
       private String jjzbNy;
       private String shzt;
-	public String getShzt() {
-		return shzt;
-	}
-	public void setShzt(String shzt) {
-		this.shzt = shzt;
-	}
+      private String tbr;
+      private String dwfzr;
+      private String tjfzr;
+      private String tbrlxdh;
+      private String tbrq;
+	
 }

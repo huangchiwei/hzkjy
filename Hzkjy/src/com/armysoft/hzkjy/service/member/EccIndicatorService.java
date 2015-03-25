@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.EccIndicator;
 import com.armysoft.hzkjy.model.MemberBasic;
+import com.armysoft.hzkjy.model.MemberRental;
 /***
  * 
  * 
@@ -47,7 +48,9 @@ public class EccIndicatorService extends BaseDao {
 		return super.nativeSelectOne(nameSpace + ".findById", id);
 	}
 	
-	
+	public List<EccIndicator> findByIds(String[] idArr) {
+		return super.nativeList(nameSpace + ".findByIds", idArr);
+	}
 	
 	public EccIndicator findByHybh(String hybh) {
 		return super.nativeSelectOne(nameSpace + ".findByHybh", hybh);
