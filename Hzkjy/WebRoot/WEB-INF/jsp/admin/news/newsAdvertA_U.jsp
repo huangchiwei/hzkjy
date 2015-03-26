@@ -30,7 +30,7 @@ html { overflow:-moz-scrollbars-vertical;}
 <body>
 <div class="content_box">
     <div class="btn_box">
-  <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/news/listAdvert/1.html'"/>
+  <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/newsAdvert/list/1.html'"/>
    </div>
 <form id="add_form" action='${ctx }/admin/newsAdvert/save.html'  method="post" enctype="multipart/form-data">
 	<input type="hidden" name="type" value="${type}"/>
@@ -41,19 +41,26 @@ html { overflow:-moz-scrollbars-vertical;}
    <h2>首页广告&gt;&gt;${type == 'add' ? '添加' : '修改'}${category.cateName }</h2>
    <table width="98%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-     <th >标题：</th>
+     <th width="100px;">标题：</th>
      <td>
      	<input id="title" name="title" type="text" value="${entity.title}"  />
      </td>
-   
-	  <th>备注</th>
-	  <td colspan="3"><textarea id="remark" name="remark" rows="3" cols="120" >${entity.content }</textarea>
+   </tr>
+   <tr>
+     <th width="100px;">链接地址：</th>
+     <td>
+     	<input id="linkUrl" name="linkUrl" type="text" value="${entity.linkUrl}"  />
+     </td>
+   </tr>
+   <tr>
+	  <th width="100px;">备注</th>
+	  <td ><textarea id="remark" name="remark" rows="3" cols="40" >${entity.remark }</textarea>
 	  </td>
 	  </tr>
      
   <tr >
-      <th>附件上传：</th>
-     <td  colspan="6">
+      <th width="100px;">附件上传：</th>
+     <td  >
      <input  id="flag" name="flag" type="hidden"   value="0"/>
       <input  id="file" name="file" type="file"  onchange="changeFlag()" value="${entity.path}"/>
       <font color="red"><c:if test="${ empty entity.path }">未上传附件</c:if>

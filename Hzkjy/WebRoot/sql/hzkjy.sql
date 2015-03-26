@@ -281,6 +281,9 @@ INSERT INTO `sys_module` VALUES ('Lev2_40','经济月报填报','admin/economicR
 INSERT INTO `sys_module` VALUES ('Lev2_41','知识产权统计','admin/memberIntellectualPro/inteProCount.html',1,'Lev1_12',2);
 INSERT INTO `sys_module` VALUES ('Lev2_42','科技项目','admin/memberIntellectualPro/list/1.html',2,'Lev1_12',2);
 INSERT INTO `sys_module` VALUES ('Lev2_43','专利','admin/memberPatent/list/1.html',3,'Lev1_12',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev2_49','首页广告','admin/newsAdvert/list/1.html',1,'Lev1_13',2);
+INSERT INTO `sys_module` (`ModuleNo`,`ModName`,`Url`,`OrderNo`,`ParentNo`,`Level`) VALUES ('Lev1_13','广告管理',NULL,12,NULL,1);
+
 
 
 CREATE TABLE `member_intellectual_pro` (
@@ -552,3 +555,24 @@ CREATE TABLE `incubated_enterprises` (
 `Rjzzq` varchar(200) default NULL COMMENT '软件著作权（个）',
   PRIMARY KEY  (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `news_advert` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) default NULL COMMENT '广告标题',
+  `path` varchar(255) default NULL COMMENT '图片存储相对路径',
+  `remark` varchar(255) default NULL COMMENT '备注',
+  `updateTime` datetime default NULL COMMENT '更新时间',
+  `linkUrl` varchar(255) default NULL COMMENT '链接地址',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='广告';
+
+#
+# Dumping data for table news_advert
+#
+
+INSERT INTO `news_advert` (`id`,`title`,`path`,`remark`,`updateTime`,`linkUrl`) VALUES (1,'广告1','/userfiles/advertFile/1427376871703_banner_index_1.jpg','广告1','2015-03-26 21:34:16',NULL);
+INSERT INTO `news_advert` (`id`,`title`,`path`,`remark`,`updateTime`,`linkUrl`) VALUES (2,'广告2','/userfiles/advertFile/1427376890656_banner_index_2.jpg','广告2','2015-03-26 21:34:35',NULL);
+INSERT INTO `news_advert` (`id`,`title`,`path`,`remark`,`updateTime`,`linkUrl`) VALUES (3,'广告3','/userfiles/advertFile/1427376901875_banner_index_3.jpg','广告3','2015-03-26 21:34:46',NULL);
+INSERT INTO `news_advert` (`id`,`title`,`path`,`remark`,`updateTime`,`linkUrl`) VALUES (4,'广告4','/userfiles/advertFile/1427376912921_banner_index_4.jpg','广告4','2015-03-26 21:34:57',NULL);

@@ -24,7 +24,7 @@ html { overflow:-moz-scrollbars-vertical;}
 		      type : 4,
 		      btn : ['是','否'],
 		      yes : function(){
-		          location.href='${ctx}/admin/news/delete/' + id + '.html?cateCode=${category.cateCode }';
+		          location.href='${ctx}/admin/newsAdvert/delete/' + id + '.html';
 		      },
 		      no : function(index){
 		         layer.close(index);
@@ -41,14 +41,14 @@ html { overflow:-moz-scrollbars-vertical;}
 <div class="content_box">
   <div class="btn_box">
   	
-  		<input  id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/news/add/new.html?cateCode=${cateCode}'"/>
+  		<input  id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/newsAdvert/add/new.html'"/>
      
   </div>
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/manager/news/list/1.html" method="post">
-  	<input type="hidden" name="cateCode" value="${category.cateCode }"/>
+  	<form id="search_form" action="${ctx}/manager/newsAdvert/list/1.html" method="post">
+  	
   	  </form>
-    <h2>${category.remark }&gt;&gt;${category.cateName}</h2>
+    <h2>广告管理&gt;&gt;首页广告</h2>
  
   <br/>
       <table width="98%" border="0" cellpadding="0" cellspacing="1">
@@ -56,11 +56,10 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	<tr>
 	  		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 	        <th>标题</th>
-	        <th>文档原始时间</th>
-	        <th>阅读次数</th>
-	     
-	        <th>创建用户</th>
-	     
+	          <th>链接地址</th>
+	        <th>备注</th>
+	        <th>文档修改时间</th>
+	        <th>图片下载</th>    
 	        <th width="11%">操作</th>
 	  	</tr>
 	  </thead>
@@ -71,16 +70,18 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <tr>
 	<td>${sta.index+1}</td>
 	        <td>${o.title}</td>
-	        <td><fmt:formatDate value="${o.realTime}"
-								pattern="yyyy-MM-dd" /></td>
-	        <td>${o.clicks}</td>
+	        <td>${o.linkUrl}</td>
+	         <td>${o.remark}</td>
+	        <td><fmt:formatDate value="${o.updateTime}"
+								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+	       
 	        
-	        <td>${o.createUser}</td>
+	        <td><a href="${ctx}/admin/newsAdvert/downLoad/${o.id}.html">下载</a></td>
 	   
 	       
 	        <td>
 	       <div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/news/update/${o.id}.html?cateCode=${cateCode}'"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/newsAdvert/update/${o.id}.html'"/>
 		          	</div>
 	          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${o.id}')"/>

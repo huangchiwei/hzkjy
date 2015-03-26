@@ -26,7 +26,9 @@ public class NewsAdvertService extends BaseDao {
 	public List<Map<String, Object>> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
-	
+	public List<Map<String, Object>> getAll() {
+		return super.nativeList(nameSpace+".getAll", null);
+	}
 	/**
 	 * ���id��ѯ
 	 * @param id

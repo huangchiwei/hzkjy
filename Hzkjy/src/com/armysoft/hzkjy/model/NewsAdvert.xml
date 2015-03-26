@@ -12,6 +12,10 @@
 		
 		limit #{pager.startRowNumber}, #{pager.pageSize}
 	</select>
+		<select id="getAll" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from news_advert
+		
+	</select>
 	<select id="pageCount" resultType="int" parameterType="java.util.Map">
 		select count(*)
 		from news_advert
@@ -23,8 +27,9 @@
 	<!-- 保存 -->
 	<insert id="insert" parameterType="news">
 		insert into
-				news_advert(title,path,remark,updateTime)
+				news_advert(title,linkUrl,path,remark,updateTime)
 				values(#{title}
+				,linkUrl=#{linkUrl}
 				, #{path}
 				, #{remark}
 				, now()
@@ -36,7 +41,11 @@
 	<update id="update" parameterType="news">
 		update news_advert set
 		title=#{title}
+		,linkUrl=#{linkUrl}
+		<if test="path!=null and path!=''">
 		,path=#{path}
+		</if>
+		
 		,remark=#{remark}
 		, updateTime=now()
 	

@@ -70,7 +70,7 @@ public class  NewsAdvertController extends BaseController {
       
 		model.addAttribute("page", pager);
 
-		return "/admin/news/newsQ";
+		return "/admin/news/newsAdvertQ";
 	}
 
 	@PermissionsAnno("newsAdvert_add")
@@ -78,7 +78,7 @@ public class  NewsAdvertController extends BaseController {
 	public String toAdd(HttpServletRequest request,Model model) {
 		model.addAttribute("type", "add");
 	
-		return "/admin/news/newsA_U";
+		return "/admin/news/newsAdvertA_U";
 	}
 	
 	
@@ -95,7 +95,7 @@ public class  NewsAdvertController extends BaseController {
 		model.addAttribute("entity", newsAdvertService.findByKey(key));
 		 
 		model.addAttribute("type", "update");
-		return "/admin/news/newsA_U";
+		return "/admin/news/newsAdvertA_U";
 	}
 	@PermissionsAnno("newsAdvert_save")
 	@RequestMapping(value = SAVE)
@@ -133,10 +133,10 @@ public class  NewsAdvertController extends BaseController {
 	  {
 		  try
 		    {
-			  Map<String, Object> news=newsAdvertService.findByKey(id);
+			  Map<String, Object> advert=newsAdvertService.findByKey(id);
 		      response.setContentType("application/x-download");
-		      String realPath = request.getSession().getServletContext().getRealPath(news.get("filePath").toString());
-		     String fileName=news.get("filePath").toString().substring(news.get("filePath").toString().lastIndexOf("/")+1);
+		      String realPath = request.getSession().getServletContext().getRealPath(advert.get("path").toString());
+		     String fileName=advert.get("path").toString().substring(advert.get("path").toString().lastIndexOf("/")+1);
 		     // realPath = URLEncoder.encode(realPath, "UTF-8");
 		      response.addHeader("Content-Disposition", "attachment;filename=" +fileName );
 		      OutputStream out = response.getOutputStream();

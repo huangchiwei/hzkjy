@@ -27,6 +27,9 @@ public class NewsService extends BaseDao {
 	public List<Map<String, Object>> getByPage(Map<String, Object> params, Pagination pager) {
 		return super.getPageList(nameSpace, params, pager);
 	}
+	public List<Map<String, Object>> getLikePrefixCode(Map<String, Object> params) {
+		return super.nativeList(nameSpace+".getLikePrefixCode", params);
+	}
 	public Map<String, Object> getCategory(String cateCode) {
 		return super.nativeSelectOne(nameSpace + ".getCategory", cateCode);
 	}

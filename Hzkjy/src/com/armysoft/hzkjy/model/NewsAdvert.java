@@ -11,6 +11,7 @@ public class NewsAdvert implements java.io.Serializable {
 
 	private Long id;
 	private String title;
+	private String linkUrl;
 	private String path;
 	private Date updateTime;
 	private String remark;
@@ -43,6 +44,12 @@ public class NewsAdvert implements java.io.Serializable {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getLinkUrl() {
+		return linkUrl;
+	}
+	public void setLinkUrl(String linkUrl) {
+		this.linkUrl = linkUrl;
 	}
 
 	
