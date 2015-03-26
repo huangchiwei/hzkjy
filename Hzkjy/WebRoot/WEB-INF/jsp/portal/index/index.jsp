@@ -4,16 +4,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>广州市海珠科技产业园有限公司</title>
-<link href="${ctx}/theme/portal/default/style/master.css" rel="stylesheet" type="text/css" />
+<%--<link href="${ctx}/theme/portal/default/style/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/portal/default/style/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="${ctx}/theme/portal/default/js/common.js"></script>
+--%><script type="text/javascript" src="${ctx}/theme/portal/default/js/common.js"></script>
 <script>
 $(function(){
-	var lanren = $(".lanren a");
+	/*var lanren = $(".lanren a");
 	lanren.click(function(){
 		$(this).addClass("thisclass").siblings().removeClass("thisclass");
-	});
+	});*/
 	$('#login_btn').click(function(){
 		var msg = '';
 		if($.trim($("#userNo").val()) == ''){
@@ -51,8 +51,8 @@ $(function(){
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/jsp/portal/common/head.jsp" />
-<!--变化图样式-->
+<%--<jsp:include page="/WEB-INF/jsp/portal/common/head.jsp" />
+--%><!--变化图样式-->
 <div class="banner_index">
   <a href="javascript:void(0);" class="btn btnPre" id="banner_index_pre"></a>
   <a href="javascript:void(0);" class="btn btnNext" id="banner_index_next"></a>
@@ -150,7 +150,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="left_box2_2">
     <div class="l_b_l_t relative">
-     <h1>交流培训</h1>
+     <h1>政府政策</h1>
      <div class="more"><a href="#">更多&gt;&gt;</a></div>
     </div>
     <div class="l_b_l_b">
@@ -239,6 +239,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
  </div>
 </div>
 <!--bot-->
-<div class="bot">copyright ? 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号</div>
-</body>
+<%--<div class="bot">copyright ? 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号</div>
+
+--%></body>
 </html>
