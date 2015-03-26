@@ -8,7 +8,7 @@
 <title>userList</title>
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/admin/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/jsp/base/default_tr.js"></script>
@@ -16,6 +16,31 @@
 html { overflow:-moz-scrollbars-vertical;}
 </style>
 <script type="text/javascript">
+$(document).ready(function(){
+$('#checkAll').click(function(){
+	$('input[name="qyId"]').attr("checked",this.checked);
+});
+});
+
+function pltjsh(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要重置的用户。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/sysUser/ZShtg.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 function delConfirm(userNo){
 	$.layer({
 	  shade : [0], //不显示遮罩
@@ -37,12 +62,17 @@ function delConfirm(userNo){
 function changeStatus(userNo,status){
 	location.href='${ctx}/admin/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 }
+
+function find(){    
+	$("#search_form").attr("action","${ctx}/admin/sysUser/list/1.html");
+	document.getElementById("search_form").submit();
+    }   
 </script>
 </head>
 
 <body>
+<div class="admin_table">
 <div class="content_box">
-  <div class="list_info relative">
   <div class="btn_box">
   	<pm:hasPermission permValue="user_save">
   		<input id="add_bt" type="button" value="添加" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/sysUser/add/new.html'"/>
@@ -60,10 +90,9 @@ function changeStatus(userNo,status){
         </dd>
         <dt>手机：</dt>
         <dd class="w_bf_20">
-          <input name="phone" type="text" class="input_a1" value="${tempUser.phone}"/>
-          <div class="search">
-            <input id="search_bt" name="input2" type="image" src="${ctx}/theme/admin/default/images/search.png" align="left" />
-          </div>
+          <input name="phone" type="text" class="input_a1" value="${tempUser.phone}"/> 
+            <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+           <input id="" type="button" value="重置密码" class="initial" onclick="pltjsh()"/>
         </dd>
       </dl>
     </div>
@@ -71,7 +100,7 @@ function changeStatus(userNo,status){
    <table width="98%" width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
-	  		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+	  		<th><input type="checkbox" id="checkAll"/>全选</th>
 	        <th>用户编号</th>
 	        <th>用户名</th>
 	        <th>性别</th>
@@ -95,7 +124,7 @@ function changeStatus(userNo,status){
 	   </pm:hasPermission>
       <c:forEach items="${users}" var="user" varStatus="sta">
 	      <tr>
-	      	<td>${sta.index + 1}</td>
+	      	 <td><input type="checkbox" value="${user.id}" name="qyId"/></td>
 	        <td>${user.userNo}</td>
 	        <td>${user.userName}</td>
 	        <td>${user.sex == 1 ? '男' : '女'}</td>

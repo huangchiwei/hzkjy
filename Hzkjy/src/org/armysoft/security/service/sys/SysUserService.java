@@ -11,6 +11,8 @@ import org.armysoft.ibatis.dao.BaseDao;
 import org.armysoft.security.model.sys.SysUser;
 import org.springframework.stereotype.Service;
 
+import com.armysoft.hzkjy.model.MemberRental;
+
 /**
  * 用户Service
  * 
@@ -42,7 +44,9 @@ public class SysUserService extends BaseDao {
 	public SysUser getByUserNo(String userNo) {
 		return super.nativeSelectOne(nameSpace + ".getByUserNo", userNo);
 	}
-
+	public SysUser findByKey(Long id) {
+		return super.nativeSelectOne(nameSpace + ".findById", id);
+	}
 	/**
 	 * 添加用户
 	 * 
@@ -63,6 +67,9 @@ public class SysUserService extends BaseDao {
 		sysRoleService.insertUserRole(user.getUserNo(), addRoles);
 		sysRoleService.deleteUserRole(user.getUserNo(), delRoles);
 		super.nativeUpdate(nameSpace + ".update", user);
+	}
+	public void updatepassword(SysUser user) {
+		super.nativeUpdate(nameSpace + ".modifyPwd", user);
 	}
 	public void updateUserCenter(SysUser user) {
 		

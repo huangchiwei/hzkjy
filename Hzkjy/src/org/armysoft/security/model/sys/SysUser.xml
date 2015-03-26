@@ -34,6 +34,10 @@
 		<result column="Status" property="status" />
 		<result column="CreateDate" property="createDate" />
 	</resultMap>
+	
+	   <select id="findById" resultMap="sysUserPageMap" parameterType="Long">
+		select * from sys_user where id = #{id}
+	</select>
 	<resultMap type="sysUser" id="sysUserPageMap" extends="sysUserMap">
 		<association property="creater" column="Creater" javaType="sysUser" 
 		 select="SysUserOpt.getByUserNo"/>

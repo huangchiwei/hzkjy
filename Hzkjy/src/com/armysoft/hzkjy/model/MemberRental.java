@@ -50,6 +50,13 @@ public class MemberRental implements java.io.Serializable {
 	private String hjjeznj;
 	private String bz;
 	private String qydfdj;
+	private String xxbz;
+	public String getXxbz() {
+		return xxbz;
+	}
+	public void setXxbz(String xxbz) {
+		this.xxbz = xxbz;
+	}
 	public String getQydfdj() {
 		return qydfdj;
 	}

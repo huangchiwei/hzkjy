@@ -8,7 +8,7 @@
 <title>userList</title>
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-
+<link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
@@ -197,6 +197,7 @@ function loadPageLayer2(title,url){
     </div>
     
     </form>
+    
      <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
@@ -270,8 +271,8 @@ function loadPageLayer2(title,url){
 		</tr>
 	</tfoot>
     </table>
+    </div>
   </div>
 </div>
-  </div>
 </body>
 </html>
