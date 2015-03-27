@@ -7,9 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>content</title>
-<link href="${ctx}/theme/default/css/master.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/default/css/font.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/adminthemes/css/style.css" type="text/css"
+			rel="stylesheet" />
+		<link href="${ctx}/adminthemes/default/css/master.css"
+			rel="stylesheet" type="text/css" />
+		<link href="${ctx}/adminthemes/default/css/default.css"
+			rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
@@ -134,21 +137,19 @@ html { overflow:-moz-scrollbars-vertical;}
 
 <body>
 
-<div class="content_box">
-    <div class="btn_box">
-  <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:history.back(-1);"/>
-   </div>
+<div class="admin_table">
 <form id="add_form" name="add_form" action='${ctx}/admin/memberIntellectualPro/save.html' method="post">
 <input type="hidden" name="type" value="${type}"/>
 <input type="hidden" name="id" value="${entity.Id}"/>
   <div class="add_info">
 
    <h2>${type=='A'?'添加':'修改' }科技项目</h2>
-   <table width="98%" border="0" cellspacing="0" cellpadding="0">
+    <table id="questTable" border="0" cellspacing="0" cellpadding="0"
+					class="ListTable">
     <tr>
      <th class="w100">项目级别:</th>
      <td>
-     <select name="projectLevel">
+     <select name="projectLevel" class="input_a1"  >
  		<option value="0" <c:if test="${entity.ProjectLevel==0}">selected="selected"</c:if>>国家级</option>    
  		<option value="1" <c:if test="${entity.ProjectLevel==1}">selected="selected"</c:if>>省级</option>  
  		<option value="2" <c:if test="${entity.ProjectLevel==2}">selected="selected"</c:if>>市级</option>  
@@ -159,12 +160,12 @@ html { overflow:-moz-scrollbars-vertical;}
      
      <th>项目类别：</th>
      <td>
-     	<input id="projectType" name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/><font color="red">*</font>
+     	<input id="projectType" class="input_a1"   name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/><font color="red">*</font>
      </td>
    
 	     <th>申报额度(万)：</th>
 	     <td>
-	     <input id="applyAmount" name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   /><font color="red">*</font>
+	     <input id="applyAmount" class="input_a1"   name="applyAmount" type="text" value="${entity.ApplyAmount}" maxlength="100"   /><font color="red">*</font>
 	     </td>
 	     
        
@@ -173,17 +174,17 @@ html { overflow:-moz-scrollbars-vertical;}
 	    <tr>
 	      <th> 年份：</th>
      <td>
- <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+ <input id="year" name="year"  class="input_a1"   onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
      	value="${entity.Year}" maxlength="10"/><font color="red">*</font>
      	
      </td>
     <th> 月份：</th>
-    <td><select name="month" id="month">
+    <td><select name="month" id="month" class="input_a1"  >
     <option value="0" <c:if test="${entity.Month==0}">selected="selected"</c:if>>1~6月</option>
     <option value="1" <c:if test="${entity.Month==1}">selected="selected"</c:if>>7~12月</option></select></td>
      <th>是否立项：</th>
 	     <td>
-	       <select name="isSetUp">
+	       <select name="isSetUp" class="input_a1"  >
  		<option value="2" <c:if test="${entity.IsSetUp==1}">selected="selected"</c:if>>是</option>    
  		<option value="1" <c:if test="${entity.IsSetUp==0}">selected="selected"</c:if>>否</option>  
  		<option value="0" <c:if test="${entity.IsSetUp==0}">selected="selected"</c:if>>未知</option>  
@@ -199,7 +200,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 </td>
 	   	   <th>项目名称：</th>
      <td >
-    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}" /><font color="red">*</font>
+    	<input id="projectName" name="projectName" type="text" value="${entity.ProjectName}"  class="input_a1"  /><font color="red">*</font>
      </td>
     <c:if test="${cookie.admin_key.value=='admin'}">
       <th>所属企业</th>
