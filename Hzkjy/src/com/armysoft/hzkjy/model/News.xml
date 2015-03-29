@@ -18,7 +18,7 @@
 		</if>
 	</sql>
 	<select id="getLikePrefixCode" resultType="java.util.Map" parameterType="java.util.Map">
-		select * from news where cateCode like #{prefixCode}+'%'
+		select * from news where cateCode like CONCAT( #{prefixCode}, '%')
 		limit 0, #{pageSize}
 	</select>
 	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
