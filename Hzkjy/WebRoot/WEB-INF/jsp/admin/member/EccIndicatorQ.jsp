@@ -497,6 +497,75 @@ function loadPageLayer2(title,url){
       </c:forEach>
 	      </tr>
       </c:if>
+      <c:if test="${Hyfl7count!='0'}">
+      <c:forEach items="${Hyfl7List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl7count}">出园企业</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+       <tr>
+	      <td colspan="3">小计</td>
+	      
+	      <c:forEach items="${countHyfl7List}" var="mb" varStatus="sta">
+	          <td>${mb.sumZczj }</td>
+	        <td>${mb.sumJgmzsrBys}</td> 
+	        <td>${mb.sumJgmzsrLjs}</td>
+	        <td>${mb.sumLrzeBys}</td>  
+	        <td>${mb.sumLrzeLjs}</td>
+	        <td>${mb.sumNsBys}</td>    
+	        <td>${mb.sumNsLjs}</td>
+	        <td>${mb.sumLszeBys}</td>    
+	        <td>${mb.sumLszeLjs}</td>     
+	         <td>${mb.sumCh}</td>
+	         <td>${mb.sumZgs}</td>
+	         <td>${mb.sumYfjf}</td>
+	         <td>${mb.sumGxjscpsr}</td>
+	         <td>${mb.sumGyzcz}</td>
+	         <td>${mb.sumGyzjz}</td>
+      </c:forEach>
+	      </tr>
+      </c:if>
+      <tr>
+	      <td colspan="3">合计</td>
+	      
+	      <c:forEach items="${countHyfl8List}" var="mb" varStatus="sta">
+	          <td>${mb.sumZczj }</td>
+	        <td>${mb.sumJgmzsrBys}</td> 
+	        <td>${mb.sumJgmzsrLjs}</td>
+	        <td>${mb.sumLrzeBys}</td>  
+	        <td>${mb.sumLrzeLjs}</td>
+	        <td>${mb.sumNsBys}</td>    
+	        <td>${mb.sumNsLjs}</td>
+	        <td>${mb.sumLszeBys}</td>    
+	        <td>${mb.sumLszeLjs}</td>     
+	         <td>${mb.sumCh}</td>
+	         <td>${mb.sumZgs}</td>
+	         <td>${mb.sumYfjf}</td>
+	         <td>${mb.sumGxjscpsr}</td>
+	         <td>${mb.sumGyzcz}</td>
+	         <td>${mb.sumGyzjz}</td>
+      </c:forEach>
+	      </tr>
 	</tbody>
     </table>
   </div>

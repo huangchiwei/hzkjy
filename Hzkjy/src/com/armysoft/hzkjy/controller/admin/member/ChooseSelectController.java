@@ -358,10 +358,11 @@ public class  ChooseSelectController extends BaseController {
 			MemberBasic mdd= service.findByKey(Long.valueOf(idArr[id]));
 			EccIndicator ert= new EccIndicator();
 			ert.setHybh(mdd.getHybh());
-			ert.setHyfl(mdd.getQydjzclx());
+			ert.setHyfl(mdd.getQyssjsly());
 			ert.setJjzbNy(settime);
 			ert.setRzqy(mdd.getQymc());
 			ert.setZczj(mdd.getZczb());
+			ert.setZt(mdd.getZt());
 			ert.setCh("0");
 			ert.setGxjscpsr("0");
 			ert.setGyzcz("0");
