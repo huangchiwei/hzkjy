@@ -8,6 +8,7 @@
 <title>userList</title>
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
@@ -103,25 +104,23 @@ html { overflow:-moz-scrollbars-vertical;}
   <div class="list_info">
  
     <h2>科技项目列表</h2>
-        <div class="div2">
-      <dl class="relative h30">
-        <dd > 
-        <form id="search_form" action="${ctx}/admin/memberIntellectualPro/list/1.html" method="post">
-        &nbsp;&nbsp;&nbsp;&nbsp;年份： <input id="year" name="year"  class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+     <form id="search_form" action="${ctx}/admin/memberIntellectualPro/list/1.html" method="post">
+       <div class="div_input">
+       
+       <em>年份：</em> <input id="year" name="year"   class="input_a1" size="15" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
      	value="${params.year}" maxlength="10"/>
-     	月份：<select name="month" id="month">
+     	<em>月份：</em><select name="month" id="month" class="input_a1">
      	<option value="0" <c:if test="${params.month==0}">selected="selected"</c:if>>1~6月</option>
      	<option value="1" <c:if test="${params.month==1}">selected="selected"</c:if>>7~12月</option>
      	</select>
-         </form>	</dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-                 
-           <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-      <c:if test="${cookie.admin_key.value=='admin'}"><dt><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/></dt>
-          <dt><input id="" type="button" value="批量退回" class="initial" onclick="rollBack();"/></dt>
+       
+         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+          <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+      <c:if test="${cookie.admin_key.value=='admin'}"><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/>
+         <input id="" type="button" value="批量退回" class="initial" onclick="rollBack();"/>
           </c:if>
-    </dl>
     </div>
+      </form>
 <br/>
     
  
@@ -131,12 +130,12 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	<th><input type="checkbox" id="checkAll"/>全选</th>
 	  	<th>序号</th>
 	  	 <th>企业名称</th> 
-	        <th width="60px;">项目级别</th>
+	        <th>项目级别</th>
 	      
 	        <th >项目名称</th>
-	       <th width="60px;">立项</th>
-	      <th width="60px;">审核状态</th>
-	        <th width="60">操作</th>
+	       <th>立项</th>
+	      <th>审核状态</th>
+	        <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>

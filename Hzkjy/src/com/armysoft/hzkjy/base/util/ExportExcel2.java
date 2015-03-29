@@ -53,7 +53,7 @@ public class ExportExcel2 {
 	 * @return    
 	 * boolean
 	 */
-	public  boolean exportExcel_Applicant(HttpServletRequest request,HttpServletResponse response,List list,List list2,List list3,List list4,List list5,List list6,String fjjzbNy ) {		
+	public  boolean exportExcel_Applicant(HttpServletRequest request,HttpServletResponse response,List list,List list2,List list3,List list4,List list5,List list6,List list7,List list8,String fjjzbNy ) {		
 		try{ 
 			int columnCount=columnField.length;
 			OutputStream os = response.getOutputStream();// 取得输出�?  
@@ -173,7 +173,15 @@ public class ExportExcel2 {
 						  }else{
 					   value.append(p.get(columnField[j]).toString());
                     }
-				    wsheet.addCell(new Label(j, i+6, value.toString(),wcfFQ));   //姓名
+						if(j!=0){
+							wsheet.addCell(new Label(j, i+6, value.toString(),wcfFQ));
+						}
+						
+				       //姓名
+				}
+				if(i==list.size()-1){
+					wsheet.mergeCells(0, 6, 0, i+6);
+					 wsheet.addCell(new Label(0, 6, "生物/医药技术业",wcfFQ));   
 				}
 			}  
 			}
@@ -188,7 +196,15 @@ public class ExportExcel2 {
 						  }else{
 					   value.append(p2.get(columnField[j2]).toString());
                     }
-				    wsheet.addCell(new Label(j2, i2+6+list.size(), value.toString(),wcfFQ));   //姓名
+						
+						if(j2!=0){
+							wsheet.addCell(new Label(j2, i2+6+list.size(), value.toString(),wcfFQ));
+						}
+				   
+				}
+				if(i2==list2.size()-1){
+					wsheet.mergeCells(0, 6+list.size(), 0, i2+6+list.size());
+					 wsheet.addCell(new Label(0, 6+list.size(), "电子与信息业",wcfFQ));   
 				}
 			}
 			}
@@ -202,7 +218,14 @@ public class ExportExcel2 {
 							  }else{
 						   value.append(p3.get(columnField[j3]).toString());
 	                    }
-					    wsheet.addCell(new Label(j3, i3+6+list.size()+list2.size(), value.toString(),wcfFQ));   //姓名
+							if(j3!=0){
+								 wsheet.addCell(new Label(j3, i3+6+list.size()+list2.size(), value.toString(),wcfFQ));
+							}
+					      //姓名
+					}
+					if(i3==list3.size()-1){
+						wsheet.mergeCells(0, 6+list.size()+list2.size(), 0, i3+6+list.size()+list2.size());
+						 wsheet.addCell(new Label(0, 6+list.size()+list2.size(), "新材料技术/新材料业",wcfFQ));   
 					}
 				}
 				}
@@ -217,7 +240,13 @@ public class ExportExcel2 {
 							  }else{
 						   value.append(p4.get(columnField[j4]).toString());
 	                    }
+							if(j4!=0){
 					    wsheet.addCell(new Label(j4, i4+6+list.size()+list2.size()+list3.size(), value.toString(),wcfFQ));   //姓名
+					 }
+					}
+					if(i4==list4.size()-1){
+						wsheet.mergeCells(0, 6+list.size()+list2.size()+list3.size(), 0, i4+6+list.size()+list2.size()+list3.size());
+						 wsheet.addCell(new Label(0, 6+list.size()+list2.size()+list3.size(), "展览服务",wcfFQ));   
 					}
 				}
 				}
@@ -232,7 +261,13 @@ public class ExportExcel2 {
 							  }else{
 						   value.append(p5.get(columnField[j5]).toString());
 	                    }
+							if(j5!=0){
 					    wsheet.addCell(new Label(j5, i5+6+list.size()+list2.size()+list3.size()+list4.size(), value.toString(),wcfFQ));   //姓名
+					}
+					}
+					if(i5==list5.size()-1){
+						wsheet.mergeCells(0, 6+list.size()+list2.size()+list3.size()+list4.size(), 0, i5+6+list.size()+list2.size()+list3.size()+list4.size());
+						 wsheet.addCell(new Label(0, 6+list.size()+list2.size()+list3.size()+list4.size(), "其他",wcfFQ));   
 					}
 				}
 				}
@@ -247,7 +282,33 @@ public class ExportExcel2 {
 							  }else{
 						   value.append(p6.get(columnField[j6]).toString());
 	                    }
+							if(j6!=0){
 					    wsheet.addCell(new Label(j6, i6+6+list.size()+list2.size()+list3.size()+list4.size()+list5.size(), value.toString(),wcfFQ));   //姓名
+					}
+					}
+					if(i6==list6.size()-1){
+						wsheet.mergeCells(0, 6+list.size()+list2.size()+list3.size()+list4.size()+list5.size(), 0, i6+6+list.size()+list2.size()+list3.size()+list4.size()+list5.size());
+						 wsheet.addCell(new Label(0, 6+list.size()+list2.size()+list3.size()+list4.size()+list5.size(), "工业",wcfFQ));   
+					}
+				}
+				}
+			if(list7!=null){
+				for(int i7=0;i7<list7.size();i7++){   
+					 Map p7 = (Map)list7.get(i7);
+					for (int j7=0 ;j7<columnCount;j7++){
+						value.delete(0, value.length());
+							if (p7.get(columnField[j7])==null){
+								 value.append("空");
+							  }else{
+						   value.append(p7.get(columnField[j7]).toString());
+	                    }
+							if(j7!=0){
+					    wsheet.addCell(new Label(j7, i7+6+list.size()+list2.size()+list3.size()+list4.size()+list5.size()+list6.size(), value.toString(),wcfFQ));   //姓名
+					}
+					}
+					if(i7==list7.size()-1){
+						wsheet.mergeCells(0, 6+list.size()+list2.size()+list3.size()+list4.size()+list5.size()+list6.size(), 0, i7+6+list.size()+list2.size()+list3.size()+list4.size()+list5.size()+list6.size());
+						 wsheet.addCell(new Label(0, 6+list.size()+list2.size()+list3.size()+list4.size()+list5.size()+list6.size(), "出园企业",wcfFQ));   
 					}
 				}
 				}

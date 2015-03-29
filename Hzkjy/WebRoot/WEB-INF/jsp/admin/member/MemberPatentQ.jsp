@@ -102,24 +102,23 @@ html { overflow:-moz-scrollbars-vertical;}
   <div class="list_info">
  
     <h2>专利列表</h2>
-        <div class="div2">
-      <dl class="relative h30">
-        <dd > <form id="search_form" action="${ctx}/admin/memberPatent/list/1.html" method="post">
-        &nbsp;&nbsp;&nbsp;&nbsp;年份： <input id="year" name="year" size="15" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+      <form id="search_form" action="${ctx}/admin/memberPatent/list/1.html" method="post">
+       <div class="div_input">
+      
+        <em>年份：</em> <input id="year" name="year" size="15" class="input_a1" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
      	value="${params.year}" maxlength="10"/>
-     	月份：<select name="month" id="month">
+     	<em>月份：</em><select name="month" id="month" class="input_a1">
      	<option value="0" <c:if test="${params.month==0}">selected="selected"</c:if>>1~6月</option>
      	<option value="1" <c:if test="${params.month==1}">selected="selected"</c:if>>7~12月</option>
      	</select>
-        	</form></dd>
-         <dt><input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/></dt>
-                 
-           <dt><input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/></dt>
-       <c:if test="${cookie.admin_key.value=='admin'}"> <dt><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/></dt>
-          <dt><input id="" type="button" value="批量退回" class="initial" onclick="rollBack();"/></dt>
+        	
+         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+          <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+       <c:if test="${cookie.admin_key.value=='admin'}"><input id="" type="button" value="批量审核" class="initial" onclick="pass();"/>
+          <input id="" type="button" value="批量退回" class="initial" onclick="rollBack();"/>
           </c:if>
-    </dl>
     </div>
+    </form>
 <br/>
     
  
