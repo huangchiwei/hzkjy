@@ -6,7 +6,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,10 +38,12 @@ import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.BsNews;
+import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.EccIndicator;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.service.member.BsNewsService;
+import com.armysoft.hzkjy.service.member.DbMessageService;
 import com.armysoft.hzkjy.service.member.EccIndicatorService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 
@@ -50,6 +54,10 @@ public class  EconomicReportingController extends BaseController {
 
 	@Resource
 	private EccIndicatorService service;
+	@Resource
+	private DbMessageService dbservice;
+	@Resource
+	private BsNewsService Bsservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -150,6 +158,72 @@ public class  EconomicReportingController extends BaseController {
 			service.update(entity);
 		}
 		return "redirect://admin/economicReporting/list/1.html";
+	}
+	
+	@RequestMapping("Tgtz.html")
+	@ResponseBody
+	public String Tgtz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EccIndicator mdd= service.findByKey(Long.valueOf(idArr[id]));
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			bs.setTitle("经济月报审核通过通知");
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getRzqy());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			DbMessage dbmessage=dbservice.findByKey(Long.valueOf(3));
+			String content=dbmessage.getMessage();
+			bs.setContent(content);
+			Bsservice.insert(bs);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
+	}
+	
+	@RequestMapping("Btgtz.html")
+	@ResponseBody
+	public String Btgtz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			EccIndicator mdd= service.findByKey(Long.valueOf(idArr[id]));
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			bs.setTitle("经济月报审核不通过通知");
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getRzqy());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			DbMessage dbmessage=dbservice.findByKey(Long.valueOf(4));
+			String content=dbmessage.getMessage();
+			bs.setContent(content);
+			Bsservice.insert(bs);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
 	}
 	
 	/**

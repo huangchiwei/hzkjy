@@ -8,7 +8,6 @@
 <title>userList</title>
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
-<link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
@@ -24,6 +23,24 @@ $("#fssq option[value='${fssq}']").attr("selected", true);
 $("#fsfjjyb option[value='${fsfjjyb}']").attr("selected", true); 
 $("#fzt option[value='${fzt}']").attr("selected", true); 
 });
+	function delConfirm(id){
+		$.layer({
+		  shade : [0], //不显示遮罩
+		  area : ['auto','auto'],
+		  dialog : {
+		      msg:'是否要删除：' + id,
+		      btns : 2,
+		      type : 4,
+		      btn : ['是','否'],
+		      yes : function(){
+		          location.href='${ctx}/admin/memberBasic/delete/' + id + '.html';
+		      },
+		      no : function(index){
+		         layer.close(index);
+		      }
+		  }
+		});
+	}
 function find(){    
 	$("#search_form").attr("action","${ctx}/admin/memberBasic/list/1.html");
 	document.getElementById("search_form").submit();
@@ -129,24 +146,7 @@ function loadPageLayer2(title,url){
 
 
 }
-	function delConfirm(id){
-		$.layer({
-		  shade : [0], //不显示遮罩
-		  area : ['auto','auto'],
-		  dialog : {
-		      msg:'是否要删除：' + id,
-		      btns : 2,
-		      type : 4,
-		      btn : ['是','否'],
-		      yes : function(){
-		          location.href='${ctx}/admin/memberBasic/delete/' + id + '.html';
-		      },
-		      no : function(index){
-		         layer.close(index);
-		      }
-		  }
-		});
-	}
+
 	function changeStatus(userNo,status){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
@@ -162,8 +162,9 @@ function loadPageLayer2(title,url){
   		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html'"/>
      
   </div>
+  	
   <div class="list_info">
-  	<form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
+  <form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div_input">
         <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}"  class="input_a1" size="20" onfocus="loadCorpName();"/>
@@ -180,7 +181,7 @@ function loadPageLayer2(title,url){
           <option value="0">不需要</option>
         </select>
         <em>入驻时间：</em><input id="frysjf" name="frysjf" type="text" onclick="WdatePicker();" value="${frysjf}"
-							 size="15"	 class="input_a1" maxlength="20"/><em>至<em>
+							 size="15"	 class="input_a1" maxlength="20"/><em>至</em>
 								<input id="frysje" name="frysje" type="text" onclick="WdatePicker();" value="${frysje}"
 								 size="15" class="input_a1" maxlength="20"/>
 						</div>
@@ -241,14 +242,14 @@ function loadPageLayer2(title,url){
 	        <td>${mb.lxrdh}</td>
 	        <td>${mb.sfjjybName}</td>
 	        <td>
-	          	<c:if test="${mb_updt == true}">
-		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'"/>
-		          	</div>
+	         	<c:if test="${mb_updt == true}">
+		<div class="btn_icon">
+<input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'"/>
+		 	</div>
 	          	</c:if>
 	          	<c:if test="${mb_del == true}">
 		          	<div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
+		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}');"/>
 		         	</div>
 	         	</c:if>
 	         </td>
