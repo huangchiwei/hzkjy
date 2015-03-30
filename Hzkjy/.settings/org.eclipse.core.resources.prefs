@@ -1,4 +1,4 @@
-#Mon Mar 16 22:11:08 CST 2015
+#Sun Mar 29 20:56:10 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/huangchiwei/hzkjy.git
@@ -6,6 +6,9 @@ eclipse.preferences.version=1
 encoding//WebRoot/WEB-INF/jsp/admin/base/content.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/admin/member/MemberIntelProCount.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/admin/member/MemberIntellectualProQ.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/portal/news/commonLeft.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/portal/news/detail.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/portal/news/list.jsp=UTF-8
 encoding//WebRoot/js/easyui/easyui-lang-zh_CN.js=UTF-8
 encoding//WebRoot/js/jsp/sys/ModifyPwd.js=UTF-8
 encoding//WebRoot/js/jsp/sys/SysRoleA_U.js=UTF-8

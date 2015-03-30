@@ -1,4 +1,4 @@
-package com.armysoft.hzkjy.controller.admin.news;
+package com.armysoft.hzkjy.controller.portal.news;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,8 +39,8 @@ import com.armysoft.hzkjy.model.News;
 import com.armysoft.hzkjy.service.member.NewsService;
 
 
-@Controller
-@RequestMapping("/admin/news")
+@Controller("PortalNewsController")
+@RequestMapping("/portal/news")
 public class  NewsController extends BaseController {
 //
 	@Resource
@@ -51,17 +51,17 @@ public class  NewsController extends BaseController {
         dateFormat.setLenient(true);   
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
+	
 	/**
-	 * ������ҳ��ѯ
+	 * 
 	 * @param currentPage
+	 * @param cateCode
 	 * @param model
-	 * @param entity
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("news_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
+	public String list(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("cateCode", cateCode);
@@ -69,66 +69,20 @@ public class  NewsController extends BaseController {
         model.addAttribute("list", newsService.getByPage(params, pager));
         model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("page", pager);
+		return "/portal/news/list";
 
-		return "/admin/news/newsQ";
-	}
-
-	@PermissionsAnno("news_add")
-	@RequestMapping(value = ADD)
-	public String toAdd(HttpServletRequest request,Model model,String cateCode) {
-		model.addAttribute("type", "add");
-		model.addAttribute("cateCode", cateCode);
-		 model.addAttribute("category", newsService.getCategory(cateCode));
-		return "/admin/news/newsA_U";
 	}
 	
-	
-	/**
-	 * ����
-	 * @param entity
-	 * @param model
-	 * @return
-	 */
 
-	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Long key,Model model,String cateCode) {
+	@RequestMapping(value = "/detail/{id}.html")
+	public String detail(@PathVariable("id") Long key,Model model,String cateCode) {
 		model.addAttribute("cateCode", cateCode);
 		model.addAttribute("entity", newsService.findByKey(key));
 		 model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("type", "update");
-		return "/admin/news/newsA_U";
+		return "/portal/news/detail";
 	}
-	@PermissionsAnno("news_save")
-	@RequestMapping(value = SAVE)
-	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type,String flag) {
-		if(flag!=null&&flag.equals("1")){
-			//上传附件
-			  MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
-			  MultipartFile file = multipartRequest.getFile("file");  
-			  if (!file.isEmpty()) {
-				  String filePath="/userfiles/trainFile/"+new Date().getTime()+"_"+file.getOriginalFilename();
-				  entity.setFilePath(filePath);
-				  try {
-						file.transferTo(new File(request.getSession().getServletContext().getRealPath(filePath)));
-					} catch (IllegalStateException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			  }
-		}
-		
-		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
-		entity.setCreateUser(key);
-		if(type.equalsIgnoreCase("add")){
-			newsService.insert(entity);
-		}else if(type.equalsIgnoreCase("update")){
-			newsService.update(entity);	
-		}
-		return "redirect:/admin/news/list/1.html?cateCode="+cateCode;
-	}
+	
 	 @RequestMapping(value = "/downLoad/{id}.html")
 	  public void downLoad(HttpServletResponse response,HttpServletRequest request,@PathVariable("id") Long id)
 	  {
@@ -156,18 +110,6 @@ public class  NewsController extends BaseController {
 
 	    
 	  }
-	/**
-	 * ɾ��
-	 * @param key
-	 * @return
-	 */
-
-	@RequestMapping(value = DELETE)
-	public String delete(@PathVariable("id") Long key,Model model,String cateCode) {
-		newsService.delete(key);
-		//model.addAttribute("cateCode", cateCode);
-		return "redirect:/admin/news/list/1.html?cateCode="+cateCode;
-	}
 	
 	
 

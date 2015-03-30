@@ -48,7 +48,7 @@ public class IndexController extends BaseController{
 		 model.addAttribute("policyList", newsService.getLikePrefixCode(params));
 		 
 		 
-		 
+		 model.addAttribute("cateCode", "index");
 		return "portal/index/" + page;
 	}
 	
