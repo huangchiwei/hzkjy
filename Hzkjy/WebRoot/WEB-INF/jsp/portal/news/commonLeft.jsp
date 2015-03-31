@@ -9,10 +9,10 @@
  <div class="list_box_b">
    <div class="left_nav">
      <ul id="menu">
-      <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=park_intro">园区介绍</a></li>
-       <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=park_frame">组织架构</a></li>
-        <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=park_site">园区位置</a></li>
-        <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=park_envir">创业环境</a></li>
+      <li <c:if test="${cateCode=='park_intro'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=park_intro">园区介绍</a></li>
+       <li <c:if test="${cateCode=='park_frame'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=park_frame">组织架构</a></li>
+        <li <c:if test="${cateCode=='park_site'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=park_site">园区位置</a></li>
+        <li <c:if test="${cateCode=='park_envir'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=park_envir">创业环境</a></li>
      </ul>
     </div>
   
@@ -25,9 +25,9 @@
  <div class="list_box_b">
    <div class="left_nav">
      <ul id="menu">
-           <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=policy_regu">国家政策</a></li>
-       <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=policy_province">省市政策</a></li>
-        <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=policy_park">园区政策</a></li>
+           <li <c:if test="${cateCode=='policy_regu'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=policy_regu">国家政策</a></li>
+       <li <c:if test="${cateCode=='policy_province'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=policy_province">省市政策</a></li>
+        <li <c:if test="${cateCode=='policy_park'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=policy_park">园区政策</a></li>
      </ul>
     </div>
   
@@ -92,8 +92,8 @@
  <div class="list_box_b">
    <div class="left_nav">
      <ul id="menu">
-         <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=train_notice">培训通知</a></li>
-           <li class="current-cat no"><a href="${ctx }/portal/news/list/1.html?cateCode=train_file">培训课件</a></li>
+         <li <c:if test="${cateCode=='train_notice'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=train_notice">培训通知</a></li>
+           <li <c:if test="${cateCode=='train_file'}">class="current-cat"</c:if>><a href="${ctx }/portal/news/list/1.html?cateCode=train_file">培训课件</a></li>
      </ul>
     </div>
   

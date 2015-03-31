@@ -66,10 +66,27 @@ public class  NewsController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("cateCode", cateCode);
 		model.addAttribute("cateCode", cateCode);
-        model.addAttribute("list", newsService.getByPage(params, pager));
+		List<Map<String, Object>>  list=newsService.getByPage(params, pager);
+        model.addAttribute("list", list);
         model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("page", pager);
-		return "/portal/news/list";
+		if(cateCode.equals("park_intro")){
+			return "/portal/news/park_intro";
+		}else if(cateCode.equals("park_frame")){
+			return "/portal/news/park_frame";
+		}if(cateCode.equals("park_site")){
+			return "/portal/news/park_site";
+		}if(cateCode.equals("park_envir")){
+			//获取图片
+			String content="";
+			if(list.get(0)!=null) content=list.get(0).get("content").toString();
+			List<Object> picList=newsService.getAllSrc(content);
+			model.addAttribute("picList", picList);
+			return "/portal/news/park_envir";
+		}else{
+			return "/portal/news/list";
+		}
+		
 
 	}
 	
@@ -81,6 +98,17 @@ public class  NewsController extends BaseController {
 		 model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("type", "update");
 		return "/portal/news/detail";
+	}
+	@RequestMapping(value = "/search/{currentPage}.html")
+	public String search(@PathVariable Integer currentPage,Model model,String searchTxt) {
+		model.addAttribute("searchTxt", searchTxt);
+		Pagination pager = initPage(currentPage);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("searchTxt", searchTxt);
+		List<Map<String, Object>>  list=newsService.getByPage(params, pager);
+        model.addAttribute("list", list);
+        model.addAttribute("page", pager);
+		return "/portal/news/searchList";
 	}
 	
 	 @RequestMapping(value = "/downLoad/{id}.html")

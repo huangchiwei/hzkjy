@@ -1,6 +1,9 @@
 package com.armysoft.hzkjy.service.member;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.armysoft.core.Pagination;
 import org.armysoft.ibatis.dao.BaseDao;
@@ -69,6 +72,15 @@ public class NewsService extends BaseDao {
 	 */
 	public void delete(Long id) {
 		super.defDelete(nameSpace, id);
+	}
+	public List<Object> getAllSrc(String content){
+		List<Object> srcList=new ArrayList<Object>();
+		Pattern p = Pattern.compile("<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>");//<img[^<>]*src=[\'\"]([0-9A-Za-z.\\/]*)[\'\"].(.*?)>");
+	        Matcher m = p.matcher(content);      
+	        while(m.find()){
+	        	srcList.add(m.group(1));
+	        }
+		return srcList;
 	}
 
 }

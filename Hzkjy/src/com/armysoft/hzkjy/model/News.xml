@@ -16,6 +16,9 @@
 		<if test="parm.cateCode != null and parm.cateCode != ''">
 			and cateCode=#{parm.cateCode}
 		</if>
+		<if test="parm.searchTxt!= null and parm.searchTxt != ''">
+			or title like CONCAT('%', #{parm.searchTxt}, '%') or content like CONCAT('%', #{parm.searchTxt}, '%')
+		</if>
 	</sql>
 	<select id="getLikePrefixCode" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from news where cateCode like CONCAT( #{prefixCode}, '%')
