@@ -99,6 +99,20 @@
   
   </div>
   </c:when>
+      <c:when  test="${cateCode=='contactUs'}">
+    <div class="list_lm">
+   <h1>联系我们</h1>
+  </div>
+ <div class="list_box_b">
+   <div class="left_nav">
+     <ul id="menu">
+         <li class="current-cat"><a href="${ctx }/portal/news/contactUs.html">联系我们</a></li>
+           
+     </ul>
+    </div>
+  
+  </div>
+  </c:when>
   </c:choose>
 
 

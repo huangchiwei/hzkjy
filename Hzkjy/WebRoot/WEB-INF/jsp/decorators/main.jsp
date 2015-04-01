@@ -76,7 +76,7 @@ $(function(){
     <a href='${ctx }/portal/news/list/1.html?cateCode=service_apply' <c:if test="${cateCode=='service_apply'}">class="thisclass relative"</c:if>>项目申报<div class="img_float"></div></a>
     <a href='${ctx }/portal/news/list/1.html?cateCode=service_business'  <c:if test="${cateCode=='service_business'}">class="thisclass relative"</c:if>>招商信息<div class="img_float"></div></a>
     <a href='${ctx }/portal/news/list/1.html?cateCode=train_notice' <c:if test="${cateCode=='train_notice'||cateCode=='train_file'}">class="thisclass relative"</c:if>>交流培训<div class="img_float"></div></a>
-   
+   <a href="${ctx }/portal/news/contactUs.html" <c:if test="${cateCode=='contactUs'}">class="thisclass relative"</c:if>>联系我们</a>
 </div>
 </div>
 

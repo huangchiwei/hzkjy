@@ -90,6 +90,11 @@ public class  NewsController extends BaseController {
 
 	}
 	
+    @RequestMapping(value = "/contactUs.html")
+	public String contactUs(Model model) {
+    	model.addAttribute("cateCode", "contactUs");
+		return "/portal/news/contactUs";
+	}
 
 	@RequestMapping(value = "/detail/{id}.html")
 	public String detail(@PathVariable("id") Long key,Model model,String cateCode) {
