@@ -89,14 +89,14 @@ public class ExportExcel2 {
 	        response.setContentType("application/msexcel");// 定义输出类型 
 	        
 	        WritableWorkbook wbook = Workbook.createWorkbook(os); // 建立excel文件   
-	        String tmptitle = sheetTitle; // 标题   
+	        String tmptitle = sheetTitle+"                                                                                                        资料保密"; // 标题   
 	        WritableSheet wsheet = wbook.createSheet(tmptitle, 0); // sheet名称  
 	        wsheet.mergeCells( 0, 0, columnCount-1, 1);//合并单元�?    
 	        
 			// 设置excel标题   
 	       // wsheet.mergeCells( 0, 0, 5, 0);//合并单元�?
 			WritableFont wfont = new WritableFont(WritableFont.ARIAL, 16,WritableFont.BOLD, 
-			                       false,UnderlineStyle.NO_UNDERLINE,Colour.BLACK);   
+			                       false,UnderlineStyle.NO_UNDERLINE,Colour.RED);   
 			WritableFont wfont1 = new WritableFont(WritableFont.ARIAL, 10,WritableFont.NO_BOLD, 
                     false,UnderlineStyle.NO_UNDERLINE,Colour.BLACK);   
 			WritableCellFormat wcfFC = new WritableCellFormat(wfont); 
@@ -111,7 +111,7 @@ public class ExportExcel2 {
 			wcfFQ.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN); 
 //			WritableSheet.setRowView( int i, int height); // 作用是指定第i+1行的高度，比如：
  			wsheet.mergeCells(2, 1, columnCount-1, 1);//合并单元�?     
-			wsheet.addCell(new Label(0, 2, "单位名称（公章）：广州市海珠科技产业园有限公司",wcfFQ)); 
+			wsheet.addCell(new Label(0, 2, "单位名称（公章）：广州市海珠科技产业园有限公司 ",wcfFQ)); 
 			wsheet.addCell(new Label(columnCount-1, 2 , "单位：万元",wcfFQ));    
 			// 将第�?��的高度设�?00 sheet.setRowView( 0 , 200 );
 			wsheet.mergeCells(0, 3, 0, 5);//合并垮了3列。
@@ -578,7 +578,7 @@ public class ExportExcel2 {
 					 Map p = (Map)countHyfl8List.get(h);
 					 if(p!=null){
 					 wsheet.mergeCells(0, 6+list.size()+countHyfl1+list2.size()+countHyfl2+list3.size()+countHyfl3+list4.size()+countHyfl4+list5.size()+countHyfl5+list6.size()+countHyfl6+list7.size()+countHyfl7, 2, 6+list.size()+countHyfl1+list2.size()+countHyfl2+list3.size()+countHyfl3+list4.size()+countHyfl4+list5.size()+countHyfl5+list6.size()+countHyfl6+list7.size()+countHyfl7);
-					 wsheet.addCell(new Label(0, 6+list.size()+countHyfl1+list2.size()+countHyfl2+list3.size()+countHyfl3+list4.size()+countHyfl4+list5.size()+countHyfl5+list6.size()+countHyfl6+list7.size()+countHyfl7, "合计：",wcfFQ));   
+					 wsheet.addCell(new Label(0, 6+list.size()+countHyfl1+list2.size()+countHyfl2+list3.size()+countHyfl3+list4.size()+countHyfl4+list5.size()+countHyfl5+list6.size()+countHyfl6+list7.size()+countHyfl7, "琶洲园区合计：",wcfFQ));   
 					
 					 for (int j=0 ;j<columnCount1;j++){
 						value.delete(0, value.length());

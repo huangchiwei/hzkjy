@@ -1,4 +1,4 @@
-#Sun Mar 29 20:56:10 CST 2015
+#Wed Apr 01 15:36:44 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/huangchiwei/hzkjy.git
@@ -25,6 +25,7 @@ encoding//src/com/armysoft/hzkjy/base/util/ExportExcel1.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/util/ExportExcel_InteProCount.java=UTF-8
 encoding//src/com/armysoft/hzkjy/base/util/ImportExcel.java=UTF-8
 encoding//src/com/armysoft/hzkjy/controller/admin/member/MemberFasicController.java=UTF-8
+encoding//src/com/armysoft/hzkjy/controller/admin/member/RentalExamineController.java=UTF-8
 encoding//src/com/armysoft/hzkjy/controller/base/CenterPageController.java=UTF-8
 encoding//src/com/armysoft/hzkjy/controller/base/common/BaseCon.java=UTF-8
 encoding//src/com/gzjr/hzkjy/util/Constants.java=UTF-8

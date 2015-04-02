@@ -136,6 +136,164 @@ $('#ChTitle').tooltip({
 	showURL: false,
 	showBody: " - "
 });
+
+function changeSecond(){
+ if($("#zczj").val()==""){
+	zczj="0.0";
+	}else{
+	zczj=$("#zczj").val();
+	}
+	var zczjs=parseFloat(zczj);
+	  $("#zczj").attr("value",zczjs.toFixed(2));
+ if($("#jgmzsrBys").val()==""){
+	jgmzsrBys="0.0";
+	}else{
+	jgmzsrBys=$("#jgmzsrBys").val();
+	}
+	var jgmzsrByss=parseFloat(jgmzsrBys);
+	  $("#jgmzsrBys").attr("value",jgmzsrByss.toFixed(2));	  
+	   if($("#jgmzsrLjs").val()==""){
+	jgmzsrLjs="0.0";
+	}else{
+	jgmzsrLjs=$("#jgmzsrLjs").val();
+	}
+	var jgmzsrLjss=parseFloat(jgmzsrLjs);
+	  $("#jgmzsrLjs").attr("value",jgmzsrLjss.toFixed(2));	  
+	   if($("#lrzeBys").val()==""){
+	lrzeBys="0.0";
+	}else{
+	lrzeBys=$("#lrzeBys").val();
+	}
+	var lrzeByss=parseFloat(lrzeBys);
+	  $("#lrzeBys").attr("value",lrzeByss.toFixed(2));	 
+	   if($("#lrzeLjs").val()==""){
+	lrzeLjs="0.0";
+	}else{
+	lrzeLjs=$("#lrzeLjs").val();
+	}
+	var lrzeLjss=parseFloat(lrzeLjs);
+	  $("#lrzeLjs").attr("value",lrzeLjss.toFixed(2));	 
+	   if($("#ch").val()==""){
+	ch="0.0";
+	}else{
+	ch=$("#ch").val();
+	}
+	var chs=parseFloat(ch);
+	  $("#ch").attr("value",chs.toFixed(2));	 
+	     if($("#chLjs").val()==""){
+	chLjs="0.0";
+	}else{
+	chLjs=$("#chLjs").val();
+	}
+	var chLjss=parseFloat(chLjs);
+	  $("#chLjs").attr("value",chLjss.toFixed(2));	 
+	  if($("#nsBys").val()==""){
+	nsBys="0.0";
+	}else{
+	nsBys=$("#nsBys").val();
+	}
+	var nsByss=parseFloat(nsBys);
+	  $("#nsBys").attr("value",nsByss.toFixed(2));	 
+	    if($("#nsLjs").val()==""){
+	nsLjs="0.0";
+	}else{
+	nsLjs=$("#nsLjs").val();
+	}
+	var nsLjss=parseFloat(nsLjs);
+	  $("#nsLjs").attr("value",nsLjss.toFixed(2));	 
+	  
+	  
+	  if($("#yfjf").val()==""){
+	yfjf="0.0";
+	}else{
+	yfjf=$("#yfjf").val();
+	}
+	var yfjfs=parseFloat(yfjf);
+	  $("#yfjf").attr("value",yfjfs.toFixed(2));	 
+	  
+	    if($("#yfjfLjs").val()==""){
+	yfjfLjs="0.0";
+	}else{
+	yfjfLjs=$("#yfjfLjs").val();
+	}
+	var yfjfLjss=parseFloat(yfjfLjs);
+	  $("#yfjfLjs").attr("value",yfjfLjss.toFixed(2));	 
+	  
+	    if($("#lszeBys").val()==""){
+	lszeBys="0.0";
+	}else{
+	lszeBys=$("#lszeBys").val();
+	}
+	var lszeByss=parseFloat(lszeBys);
+	  $("#lszeBys").attr("value",lszeByss.toFixed(2));	 
+	  
+	    if($("#lszeLjs").val()==""){
+	lszeLjs="0.0";
+	}else{
+	lszeLjs=$("#lszeLjs").val();
+	}
+	var lszeLjss=parseFloat(lszeLjs);
+	  $("#lszeLjs").attr("value",lszeLjss.toFixed(2));	 
+	  
+	  if($("#lszeLjs").val()==""){
+	lszeLjs="0.0";
+	}else{
+	lszeLjs=$("#lszeLjs").val();
+	}
+	var lszeLjss=parseFloat(lszeLjs);
+	  $("#lszeLjs").attr("value",lszeLjss.toFixed(2));	 
+	  
+	    if($("#gxjscpsr").val()==""){
+	gxjscpsr="0.0";
+	}else{
+	gxjscpsr=$("#gxjscpsr").val();
+	}
+	var gxjscpsrs=parseFloat(gxjscpsr);
+	  $("#gxjscpsr").attr("value",gxjscpsrs.toFixed(2));	
+	  
+	      if($("#gxjscpsrLjs").val()==""){
+	gxjscpsrLjs="0.0";
+	}else{
+	gxjscpsrLjs=$("#gxjscpsrLjs").val();
+	}
+	var gxjscpsrLjss=parseFloat(gxjscpsrLjs);
+	  $("#gxjscpsrLjs").attr("value",gxjscpsrLjss.toFixed(2));	  
+	  
+	   if($("#gyzcz").val()==""){
+	gyzcz="0.0";
+	}else{
+	gyzcz=$("#gyzcz").val();
+	}
+	var gyzczs=parseFloat(gyzcz);
+	  $("#gyzcz").attr("value",gyzczs.toFixed(2));	  
+	  
+	   if($("#gyzczLjs").val()==""){
+	gyzczLjs="0.0";
+	}else{
+	gyzczLjs=$("#gyzczLjs").val();
+	}
+	var gyzczLjss=parseFloat(gyzczLjs);
+	  $("#gyzczLjs").attr("value",gyzczLjss.toFixed(2));	  
+	  
+	   if($("#gyzjz").val()==""){
+	gyzjz="0.0";
+	}else{
+	gyzjz=$("#gyzjz").val();
+	}
+	var gyzjzs=parseFloat(gyzjz);
+	  $("#gyzjz").attr("value",gyzjzs.toFixed(2));	
+	  
+	     if($("#gyzjzLjs").val()==""){
+	gyzjzLjs="0.0";
+	}else{
+	gyzjzLjs=$("#gyzjzLjs").val();
+	}
+	var gyzjzLjss=parseFloat(gyzjzLjs);
+	  $("#gyzjzLjs").attr("value",gyzjzLjss.toFixed(2));	
+	 
+	  
+	}
+	
 </script>
 
 	
@@ -186,7 +344,7 @@ html { overflow:-moz-scrollbars-vertical;}
      
      <th>注册资金（万元）</th>
      <td>
-     <input id="zczj" name="zczj" type="text" value="${model.zczj}"  maxlength="100" style="width:160px" class="input_a1" />（万元）
+     <input id="zczj" name="zczj" type="text" value="${model.zczj}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
      </td>
     
     </tr>
@@ -197,11 +355,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>营业收入（本月数）：</th>
      <td>
-     	<input id="jgmzsrBys" name="jgmzsrBys" type="text" value="${model.jgmzsrBys}" maxlength="100" style="width:160px" class="input_a1" />
+     	<input id="jgmzsrBys" name="jgmzsrBys" type="text" value="${model.jgmzsrBys}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();" />
      </td>
       <th>营业收入（累计数）：</th>
      <td>
-       <input id="jgmzsrLjs" name="jgmzsrLjs" type="text" value="${model.jgmzsrLjs}"  maxlength="100" style="width:160px" class="input_a1"/> 
+       <input id="jgmzsrLjs" name="jgmzsrLjs" type="text" value="${model.jgmzsrLjs}"  maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/> 
       </td>
     </tr>
     <tr>
@@ -211,36 +369,36 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>利润总额（本月数）：</th>
      <td>
     
-     <input  id="lrzeBys" name="lrzeBys" type="text" value="${model.lrzeBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();"/>
+     <input  id="lrzeBys" name="lrzeBys" type="text" value="${model.lrzeBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>
 
      </td>
       <th>利润总额（累计数）：</th>
      <td>
-       <input id="lrzeLjs" name="lrzeLjs" type="text" value="${model.lrzeLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();"/> 
+       <input id="lrzeLjs" name="lrzeLjs" type="text" value="${model.lrzeLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();" /> 
       </td>
     </tr>
       <tr>
      <th>创汇（本月数）：</th>
      <td>
-     	<input title="创汇：一般是指出口创汇，是指出售给外贸部门或直接出售给外商的产品或商品的总金额。包括来料加工装配出口，境内外技术合同实现金额及在国内以外汇计价的商品出售和技术服务的总额等。" id="ch" name="ch" type="text" value="${model.ch}" maxlength="100" style="width:160px" class="input_a1"/>
+     	<input title="创汇：一般是指出口创汇，是指出售给外贸部门或直接出售给外商的产品或商品的总金额。包括来料加工装配出口，境内外技术合同实现金额及在国内以外汇计价的商品出售和技术服务的总额等。" id="ch" name="ch" type="text" value="${model.ch}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>
      </td>
       <th>创汇（累计数）：</th>
      <td>
      <input id="shzt" name="shzt" type="hidden" value="${model.shzt}"/>
-     	<input id="chLjs" name="chLjs" type="text" value="${model.chLjs}" maxlength="100" style="width:160px" class="input_a1"/>
+     	<input id="chLjs" name="chLjs" type="text" value="${model.chLjs}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>
      </td>
        </tr>
      <tr>
   
      
     
-     <th>纳税（本月数）：</th>
+     <th>纳税（本月数）：</th> 
      <td>
-    <input title="纳税=企业交给国家的所有税金" id="nsBys" name="nsBys" type="text" value="${model.nsBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();"/>
+    <input title="纳税=企业交给国家的所有税金" id="nsBys" name="nsBys" type="text" value="${model.nsBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>
      </td>
       <th>纳税（累计数）：</th>
      <td>
-       <input id="nsLjs" name="nsLjs" type="text" value="${model.nsLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();"/> 
+       <input id="nsLjs" name="nsLjs" type="text" value="${model.nsLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();"/> 
       </td>
     </tr>
     
@@ -248,34 +406,34 @@ html { overflow:-moz-scrollbars-vertical;}
       <tr>
     <th>研发经费（本月数）：</th>
      <td>
-     	<input title="研发经费：指企业在产品、技术、材料、工艺、标准的研究、开发过程中发生的各项费用。" id="yfjf" name="yfjf" type="text" value="${model.yfjf}" maxlength="100" style="width:160px" class="input_a1"/>
+     	<input title="研发经费：指企业在产品、技术、材料、工艺、标准的研究、开发过程中发生的各项费用。" id="yfjf" name="yfjf" type="text" value="${model.yfjf}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
      </td>
      <th>研发经费（累计数）：</th>
      <td>
-     	<input id="yfjfLjs" name="yfjfLjs" type="text" value="${model.yfjfLjs}" maxlength="100" style="width:160px" class="input_a1"/>
+     	<input id="yfjfLjs" name="yfjfLjs" type="text" value="${model.yfjfLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
      </td> 
      </tr>
      <tr>
    
      
     
-     <th>利税总额（本月数）：</th>
+     <th>利税总额（本月数）：</th> 
      <td>
-     	<input title="利税总额=利润总额+纳税" id="lszeBys" name="lszeBys" type="text" value="${model.lszeBys}" maxlength="100" style="width:160px" class="input_a1" readonly="true"/>
+     	<input title="利税总额=利润总额+纳税" id="lszeBys" name="lszeBys" type="text" value="${model.lszeBys}" maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/>
      </td>
       <th>利税总额（累计数）：</th>
      <td>
-       <input id="lszeLjs" name="lszeLjs" type="text" value="${model.lszeLjs}"  maxlength="100" style="width:160px" class="input_a1" readonly="true"/> 
+       <input id="lszeLjs" name="lszeLjs" type="text" value="${model.lszeLjs}"  maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/> 
       </td>
     </tr>
     <tr>
      <th>高新技术产品收入（本月数）：</th>
      <td>
-       <input title="高新技术产品收入：是指企业通过技术创新、开展研发活动所形成的符合《重点领域》要求的产品（服务）所获得的收入与企业技术性收入的总和。" id="gxjscpsr" name="gxjscpsr" type="text" value="${model.gxjscpsr}"  maxlength="100" style="width:160px" class="input_a1"/> 
+       <input title="高新技术产品收入：是指企业通过技术创新、开展研发活动所形成的符合《重点领域》要求的产品（服务）所获得的收入与企业技术性收入的总和。" id="gxjscpsr" name="gxjscpsr" type="text" value="${model.gxjscpsr}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
       </td>
       <th>高新技术产品收入（累计数）：</th>
      <td>
-       <input id="gxjscpsrLjs" name="gxjscpsrLjs" type="text" value="${model.gxjscpsrLjs}"  maxlength="100" style="width:160px" class="input_a1"/> 
+       <input id="gxjscpsrLjs" name="gxjscpsrLjs" type="text" value="${model.gxjscpsrLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
       </td>
     </tr>
       <tr>
@@ -284,11 +442,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
     <th>工业总产值（本月数）：</th>
      <td>
-     	<input title="<font color='red'>工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。</font>" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"/>
+     	<input title="<font color='red'>工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。</font>" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
      </td>
      <th>工业总产值（累计数）：</th>
      <td>
-     	<input id="gyzczLjs" name="gyzczLjs" type="text" value="${model.gyzczLjs}" maxlength="100" style="width:160px" class="input_a1"/>
+     	<input id="gyzczLjs" name="gyzczLjs" type="text" value="${model.gyzczLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
      </td>
     </tr>
     
@@ -297,13 +455,13 @@ html { overflow:-moz-scrollbars-vertical;}
      
     
      
-      <th>工业增加值（本月数）：</th>
+      <th>工业增加值（本月数）：</th> 
      <td>
-       <input title="工业增加值：工业增加值是指工业企业在报告期内以货币形式表现的工业生产活动的最终成果；是工业企业全部生产活动的总成果扣除了在生产过程中消耗或转移的物质产品和劳务价值后的余额；是工业企业生产过程中新增加的价值。" id="gyzjz" name="gyzjz" type="text" value="${model.gyzjz}"  maxlength="100" style="width:160px" class="input_a1"/> 
+       <input title="工业增加值：工业增加值是指工业企业在报告期内以货币形式表现的工业生产活动的最终成果；是工业企业全部生产活动的总成果扣除了在生产过程中消耗或转移的物质产品和劳务价值后的余额；是工业企业生产过程中新增加的价值。" id="gyzjz" name="gyzjz" type="text" value="${model.gyzjz}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
       </td>
       <th>工业增加值（累计数）：</th>
      <td>
-       <input id="gyzjzLjs" name="gyzjzLjs" type="text" value="${model.gyzjzLjs}"  maxlength="100" style="width:160px" class="input_a1"/> 
+       <input id="gyzjzLjs" name="gyzjzLjs" type="text" value="${model.gyzjzLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
       </td>
     </tr>
     

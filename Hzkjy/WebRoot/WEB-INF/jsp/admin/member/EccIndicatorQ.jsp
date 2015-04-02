@@ -163,7 +163,9 @@ function loadPageLayer2(title,url){
     </div>
     </form>
    <table width="98%" border="0" cellpadding="0" cellspacing="1">
-	  <thead>
+	  <tr>
+	    <td colspan="17" align="left"> <font color="red">广州市海珠区科技产业基地入驻企业经济指标月报表</font></td><td align="left">  <font color="red">资料保密</font></td>
+	   </tr>
 	    <tr>
 	    <td colspan="17" align="left">单位名称（公章）：广州市海珠科技产业园有限公司</td><td align="left">  单位：万元</td>
 	   </tr>
@@ -196,7 +198,6 @@ function loadPageLayer2(title,url){
 	  	<td>本月数</td>
 	  	<td>累计数</td>
 	  	</tr>
-	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
 	  <pm:hasPermission permValue="hy_save">
@@ -546,7 +547,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:if>
       <tr>
-	      <td colspan="3">合计</td>
+	      <td colspan="3">琶洲园区合计：</td>
 	      
 	      <c:forEach items="${countHyfl8List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
