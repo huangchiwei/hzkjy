@@ -84,6 +84,10 @@ public class SysUserService extends BaseDao {
 		sysRoleService.deleteRoleByUser(userNo);
 		super.nativeDelete(nameSpace + ".delete", userNo);
 	}
+	
+	public void insertRole(String userNo){
+		this.nativeDelete(nameSpace + ".insertRole",  userNo);
+	}
 
 	
 	/**

@@ -119,9 +119,11 @@ public class MemberBasicService extends BaseDao {
 		user.setPwd(DigestUtils.md5DigestAsHex(Constants.DEFAULT_PASSWORD.getBytes()));
 		user.setStatus(1);
 		user.setCreateDate(new Date());
-		sysUserService.insert(user, null);
+        sysUserService.insert(user, null);
+		sysUserService.insertRole(model.getHybh());
 	}
 	
+
 	/**
 	 * 批量添加
 	 * @param quests

@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.armysoft.security.InitResourcesMap;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,8 @@ public class MemberBasicController extends BaseController {
 	@Resource
 	private MemberBasicService service;
 	
-
+	@Resource
+	private InitResourcesMap initResourcesMap;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -73,6 +75,7 @@ public class MemberBasicController extends BaseController {
 				entity.setHybh(newbh.toString());
 			}
 			service.insertMemberAndUser(entity);
+			initResourcesMap.init();
 			model.addAttribute("userNo", entity.getHybh());
 			model.addAttribute("password", Constants.DEFAULT_PASSWORD);
 			req.getSession().removeAttribute("token");
