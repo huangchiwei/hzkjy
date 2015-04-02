@@ -10,6 +10,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 public final class Constants {
+	public final static Properties mailPros = Constants.getProperties("/mail/mail.properties");
 	public final static String WEBSITE = "http://localhost:8080/gzjkjy/";
 	//public static String solrServerUrl="http://192.168.2.182:8080/solr";
 	//public static String solrServerUrl_biaoying="http://192.168.2.182:8080/solr_biaoying";

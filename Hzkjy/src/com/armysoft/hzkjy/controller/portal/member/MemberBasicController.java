@@ -3,15 +3,18 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,4 +81,62 @@ public class MemberBasicController extends BaseController {
 		return "redirect:/portal/index.html";
 	}
 
+	@RequestMapping("forget")
+	public String forget(Model model,HttpServletRequest req){
+		
+		return "portal/member/forget";
+	}
+	@RequestMapping(value = "/forgetemail.html")
+	  public String forgetemail(HttpServletRequest request,HttpServletResponse response,Model model,String email,String vcode)
+	  {
+		 String oldCode = (String) request.getSession().getAttribute(
+					Constants.VERIFY_CODE);
+		 model.addAttribute("email", email);
+		 if(!oldCode.equalsIgnoreCase(vcode)){
+			 model.addAttribute("msg", "验证码不正确");
+			
+			 return "portal/member/forget";
+		 }
+		 Map<String, Object> ac= service.getByEmail(email);
+		 if(ac!=null){
+			//发送邮箱到用户
+			 ac.put("MailSeq", String.valueOf(new Date().getTime()));
+			 service.updateMailSeq(ac.get("MailSeq").toString(),ac.get("UserNo").toString());
+			 service.sendMail( ac,"reset");
+				
+				return "portal/member/forget_email";
+		 }else{
+			 model.addAttribute("msg", "邮箱不存在");
+			 return "portal/member/forget";
+		 }
+	  }
+	@RequestMapping(value = "/resetPwd.html")
+	  public String resetPwd(HttpServletRequest request,HttpServletResponse response,Model model,String userNo,String mailSeq)
+	  {
+		 Map<String, Object> ac= service.getByUserNo(userNo);
+		 if(ac!=null){
+			 if(ac.get("MailSeq").toString().equals(mailSeq)){
+				 model.addAttribute("userNo", userNo);
+				 model.addAttribute("mailSeq", mailSeq);
+				 return "portal/member/forget_reset";
+			 }
+		 }
+		  return null;
+		
+	  }
+	@RequestMapping(value = "/submitResetPwd.html")
+	  public String submitResetPwd(HttpServletRequest request,HttpServletResponse response,Model model,String pwd,String userNo,String mailSeq)
+	  {
+		
+		 Map<String, Object> ac= service.getByUserNo(userNo);
+		 if(ac!=null){
+			 if(ac.get("MailSeq").toString().equals(mailSeq)){
+				 service.updatePwd(userNo,DigestUtils.md5DigestAsHex(pwd.getBytes()));
+				 return "portal/member/forget_success"; 
+			 }
+			
+		 }
+		  return null;
+		
+	  }
 }

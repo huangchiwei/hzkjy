@@ -157,6 +157,7 @@ CREATE TABLE `sys_user` (
   `UserName` varchar(50) DEFAULT NULL COMMENT '真实姓名',
   `Sex` int(1) DEFAULT NULL COMMENT '性别: 0 女 1 男',
   `Email` varchar(50) NOT NULL COMMENT '邮箱',
+  `MailSeq` varchar(50) NOT NULL COMMENT '邮箱序号',
   `Tel` varchar(20) DEFAULT NULL COMMENT '电话号码',
   `Phone` varchar(20) NOT NULL COMMENT '手机号码',
   `QQNum` varchar(20) DEFAULT NULL COMMENT 'qq号码',
@@ -249,9 +250,6 @@ INSERT INTO `sys_module` VALUES ('Lev1_08','政策法规',NULL,10,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_01','系统管理',NULL,11,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
-INSERT INTO `sys_module` VALUES ('Lev2_08','园区介绍','admin/news/list/1.html?cateCode=park_intro',1,'Lev1_03',2);
-INSERT INTO `sys_module` VALUES ('Lev2_09','组织架构','admin/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
-INSERT INTO `sys_module` VALUES ('Lev2_10','园区位置','admin/news/list/1.html?cateCode=park_site',3,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_11','创业环境','admin/news/list/1.html?cateCode=park_envir',4,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_14','入园导向','',1,'Lev1_06',2);
 INSERT INTO `sys_module` VALUES ('Lev2_14_1','入园指南','admin/news/list/1.html?cateCode=service_inpark_guide',1,'Lev2_14',2);

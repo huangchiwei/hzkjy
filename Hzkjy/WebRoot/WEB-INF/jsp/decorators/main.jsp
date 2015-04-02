@@ -11,7 +11,12 @@
 			rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 	<script>
-
+	 function searchFun(){
+			var searchTxt= $("#searchTxt").val();
+			if(searchTxt=="请输入关键词"){
+				$("#searchTxt").attr("value","");
+				}
+			 }
 	function addFavorite(sURL, sTitle)
 	{
 	    try
@@ -50,8 +55,10 @@ $(function(){
    <div class="i_s_d"><span><a href="#">设为首页</a></span><span><a onclick="addFavorite(window.location,document.title)" style="cursor:pointer">加入收藏</a></span><span><a href="${ctx}/admin/index.html" target="_blank">网站后台</a></span></div>
    <div class="search">
     <div class="search_box">
-      <input name="search_term" class="keywords" id="search_term" value="请输入关键字"/>
-      <input type="button" onclick="form_search();" value="搜索" class="rssclick" />
+     <form action='${ctx}/portal/news/search/1.html' method="post">
+      <input name="searchTxt" class="keywords" onfocus="searchFun()"  id="searchTxt" value="${(empty searchText)?'请输入关键词' :searchText}"/>
+      <input type="submit"   value="搜索" class="rssclick" />
+      </form>
     </div>
    </div>
   </div>
@@ -60,16 +67,16 @@ $(function(){
 <!--导航样式-->
 <div class="nav_box">
 <div class="lanren">
-    <a href='${ctx }/portal/index.html' class="relative"  <c:if test="${cateCode=='index'}">class="thisclass relative"</c:if>>首&nbsp;&nbsp;页<div class="img_float"></div></a>
-    <a href='${ctx }/portal/news/list/1.html?cateCode=park_intro' class="relative" <c:if test="${cateCode==park_intro||cateCode==park_frame||cateCode==park_site||cateCode==park_envir}">class="thisclass relative"</c:if>>园区概况<div class="img_float"></div></a>
-    <a href='${ctx }/portal/news/list/1.html?cateCode=policy_regu' class="relative" <c:if test="${cateCode==policy_regu||cateCode==policy_province||cateCode==policy_park}">class="thisclass relative"</c:if>>政策法规<div class="img_float"></div></a>
-    <a href='${ctx }/portal/news/list/1.html?cateCode=notice_lastest' class="relative" <c:if test="${cateCode==notice_lastest}">class="thisclass relative"</c:if>>最新公告<div class="img_float"></div></a>
+    <a href='${ctx }/portal/index.html'  <c:if test="${cateCode=='index'}">class="thisclass relative"</c:if>>首&nbsp;&nbsp;页<div class="img_float"></div></a>
+    <a href='${ctx }/portal/news/list/1.html?cateCode=park_intro' <c:if test="${cateCode=='park_intro'||cateCode=='park_frame'||cateCode=='park_site'||cateCode=='park_envir'}">class="thisclass relative"</c:if>>园区概况<div class="img_float"></div></a>
+    <a href='${ctx }/portal/news/list/1.html?cateCode=policy_regu' <c:if test="${cateCode=='policy_regu'||cateCode=='policy_province'||cateCode=='policy_park'}">class="thisclass relative"</c:if>>政策法规<div class="img_float"></div></a>
+    <a href='${ctx }/portal/news/list/1.html?cateCode=notice_lastest' <c:if test="${cateCode=='notice_lastest'}">class="thisclass relative"</c:if>>最新公告<div class="img_float"></div></a>
     <%--<a href='javascript:' class="relative">园区大事记<div class="img_float"></div></a>
-    --%><a href='${ctx }/portal/news/list/1.html?cateCode=service_human' class="relative" <c:if test="${cateCode==service_human}">class="thisclass relative"</c:if>>人力资源<div class="img_float"></div></a>
-    <a href='${ctx }/portal/news/list/1.html?cateCode=service_apply' class="relative" <c:if test="${cateCode==service_apply}">class="thisclass relative"</c:if>>项目申报<div class="img_float"></div></a>
-    <a href='${ctx }/portal/news/list/1.html?cateCode=service_business' class="relative" <c:if test="${cateCode==service_business}">class="thisclass relative"</c:if>>招商信息<div class="img_float"></div></a>
-    <a href='${ctx }/portal/news/list/1.html?cateCode=train_notice' class="relative" <c:if test="${cateCode==train_notice||cateCode==train_file}">class="thisclass relative"</c:if>>交流培训<div class="img_float"></div></a>
-    <a href='javascript:'>联系我们</a>
+    --%><a href='${ctx }/portal/news/list/1.html?cateCode=service_human' <c:if test="${cateCode=='service_human'}">class="thisclass relative"</c:if>>人力资源<div class="img_float"></div></a>
+    <a href='${ctx }/portal/news/list/1.html?cateCode=service_apply' <c:if test="${cateCode=='service_apply'}">class="thisclass relative"</c:if>>项目申报<div class="img_float"></div></a>
+    <a href='${ctx }/portal/news/list/1.html?cateCode=service_business'  <c:if test="${cateCode=='service_business'}">class="thisclass relative"</c:if>>招商信息<div class="img_float"></div></a>
+    <a href='${ctx }/portal/news/list/1.html?cateCode=train_notice' <c:if test="${cateCode=='train_notice'||cateCode=='train_file'}">class="thisclass relative"</c:if>>交流培训<div class="img_float"></div></a>
+   <a href="${ctx }/portal/news/contactUs.html" <c:if test="${cateCode=='contactUs'}">class="thisclass relative"</c:if>>联系我们</a>
 </div>
 </div>
 

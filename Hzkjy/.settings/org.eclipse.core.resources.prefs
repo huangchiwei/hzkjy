@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Wed Apr 01 15:36:44 CST 2015
+=======
+#Wed Apr 01 22:36:18 CST 2015
+>>>>>>> branch 'master' of https://github.com/huangchiwei/hzkjy.git
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/huangchiwei/hzkjy.git
@@ -6,9 +10,11 @@ eclipse.preferences.version=1
 encoding//WebRoot/WEB-INF/jsp/admin/base/content.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/admin/member/MemberIntelProCount.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/admin/member/MemberIntellectualProQ.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/portal/member/forget.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/portal/news/commonLeft.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/portal/news/detail.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/portal/news/list.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/portal/news/searchList.jsp=UTF-8
 encoding//WebRoot/js/easyui/easyui-lang-zh_CN.js=UTF-8
 encoding//WebRoot/js/jsp/sys/ModifyPwd.js=UTF-8
 encoding//WebRoot/js/jsp/sys/SysRoleA_U.js=UTF-8
