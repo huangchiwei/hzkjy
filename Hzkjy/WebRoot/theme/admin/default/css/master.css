@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
-html,body{font-size:12px;font-family:"microsoft yahei",Arial, Helvetica, sans-serif;background-position: top; _height:100%; margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow-x:hidden;overflow-y:hidden;}
+html { overflow:-moz-scrollbars-vertical;}
+html,body{font-size:12px;font-family:"microsoft yahei",Arial, Helvetica, sans-serif;background-position: top; _height:100%; margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow-x:hidden;}
 td,th,blockquote,p,textarea,input,legend,fieldset,form,code,img,pre,h6,h5,h4,h3,h2,h1,li,ol,ul,dd,dt,dl,div,border {margin:0;padding:0;}
 table {border-spacing:1;}
 img {border:0;}

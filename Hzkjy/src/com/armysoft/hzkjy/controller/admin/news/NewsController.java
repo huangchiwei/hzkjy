@@ -42,7 +42,7 @@ import com.armysoft.hzkjy.service.member.NewsService;
 @Controller
 @RequestMapping("/admin/news")
 public class  NewsController extends BaseController {
-
+//
 	@Resource
 	private NewsService newsService;
 	@InitBinder   

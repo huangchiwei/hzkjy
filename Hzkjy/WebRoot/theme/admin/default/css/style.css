@@ -1,6 +1,6 @@
 /*表格项目样式*/
 .table_scroll{
-	height: 400px;
+	height: 250px;
 	overflow-x:hidden;
 }
 .ListTable {

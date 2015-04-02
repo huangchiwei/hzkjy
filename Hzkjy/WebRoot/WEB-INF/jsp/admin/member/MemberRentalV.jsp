@@ -29,7 +29,7 @@
 $(document).ready(function(){
 	formInitConfig("add_form",3000);
 	autoValidate();
-		
+		$("#sslq option[value='${model.sslq}']").attr("selected", true); 
 });
 
     
@@ -144,6 +144,8 @@ var qyzj;
 var glfwf;
 var qysf;
 var qydf;
+var lqysf2;
+var lqydf2;
 if($("#qyzj").val()==""){
 	qyzj="0.0";
 	}else{
@@ -189,10 +191,26 @@ if($("#qyzj").val()==""){
 	}else{
 	zlbzjznj=$("#zlbzjznj").val();
 	}
+		if($("#zxyjznj").val()==""){
+	zxyjznj="0.0";
+	}else{
+	zxyjznj=$("#zxyjznj").val();
+	}
+	if($("#qysfznj").val()==""){
+	qysfznj="0.0";
+	}else{
+	qysfznj=$("#qysfznj").val();
+	}
+	if($("#qydfznj").val()==""){
+    qydfznj="0.0";
+	}else{
+	qydfznj=$("#qydfznj").val();
+	}
+	
 	
 	
 
-	var sumhjje=parseFloat(qyzj)+parseFloat(glfwf)+parseFloat(qysf)+parseFloat(qydf)+parseFloat(zlbzj)+parseFloat(zxyj)+parseFloat(qyzjznj)+parseFloat(glfwfznj)+parseFloat(zlbzjznj);
+	var sumhjje=parseFloat(qyzj)+parseFloat(glfwf)+parseFloat(qysf)+parseFloat(qydf)+parseFloat(zlbzj)+parseFloat(zxyj)+parseFloat(qyzjznj)+parseFloat(glfwfznj)+parseFloat(zlbzjznj)+parseFloat(zxyjznj)+parseFloat(qysfznj)+parseFloat(qydfznj);
 	  $("#hjje").attr("value",sumhjje.toFixed(1));
 	  loadHjjezw();
 	}
@@ -217,6 +235,25 @@ if($("#ssyhd").val()==""){
 	  sumqysf();
 	}
 	
+		function sumshjyl2(){
+var ssyhd;
+var sbyhd;
+if($("#ssyhd2").val()==""){
+	ssyhd="0.0";
+	}else{
+	ssyhd=$("#ssyhd2").val();
+	}
+	if($("#sbyhd2").val()==""){
+	sbyhd="0.0";
+	}else{
+	sbyhd=$("#sbyhd2").val();
+	}
+
+	var sumshjyl=parseFloat(sbyhd)-parseFloat(ssyhd);
+	  $("#shjyl2").attr("value",sumshjyl);
+	  sumqysf2();
+	}
+	
 	function sumdhjyl(){
 var dsyhd;
 var dbyhd;
@@ -233,6 +270,24 @@ if($("#dsyhd").val()==""){
 
 		var sumdhjyl=parseFloat(dbyhd)-parseFloat(dsyhd);
 	  $("#dhjyl").attr("value",sumdhjyl);
+	}
+	
+	function sumdhjyl2(){
+var dsyhd;
+var dbyhd;
+if($("#dsyhd2").val()==""){
+	dsyhd="0.0";
+	}else{
+	dsyhd=$("#dsyhd2").val();
+	}
+	if($("#dbyhd2").val()==""){
+	dbyhd="0.0";
+	}else{
+	dbyhd=$("#dbyhd2").val();
+	}
+
+		var sumdhjyl=parseFloat(dbyhd)-parseFloat(dsyhd);
+	  $("#dhjyl2").attr("value",sumdhjyl);
 	}
 
 function loadCorpName(){
@@ -364,9 +419,50 @@ function rtnn(val){
 	}else{
 	shjyl=$("#shjyl").val();
 	}
+	if($("#qysfdj2").val()==""){
+	qysfdj2="0.0";
+	}else{
+	qysfdj2=$("#qysfdj2").val();
+	}
+	  if($("#shjyl2").val()==""){
+	shjyl2="0.0";
+	}else{
+	shjyl2=$("#shjyl2").val();
+	}
 		var sumqysf=parseFloat(qysfdj)*parseFloat(shjyl);
-	  $("#qysf").attr("value",sumqysf.toFixed(1));
+		var sumqysf2=parseFloat(qysfdj2)*parseFloat(shjyl2);
+			var sumqysf3=sumqysf+sumqysf2;
+	  $("#qysf").attr("value",sumqysf3.toFixed(1));
 	  $("#lqysf").attr("value",sumqysf.toFixed(1));
+	    sumhjje();
+	}
+		function sumqysf2(){
+	var qysfdj;
+   if($("#qysfdj2").val()==""){
+	qysfdj2="0.0";
+	}else{
+	qysfdj2=$("#qysfdj2").val();
+	}
+	  if($("#shjyl2").val()==""){
+	shjyl2="0.0";
+	}else{
+	shjyl2=$("#shjyl2").val();
+	}
+	    if($("#qysfdj").val()==""){
+	qysfdj="0.0";
+	}else{
+	qysfdj=$("#qysfdj").val();
+	}
+	  if($("#shjyl").val()==""){
+	shjyl="0.0";
+	}else{
+	shjyl=$("#shjyl").val();
+	}
+		var sumqysf=parseFloat(qysfdj)*parseFloat(shjyl);
+		var sumqysf2=parseFloat(qysfdj2)*parseFloat(shjyl2);
+		var sumqysf3=sumqysf+sumqysf2;
+		 $("#qysf").attr("value",sumqysf3.toFixed(1));
+	  $("#lqysf2").attr("value",sumqysf2.toFixed(1));
 	    sumhjje();
 	}
 		function sumqydf(){ 
@@ -381,10 +477,35 @@ function rtnn(val){
 	}else{
 	dhjyl=$("#dhjyl").val();
 	}
+	 if($("#lqydf2").val()==""){
+	lqydf2="0.0";
+	}else{
+	lqydf2=$("#lqydf2").val();
+	}
 	
 		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
-	  $("#qydf").attr("value",sumqydf.toFixed(1));
+		var sumqydf2=parseFloat(lqydf2)+sumqydf;
+	  $("#qydf").attr("value",sumqydf2.toFixed(1));
 	  $("#lqydf").attr("value",sumqydf.toFixed(1));
+	    sumhjje();
+	}
+	function sumqydf2(){ 
+	var qydfdj;
+   if($("#qydfdj2").val()==""){
+	qydfdj="0.0";
+	}else{
+	qydfdj=$("#qydfdj2").val();
+	}
+	  if($("#dhjyl2").val()==""){
+	dhjyl="0.0";
+	}else{
+	dhjyl=$("#dhjyl2").val();
+	}
+	
+		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
+		var sumqydf2=parseFloat(lqydf)+sumqydf;
+		$("#qydf").attr("value",sumqydf2.toFixed(1));
+	  $("#lqydf2").attr("value",sumqydf.toFixed(1));
 	    sumhjje();
 	}
 	function sumfy(){
@@ -423,10 +544,10 @@ html { overflow:-moz-scrollbars-vertical;}
 					class="ListTable">
 	<tr align="center">
      <th>房号:</th>
-     <td colspan="2">
+     <td colspan="3">
      	<input id="zydy" name="zydy" type="text" value="${model.zydy}" class="input_a1"  maxlength="100" />
      </td>
-     <th>缴费年月：</th>
+   
      <th align="center">会员编号：</th>
      <td colspan="2">
      <input id="shzt" name="shzt" type="hidden" value="${model.shzt}" />
@@ -438,18 +559,33 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>	
     <tr align="center">
      <th>用户:</th>
-     <td colspan="2">
+     <td colspan="3">
      	<input id="qymc" name="qymc" type="text" value="${model.qymc}"  class="input_a1"  maxlength="100"  onfocus="loadCorpName();" onblur="loadQyxx();" />
      </td>
-     <td>
-     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" onclick="WdatePicker({dateFmt:'yyyy-MM'});" onchange="loadSqsj();"/>
-     </td>
+     
      <th>建筑面积：</th>
      <td colspan="2">
      	<input id="qymj" name="qymj" type="text" value="${model.qymj}" class="input_a1"  maxlength="20" onchange="sumfy();"/>㎡
      </td>
 
   
+    </tr>	
+    <tr align="center">
+       <th>缴费年月：</th>
+      <td colspan="3">
+     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" onclick="WdatePicker({dateFmt:'yyyy-MM'});" onchange="loadSqsj();"/>
+     </td>
+     <th>所属楼区：</th>
+       <td colspan="2">
+     	 <select name="sslq"  id="sslq" style="text-align:center">
+          <option value="1">科技大楼</option>
+          <option value="2">A栋</option>
+          <option value="3">B栋</option>
+          <option value="4">C栋</option>
+          <option value="5">D栋</option>
+          <option value="6">E栋</option>
+        </select>
+     </td>
     </tr>	
     <tr align="center">
      <th>序号：</th>
@@ -463,7 +599,9 @@ html { overflow:-moz-scrollbars-vertical;}
 
 	     <tr align="center">
 	     <td>1</td>
-	      <th>租金：</th>
+	      <td>
+	     <input name="zjmc"  id="zjmc" type="text" class="input_a1" value="${model.zjmc!='' && model.zjmc !=null?model.zjmc:'租金'}" />
+	     	</td> 
 	         <td>
 	     <input name="qyzjdj"  id="qyzjdj" type="text" class="input_a1" value="${model.qyzjdj}" onchange="sumzj();"/>元/平方
 	     	</td>
@@ -484,7 +622,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	    </tr>
 	    <tr align="center">
 	    <td>2</td>
-	    <th>管理服务费：</th>
+	      <td>
+	     <input name="glfwfmc"  id="glfwfmc" type="text" class="input_a1" value="${model.glfwfmc!='' && model.glfwfmc !=null?model.glfwfmc:'管理服务费'}" />
+	     	</td>
 	     <td>
 	     <input name="glfwfdj"  id="glfwfdj" type="text" class="input_a1" value="${model.glfwfdj}" onchange="sumglfwfdj();"/>元/平方
 	     	</td>
@@ -505,7 +645,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	    
 	     <tr align="center">
 	     <td>3</td>
-	     <th>租赁保证金：</th>
+	        <td>
+	     <input name="zlbzjmc"  id="zlbzjmc" type="text" class="input_a1" value="${model.zlbzjmc!='' && model.zlbzjmc !=null?model.zlbzjmc:'租赁保证金'}" />
+	     	</td>
 	     <td>
 	     <input name="zlbzjdj"  id="zlbzjdj" type="text" class="input_a1" value="${model.zlbzjdj}" onchange="sumzlbzjdj();"/>元/平方
 	     	</td>
@@ -526,7 +668,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	    
 	     <tr align="center">
 	     <td>4</td>
-	      <th>装修押金：</th>
+	       <td>
+	     <input name="zxyjmc"  id="zxyjmc" type="text" class="input_a1" value="${model.zxyjmc!='' && model.zxyjmc !=null?model.zxyjmc:'装修押金'}" />
+	     	</td>
 	     <td>
 	     <input name="zxyjdj"  id="zxyjdj" type="text" class="input_a1" value="${model.zxyjdj}" onchange="sumzxyjdj();" />元/平方
 	     	</td>
@@ -538,7 +682,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.zxyj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" onchange="sumzj();"/>
+	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" onchange="sumhjje();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" class="input_a1" value="${model.zxyjbz}"/>
@@ -547,7 +691,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	    
 	         <tr align="center">
 	         <td>5</td>
-	             <th>水费：</th>
+	              <td>
+	     <input name="sfmc"  id="sfmc" type="text" class="input_a1" value="${model.sfmc!='' && model.sfmc !=null?model.sfmc:'水费'}" />
+	     	</td>
 	     <td>
 	     	</td>
 	 
@@ -558,7 +704,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qysf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" onchange="sumzj();"/>
+	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" onchange="sumhjje();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="lsfbz"  id="lsfbz" type="text" class="input_a1" value="${model.sfbz}"/>
@@ -567,7 +713,9 @@ html { overflow:-moz-scrollbars-vertical;}
 	    
 	        <tr align="center">
 	        <td>6</td>
-	           <th>电费：</th>
+	           <td>
+	     <input name="dfmc"  id="dfmc" type="text" class="input_a1" value="${model.dfmc!='' && model.dfmc !=null?model.dfmc:'电费'}" />
+	     	</td>
 	     <td>
 	     	</td>
 	  
@@ -578,7 +726,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qydf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}" onchange="sumzj();"/>
+	   	 	<input name="qydfznj"  id="qydfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}" onchange="sumhjje();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="ldfbz"  id="ldfbz" type="text" class="input_a1" value="${model.dfbz}"/>
@@ -617,7 +765,7 @@ html { overflow:-moz-scrollbars-vertical;}
     
 
 	    <tr>
-	    <th>水：</th>
+	    <th>水1：</th>
 	     <td>
      	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}"  onblur="rtnn(this);sumshjyl();"/>吨
      </td>
@@ -631,7 +779,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="qysfdj"  id="qysfdj" type="text" class="input_a1" value="${model.qysfdj}" onchange="sumqysf();"/>元/吨
      </td>
        <td>
-     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qysf}" pattern="#.#" minFractionDigits="1" />" />
+     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.lqysf}" pattern="#.#" minFractionDigits="1" />" />
      </td>
      
      <td>
@@ -639,10 +787,33 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
       
 	    </tr>
+	     <tr>
+	    <th>水2：</th>
+	     <td>
+     	<input name="ssyhd2"  id="ssyhd2" type="text" class="input_a1" value="${model.ssyhd2}"  onblur="rtnn(this);sumshjyl2();"/>吨
+     </td>
+      <td>
+     	<input name="sbyhd2"  id="sbyhd2" type="text" class="input_a1" value="${model.sbyhd2}"  onblur="rtnn(this);sumshjyl2();sumqysf2();"/>吨
+     </td>
+      <td>
+     	<input name="shjyl2"  id="shjyl2" type="text" class="input_a1" value="${model.shjyl2}" onchange="sumqysf2();"/>吨
+     </td>
+     <td>
+     	<input name="qysfdj2"  id="qysfdj2" type="text" class="input_a1" value="${model.qysfdj2}" onchange="sumqysf2();"/>元/吨
+     </td>
+       <td>
+     	<input name="lqysf2"  id="lqysf2" type="text" class="input_a1" value="<fmt:formatNumber value="${model.lqysf2}" pattern="#.#" minFractionDigits="1" />" />
+     </td>
+     
+     <td>
+     	<input name="sfbz2"  id="sfbz2" type="text" class="input_a1" value="${model.sfbz2}" onchange="onchangebz();"/>
+     </td>
+      
+	    </tr>
 	    
 	  
 	    <tr>
-	    <th>电：</th>
+	    <th>电1：</th>
 	   <td>
      	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}" onblur="rtnn(this);sumdhjyl();"/>度
      </td>
@@ -656,7 +827,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="qydfdj"  id="qydfdj" type="text" class="input_a1" value="${model.qydfdj}" onchange="sumqydf();"/>元/度
      </td>
        <td>
-     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qydf}" pattern="#.#" minFractionDigits="1" />" />
+     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.lqydf}" pattern="#.#" minFractionDigits="1" />" />
      </td>
       
      <td>
@@ -664,6 +835,35 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
       
 	    </tr>  
+	    
+	     <tr>
+	    <th>电2：</th>
+	   <td>
+     	<input name="dsyhd2"  id="dsyhd2" type="text" class="input_a1" value="${model.dsyhd2}" onblur="rtnn(this);sumdhjyl2();"/>度
+     </td>
+     <td>
+     	<input name="dbyhd2"  id="dbyhd2" type="text" class="input_a1" value="${model.dbyhd2}" onblur="rtnn(this);sumdhjyl2();sumqydf2();"/>度
+     </td>
+     <td>
+     	<input name="dhjyl2"  id="dhjyl2" type="text" class="input_a1" value="${model.dhjyl2}"  onchange="sumqydf2();"/>度
+     </td>
+     <td>
+     	<input name="qydfdj2"  id="qydfdj2" type="text" class="input_a1" value="${model.qydfdj2}" onchange="sumqydf2();"/>元/度
+     </td>
+       <td>
+     	<input name="lqydf2"  id="lqydf2" type="text" class="input_a1" value="<fmt:formatNumber value="${model.lqydf2}" pattern="#.#" minFractionDigits="1" />" />
+     </td>
+      
+     <td>
+     	<input name="dfbz2"  id="dfbz2" type="text" class="input_a1" value="${model.dfbz2}" onchange="onchangebz();"/>
+     </td>
+      
+	    </tr>  
+	    
+	          <tr>
+     <th >备注：</th>
+     <td colspan="6"><textarea id="xxbz" name="xxbz" rows="2" cols="120" >${model.xxbz}</textarea></td>
+    </tr>
  </table>
      
    

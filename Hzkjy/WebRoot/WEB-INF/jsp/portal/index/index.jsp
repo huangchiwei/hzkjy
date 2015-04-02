@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -57,10 +58,10 @@ $(function(){
   <a href="javascript:void(0);" class="btn btnPre" id="banner_index_pre"></a>
   <a href="javascript:void(0);" class="btn btnNext" id="banner_index_next"></a>
     <ul class="banner_wrap" id="banner_index">
-      <li><a href="#" target="_blank"><img src="${ctx}/theme/portal/default/images/banner_index_1.jpg"/></a></li>
-      <li><a href="#" target="_blank"><img src="${ctx}/theme/portal/default/images/banner_index_2.jpg"/></a></li>
-      <li><a href="#" target="_blank"><img src="${ctx}/theme/portal/default/images/banner_index_3.jpg"/></a></li>
-      <li><a href="#" target="_blank"><img src="${ctx}/theme/portal/default/images/banner_index_4.jpg"/></a></li>
+    <c:forEach items="${adList}" varStatus="index" var="o" >  
+     <li><a href="${o.linkUrl}" target="_blank"><img src="${ctx}${o.path}"/></a></li>
+    </c:forEach>
+    
     </ul>
 </div>
 <div class="indexBanner_num" id="index_numIco"></div>
@@ -115,15 +116,20 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
  </div>
     </div>
     <div class="announcement_r">
-     <h1><a href="#">中小企业扶持政策将出台破解融</a></h1>
+     <h1>
+     <c:if test="${noticeList!=null&&fn:length(noticeList)>0}">
+     <a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${noticeList[0].title }</a>
+     </c:if>
+     </h1>
      <ul>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
-      <li><span>2014-11-21</span><a href="#">中小企业扶持政策将出台 破解融...</a></li>
+  
+       <c:forEach items="${noticeList}" varStatus="index" var="o" >  
+        <c:if test="${index.index>1}">
+          <li><span><fmt:formatDate value="${index.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${o.title }</a></li>
+       </c:if>
+       </c:forEach>
+      
+      
      </ul>
     </div>
    </div>
@@ -137,32 +143,23 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     </div>
     <div class="l_b_l_b">
      <ul>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-     </ul>
+      <c:forEach items="${trainList}" varStatus="index" var="o" >  
+       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${o.title }</a></li>
+    </c:forEach>
+    
+       </ul>
     </div>
    </div>
    <div class="left_box2_2">
     <div class="l_b_l_t relative">
-     <h1>交流培训</h1>
+     <h1>政府政策</h1>
      <div class="more"><a href="#">更多&gt;&gt;</a></div>
     </div>
     <div class="l_b_l_b">
      <ul>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
-      <li class="li"><a href="#">强化安全工作、共建和谐园区</a></li>
+    <c:forEach items="${policyList}" varStatus="index" var="o" >  
+       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${o.title }</a></li>
+    </c:forEach>
      </ul>
     </div>
    </div>

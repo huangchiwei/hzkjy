@@ -5,9 +5,10 @@
 
 <mapper namespace="MemberRentalOpt">
 
+	
 	<!-- 表列名 -->
 	<sql id="columns">	
-	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj</sql>
+	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf</sql>
 	
 
 	<!-- 通用条件sql语句 -->
@@ -74,13 +75,36 @@
 				 <result column="Bz" property="bz" />	
 				 <result column="Qydfdj" property="qydfdj" />		
 				 <result column="Qysfdj" property="qysfdj" />
+				 <result column="Xxbz" property="xxbz" />
+				  <result column="Sslq" property="sslq" />
+				   <result column="Ssyhd2" property="ssyhd2" />
+				    <result column="Sbyhd2" property="sbyhd2" />
+				     <result column="Shjyl2" property="shjyl2" />
+				      <result column="Qysfdj2" property="qysfdj2" />
+				       <result column="Lqysf2" property="lqysf2" />
+				        <result column="Sfbz2" property="sfbz2" />
+				          <result column="Dsyhd2" property="dsyhd2" />
+				            <result column="Dbyhd2" property="dbyhd2" />
+				              <result column="Dhjyl2" property="dhjyl2" />
+				                <result column="Qydfdj2" property="qydfdj2" />
+				                  <result column="Lqydf2" property="lqydf2" />
+				                    <result column="Dfbz2" property="dfbz2" />
+				                    <result column="Zjmc" property="zjmc" />
+				                    <result column="Glfwfmc" property="glfwfmc" />
+				                    <result column="Zlbzjmc" property="zlbzjmc" />
+				                    <result column="Zxyjmc" property="zxyjmc" />
+				                    <result column="Sfmc" property="sfmc" />
+				                    <result column="Dfmc" property="dfmc" />
+				                    <result column="Lqysf" property="lqysf" />
+				                    <result column="Lqydf" property="lqydf" />
+				                    
 				
 				
 				
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj
+select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf
 	 from member_rental
 	where 1=1
 			<if test="fhymc != null and fhymc != ''">
@@ -132,7 +156,7 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberRental">
-		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj)
+		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf)
 	
 		values(
 		#{hybh} 		
@@ -182,7 +206,30 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt
 	        , #{bz}
 	         , #{qydfdj}
 	          , #{qysfdj}
-
+	          , #{xxbz}
+	          , #{sslq}
+	          , #{ssyhd2}
+	          , #{sbyhd2}
+	          , #{shjyl2}
+	          , #{qysfdj2}
+	          , #{lqysf2}
+	          , #{sfbz2}
+	             , #dsyhd2}
+	                , #{dbyhd2}
+	                   , #{dhjyl2}
+	                      , #{qydfdj2}
+	                         , #{lqydf2}
+	                            , #{dfbz2}
+	            , #{zjmc}
+	              , #{glfwfmc}
+	                , #{zlbzjmc}
+	                  , #{zxyjmc}
+	                    , #{sfmc}
+	                      , #{dfmc}
+	          , #{lqysf}
+	          , #{lqydf}
+	         
+	        
 		  )
 		</insert>
 	<!-- 修改 -->
@@ -236,6 +283,29 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt
 	   ,Bz =#{bz}	
 	   ,Qydfdj =#{qydfdj}	
 	   ,Qysfdj =#{qysfdj}	
+	      ,Xxbz =#{xxbz}	
+	            ,Sslq =#{sslq}
+	            ,Ssyhd2 =#{ssyhd2} 
+	               ,Sbyhd2 = #{sbyhd2}
+	          ,Shjyl2 = #{shjyl2}
+	          ,Qysfdj2 = #{qysfdj2}
+	          ,Lqysf2 = #{lqysf2}
+	          ,Sfbz2 = #{sfbz2}
+	          ,Dsyhd2 = #{dsyhd2}
+	          ,Dbyhd2 = #{dbyhd2}
+	          ,Dhjyl2 = #{dhjyl2}
+	          ,Qydfdj2 = #{qydfdj2}
+	          ,Lqydf2 = #{lqydf2}
+	          ,Dfbz2 = #{dfbz2}
+	           ,Zjmc = #{zjmc}
+	            ,Glfwfmc = #{glfwfmc}
+	             ,Zlbzjmc = #{zlbzjmc}
+	              ,Zxyjmc = #{zxyjmc}
+	               ,Sfmc = #{sfmc}
+	                ,Dfmc = #{dfmc}
+	                ,Lqysf = #{lqysf}
+	                ,Lqydf = #{lqydf}
+
 		 							    where ID = #{id}
 	</update>
 

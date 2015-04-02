@@ -163,7 +163,9 @@ function loadPageLayer2(title,url){
     </div>
     </form>
    <table width="98%" border="0" cellpadding="0" cellspacing="1">
-	  <thead>
+	  <tr>
+	    <td colspan="17" align="left"> <font color="red">广州市海珠区科技产业基地入驻企业经济指标月报表</font></td><td align="left">  <font color="red">资料保密</font></td>
+	   </tr>
 	    <tr>
 	    <td colspan="17" align="left">单位名称（公章）：广州市海珠科技产业园有限公司</td><td align="left">  单位：万元</td>
 	   </tr>
@@ -196,7 +198,6 @@ function loadPageLayer2(title,url){
 	  	<td>本月数</td>
 	  	<td>累计数</td>
 	  	</tr>
-	  </thead>
 	  <tbody>
 	  <!-- 变量 -->
 	  <pm:hasPermission permValue="hy_save">
@@ -497,6 +498,75 @@ function loadPageLayer2(title,url){
       </c:forEach>
 	      </tr>
       </c:if>
+      <c:if test="${Hyfl7count!='0'}">
+      <c:forEach items="${Hyfl7List}" var="mb" varStatus="sta">
+	      <tr>
+	           
+	       <c:if test="${sta.index=='0'}">
+	        <td rowspan="${Hyfl7count}">出园企业</td>
+	        </c:if>
+	         <td>${mb.Hybh}</td>
+	        <td>${mb.Rzqy}</td>
+	        <td>${mb.Zczj}</td>
+	        <td>${mb.JgmzsrBys}</td> 
+	        <td>${mb.JgmzsrLjs}</td>
+	        <td>${mb.LrzeBys}</td>  
+	        <td>${mb.LrzeLjs}</td>
+	        <td>${mb.NsBys}</td>    
+	        <td>${mb.NsLjs}</td>
+	        <td>${mb.LszeBys}</td>    
+	        <td>${mb.LszeLjs}</td>     
+	         <td>${mb.Ch}</td>
+	         <td>${mb.Zgs}</td>
+	         <td>${mb.Yfjf}</td>
+	         <td>${mb.Gxjscpsr}</td>
+	         <td>${mb.Gyzcz}</td>
+	         <td>${mb.Gyzjz}</td>
+	      </tr>
+      </c:forEach>
+       <tr>
+	      <td colspan="3">小计</td>
+	      
+	      <c:forEach items="${countHyfl7List}" var="mb" varStatus="sta">
+	          <td>${mb.sumZczj }</td>
+	        <td>${mb.sumJgmzsrBys}</td> 
+	        <td>${mb.sumJgmzsrLjs}</td>
+	        <td>${mb.sumLrzeBys}</td>  
+	        <td>${mb.sumLrzeLjs}</td>
+	        <td>${mb.sumNsBys}</td>    
+	        <td>${mb.sumNsLjs}</td>
+	        <td>${mb.sumLszeBys}</td>    
+	        <td>${mb.sumLszeLjs}</td>     
+	         <td>${mb.sumCh}</td>
+	         <td>${mb.sumZgs}</td>
+	         <td>${mb.sumYfjf}</td>
+	         <td>${mb.sumGxjscpsr}</td>
+	         <td>${mb.sumGyzcz}</td>
+	         <td>${mb.sumGyzjz}</td>
+      </c:forEach>
+	      </tr>
+      </c:if>
+      <tr>
+	      <td colspan="3">琶洲园区合计：</td>
+	      
+	      <c:forEach items="${countHyfl8List}" var="mb" varStatus="sta">
+	          <td>${mb.sumZczj }</td>
+	        <td>${mb.sumJgmzsrBys}</td> 
+	        <td>${mb.sumJgmzsrLjs}</td>
+	        <td>${mb.sumLrzeBys}</td>  
+	        <td>${mb.sumLrzeLjs}</td>
+	        <td>${mb.sumNsBys}</td>    
+	        <td>${mb.sumNsLjs}</td>
+	        <td>${mb.sumLszeBys}</td>    
+	        <td>${mb.sumLszeLjs}</td>     
+	         <td>${mb.sumCh}</td>
+	         <td>${mb.sumZgs}</td>
+	         <td>${mb.sumYfjf}</td>
+	         <td>${mb.sumGxjscpsr}</td>
+	         <td>${mb.sumGyzcz}</td>
+	         <td>${mb.sumGyzjz}</td>
+      </c:forEach>
+	      </tr>
 	</tbody>
     </table>
   </div>

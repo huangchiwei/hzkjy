@@ -220,5 +220,12 @@ public class  EccIndicator implements java.io.Serializable {
       private String tjfzr;
       private String tbrlxdh;
       private String tbrq;
+      private String zt;
+	public String getZt() {
+		return zt;
+	}
+	public void setZt(String zt) {
+		this.zt = zt;
+	}
 	
 }

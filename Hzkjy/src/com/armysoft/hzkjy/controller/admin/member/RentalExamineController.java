@@ -177,6 +177,28 @@ public class  RentalExamineController extends BaseController {
 		    ert.setQyzj(mdd.getQyzj());
 		    ert.setQyzjdj(mdd.getQyzjdj());
 		    ert.setZlbzjsq(mdd.getZlbzjsq());
+		    ert.setXxbz(mdd.getXxbz());
+		    ert.setLqydf(mdd.getLqydf());
+		    ert.setLqysf(mdd.getLqysf());
+		    ert.setSslq(mdd.getSslq());
+		    ert.setSsyhd2(mdd.getSsyhd2());
+		    ert.setSbyhd2(mdd.getSbyhd2());
+		    ert.setShjyl2(mdd.getShjyl2());
+		   ert.setQysfdj2(mdd.getQysfdj2());
+		ert.setLqydf2(mdd.getLqydf2());
+		ert.setLqysf2(mdd.getLqysf2());
+		ert.setSfbz2(mdd.getSfbz2());
+		ert.setDsyhd2(mdd.getDsyhd2());
+	    ert.setZjmc(mdd.getZjmc());
+			ert.setDbyhd2(mdd.getDbyhd2());
+			ert.setDhjyl2(mdd.getDhjyl2());
+			ert.setQydfdj2(mdd.getQydfdj2());
+			ert.setDfbz2(mdd.getDfbz2());
+			ert.setDfmc(mdd.getDfmc());
+			ert.setSfmc(mdd.getSfmc());
+			ert.setZxyjmc(mdd.getZxyjmc());
+			ert.setZlbzjmc(mdd.getZlbzjmc());
+			ert.setGlfwfmc(mdd.getGlfwfmc());
 			Erservice.insert(ert);
 		}
 		
@@ -322,6 +344,31 @@ public class  RentalExamineController extends BaseController {
 		map.put("Qysfdj",mb.getQysfdj()+"");
 		map.put("Qydfdj",mb.getQydfdj()+"");
 		
+		map.put("Ssql",mb.getSslq()+"");
+		map.put("Ssyhd2",mb.getSsyhd2()+"");
+		map.put("Sbyhd2",mb.getSbyhd2()+"");
+		map.put("Shjyl2",mb.getShjyl2()+"");
+		map.put("Qysfdj2",mb.getQysfdj2()+"");
+		map.put("Lqysf2",mb.getLqysf2()+"");
+		map.put("Sfbz2",mb.getSfbz2()+"");
+		
+		map.put("Dsyhd2",mb.getDsyhd2()+"");
+		map.put("Dbyhd2",mb.getDbyhd2()+"");
+		map.put("Dhjyl2",mb.getDhjyl2()+"");
+		map.put("Qydfdj2",mb.getQydfdj2()+"");
+		map.put("Lqydf2",mb.getLqydf2()+"");
+		map.put("Dfbz2",mb.getDfbz2()+"");
+		map.put("Zjmc",mb.getZjmc()+"");
+		map.put("Lqysf",mb.getLqysf()+"");
+		
+		map.put("Lqydf",mb.getLqydf()+"");
+		map.put("Glfwfmc",mb.getGlfwfmc()+"");
+		map.put("Zlbzjmc",mb.getZlbzjmc()+"");
+		map.put("Zxyjmc",mb.getZxyjmc()+"");
+		map.put("Sfmc",mb.getSfmc()+"");
+		map.put("Dfmc",mb.getDfmc()+"");
+		map.put("Lqysf2",mb.getLqysf2()+"");
+		map.put("Lqydf2",mb.getLqydf2()+"");
 //		String stuDiploma[] = { "初中", "高中", "大专", "本科", "研究生", "博士" };
 //		map.put("StuDiploma", stuDiploma[Integer.valueOf(mb.getStuDiploma())]);
 //		map.put("EduPeriod", mb.getEduPeriod() + "");

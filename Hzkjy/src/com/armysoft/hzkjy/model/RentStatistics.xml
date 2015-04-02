@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RentStatisticsOpt">
+
+	<!-- 表列名 -->
+	<sql id="columns">	
+	  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf</sql>
+	<!-- 通用条件sql语句 -->
+	<sql id="condition" >
+		from enterprise_rental
+		where 1 = 1
+		<if test="parm.fhybh != null and parm.fhybh!= ''">
+		and hybh  = #{parm.fhybh}
+		</if>
+			<if test="parm.fhymc != null and parm.fhymc != ''">
+		and qymc  like CONCAT('%', #{parm.fhymc}, '%')
+		</if>
+			<if test="parm.fjfyd != null and parm.fjfyd!= ''">
+		and Jfyd  = #{parm.fjfyd}
+		</if>
+	</sql>
+	<!-- 实体映射 -->
+	<resultMap id="enterpriseRentalMap" type="enterpriseRental">
+				<result column="ID" property="id" />
+				<result column="Hybh" property="hybh" />
+				<result column="Qymc" property="qymc" />
+				<result column="Qyzj" property="qyzj" />
+				<result column="Glfwf" property="glfwf" />
+				<result column="Qysf" property="qysf" />
+				<result column="Qydf" property="qydf" />
+				<result column="Ssyhd" property="ssyhd" />
+			    <result column="Sbyhd" property="sbyhd" />
+			    <result column="Shjyl" property="shjyl" />
+			    <result column="Dhjyl" property="dhjyl" />
+			    <result column="Qymj" property="qymj" />
+			    <result column="Hjje" property="hjje" />
+			    <result column="Shzt" property="shzt" />
+			    <result column="Fbzt" property="fbzt" />
+			    <result column="Jfyd" property="jfyd" />
+			    <result column="Dsyhd" property="dsyhd" />
+			    <result column="Dbyhd" property="dbyhd" />
+			    <result column="Zjsq" property="zjsq" />
+			    <result column="Glfsq" property="glfsq" />
+			    <result column="Sfsq" property="sfsq" />
+			    <result column="Dfsq" property="dfsq" />
+			    <result column="Zjbz" property="zjbz" />
+			    <result column="Glfbz" property="glfbz" />
+			    <result column="Sfbz" property="sfbz" />
+			    <result column="Dfbz" property="dfbz" />
+			    
+					
+					
+			    <result column="Zlbzj" property="zlbzj" />
+			    <result column="Zxyj" property="zxyj" />
+			    <result column="Glfwfdj" property="glfwfdj" />
+			    <result column="Qyzjdj" property="qyzjdj" />
+			    <result column="Zlbzjdj" property="zlbzjdj" />
+			    <result column="Zxyjdj" property="zxyjdj" />
+			    <result column="Qyzjznj" property="qyzjznj" />
+			    <result column="Glfwfznj" property="glfwfznj" />
+			    <result column="Qysfznj" property="qysfznj" />
+			    <result column="Zlbzjznj" property="zlbzjznj" />
+			    <result column="Zxyjznj" property="zxyjznj" />
+			    <result column="Qydfznj" property="qydfznj" />
+			    <result column="Hjjedx" property="hjjedx" />
+			    <result column="Zlbzjsq" property="zlbzjsq" />
+			    <result column="Zxyjsq" property="zxyjsq" />	
+			    <result column="Zlbzjbz" property="zlbzjbz" />	
+			    <result column="Zxyjbz" property="zxyjbz" />	
+			     <result column="Hjjeznj" property="hjjeznj" />		
+				 <result column="Bz" property="bz" />	
+				 <result column="Qydfdj" property="qydfdj" />		
+				 <result column="Qysfdj" property="qysfdj" />
+			    <result column="Jnje" property="jnje" />
+			    <result column="Accessory" property="accessory" />
+			    <result column="Sfqf" property="sfqf" />
+			     <result column="Xxbz" property="xxbz" />
+				  <result column="Sslq" property="sslq" />
+				   <result column="Ssyhd2" property="ssyhd2" />
+				    <result column="Sbyhd2" property="sbyhd2" />
+				     <result column="Shjyl2" property="shjyl2" />
+				      <result column="Qysfdj2" property="qysfdj2" />
+				       <result column="Lqysf2" property="lqysf2" />
+				        <result column="Sfbz2" property="sfbz2" />
+				          <result column="Dsyhd2" property="dsyhd2" />
+				            <result column="Dbyhd2" property="dbyhd2" />
+				              <result column="Dhjyl2" property="dhjyl2" />
+				                <result column="Qydfdj2" property="qydfdj2" />
+				                  <result column="Lqydf2" property="lqydf2" />
+				                    <result column="Dfbz2" property="dfbz2" />
+				                    <result column="Zjmc" property="zjmc" />
+				                    <result column="Glfwfmc" property="glfwfmc" />
+				                    <result column="Zlbzjmc" property="zlbzjmc" />
+				                    <result column="Zxyjmc" property="zxyjmc" />
+				                    <result column="Sfmc" property="sfmc" />
+				                    <result column="Dfmc" property="dfmc" />
+			     <result column="Lqysf" property="lqysf" />
+				                    <result column="Lqydf" property="lqydf" />
+				
+				
+				
+			</resultMap>
+			
+<select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
+select   ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf
+	 from enterprise_rental
+		where 1 = 1
+		
+ order by id desc
+ <if test="fhybh != null and fhybh!= ''">
+		and hybh  = #{fhybh}
+		</if>
+			<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
+		</if>
+			<if test="fjfyd != null and fjfyd!= ''">
+		and Jfyd  = #{fjfyd}
+		</if>
+	</select>			
+		<select id="countSslq" resultType="String" parameterType="java.util.Map">
+select count(*) 
+from enterprise_rental where 1=1
+<if test="jjzbNy != null and jjzbNy != ''">
+		and Jfyd  = #{jjzbNy}
+		</if>
+		<if test="type != null and type != ''">
+		and Sslq  = #{type}
+		</if>
+</select>
+<select id="getSslqList" resultType="java.util.Map" parameterType="java.util.Map"> 
+       select   case when Sslq='1' then '科技大楼' when Sslq='2' then 'A栋'  when Sslq='3' then 'B栋' when Sslq='4' then 'C栋' when Sslq='5' then 'D栋'  else 'E栋' end HyflName,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf
+	from  enterprise_rental
+		where 1 = 1		
+			<if test="jjzbNy != null and jjzbNy != ''">
+		and Jfyd  = #{jjzbNy}
+		</if>
+		<if test="type != null and type != ''">
+		and Sslq = #{type}
+		</if>
+		order by id desc 
+		</select>	
+<select id="countSslqList" resultType="java.util.Map" parameterType="java.util.Map"> 
+          select sum(Qyzj)  sumQyzj ,  
+                 sum(Glfwf)  sumGlfwf,
+                 sum(Qysf)  sumQysf,
+                 sum(Qydf)  sumQydf,
+                 sum(Zxyj)  sumZxyj ,
+                 sum(Zlbzj)  sumZlbzj 
+                 
+                 from enterprise_rental
+		where 1 = 1		
+			<if test="jjzbNy != null and jjzbNy != ''">
+		and Jfyd  = #{jjzbNy}
+		</if>
+		<if test="type != null and type != ''">
+		and Sslq  = #{type}
+		</if>
+		order by id desc 
+		</select>			
+	<select id="sumCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		from enterprise_rental
+		where 1 = 1	
+		<if test="fhybh != null and fhybh!= ''">
+		and hybh  = #{fhybh}
+		</if>
+			<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
+		</if>
+			<if test="fjfyd != null and fjfyd!= ''">
+		and Jfyd  = #{fjfyd}
+		</if>
+	</select>
+    <select id="findById" resultMap="enterpriseRentalMap" parameterType="Long">
+		select * from enterprise_rental where id = #{id}
+	</select>
+	
+	<select id="findByHybh" resultMap="enterpriseRentalMap" parameterType="String">
+		select * from enterprise_rental where Hybh = #{hybh}
+	</select>
+		
+	<select id="page" resultMap="enterpriseRentalMap" parameterType="java.util.Map">
+		select 
+		<include refid="columns"/>
+		<include refid="condition" />
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*) 
+		<include refid="condition" />
+	</select>
+	<!-- 保存 -->
+	<insert id="insert" parameterType="enterpriseRental">
+		insert into enterprise_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf)
+	
+		values(
+			#{hybh} 		
+		, #{qymc} 		
+		, #{qyzj} 		
+		, #{glfwf}
+		, #{qysf}
+		, #{qydf}
+		, #{ssyhd}
+		, #{sbyhd}
+		, #{shjyl}
+		, #{dhjyl}
+		, #{qymj}
+		, #{hjje}
+	    , #{shzt}
+	    , #{fbzt}
+	    , #{jfyd}
+	    , #{dsyhd}
+	    , #{dbyhd}
+	    , #{zydy}
+	    , #{zjsq}
+	     , #{glfsq}
+	     , #{sfsq}
+	     , #{dfsq}
+	     , #{zjbz}
+	     , #{glfbz}
+	     , #{sfbz}
+	     , #{dfbz}
+	      , #{zlbzj}
+	     , #{zxyj}
+	     , #{glfwfdj}
+	     , #{qyzjdj}
+	     , #{zlbzjdj}
+	     , #{zxyjdj}
+	     , #{qyzjznj}
+	     , #{glfwfznj}
+	     , #{qysfznj}
+	     , #{zlbzjznj}
+	     , #{zxyjznj}
+	     , #{qydfznj}
+	     , #{hjjedx}
+	     , #{zlbzjsq}
+	     , #{zxyjsq}
+	     , #{zlbzjbz}
+	     , #{zxyjbz}
+	      , #{hjjeznj}
+	        , #{bz}
+	         , #{qydfdj}
+	          , #{qysfdj}
+	    , #{jnje}
+	    , #{accessory}
+	    , #{sfqf}
+	          , #{xxbz}
+	          , #{sslq}
+	          , #{ssyhd2}
+	          , #{sbyhd2}
+	          , #{shjyl2}
+	          , #{qysfdj2}
+	          , #{lqysf2}
+	          , #{sfbz2}
+	             , #{dsyhd2}
+	                , #{dbyhd2}
+	                   , #{dhjyl2}
+	                      , #{qydfdj2}
+	                         , #{lqydf2}
+	                            , #{dfbz2}
+	            , #{zjmc}
+	              , #{glfwfmc}
+	                , #{zlbzjmc}
+	                  , #{zxyjmc}
+	                    , #{sfmc}
+	                      , #{dfmc}
+	                      , #{lqysf}
+	          , #{lqydf}
+	          
+
+		  )
+		</insert>
+	<!-- 修改 -->
+	<update id="update" parameterType="enterpriseRental">
+		update enterprise_rental set 
+		                                  Hybh=#{hybh}
+		 								,Qymc=#{qymc}
+		 								,Qyzj=#{qyzj}
+		 								,Glfwf=#{glfwf}
+		 								,Qysf=#{qysf}
+		 								,Qydf=#{qydf}
+		 								,Ssyhd=#{ssyhd}
+		 								,Sbyhd=#{sbyhd}
+		 								,Shjyl=#{shjyl}
+		 								,Dhjyl=#{dhjyl}
+		 								,Qymj=#{qymj}
+		 								,Hjje=#{hjje}
+		 								,Shzt=#{shzt}
+		 								,Fbzt=#{fbzt}
+										,Jfyd=#{jfyd}
+										,Dsyhd=#{dsyhd}
+										,Dbyhd=#{dbyhd}
+									    ,Zydy=#{zydy}
+									     ,Bz=#{bz}
+									     ,Zjsq=#{zjsq}
+									     ,Glfsq=#{glfsq}
+									     ,Sfsq=#{sfsq}
+									     ,Dfsq=#{dfsq}
+									     ,Zjbz=#{zjbz}
+									     ,Glfbz=#{glfbz}
+									     ,Sfbz=#{sfbz}
+									     ,Dfbz=#{dfbz}
+									       ,Zlbzj =#{zlbzj}
+	     ,Zxyj =#{zxyj}
+	     ,Glfwfdj =#{glfwfdj}
+	     ,Qyzjdj =#{qyzjdj}
+	     ,Zlbzjdj =#{zlbzjdj}
+	     ,Zxyjdj =#{zxyjdj}
+	     ,Qyzjznj =#{qyzjznj}
+	     ,Glfwfznj =#{glfwfznj}
+	     ,Qysfznj =#{qysfznj}
+	     ,Zlbzjznj =#{zlbzjznj}
+	     ,Zxyjznj =#{zxyjznj}
+	     ,Qydfznj =#{qydfznj}
+	     ,Hjjedx =#{hjjedx}
+	     ,Zlbzjsq =#{zlbzjsq}
+	     ,Zxyjsq =#{zxyjsq}
+	     ,Zlbzjbz =#{zlbzjbz}
+	     ,Zxyjbz =#{zxyjbz}
+	     ,Hjjeznj =#{hjjeznj}		    
+	   ,Bz =#{bz}	
+	   ,Qydfdj =#{qydfdj}	
+	   ,Qysfdj =#{qysfdj}	
+									      ,Jnje=#{jnje}
+									       ,Accessory=#{accessory}
+									        ,Sfqf=#{sfqf}
+									        ,Xxbz =#{xxbz}	
+	            ,Sslq =#{sslq}
+	            ,Ssyhd2 =#{ssyhd2} 
+	               ,Sbyhd2 = #{sbyhd2}
+	          ,Shjyl2 = #{shjyl2}
+	          ,Qysfdj2 = #{qysfdj2}
+	          ,Lqysf2 = #{lqysf2}
+	          ,Sfbz2 = #{sfbz2}
+	          ,Dsyhd2 = #{dsyhd2}
+	          ,Dbyhd2 = #{dbyhd2}
+	          ,Dhjyl2 = #{dhjyl2}
+	          ,Qydfdj2 = #{qydfdj2}
+	          ,Lqydf2 = #{lqydf2}
+	          ,Dfbz2 = #{dfbz2}
+	           ,Zjmc = #{zjmc}
+	            ,Glfwfmc = #{glfwfmc}
+	             ,Zlbzjmc = #{zlbzjmc}
+	              ,Zxyjmc = #{zxyjmc}
+	               ,Sfmc = #{sfmc}
+	                ,Dfmc = #{dfmc}
+	                    ,Lqysf = #{lqysf}
+	                ,Lqydf = #{lqydf}
+		 							    where ID = #{id}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from enterprise_rental where ID = #{ID}
+	</delete>
+	
+	<!-- ********************************************* -->
+
+</mapper>

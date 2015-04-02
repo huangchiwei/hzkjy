@@ -37,6 +37,7 @@ public class AdmIndexController {
 					tcnr=	bs.getContent().toString();
 				}
 				req.setAttribute("tcnr", tcnr);
+				req.setAttribute("tcsj", bs.getCreateTime());
 				req.setAttribute("tcid", bs.getId());
 			}
 		return "admin/base/" + page;

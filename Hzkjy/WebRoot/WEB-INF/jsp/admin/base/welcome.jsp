@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,16 +17,19 @@
 				<script language="JavaScript" type="text/javascript" src="${ctx}/js/jquery.messager.js"></script>
 		<script type="text/javascript">
 			var tcbt='${tcbt}'; 
-			var tcnr='${tcnr}'; 
+			var tcnr='${tcnr}';
+			 var tcsj='<fmt:formatDate value="${tcsj}"
+								pattern="yyyy-MM-dd" />';
+			
 				var tcid='${tcid}'; 
 		$(document).ready(function(){
 		if(tcbt !=''){
 		 $.messager.lays(300, 200);
 		 
 		 tcbt=  '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcbt+'</a></br>';
-		 tcnr= '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcnr+'</a>';
-		 
-				$.messager.show('<font color="red">您有新的通知</font>', tcbt+tcnr+'', 0);
+		 tcnr= '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcnr+'</a></br>';
+		 tcsj= '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcsj+'</a>';
+				$.messager.show('<font color="red">您有新的通知</font>', tcbt+tcnr+tcsj+'', 0);
 		}
 		       
 		});

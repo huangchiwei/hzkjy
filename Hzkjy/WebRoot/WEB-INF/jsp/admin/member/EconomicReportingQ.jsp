@@ -228,6 +228,44 @@ function pZShtt(){
 		  	});
 	document.getElementById("search_form").submit();
 }
+function pltgtz(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要通知的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/economicReporting/Tgtz.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
+function plbtgtz(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要通知的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/economicReporting/Btgtz.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
@@ -248,6 +286,8 @@ function pZShtt(){
           <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
           <input id="" type="button" value="批量退回" class="initial" onclick="pZShth();"/>
           <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
+          <input id="" type="button" value="通过发送" class="initial" onclick="pltgtz()"/>
+           <input id="" type="button" value="不通过发送" class="initial" onclick="plbtgtz()"/>
       
  
     </div>

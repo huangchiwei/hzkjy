@@ -1,5 +1,6 @@
 package org.armysoft.security.controller.sys;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -30,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.CookieUtil;
+import com.armysoft.hzkjy.model.MemberRental;
 
 @Controller
 @RequestMapping("admin/sysUser")
@@ -80,6 +82,23 @@ public class SysUserController extends BaseController {
 		model.addAttribute("user", sysUserService.getByUserNo(userNo));
 		model.addAttribute("msg", "保存成功");
 		return "admin/sys/SysUserCenter";
+	}
+	
+	@RequestMapping("ZShtg.html")
+	@ResponseBody
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			SysUser mdd=sysUserService.findByKey(Long.valueOf(idArr[id]));
+			String newPwd="888888";
+			mdd.setPwd(DigestUtils.md5DigestAsHex(newPwd.getBytes()));
+			sysUserService.updatepassword(mdd);
+		}
+		
+		request.setAttribute("exl", "ok");
+		String exl="ok";
+		return exl;
 	}
 
 	/**

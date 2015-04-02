@@ -34,6 +34,10 @@
 		<result column="Status" property="status" />
 		<result column="CreateDate" property="createDate" />
 	</resultMap>
+	
+	   <select id="findById" resultMap="sysUserPageMap" parameterType="Long">
+		select * from sys_user where id = #{id}
+	</select>
 	<resultMap type="sysUser" id="sysUserPageMap" extends="sysUserMap">
 		<association property="creater" column="Creater" javaType="sysUser" 
 		 select="SysUserOpt.getByUserNo"/>
@@ -63,6 +67,11 @@
 	<insert id="insert" parameterType="sysUser">
 		insert into sys_user(UserNo,Pwd,UserName,Sex,Email,Tel,Phone,QQNum,Status,CreateDate,Creater)
 			values(#{userNo},#{pwd},#{userName},#{sex},#{email},#{tel},#{phone},#{QQNum},#{status},#{createDate},#{creater.userNo})
+	</insert>
+	
+	<insert id="insertRole" parameterType="String">
+		insert into sys_user_role(UserNo,RoleNo)
+			values(#{userNo},'admin1')
 	</insert>
 
 	<!-- 修改 -->

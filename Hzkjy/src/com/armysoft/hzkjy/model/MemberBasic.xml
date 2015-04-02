@@ -40,6 +40,7 @@
 		<if test="parm.fzt != null and parm.fzt != ''">
 		and zt = #{parm.fzt}
 		</if>
+			order by ID
 		
    </sql>
 	<!-- 实体映射 -->
