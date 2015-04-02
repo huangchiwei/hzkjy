@@ -65,7 +65,7 @@ public class LoginController extends BaseController {
 					sessionOld.invalidate();
 				}
 				request.getSession(true);
-				super.setCookie(response, Constants.ADMIN_KEY, userNo);
+				super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
 			} else {
 				map.put("flag", "0");
 				map.put("msg", "用户名或密码不正确!");

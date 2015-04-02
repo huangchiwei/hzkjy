@@ -55,7 +55,7 @@ public class LoginController extends BaseController {
 						sessionOld.invalidate();
 					}
 					request.getSession(true);
-					super.setCookie(response, Constants.ADMIN_KEY, userNo);
+					super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
 					return "redirect:/admin/index.html";
 				} else {
 					request.setAttribute("msg", "用户名或密码不正确!");
