@@ -3,6 +3,7 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.armysoft.core.Pagination;
 import org.armysoft.security.InitResourcesMap;
 import org.armysoft.security.service.sys.SysUserService;
 import org.armysoft.springmvc.controller.BaseController;
@@ -19,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.armysoft.hzkjy.base.common.Constants;
@@ -165,4 +168,15 @@ public class MemberBasicController extends BaseController {
 		}
 		  return "redirect:"+url;
 	  }
+	  @RequestMapping(value = PAGE_LIST)
+		public String getByPage(@PathVariable Integer currentPage,String fzt,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+				MemberBasic entity, HttpServletRequest request) {
+			Pagination pager = initPage(currentPage);
+			Map<String, Object> params = new HashMap<String, Object>();
+	        model.addAttribute("list", service.getByPage(params, pager));
+	
+			model.addAttribute("page", pager);
+		
+			return "portal/member/MemberBasicQ";
+		}
 }

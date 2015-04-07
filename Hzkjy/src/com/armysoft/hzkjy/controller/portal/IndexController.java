@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
 import com.armysoft.hzkjy.service.member.NewsService;
 
@@ -23,7 +24,8 @@ public class IndexController extends BaseController{
 	private NewsAdvertService newsAdvertService;
 	@Resource
 	private NewsService newsService;
-	
+	@Resource
+	private MemberBasicService memberBasicService;
 	@RequestMapping("{page}")
 	public String dispatcher(Model model, @PathVariable String page,
 			HttpServletRequest req) {
@@ -47,6 +49,9 @@ public class IndexController extends BaseController{
 		 params.put("prefixCode", "policy_");
 		 model.addAttribute("policyList", newsService.getLikePrefixCode(params));
 		 
+		 //入驻企业 
+		 params.put("pageSize", 10);
+		 model.addAttribute("memberList", memberBasicService.getByPage(params, pager));
 		 
 		 model.addAttribute("cateCode", "index");
 		return "portal/index/" + page;
