@@ -182,13 +182,16 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="login">
     <ul>
-     <li class="account"><input id="userNo" name="userNo" type="text" class="input"/>
+     <li class="account"><em>用户名</em><input id="userNo" name="userNo" type="text" class="input"/>
      </li>
-     <li class="password"><input id="password" name="password" type="password" class="input"/>
+     <li class="password"><em>密码</em><input id="password" name="password" type="password" class="input"/>
      </li>
-     <li class="btn"><input id="login_btn" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
+      <li class="btn"><input type="button" class="btn_a1" value="登录"/>
      </li>
-    </ul>
+     <li class="input_txt"><a href="${ctx}/portal/memberBasic/forget.html">忘记密码?</a><a href="${ctx}/portal/memberBasic/toRegist.html">用户注册</a></li>
+     <%--<li class="btn"><input id="login_btn" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
+     </li>
+    --%></ul>
    </div>
   </div>
   <div class="left_box">
