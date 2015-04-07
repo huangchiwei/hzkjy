@@ -177,6 +177,6 @@ public class MemberBasicController extends BaseController {
 	
 			model.addAttribute("page", pager);
 		
-			return "portal/member/MemberBasicQ";
+			return "portal/member/memberQ";
 		}
 }
