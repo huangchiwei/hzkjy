@@ -89,7 +89,7 @@ public class  ChooseSelectController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 		params.put("fhybh", userNo);
 		}
 		if(fhymc !="" && fhymc !=null){
@@ -214,8 +214,8 @@ public class  ChooseSelectController extends BaseController {
 			initPdfMap(map, stu);
 			data.add(map);
 		}
-
-		File reportFile = new File(this.getUrl() + "HuiZhi_map.jasper");
+		String filePath="jasper/hz/";
+		File reportFile = new File(request.getSession().getServletContext().getRealPath(filePath) + "/HuiZhi_map.jasper");
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(
 				data);
 

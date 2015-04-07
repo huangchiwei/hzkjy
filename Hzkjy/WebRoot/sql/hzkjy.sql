@@ -173,7 +173,7 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '4297f44b13955235245b2497399d7a93', 'administrator', '1', '123@qq.com', null, '1591000000', null, '1', '2014-05-28 00:00:00', 'admin');
+INSERT INTO `sys_user` VALUES ('1', 'admin', '4297f44b13955235245b2497399d7a93', 'administrator', '1', '123@qq.com', null, '1591000000',null, null, '1', '2014-05-28 00:00:00', 'admin');
 INSERT INTO `sys_user` VALUES (2,'440100001','e10adc3949ba59abbe56e057f20f883e','广州军软',1,'1246251343@qq.com','','13418056821','',1,'2015-03-01 19:41:53','admin');
 
 -- ----------------------------

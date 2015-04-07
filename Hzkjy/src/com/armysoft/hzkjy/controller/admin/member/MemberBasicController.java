@@ -66,7 +66,7 @@ public class  MemberBasicController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 		params.put("fhybh", userNo);
 		}
 		if(fhymc !="" && fhymc !=null){

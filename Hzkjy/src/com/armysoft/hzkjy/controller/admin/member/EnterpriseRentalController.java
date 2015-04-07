@@ -75,7 +75,7 @@ public class  EnterpriseRentalController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 		params.put("fhybh", userNo);
 		}
 		if(fhymc !="" && fhymc !=null){
@@ -177,33 +177,21 @@ public class  EnterpriseRentalController extends BaseController {
 			if (srcFileName==null || srcFileName.equals("")){
 				return ;
 			}
-			String ext = srcFileName.substring(srcFileName.lastIndexOf("."));
-			fileName = UUID.randomUUID() + ext;
-			String strFilePath;
-			String PROJECT_LOCAL_PATH;
-			String NEWS_UPLOADPath ="D:/";
-			String NEWS_IMAGE_FILE_ADDR = this.getClass().getClassLoader().getResource("/").getPath().replace("WEB-INF/classes/", "")+"hzkjyFj/";
-			 
-		    String DRIVER_UPLOADPath ="D:/";
-			String DRIVER_IMAGE_FILE_ADDR = "hzkjyFj/" + convertDate(new Date())+"/";
-			PROJECT_LOCAL_PATH=getRealPath2();
+	
 			
-			if (NEWS_UPLOADPath.equals("/")){
-				strFilePath=PROJECT_LOCAL_PATH+ NEWS_IMAGE_FILE_ADDR+fileName;
-			}else{
-				  String rootPath  = "";
-					rootPath  = NEWS_IMAGE_FILE_ADDR.substring(1,NEWS_IMAGE_FILE_ADDR.indexOf("hzkjyFj/"))+"hzkjyFj/";
-					strFilePath=rootPath.replace("/", "\\");
-					strFilePath=strFilePath.replaceAll("%20", " ")+fileName;
-			}
-			
-			
-			File newFile = new File(strFilePath);
-			if(!newFile.getParentFile().exists()){
-				newFile.getParentFile().mkdirs();
-			}
-			file.transferTo(newFile);
-			entity.setAccessory(fileName);
+			 if (!file.isEmpty()) {
+				  String filePath="hzkjyFj/"+new Date().getTime()+"_"+file.getOriginalFilename();
+				  entity.setAccessory(filePath);
+				  try {
+						file.transferTo(new File(request.getSession().getServletContext().getRealPath(filePath)));
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			  }
 //			private String firstImageAddr;//首页新闻图片路径
 //			private String srcFileName;//首页新闻图片原文件名
 //			private int hasImage;//判断此条记录是否有新闻图片，使用0和1来判断
@@ -358,7 +346,7 @@ public class  EnterpriseRentalController extends BaseController {
 		headData.add(new Object[] { "Zydy","租用单元"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 		params.put("fhybh", userNo);
 		}
 		params.put("fhymc", fhymc);

@@ -72,7 +72,7 @@ public class  BsNewsController extends BaseController {
 		request.setAttribute("ftitle", ftitle);
 		}
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(!userNo.equals("admin")){
+		if(userNo.substring(0, 4).equals("4401")){
 			params.put("receiverBh", userNo);
 			}
         model.addAttribute("list", service.getByPage(params, pager));

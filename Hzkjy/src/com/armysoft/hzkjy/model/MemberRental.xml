@@ -214,7 +214,7 @@ select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt
 	          , #{qysfdj2}
 	          , #{lqysf2}
 	          , #{sfbz2}
-	             , #dsyhd2}
+	             , #{dsyhd2}
 	                , #{dbyhd2}
 	                   , #{dhjyl2}
 	                      , #{qydfdj2}

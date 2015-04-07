@@ -70,7 +70,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-		if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 			MemberBasic mb=mbservice.findByHybh(userNo);
 			params.put("fqqymc", mb.getQymc());
 			
@@ -115,7 +115,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 			model.addAttribute("model", mb);
 		}else{
 			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
-			if(userNo !="" && userNo !=null && !userNo.equals("admin")){
+			if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 				MemberBasic mc=mbservice.findByHybh(userNo);
 				model.addAttribute("mc", mc);
 				}

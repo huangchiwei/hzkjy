@@ -160,6 +160,8 @@ public class  EconomicReportingController extends BaseController {
 		return "redirect://admin/economicReporting/list/1.html";
 	}
 	
+	
+	@PermissionsAnno("jjybtb_tg")
 	@RequestMapping("Tgtz.html")
 	@ResponseBody
 	public String Tgtz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
@@ -192,7 +194,7 @@ public class  EconomicReportingController extends BaseController {
 		String exl="ok";
 		return exl;
 	}
-	
+	@PermissionsAnno("jjybtb_btg")
 	@RequestMapping("Btgtz.html")
 	@ResponseBody
 	public String Btgtz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
@@ -265,6 +267,8 @@ public class  EconomicReportingController extends BaseController {
 		String exl="ok";
 		return exl;
 	}
+	
+	@PermissionsAnno("jjybtb_sh")
 	@RequestMapping("ZShtg.html")
 	@ResponseBody
 	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {
@@ -280,6 +284,7 @@ public class  EconomicReportingController extends BaseController {
 		String exl="ok";
 		return exl;
 	}
+	@PermissionsAnno("jjybtb_th")
 	@RequestMapping("ZShth.html")
 	@ResponseBody
 	public String ZShth(String ids,String examineTime,HttpServletRequest request) throws ParseException {
