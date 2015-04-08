@@ -24,17 +24,9 @@
 					<ul class="ul">
 						<c:forEach items="${list}" var="o" varStatus="sta">
 							<li>
-								<span><fmt:formatDate value="${o.rysj}"
+								<span><fmt:formatDate value="${o.qyrzsj}"
 										pattern="yyyy-MM-dd" /> </span>
-								<c:choose>
-									<c:when test="${cateCode=='train_file'}">
-										<a href="${ctx}/portal/news/downLoad/${o.id}.html">${o.title}</a>
-									</c:when>
-									<c:otherwise>
-										<a
-											href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${cateCode}">${o.title}</a>
-									</c:otherwise>
-								</c:choose>
+								${o.qymc}
 
 							</li>
 						</c:forEach>

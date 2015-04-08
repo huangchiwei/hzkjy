@@ -169,8 +169,7 @@ public class MemberBasicController extends BaseController {
 		  return "redirect:"+url;
 	  }
 	  @RequestMapping(value = PAGE_LIST)
-		public String getByPage(@PathVariable Integer currentPage,String fzt,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
-				MemberBasic entity, HttpServletRequest request) {
+		public String getByPage(@PathVariable Integer currentPage,Model model, HttpServletRequest request) {
 			Pagination pager = initPage(currentPage);
 			Map<String, Object> params = new HashMap<String, Object>();
 	        model.addAttribute("list", service.getByPage(params, pager));
