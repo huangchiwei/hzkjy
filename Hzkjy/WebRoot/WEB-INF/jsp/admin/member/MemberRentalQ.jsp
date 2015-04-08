@@ -22,13 +22,13 @@ $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
 
-$('#checkAll').click(function(){
-	$('input[name="qyId"]').attr("checked",this.checked);
+$("#checkAll").click(function(){
+	$("input[name=qyId]").attr("checked",this.checked);
 });
 });
 var myWindow;
 function printHuiZhiList(){
-	var stuInput = $('input[name="qyId"]:checked');
+	var stuInput = $("input[name=qyId]:checked");
 	var ids = '';
 	$.each(stuInput,function(i,item){
 		ids += item.value + ",";
@@ -38,16 +38,8 @@ function printHuiZhiList(){
 		return;
 	}
 	ids = ids.substring(0,ids.length - 1);
-	myWindow = $.layer({
-	    type: 2,
-	    maxmin: true,
-	    shadeClose: true,
-	    title: "批量打印",
-	    shade: [0.1,'#fff'],
-	    offset: ['10px',''],
-	    area: ['500px', '400px'],
-	    iframe: {src: "${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
-	});
+	  document.forms[0].action="${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random();
+	  document.forms[0].submit();
 }
 
 function tjsh(id){
@@ -56,7 +48,7 @@ function tjsh(id){
 				url:'${ctx}/admin/memberRental/ZShtg.html?id='+id+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
           
@@ -65,7 +57,7 @@ function tjsh(id){
 }
 
 function pltjsh(){
-	var stuInput = $('input[name="qyId"]:checked');
+	var stuInput = $("input[name=qyId]:checked");
 	var ids = '';
 	$.each(stuInput,function(i,item){
 		ids += item.value + ",";
@@ -78,7 +70,7 @@ function pltjsh(){
 				url:'${ctx}/admin/memberRental/ZShtg.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();
@@ -205,7 +197,7 @@ function loadPageLayer2(title,url){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
 	function pltzjf(){
-	var stuInput = $('input[name="qyId"]:checked');
+	var stuInput = $("input[name=qyId]:checked");
 	var ids = '';
 	$.each(stuInput,function(i,item){
 		ids += item.value + ",";
@@ -218,7 +210,7 @@ function loadPageLayer2(title,url){
 				url:'${ctx}/admin/rentalExamine/Pltz.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();
@@ -242,12 +234,11 @@ function loadPageLayer2(title,url){
        <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=20  class="input_a1" onfocus="loadCorpName();"/>
         <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" size=15 onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" maxlength="20"/>
-   	
-         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
-         <input id="" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
-         <input id="" type="button" value="通知发送" class="initial" onclick="pltzjf()"/>
-         <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
-         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+   	       <input id="add_bt" type="button" value="查询" class="initial" onclick="find()"/>
+         <input id="add_bt" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
+         <input id="add_bt" type="button" value="通知发送" class="initial" onclick="pltzjf()"/>
+         <input id="add_bt" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
+         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out()"/>
       
     </div>
     
@@ -259,11 +250,13 @@ function loadPageLayer2(title,url){
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
-	        <th>租用单元</th>
+	       
 	        <th>租金</th>
+	        <th>管理服务费</th>
 	        <th>水费</th>
 	        <th>电费</th>
-	        <th>管理服务费</th>
+	        <th>装修押金</th>
+	        <th>租赁保证金</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th>发布状态</th>
@@ -287,11 +280,13 @@ function loadPageLayer2(title,url){
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
-	        <td>${mb.zydy}元</td>
+	        
 	        <td>${mb.qyzj}元</td>
+	        <td>${mb.glfwf}元</td>
 	        <td>${mb.qysf}元</td>
 	        <td>${mb.qydf}元</td>
-	        <td>${mb.glfwf}元</td>
+	        <td>${mb.zxyj}元</td>
+	         <td>${mb.zlbzj}元</td>
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.shzt}</td>
 	        <td>${mb.fbzt}</td>
@@ -310,7 +305,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="11"></td>
+        <td colspan="12"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -318,7 +313,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="13">
+			<td colspan="14">
 				<div class="page">
 					<p:pager/>
 				</div>

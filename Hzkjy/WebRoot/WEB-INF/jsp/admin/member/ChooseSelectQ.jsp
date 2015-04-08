@@ -193,7 +193,7 @@ function pltzjf(){
 				url:'${ctx}/admin/chooseSelect/Pltz.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();

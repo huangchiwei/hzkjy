@@ -37,16 +37,8 @@ function printHuiZhiList(){
 		return;
 	}
 	ids = ids.substring(0,ids.length - 1);
-	myWindow = $.layer({
-	    type: 2,
-	    maxmin: true,
-	    shadeClose: true,
-	    title: "批量打印",
-	    shade: [0.1,'#fff'],
-	    offset: ['10px',''],
-	    area: ['500px', '400px'],
-	    iframe: {src: "${ctx}/admin/chooseSelect/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
-	});
+	document.forms[0].action="${ctx}/admin/chooseSelect/printHuiZhiList.html?ids=" + ids + "&random="+Math.random();
+	  document.forms[0].submit();
 }
 
 function find(){    

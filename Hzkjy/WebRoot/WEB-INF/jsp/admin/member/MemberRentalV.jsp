@@ -501,7 +501,11 @@ function rtnn(val){
 	}else{
 	dhjyl=$("#dhjyl2").val();
 	}
-	
+	 if($("#lqydf").val()==""){
+	lqydf="0.0";
+	}else{
+	lqydf=$("#lqydf2").val();
+	}
 		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
 		var sumqydf2=parseFloat(lqydf)+sumqydf;
 		$("#qydf").attr("value",sumqydf2.toFixed(1));

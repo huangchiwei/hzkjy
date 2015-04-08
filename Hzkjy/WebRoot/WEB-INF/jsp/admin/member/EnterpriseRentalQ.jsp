@@ -33,7 +33,7 @@ function tjsh(id){
 				url:'${ctx}/admin/enterpriseRental/ZShtg.html?id='+id+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
           
@@ -131,7 +131,7 @@ function pltjsh(){
 				url:'${ctx}/admin/enterpriseRental/ZShtg.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();
@@ -210,11 +210,12 @@ function loadPageLayer2(title,url){
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
-	        <th>租用单元</th>
 	        <th>租金</th>
+	        <th>管理服务费</th>
 	        <th>水费</th>
 	        <th>电费</th>
-	        <th>管理服务费</th>
+	        <th>装修押金</th>
+	        <th>租赁保证金</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th width="6%">操作</th>
@@ -237,11 +238,12 @@ function loadPageLayer2(title,url){
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
-	        <td>${mb.zydy}元</td>
-	        <td>${mb.qyzj}元</td>
+	          <td>${mb.qyzj}元</td>
+	        <td>${mb.glfwf}元</td>
 	        <td>${mb.qysf}元</td>
 	        <td>${mb.qydf}元</td>
-	        <td>${mb.glfwf}元</td>
+	        <td>${mb.zxyj}元</td>
+	         <td>${mb.zlbzj}元</td>
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.fbzt}</td>
 	        <td>
@@ -259,7 +261,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="10"></td>
+        <td colspan="11"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -267,7 +269,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="12">
+			<td colspan="13">
 				<div class="page">
 					<p:pager/>
 				</div>

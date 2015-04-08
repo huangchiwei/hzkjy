@@ -57,7 +57,7 @@ select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,Create
 		</if>
 		)
 		or (Iseveryone='1')
-		order by id desc LIMIT 1
+		order by id desc LIMIT 5
 	</select>
 	
 	<select id="findByHybh" resultMap="bsNewsMap" parameterType="String">

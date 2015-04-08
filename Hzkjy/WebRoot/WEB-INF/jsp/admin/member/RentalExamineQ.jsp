@@ -39,16 +39,8 @@ function printHuiZhiList(){
 		return;
 	}
 	ids = ids.substring(0,ids.length - 1);
-	myWindow = $.layer({
-	    type: 2,
-	    maxmin: true,
-	    shadeClose: true,
-	    title: "批量打印",
-	    shade: [0.1,'#fff'],
-	    offset: ['10px',''],
-	    area: ['500px', '400px'],
-	    iframe: {src: "${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
-	});
+	document.forms[0].action="${ctx}/admin/rentalExamine/printHuiZhiList.html?ids=" + ids + "&random="+Math.random();
+	  document.forms[0].submit();
 }
 function pltjsh(){
 	var stuInput = $('input[name="qyId"]:checked');
@@ -64,7 +56,7 @@ function pltjsh(){
 				url:'${ctx}/admin/rentalExamine/ZShtg.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();
@@ -83,7 +75,7 @@ function pltzjf(){
 				url:'${ctx}/admin/rentalExamine/Pltz.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();
@@ -103,7 +95,7 @@ function pltssh(){
 				url:'${ctx}/admin/rentalExamine/Thtg.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false,
+		  		async:false
 		  		
 		  	});
 	document.getElementById("search_form").submit();
@@ -223,11 +215,12 @@ function corpAutocomplete(data){
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
-	        <th>租用单元</th>
-	        <th>租金</th>
+	     <th>租金</th>
+	        <th>管理服务费</th>
 	        <th>水费</th>
 	        <th>电费</th>
-	        <th>管理服务费</th>
+	        <th>装修押金</th>
+	        <th>租赁保证金</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th width="6%">操作</th>
@@ -250,11 +243,12 @@ function corpAutocomplete(data){
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
 	        <td>${mb.qymc}</td>
-	        <td>${mb.zydy}元</td>
-	        <td>${mb.qyzj}元</td>
+	         <td>${mb.qyzj}元</td>
+	        <td>${mb.glfwf}元</td>
 	        <td>${mb.qysf}元</td>
 	        <td>${mb.qydf}元</td>
-	        <td>${mb.glfwf}元</td>
+	        <td>${mb.zxyj}元</td>
+	         <td>${mb.zlbzj}元</td>
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.shzt}</td>
 	        <td>
@@ -272,7 +266,7 @@ function corpAutocomplete(data){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="10"></td>
+        <td colspan="11"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -280,7 +274,7 @@ function corpAutocomplete(data){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="12">
+			<td colspan="13">
 				<div class="page">
 					<p:pager/>
 				</div>
