@@ -3,6 +3,7 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,7 +11,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.armysoft.core.Pagination;
 import org.armysoft.security.InitResourcesMap;
+import org.armysoft.security.service.sys.SysUserService;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.armysoft.hzkjy.base.common.Constants;
@@ -31,7 +35,8 @@ public class MemberBasicController extends BaseController {
 
 	@Resource
 	private MemberBasicService service;
-	
+	@Resource
+	private SysUserService sysUserService;
 	@Resource
 	private InitResourcesMap initResourcesMap;
 	@InitBinder
@@ -100,14 +105,15 @@ public class MemberBasicController extends BaseController {
 			
 			 return "portal/member/forget";
 		 }
-		 Map<String, Object> ac= service.getByEmail(email);
+		 Map<String, Object> ac= sysUserService.getByEmail(email);
 		 if(ac!=null){
 			//发送邮箱到用户
 			 ac.put("MailSeq", String.valueOf(new Date().getTime()));
-			 service.updateMailSeq(ac.get("MailSeq").toString(),ac.get("UserNo").toString());
+			 sysUserService.updateMailSeq(ac.get("MailSeq").toString(),ac.get("UserNo").toString());
 			 service.sendMail( ac,"reset");
+				model.addAttribute("email", email);
 				
-				return "portal/member/forget_email";
+				return "portal/member/forget_mail";
 		 }else{
 			 model.addAttribute("msg", "邮箱不存在");
 			 return "portal/member/forget";
@@ -116,7 +122,7 @@ public class MemberBasicController extends BaseController {
 	@RequestMapping(value = "/resetPwd.html")
 	  public String resetPwd(HttpServletRequest request,HttpServletResponse response,Model model,String userNo,String mailSeq)
 	  {
-		 Map<String, Object> ac= service.getByUserNo(userNo);
+		 Map<String, Object> ac= sysUserService.getByUserNo2(userNo);
 		 if(ac!=null){
 			 if(ac.get("MailSeq").toString().equals(mailSeq)){
 				 model.addAttribute("userNo", userNo);
@@ -124,22 +130,53 @@ public class MemberBasicController extends BaseController {
 				 return "portal/member/forget_reset";
 			 }
 		 }
-		  return null;
+		 return "portal/member/forget";
 		
 	  }
 	@RequestMapping(value = "/submitResetPwd.html")
-	  public String submitResetPwd(HttpServletRequest request,HttpServletResponse response,Model model,String pwd,String userNo,String mailSeq)
+	  public String submitResetPwd(HttpServletRequest request,HttpServletResponse response,Model model,String pwd,String repwd,String userNo,String mailSeq)
 	  {
+		if(pwd.equals(repwd)==false){
+			model.addAttribute("msg", "两次输入密码必须一致!");
+			 return "portal/member/forget_reset";
+		}
 		
-		 Map<String, Object> ac= service.getByUserNo(userNo);
+		 Map<String, Object> ac= sysUserService.getByUserNo2(userNo);
 		 if(ac!=null){
 			 if(ac.get("MailSeq").toString().equals(mailSeq)){
-				 service.updatePwd(userNo,DigestUtils.md5DigestAsHex(pwd.getBytes()));
+				 sysUserService.updatePwd(userNo,DigestUtils.md5DigestAsHex(pwd.getBytes()));
 				 return "portal/member/forget_success"; 
 			 }
 			
 		 }
-		  return null;
+			model.addAttribute("msg", "用户的用户名:"+userNo);
+		 return "portal/member/forget_reset";
 		
 	  }
+	@RequestMapping(value = "/loginMail.html")
+	  public String loginMail(HttpServletRequest request,HttpServletResponse response,Model model,String email)
+	  {
+		String url="";
+		if(email.contains("@163.com")){
+			url="http://mail.163.com/";
+		}else if(email.contains("@qq.com")){
+			url="https://mail.qq.com/cgi-bin/loginpage?";
+		}else if(email.contains("@sina.cn")){
+			url="http://mail.sina.com.cn/";
+		}else if(email.contains("@yahoo.com")){
+			url="https://login.yahoo.com/config/login_verify2?&.src=ym&.intl=cn";
+		}
+		  return "redirect:"+url;
+	  }
+	  @RequestMapping(value = PAGE_LIST)
+		public String getByPage(@PathVariable Integer currentPage,String fzt,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+				MemberBasic entity, HttpServletRequest request) {
+			Pagination pager = initPage(currentPage);
+			Map<String, Object> params = new HashMap<String, Object>();
+	        model.addAttribute("list", service.getByPage(params, pager));
+	
+			model.addAttribute("page", pager);
+		
+			return "portal/member/memberQ";
+		}
 }

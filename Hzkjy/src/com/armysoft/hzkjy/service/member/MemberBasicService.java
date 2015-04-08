@@ -149,10 +149,7 @@ public class MemberBasicService extends BaseDao {
 		super.defDelete(nameSpace, id);
 	}
 	
-	public Map<String, Object> getByEmail(String email) {
-		
-		return super.nativeSelectOne(nameSpace+".getByEmail", null);
-	}
+
 	public void sendMail(Map<String, Object> sysUser,String type) {
 		  MailSenderInfo mailInfo = new MailSenderInfo();  
 		   mailInfo.setMailServerHost(Constants.mailPros.getProperty("mail.serverHost"));    
@@ -164,32 +161,18 @@ public class MemberBasicService extends BaseDao {
 		    mailInfo.setToAddress(sysUser.get("Email").toString());  
 		    if(type.equals("reset")){
 		    	 mailInfo.setSubject("重置密码"); 
-		    	 String resetUrl=Constants.mailPros.getProperty("mail.resetUrl")+"UserNo="+sysUser.get("UserNo").toString()+"&mailSeq="+sysUser.get("MailSeq").toString();
+		    	 String resetUrl=Constants.mailPros.getProperty("mail.resetUrl")+"userNo="+sysUser.get("UserNo").toString()+"&mailSeq="+sysUser.get("MailSeq").toString();
 		    	 mailInfo.setContent("亲爱的科技园会员["+sysUser.get("UserNo").toString()+"]:重置密码请点击以下地址,"+resetUrl);   
 		    }
 		    
 		        //这个类主要来发送邮件   
 		     SimpleMailSender sms = new SimpleMailSender();   
 		         sms.sendTextMail(mailInfo);//发送文体格式    
-		         sms.sendHtmlMail(mailInfo);//发送html格式   
+		         //sms.sendHtmlMail(mailInfo);//发送html格式   
 		
 	}
 	
-	public void updateMailSeq(String mailSeq,String UserNo) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("mailSeq", mailSeq);
-		params.put("UserNo", UserNo);
-		super.nativeUpdate(nameSpace+".updateMailSeq", params);
-		
-	}
-	public Map<String, Object> getByUserNo(String userNo) {
-	   return super.nativeSelectOne(nameSpace+".getByUserNo", userNo);
-	}
-	public void updatePwd(String userNo,String pwd) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("userNo", userNo);
-		params.put("pwd", pwd);
-		super.nativeUpdate(nameSpace+".updatePwd", params);
-		
-	}
+
+	
+
 }

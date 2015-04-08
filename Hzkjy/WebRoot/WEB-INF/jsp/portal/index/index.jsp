@@ -75,7 +75,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    <div class="left_box_title relative">
     <h1>园区概况</h1>
     <span>Park Overview</span>
-    <div class="more"><a href="#">更多&gt;&gt;</a></div>
+    <div class="more"><a href="${ctx }/portal/news/list/1.html?cateCode=park_intro">更多&gt;&gt;</a></div>
    </div>
    <div class="introduction">
     <h1>广州市海珠科技产业园有限公司</h1>
@@ -86,7 +86,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    <div class="left_box_title relative">
     <h1>最新公告</h1>
     <span>Latest Announcement</span>
-    <div class="more"><a href="#">更多&gt;&gt;</a></div>
+    <div class="more"><a href="${ctx }/portal/news/list/1.html?cateCode=notice_lastest">更多&gt;&gt;</a></div>
    </div>
    <div class="announcement">
     <div class="announcement_l">
@@ -118,14 +118,14 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="announcement_r">
      <h1>
      <c:if test="${noticeList!=null&&fn:length(noticeList)>0}">
-     <a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${noticeList[0].title }</a>
+     <a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${fn:substring(noticeList[0].title, 0, 28)}</a>
      </c:if>
      </h1>
      <ul>
   
        <c:forEach items="${noticeList}" varStatus="index" var="o" >  
-        <c:if test="${index.index>1}">
-          <li><span><fmt:formatDate value="${index.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${o.title }</a></li>
+        <c:if test="${index.index>0}">
+          <li><span><fmt:formatDate value="${o.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${fn:substring(o.title, 0, 20)}</a></li>
        </c:if>
        </c:forEach>
       
@@ -139,12 +139,12 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    <div class="left_box2_l">
     <div class="l_b_l_t relative">
      <h1>交流培训</h1>
-     <div class="more"><a href="#">更多&gt;&gt;</a></div>
+     <div class="more"><a href="${ctx }/portal/news/list/1.html?cateCode=train_notice">更多&gt;&gt;</a></div>
     </div>
     <div class="l_b_l_b">
      <ul>
       <c:forEach items="${trainList}" varStatus="index" var="o" >  
-       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${o.title }</a></li>
+       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 25)}</a></li>
     </c:forEach>
     
        </ul>
@@ -153,12 +153,12 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    <div class="left_box2_2">
     <div class="l_b_l_t relative">
      <h1>政府政策</h1>
-     <div class="more"><a href="#">更多&gt;&gt;</a></div>
+     <div class="more"><a href="${ctx }/portal/news/list/1.html?cateCode=policy_regu">更多&gt;&gt;</a></div>
     </div>
     <div class="l_b_l_b">
      <ul>
     <c:forEach items="${policyList}" varStatus="index" var="o" >  
-       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${o.title }</a></li>
+       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 25)}</a></li>
     </c:forEach>
      </ul>
     </div>
@@ -182,13 +182,16 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="login">
     <ul>
-     <li class="account"><input id="userNo" name="userNo" type="text" class="input"/>
+     <li class="account"><em>用户名</em><input id="userNo" name="userNo" type="text" class="input"/>
      </li>
-     <li class="password"><input id="password" name="password" type="password" class="input"/>
+     <li class="password"><em>密码</em><input id="password" name="password" type="password" class="input"/>
      </li>
-     <li class="btn"><input id="login_btn" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
+      <li class="btn"><input type="button" class="btn_a1" value="登录"/>
      </li>
-    </ul>
+     <li class="input_txt"><a href="${ctx}/portal/memberBasic/forget.html">忘记密码?</a><a href="${ctx}/portal/memberBasic/toRegist.html">用户注册</a></li>
+     <%--<li class="btn"><input id="login_btn" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
+     </li>
+    --%></ul>
    </div>
   </div>
   <div class="left_box">
@@ -202,9 +205,9 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
      <li class="service3"><a href="#">出园导向</a></li>
      <li class="service4"><span><a href="#">出园指南</a></span><span><a href="#">出园流程</a></span></li>
      <li class="service5"><a href="#">基础服务</a></li>
-     <li class="service6"><a href="#">人力资源</a></li>
-     <li class="service7"><a href="#">项目申报</a></li>
-     <li class="service8"><a href="#">招商信息</a></li>
+     <li class="service6"><a href="${ctx}/portal/news/list/1.html?cateCode=service_human">人力资源</a></li>
+     <li class="service7"><a href="${ctx}/portal/news/list/1.html?cateCode=service_apply">项目申报</a></li>
+     <li class="service8"><a href="${ctx}/portal/news/list/1.html?cateCode=service_business">招商信息</a></li>
     </ul>
    </div>
   </div>
@@ -212,23 +215,15 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
   <div class="left_box">
    <div class="left_box_title relative">
     <h4>入驻企业</h4>
-    <div class="more"><a href="#">更多&gt;&gt;</a></div>
+    <div class="more"><a href="${ctx }/portal/memberBasic/list/1.html">更多&gt;&gt;</a></div>
    </div>
    <div class="business">
      <div id="scrollDiv">
       <ul>
-        <li><a href="#">广州司美会展服务有限公司</a></li>
-        <li><a href="#">广州市祥洲装饰工程有限公司</a></li>
-        <li><a href="#">广州聚天环保科技有限公司</a></li>
-        <li><a href="#">广州千岁兰居环保科技有限公司</a></li>
-        <li><a href="#">广州市金域检测技术有限公司</a></li>
-        <li><a href="#">广州聚天化工科技有限公司</a></li>
-        <li><a href="#">广州市荣都电子科技有限公司</a></li>
-        <li><a href="#">广州市恒道电子科技有限公司</a></li>
-        <li><a href="#">广州市金域检测技术有限公司</a></li>
-        <li><a href="#">广州聚天化工科技有限公司</a></li>
-        <li><a href="#">广州市荣都电子科技有限公司</a></li>
-        <li><a href="#">广州市恒道电子科技有限公司</a></li>
+       <c:forEach items="${memberList}" varStatus="index" var="o" >  
+       <li class="li"><a href="${ctx }/portal/memberBasic/detail/${o.id}.html">${fn:substring(o.qymc, 0, 20)}</a></li>
+    </c:forEach>
+             
       </ul>
      </div>
    </div>

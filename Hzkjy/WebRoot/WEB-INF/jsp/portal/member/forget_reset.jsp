@@ -9,6 +9,9 @@
 	</head>
 
 	<body>
+	<form id="loginForm" action="${ctx}/portal/memberBasic/submitResetPwd.html" method="post">
+	<input type="hidden" name="userNo" value="${userNo}"/>
+	<input type="hidden" name="mailSeq" value="${mailSeq}"/>
 	<div class="content">
 <div class="reg_location">
  <h1>找回密码</h1>
@@ -21,16 +24,17 @@
    <span><div class="a1">第三步：完成</div></span>
   </div>
     <ul class="ul">
-     <li class="li"><span class="span">新 密 码：</span><input type="password" class="input" size="27" />
+     <li class="li"><span class="span">新 密 码：</span><input type="password" name="pwd" class="input" size="27" />
      <em>请输入您的新密码</em>
      </li>
-     <li class="li"><span class="span">确认密码：</span><input type="password" class="input" size="27" />
+     <li class="li"><span class="span">确认密码：</span><input type="password" name="repwd" class="input" size="27" />
      <em>请再次输入您的新密码</em>
      </li>
-     <li class="li"><div class="btn_box"><input type="button" class="btn_next" value="下一步" /></div></li>
+     <li class="li"><div class="btn_box"><input type="submit" class="btn_next" value="下一步" /></div></li>
+     <c:if test="${not empty msg}"><li class="li"><font color="red">${msg }</font></li></c:if>
     </ul>
  </div>
 </div>
-
+</form>
 	</body>
 </html>

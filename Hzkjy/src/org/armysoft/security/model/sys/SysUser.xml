@@ -115,4 +115,22 @@
 	<delete id="deleteByRoleNo">
 		delete from sys_user_role where roleNo = #{roleNo}
 	</delete>
+	
+	
+	<select id="getByEmail" resultType="java.util.Map" parameterType="String">
+select * from sys_user where Email=#{email}
+</select>
+<update id="updateMailSeq">
+		update sys_user set 
+			MailSeq = #{mailSeq}
+		where UserNo = #{userNo}
+	</update>
+	<select id="getByUserNo2" parameterType="String"  resultType="java.util.Map">
+		select * from sys_user where UserNo = #{userNo}
+	</select>
+	<update id="updatePwd">
+		update sys_user set 
+			Pwd = #{pwd}
+		where UserNo = #{userNo}
+	</update>
 </mapper>
