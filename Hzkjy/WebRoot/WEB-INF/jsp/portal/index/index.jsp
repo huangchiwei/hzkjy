@@ -94,24 +94,39 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
      <div class="prev"></div>
      <div class="next"></div>
     <ul class="bigUl">
+     <c:forEach items="${noticeList}" var="o" varStatus="sta">
+      <c:if test="${sta.index<4}">
+      <li <c:if test="${sta.index==0}">style="z-index:1"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html">
+       <c:if test="${fn:contains(o.src, 'userfiles')==true}"><img src="${o.src}" width="300" height="200"/></c:if>
+      <c:if test="${fn:contains(o.src, 'userfiles')==false}"><img src="${ctx}/theme/portal/default/images/2.jpg" width="300" height="200" /></c:if>
+     </a></li>
+      </c:if>
+       </c:forEach>
+    <%--
        <li style="z-index:1"><a href="#"><img src="${ctx}/theme/portal/default/images/4.jpg" /></a></li>
        <li><a href="#"><img src="${ctx}/theme/portal/default/images/2.jpg" width="300" height="200" /></a></li>
        <li><a href="#"><img src="${ctx}/theme/portal/default/images/3.jpg" width="300" height="200" /></a></li>
        <li><a href="#"><img src="${ctx}/theme/portal/default/images/1.jpg" width="300" height="200" /></a></li>
-    </ul>
+    --%></ul>
     <ul class="numberUl">
-      <li class="night"><a href="javascript:;">1</a></li>
-      <li><a href="javascript:;">2</a></li>
-      <li><a href="javascript:;">3</a></li>
-      <li><a href="javascript:;">4</a></li>
+    <c:forEach items="${noticeList}" var="o" varStatus="sta">
+      <c:if test="${sta.index<4}">
+      <li <c:if test="${sta.index==0}">class="night"</c:if>><a href="javascript:;">${sta.index+1}</a></li>
+      </c:if>
+      </c:forEach>
+     
     </ul>
     <div>
       <ul class="textUl">
+       <c:forEach items="${noticeList}" var="o" varStatus="sta">
+       <li <c:if test="${sta.index==0}">style="display:block;"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 20)}</a></li>
+       </c:forEach>
+      <%--
         <li style="display:block;"><a href="#">定位精品路线 原创试驾奇瑞艾瑞</a></li>
         <li><a href="#">锂电池是亮点 米儿低速电动车设计</a></li>
         <li><a href="#">舒适及操控更上一层楼 测试长安金</a></li>
         <li><a href="#">外观动感/配置丰富 天籁2.0L用车记</a></li>
-      </ul>
+      --%></ul>
     </div>
  </div>
     </div>
@@ -125,7 +140,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
   
        <c:forEach items="${noticeList}" varStatus="index" var="o" >  
         <c:if test="${index.index>0}">
-          <li><span><fmt:formatDate value="${o.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${fn:substring(o.title, 0, 20)}</a></li>
+          <li><span><fmt:formatDate value="${o.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 20)}</a></li>
        </c:if>
        </c:forEach>
       
@@ -168,7 +183,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    <div class="left_box_title relative">
     <h1>友情连接</h1>
     <span>Links</span>
-    <div class="more"><a href="#">更多&gt;&gt;</a></div>
+    <div class="more"><a href="#"></a></div>
    </div>
    <div class="links">
     <a href="#">海珠区科信局</a><a href="#">广州市科信局</a><a href="#">广州市发改局</a><a href="#">广州经贸网</a><a href="#">广东省科技厅</a><a href="#">广州市中小企业信息网</a>
@@ -200,11 +215,11 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="service">
     <ul>
-     <li class="service1"><a href="#">入园导向</a></li>
-     <li class="service2"><span><a href="#">入园指南</a></span><span><a href="#">入园流程</a></span></li>
-     <li class="service3"><a href="#">出园导向</a></li>
-     <li class="service4"><span><a href="#">出园指南</a></span><span><a href="#">出园流程</a></span></li>
-     <li class="service5"><a href="#">基础服务</a></li>
+     <li class="service1">入园导向</li>
+     <li class="service2"><span><a href="${ctx}/portal/news/list/1.html?cateCode=service_inpark_guide">入园指南</a></span><span><a href="${ctx}/portal/news/list/1.html?cateCode=service_inpark_process">入园流程</a></span></li>
+     <li class="service3">出园导向</li>
+     <li class="service4"><span><a href="${ctx}/portal/news/list/1.html?cateCode=service_outpark_guide">出园指南</a></span><span><a href="${ctx}/portal/news/list/1.html?cateCode=service_outpark_process">出园流程</a></span></li>
+     <li class="service5"><a href="${ctx}/portal/news/list/1.html?cateCode=service_base">基础服务</a></li>
      <li class="service6"><a href="${ctx}/portal/news/list/1.html?cateCode=service_human">人力资源</a></li>
      <li class="service7"><a href="${ctx}/portal/news/list/1.html?cateCode=service_apply">项目申报</a></li>
      <li class="service8"><a href="${ctx}/portal/news/list/1.html?cateCode=service_business">招商信息</a></li>

@@ -513,13 +513,13 @@ INSERT INTO `news_category` VALUES (6,'省市政策','policy_province','政策�
 INSERT INTO `news_category` VALUES (7,'园区政策','policy_park','政策法规');
 INSERT INTO `news_category` VALUES (8,'最新公告','notice_lastest','最新公告');
 INSERT INTO `news_category` VALUES (11,'招商信息','service_business','企业服务');
-INSERT INTO `news_category` VALUES (19,'入园导向>入园指南','service_inpark_guide','企业服务');
-INSERT INTO `news_category` VALUES (20,'出园导向>出园指南','service_outpark_guide','企业服务');
+INSERT INTO `news_category` VALUES (19,'入园指南','service_inpark_guide','企业服务');
+INSERT INTO `news_category` VALUES (20,'出园指南','service_outpark_guide','企业服务');
 INSERT INTO `news_category` VALUES (21,'基础服务','service_base','企业服务');
 INSERT INTO `news_category` VALUES (22,'人力资源','service_human','企业服务');
 INSERT INTO `news_category` VALUES (23,'项目申报','service_apply','企业服务');
-INSERT INTO `news_category` VALUES (24,'入园导向>入园流程','service_inpark_process','企业服务');
-INSERT INTO `news_category` VALUES (25,'出园导向>出园流程','service_outpark_process','企业服务');
+INSERT INTO `news_category` VALUES (24,'入园流程','service_inpark_process','企业服务');
+INSERT INTO `news_category` VALUES (25,'出园流程','service_outpark_process','企业服务');
 INSERT INTO `news_category` VALUES (26,'培训通知','train_notice','交流培训');
 INSERT INTO `news_category` VALUES (27,'培训课件','train_file','交流培训');
 

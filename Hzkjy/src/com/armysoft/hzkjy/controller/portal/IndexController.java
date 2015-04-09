@@ -1,6 +1,7 @@
 package com.armysoft.hzkjy.controller.portal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.armysoft.hzkjy.base.util.StringUtil;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
 import com.armysoft.hzkjy.service.member.NewsService;
@@ -39,7 +41,13 @@ public class IndexController extends BaseController{
 		
 		//最新公告
 		params.put("prefixCode", "notice_");
-		 model.addAttribute("noticeList", newsService.getLikePrefixCode(params));
+		List<Map<String, Object>> noticeList=newsService.getLikePrefixCode(params);
+		if (noticeList != null && noticeList.size() > 0) {
+			for (Map<String, Object> h : noticeList) {				
+				h.put("src", StringUtil.getImageSrc(h.get("content").toString()));
+			}
+		}
+		 model.addAttribute("noticeList", noticeList);
 		
 		//交流培训
 		params.put("prefixCode", "train_");

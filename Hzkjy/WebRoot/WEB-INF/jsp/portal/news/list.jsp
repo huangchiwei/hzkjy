@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="/WEB-INF/tag.tld" prefix="p"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -26,7 +27,16 @@
 							<li>
 								<span><fmt:formatDate value="${o.realTime}"
 										pattern="yyyy-MM-dd" /> </span>
-							${o.qymc}
+							<c:choose>
+									<c:when test="${cateCode=='train_file'}">
+										<a href="${ctx}/portal/news/downLoad/${o.id}.html">${fn:substring(o.title, 0, 40)}</a>
+									</c:when>
+									<c:otherwise>
+										<a
+											href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${cateCode}">${fn:substring(o.title, 0, 40)}</a>
+									</c:otherwise>
+								</c:choose>
+
 
 							</li>
 						</c:forEach>
