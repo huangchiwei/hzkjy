@@ -45,10 +45,10 @@ public class BsNewsService extends BaseDao {
 	public BsNews findByKey(Long id) {
 		return super.nativeSelectOne(nameSpace + ".findById", id);
 	}
-	public BsNews findByUser(String User) {
+	public List<Map<String,Object>> findByUser(String User) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("User", User);
-		return super.nativeSelectOne(nameSpace + ".findByUser", params);
+		return  super.nativeList(nameSpace + ".findByUser", params);
 	}
 	
 	public List  getPortalList(Map<String, Object> params) {

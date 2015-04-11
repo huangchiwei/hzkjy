@@ -237,7 +237,7 @@ public class  MemberIntellectualProController extends BaseController {
 	    	}
 	    	model.addAttribute("params", params);
 	    	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-			if(userNo.equals("admin")==false){
+			if(userNo.substring(0, 4).equals("4401")){
 				params.put("memberNo", userNo);
 			}
 	    	//该年度知识产权授权

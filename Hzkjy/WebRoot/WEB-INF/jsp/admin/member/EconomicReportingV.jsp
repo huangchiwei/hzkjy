@@ -23,6 +23,11 @@
 <script src="${ctx}/js/tooltip/jquery.dimensions.js" type="text/javascript"></script>
 <script src="${ctx}/js/tooltip/jquery.tooltip.js" type="text/javascript"></script>
 <script src="${ctx}/js/tooltip/chili-1.7.pack.js" type="text/javascript"></script>
+<script language="javascript" src="${ctx}/js/jsp/member/economicReportingV.js" type="text/javascript"></script>
+<script src="${ctx}/js/formValidator/jquery-1.4.4.min.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="${ctx}/js/formValidator/style/validatorTidyMode.css" />
+<script src="${ctx}/js/formValidator/formValidator-4.0.1.js" type="text/javascript"></script>
+<script src="${ctx}/js/formValidator/formValidatorRegex.js" type="text/javascript"></script> 
 <script type="text/javascript">
 $(document).ready(function(){
 	 $("#hyfl option[value='${model.hyfl}']").attr("selected", true);  
@@ -315,6 +320,20 @@ html { overflow:-moz-scrollbars-vertical;}
    <h2>新增经济月报</h2>
   <table id="questTable" border="0" cellspacing="0" cellpadding="0"
 					class="ListTable">
+					<tr align="center">
+     <td colspan="4">广州市海珠区科技产业园基地入驻企业经济指标月报</td>
+    
+    </tr>
+    <tr>
+      <th>填报年月：</th>
+     <td>
+   
+     <input id="jjzbNy" name="jjzbNy" size="22"  type="text" 
+     	value="${model.jjzbNy}" maxlength="20" readonly="true" class="input_a1"/>
+     </td>
+     <th></th>
+     <td></td>
+       </tr>
     <tr>
      <th >企业名称：</th>
      <td>
@@ -355,11 +374,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>营业收入（本月数）：</th>
      <td>
-     	<input id="jgmzsrBys" name="jgmzsrBys" type="text" value="${model.jgmzsrBys}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();" />
+     	<input id="jgmzsrBys" name="jgmzsrBys" type="text" value="${model.jgmzsrBys}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();" />（万元）
      </td>
       <th>营业收入（累计数）：</th>
      <td>
-       <input id="jgmzsrLjs" name="jgmzsrLjs" type="text" value="${model.jgmzsrLjs}"  maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/> 
+       <input id="jgmzsrLjs" name="jgmzsrLjs" type="text" value="${model.jgmzsrLjs}"  maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>（万元）
       </td>
     </tr>
     <tr>
@@ -369,23 +388,23 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>利润总额（本月数）：</th>
      <td>
     
-     <input  id="lrzeBys" name="lrzeBys" type="text" value="${model.lrzeBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>
+     <input  id="lrzeBys" name="lrzeBys" type="text" value="${model.lrzeBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>（万元）
 
      </td>
       <th>利润总额（累计数）：</th>
      <td>
-       <input id="lrzeLjs" name="lrzeLjs" type="text" value="${model.lrzeLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();" /> 
+       <input id="lrzeLjs" name="lrzeLjs" type="text" value="${model.lrzeLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();" />（万元）
       </td>
     </tr>
       <tr>
      <th>创汇（本月数）：</th>
      <td>
-     	<input title="创汇：一般是指出口创汇，是指出售给外贸部门或直接出售给外商的产品或商品的总金额。包括来料加工装配出口，境内外技术合同实现金额及在国内以外汇计价的商品出售和技术服务的总额等。" id="ch" name="ch" type="text" value="${model.ch}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>
+     	<input title="创汇：一般是指出口创汇，是指出售给外贸部门或直接出售给外商的产品或商品的总金额。包括来料加工装配出口，境内外技术合同实现金额及在国内以外汇计价的商品出售和技术服务的总额等。" id="ch" name="ch" type="text" value="${model.ch}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>（万元）
      </td>
       <th>创汇（累计数）：</th>
      <td>
      <input id="shzt" name="shzt" type="hidden" value="${model.shzt}"/>
-     	<input id="chLjs" name="chLjs" type="text" value="${model.chLjs}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>
+     	<input id="chLjs" name="chLjs" type="text" value="${model.chLjs}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>（万元）
      </td>
        </tr>
      <tr>
@@ -394,11 +413,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>纳税（本月数）：</th> 
      <td>
-    <input title="纳税=企业交给国家的所有税金" id="nsBys" name="nsBys" type="text" value="${model.nsBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>
+    <input title="纳税=企业交给国家的所有税金" id="nsBys" name="nsBys" type="text" value="${model.nsBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>（万元）
      </td>
       <th>纳税（累计数）：</th>
      <td>
-       <input id="nsLjs" name="nsLjs" type="text" value="${model.nsLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();"/> 
+       <input id="nsLjs" name="nsLjs" type="text" value="${model.nsLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();"/>（万元）
       </td>
     </tr>
     
@@ -406,11 +425,11 @@ html { overflow:-moz-scrollbars-vertical;}
       <tr>
     <th>研发经费（本月数）：</th>
      <td>
-     	<input title="研发经费：指企业在产品、技术、材料、工艺、标准的研究、开发过程中发生的各项费用。" id="yfjf" name="yfjf" type="text" value="${model.yfjf}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
+     	<input title="研发经费：指企业在产品、技术、材料、工艺、标准的研究、开发过程中发生的各项费用。" id="yfjf" name="yfjf" type="text" value="${model.yfjf}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
      </td>
      <th>研发经费（累计数）：</th>
      <td>
-     	<input id="yfjfLjs" name="yfjfLjs" type="text" value="${model.yfjfLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
+     	<input id="yfjfLjs" name="yfjfLjs" type="text" value="${model.yfjfLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
      </td> 
      </tr>
      <tr>
@@ -419,21 +438,21 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>利税总额（本月数）：</th> 
      <td>
-     	<input title="利税总额=利润总额+纳税" id="lszeBys" name="lszeBys" type="text" value="${model.lszeBys}" maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/>
+     	<input title="利税总额=利润总额+纳税" id="lszeBys" name="lszeBys" type="text" value="${model.lszeBys}" maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/>（万元）
      </td>
       <th>利税总额（累计数）：</th>
      <td>
-       <input id="lszeLjs" name="lszeLjs" type="text" value="${model.lszeLjs}"  maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/> 
+       <input id="lszeLjs" name="lszeLjs" type="text" value="${model.lszeLjs}"  maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/>（万元） 
       </td>
     </tr>
     <tr>
      <th>高新技术产品收入（本月数）：</th>
      <td>
-       <input title="高新技术产品收入：是指企业通过技术创新、开展研发活动所形成的符合《重点领域》要求的产品（服务）所获得的收入与企业技术性收入的总和。" id="gxjscpsr" name="gxjscpsr" type="text" value="${model.gxjscpsr}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
+       <input title="高新技术产品收入：是指企业通过技术创新、开展研发活动所形成的符合《重点领域》要求的产品（服务）所获得的收入与企业技术性收入的总和。" id="gxjscpsr" name="gxjscpsr" type="text" value="${model.gxjscpsr}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
       </td>
       <th>高新技术产品收入（累计数）：</th>
      <td>
-       <input id="gxjscpsrLjs" name="gxjscpsrLjs" type="text" value="${model.gxjscpsrLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
+       <input id="gxjscpsrLjs" name="gxjscpsrLjs" type="text" value="${model.gxjscpsrLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
       </td>
     </tr>
       <tr>
@@ -442,11 +461,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
     <th>工业总产值（本月数）：</th>
      <td>
-     	<input title="<font color='red'>工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。</font>" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
+     	<input title="工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
      </td>
      <th>工业总产值（累计数）：</th>
      <td>
-     	<input id="gyzczLjs" name="gyzczLjs" type="text" value="${model.gyzczLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>
+     	<input id="gyzczLjs" name="gyzczLjs" type="text" value="${model.gyzczLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
      </td>
     </tr>
     
@@ -457,27 +476,44 @@ html { overflow:-moz-scrollbars-vertical;}
      
       <th>工业增加值（本月数）：</th> 
      <td>
-       <input title="工业增加值：工业增加值是指工业企业在报告期内以货币形式表现的工业生产活动的最终成果；是工业企业全部生产活动的总成果扣除了在生产过程中消耗或转移的物质产品和劳务价值后的余额；是工业企业生产过程中新增加的价值。" id="gyzjz" name="gyzjz" type="text" value="${model.gyzjz}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
+       <input title="工业增加值：工业增加值是指工业企业在报告期内以货币形式表现的工业生产活动的最终成果；是工业企业全部生产活动的总成果扣除了在生产过程中消耗或转移的物质产品和劳务价值后的余额；是工业企业生产过程中新增加的价值。" id="gyzjz" name="gyzjz" type="text" value="${model.gyzjz}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
       </td>
       <th>工业增加值（累计数）：</th>
      <td>
-       <input id="gyzjzLjs" name="gyzjzLjs" type="text" value="${model.gyzjzLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/> 
+       <input id="gyzjzLjs" name="gyzjzLjs" type="text" value="${model.gyzjzLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
       </td>
     </tr>
     
     
+      
+    
+      
        <tr>
+     <td colspan="4">说明：1、利税总额=利润总额+纳税</td>
+    </tr>
+    <tr>
+     <td colspan="4"> 2、纳税=企业交给国家的所有税金</td>
+    </tr>
+    <tr>
+     <td colspan="4"> 3、本表以万元为单位</td>
+    </tr>
+    <tr>
+     <td colspan="4"> 4、请各企业、单位在月后15日前上报广州市海珠区科技产业基地管委会办公室 </td>
+    </tr>
+    
+     <tr>
    
       <th>职工数：</th>
      <td>
-       <input title="职工数：在本单位工作并由单位支付工资的人员，以及有工作岗位，但由于学习、病伤产假等原因暂未工作，仍由单位支付工资的人员。" id="zgs" name="zgs" type="text" value="${model.zgs}"  maxlength="100" style="width:160px" class="input_a1"/> 
+       <input title="职工数：在本单位工作并由单位支付工资的人员，以及有工作岗位，但由于学习、病伤产假等原因暂未工作，仍由单位支付工资的人员。" id="zgs" name="zgs" type="text" value="${model.zgs}"  maxlength="100" style="width:160px" class="input_a1"/>（人） 
       </td>
     
-     <th>填报年月：</th>
+   
+      <th>填表日期：</th>
      <td>
      
-     <input id="jjzbNy" name="jjzbNy" size="22"  type="text" 
-     	value="${model.jjzbNy}" maxlength="20" readonly="true" class="input_a1"/>
+     <input id="tbrq" name="tbrq" size="22"  type="text"  onclick="WdatePicker();" 
+     	value="${model.tbrq}" maxlength="20" readonly="true" class="input_a1"  class="input_a1"/>
      </td>
     </tr>
     
@@ -506,24 +542,14 @@ html { overflow:-moz-scrollbars-vertical;}
      <input id="tbrlxdh" name="tbrlxdh" type="text" value="${model.tbrlxdh}"  maxlength="100" style="width:160px" class="input_a1"/> 
      </td>
     </tr>
-    
-      
-       <tr>
-    
-     <th>填表日期：</th>
-     <td>
-     
-     <input id="tbrq" name="tbrq" size="22"  type="text"  onclick="WdatePicker();" 
-     	value="${model.tbrq}" maxlength="20" readonly="true" class="input_a1"  class="input_a1"/>
-     </td>
-     <th></th>
-     <td></td>
-    </tr>
    </table>
   
-   <p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
-				</p>
+   <div class="div_submit">
+					<input id="sumbit_bt" name="" type="submit" value="提  交"
+						class="photo_btn" />
+					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
+						class="photo_btn" />
+				</div>
   </div>
   </form>
 </div>

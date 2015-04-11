@@ -129,4 +129,26 @@ public class SysUserService extends BaseDao {
 	public void deleteByRoleNo(String roleNo){
 		super.nativeDelete(nameSpace + ".deleteByRoleNo", roleNo);
 	}
+	
+	public Map<String, Object> getByEmail(String email) {
+		
+		return super.nativeSelectOne(nameSpace+".getByEmail", email);
+	}
+	public void updateMailSeq(String mailSeq,String UserNo) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("mailSeq", mailSeq);
+		params.put("userNo", UserNo);
+		super.nativeUpdate(nameSpace+".updateMailSeq", params);
+		
+	}
+	public Map<String, Object> getByUserNo2(String userNo) {
+		   return super.nativeSelectOne(nameSpace+".getByUserNo2", userNo);
+		}
+	public void updatePwd(String userNo,String pwd) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userNo", userNo);
+		params.put("pwd", pwd);
+		super.nativeUpdate(nameSpace+".updatePwd", params);
+		
+	}
 }

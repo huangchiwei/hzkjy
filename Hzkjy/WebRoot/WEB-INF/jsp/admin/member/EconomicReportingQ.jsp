@@ -37,16 +37,8 @@ function printHuiZhiList(){
 		return;
 	}
 	ids = ids.substring(0,ids.length - 1);
-	myWindow = $.layer({
-	    type: 2,
-	    maxmin: true,
-	    shadeClose: true,
-	    title: "批量打印",
-	    shade: [0.1,'#fff'],
-	    offset: ['10px',''],
-	    area: ['500px', '400px'],
-	    iframe: {src: "${ctx}/admin/chooseSelect/printHuiZhiList.html?ids=" + ids + "&random="+Math.random()}
-	});
+	document.forms[0].action="${ctx}/admin/chooseSelect/printHuiZhiList.html?ids=" + ids + "&random="+Math.random();
+	  document.forms[0].submit();
 }
 
 function find(){    
@@ -274,7 +266,19 @@ function plbtgtz(){
 <div class="content_box">
   <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/economicReporting/list/1.html" method="post">
-    
+    <pm:hasPermission permValue="jjybtb_sh">
+	       	<c:set var="jjybtb_sh" value="true"/>
+	    </pm:hasPermission>
+	<pm:hasPermission permValue="jjybtb_th">
+	       	<c:set var="jjybtb_th" value="true"/>
+	    </pm:hasPermission>    
+	    <pm:hasPermission permValue="jjybtb_tg">
+	       	<c:set var="jjybtb_tg" value="true"/>
+	    </pm:hasPermission>    
+	    <pm:hasPermission permValue="jjybtb_btg">
+	       	<c:set var="jjybtb_btg" value="true"/>
+	    </pm:hasPermission>  
+	    
     
     <h2>按条件查询</h2>
       <div class="div_input">
@@ -283,12 +287,19 @@ function plbtgtz(){
         	
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
           <input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/>
+          <c:if test="${jjybtb_sh == true}">
           <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
+          </c:if>
+           <c:if test="${jjybtb_th == true}">
           <input id="" type="button" value="批量退回" class="initial" onclick="pZShth();"/>
+          </c:if>
           <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
+          <c:if test="${jjybtb_tg == true}">
           <input id="" type="button" value="通过发送" class="initial" onclick="pltgtz()"/>
+          </c:if>
+          <c:if test="${jjybtb_btg == true}">
            <input id="" type="button" value="不通过发送" class="initial" onclick="plbtgtz()"/>
-      
+          </c:if>
  
     </div>
     </form>

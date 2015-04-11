@@ -267,8 +267,8 @@ public class  RentalExamineController extends BaseController {
 			initPdfMap(map, stu);
 			data.add(map);
 		}
-
-		File reportFile = new File(this.getUrl() + "reportHuiZhi_map.jasper");
+		String filePath="jasper/hz/";
+		File reportFile = new File(request.getSession().getServletContext().getRealPath(filePath) + "/reportHuiZhi_map.jasper");
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(
 				data);
 
@@ -417,7 +417,7 @@ public class  RentalExamineController extends BaseController {
 		if (url == null) {
 			String con1 = System.getProperty("Hzkjy");
 			String _url = con1 + "/jasper/hz/";
-			url = _url + "\\";
+			url = _url;
 		}
 		return url;
 	}

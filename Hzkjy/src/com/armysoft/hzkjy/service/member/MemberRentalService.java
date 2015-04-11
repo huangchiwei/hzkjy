@@ -74,6 +74,9 @@ public class MemberRentalService extends BaseDao {
 	public List  getCyqy(Map<String, Object> params) {
 	return super.nativeList(nameSpace + ".getCyqy", params);
 	}
+	public List  getFpqsb(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpqsb", params);
+		}
 	public Integer CountHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("hybh1", hybh1);

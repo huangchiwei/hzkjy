@@ -16,22 +16,16 @@
 				<script language="JavaScript" type="text/javascript" src="${ctx}/js/jquery-1.2.6.pack.js"></script>
 				<script language="JavaScript" type="text/javascript" src="${ctx}/js/jquery.messager.js"></script>
 		<script type="text/javascript">
-			var tcbt='${tcbt}'; 
-			var tcnr='${tcnr}';
-			 var tcsj='<fmt:formatDate value="${tcsj}"
-								pattern="yyyy-MM-dd" />';
-			
-				var tcid='${tcid}'; 
+		var all1='';
+		var all2='';
+		var all3='';
 		$(document).ready(function(){
-		if(tcbt !=''){
 		 $.messager.lays(300, 200);
-		 
-		 tcbt=  '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcbt+'</a></br>';
-		 tcnr= '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcnr+'</a></br>';
-		 tcsj= '<a href="${ctx}/admin/bsNews/add/new.html?id=${tcid}" style="text-decoration:none;">'+tcsj+'</a>';
-				$.messager.show('<font color="red">您有新的通知</font>', tcbt+tcnr+tcsj+'', 0);
-		}
-		       
+		<c:forEach items="${bslist}" var="mb" varStatus="sta">
+		 all3+='<a href="${ctx}/admin/bsNews/add/new.html?id=${mb.id}" style="text-decoration:none;">'+"${mb.title}"+'</a>&nbsp&nbsp&nbsp'+
+		'<a href="${ctx}/admin/bsNews/add/new.html?id=${mb.id}" style="text-decoration:none;">'+"<fmt:formatDate value="${mb.createTime}" pattern="yyyy-MM-dd" />"+'</a></br>';
+	     </c:forEach>
+				$.messager.show('<font color="red">您有新的通知</font>', all3+'', 0);
 		});
 		</script>
 

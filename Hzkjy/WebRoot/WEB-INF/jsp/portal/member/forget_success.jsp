@@ -22,8 +22,8 @@
   </div>
     <div class="forget_mail">
      <span class="c_ff0000">恭喜您！密码找回成功！</span>
-     <div class="btn_box"><input type="button" class="member" value="进入会员中心" />
-     <input type="button" class="main" value="返回首页" />
+     <div class="btn_box"><input type="button" class="member" value="进入会员中心" onclick="javascript:location.href='${ctx}/admin/index.html'"/>
+     <input type="button" class="main" value="返回首页" onclick="javascript:location.href='${ctx}/'"/>
      </div></div>
  </div>
 </div>

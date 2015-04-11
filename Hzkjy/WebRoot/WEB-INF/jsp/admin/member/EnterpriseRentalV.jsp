@@ -115,7 +115,9 @@ html { overflow:-moz-scrollbars-vertical;}
 
 <div class="admin_table">
 <form id="add_form" enctype="multipart/form-data" action='<c:if test="${model == null}">${ctx}/admin/enterpriseRental/save.html</c:if><c:if test="${model != null}">${ctx}/admin/enterpriseRental/update/${model.id}.html</c:if>' method="post">
-
+ <pm:hasPermission permValue="qyzjlr_updt">
+	       	<c:set var="qyzjlr_updt" value="true"/>
+	    </pm:hasPermission>
   <div class="add_info">
  <h2>新增缴费通知单</h2>
     <table id="questTable" border="0" cellspacing="0" cellpadding="0"
@@ -432,7 +434,7 @@ html { overflow:-moz-scrollbars-vertical;}
      <tr>
     <th>凭证图像</th>
     <td colspan="6">
-    <img src="${ctx}/hzkjyFj/${model.accessory}" width="600px" height="400px"/>
+    <img src="${ctx}/${model.accessory}" width="600px" height="400px"/>
     <input type="hidden" name="accessory" id="accessory" value="${model.accessory}"/>
      </td>
     </tr>
@@ -440,9 +442,14 @@ html { overflow:-moz-scrollbars-vertical;}
      
    
     
-    	<p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
-				</p>
+    	 <div class="div_submit">
+    	 	<c:if test="${qyzjlr_updt == true}">
+					<input id="sumbit_bt" name="" type="submit" value="提  交"
+						class="photo_btn" />
+						</c:if>
+					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
+						class="photo_btn" />
+				</div>
   
   </div>
   </form>

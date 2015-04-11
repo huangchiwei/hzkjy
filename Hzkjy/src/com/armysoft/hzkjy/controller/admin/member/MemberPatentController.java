@@ -74,7 +74,7 @@ public class  MemberPatentController extends BaseController {
 			params.put("month", month);
 			else params.put("month", "1");
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-		if(!userNo.equals("admin"))
+		if(userNo.substring(0, 4).equals("4401"))
 		params.put("memberNo", userNo);
         model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);

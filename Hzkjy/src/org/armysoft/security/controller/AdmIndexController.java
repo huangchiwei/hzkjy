@@ -1,5 +1,8 @@
 package org.armysoft.security.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,20 +28,12 @@ public class AdmIndexController {
 		// if("index".equalsIgnoreCase(page))
 		 model.addAttribute("userNo", CookieUtil.getUserCookieValue(req,
 		 Constants.ADMIN_KEY));
-			BsNews bs=service.findByUser(CookieUtil.getUserCookieValue(req,
-					 Constants.ADMIN_KEY));
+		 List<Map<String,Object>> list=service.findByUser(CookieUtil.getUserCookieValue(req,
+				 Constants.ADMIN_KEY));
 			String tcnr="";
-		 if(bs!=null){
+		 if(list!=null){
 				
-			 req.setAttribute("tcbt", bs.getTitle());
-				if(bs.getContent().toString().length()>200){
-				tcnr=	bs.getContent().toString().substring(0, 200)+"...";
-				}else{
-					tcnr=	bs.getContent().toString();
-				}
-				req.setAttribute("tcnr", tcnr);
-				req.setAttribute("tcsj", bs.getCreateTime());
-				req.setAttribute("tcid", bs.getId());
+			 req.setAttribute("bslist", list);
 			}
 		return "admin/base/" + page;
 	}

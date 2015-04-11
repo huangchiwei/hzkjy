@@ -9,6 +9,7 @@
 	</head>
 
 	<body>
+	
 <div class="content">
 <div class="reg_location">
  <h1>找回密码</h1>
@@ -21,9 +22,9 @@
    <span><div class="a2">第三步：完成</div></span>
   </div>
     <div class="forget_mail">
-     <span class="c_ff0000">验证邮件已经发送到您的邮箱：jxchen1986@163.com</span>
+     <span class="c_ff0000">验证邮件已经发送到您的邮箱：${email}</span>
      <span>请立即登录至您的邮箱进行帐号验证</span>
-     <span><a href="#">点击这里</a> 跳转到邮箱</span></div>
+     <span><a href="${ctx}/portal/memberBasic/loginMail.html?email=${email}">点击这里</a> 跳转到邮箱</span></div>
  </div>
 </div>
 
