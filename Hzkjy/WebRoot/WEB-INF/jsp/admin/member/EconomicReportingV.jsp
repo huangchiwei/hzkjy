@@ -461,7 +461,7 @@ html { overflow:-moz-scrollbars-vertical;}
     
     <th>工业总产值（本月数）：</th>
      <td>
-     	<input title="<font color='red'>工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。</font>" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
+     	<input title="工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
      </td>
      <th>工业总产值（累计数）：</th>
      <td>
@@ -544,9 +544,12 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>
    </table>
   
-   <p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
-				</p>
+   <div class="div_submit">
+					<input id="sumbit_bt" name="" type="submit" value="提  交"
+						class="photo_btn" />
+					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
+						class="photo_btn" />
+				</div>
   </div>
   </form>
 </div>

@@ -69,7 +69,7 @@ html { overflow:-moz-scrollbars-vertical;}
      
     </tr>
 	    <tr>
-	     <th>地址：</th>
+	     <th>网址：</th>
      <td>
     	<input id="address" name="address" type="text" value="${model.address}" class="input_a1" maxlength="100" style="width:160px"  />
      </td>

@@ -70,6 +70,36 @@ public class MemberRental implements java.io.Serializable {
 	
 	private String lqydf;
 	
+	private String zjfph;
+	public String getZjfph() {
+		return zjfph;
+	}
+	public void setZjfph(String zjfph) {
+		this.zjfph = zjfph;
+	}
+	
+	public String getSdfph() {
+		return sdfph;
+	}
+	public void setSdfph(String sdfph) {
+		this.sdfph = sdfph;
+	}
+	public String getKprq() {
+		return kprq;
+	}
+	public void setKprq(String kprq) {
+		this.kprq = kprq;
+	}
+	private String glffph;
+	public String getGlffph() {
+		return glffph;
+	}
+	public void setGlffph(String glffph) {
+		this.glffph = glffph;
+	}
+	private String sdfph;
+	private String kprq;
+	
 	public String getLqysf() {
 		return lqysf;
 	}

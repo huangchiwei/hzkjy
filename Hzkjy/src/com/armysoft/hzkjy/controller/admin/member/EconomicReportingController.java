@@ -78,7 +78,10 @@ public class  EconomicReportingController extends BaseController {
 			EccIndicator entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
-		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
+		params.put("fhybh", userNo);
+		}
 		if(fjjzbNy !="" && fjjzbNy !=null){
 			params.put("fjjzbNy", fjjzbNy);
 			request.setAttribute("fjjzbNy", fjjzbNy);

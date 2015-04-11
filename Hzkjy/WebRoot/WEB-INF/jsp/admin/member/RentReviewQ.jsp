@@ -218,12 +218,8 @@ function loadPageLayer2(title,url){
 	  	<th>序号</th>
 	  	 <th>企业编号</th> 
 	  	 <th>企业名称</th> 
-	         <th>租金</th>
-	        <th>管理服务费</th>
-	        <th>水费</th>
-	        <th>电费</th>
-	        <th>装修押金</th>
-	        <th>租赁保证金</th>
+	        <th>应收金额</th>
+	        <th>实收金额</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th>缴费确认</th> 
@@ -246,13 +242,9 @@ function loadPageLayer2(title,url){
 	       <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.hybh}</td>
-	        <td>${mb.qymc}</td>
-	          <td>${mb.qyzj}元</td>
-	        <td>${mb.glfwf}元</td>
-	        <td>${mb.qysf}元</td>
-	        <td>${mb.qydf}元</td>
-	        <td>${mb.zxyj}元</td>
-	         <td>${mb.zlbzj}元</td>
+	          <td>${mb.qymc}</td>
+	          <td>${mb.hjje}元</td>
+	        <td>${mb.jnje}元</td>
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.fbzt}</td>
 	        <td>${mb.sfqf=='1'?'已缴费':'未缴费'}</td>
@@ -271,7 +263,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="12"></td>
+        <td colspan="8"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -279,7 +271,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="14">
+			<td colspan="10">
 				<div class="page">
 					<p:pager/>
 				</div>

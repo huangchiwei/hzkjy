@@ -13,6 +13,9 @@
 	<sql id="condition" >
 		from ecc_indicator
 		where 1 = 1	
+		<if test="parm.fhybh != null and parm.fhybh!= ''">
+		and hybh  = #{parm.fhybh}
+		</if>
 			<if test="parm.fjjzbNy != null and parm.fjjzbNy != ''">
 		and JjzbNy  = #{parm.fjjzbNy}
 		</if>
