@@ -45,23 +45,27 @@ public class LoginController extends BaseController {
 			if(StringUtils.hasText(key)){//已经登录
 				return "redirect:/admin/index.html";
 			}
-			String oldCode = (String) request.getSession().getAttribute(
-					Constants.VERIFY_CODE);
-			if (oldCode.equalsIgnoreCase(vcode)) {//
-				SysUser user = sysUserService.getByUserNo(userNo);
-				if (user != null && DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPwd()) && user.getStatus() == 1) {
-					HttpSession sessionOld = request.getSession(false);
-					if(sessionOld != null){
-						sessionOld.invalidate();
+			Object code = request.getSession().getAttribute(Constants.VERIFY_CODE);
+			if(code != null){
+				String oldCode = (String) code;
+				if (oldCode.equalsIgnoreCase(vcode)) {//
+					SysUser user = sysUserService.getByUserNo(userNo);
+					if (user != null && DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPwd()) && user.getStatus() == 1) {
+						HttpSession sessionOld = request.getSession(false);
+						if(sessionOld != null){
+							sessionOld.invalidate();
+						}
+						request.getSession(true);
+						super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
+						return "redirect:/admin/index.html";
+					} else {
+						request.setAttribute("msg", "用户名或密码不正确!");
 					}
-					request.getSession(true);
-					super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
-					return "redirect:/admin/index.html";
 				} else {
-					request.setAttribute("msg", "用户名或密码不正确!");
+					request.setAttribute("msg", "验证码不正确!");
 				}
-			} else {
-				request.setAttribute("msg", "验证码不正确!");
+			}else{
+				request.setAttribute("msg", "验证码超时!");
 			}
 			request.setAttribute("userNo", userNo);
 			return "admin/base/login";
