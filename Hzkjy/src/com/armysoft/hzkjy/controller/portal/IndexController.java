@@ -31,12 +31,17 @@ public class IndexController extends BaseController{
 	@RequestMapping("{page}")
 	public String dispatcher(Model model, @PathVariable String page,
 			HttpServletRequest req) {
-		if(page.equals("index")){}
+		if(page.equals("index")){
 		//首页轮播广告
 		Pagination pager = initPage(1);
-		model.addAttribute("adList", newsAdvertService.getByPage(null, pager));
-		
 		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("adType", "0");
+		model.addAttribute("adList0",newsAdvertService.getByAdType(params));
+		params.put("adType", "1");
+		model.addAttribute("adList1",newsAdvertService.getByAdType(params));
+		//model.addAttribute("adList", newsAdvertService.getByPage(null, pager));
+		
+		params.clear();
 		params.put("pageSize", 8);
 		
 		//最新公告
@@ -62,7 +67,9 @@ public class IndexController extends BaseController{
 		 model.addAttribute("memberList", memberBasicService.getByPage(params, pager));
 		 
 		 model.addAttribute("cateCode", "index");
+		}
 		return "portal/index/" + page;
+		
 	}
 	
 }

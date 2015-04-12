@@ -36,10 +36,20 @@ html { overflow:-moz-scrollbars-vertical;}
 	<input type="hidden" name="type" value="${type}"/>
 	<input type="hidden" name="id" value="${entity.id}"/>
 
+
   <div class="add_info">
 
    <h2>首页广告&gt;&gt;${type == 'add' ? '添加' : '修改'}${category.cateName }</h2>
    <table width="98%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+     <th width="100px;">位置：</th>
+     <td>
+     	<select name="adType" id="adType">
+     	<option value="0" <c:if test="${entity.adType==0}">selected="selected"</c:if>>首页轮播图</option>
+     	<option value="1" <c:if test="${entity.adType==1}">selected="selected"</c:if>>首页中间位置图</option>
+     	</select>
+     </td>
+   </tr>
     <tr>
      <th width="100px;">标题：</th>
      <td>

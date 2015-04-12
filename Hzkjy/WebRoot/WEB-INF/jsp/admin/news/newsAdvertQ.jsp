@@ -55,6 +55,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	  <thead>
 	  	<tr>
 	  		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+	  		 <th>位置</th>
 	        <th>标题</th>
 	          <th>链接地址</th>
 	        <th>备注</th>
@@ -69,6 +70,8 @@ html { overflow:-moz-scrollbars-vertical;}
       <c:forEach items="${list}" var="o" varStatus="sta">
 	      <tr>
 	<td>${sta.index+1}</td>
+	<td><c:if test="${o.adType==0}">首页轮播图</c:if>
+	<c:if test="${o.adType==1}">首页中间位置图</c:if></td>
 	        <td>${o.title}</td>
 	        <td>${o.linkUrl}</td>
 	         <td>${o.remark}</td>

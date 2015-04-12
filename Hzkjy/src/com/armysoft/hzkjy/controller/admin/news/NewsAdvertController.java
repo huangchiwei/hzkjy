@@ -77,7 +77,7 @@ public class  NewsAdvertController extends BaseController {
 	@RequestMapping(value = ADD)
 	public String toAdd(HttpServletRequest request,Model model) {
 		model.addAttribute("type", "add");
-	
+		
 		return "/admin/news/newsAdvertA_U";
 	}
 	
@@ -95,6 +95,7 @@ public class  NewsAdvertController extends BaseController {
 		model.addAttribute("entity", newsAdvertService.findByKey(key));
 		 
 		model.addAttribute("type", "update");
+		
 		return "/admin/news/newsAdvertA_U";
 	}
 	@PermissionsAnno("newsAdvert_save")
