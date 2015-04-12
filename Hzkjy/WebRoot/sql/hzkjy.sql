@@ -476,17 +476,18 @@ CREATE TABLE `news_advert` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `updateTime` datetime DEFAULT NULL COMMENT '更新时间',
   `linkUrl` varchar(255) DEFAULT NULL COMMENT '链接地址',
+  `adType` int(11) NOT NULL DEFAULT '0' COMMENT '广告类型 0首页轮播图 1首页中间位置图',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='广告';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='广告';
 
 #
 # Dumping data for table news_advert
 #
 
-INSERT INTO `news_advert` VALUES (1,'广告1','/userfiles/advertFile/1427376871703_banner_index_1.jpg','广告1','2015-03-26 21:34:16',NULL);
-INSERT INTO `news_advert` VALUES (2,'广告2','/userfiles/advertFile/1427376890656_banner_index_2.jpg','广告2','2015-03-26 21:34:35',NULL);
-INSERT INTO `news_advert` VALUES (3,'广告3','/userfiles/advertFile/1427376901875_banner_index_3.jpg','广告3','2015-03-26 21:34:46',NULL);
-INSERT INTO `news_advert` VALUES (4,'广告4','/userfiles/advertFile/1427376912921_banner_index_4.jpg','广告4','2015-03-26 21:34:57',NULL);
+INSERT INTO `news_advert` VALUES (1,'广告1','/userfiles/advertFile/1427376871703_banner_index_1.jpg','广告1','2015-03-26 21:34:16',NULL,0);
+INSERT INTO `news_advert` VALUES (2,'广告2','/userfiles/advertFile/1427376890656_banner_index_2.jpg','广告2','2015-03-26 21:34:35',NULL,0);
+INSERT INTO `news_advert` VALUES (3,'广告3','/userfiles/advertFile/1427376901875_banner_index_3.jpg','广告3','2015-03-26 21:34:46',NULL,0);
+INSERT INTO `news_advert` VALUES (4,'广告4','/userfiles/advertFile/1427376912921_banner_index_4.jpg','广告4','2015-03-26 21:34:57',NULL,0);
 
 #
 # Source for table news_category
