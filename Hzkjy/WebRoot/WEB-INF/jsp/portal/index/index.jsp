@@ -201,7 +201,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
      </li>
      <li class="password"><em>密码</em><input id="password" name="password" type="password" class="input"/>
      </li>
-      <li class="btn"><input type="button" class="btn_a1" value="登录"/>
+      <li class="btn"><input id="login_btn" type="button" class="btn_a1" value="登录"/>
      </li>
      <li class="input_txt"><a href="${ctx}/portal/memberBasic/forget.html">忘记密码?</a><a href="${ctx}/portal/memberBasic/toRegist.html">用户注册</a></li>
      <%--<li class="btn"><input id="login_btn" type="image" src="${ctx}/theme/portal/default/images/login_btn.png" />&nbsp;<input onclick="javascript:location.href='${ctx}/portal/memberBasic/toRegist.html'" type="image" src="${ctx}/theme/portal/default/images/reg_btn.png" />
