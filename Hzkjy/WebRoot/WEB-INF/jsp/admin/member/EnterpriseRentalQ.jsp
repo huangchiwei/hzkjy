@@ -180,7 +180,7 @@ function loadPageLayer2(title,url){
 	function changeStatus(userNo,status){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
-
+   
 </script>
 </head>
 
@@ -200,6 +200,7 @@ function loadPageLayer2(title,url){
         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
         <input id="" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+    
     </div>
     
     </form>

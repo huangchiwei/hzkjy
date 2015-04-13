@@ -56,7 +56,9 @@ public class EnterpriseRentalService extends BaseDao {
 	public Integer getCount(Map<String, Object> params){
 		return super.nativeSelectOne(nameSpace + ".sumCount", params);
 	}
-	
+	public List  getFpqsb(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpqsb", params);
+		}
 	
 	public EnterpriseRental findByNewHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();
