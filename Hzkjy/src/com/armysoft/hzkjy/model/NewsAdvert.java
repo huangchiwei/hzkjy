@@ -15,6 +15,7 @@ public class NewsAdvert implements java.io.Serializable {
 	private String path;
 	private Date updateTime;
 	private String remark;
+	private Integer adType;
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +51,12 @@ public class NewsAdvert implements java.io.Serializable {
 	}
 	public void setLinkUrl(String linkUrl) {
 		this.linkUrl = linkUrl;
+	}
+	public Integer getAdType() {
+		return adType;
+	}
+	public void setAdType(Integer adType) {
+		this.adType = adType;
 	}
 
 	

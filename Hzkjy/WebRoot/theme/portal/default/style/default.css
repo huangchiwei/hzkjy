@@ -752,7 +752,7 @@
 	color: #333333;
 }
 .reg_box .zl_box {
-	padding: 50px;
+	padding: 40px;
 }
 .reg_box .zl_box .li {
 	overflow: hidden;
@@ -760,7 +760,23 @@
 	padding-bottom: 15px;
 }
 .reg_box .zl_box .li .span {
+	width: 140px;
+	display: block;
+	font-size: 14px;
+	padding-right: 10px;
+	text-align: right;
+	float: left;
+}
+.reg_box .zl_box .li .span1 {
 	width: 200px;
+	display: block;
+	font-size: 14px;
+	padding-right: 10px;
+	text-align: right;
+	float: left;
+}
+.reg_box .zl_box .li .span2 {
+	width: 400px;
 	display: block;
 	font-size: 14px;
 	padding-right: 10px;
@@ -779,7 +795,8 @@
 }
 .reg_box .zl_box .li .btn_box {
 	float: left;
-	padding-left: 210px;
+	padding-right: 300px;
+	padding-left: 300px;
 }
 .reg_box .zl_box .li .btn_box .tj {
 	width: 250px;
