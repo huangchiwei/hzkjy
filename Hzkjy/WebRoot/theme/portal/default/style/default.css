@@ -335,6 +335,7 @@
 }
 .content .left .left_box2 {
 	margin-bottom: 15px;
+	height: 250px;
 }
 .left_box2 .left_box2_l {
 	padding: 1px;
@@ -434,6 +435,7 @@
 	padding-right: 6px;
 	padding-bottom: 6px;
 	padding-left: 30px;
+	width:130px;
 }
 .login .input1 {
 	border: 1px solid #CCCCCC;
@@ -446,11 +448,12 @@
 	padding-right: 6px;
 	padding-bottom: 6px;
 	padding-left: 30px;
+	width:130px;
 }
 .login .account .input:hover {
 	border: 1px solid #0066CC;
 }
-.login   .password   .input1:hover {
+.login .password .input1:hover {
 	border: 1px solid #0066CC;
 }
 .login .account {
@@ -460,12 +463,13 @@
 .login .password {
 	height: 40px;
 	margin-top: 5px;
+	overflow: hidden;
 }
 .login .btn {
-	text-align: left;
 	padding-top: 5px;
 	height: 45px;
 	padding-left: 60px;
+	overflow: hidden;
 }
 .login .btn .btn_a1:hover  {
 	background-color: #CC3300;
@@ -473,9 +477,7 @@
 	border-radius:5px;
 	border: 1px none #FFFFFF;
 	padding-top: 10px;
-	padding-right: 60px;
 	padding-bottom: 10px;
-	padding-left: 60px;
 	cursor:pointer;
 }
 
@@ -485,9 +487,8 @@
 	border-radius:5px;
 	border: 1px none #FFFFFF;
 	padding-top: 10px;
-	padding-right: 60px;
 	padding-bottom: 10px;
-	padding-left: 60px;
+	width: 160px;
 }
 .login .input_txt {
 	text-align: left;
@@ -679,6 +680,8 @@
 	text-align: center;
 	color: #FFFFFF;
 	line-height: 28px;
+	margin-right: auto;
+	margin-left: auto;
 }
 /*会员注册*/
 .reg_location{
