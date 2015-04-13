@@ -121,6 +121,10 @@ public class  NewsController extends BaseController {
 	  {
 		  try
 		    {
+			  String key = super.getCookieValue(request,Constants.ADMIN_KEY);
+			  if(key==null||key==""){
+				 return;
+			  }
 			  Map<String, Object> news=newsService.findByKey(id);
 		      response.setContentType("application/x-download");
 		      String realPath = request.getSession().getServletContext().getRealPath(news.get("filePath").toString());
