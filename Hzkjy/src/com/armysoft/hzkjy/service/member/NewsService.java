@@ -36,7 +36,9 @@ public class NewsService extends BaseDao {
 	public Map<String, Object> getCategory(String cateCode) {
 		return super.nativeSelectOne(nameSpace + ".getCategory", cateCode);
 	}
-
+	public Map<String, Object> getByCateCode(String cateCode) {
+		return super.nativeSelectOne(nameSpace + ".getByCateCode", cateCode);
+	}
 	/**
 	 * ���id��ѯ
 	 * @param id

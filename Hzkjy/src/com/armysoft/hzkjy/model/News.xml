@@ -41,6 +41,10 @@
 		parameterType="String">
 		select * from news_category where cateCode = #{cateCode}
 	</select>
+	<select id="getByCateCode" resultType="java.util.Map"
+		parameterType="String">
+		select * from news where cateCode = #{cateCode}
+	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="news">
 		<choose>

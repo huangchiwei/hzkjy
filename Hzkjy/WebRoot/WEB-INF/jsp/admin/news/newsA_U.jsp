@@ -107,7 +107,7 @@ html { overflow:-moz-scrollbars-vertical;}
    </table>
   
    <p class="div_submit">
-				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>
+				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>&nbsp;&nbsp;<b><font color="red" ><c:if test="${not empty msg}">${msg}</c:if></font></b>
 				</p>
   </div>
   </form>
