@@ -71,7 +71,7 @@ public class  RentReviewController extends BaseController {
 	 */
 	@PermissionsAnno("qyjfsh_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,String fsfqf,
+	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,String fsfqf,String fkpxm,
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -86,6 +86,10 @@ public class  RentReviewController extends BaseController {
 			if(fsfqf !="" && fsfqf !=null){
 				params.put("fsfqf", fsfqf);
 				request.setAttribute("fsfqf", fsfqf);
+				}
+			if(fkpxm !="" && fkpxm !=null){
+				params.put("fkpxm", fkpxm);
+				request.setAttribute("fkpxm", fkpxm);
 				}
 			
 			

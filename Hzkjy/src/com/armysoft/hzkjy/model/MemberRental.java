@@ -70,36 +70,86 @@ public class MemberRental implements java.io.Serializable {
 	
 	private String lqydf;
 	
-	private String zjfph;
-	public String getZjfph() {
-		return zjfph;
-	}
-	public void setZjfph(String zjfph) {
-		this.zjfph = zjfph;
-	}
 	
-	public String getSdfph() {
-		return sdfph;
-	}
-	public void setSdfph(String sdfph) {
-		this.sdfph = sdfph;
-	}
-	public String getKprq() {
-		return kprq;
-	}
-	public void setKprq(String kprq) {
-		this.kprq = kprq;
-	}
-	private String glffph;
-	public String getGlffph() {
-		return glffph;
-	}
-	public void setGlffph(String glffph) {
-		this.glffph = glffph;
-	}
-	private String sdfph;
-	private String kprq;
 	
+    private String fpzl;
+    public String getFpzl() {
+		return fpzl;
+	}
+	public void setFpzl(String fpzl) {
+		this.fpzl = fpzl;
+	}
+	public String getKpxm() {
+		return kpxm;
+	}
+	public void setKpxm(String kpxm) {
+		this.kpxm = kpxm;
+	}
+	public String getFkflx() {
+		return fkflx;
+	}
+	public void setFkflx(String fkflx) {
+		this.fkflx = fkflx;
+	}
+	public String getFkfsjhm() {
+		return fkfsjhm;
+	}
+	public void setFkfsjhm(String fkfsjhm) {
+		this.fkfsjhm = fkfsjhm;
+	}
+	public String getFkfmc() {
+		return fkfmc;
+	}
+	public void setFkfmc(String fkfmc) {
+		this.fkfmc = fkfmc;
+	}
+	public String getFkfzjlx() {
+		return fkfzjlx;
+	}
+	public void setFkfzjlx(String fkfzjlx) {
+		this.fkfzjlx = fkfzjlx;
+	}
+	public String getFkfsbh() {
+		return fkfsbh;
+	}
+	public void setFkfsbh(String fkfsbh) {
+		this.fkfsbh = fkfsbh;
+	}
+	public String getFpje() {
+		return fpje;
+	}
+	public void setFpje(String fpje) {
+		this.fpje = fpje;
+	}
+	public String getFz() {
+		return fz;
+	}
+	public void setFz(String fz) {
+		this.fz = fz;
+	}
+	public String getKpxmsm() {
+		return kpxmsm;
+	}
+	public void setKpxmsm(String kpxmsm) {
+		this.kpxmsm = kpxmsm;
+	}
+	public String getFpbz() {
+		return fpbz;
+	}
+	public void setFpbz(String fpbz) {
+		this.fpbz = fpbz;
+	}
+	private String kpxm;
+    private String fkflx;
+    private String fkfsjhm;
+    private String fkfmc;
+    private String fkfzjlx;
+    private String fkfsbh;
+    private String fpje;
+    private String fz;
+    private String kpxmsm;
+    private String fpbz;
+
 	public String getLqysf() {
 		return lqysf;
 	}

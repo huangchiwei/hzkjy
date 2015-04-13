@@ -197,7 +197,26 @@ public class  MemberRentalController extends BaseController {
 		if(mr!=null){
 			jsonObject.put("qyzj",mr.getQyzj());
 			jsonObject.put("qyzjdj",mr.getQyzjdj());
-			jsonObject.put("zjsq",mr.getZjsq());
+			
+			String[] zjsqall=mr.getZjsq().split("/");
+			String newzjsqy="";
+			String newzjsqn="";
+			String newzjsq="";
+			String[] zjsqdall;
+			if(zjsqall!=null){
+				System.out.println(zjsqall[0].toString());
+				if(zjsqall[1].toString().equals("12")){
+					newzjsqy="1";
+					newzjsqn=String.valueOf(Integer.valueOf(zjsqall[0].toString())+1);
+				}else{
+					newzjsqy=String.valueOf(Integer.valueOf(zjsqall[1].toString())+1);
+					newzjsqn=zjsqall[0].toString();
+				}
+				zjsqdall=zjsqall[2].toString().split("~");
+				newzjsq=newzjsqn+"/"+newzjsqy+"/"+zjsqdall[0].toString()+"~"+newzjsqn+"/"+newzjsqy+"/"+zjsqall[4].toString();
+				jsonObject.put("zjsq",newzjsq);
+			}
+			
 			jsonObject.put("qyzjznj",mr.getQyzjznj());
 			jsonObject.put("zjbz",mr.getZjbz());
 			
@@ -206,7 +225,26 @@ public class  MemberRentalController extends BaseController {
 			
 			jsonObject.put("glfwf",mr.getGlfwf());
 			jsonObject.put("glfwfdj",mr.getGlfwfdj());
-			jsonObject.put("glfsq",mr.getGlfsq());
+			
+			String[] glfsqall=mr.getGlfsq().split("/");
+			String newglfsqy="";
+			String newglfsqn="";
+			String newglfsq="";
+			String[] glfsqdall;
+			if(glfsqall!=null){
+				System.out.println(glfsqall[0].toString());
+				if(glfsqall[1].toString().equals("12")){
+					newglfsqy="1";
+					newglfsqn=String.valueOf(Integer.valueOf(glfsqall[0].toString())+1);
+				}else{
+					newglfsqy=String.valueOf(Integer.valueOf(glfsqall[1].toString())+1);
+					newglfsqn=glfsqall[0].toString();
+				}
+				glfsqdall=glfsqall[2].toString().split("~");
+				newglfsq=newglfsqn+"/"+newglfsqy+"/"+glfsqdall[0].toString()+"~"+newglfsqn+"/"+newglfsqy+"/"+glfsqall[4].toString();
+				jsonObject.put("glfsq",newglfsq);
+			}
+			
 			jsonObject.put("glfwfznj",mr.getGlfwfznj());
 			jsonObject.put("glfbz",mr.getGlfbz());
 			
@@ -215,7 +253,25 @@ public class  MemberRentalController extends BaseController {
 			
 			jsonObject.put("zlbzj",mr.getZlbzj());
 			jsonObject.put("zlbzjdj",mr.getZlbzjdj());
-			jsonObject.put("zlbzjsq",mr.getZlbzjsq());
+			
+			String[] zlbzjsqall=mr.getZlbzjsq().split("/");
+			String newzlbzjsqy="";
+			String newzlbzjsqn="";
+			String newzlbzjsq="";
+			String[] zlbzjsqdall;
+			if(zlbzjsqall!=null){
+				System.out.println(zlbzjsqall[0].toString());
+				if(zlbzjsqall[1].toString().equals("12")){
+					newzlbzjsqy="1";
+					newzlbzjsqn=String.valueOf(Integer.valueOf(zlbzjsqall[0].toString())+1);
+				}else{
+					newzlbzjsqy=String.valueOf(Integer.valueOf(zlbzjsqall[1].toString())+1);
+					newzlbzjsqn=zlbzjsqall[0].toString();
+				}
+				zlbzjsqdall=zlbzjsqall[2].toString().split("~");
+				newzlbzjsq=newzlbzjsqn+"/"+newzlbzjsqy+"/"+zlbzjsqdall[0].toString()+"~"+newzlbzjsqn+"/"+newzlbzjsqy+"/"+zlbzjsqall[4].toString();
+				jsonObject.put("zlbzjsq",newzlbzjsq);
+			}
 			jsonObject.put("zlbzjznj",mr.getZlbzjznj());
 			jsonObject.put("zlbzjbz",mr.getZlbzjbz());
 			
@@ -225,17 +281,75 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("zxyj",mr.getZxyj());
 			jsonObject.put("zxyjdj",mr.getZxyjdj());
 			jsonObject.put("zxyjsq",mr.getZxyjsq());
+			
+			String[] zxyjsqall=mr.getZxyjsq().split("/");
+			String newzxyjsqy="";
+			String newzxyjsqn="";
+			String newzxyjsq="";
+			String[] zxyjsqdall;
+			if(zxyjsqall!=null){
+				System.out.println(zxyjsqall[0].toString());
+				if(zxyjsqall[1].toString().equals("12")){
+					newzxyjsqy="1";
+					newzxyjsqn=String.valueOf(Integer.valueOf(zxyjsqall[0].toString())+1);
+				}else{
+					newzxyjsqy=String.valueOf(Integer.valueOf(zxyjsqall[1].toString())+1);
+					newzxyjsqn=zxyjsqall[0].toString();
+				}
+				zxyjsqdall=zxyjsqall[2].toString().split("~");
+				newzxyjsq=newzxyjsqn+"/"+newzxyjsqy+"/"+zxyjsqdall[0].toString()+"~"+newzxyjsqn+"/"+newzxyjsqy+"/"+zxyjsqall[4].toString();
+				jsonObject.put("zxyjsq",newzxyjsq);
+			}
 			jsonObject.put("zxyjznj",mr.getZxyjznj());
 			jsonObject.put("zxyjbz",mr.getZxyjbz());
 			
-			jsonObject.put("sfsq",mr.getSfsq());
-			jsonObject.put("dfsq",mr.getDfsq());
+			String[] sfsqall=mr.getSfsq().split("/");
+			String newsfsqy="";
+			String newsfsqn="";
+			String newsfsq="";
+			String[] sfsqdall;
+			if(sfsqall!=null){
+				System.out.println(sfsqall[0].toString());
+				if(sfsqall[1].toString().equals("12")){
+					newsfsqy="1";
+					newsfsqn=String.valueOf(Integer.valueOf(sfsqall[0].toString())+1);
+				}else{
+					newsfsqy=String.valueOf(Integer.valueOf(sfsqall[1].toString())+1);
+					newsfsqn=sfsqall[0].toString();
+				}
+				sfsqdall=sfsqall[2].toString().split("~");
+				newsfsq=newsfsqn+"/"+newsfsqy+"/"+sfsqdall[0].toString()+"~"+newsfsqn+"/"+newsfsqy+"/"+sfsqall[4].toString();
+				jsonObject.put("sfsq",newsfsq);
+			}
 			
+		
+			String[] dfsqall=mr.getDfsq().split("/");
+			String newdfsqy="";
+			String newdfsqn="";
+			String newdfsq="";
+			String[] dfsqdall;
+			if(dfsqall!=null){
+				System.out.println(dfsqall[0].toString());
+				if(dfsqall[1].toString().equals("12")){
+					newdfsqy="1";
+					newdfsqn=String.valueOf(Integer.valueOf(dfsqall[0].toString())+1);
+				}else{
+					newdfsqy=String.valueOf(Integer.valueOf(dfsqall[1].toString())+1);
+					newdfsqn=dfsqall[0].toString();
+				}
+				dfsqdall=dfsqall[2].toString().split("~");
+				newdfsq=newdfsqn+"/"+newdfsqy+"/"+dfsqdall[0].toString()+"~"+newdfsqn+"/"+newdfsqy+"/"+dfsqall[4].toString();
+				jsonObject.put("dfsq",newdfsq);
+			}
 			
 			jsonObject.put("qysfdj",mr.getQysfdj());
 			jsonObject.put("qydfdj",mr.getQydfdj());
-			jsonObject.put("dsyhd",mr.getDhjyl());
-			jsonObject.put("ssyhd",mr.getShjyl());
+			jsonObject.put("qysfdj2",mr.getQysfdj2());
+			jsonObject.put("qydfdj2",mr.getQydfdj2());
+			jsonObject.put("dsyhd",mr.getDbyhd());
+			jsonObject.put("ssyhd",mr.getSbyhd());
+			jsonObject.put("dsyhd2",mr.getSbyhd2());
+			jsonObject.put("ssyhd2",mr.getDbyhd2());
 			
 		}
 		 

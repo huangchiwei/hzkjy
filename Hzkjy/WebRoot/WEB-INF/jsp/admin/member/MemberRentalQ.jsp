@@ -244,7 +244,6 @@ function loadPageLayer2(title,url){
          <input id="add_bt" type="button" value="通知发送" class="initial" onclick="pltzjf()"/>
          <input id="add_bt" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
          <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out()"/>
-         <input id="add_bt" type="button" value="导出发票签收表" class="initial" onclick="outfpqs()"/>
       
     </div>
     

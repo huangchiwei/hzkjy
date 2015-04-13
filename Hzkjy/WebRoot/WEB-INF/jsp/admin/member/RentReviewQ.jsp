@@ -21,6 +21,8 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fsfqf option[value='${fsfqf}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+$("#fkpxm option[value='${fkpxm}']").attr("selected", true); 
+
 
 $('#checkAll').click(function(){
 	$('input[name="qyId"]').attr("checked",this.checked);
@@ -181,6 +183,10 @@ function loadPageLayer2(title,url){
 	function changeStatus(userNo,status){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
+	 function outfpqs(){    
+	$("#search_form").attr("action","${ctx}/admin/enterpriseRental/outfpqs/1.html");
+	document.getElementById("search_form").submit();
+    }  
 
 </script>
 </head>
@@ -202,12 +208,14 @@ function loadPageLayer2(title,url){
           <option value="1">已缴费</option>
           <option value="0">未缴费</option>
         </select>
+        
+        
       	
         	
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
         <input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/>
         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
- 
+            <input id="add_bt" type="button" value="导出发票签收表" class="initial" onclick="outfpqs()"/>
     </div>
     
     </form>

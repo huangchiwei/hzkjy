@@ -112,7 +112,8 @@ public class  EnterpriseRentalController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
-		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		EnterpriseRental mb=service.findByKey(id);
 		if(mb!=null){
 			model.addAttribute("model", mb);
@@ -151,7 +152,7 @@ public class  EnterpriseRentalController extends BaseController {
 	 * @return
 	 * @throws Exception 
 	 */
-	@PermissionsAnno("qyzjlr_updt")
+	
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,@RequestParam("files") MultipartFile[] files,EnterpriseRental entity, Model model,HttpServletRequest request) throws Exception {
 		entity.setId(key);
@@ -166,7 +167,14 @@ public class  EnterpriseRentalController extends BaseController {
 			entity.setSfqf("0");
 		}
 		service.update(entity);
-		return "redirect://admin/enterpriseRental/list/1.html";
+		
+		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo.substring(0, 4).equals("cwry")){
+			return "redirect://admin/rentReview/list/1.html";
+		}else{
+			return "redirect://admin/enterpriseRental/list/1.html";
+		}
 	}
 	 public void upFile(EnterpriseRental entity,HttpServletRequest request)throws Exception{
 		  
@@ -222,9 +230,9 @@ public class  EnterpriseRentalController extends BaseController {
 	    	}
 	    	return "";
 	    }
-	@PermissionsAnno("qyzjlr_save")
+
 	@RequestMapping(value = SAVE)
-	public String save(EnterpriseRental entity, Model model) {
+	public String save(EnterpriseRental entity, Model model,HttpServletRequest request) {
 		if (entity.getId() == null) {
 			if(Double.valueOf(entity.getHjje())-Double.valueOf(entity.getJnje()) == Double.valueOf(0)){
 				entity.setSfqf("1");
@@ -235,7 +243,12 @@ public class  EnterpriseRentalController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/enterpriseRental/list/1.html";
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo.substring(0, 4).equals("cwry")){
+			return "redirect://admin/rentReview/list/1.html";
+		}else{
+			return "redirect://admin/enterpriseRental/list/1.html";
+		}
 	}
 	
 	/**
@@ -243,14 +256,39 @@ public class  EnterpriseRentalController extends BaseController {
 	 * @param key
 	 * @return
 	 */
-	@PermissionsAnno("qyzjlr_del")
 	@RequestMapping(value = DELETE)
-	public String delete(@PathVariable("id") Long key) {
+	public String delete(@PathVariable("id") Long key, HttpServletRequest request) {
 		service.delete(key);
-		return "redirect://admin/enterpriseRental/list/1.html";
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo.substring(0, 4).equals("cwry")){
+			return "redirect://admin/rentalExamine/list/1.html";
+		}else{
+			return "redirect://admin/memberRental/list/1.html";
+		}
 	}
 	
-	
+	@RequestMapping("/outfpqs/1.html")
+	public void outfpqs(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
+		String title="发票签收表";
+		List headData =  new ArrayList();
+		headData.add(new Object[] { "sslqname","位置"});
+		headData.add(new Object[] { "Kprq","开票日期"});
+		headData.add(new Object[] { "rownum","顺序号"});
+		headData.add(new Object[] { "flfph","发票号码"});
+		headData.add(new Object[] { "flje","金额"});
+		headData.add(new Object[] { "Qymc","单位名称"});
+		headData.add(new Object[] { "Flname","内容"});
+		headData.add(new Object[] { "qsbz","签收/日期"});
+		headData.add(new Object[] { "qsbz","备注"});
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("fjfyd", fjfyd);
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		List list =service.getFpqsb(params);
+         ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);
+		
+		exportExcel.exportExcel_Applicant(request, response,list);
+		
+	}
 	@RequestMapping("ZShtg.html")
 	@ResponseBody
 	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {

@@ -42,6 +42,7 @@ import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
+import com.armysoft.hzkjy.base.util.ExportExcel3;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.DbMessage;
@@ -538,7 +539,37 @@ public class  RentalExamineController extends BaseController {
 //	        return "admin/member/MemberBasicF";
 //		
 //	}
-	
+	@RequestMapping("/outfpxt/1.html")
+	public void outfpxt(Model model,String fhymc,String fjfyd,String fkpxm,HttpServletRequest request,HttpServletResponse response) {
+		String title="发票系统表";
+		List headData =  new ArrayList();
+		headData.add(new Object[] { "rownum","序号(*)"});
+		headData.add(new Object[] { "Fpzlname","发票种类(*)"});
+		headData.add(new Object[] { "Kpxmname","开票项目(*)"});
+		headData.add(new Object[] { "Fkflxname","付款方类型(*)"});
+		headData.add(new Object[] { "Fkfsjhm","付款方手机号码"});
+		headData.add(new Object[] { "Fkfmc","付款方名称(*)"});
+		headData.add(new Object[] { "Fkfzjlxname","付款方证件类型(*)"});
+		headData.add(new Object[] { "Fkfsbh","付款方识别号"});
+		headData.add(new Object[] { "Hjje","合计金额(*)"});
+		headData.add(new Object[] { "Fz","附注"});
+		headData.add(new Object[] { "Kpxmsm","开票项目说明(*)"});
+		headData.add(new Object[] { "Fpje","金额(*)"});
+		headData.add(new Object[] { "Fpbz","备注"});
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("fhymc", fhymc);
+		params.put("fjfyd", fjfyd);
+		params.put("fkpxm", fkpxm);
+		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		
+		List list =service.getFpxt(params);
+         ExportExcel3 exportExcel = new ExportExcel3(title,title, headData);
+		
+		exportExcel.exportExcel_Applicant(request, response,list);
+		
+	}
+
 	
 	@RequestMapping("/outPtqfqk/1.html")
 	public void OutPtqfqk(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
