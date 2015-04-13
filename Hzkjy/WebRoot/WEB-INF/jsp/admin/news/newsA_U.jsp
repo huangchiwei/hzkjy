@@ -17,7 +17,30 @@
 function changeFlag(){
 	 $("#flag").attr("value","1");
 }
+function submitFun(){
+	var title=$("#title").val();
+	if(title==""){
+		alert("标题不允许为空!");
+		$("#title").focus();
+		return false;
+		}
+	var realTime=$("#realTime").val();
+	if(realTime==""){
+		alert("时间不允许为空!");
+		$("#realTime").focus();
+		return false;
+		}
+	var cateCode=$("#cateCode").val();
+	if(cateCode=="train_file"){
+		var file=$("#file").val();
+		if(file==""){
+			alert("附件不允许为空!");
+			return false;
+			}
+		}
 
+	return true;
+}
 </script>
 
 	
@@ -34,10 +57,10 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/news/list/1.html?cateCode=${cateCode}'"/>
    </div>
-<form id="add_form" action='${ctx }/admin/news/save.html'  method="post" enctype="multipart/form-data">
+<form id="add_form" action='${ctx }/admin/news/save.html'  method="post" enctype="multipart/form-data" onsubmit="return submitFun();">
 	<input type="hidden" name="type" value="${type}"/>
 	<input type="hidden" name="id" value="${entity.id}"/>
-	<input type="hidden" name="cateCode" value="${cateCode}"/>
+	<input type="hidden" name="cateCode" id="cateCode" value="${cateCode}"/>
   <div class="add_info">
 
    <h2>${category.remark }&gt;&gt;${type == 'add' ? '添加' : '修改'}${category.cateName }</h2>
@@ -45,13 +68,13 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th >标题：</th>
      <td>
-     	<input id="title" name="title" type="text" value="${entity.title}"  />
+     	<input id="title" name="title" type="text" value="${entity.title}"  />&nbsp;&nbsp;<font color="red">*</font>
      </td>
      
      <th>文档原始时间：</th>
      <td>
      	<input id="realTime" name="realTime" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" 
-     	value="<fmt:formatDate value="${entity.realTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" maxlength="20"/>
+     	value="<fmt:formatDate value="${entity.realTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" maxlength="20"/>&nbsp;&nbsp;<font color="red">*</font>
      </td>
     
     </tr><%--
@@ -74,7 +97,7 @@ html { overflow:-moz-scrollbars-vertical;}
       <th>附件上传：</th>
      <td  colspan="6">
      <input  id="flag" name="flag" type="hidden"   value="0"/>
-      <input  id="file" name="file" type="file"  onchange="changeFlag()" value="${entity.filePath}"/>
+      <input  id="file" name="file" type="file"  onchange="changeFlag()" value="${entity.filePath}"/>&nbsp;&nbsp;<font color="red">*</font>
       <font color="red"><c:if test="${ empty entity.filePath }">未上传附件</c:if>
       <c:if test="${not empty entity.filePath }">已上传的附件(限一份):<a href="${ctx}/admin/news/downLoad/${entity.id}.html">${fn:substringAfter(entity.filePath, '/userfiles/trainFile/')}</a></c:if></font> 
      </td>
