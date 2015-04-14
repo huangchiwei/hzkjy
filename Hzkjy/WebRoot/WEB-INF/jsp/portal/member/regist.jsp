@@ -24,13 +24,25 @@ $(function(){
 		}else if(!(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test($("#email").val()))){
 			msg = '请填写正确的邮箱';
 			$("#email").focus();
-		}else if($("#address").val() != '' && (!/^http[s]?:\/\/([\w-]+\.)+[\w-]+([\w-./?%&=]*)?$/.test($("#address").val()))){
+		}else if($("#address").val() == ''){
+			msg = '请填写网址';
+			$("#address").focus();
+		}else if(!/^http[s]?:\/\/([\w-]+\.)+[\w-]+([\w-./?%&=]*)?$/.test($("#address").val())){
 			msg = '请填写以Http://开头的正确网址';
 			$("#address").focus();
-		}else if($("#mj").val() != '' && (!/^\d+$/.test($("#mj").val()))){
-			msg = '面积请填写数字';
+		}else if($("#zydy").val() == ''){
+			msg = '请填写租用地址';
+			$("#zydy").focus();
+		}else if($("#mj").val() == ''){
+			msg = '请填写租用面积';
 			$("#mj").focus();
-		}else if($("#zczb").val() != '' && (!/^\d+$/.test($("#zczb").val()))){
+		}else if(!/^\d+$/.test($("#mj").val())){
+			msg = '租用面积请填写数字';
+			$("#mj").focus();
+		}else if($("#zczb").val() == ''){
+			msg = '请填写注册资金';
+			$("#zczb").focus();
+		}else if(!/^\d+$/.test($("#zczb").val())){
 			msg = '注册资金请填写数字';
 			$("#zczb").focus();
 		}else if($("#frdb").val() == ''){
@@ -42,34 +54,79 @@ $(function(){
 		}else if ((!telReg.test($("#frlxdh").val())) && (!phoneReg.test($("#frlxdh").val()))){
 			msg = "法人电话格式不正确：区号+电话或手机号码";
 			$("#frlxdh").focus();
-		}else if($('#lxrdh').val() != '' && (!telReg.test($("#lxrdh").val())) && (!phoneReg.test($("#lxrdh").val()))){
-			msg = "企业联系电话格式不正确：区号+电话或手机号码";
+		}else if($("#lxr").val() == ''){
+			msg = '请填写联系人';
+			$("#lxr").focus();
+		}else if($("#lxrdh").val() == ''){
+			msg = '请填写联系电话';
 			$("#lxrdh").focus();
+		}else if((!telReg.test($("#lxrdh").val())) && (!phoneReg.test($("#lxrdh").val()))){
+			msg = "联系电话格式不正确：区号+电话或手机号码";
+			$("#lxrdh").focus();
+		}else if($("#qyrzsj").val() == ''){
+			msg = '请填写企业入驻时间';
+			//$("#qyrzsj").focus();
+		}else if($("#htqxf").val() == ''){
+			msg = '请填写合同开始期限';
+			//$("#htqxf").focus();
+		}else if($("#htqxe").val() == ''){
+			msg = '请填写合同结束期限';
+			//$("#htqxe").focus();
+		}else if($("#qydjzclx").val() == ''){
+			msg = '请填写企业登记注册类型';
+			$("#qydjzclx").focus();
 		}else if($.trim($("#zzjgdm").val()) == ''){
 			msg = '请填写组织机构代码';
 			$("#zzjgdm").focus();
 		}else if (!/^[a-zA-Z0-9]{9}$/.test($("#zzjgdm").val())){
 			msg = "组织机构代码由9个字符长度由字母或数字组成";
 			$("#zzjgdm").focus();
-		}else if($("#htstze").val() != '' && (!/^\d+$/.test($("#htstze").val()))){
+		}else if($("#qyclsj").val() == ''){
+			msg = '请填写企业成立时间';
+			//$("#qyclsj").focus();
+		}else if($("#htstze").val() == ''){
+			msg = '请填写风险投资额';
+			$("#htstze").focus();
+		}else if(!/^\d+$/.test($("#htstze").val())){
 			msg = '风险投资额请填写数字';
 			$("#htstze").focus();
-		}else if($("#dzys").val() != '' && (!/^\d+$/.test($("#dzys").val()))){
-			msg = '大专以上人员请填写数字';
+		}else if($("#dzys").val() == ''){
+			msg = '请填写在孵企业大专人数';
 			$("#dzys").focus();
-		}else if($("#xnyjdxs").val() != '' && (!/^\d+$/.test($("#xnyjdxs").val()))){
-			msg = '应届毕业生请填写数字';
+		}else if(!/^\d+$/.test($("#dzys").val())){
+			msg = '在孵企业大专人员请填写数字';
+			$("#dzys").focus();
+		}else if($("#xnyjdxs").val() == ''){
+			msg = '请填写在孵企业大学应届生人数';
 			$("#xnyjdxs").focus();
-		}else if($("#fmzl").val() != '' && (!/^\d+$/.test($("#fmzl").val()))){
+		}else if(!/^\d+$/.test($("#xnyjdxs").val())){
+			msg = '在孵企业大学应届生请填写数字';
+			$("#xnyjdxs").focus();
+		}else if($("#hylb").val() == ''){
+			msg = '请填写行业类别';
+			$("#hylb").focus();
+		}else if($("#fmzl").val() == ''){
+			msg = '请填写发明专利';
+			$("#fmzl").focus();
+		}else if(!/^\d+$/.test($("#fmzl").val())){
 			msg = '发明专利请填写数字';
 			$("#fmzl").focus();
-		}else if($("#wgsj").val() != '' && (!/^\d+$/.test($("#wgsj").val()))){
+		}else if($("#wgsj").val() == ''){
+			msg = '请填写外观设计';
+			$("#wgsj").focus();
+		}else if(!/^\d+$/.test($("#wgsj").val())){
 			msg = '外观设计请填写数字';
 			$("#wgsj").focus();
-		}else if($("#syxx").val() != '' && (!/^\d+$/.test($("#syxx").val()))){
+		}else if($("#syxx").val() == ''){
+			msg = '请填写实用新型';
+			$("#syxx").focus();
+		}else if(!/^\d+$/.test($("#syxx").val())){
 			msg = '实用新型请填写数字';
 			$("#syxx").focus();
-		}else if($("#rjzzq").val() != '' && (!/^\d+$/.test($("#rjzzq").val()))){
+		}else if($("#rjzzq").val() == ''){
+			msg = '请填写软件著作权';
+			$("#rjzzq").focus();
+		}else if(!/^\d+$/.test($("#rjzzq").val())){
 			msg = '软件著作权请填写数字';
 			$("#rjzzq").focus();
 		}
@@ -106,42 +163,43 @@ $(function(){
  <div class="zl_box">
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业名称：</span>
-      <span class="span1"><input name="qymc" id="qymc" type="text" class="input" size="20" maxlength="100"/>
+      <span class="span1"><input name="qymc" id="qymc" type="text" class="input" size="25" maxlength="100"/>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;电子邮箱：</span>
-      <span class="span1"><input name="email" id="email" type="text" size="20" class="input" maxlength="100"/>
+      <span class="span1"><input name="email" id="email" type="text" size="25" class="input" maxlength="100"/>
       </span>
      </div>
      <div class="li">
-      <span class="span">网址：</span>
-      <span class="span1"><input id="address" name="address" type="text" class="input" size="20" maxlength="100"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业网址：</span>
+      <span class="span1"><input id="address" name="address" type="text" class="input" size="15" maxlength="100"/><em>请填入http://</em>
       </span>
-      <span class="span">租用地址：</span>
-      <span class="span1"><input id="zydy" name="zydy" type="text" class="input" size="20" maxlength="100"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;租用地址：</span>
+      <span class="span1"><input id="zydy" name="zydy" type="text" class="input" size="25" maxlength="100"/>
       </span>
      </div>
      <div class="li">
-      <span class="span">面积：</span>
-      <span class="span1"><input name="mj" id="mj" type="text" class="input" size="20" maxlength="20"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;租用面积：</span>
+      <span class="span1"><input name="mj" id="mj" type="text" class="input" size="15" maxlength="20"/><em>平方米</em>
       </span>
-      <span class="span">注册资本：</span>
-      <span class="span1"><input name="zczb" id="zczb" type="text" class="input" size="20" maxlength="20"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;注册资本：</span>
+      <span class="span1"><input name="zczb" id="zczb" type="text" class="input" size="10" maxlength="20"/><em>万元</em>
       </span>
      </div>
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;法人代表：</span>
-      <span class="span1"><input name="frdb" id="frdb" type="text" class="input" size="20" maxlength="20"/>
+      <span class="span1"><input name="frdb" id="frdb" type="text" class="input" size="15" maxlength="20"/>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;法人联系电话：</span>
-      <span class="span1"><input name="frlxdh" id="frlxdh" type="text" class="input" size="20" maxlength="20"/>
+      <span class="span1"><input name="frlxdh" id="frlxdh" type="text" class="input" size="10" maxlength="20"/>
+      <em>如：020-12345678</em>
       </span>
      </div>
      <div class="li">
-      <span class="span">联系人：</span>
-      <span class="span1"><input name="lxr" id="lxr" type="text" class="input" size="20" maxlength="20"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;联系人：</span>
+      <span class="span1"><input name="lxr" id="lxr" type="text" class="input" size="15" maxlength="20"/>
       </span>
-      <span class="span">联系电话：</span>
-      <span class="span1"><input name="lxrdh" id="lxrdh" type="text" class="input" size="20" maxlength="20"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;联系电话：</span>
+      <span class="span1"><input name="lxrdh" id="lxrdh" type="text" class="input" size="10" maxlength="20"/><em>如：020-12345678</em>
       </span>
      </div>
      <div class="li">
@@ -152,23 +210,19 @@ $(function(){
           	<option value="0">出园</option>
       	</select>
       </span>
-      <span class="span">企业入驻时间：</span>
-      <span class="span1"><input id="qyrzsj" name="qyrzsj" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="20"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业入驻时间：</span>
+      <span class="span1"><input id="qyrzsj" name="qyrzsj" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="10"/>
       </span>
      </div>
      <div class="li">
-      <span class="span">合同期限：</span>
-      <span class="span1">
-      	<input id="htqxf" name="htqxf" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="18"/>
-      </span>
-      <span class="span">
-      	 至 </span>
-      <span class="span1">
-      	<input id="htqxe" name="htqxe" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="18"/>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;合同期限：</span>
+      <span class="span2">
+      	<input id="htqxf" name="htqxf" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="10"/>
+      	<em>至</em><input id="htqxe" name="htqxe" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="10"/>
       </span>
      </div>
      <div class="li">
-      <span class="span">企业登记注册类型：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业登记注册类型：</span>
       <span class="span1"><input name="qydjzclx" id="qydjzclx" type="text" class="input" size="20" maxlength="20"/>
       </span>
       <span class="span">是否需填经济月报：</span>
@@ -183,23 +237,23 @@ $(function(){
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;组织机构代码：</span>
       <span class="span1"><input name="zzjgdm" id="zzjgdm" type="text" class="input" size="20" maxlength="30"/>
       </span>
-      <span class="span">企业成立时间：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业成立时间：</span>
       <span class="span1">
-      	<input name="qyclsj" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="20" />
+      	<input name="qyclsj" id="qyclsj" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="15" />
       </span>
      </div>
      <div class="li">
-      <span class="span">获天使或风险投资额：</span>
-      <span class="span1"><input name="htstze" id="htstze" type="text" class="input" size="20" maxlength="20"/>千元
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;获天使或风险投资额：</span>
+      <span class="span1"><input name="htstze" id="htstze" type="text" class="input" size="20" maxlength="20"/><em>万元</em>
       </span>
-      <span class="span">在孵企业大专以上人员：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;在孵企业大专以上人员：</span>
       <span class="span1">
-      	<input name="dzys" id="dzys" type="text" class="input" size="20" maxlength="20"/>人
+      	<input name="dzys" id="dzys" type="text" class="input" size="20" maxlength="20"/><em>人</em>
       </span>
      </div>
      <div class="li">
-      <span class="span">在孵企业大学应届生：</span>
-      <span class="span1"><input name="xnyjdxs" id="xnyjdxs" type="text" class="input" size="20" maxlength="20"/>人
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;在孵企业大学应届生：</span>
+      <span class="span1"><input name="xnyjdxs" id="xnyjdxs" type="text" class="input" size="20" maxlength="20"/><em>人</em>
       </span>
       <span class="span">企业所属技术领域：</span>
       <span class="span1">
@@ -214,7 +268,7 @@ $(function(){
       </span>
      </div>
      <div class="li">
-      <span class="span">行业类别：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;行业类别：</span>
       <span class="span1"><input name="hylb" id="hylb" type="text" class="input" size="20" maxlength="30"/>
       </span>
       <span class="span">高新技术企业：</span>
@@ -237,30 +291,27 @@ $(function(){
       <span class="span1">
       </span>
      </div>
-     <div class="li">
-      <span class="span2">
+     <div class="li2">
 		到上一年为止拥有有效知识产权数：其中：
-      </span>
-      <em>&nbsp;</em>
      </div>
      <div class="li">
-      <span class="span">发明专利：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;发明专利：</span>
       <span class="span1">
-		<input id="fmzl" name="fmzl" type="text" class="input" size="20" maxlength="20"/>件
+		<input id="fmzl" name="fmzl" type="text" class="input" size="20" maxlength="20"/><em>件</em>
       </span>
-      <span class="span">外观设计：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;外观设计：</span>
       <span class="span1">
-      	<input name="wgsj" id="wgsj" type="text" class="input" size="20" maxlength="20"/>个
+      	<input name="wgsj" id="wgsj" type="text" class="input" size="20" maxlength="20"/><em>个</em>
       </span>
      </div>
      <div class="li">
-      <span class="span">实用新型：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;实用新型：</span>
       <span class="span1">
-		<input id="syxx" name="syxx" type="text" class="input" size="20" maxlength="20"/>件
+		<input id="syxx" name="syxx" type="text" class="input" size="20" maxlength="20"/><em>件</em>
       </span>
-      <span class="span">软件著作权：</span>
+      <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;软件著作权：</span>
       <span class="span1">
-      	<input name="rjzzq" id="rjzzq" type="text" class="input" size="20" maxlength="20"/>个
+      	<input name="rjzzq" id="rjzzq" type="text" class="input" size="20" maxlength="20"/><em>个</em>
       </span>
      </div>
       
