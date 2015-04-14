@@ -72,7 +72,6 @@ public class  MemberPatentController extends BaseController {
 			else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
 			if(month!=null)
 			params.put("month", month);
-			else params.put("month", "1");
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(userNo.substring(0, 4).equals("4401"))
 		params.put("memberNo", userNo);
@@ -134,11 +133,31 @@ public class  MemberPatentController extends BaseController {
 		if(ptype.equals("U")){
 			memberPatentService.update(entity);
 		}else if(ptype.equals("A")){
-			if(entity.getMemberNo()==null||entity.getMemberNo().isEmpty()){
-				String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-				entity.setMemberNo(userNo);
+			if(entity.getId()==null){
+				String name1=new String(entity.getName());
+				String type1=new String(entity.getType());
+				String patentNo1=new String(entity.getPatentNo());
+				  String[] name2 = name1.split(",");
+				  String[] type2 = type1.split(",");
+				  String[] patentNo2 = patentNo1.split(",");
+				  for (int i = 0; i < type2.length; i++) {  
+					  MemberPatent mp=new MemberPatent();
+					  mp.setMonth(entity.getMonth());
+					  mp.setYear(entity.getYear());
+					  mp.setName(name2[i]);
+					  mp.setType(type2[i]);
+					  mp.setPatentNo(patentNo2[i]);
+					 
+					  if(entity.getMemberNo()==null || entity.getMemberNo().isEmpty()){
+							String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+						  mp.setMemberNo(userNo);
+					  }else{
+						  mp.setMemberNo(entity.getMemberNo());
+					  }
+					  memberPatentService.insert(mp);
+				  }
 			}
-			memberPatentService.insert(entity);
+		
 		}
 		return "redirect://admin/memberPatent/list/1.html";
 	}

@@ -93,8 +93,43 @@ function validate(){
 	document.forms[0].submit();
 }
 </script>
+<script type="text/javascript" language="javascript"> 
+var row_count = 0; 
+function addNew() 
+{ 
+var table1 = $('#myTable'); 
+var firstTr = table1.find('tbody>tr:first'); 
+var row = $("<tr></tr>"); 
+var td = $("<td></td>"); 
+var td1 = $("<td></td>"); 
+var td2 = $("<td></td>");  
+var td3 = $("<td></td>"); 
 
+td.append($("<input type='button' value='删除' id='dl"+row_count+"' class='initial' onclick='javascript:del(this);'/>") 
+);
+td1.append($("  <select name='type' class='input_a1' ><option value='0' <c:if test='${entity.ProjectLevel==0}'>selected='selected'</c:if>>发明专利</option><option value='1' <c:if test='${entity.ProjectLevel==1}'>selected='selected'</c:if>>实用新型</option><option value='2' <c:if test='${entity.ProjectLevel==2}'>selected='selected'</c:if>>外观设计</option><option value='3' <c:if test='${entity.ProjectLevel==3}'>selected='selected'</c:if>>软件著作权</option></select>") 
+);  
+td2.append($("<input id='name' name='name' type='text' size='20' value='${entity.Name}' class='input_a1' /><font color='red'>*</font>") 
+);  
+td3.append($("<input id='patentNo' size='20' name='patentNo' type='text' value='${entity.PatentNo}' class='input_a1'/><font color='red'>*</font>") 
+);  
+row.append(td); 
+row.append(td1); 
+row.append(td2); 
+row.append(td3); 
+table1.append(row); 
+row_count++; 
 
+} 
+
+function del(obj) 
+{ 
+var dtrid=obj.id;
+
+$("#" + dtrid).parent().parent().remove(); 
+
+} 
+</script>
 <style type="text/css">
 html { overflow:-moz-scrollbars-vertical;}
 </style>
@@ -113,39 +148,8 @@ html { overflow:-moz-scrollbars-vertical;}
     <table id="questTable" border="0" cellspacing="0" cellpadding="0"
 					class="ListTable">
     <tr>
-     <th class="w100">专利类别:</th>
-     <td>
-       <select name="type" class="input_a1" >
- 		<option value="0" <c:if test="${entity.ProjectLevel==0}">selected="selected"</c:if>>发明专利</option>    
- 		<option value="1" <c:if test="${entity.ProjectLevel==1}">selected="selected"</c:if>>实用新型</option>  
- 		<option value="2" <c:if test="${entity.ProjectLevel==2}">selected="selected"</c:if>>外观设计</option>  
- 		<option value="3" <c:if test="${entity.ProjectLevel==3}">selected="selected"</c:if>>软件著作权</option>  
-     </select>
-  
-      </td>
-
-       <th> 年份：</th>
-     <td>
- <input id="year" name="year"  class="input_a1"  onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
-     	value="${entity.Year}" maxlength="10"/><font color="red">*</font>
-     	
-     </td>
-    <th> 月份：</th>
-    <td><select name="month" id="month" class="input_a1" >
-    <option value="0" <c:if test="${entity.Month==0}">selected="selected"</c:if>>1~6月</option>
-    <option value="1" <c:if test="${entity.Month==1}">selected="selected"</c:if>>7~12月</option></select></td>
-    </tr>
-	 
-    <tr>
-    <th>专利名称：</th>
-     <td>
-     	<input id="name" name="name" type="text" size="20" value="${entity.Name}" class="input_a1" /><font color="red">*</font>
-     </td>
-      <th>专利编号：</th>
-     <td >
-    	<input id="patentNo" size="20" name="patentNo" type="text" value="${entity.PatentNo}" class="input_a1"/><font color="red">*</font>
-     </td>
-       <c:if test="${cookie.admin_key.value=='admin'}">
+      
+     <c:if test="${cookie.admin_key.value=='admin'}">
       <th>所属企业</th>
      <td >
      <input type="text" id="memberNo" name="memberNo" value="${entity.MemberNo}"  class="input_a1" size="20" onfocus="loadCorpName();"/>
@@ -159,6 +163,50 @@ html { overflow:-moz-scrollbars-vertical;}
     	--%><font color="red">*</font>
      </td>
     </c:if>
+     
+
+       <th> 年份：</th>
+     <td>
+ <input id="year" name="year"  class="input_a1"  onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
+     	value="${entity.Year}" maxlength="10"/><font color="red">*</font>
+     	
+     </td>
+    <th> 月份：</th>
+    <td><select name="month" id="month" class="input_a1" >
+    <option value="0" <c:if test="${entity.Month==0}">selected="selected"</c:if>>1~6月</option>
+    <option value="1" <c:if test="${entity.Month==1}">selected="selected"</c:if>>7~12月</option></select></td>
+    </tr>
+	 </table>  
+	  <table id="myTable" border="0" cellspacing="0" cellpadding="0"
+					class="ListTable">
+    <tr>
+    <th>操作</th>
+     <th class="w100">专利类别:</th>
+    <th>专利名称：</th>
+     
+      <th>专利编号：</th>
+     
+       
+    
+    </tr>
+    <tr>
+     <td><input type="button" value="新增行" class="initial" onclick="addNew();"/></td>
+        <td>
+       <select name="type" class="input_a1" >
+ 		<option value="0" <c:if test="${entity.ProjectLevel==0}">selected="selected"</c:if>>发明专利</option>    
+ 		<option value="1" <c:if test="${entity.ProjectLevel==1}">selected="selected"</c:if>>实用新型</option>  
+ 		<option value="2" <c:if test="${entity.ProjectLevel==2}">selected="selected"</c:if>>外观设计</option>  
+ 		<option value="3" <c:if test="${entity.ProjectLevel==3}">selected="selected"</c:if>>软件著作权</option>  
+     </select>
+  
+      </td>
+    <td>
+     	<input id="name" name="name" type="text" size="20" value="${entity.Name}" class="input_a1" /><font color="red">*</font>
+     </td>
+     <td >
+    	<input id="patentNo" size="20" name="patentNo" type="text" value="${entity.PatentNo}" class="input_a1"/><font color="red">*</font>
+     </td>
+   
     </tr>
    </table>   
   <div class="div_submit">
