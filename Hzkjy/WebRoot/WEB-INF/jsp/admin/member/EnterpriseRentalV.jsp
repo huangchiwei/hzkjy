@@ -28,6 +28,12 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+var userNo="${userNo}";
+if(userNo=="cwry"){
+$("#addinfo").find("input,select,textarea").attr("readonly",true);
+}else{
+ $("#addinfo1").hide();
+}
 	formInitConfig("add_form",3000);
 	autoValidate();
 	$("#sslq option[value='${model.sslq}']").attr("selected", true); 
@@ -118,7 +124,7 @@ html { overflow:-moz-scrollbars-vertical;}
  <pm:hasPermission permValue="qyzjlr_updt">
 	       	<c:set var="qyzjlr_updt" value="true"/>
 	    </pm:hasPermission>
-  <div class="add_info">
+  <div class="add_info" id="addinfo">
  <h2>新增缴费通知单</h2>
     <table id="questTable" border="0" cellspacing="0" cellpadding="0"
 					class="ListTable">
@@ -442,16 +448,41 @@ html { overflow:-moz-scrollbars-vertical;}
      
    
     
-    	 <div class="div_submit">
-    	 	<c:if test="${qyzjlr_updt == true}">
+    	
+  
+  </div>
+  <div class="add_info" id="addinfo1">
+       <table id="questTable" border="0" cellspacing="0" cellpadding="0"
+					class="ListTable" >
+       <tr align="center">
+       <th>开票日期：</th>
+      <td colspan="3">
+     <input name="kprq"  id="kprq" type="text" class="input_a1" value="${model.kprq}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+     </td>
+     <th>租金发票号：</th>
+       <td colspan="2">
+     	<input name="zjfph"  id="zjfph" type="text" class="input_a1" value="${model.zjfph}"/>
+     </td>
+    </tr>	
+     <tr align="center">
+       <th>管理费发票号：</th>
+      <td colspan="3">
+      <input name="glffph"  id="glffph" type="text" class="input_a1" value="${model.glffph}"/>
+     </td>
+     <th>水电发票号：</th>
+       <td colspan="2">
+     	<input name="sdfph"  id="sdfph" type="text" class="input_a1" value="${model.sdfph}"/>
+     </td>
+    </tr>						
+					
+					</table>
+       </div>
+        <div class="div_submit">
 					<input id="sumbit_bt" name="" type="submit" value="提  交"
 						class="photo_btn" />
-						</c:if>
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
 				</div>
-  
-  </div>
   </form>
 </div>
 

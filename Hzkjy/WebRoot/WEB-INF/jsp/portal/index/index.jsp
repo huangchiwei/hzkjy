@@ -45,6 +45,14 @@ $(function(){
 		  	});
 	});
 });
+function downloadFile(id){
+	var userNo="${cookie.admin_key.value}";
+	if(userNo==""){
+		alert("请先登录再下载.");
+		return false;
+		}
+	window.location.href="${ctx}/portal/news/downLoad/"+id+".html";
+}
 </script>
 <script type="text/javascript" src="${ctx}/theme/portal/default/js/lrtk.js"></script>
 <script type="text/javascript" src="${ctx}/theme/portal/default/js/lrtk_bht.js"></script>
@@ -58,8 +66,8 @@ $(function(){
   <a href="javascript:void(0);" class="btn btnPre" id="banner_index_pre"></a>
   <a href="javascript:void(0);" class="btn btnNext" id="banner_index_next"></a>
     <ul class="banner_wrap" id="banner_index">
-    <c:forEach items="${adList}" varStatus="index" var="o" >  
-     <li><a href="${o.linkUrl}" target="_blank"><img src="${ctx}${o.path}"/></a></li>
+    <c:forEach items="${adList0}" varStatus="index" var="o" >  
+     <li><a href="${o.linkUrl}" target="_blank"><img src="${ctx}${o.path}" width="970px" height="300px"/></a></li>
     </c:forEach>
     
     </ul>
@@ -149,7 +157,14 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     </div>
    </div>
   </div>
-  <div class="ad_690"><img src="${ctx}/theme/portal/default/images/ad_690x90.png" /></div>
+  <div class="ad_690">
+  								 <c:choose>
+									<c:when test="${not empty adList1&&fn:length(adList1)>0}">
+										<a href="${adList1[0].linkUrl }" target="_blank"><img src="${ctx}${adList1[0].path}" width="690px" height="90px"/></a>
+									</c:when>
+									
+								</c:choose>
+  </div>
   <div class="left_box2">
    <div class="left_box2_l">
     <div class="l_b_l_t relative">
@@ -159,7 +174,16 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="l_b_l_b">
      <ul>
       <c:forEach items="${trainList}" varStatus="index" var="o" >  
-       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 25)}</a></li>
+     							 <c:choose>
+									<c:when test="${o.cateCode=='train_file'}">
+										<li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a  onclick="downloadFile('${o.id}')" style="cursor:pointer;">${fn:substring(o.title, 0, 17)}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a
+											href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${cateCode}">${fn:substring(o.title, 0, 17)}</a></li>
+									</c:otherwise>
+								</c:choose>
+      
     </c:forEach>
     
        </ul>
@@ -173,7 +197,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="l_b_l_b">
      <ul>
     <c:forEach items="${policyList}" varStatus="index" var="o" >  
-       <li class="li"><a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 25)}</a></li>
+       <li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 17)}</a></li>
     </c:forEach>
      </ul>
     </div>
@@ -197,9 +221,9 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
    </div>
    <div class="login">
     <ul>
-     <li class="account"><em>用户名</em><input id="userNo" name="userNo" type="text" class="input"/>
+     <li class="account"><em>用户名</em><input id="userNo" name="userNo" type="text" class="input" />
      </li>
-     <li class="password"><em>密码</em><input id="password" name="password" type="password" class="input"/>
+     <li class="password"><em>密码</em><input id="password" name="password" type="password" class="input1"/>
      </li>
       <li class="btn"><input id="login_btn" type="button" class="btn_a1" value="登录"/>
      </li>

@@ -8,7 +8,7 @@
 	
 	<!-- 表列名 -->
 	<sql id="columns">	
-	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq</sql>
+	 ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Fpzl,Kpxm,Fkflx,Fkfsjhm,Fkfmc,Fkfzjlx,Fkfsbh,Fpje,Fz,Kpxmsm,Fpbz</sql>
 	
 
 	<!-- 通用条件sql语句 -->
@@ -101,6 +101,18 @@
 				                     <result column="Glffph" property="glffph" />
 				                     <result column="Sdfph" property="sdfph" />
 				                     <result column="Kprq" property="kprq" />
+				                     
+				                     <result column="Fpzl" property="fpzl" />
+				                     <result column="Kpxm" property="kpxm" />
+				                     <result column="Fkflx" property="fkflx" />
+				                     <result column="Fkfsjhm" property="fkfsjhm" />
+				                     <result column="Fkfmc" property="fkfmc" />
+				                     <result column="Fkfzjlx" property="fkfzjlx" />
+				                     <result column="Fkfsbh" property="fkfsbh" />
+				                     <result column="Fpje" property="fpje" />
+				                     <result column="Fz" property="fz" />
+				                     <result column="Kpxmsm" property="kpxmsm" />
+				                     <result column="Fpbz" property="fpbz" />
 				                    
 				                    
 				
@@ -109,7 +121,7 @@
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq
+select  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf ,Fpzl,Kpxm,Fkflx,Fkfsjhm,Fkfmc,Fkfzjlx,Fkfsbh,Fpje,Fz,Kpxmsm,Fpbz
 	 from member_rental
 	where 1=1
 			<if test="fhymc != null and fhymc != ''">
@@ -169,7 +181,7 @@ select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技�
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="memberRental">
-		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq)
+		insert into member_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Fpzl,Kpxm,Fkflx,Fkfsjhm,Fkfmc,Fkfzjlx,Fkfsbh,Fpje,Fz,Kpxmsm,Fpbz)
 	
 		values(
 		#{hybh} 		
@@ -241,10 +253,19 @@ select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技�
 	                      , #{dfmc}
 	          , #{lqysf}
 	          , #{lqydf}
-	          , #{zjfph}
-	          , #{glffph}
-	          , #{sdfph}
-	          , #{kprq}
+	          
+	          , #{fpzl}
+	          , #{kpxm}
+	          , #{fkflx}
+	          , #{fkfsjhm}
+	          , #{fkfmc}
+	          , #{fkfzjlx}
+	          , #{fkfsbh}
+	          , #{fpje}
+	          , #{fz}
+	          , #{kpxmsm}
+	          , #{fpbz}
+	       
 	         
 	        
 		  )
@@ -322,10 +343,19 @@ select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技�
 	                ,Dfmc = #{dfmc}
 	                ,Lqysf = #{lqysf}
 	                ,Lqydf = #{lqydf}
-                    ,Zjfph = #{zjfph}
-                    ,Glffph = #{glffph}
-                    ,Sdfph = #{sdfph}
-                    ,Kprq = #{kprq}
+                   
+                   ,Fpzl = #{fpzl}
+                   ,Kpxm = #{kpxm}
+                   ,Fkflx = #{fkflx}
+                   ,Fkfsjhm = #{fkfsjhm}
+                   ,Fkfmc = #{fkfmc}
+                   ,Fkfzjlx = #{fkfzjlx}
+                   ,Fkfsbh = #{fkfsbh}
+                   ,Fpje = #{fpje}
+                   ,Fz = #{fz}
+                   ,Kpxmsm = #{kpxmsm}
+                   ,Fpbz = #{fpbz}
+
 
 
 		 							    where ID = #{id}

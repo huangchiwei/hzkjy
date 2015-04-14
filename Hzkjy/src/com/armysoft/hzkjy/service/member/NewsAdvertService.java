@@ -38,7 +38,9 @@ public class NewsAdvertService extends BaseDao {
 		return super.nativeSelectOne(nameSpace + ".findByKey", id);
 	}
 
-	
+	public List<Map<String, Object>> getByAdType(Map<String, Object> params) {
+		return super.nativeList(nameSpace+".getByAdType", params);
+	}
 	
 	/**
 	 * ������

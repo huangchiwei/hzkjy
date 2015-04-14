@@ -36,9 +36,13 @@ $("#addinfo").find("input,select,textarea").attr("readonly",true);
  
 
 	formInitConfig("add_form",3000);
-	autoValidate();
+	    $("#fpzl option[value='${model.fpzl}']").attr("selected", true); 
+		$("#kpxm option[value='${model.kpxm}']").attr("selected", true); 
+		$("#fkflx option[value='${model.fkflx}']").attr("selected", true); 
+		$("#fkfzjlx option[value='${model.fkfzjlx}']").attr("selected", true); 
 		$("#sslq option[value='${model.sslq}']").attr("selected", true); 
-		 
+		
+
 });   
 
     
@@ -134,8 +138,13 @@ function loadSqsj(){
 		  	    
 		  	      $("#qysfdj").attr("value",data.qysfdj);
 		  	        $("#qydfdj").attr("value",data.qydfdj);
+		  	        $("#qysfdj2").attr("value",data.qysfdj2);
+		  	        $("#qydfdj2").attr("value",data.qydfdj2);
+		  	        
 		  	          $("#dsyhd").attr("value",data.dsyhd);
 		  	            $("#ssyhd").attr("value",data.ssyhd);
+		  	              $("#dsyhd2").attr("value",data.dsyhd2);
+		  	            $("#ssyhd2").attr("value",data.ssyhd2);
 		  	    
 		  		
 		  		},
@@ -891,25 +900,88 @@ html { overflow:-moz-scrollbars-vertical;}
        <table id="questTable" border="0" cellspacing="0" cellpadding="0"
 					class="ListTable" >
        <tr align="center">
-       <th>开票日期：</th>
+       <th>发票种类：</th>
       <td colspan="3">
-     <input name="kprq"  id="kprq" type="text" class="input_a1" value="${model.kprq}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+     <select name="fpzl"  id="fpzl" style="text-align:center">
+          <option value="1">10000004 广东省地方税收通用发票（电子-单联平推式）</option>
+          <option value="2">10000005 广东省地方税收通用发票（电子-两联打孔式）</option>
+        </select>
      </td>
-     <th>租金发票号：</th>
+     <th>开票项目：</th>
        <td colspan="2">
-     	<input name="zjfph"  id="zjfph" type="text" class="input_a1" value="${model.zjfph}"/>
+     	 <select name="kpxm"  id="kpxm" style="text-align:center"> 
+          <option value="1">0706 租赁业</option>
+          <option value="2">0799 其他服务业</option>
+          <option value="3">0701 代理业</option>
+         </select>
      </td>
     </tr>	
      <tr align="center">
-       <th>管理费发票号：</th>
+       <th>付款方类型：</th>
       <td colspan="3">
-      <input name="glffph"  id="glffph" type="text" class="input_a1" value="${model.glffph}"/>
+         <select name="fkflx"  id="fkflx" style="text-align:center">
+          <option value="1">0 个人</option>
+          <option value="2">1 单位</option>
+         </select>
      </td>
-     <th>水电发票号：</th>
+     <th>付款方手机号码：</th>
        <td colspan="2">
-     	<input name="sdfph"  id="sdfph" type="text" class="input_a1" value="${model.sdfph}"/>
+     	<input name="fkfsjhm"  id="fkfsjhm" type="text" class="input_a1" value="${model.fkfsjhm}"/>
      </td>
-    </tr>						
+    </tr>	
+    <tr align="center">
+       <th>付款方名称：</th>
+      <td colspan="3">
+      <input name="fkfmc"  id="fkfmc" type="text" class="input_a1" value="${model.fkfmc!='' && model.fkfmc !=null?model.fkfmc:model.qymc}"/>
+     </td>
+     <th>付款方证件类型：</th>
+       <td colspan="2">
+       <select name="fkfzjlx"  id="fkfzjlx" style="text-align:center">
+          <option value="1">1 护照</option>
+          <option value="2">2 通行证</option>
+          <option value="3">3 回乡证</option>
+          <option value="4">4 台胞证</option>
+          <option value="5">5 组织机构代码</option>
+          <option value="6">6 身份证</option>
+          <option value="7">7 军官证</option>
+          <option value="8">8 纳税人识别号</option>
+          <option value="9">9 其他</option>
+         </select>
+     </td>
+    </tr>		
+    
+    
+    <tr align="center">
+       <th>付款方识别号：</th>
+      <td colspan="3">
+      <input name="fkfsbh"  id="fkfsbh" type="text" class="input_a1" value="${model.fkfsbh}"/>
+     </td>
+     <th>合计金额：</th>
+       <td colspan="2">
+      <input name="fpje"  id="fpje" type="text" class="input_a1" value="${model.fpje!='' && model.fpje !=null?model.fpje:model.hjje}"/>
+     </td>
+    </tr>	
+    
+     <tr align="center">
+       <th>附注：</th>
+      <td colspan="3">
+      <input name="fz"  id="fz" type="text" class="input_a1" value="${model.fz}"/>
+     </td>
+     <th>开票项目说明：</th>
+       <td colspan="2">
+      <input name="kpxmsm"  id="kpxmsm" type="text" class="input_a1" value="${model.kpxmsm}"/>
+     </td>
+    </tr>	
+    
+    <tr align="center">
+       <th>备注：</th>
+      <td colspan="3">
+      <input name="fpbz"  id="fpbz" type="text" class="input_a1" value="${model.fpbz}"/>
+     </td>
+     <th></th>
+       <td colspan="2">
+     </td>
+    </tr>								
 					
 					</table>
        </div>

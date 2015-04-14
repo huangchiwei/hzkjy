@@ -110,6 +110,11 @@ function find(){
 	$("#search_form").attr("action","${ctx}/admin/rentalExamine/outPtqfqk/1.html");
 	document.getElementById("search_form").submit();
     }   
+    
+    function outfpxt(){    
+	$("#search_form").attr("action","${ctx}/admin/rentalExamine/outfpxt/1.html");
+	document.getElementById("search_form").submit();
+    }   
 
 var corpNameJson="";
 
@@ -180,7 +185,10 @@ function corpAutocomplete(data){
 	function changeStatus(userNo,status){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
-
+       function outfpqs(){    
+	$("#search_form").attr("action","${ctx}/admin/memberRental/outfpqs/1.html");
+	document.getElementById("search_form").submit();
+    }  
 </script>
 </head>
 
@@ -200,11 +208,18 @@ function corpAutocomplete(data){
         
         <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" size=15 maxlength="20"/>
+        <em>开票项目：</em><select name="fkpxm"  class="input_a1" id="fkpxm" style="text-align:center">
+        <option value=""></option>
+		 <option value="1">0706 租赁业</option>
+          <option value="2">0799 其他服务业</option>
+          <option value="3">0701 代理业</option>
+        </select>								 
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
          <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
          <input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/>
          <input id="" type="button" value="批量退回" class="initial" onclick="pltssh()"/>
          <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+          <input id="add_bt" type="button" value="发票系统导出" class="initial" onclick="outfpxt();"/>
     </div>
     
     </form>

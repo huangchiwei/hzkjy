@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID,Messagename,Message</sql>
+	ID,Messagename,Message,Creater,Type</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from db_message
@@ -20,6 +20,8 @@
 				<result column="ID" property="id" />
 				<result column="Messagename" property="messagename" />
 				<result column="Message" property="message" />
+				<result column="Creater" property="creater" />
+				<result column="Type" property="type" />
 			</resultMap>
 
 
@@ -42,9 +44,11 @@
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="dbMessage">
-		insert into db_message(Messagename,Message)
+		insert into db_message(Messagename,Message,Creater,Type)
 		values(#{messagename} 		
 		, #{message} 
+		, #{creater} 
+		, #{type} 
 		  )
 		</insert>
 
@@ -55,6 +59,8 @@
 		update db_message set 
 		Messagename=#{messagename}
 		,Message=#{message}
+		,Creater=#{creater}
+		,Type=#{type}
 		 							where ID = #{id}
 	</update>
 

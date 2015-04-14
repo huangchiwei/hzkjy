@@ -5,6 +5,20 @@ import java.util.Date;
 public class DbMessage implements java.io.Serializable {
 	private Integer id;
 	private String messagename;
+	private String creater;
+	public String getCreater() { 
+		return creater;
+	}
+	public void setCreater(String creater) {
+		this.creater = creater;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	private String type;
 	public Integer getId() {
 		return id;
 	}

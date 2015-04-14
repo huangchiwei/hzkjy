@@ -1,6 +1,34 @@
 package com.armysoft.hzkjy.model;
 import java.util.Date;
 public class  EnterpriseRental implements java.io.Serializable {
+	private String zjfph;
+	public String getZjfph() {
+		return zjfph;
+	}
+	public void setZjfph(String zjfph) {
+		this.zjfph = zjfph;
+	}
+	public String getGlffph() {
+		return glffph;
+	}
+	public void setGlffph(String glffph) {
+		this.glffph = glffph;
+	}
+	public String getSdfph() {
+		return sdfph;
+	}
+	public void setSdfph(String sdfph) {
+		this.sdfph = sdfph;
+	}
+	public String getKprq() {
+		return kprq;
+	}
+	public void setKprq(String kprq) {
+		this.kprq = kprq;
+	}
+	private String glffph;
+	private String sdfph;
+	private String kprq;
 	private Integer id;
     private String hybh;
 	public Integer getId() {
