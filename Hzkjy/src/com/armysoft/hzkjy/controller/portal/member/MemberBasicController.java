@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.armysoft.core.Pagination;
 import org.armysoft.security.InitResourcesMap;
+import org.armysoft.security.model.sys.SysUser;
 import org.armysoft.security.service.sys.SysUserService;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -62,7 +63,7 @@ public class MemberBasicController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("regist")
-	public String regist(MemberBasic entity,String token, Model model,HttpServletRequest req) {
+	public String regist(MemberBasic entity,String email,String token, Model model,HttpServletRequest req) {
 		Object oldToken = req.getSession().getAttribute("token");
 		if(oldToken != null && oldToken.toString().equals(token)){
 			entity.setQymcpy(Cn2Spell.converterToFirstSpell(entity.getQymc()));
@@ -79,7 +80,13 @@ public class MemberBasicController extends BaseController {
 				newbh = newbh + 1;
 				entity.setHybh(newbh.toString());
 			}
-			service.insertMemberAndUser(entity);
+			SysUser user = new SysUser();
+			user.setUserNo(entity.getHybh());
+			user.setEmail(email);
+			user.setPwd(DigestUtils.md5DigestAsHex(Constants.DEFAULT_PASSWORD.getBytes()));
+			user.setStatus(1);
+			user.setCreateDate(new Date());
+			service.insertMemberAndUser(entity,user);
 			initResourcesMap.init();
 			model.addAttribute("userNo", entity.getHybh());
 			model.addAttribute("password", Constants.DEFAULT_PASSWORD);
