@@ -22,6 +22,10 @@ $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#fsfjjyb option[value='${fsfjjyb}']").attr("selected", true); 
 $("#fzt option[value='${fzt}']").attr("selected", true); 
+
+$("#checkAll").click(function(){
+	$("input[name=qyId]").attr("checked",this.checked);
+});
 });
 	function delConfirm(id){
 		$.layer({
@@ -151,6 +155,32 @@ function loadPageLayer2(title,url){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
 
+
+function pltzjf(){
+    var selectval = $("#fmessage").val();
+	var stuInput = $("input[name=qyId]:checked");
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要通知的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/memberBasic/Pltz.html?ids='+ids+'&selectval='+selectval+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("发送成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  	});
+}
 </script>
 </head>
 
@@ -194,7 +224,14 @@ function loadPageLayer2(title,url){
          <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
          <input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/>
          <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
- 
+             <em>通知选项：</em>
+         <select name="fmessage"  id="fmessage" style="text-align:center" class="input_a1">
+          <option value="">所有</option>
+          <c:forEach items="${messagelist}" var="mb" varStatus="sta">
+          <option value="${mb.ID}">${mb.Messagename}</option>
+          </c:forEach>
+        </select>
+          <input id="add_bt" type="button" value="通知发送" class="initial" onclick="pltzjf()"/>
     </div>
     
     </form>
@@ -202,6 +239,7 @@ function loadPageLayer2(title,url){
      <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
+	  	     <th><input type="checkbox" id="checkAll"/>全选</th>
 	  	     <th>序号</th>
 	  		 <th>企业编号</th> 
 	  		 <th>企业名称</th> 
@@ -228,6 +266,7 @@ function loadPageLayer2(title,url){
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/memberBasic/add/new.html?id=${mb.id}'">
+	        <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>
 	        <td>${sta.index + 1}</td>
 	      	<td>${mb.hybh}</td>
 	      	<td>${mb.qymc}</td>
@@ -256,7 +295,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="9"></td>
+        <td colspan="10"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -264,7 +303,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="11">
+			<td colspan="12">
 				<div class="page">
 					<p:pager/>
 				</div>

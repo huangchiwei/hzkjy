@@ -210,9 +210,9 @@ public class  RentalExamineController extends BaseController {
 	
 	@RequestMapping("Pltz.html")
 	@ResponseBody
-	public String Pltz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
+	public String Pltz(String ids,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
 		String[] idArr = ids.split(",");
-		
+		JSONObject jsonObject = new JSONObject();
 		for(int id=0;id<idArr.length;id++){
 			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
 			
@@ -236,9 +236,15 @@ public class  RentalExamineController extends BaseController {
 			Bsservice.insert(bs);
 		}
 		
-		request.setAttribute("exl", "ok");
-		String exl="ok";
-		return exl;
+		jsonObject.put("exl","ok");
+		response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 	
 	@RequestMapping("Thtg.html")

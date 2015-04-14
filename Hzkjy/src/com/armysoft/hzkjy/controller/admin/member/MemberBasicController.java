@@ -6,7 +6,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,12 +32,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.armysoft.security.annotation.PermissionsAnno;
 
+import com.alibaba.fastjson.JSONObject;
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.BsNews;
+import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.MemberBasic;
+import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.BsNewsService;
+import com.armysoft.hzkjy.service.member.DbMessageService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 
 
@@ -45,6 +53,10 @@ public class  MemberBasicController extends BaseController {
 
 	@Resource
 	private MemberBasicService service;
+	@Resource
+	private DbMessageService dbservice;
+	@Resource
+	private BsNewsService Bsservice;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -99,6 +111,8 @@ public class  MemberBasicController extends BaseController {
 			}
 		
         model.addAttribute("list", service.getByPage(params, pager));
+        
+        request.setAttribute("messagelist", service.getMessage(params));
 		request.setAttribute("zj",service.getCount(params));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
@@ -121,6 +135,45 @@ public class  MemberBasicController extends BaseController {
 	 * 准备添加
 	 * @return
 	 */
+	@RequestMapping("Pltz.html")
+	@ResponseBody
+	public String Pltz(String ids,String selectval,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
+		String[] idArr = ids.split(",");
+		JSONObject jsonObject = new JSONObject();
+		for(int id=0;id<idArr.length;id++){
+			MemberBasic mdd= service.findByKey(Long.valueOf(idArr[id]));
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getQymc());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			DbMessage dbmessage=dbservice.findByKey(Long.valueOf(selectval));
+			bs.setTitle(dbmessage.getMessagename());
+			String content=dbmessage.getMessage();
+			bs.setContent(content);
+			Bsservice.insert(bs);
+		}
+		jsonObject.put("exl","ok");
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {

@@ -109,17 +109,23 @@ public class  DbMessageController extends BaseController {
 	 */
 	@PermissionsAnno("mb_updt")
 	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Integer key,DbMessage entity, Model model) {
+	public String update(@PathVariable("id") Integer key,DbMessage entity, Model model, HttpServletRequest request) {
 		entity.setId(key);
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		entity.setCreater(userNo);
 		service.update(entity);
 		return "redirect://admin/dbMessage/list/1.html";
 	}
 	@PermissionsAnno("mb_save")
 	@RequestMapping(value = SAVE)
-	public String save(DbMessage entity, Model model) {
+	public String save(DbMessage entity, Model model, HttpServletRequest request) {
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if (entity.getId() == null) {
+		
+			entity.setCreater(userNo);
 			service.insert(entity);
 		} else {
+			entity.setCreater(userNo);
 			service.update(entity);
 		}
 		return "redirect://admin/dbMessage/list/1.html";

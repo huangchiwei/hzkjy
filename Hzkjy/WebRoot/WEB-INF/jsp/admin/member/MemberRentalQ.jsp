@@ -215,10 +215,15 @@ function loadPageLayer2(title,url){
 				url:'${ctx}/admin/rentalExamine/Pltz.html?ids='+ids+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
-		  		async:false
-		  		
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("发送成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
 		  	});
-	document.getElementById("search_form").submit();
 }
 
 </script>

@@ -26,6 +26,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+$("#type option[value='${model.type}']").attr("selected", true); 
 	formInitConfig("add_form",3000);
 	autoValidate();
 		
@@ -68,6 +69,15 @@ html { overflow:-moz-scrollbars-vertical;}
      <th class="w100">信息名:</th>
      <td>
      	<input id="messagename" name="messagename" type="text" value="${model.messagename}" class="input_a1" maxlength="100" style="width:160px"  />
+     </td>
+         </tr>
+            <tr>
+     <th class="w100">是否会员管理模块:</th>
+     <td>
+     	 <select name="type"  id="type" style="text-align:center">
+          <option value="0">否</option>
+          <option value="1">是</option>
+        </select>
      </td>
          </tr>
           <tr>
