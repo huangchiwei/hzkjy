@@ -18,6 +18,7 @@ import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.StringUtil;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
+import com.armysoft.hzkjy.service.member.NewsLinkService;
 import com.armysoft.hzkjy.service.member.NewsService;
 
 @Controller
@@ -29,12 +30,18 @@ public class IndexController extends BaseController{
 	private NewsService newsService;
 	@Resource
 	private MemberBasicService memberBasicService;
+	@Resource
+	private NewsLinkService newsLinkService;
 	@RequestMapping("{page}")
 	public String dispatcher(Model model, @PathVariable String page,HttpServletRequest request,
 			HttpServletRequest req) {
 		if(page.equals("index")){
+			Pagination pager = initPage(1);
+			//友情链接
+			model.addAttribute("newsLinkList",newsLinkService.getByPage(null, pager));
+			
 		//首页轮播广告
-		Pagination pager = initPage(1);
+		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("adType", "0");
 		model.addAttribute("adList0",newsAdvertService.getByAdType(params));

@@ -73,13 +73,16 @@ public class  NewsController extends BaseController {
 		if(cateCode.equals("park_intro")){
 			return "/portal/news/park_intro";
 		}else if(cateCode.equals("park_frame")){
+			String content="";
+			if(list!=null&&list.size()>0&&list.get(0)!=null) content=list.get(0).get("content").toString();
+			model.addAttribute("content", content);
 			return "/portal/news/park_frame";
 		}if(cateCode.equals("park_site")){
 			return "/portal/news/park_site";
 		}if(cateCode.equals("park_envir")){
 			//获取图片
 			String content="";
-			if(list.get(0)!=null) content=list.get(0).get("content").toString();
+			if(list!=null&&list.size()>0&&list.get(0)!=null) content=list.get(0).get("content").toString();
 			List<Object> picList=newsService.getAllSrc(content);
 			model.addAttribute("picList", picList);
 			return "/portal/news/park_envir";

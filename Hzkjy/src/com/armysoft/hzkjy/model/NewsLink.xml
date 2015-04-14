@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NewsLinkOpt">
+
+	
+
+	<select id="page" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from news_link
+		
+		limit #{pager.startRowNumber}, #{pager.pageSize}
+	</select>
+		<select id="getAll" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from news_link
+		
+	</select>
+	
+	<select id="pageCount" resultType="int" parameterType="java.util.Map">
+		select count(*)
+		from news_link
+	</select>
+	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
+		select * from news_link where Id = #{id}
+	</select>
+
+	<!-- 保存 -->
+	<insert id="insert" parameterType="news">
+		insert into
+				news_link(name,urlLink)
+				values(#{name}
+				,#{urlLink}
+				
+				)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="news">
+		update news_link set
+		name=#{name},
+		urlLink=#{urlLink}
+	
+		where Id = #{id}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="Long">
+		delete from news_link where
+		Id =
+		#{id}
+	</delete>
+
+	<!-- ********************************************* -->
+
+</mapper>

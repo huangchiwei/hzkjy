@@ -85,9 +85,15 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <span>Park Overview</span>
     <div class="more"><a href="${ctx }/portal/news/list/1.html?cateCode=park_intro">更多&gt;&gt;</a></div>
    </div>
-   <div class="introduction">
+   <div class="introduction relative">
     <h1>广州市海珠科技产业园有限公司</h1>
-    <p>广州市海珠科技产业园有限公司（以下简称科技园公司）成立于1998年，是广州市海珠区科技产业基地琶洲园区的经营管理单位。琶洲园区成立于1998年，地处琶洲岛东部黄埔村北侧，距会展中心2.3公里，以国家科技兴海——广东海珠海洋生物技术产业开发示范基地和广东省火炬计划海洋生物技术特色产业基地作为依托发展。园区总体规划用地面积10万平方米.....</p>
+    <p>广州市海珠科技产业园有限公司（以下简称科技园公司）成立于1998年，是广州市海珠区科技产业基地琶洲园区的经营管理单位。琶洲园区成立于1998年，地处琶洲岛东部黄埔村北侧，距会展中心2.3公里，以国家科技兴海——广东海珠海洋生物技术产业开发示范基地.....</p>
+    <div class="float_btn">
+     <a class="icon_a1" href="${ctx }/portal/news/list/1.html?cateCode=park_intro">园区介绍</a>
+     <a class="icon_a2" href="${ctx }/portal/news/list/1.html?cateCode=park_frame">组织架构</a>
+     <a class="icon_a3" href="${ctx }/portal/news/list/1.html?cateCode=park_site">园区位置</a>
+     <a class="icon_a4" href="${ctx }/portal/news/list/1.html?cateCode=park_envir">创业环境</a>
+    </div>
    </div>
   </div>
   <div class="left_box">
@@ -210,8 +216,11 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="more"><a href="#"></a></div>
    </div>
    <div class="links">
+    <c:forEach items="${newsLinkList}" varStatus="index" var="o" >  
+    <a href="${o.UrlLink }">${o.Name }</a>
+    </c:forEach><%--
     <a href="#">海珠区科信局</a><a href="#">广州市科信局</a><a href="#">广州市发改局</a><a href="#">广州经贸网</a><a href="#">广东省科技厅</a><a href="#">广州市中小企业信息网</a>
-   </div>
+   --%></div>
   </div>
  </div>
  <div class="right">
@@ -250,7 +259,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     </ul>
    </div>
   </div>
-  <div class="ad_265"><img src="${ctx}/theme/portal/default/images/ad_260.png" /></div>
+  <div class="ad_265"><a href="http://znpp.hzkjcyy.com" target="_blank"><img src="${ctx}/theme/portal/default/images/ad_260.png" /></a></div>
   <div class="left_box">
    <div class="left_box_title relative">
     <h4>入驻企业</h4>

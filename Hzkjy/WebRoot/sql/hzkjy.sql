@@ -543,6 +543,7 @@ CREATE TABLE `sys_module` (
 # Dumping data for table sys_module
 #
 
+
 INSERT INTO `sys_module` VALUES ('Lev1_01','系统管理',NULL,11,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_02','会员管理',NULL,2,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_03','园区风貌',NULL,6,NULL,1);
@@ -554,8 +555,10 @@ INSERT INTO `sys_module` VALUES ('Lev1_09','租金管理',NULL,3,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_10','信息管理',NULL,1,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_11','统计报表',NULL,4,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev1_12','知识产权',NULL,5,NULL,1);
+INSERT INTO `sys_module` VALUES ('Lev1_13','页面管理',NULL,12,NULL,1);
 INSERT INTO `sys_module` VALUES ('Lev2_01','用户管理','admin/sysUser/list/1.html',1,'Lev1_01',2);
 INSERT INTO `sys_module` VALUES ('Lev2_02','角色管理','admin/sysRole/list/1.html',2,'Lev1_01',2);
+INSERT INTO `sys_module` VALUES ('Lev2_09','组织架构','admin/news/list/1.html?cateCode=park_frame',2,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_11','创业环境','admin/news/list/1.html?cateCode=park_envir',4,'Lev1_03',2);
 INSERT INTO `sys_module` VALUES ('Lev2_14','入园指南','admin/news/list/1.html?cateCode=service_inpark_guide',1,'Lev1_06',2);
 INSERT INTO `sys_module` VALUES ('Lev2_16','基础服务','admin/news/list/1.html?cateCode=service_base',3,'Lev1_06',2);
@@ -571,7 +574,7 @@ INSERT INTO `sys_module` VALUES ('Lev2_31','企业管理','admin/memberBasic/lis
 INSERT INTO `sys_module` VALUES ('Lev2_32','孵化企业填报','admin/incubatedEnterprises/list/1.html',2,'Lev1_02',2);
 INSERT INTO `sys_module` VALUES ('Lev2_33','租金录入','admin/memberRental/list/1.html',1,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_34','审核租金','admin/rentalExamine/list/1.html',2,'Lev1_09',2);
-INSERT INTO `sys_module` VALUES ('Lev2_35','企业租金录入','admin/enterpriseRental/list/1.html',3,'Lev1_09',2);
+INSERT INTO `sys_module` VALUES ('Lev2_35','企业租金查询','admin/enterpriseRental/list/1.html',3,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_36','企业缴费审核','admin/rentReview/list/1.html',4,'Lev1_09',2);
 INSERT INTO `sys_module` VALUES ('Lev2_37','通知管理','admin/bsNews/list/1.html',1,'Lev1_10',2);
 INSERT INTO `sys_module` VALUES ('Lev2_38','经济月报统计','admin/eccIndicator/list/1.html',1,'Lev1_11',2);
@@ -586,7 +589,8 @@ INSERT INTO `sys_module` VALUES ('Lev2_46','入园流程','admin/news/list/1.htm
 INSERT INTO `sys_module` VALUES ('Lev2_47','出园指南','admin/news/list/1.html?cateCode=service_outpark_guide',1,'Lev1_06',2);
 INSERT INTO `sys_module` VALUES ('Lev2_48','出园流程','admin/news/list/1.html?cateCode=service_outpark_process',2,'Lev1_06',2);
 INSERT INTO `sys_module` VALUES ('Lev2_49','租金统计','admin/rentStatistics/list/1.html',5,'Lev1_09',2);
-INSERT INTO `sys_module` VALUES ('Lev2_50','首页广告','admin/newsAdvert/list/1.html',1,'Lev1_12',2);
+INSERT INTO `sys_module` VALUES ('Lev2_50','首页广告','admin/newsAdvert/list/1.html',1,'Lev1_13',2);
+INSERT INTO `sys_module` VALUES ('Lev2_51','友情链接','admin/newsLink/list/1.html',2,'Lev1_13',2);
 
 #
 # Source for table sys_permission
@@ -763,5 +767,22 @@ CREATE TABLE `sys_user_role` (
 #
 
 
+CREATE TABLE `news_link` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `UrlLink` varchar(255) DEFAULT NULL COMMENT '链接地址',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='友情链接';
+
+#
+# Dumping data for table news_link
+#
+
+INSERT INTO `news_link` VALUES (1,'海珠区科信局','http://www.baidu.com');
+INSERT INTO `news_link` VALUES (2,'广州市科信局','http://www.baidu.com');
+INSERT INTO `news_link` VALUES (3,'广州市发改局','http://www.baidu.com');
+INSERT INTO `news_link` VALUES (4,'广州经贸网','http://www.baidu.com');
+INSERT INTO `news_link` VALUES (5,'广东省科技厅','http://www.baidu.com');
+INSERT INTO `news_link` VALUES (7,'广州市中小企业信息网','http://www.baidu.com');
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
