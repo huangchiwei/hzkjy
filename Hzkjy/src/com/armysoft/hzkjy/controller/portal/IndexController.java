@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.StringUtil;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
@@ -29,7 +30,7 @@ public class IndexController extends BaseController{
 	@Resource
 	private MemberBasicService memberBasicService;
 	@RequestMapping("{page}")
-	public String dispatcher(Model model, @PathVariable String page,
+	public String dispatcher(Model model, @PathVariable String page,HttpServletRequest request,
 			HttpServletRequest req) {
 		if(page.equals("index")){
 		//首页轮播广告
@@ -67,6 +68,7 @@ public class IndexController extends BaseController{
 		 model.addAttribute("memberList", memberBasicService.getByPage(params, pager));
 		 
 		 model.addAttribute("cateCode", "index");
+		// model.addAttribute("userNo", super.getCookieValue(request,Constants.ADMIN_KEY));
 		}
 		return "portal/index/" + page;
 		

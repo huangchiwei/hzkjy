@@ -45,6 +45,14 @@ $(function(){
 		  	});
 	});
 });
+function downloadFile(id){
+	var userNo="${cookie.admin_key.value}";
+	if(userNo==""){
+		alert("请先登录再下载.");
+		return false;
+		}
+	window.location.href="${ctx}/portal/news/downLoad/"+id+".html";
+}
 </script>
 <script type="text/javascript" src="${ctx}/theme/portal/default/js/lrtk.js"></script>
 <script type="text/javascript" src="${ctx}/theme/portal/default/js/lrtk_bht.js"></script>
@@ -168,7 +176,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
       <c:forEach items="${trainList}" varStatus="index" var="o" >  
      							 <c:choose>
 									<c:when test="${o.cateCode=='train_file'}">
-										<li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a href="${ctx}/portal/news/downLoad/${o.id}.html">${fn:substring(o.title, 0, 17)}</a></li>
+										<li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a  onclick="downloadFile('${o.id}')" style="cursor:pointer;">${fn:substring(o.title, 0, 17)}</a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a

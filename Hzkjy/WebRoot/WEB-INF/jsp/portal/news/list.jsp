@@ -6,7 +6,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>${category.cateName }列表页</title>
-
+	<script>
+	function downloadFile(id){
+		var userNo="${cookie.admin_key.value}";
+		if(userNo==""){
+			alert("请先登录再下载.");
+			return false;
+			}
+		window.location.href="${ctx}/portal/news/downLoad/"+id+".html";
+	}
+	</script>
 	</head>
 
 	<body>
@@ -29,7 +38,7 @@
 										pattern="yyyy-MM-dd" /> </span>
 							<c:choose>
 									<c:when test="${cateCode=='train_file'}">
-										<a href="${ctx}/portal/news/downLoad/${o.id}.html">${fn:substring(o.title, 0, 40)}</a>
+										<a onclick="downloadFile('${o.id}')" style="cursor:pointer;">${fn:substring(o.title, 0, 40)}</a>
 									</c:when>
 									<c:otherwise>
 										<a

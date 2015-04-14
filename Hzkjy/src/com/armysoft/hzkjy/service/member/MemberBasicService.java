@@ -117,13 +117,8 @@ public class MemberBasicService extends BaseDao {
 	 * 添加数据
 	 * @param question
 	 */
-	public void insertMemberAndUser(MemberBasic model) {
+	public void insertMemberAndUser(MemberBasic model,SysUser user) {
 		super.defInsert(nameSpace, model);
-		SysUser user = new SysUser();
-		user.setUserNo(model.getHybh());
-		user.setPwd(DigestUtils.md5DigestAsHex(Constants.DEFAULT_PASSWORD.getBytes()));
-		user.setStatus(1);
-		user.setCreateDate(new Date());
         sysUserService.insert(user, null);
 		sysUserService.insertRole(model.getHybh());
 	}

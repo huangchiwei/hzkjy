@@ -62,6 +62,12 @@ public class  NewsController extends BaseController {
 	@PermissionsAnno("news_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
+		if(cateCode.equals("park_frame")){
+			model.addAttribute("cateCode", cateCode);			
+			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
+			 model.addAttribute("category", newsService.getCategory(cateCode));
+			return "/admin/news/newsA_U";
+		}
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("cateCode", cateCode);
@@ -98,6 +104,7 @@ public class  NewsController extends BaseController {
 		model.addAttribute("type", "update");
 		return "/admin/news/newsA_U";
 	}
+	
 	@PermissionsAnno("news_save")
 	@RequestMapping(value = SAVE)
 	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type,String flag) {
@@ -122,6 +129,20 @@ public class  NewsController extends BaseController {
 		
 		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
 		entity.setCreateUser(key);
+		if(cateCode.equals("park_frame")){
+			Map<String, Object> e=newsService.getByCateCode(cateCode);
+			if(e!=null){
+				newsService.update(entity);	
+			}else{
+				newsService.insert(entity);
+			}
+			model.addAttribute("msg", "保存成功");
+			model.addAttribute("cateCode", cateCode);			
+			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
+			 model.addAttribute("category", newsService.getCategory(cateCode));
+			return "/admin/news/newsA_U";
+		}
+		
 		if(type.equalsIgnoreCase("add")){
 			newsService.insert(entity);
 		}else if(type.equalsIgnoreCase("update")){
