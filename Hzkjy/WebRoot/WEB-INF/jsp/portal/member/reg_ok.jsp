@@ -4,7 +4,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>广州市海珠科技产业园有限公司</title>
-	
 		<script>
 	
 	function delayURL() {//定时
@@ -53,7 +52,7 @@
 						</font>
 					</p>
 					<div class="btn_box">
-					<input onclick="javascript:location.href='${ctx}/portal/index.html'" id="sumbit_bt" type="button" class="tj" value="马上登录" />
+					<input onclick="javascript:location.href='${ctx}/portal/index.html'" id="sumbit_bt" type="button" class="btn_login" value="马上登录" />
      				</div>
 				</div>
 
