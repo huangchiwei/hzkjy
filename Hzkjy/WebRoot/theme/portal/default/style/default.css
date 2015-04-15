@@ -91,9 +91,9 @@
 	display:block;
 	float:left;
 	padding-top: 0px;
-	padding-right: 18px;
+	padding-right: 24px;
 	padding-bottom: 0px;
-	padding-left: 18px;
+	padding-left: 24px;
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -210,8 +210,11 @@
 	background-image: url(../images/index_002.png);
 	background-repeat: no-repeat;
 	background-position: right bottom;
-	padding: 15px;
 	height: 164px;
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 180px;
 }
 
 .introduction h1 {
@@ -221,9 +224,52 @@
 	margin-bottom: 10px;
 }
 .introduction p {
-	margin-right: 230px;
+	margin-right: 180px;
 	line-height: 24px;
 	text-indent: 2em;
+}
+.float_btn {
+	position: absolute;
+	left: 20px;
+	top: 25px;
+	width: 120px;
+}
+.float_btn a{
+	display: block;
+	background-color: #2A64AB;
+	margin-bottom: 5px;
+	color: #FFF;
+	padding-top: 7px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 50px;
+	border-radius:5px;
+}
+.float_btn a:hover{
+	background-color: #CC3300;
+	color: #FFF;
+	border-radius: 5px;
+	text-decoration: none;
+}
+.float_btn .icon_a1{
+	background-image: url(../images/icon.png);
+	background-repeat: no-repeat;
+	background-position: 10px 5px;
+}
+.float_btn .icon_a2{
+	background-image: url(../images/icon.png);
+	background-repeat: no-repeat;
+	background-position: 10px -32px;
+}
+.float_btn .icon_a3{
+	background-image: url(../images/icon.png);
+	background-repeat: no-repeat;
+	background-position: 10px -72px;
+}
+.float_btn .icon_a4{
+	background-image: url(../images/icon.png);
+	background-repeat: no-repeat;
+	background-position: 10px -112px;
 }
 .announcement {
 	overflow: hidden;
@@ -762,8 +808,19 @@
 	line-height: 40px;
 	padding-bottom: 15px;
 }
+.reg_box .zl_box .li2 {
+	overflow: hidden;
+	line-height: 40px;
+	font-size: 14px;
+	background-color: #F7F7F7;
+	margin-bottom: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #EFEFEF;
+	text-align: center;
+}
 .reg_box .zl_box .li .span {
-	width: 140px;
+	width: 160px;
 	display: block;
 	font-size: 14px;
 	padding-right: 10px;
@@ -771,7 +828,7 @@
 	float: left;
 }
 .reg_box .zl_box .li .span1 {
-	width: 200px;
+	width: 245px;
 	display: block;
 	font-size: 14px;
 	padding-right: 10px;
@@ -779,7 +836,7 @@
 	float: left;
 }
 .reg_box .zl_box .li .span2 {
-	width: 400px;
+	width: 500px;
 	display: block;
 	font-size: 14px;
 	padding-right: 10px;
@@ -795,6 +852,10 @@
 }
 .reg_box .zl_box .li em {
 	padding-left: 10px;
+	float: left;
+	padding-right: 10px;
+	color: #999;
+	font-size: 12px;
 }
 .reg_box .zl_box .li .btn_box {
 	float: left;

@@ -5,7 +5,19 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>创业环境</title>
-
+		<script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
+		<script type="text/javascript" >
+		function imgClickFun(imgSrc){
+			var i = $.layer({
+			    type : 1,
+			    title : false,
+			    fix : false,
+			    offset:['50px' , ''],
+			    area : ['auto','auto'],
+			    page : { html: '<img src="'+imgSrc+'" />'}
+			});
+		}
+		</script>
 	</head>
 
 	<body>
@@ -20,7 +32,7 @@
       <div class="pic">
       <c:forEach items="${picList}" var="o" varStatus="sta">
         <dl class="dl">
-        <dt><img src="${o }" /></dt>
+        <dt><img src="${o }" onclick="imgClickFun('${o }')"/></dt>
         <dd><a href="#">产业园主图</a></dd>
        </dl>
       </c:forEach>

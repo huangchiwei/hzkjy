@@ -18,7 +18,7 @@
    <h1>组织架构</h1>
    <div class="list_box_l2">
       <div class="text">
-        <img src="${ctx }/theme/portal/default/images/zzjg.jpg" width="651" height="478" />      </div>
+       ${content}     </div>
    </div>
   </div>
  </div>
