@@ -165,6 +165,13 @@ public class IncubatedEnterprises implements java.io.Serializable {
 	private String syxx;
 	private String rjzzq;
 	private String ssn;
+	private String hybh;
+	public String getHybh() {
+		return hybh;
+	}
+	public void setHybh(String hybh) {
+		this.hybh = hybh;
+	}
 	public String getSsn() {
 		return ssn;
 	}

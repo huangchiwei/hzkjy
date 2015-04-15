@@ -28,9 +28,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
+import com.armysoft.hzkjy.model.IncubatedEnterprises;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
 import com.armysoft.hzkjy.model.MemberPatent;
+import com.armysoft.hzkjy.service.member.IncubatedEnterprisesService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 import com.armysoft.hzkjy.service.member.MemberPatentService;
@@ -48,6 +50,9 @@ public class  MemberPatentController extends BaseController {
 	private MemberPatentService memberPatentService;
 	@Resource
 	private MemberBasicService memberBasicService;
+	@Resource
+	private IncubatedEnterprisesService incubatedEnterprisesService;
+	
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -78,6 +83,7 @@ public class  MemberPatentController extends BaseController {
         model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);
 		model.addAttribute("params", params);
+		System.out.println(System.getProperty("java.endorsed.dirs"));
 		return "admin/member/MemberPatentQ";
 	}
 
@@ -137,9 +143,22 @@ public class  MemberPatentController extends BaseController {
 				String name1=new String(entity.getName());
 				String type1=new String(entity.getType());
 				String patentNo1=new String(entity.getPatentNo());
+				String MemberNo="";
+				
+				if(entity.getMemberNo()==null || entity.getMemberNo().isEmpty()){
+					String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+					MemberNo=userNo;
+				}else{
+					MemberNo=entity.getMemberNo();
+				}
 				  String[] name2 = name1.split(",");
 				  String[] type2 = type1.split(",");
 				  String[] patentNo2 = patentNo1.split(",");
+				  String Fmzl="";
+				  String Wgsj="";
+				  String Syxx="";
+				  String Rjzzq="";
+				  IncubatedEnterprises ie = incubatedEnterprisesService.findIeHybh(MemberNo, entity.getYear().toString());
 				  for (int i = 0; i < type2.length; i++) {  
 					  MemberPatent mp=new MemberPatent();
 					  mp.setMonth(entity.getMonth());
@@ -147,14 +166,99 @@ public class  MemberPatentController extends BaseController {
 					  mp.setName(name2[i]);
 					  mp.setType(type2[i]);
 					  mp.setPatentNo(patentNo2[i]);
+					  mp.setMemberNo(MemberNo);
 					 
-					  if(entity.getMemberNo()==null || entity.getMemberNo().isEmpty()){
-							String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-						  mp.setMemberNo(userNo);
-					  }else{
-						  mp.setMemberNo(entity.getMemberNo());
-					  }
+							
+							if(ie==null){
+								MemberBasic mb=memberBasicService.findMbHybh(MemberNo);
+								if(type2[i].equals("0")){
+									Fmzl=String.valueOf(Integer.valueOf(mb.getFmzl())+1);
+								}else if(type2[i].equals("1")){
+									Wgsj=String.valueOf(Integer.valueOf(mb.getWgsj())+1);
+								}else if(type2[i].equals("2")){
+									Syxx=String.valueOf(Integer.valueOf(mb.getSyxx())+1);
+								}else if(type2[i].equals("3")){
+									Rjzzq=String.valueOf(Integer.valueOf(mb.getRjzzq())+1);
+								}
+								
+							}else{
+								if(type2[i].equals("0")){
+									Fmzl=String.valueOf(Integer.valueOf(ie.getFmzl())+1);
+								}else if(type2[i].equals("1")){
+									Wgsj=String.valueOf(Integer.valueOf(ie.getWgsj())+1);
+								}else if(type2[i].equals("2")){
+									Syxx=String.valueOf(Integer.valueOf(ie.getSyxx())+1);
+								}else if(type2[i].equals("3")){
+									Rjzzq=String.valueOf(Integer.valueOf(ie.getRjzzq())+1);
+								}
+							}
+						
 					  memberPatentService.insert(mp);
+					 
+				  }
+				  if(ie==null){
+					  IncubatedEnterprises ii=new IncubatedEnterprises();
+					  MemberBasic mb=memberBasicService.findMbHybh(MemberNo);
+					 ii.setDzys(mb.getDzys());
+					 if(Fmzl==""){
+						 ii.setFmzl(mb.getFmzl());
+					 }else{
+						 ii.setFmzl(Fmzl);
+					 }
+					
+					 ii.setFrdb(mb.getFrdb());
+					 ii.setFrlxdh(mb.getFrlxdh());
+					 ii.setGxjsqy(mb.getGxjsqy());
+					 ii.setHtstze(mb.getHtstze());
+					 ii.setHylb(mb.getHylb());
+					 ii.setLxr(mb.getLxr());
+					 ii.setLxrlxdh(mb.getLxrdh());
+					 ii.setLxryqy(mb.getLxryqy());
+					 ii.setQyclsj(mb.getQyclsj());
+					 ii.setQydjzclx(mb.getQydjzclx());
+					 ii.setQymc(mb.getQymc());
+					 ii.setQyrzsj(mb.getQyrzsj());
+					 ii.setQyssjsly(mb.getQyssjsly());
+					 
+					 if(Rjzzq==""){
+						 ii.setRjzzq(mb.getRjzzq());
+					 }else{
+						 ii.setRjzzq(Rjzzq);
+					 }
+				
+					 ii.setSsn(entity.getYear().toString());
+					 ii.setSynyxzscq(mb.getSynyxzscq());
+					 
+					 if(Syxx==""){
+						 ii.setSyxx(mb.getSyxx());
+					 }else{
+						 ii.setSyxx(Syxx);
+					 }
+					 
+					 if(Wgsj==""){
+						 ii.setWgsj(mb.getWgsj());
+					 }else{
+						 ii.setWgsj(Wgsj);
+					 }
+					 ii.setXnyjdxs(mb.getXnyjdxs());
+					 ii.setZczb(mb.getZczb());
+					 ii.setZzjgdm(mb.getZzjgdm());
+					 ii.setHybh(MemberNo);
+					 incubatedEnterprisesService.insert(ii);
+				  }else{
+					  if(Fmzl==""){
+							 Fmzl=ie.getFmzl();
+						 }
+					  if(Wgsj==""){
+						  Wgsj=ie.getWgsj();
+						 }
+					  if(Syxx==""){
+						  Syxx=ie.getSyxx();
+						 }
+					  if(Rjzzq==""){
+						  Rjzzq=ie.getRjzzq();
+						 }
+					  memberPatentService.updateType(Fmzl, Wgsj, Syxx, Rjzzq, MemberNo,  entity.getYear().toString());
 				  }
 			}
 		

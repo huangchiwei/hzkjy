@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn</sql>
+	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from incubated_enterprises
@@ -48,10 +48,11 @@
 				 <result column="Syxx" property="syxx" />
 				 <result column="Rjzzq" property="rjzzq" />
 				 <result column="Ssn" property="ssn" />
+				  <result column="Hybh" property="hybh" />
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn
+select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh
 	 from incubated_enterprises
 		where 1 = 1	
 		<if test="fqymc != null and fqymc!= ''">
@@ -65,7 +66,9 @@ select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze
 		</if>
  order by id desc
 	</select>			
-			
+	<select id="findIeHybh" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
+		select * from incubated_enterprises where Hybh= #{hybh} and  Ssn = #{ssn} ORDER BY id DESC LIMIT 1 
+	</select>
 	<select id="sumCount" resultType="int" parameterType="java.util.Map">
 		select count(*) 
 		from incubated_enterprises
@@ -97,7 +100,7 @@ select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="incubatedEnterprises">
-		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn)
+		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh)
 		values(#{qymc} 		
 		, #{zzjgdm} 		
 		, #{frdb} 		
@@ -121,6 +124,8 @@ select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze
 		 ,		#{syxx}
 		 ,		#{rjzzq}
 		 ,		#{ssn}
+		 ,		#{hybh}
+		 
 		  )
 		</insert>
 
@@ -150,6 +155,8 @@ select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze
 		 ,Syxx=	#{syxx}
 		 ,Rjzzq=#{rjzzq}
 		 ,Ssn=#{ssn}
+		 ,Hybh=#{hybh}
+		 
 		 							where ID = #{id}
 	</update>
 

@@ -78,7 +78,11 @@ public class MemberBasicService extends BaseDao {
 		params.put("hybh2", hybh2);
 		return super.nativeSelectOne(nameSpace + ".findByNewHybh", params);
 	}
-	
+	public MemberBasic findMbHybh(String hybh) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("hybh", hybh);
+		return super.nativeSelectOne(nameSpace + ".findMbHybh", params);
+	}
 	
 	public List  getCyqy(Map<String, Object> params) {
 	return super.nativeList(nameSpace + ".getCyqy", params);

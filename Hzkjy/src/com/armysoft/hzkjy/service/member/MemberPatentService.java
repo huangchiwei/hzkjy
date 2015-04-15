@@ -1,4 +1,5 @@
 package com.armysoft.hzkjy.service.member;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -6,6 +7,8 @@ import org.armysoft.core.Pagination;
 import org.armysoft.ibatis.dao.BaseDao;
 import org.springframework.stereotype.Service;
 
+import com.armysoft.hzkjy.model.IncubatedEnterprises;
+import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberIntellectualPro;
 import com.armysoft.hzkjy.model.MemberPatent;
 
@@ -39,7 +42,22 @@ public class MemberPatentService extends BaseDao {
 	public Map<String, Object> getAllYear(Map<String, Object> params) {
 		return super.nativeSelectOne(nameSpace + ".getAllYear", params);
 	}
+	
+	
 
+	
+	public void updateType(String fmzl,String wgsj,String syxx,String rjzzq,String hybh,String ssn) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		
+		params.put("hybh", hybh);
+		params.put("ssn", ssn);
+		params.put("fmzl", fmzl);
+		params.put("wgsj", wgsj);
+		params.put("syxx", syxx);
+		params.put("rjzzq", rjzzq);
+		super.nativeUpdate(nameSpace+".updateType", params);
+	}
+	
 	/**
 	 * 添加数据
 	 * @param question

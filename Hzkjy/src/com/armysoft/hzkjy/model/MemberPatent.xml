@@ -28,6 +28,20 @@
 	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
 		select mp.*,mb.Qymc from member_patent mp,member_basic mb where mp.MemberNo=mb.Hybh and mp.Id = #{id}
 	</select>
+	
+	
+	
+	
+	
+	<update id="updateType" parameterType="java.util.Map">
+		update
+		incubated_enterprises set
+		Fmzl=#{fmzl},
+		Wgsj=#{wgsj},
+		Syxx=#{syxx},
+		Rjzzq=#{rjzzq}
+		where Hybh= #{hybh} and Ssn = #{ssn}
+	</update>
 
 	<select id="getCurrentYear" resultType="java.util.Map"
 		parameterType="java.util.Map">

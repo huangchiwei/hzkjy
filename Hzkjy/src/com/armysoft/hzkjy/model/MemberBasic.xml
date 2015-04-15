@@ -182,7 +182,9 @@ select case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb=
 	<select id="getQyxx" parameterType="String" resultType="java.util.Map" >
 		select hybh,zydy,mj from member_basic where qymc=#{value} ORDER BY hybh DESC LIMIT 1 
 	</select>
-		
+	<select id="findMbHybh" resultMap="memberBasicMap" parameterType="java.util.Map">
+		select * from member_basic where Hybh= #{hybh} 
+	</select>
 	<select id="page" resultMap="memberBasicMap" parameterType="java.util.Map">
 		select 
 		<include refid="columns"/>
