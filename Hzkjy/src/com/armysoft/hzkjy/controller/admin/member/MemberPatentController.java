@@ -168,7 +168,7 @@ public class  MemberPatentController extends BaseController {
 					  mp.setPatentNo(patentNo2[i]);
 					  mp.setMemberNo(MemberNo);
 					 
-							
+							/*专利各项值累加*/
 							if(ie==null){
 								MemberBasic mb=memberBasicService.findMbHybh(MemberNo);
 								if(type2[i].equals("0")){
@@ -192,10 +192,11 @@ public class  MemberPatentController extends BaseController {
 									Rjzzq=String.valueOf(Integer.valueOf(ie.getRjzzq())+1);
 								}
 							}
-						
+							/*end */
 					  memberPatentService.insert(mp);
 					 
 				  }
+				  /*累加值插入到孵化企业*/
 				  if(ie==null){
 					  IncubatedEnterprises ii=new IncubatedEnterprises();
 					  MemberBasic mb=memberBasicService.findMbHybh(MemberNo);
@@ -260,6 +261,7 @@ public class  MemberPatentController extends BaseController {
 						 }
 					  memberPatentService.updateType(Fmzl, Wgsj, Syxx, Rjzzq, MemberNo,  entity.getYear().toString());
 				  }
+				  /*end */
 			}
 		
 		}
