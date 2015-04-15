@@ -71,7 +71,8 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <tr>
 	<td>${sta.index+1}</td>
 	<td><c:if test="${o.adType==0}">首页轮播图</c:if>
-	<c:if test="${o.adType==1}">首页中间位置图</c:if></td>
+	<c:if test="${o.adType==1}">首页中间位置图</c:if>
+	<c:if test="${o.adType==2}">首页右下角位置图</c:if></td>
 	        <td>${o.title}</td>
 	        <td>${o.linkUrl}</td>
 	         <td>${o.remark}</td>

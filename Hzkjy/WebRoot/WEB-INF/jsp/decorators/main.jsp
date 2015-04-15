@@ -84,8 +84,7 @@ $(function(){
     
 	<!--bot-->
 		<div class="bot">
-			copyright ? 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号
-		</div>
+		copyright © 1998-2015 广州市海珠科技产业园 All Rights Reserved <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备1022679号</a> </div>
  <!--bot_end-->
     </body>
 </html>

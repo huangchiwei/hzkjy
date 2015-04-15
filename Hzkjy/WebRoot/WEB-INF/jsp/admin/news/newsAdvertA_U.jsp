@@ -20,6 +20,8 @@ function onchangeFun(value){
 		$("#redmsg").html("建议970*300px");
 		}else if(value=="1"){
 		$("#redmsg").html("建议690*90px");
+		}else if(value=="2"){
+		$("#redmsg").html("建议260*70px");
 		}
 	
 }
@@ -75,6 +77,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<select name="adType" id="adType" onchange="onchangeFun(this.options[this.options.selectedIndex].value)">
      	<option value="0" <c:if test="${entity.adType==0}">selected="selected"</c:if>>首页轮播图</option>
      	<option value="1" <c:if test="${entity.adType==1}">selected="selected"</c:if>>首页中间位置图</option>
+     	<option value="2" <c:if test="${entity.adType==2}">selected="selected"</c:if>>首页右下角位置图</option>
      	</select>
      </td>
    </tr>
@@ -107,6 +110,9 @@ html { overflow:-moz-scrollbars-vertical;}
 									</c:when>
 									<c:when test="${entity.adType=='1'}">
 										建议690*90px
+									</c:when>
+										<c:when test="${entity.adType=='2'}">
+										建议260*70px
 									</c:when>
 									<c:otherwise>
 									建议970*300px

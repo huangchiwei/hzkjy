@@ -110,7 +110,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <ul class="bigUl">
      <c:forEach items="${noticeList}" var="o" varStatus="sta">
       <c:if test="${sta.index<4}">
-      <li <c:if test="${sta.index==0}">style="z-index:1"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html">
+      <li <c:if test="${sta.index==0}">style="z-index:1"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">
        <c:if test="${fn:contains(o.src, 'userfiles')==true}"><img src="${o.src}" width="300" height="200"/></c:if>
       <c:if test="${fn:contains(o.src, 'userfiles')==false}"><img src="${ctx}/theme/portal/default/images/2.jpg" width="300" height="200" /></c:if>
      </a></li>
@@ -186,7 +186,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
 									</c:when>
 									<c:otherwise>
 										<li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a
-											href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${cateCode}">${fn:substring(o.title, 0, 17)}</a></li>
+											href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">${fn:substring(o.title, 0, 17)}</a></li>
 									</c:otherwise>
 								</c:choose>
       
@@ -203,7 +203,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="l_b_l_b">
      <ul>
     <c:forEach items="${policyList}" varStatus="index" var="o" >  
-       <li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 17)}</a></li>
+       <li class="li">[&nbsp;${o.cateName}&nbsp;]&nbsp;&nbsp;<a href="${ctx }/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">${fn:substring(o.title, 0, 17)}</a></li>
     </c:forEach>
      </ul>
     </div>
@@ -216,11 +216,10 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="more"><a href="#"></a></div>
    </div>
    <div class="links">
-    <c:forEach items="${newsLinkList}" varStatus="index" var="o" >  
+  <c:forEach items="${newsLinkList}" varStatus="index" var="o" >  
     <a href="${o.UrlLink }">${o.Name }</a>
-    </c:forEach><%--
-    <a href="#">海珠区科信局</a><a href="#">广州市科信局</a><a href="#">广州市发改局</a><a href="#">广州经贸网</a><a href="#">广东省科技厅</a><a href="#">广州市中小企业信息网</a>
-   --%></div>
+    </c:forEach>
+   </div>
   </div>
  </div>
  <div class="right">
@@ -259,7 +258,15 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     </ul>
    </div>
   </div>
-  <div class="ad_265"><a href="http://znpp.hzkjcyy.com" target="_blank"><img src="${ctx}/theme/portal/default/images/ad_260.png" /></a></div>
+  <div class="ad_265">
+   <c:choose>
+									<c:when test="${not empty adList2&&fn:length(adList2)>0}">
+										<a href="${adList2[0].linkUrl }" target="_blank"><img src="${ctx}${adList2[0].path}" width="260px" height="70px"/></a>
+									</c:when>
+									
+								</c:choose><%--
+  <a href="http://znpp.hzkjcyy.com" target="_blank">
+  <img src="${ctx}/theme/portal/default/images/ad_260.png" /></a></div>--%>
   <div class="left_box">
    <div class="left_box_title relative">
     <h4>入驻企业</h4>
@@ -279,7 +286,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
  </div>
 </div>
 <!--bot-->
-<%--<div class="bot">copyright ? 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号</div>
+<%--<div class="bot">copyright © 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号</div>
 
 --%></body>
 </html>

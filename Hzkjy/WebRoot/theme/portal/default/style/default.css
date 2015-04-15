@@ -729,6 +729,7 @@
 	margin-right: auto;
 	margin-left: auto;
 }
+.bot a{color: #FFFFFF;}
 /*会员注册*/
 .reg_location{
 	line-height: 40px;
@@ -801,7 +802,7 @@
 	color: #333333;
 }
 .reg_box .zl_box {
-	padding: 40px;
+	padding: 30px;
 }
 .reg_box .zl_box .li {
 	overflow: hidden;
@@ -820,10 +821,10 @@
 	text-align: center;
 }
 .reg_box .zl_box .li .span {
-	width: 160px;
+	width: 170px;
 	display: block;
 	font-size: 14px;
-	padding-right: 10px;
+	padding-right: 5px;
 	text-align: right;
 	float: left;
 }
@@ -846,7 +847,7 @@
 .reg_box .zl_box .li .input {
 	float: left;
 	border: 1px solid #d1d1d1;
-	padding: 9px;
+	padding: 5px;
 	font-size: 14px;
 	color: #000066;
 }
@@ -904,7 +905,7 @@ filter(alpha=50);
 }
 .reg_ok .reg_b_ts_b {
 	border: 2px solid #1F71CA;
-	padding-top: 50px;
+	padding-top: 30px;
 	padding-right: 50px;
 	padding-bottom: 50px;
 	padding-left: 200px;
@@ -923,6 +924,20 @@ filter(alpha=50);
 	font-size: 14px;
 	color: #333333;
 }
+.reg_ok .reg_b_ts_b .btn_box {
+	padding: 10px;
+}
+.reg_ok .reg_b_ts_b .btn_box .btn_login {
+	background-color: #FF3300;
+	color: #FFFFFF;
+	padding-top: 10px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	border-radius:10px;
+	cursor:pointer;
+}
+
 /*二级样式*/
 .list_left {
 	width: 220px;
@@ -1151,6 +1166,7 @@ ul#menu li ul li a:hover {
 	padding: 15px;
 	font-size: 14px;
 	line-height: 28px;
+	color: #333333;
 }
 .list_right .list_box .list_box_l2 .text .div {
 	padding: 10px;
