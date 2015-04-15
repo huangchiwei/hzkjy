@@ -133,7 +133,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div>
       <ul class="textUl">
        <c:forEach items="${noticeList}" var="o" varStatus="sta">
-       <li <c:if test="${sta.index==0}">style="display:block;"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 20)}</a></li>
+       <li <c:if test="${sta.index==0}">style="display:block;"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">${fn:substring(o.title, 0, 20)}</a></li>
        </c:forEach>
       <%--
         <li style="display:block;"><a href="#">定位精品路线 原创试驾奇瑞艾瑞</a></li>
@@ -147,14 +147,14 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
     <div class="announcement_r">
      <h1>
      <c:if test="${noticeList!=null&&fn:length(noticeList)>0}">
-     <a href="${ctx }/portal/news/detail/${noticeList[0].id}.html">${fn:substring(noticeList[0].title, 0, 28)}</a>
+     <a href="${ctx }/portal/news/detail/${noticeList[0].id}.html?cateCode=${o.cateCode}">${fn:substring(noticeList[0].title, 0, 28)}</a>
      </c:if>
      </h1>
      <ul>
   
        <c:forEach items="${noticeList}" varStatus="index" var="o" >  
         <c:if test="${index.index>0}">
-          <li><span><fmt:formatDate value="${o.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${o.id}.html">${fn:substring(o.title, 0, 20)}</a></li>
+          <li><span><fmt:formatDate value="${o.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">${fn:substring(o.title, 0, 20)}</a></li>
        </c:if>
        </c:forEach>
       
@@ -276,7 +276,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
      <div id="scrollDiv">
       <ul>
        <c:forEach items="${memberList}" varStatus="index" var="o" >  
-       <li class="li"><a href="${ctx }/portal/memberBasic/detail/${o.id}.html">${fn:substring(o.qymc, 0, 20)}</a></li>
+       <li class="li"><a href="${o.address }" target="_blank">${fn:substring(o.qymc, 0, 20)}</a></li>
     </c:forEach>
              
       </ul>

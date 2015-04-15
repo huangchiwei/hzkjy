@@ -38,11 +38,15 @@ function submitFun(){
 		$("#linkUrl").focus();
 		return false;
 		}
-	var file=$("#file").val();
-	if(file==""){
-		alert("附件不允许为空!");
-		return false;
+	var oriFile=${entity.path};
+	if(oriFile!=""){
+		var file=$("#file").val();
+		if(file==""){
+			alert("附件不允许为空!");
+			return false;
+			}
 		}
+
 
 	return true;
 }

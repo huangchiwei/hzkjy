@@ -29,11 +29,13 @@ import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
+import com.armysoft.hzkjy.service.member.NewsAdvertService;
 
 @Controller("PortalMemberBasicController")
 @RequestMapping("portal/memberBasic")
 public class MemberBasicController extends BaseController {
-
+	@Resource
+	private NewsAdvertService newsAdvertService;
 	@Resource
 	private MemberBasicService service;
 	@Resource
@@ -179,6 +181,8 @@ public class MemberBasicController extends BaseController {
 		public String getByPage(@PathVariable Integer currentPage,Model model, HttpServletRequest request) {
 			Pagination pager = initPage(currentPage);
 			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("adType", "2");
+			model.addAttribute("adList2",newsAdvertService.getByAdType(params));
 	        model.addAttribute("list", service.getByPage(params, pager));
 	
 			model.addAttribute("page", pager);
