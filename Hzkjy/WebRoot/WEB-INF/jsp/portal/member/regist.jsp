@@ -14,13 +14,24 @@ $(function(){
 	
 	$.each(registTypeJson,function(i,item){
 		if(item.id == '0'){
-			$('#qydjzclx').append('<option value="' + item.id + '">' + item.value + '</option>');
+			$('#qydjzclx').append('<option style="background-color: #ffa426" disabled="disabled" value="' + item.id + '">' + item.value + '</option>');
 		}else{
 			$('#qydjzclx').append('<option value="' + item.id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + item.value + '</option>');
 		}
 	});
 	var telReg = /^0\d{2,3}-?\d{7,8}$/;
 	var phoneReg = /^1[3|4|5|8]\d{9}$/;
+	var strRegex = '^((https|http|ftp|rtsp|mms)?://)' 
+	+ '?(([0-9a-z_!~*\'().&=+$%-]+: )?[0-9a-z_!~*\'().&=+$%-]+@)?' //ftp的user@ 
+	+ '(([0-9]{1,3}.){3}[0-9]{1,3}' // IP形式的URL- 199.194.52.184 
+	+ '|' // 允许IP和DOMAIN（域名） 
+	+ '([0-9a-z_!~*\'()-]+.)*' // 域名- www. 
+	+ '([0-9a-z][0-9a-z-]{0,61})?[0-9a-z].' // 二级域名 
+	+ '[a-z]{2,6})' // first level domain- .com or .museum 
+	+ '(:[0-9]{1,4})?' // 端口- :80 
+	+ '((/?)|' // a slash isn't required if there is no file name 
+	+ '(/[0-9a-z_!~*\'().;?:@&=+$,%#-]+)+/?)$'; 
+	var re = new RegExp(strRegex);
 	$("#sumbit_bt").click(function(){
 		var msg = '';
 		if($.trim($("#qymc").val()) == ''){
@@ -32,8 +43,8 @@ $(function(){
 		}else if(!(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test($("#email").val()))){
 			msg = '请填写正确的邮箱';
 			$("#email").focus();
-		}else if($("#address").val() != '' && (!/^http[s]?:\/\/([\w-]+\.)+[\w-]+([\w-./?%&=]*)?$/.test($("#address").val()))){
-			msg = '请填写以Http://开头的正确网址';
+		}else if($("#address").val() != '' && (!re.test($("#address").val()))){
+			msg = '请填写正确的网址';
 			$("#address").focus();
 		}else if($("#zydy").val() == ''){
 			msg = '请填写租用地址';
@@ -165,7 +176,6 @@ $(function(){
      <div class="li">
       <span class="span">企业网址：</span>
       <span class="span1" title="该网址将链接到科技园前台网站，以便于企业间互相了解，创造更多的合作机会！"><input id="address" name="address" type="text" class="input" size="18" maxlength="100"/>
-      <em>请填入http://</em>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;租用地址：</span>
       <span class="span1"><input id="zydy" name="zydy" type="text" class="input" size="25" maxlength="100"/>
@@ -201,8 +211,8 @@ $(function(){
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业登记注册类型：</span>
       <span class="span1">
-      <select name="qydjzclx" id="qydjzclx"  class="input">
-      	<option value="0">-- 请选择 --</option>
+      <select name="qydjzclx" id="qydjzclx" class="input">
+      	<option value="0" disabled="disabled" >-- 请选择 --</option>
       </select>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;组织机构代码：</span>
