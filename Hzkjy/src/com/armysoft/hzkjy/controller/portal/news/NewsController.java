@@ -36,6 +36,7 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.model.MemberFasic;
 import com.armysoft.hzkjy.model.News;
+import com.armysoft.hzkjy.service.member.NewsAdvertService;
 import com.armysoft.hzkjy.service.member.NewsService;
 
 
@@ -43,6 +44,8 @@ import com.armysoft.hzkjy.service.member.NewsService;
 @RequestMapping("/portal/news")
 public class  NewsController extends BaseController {
 //
+	@Resource
+	private NewsAdvertService newsAdvertService;
 	@Resource
 	private NewsService newsService;
 	@InitBinder   
@@ -62,8 +65,13 @@ public class  NewsController extends BaseController {
 	 */
     @RequestMapping(value = PAGE_LIST)
 	public String list(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
+    	
+		
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("adType", "2");
+		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
+		
 		params.put("cateCode", cateCode);
 		model.addAttribute("cateCode", cateCode);
 		List<Map<String, Object>>  list=newsService.getByPage(params, pager);
@@ -105,6 +113,9 @@ public class  NewsController extends BaseController {
 		model.addAttribute("entity", newsService.findByKey(key));
 		 model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("type", "update");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("adType", "2");
+		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
 		return "/portal/news/detail";
 	}
 	@RequestMapping(value = "/search/{currentPage}.html")

@@ -118,7 +118,15 @@
 
   
  
- <div class="list_ad"><img src="${ctx}/theme/portal/default/images/ad_216.png" /></div>
+ <div class="list_ad">
+    <c:choose>
+									<c:when test="${not empty adList2&&fn:length(adList2)>0}">
+										<a href="${adList2[0].linkUrl }" target="_blank"><img src="${ctx}${adList2[0].path}" width="260px" height="70px"/></a>
+									</c:when>
+									
+								</c:choose>
+ 
+ </div>
   <div class="list_contus">联系我们</div>
   <div class="list_contus_l">
     <em>电话：020-89232382</em>

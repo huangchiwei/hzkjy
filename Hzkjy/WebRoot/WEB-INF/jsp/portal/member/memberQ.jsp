@@ -26,7 +26,7 @@
 							<li>
 								<span><fmt:formatDate value="${o.qyrzsj}"
 										pattern="yyyy-MM-dd" /> </span>
-								${o.qymc}
+								<a href="${o.address }" target="_blank">${o.qymc}</a>
 
 							</li>
 						</c:forEach>

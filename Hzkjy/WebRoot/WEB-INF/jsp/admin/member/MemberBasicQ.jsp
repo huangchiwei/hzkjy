@@ -297,7 +297,7 @@ function pltzjf(){
       <tr>
         <td colspan="10"></td>
       <td>总计</td>
-      <td>${zj!=''?zj:'0'}家</td>
+      <td><c:if test="${not empty zj}">${zj }</c:if><c:if test="${not empty zj}">0</c:if>家</td>
     
       </tr>
 	</tbody>

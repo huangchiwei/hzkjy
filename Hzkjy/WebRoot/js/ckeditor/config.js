@@ -26,7 +26,8 @@ CKEDITOR.editorConfig = function( config )
 ['TextColor','BGColor']
 ];*/
 	 config.toolbar_Full = [
-
+['Source','-','Save','NewPage','Preview','-','Templates'],
+'/',
 ['Bold','Italic','Underline','Strike','-'],
 ['NumberedList','BulletedList','-'],
 ['JustifyLeft','JustifyCenter','JustifyRight'],
