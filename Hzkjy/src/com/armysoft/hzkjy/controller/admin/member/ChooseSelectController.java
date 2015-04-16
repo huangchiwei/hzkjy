@@ -351,11 +351,13 @@ public class  ChooseSelectController extends BaseController {
 	
 	@RequestMapping("ZShtg.html")
 	@ResponseBody
-	public String ZShtg(String ids,String settime,String examineTime,HttpServletRequest request) throws ParseException {
-		String[] idArr = ids.split(",");
+	public String ZShtg(String settime,String examineTime,HttpServletRequest request) throws ParseException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		List list =service.getJjybsz(params);
 		
-		for(int id=0;id<idArr.length;id++){
-			MemberBasic mdd= service.findByKey(Long.valueOf(idArr[id]));
+		for(int id=0;id<list.size();id++){
+			Map mmd=(Map) list.get(id);
+			MemberBasic mdd= service.findByKey(Long.valueOf(mmd.get("ID").toString()));
 			EccIndicator ert= new EccIndicator();
 			ert.setHybh(mdd.getHybh());
 			ert.setHyfl(mdd.getQyssjsly());

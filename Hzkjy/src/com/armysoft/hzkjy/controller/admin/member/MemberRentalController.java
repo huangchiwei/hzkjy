@@ -526,21 +526,45 @@ public class  MemberRentalController extends BaseController {
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
 		headData.add(new Object[] { "Qymc","企业名称"});
+		headData.add(new Object[] { "Zydy","租用单元"});
+		headData.add(new Object[] { "Sslqname","所属楼区"});
+		headData.add(new Object[] { "Qymj","企业面积"});
 		headData.add(new Object[] { "Qyzj","企业租金"});
+		headData.add(new Object[] { "Zjsq","企业属期"});
+		headData.add(new Object[] { "Qyzjznj","租金滞纳金"});
+		
+		
 		headData.add(new Object[] { "Glfwf","管理服务费"});
+		headData.add(new Object[] { "Glfwfsq","管理服务费属期"});
+		headData.add(new Object[] { "Glfwfznj","管理服务费滞纳金"});
+		
+		headData.add(new Object[] { "Zlbzj","租赁保证金"});
+		headData.add(new Object[] { "Zlbzjsq","租赁保证金属期"});
+		headData.add(new Object[] { "Zlbzjznj","租赁保证金滞纳金"});
+		
+		headData.add(new Object[] { "Zxyj","装修押金"});
+		headData.add(new Object[] { "Zxyjsq","装修押金属期"});
+		headData.add(new Object[] { "Zxyjznj","装修押金滞纳金"});
+		
 		headData.add(new Object[] { "Qysf","企业水费"});
+		headData.add(new Object[] { "Sfsq","水费属期"});
+		headData.add(new Object[] { "Qysfznj","水费滞纳金"});
+		
 		headData.add(new Object[] { "Qydf","企业电费"});
+		headData.add(new Object[] { "Dfsq","电费属期"});
+		headData.add(new Object[] { "Qydfznj","电费滞纳金"});
+		
 		headData.add(new Object[] { "Ssyhd","水上月行度"});
 		headData.add(new Object[] { "Sbyhd","水本月行度"});
 		headData.add(new Object[] { "Shjyl","水合计用量"});
-		headData.add(new Object[] { "Dhjyl","电合计用量"});
-		headData.add(new Object[] { "Qymj","企业面积"});
-		headData.add(new Object[] { "Qtfy","其它费用"});
-		headData.add(new Object[] { "Hjje","合计金额"});
-		headData.add(new Object[] { "Jfyd","缴费月度"});
 		headData.add(new Object[] { "Dsyhd","电上月行度"});
 		headData.add(new Object[] { "Dbyhd","电本月行度"});
-		headData.add(new Object[] { "Zydy","租用单元"});
+		headData.add(new Object[] { "Dhjyl","电合计用量"});
+		
+		headData.add(new Object[] { "Hjje","合计金额"});
+		headData.add(new Object[] { "Jfyd","缴费月度"});
+		
+		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		params.put("fjfyd", fjfyd);

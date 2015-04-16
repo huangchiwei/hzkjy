@@ -156,22 +156,13 @@ function loadPageLayer2(title,url){
    
    
     function pltjsh(){
-	var stuInput = $('input[name="qyId"]:checked');
-	var ids = '';
-	$.each(stuInput,function(i,item){
-		ids += item.value + ",";
-	});
-	if(ids == ''){
-		alert('请选择要设置的企业。');
-		return;
-	}
 	var settime = $("#fjjzbNy").val();
 	if(settime == ''){
 		alert('请设置经济月报年月');
 		return;
 	}
 	$.ajax({
-				url:'${ctx}/admin/chooseSelect/ZShtg.html?ids='+ids+'&settime='+settime+'&random='+Math.random(),
+				url:'${ctx}/admin/chooseSelect/ZShtg.html?settime='+settime+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,

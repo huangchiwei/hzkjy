@@ -87,6 +87,10 @@ public class MemberBasicService extends BaseDao {
 	public List  getCyqy(Map<String, Object> params) {
 	return super.nativeList(nameSpace + ".getCyqy", params);
 	}
+	public List  getJjybsz(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getJjybsz", params);
+		}
+	
 	public List  getMessage(Map<String, Object> params) {
 		return super.nativeList(nameSpace + ".getMessage", params);
 		}

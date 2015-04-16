@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -66,7 +69,7 @@ public class MemberBasicController extends BaseController {
 	public String regist(MemberBasic entity,String email,String token, Model model,HttpServletRequest req) {
 		Object oldToken = req.getSession().getAttribute("token");
 		if(oldToken != null && oldToken.toString().equals(token)){
-			entity.setQymcpy(Cn2Spell.converterToFirstSpell(entity.getQymc()));
+			entity.setQymcpy(Cn2Spell.converterToFirstSpell(StringFilter(entity.getQymc())));
 			String newHybh = "";
 			String newHybh1 = "44";
 			String newHybh2 = "01";
@@ -95,6 +98,15 @@ public class MemberBasicController extends BaseController {
 		}
 		return "redirect:/portal/index.html";
 	}
+	public   String StringFilter(String   str)   throws   PatternSyntaxException   {      
+		  // 只允许字母和数字        
+		  // String   regEx  =  "[^a-zA-Z0-9]";                      
+		  // 清除掉所有特殊字符   
+		  String regEx="[`~!@#$%^&*()+=|{}':;',//[//].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";   
+		  Pattern   p   =   Pattern.compile(regEx);      
+		  Matcher   m   =   p.matcher(str);      
+		  return   m.replaceAll("").trim();      
+		   }
 
 	@RequestMapping("forget")
 	public String forget(Model model,HttpServletRequest req){

@@ -96,7 +96,7 @@ public class ExportExcel1 {
 //			WritableSheet.setRowView( int i, int height); // 作用是指定第i+1行的高度，比如：
 			// 将第�?��的高度设�?00 sheet.setRowView( 0 , 200 );
 			for(int i=0;i<columnCount;i++){
-				wsheet.setColumnView(i, 20); // 作用是指定第i+1列的宽度，比如： // 将第�?��的宽度设�?0 sheet.setColumnView( 0 , 30 );.setColumnView( 0 , 30 );
+				wsheet.setColumnView(i, 10); // 作用是指定第i+1列的宽度，比如： // 将第�?��的宽度设�?0 sheet.setColumnView( 0 , 30 );.setColumnView( 0 , 30 );
 			}			
 			// �?��生成列标�?           
 			for (int j=0 ;j<columnCount;j++){

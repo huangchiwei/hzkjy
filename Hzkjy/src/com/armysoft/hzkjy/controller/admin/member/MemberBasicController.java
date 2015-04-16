@@ -12,6 +12,9 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -218,7 +221,7 @@ public class  MemberBasicController extends BaseController {
 	public String save(MemberBasic entity, Model model) {
 		if (entity.getId() == null) {
 			Cn2Spell cn2Spell = new Cn2Spell();
-			entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
+			entity.setQymcpy(cn2Spell.converterToFirstSpell(StringFilter(entity.getQymc())));
 			String newHybh="";
      	   String newHybh1="44";
      	   String newHybh2="01";
@@ -238,7 +241,15 @@ public class  MemberBasicController extends BaseController {
 		}
 		return "redirect://admin/memberBasic/list/1.html";
 	}
-	
+	public   String StringFilter(String   str)   throws   PatternSyntaxException   {      
+		  // 只允许字母和数字        
+		  // String   regEx  =  "[^a-zA-Z0-9]";                      
+		  // 清除掉所有特殊字符   
+		  String regEx="[`~!@#$%^&*()+=|{}':;',//[//].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";   
+		  Pattern   p   =   Pattern.compile(regEx);      
+		  Matcher   m   =   p.matcher(str);      
+		  return   m.replaceAll("").trim();      
+		   }
 	/**
 	 * 删除
 	 * @param key
