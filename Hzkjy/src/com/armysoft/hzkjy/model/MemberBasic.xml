@@ -79,6 +79,10 @@
 				 <result column="Rjzzq" property="rjzzq" />
 			</resultMap>
 
+	<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
+		select sum(Synyxzscq) type_last_Count,sum(Fmzl) type_last_Invention,sum(Wgsj) type_last_Appearance,sum(Syxx) type_last_Practical,sum(Rjzzq) type_last_Work from member_basic
+	</select>
+
 <select id="getAllMember" resultType="java.util.Map" parameterType="java.util.Map">
 select Hybh,Qymc from member_basic where Hybh!='admin'
 </select>

@@ -103,6 +103,9 @@ public class  NewsController extends BaseController {
 	
     @RequestMapping(value = "/contactUs.html")
 	public String contactUs(Model model) {
+    	Map<String, Object> params = new HashMap<String, Object>();
+		params.put("adType", "2");
+		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
     	model.addAttribute("cateCode", "contactUs");
 		return "/portal/news/contactUs";
 	}

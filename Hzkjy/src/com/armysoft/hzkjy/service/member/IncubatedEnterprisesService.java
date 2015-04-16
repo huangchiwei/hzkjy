@@ -27,6 +27,10 @@ public class IncubatedEnterprisesService extends BaseDao {
 
 	private final String nameSpace = "IncubatedEnterprisesOpt";
 
+	public Map<String, Object> getToLastYear() {
+		return super.nativeSelectOne(nameSpace + ".getToLastYear", null);
+	}
+	
 	/**
 	 * 条件分页查询题库
 	 * @param params

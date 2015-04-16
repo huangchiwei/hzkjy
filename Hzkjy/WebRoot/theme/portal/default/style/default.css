@@ -17,7 +17,7 @@
 	padding-top: 14px;
 }
 .top .top_970 .top_right {
-	width: 230px;
+	width: 340px;
 	margin-left: auto;
 	padding-top: 100px;
 }
@@ -44,6 +44,7 @@
 	background-repeat: no-repeat;
 	height: 35px;
 	width: 227px;
+	margin-left: 100px;
 }
 .search_box input{
 	border:0;
@@ -200,6 +201,7 @@
 	display: block;
 	float: left;
 	padding-left: 10px;
+	color: #999999;
 }
 .left_box_title .more {
 	position: absolute;

@@ -40,16 +40,16 @@ html { overflow:-moz-scrollbars-vertical;}
 <div class="admin_table">
 <div class="content_box">
   <div class="btn_box">
-  	<c:if test="${size<6}">
+  	
   		<input  id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/newsLink/add/new.html'"/>
-     </c:if>
+     
   </div>
   <div class="list_info">
    
   	<form id="search_form" action="${ctx}/admin/newsLink/list/1.html" method="post">
   	
   	  </form>
-    <h2>页面管理&gt;&gt;友情链接(限6条)</h2>
+    <h2>页面管理&gt;&gt;友情链接</h2>
  
   <br/>
       <table width="98%" border="0" cellpadding="0" cellspacing="1">

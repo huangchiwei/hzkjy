@@ -110,6 +110,7 @@ html { overflow:-moz-scrollbars-vertical;}
        <em>年份：</em> <input id="year" name="year"   class="input_a1" size="15" onfocus="WdatePicker({skin:'whyGreen',minDate:'2000',dateFmt:'yyyy'})" type="text" 
      	value="${params.year}" maxlength="10"/>
      	<em>月份：</em><select name="month" id="month" class="input_a1">
+     	<option value="" <c:if test="${params.month==''}">selected="selected"</c:if>></option>
      	<option value="0" <c:if test="${params.month==0}">selected="selected"</c:if>>1~6月</option>
      	<option value="1" <c:if test="${params.month==1}">selected="selected"</c:if>>7~12月</option>
      	</select>

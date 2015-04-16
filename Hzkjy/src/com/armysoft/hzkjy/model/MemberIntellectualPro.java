@@ -12,12 +12,12 @@ public class MemberIntellectualPro implements java.io.Serializable {
 
 	private Long id;
 	private String memberNo;           //企业编号
-	private Integer projectLevel;       //项目级别 0国家级 1省级 2市级 3区级
+	private String projectLevel;       //项目级别 0国家级 1省级 2市级 3区级
 	private String projectType;     //项目类别
 	private String projectName;     //项目名称
-	private Float applyAmount;      //申报额度(万)
-	private Integer isSetUp;         //是否立项0不立项 1立项
-	private Float setUpAmount;        //立项资助金额(万)
+	private String applyAmount;      //申报额度(万)
+	private String isSetUp;         //是否立项0不立项 1立项
+	private String setUpAmount;        //立项资助金额(万)
 	private Integer year;          //年份
 	private Integer month;          //月份
 	private Integer status;          //发送状态 0一对一 1一对多
@@ -33,10 +33,10 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
-	public Integer getProjectLevel() {
+	public String getProjectLevel() {
 		return projectLevel;
 	}
-	public void setProjectLevel(Integer projectLevel) {
+	public void setProjectLevel(String projectLevel) {
 		this.projectLevel = projectLevel;
 	}
 	public String getProjectType() {
@@ -51,25 +51,24 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-	public Float getApplyAmount() {
+	public String getApplyAmount() {
 		return applyAmount;
 	}
-	public void setApplyAmount(Float applyAmount) {
+	public void setApplyAmount(String applyAmount) {
 		this.applyAmount = applyAmount;
 	}
-	public Integer getIsSetUp() {
+	public String getIsSetUp() {
 		return isSetUp;
 	}
-	public void setIsSetUp(Integer isSetUp) {
+	public void setIsSetUp(String isSetUp) {
 		this.isSetUp = isSetUp;
 	}
-	public Float getSetUpAmount() {
+	public String getSetUpAmount() {
 		return setUpAmount;
 	}
-	public void setSetUpAmount(Float setUpAmount) {
+	public void setSetUpAmount(String setUpAmount) {
 		this.setUpAmount = setUpAmount;
 	}
-	
 	public Integer getYear() {
 		return year;
 	}
@@ -88,6 +87,7 @@ public class MemberIntellectualPro implements java.io.Serializable {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
+
 	
 	
 }

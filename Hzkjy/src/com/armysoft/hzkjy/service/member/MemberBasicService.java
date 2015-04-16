@@ -37,7 +37,10 @@ public class MemberBasicService extends BaseDao {
 	private final String nameSpace = "MemberBasicOpt";
 	@Resource
 	private SysUserService sysUserService;
-
+	
+	public Map<String, Object> getToLastYear() {
+		return super.nativeSelectOne(nameSpace + ".getToLastYear", null);
+	}
 	/**
 	 * 条件分页查询题库
 	 * @param params
