@@ -52,7 +52,14 @@
 			</resultMap>
 			
 			<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
-		select sum(Synyxzscq) type_last_Count,sum(Fmzl) type_last_Invention,sum(Wgsj) type_last_Appearance,sum(Syxx) type_last_Practical,sum(Rjzzq) type_last_Work from incubated_enterprises
+		select sum(Synyxzscq) type_last_Count,sum(Fmzl) type_last_Invention,sum(Wgsj) type_last_Appearance,sum(Syxx) type_last_Practical,sum(Rjzzq) type_last_Work 
+		from incubated_enterprises where 1=1
+		<if test="memberNo!=null and memberNo != ''">
+			and Hybh=#{memberNo}
+		</if>
+		<if test="ssn!=null and ssn != ''">
+			and Ssn=#{ssn}
+		</if>
 	</select>
 	
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">

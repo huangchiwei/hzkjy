@@ -38,8 +38,8 @@ public class MemberBasicService extends BaseDao {
 	@Resource
 	private SysUserService sysUserService;
 	
-	public Map<String, Object> getToLastYear() {
-		return super.nativeSelectOne(nameSpace + ".getToLastYear", null);
+	public Map<String, Object> getToLastYear(Map<String, Object> params) {
+		return super.nativeSelectOne(nameSpace + ".getToLastYear", params);
 	}
 	/**
 	 * 条件分页查询题库

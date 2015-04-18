@@ -259,7 +259,7 @@ public class  MemberIntellectualProController extends BaseController {
 	    	}
 	    	model.addAttribute("params", params);
 	    	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-			if(userNo.substring(0, 4).equals("4401")){
+			if(userNo.substring(0, 4).equals("4401")==false){
 				params.put("memberNo", userNo);
 			}
 	    	//该年度知识产权授权
@@ -268,10 +268,11 @@ public class  MemberIntellectualProController extends BaseController {
 	    	//到上一年为止知识产权授权
 	    	int cYear=Calendar.getInstance().get(Calendar.YEAR);
 	    	Map<String, Object> toLastYear=null;
-	    	if(paramsYear>cYear){   //取孵化企业表
-	    		 toLastYear=incubatedEnterprisesService.getToLastYear();
+	    	if(paramsYear!=cYear){   //取孵化企业表
+	    		params.put("ssn", paramsYear-1);
+	    		 toLastYear=incubatedEnterprisesService.getToLastYear(params);
 	    	}else{        //取企业基本信息表
-	    		 toLastYear=memberBasicService.getToLastYear();
+	    		 toLastYear=memberBasicService.getToLastYear(params);
 	    	}
 	    	//Map<String, Object> toLastYear = memberPatentService.getToLastYear(params);
 	    	model.addAttribute("toLastYear", toLastYear);
@@ -303,7 +304,10 @@ public class  MemberIntellectualProController extends BaseController {
 	    		params.put("year", paramsYear);
 	    	}
 	    	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-			if(userNo.equals("admin")==false){
+			/*if(userNo.equals("admin")==false){
+				params.put("memberNo", userNo);
+			}*/
+			if(userNo.substring(0, 4).equals("4401")==false){
 				params.put("memberNo", userNo);
 			}
 	    	//该年度知识产权授权
@@ -312,10 +316,11 @@ public class  MemberIntellectualProController extends BaseController {
 	    	//到上一年为止知识产权授权
 	    	int cYear=Calendar.getInstance().get(Calendar.YEAR);
 	    	Map<String, Object> toLastYear=null;
-	    	if(paramsYear>cYear){   //取孵化企业表
-	    		 toLastYear=incubatedEnterprisesService.getToLastYear();
+	    	if(paramsYear!=cYear){   //取孵化企业表
+	    		params.put("ssn", paramsYear-1);
+	    		 toLastYear=incubatedEnterprisesService.getToLastYear(params);
 	    	}else{        //取企业基本信息表
-	    		 toLastYear=memberBasicService.getToLastYear();
+	    		 toLastYear=memberBasicService.getToLastYear(params);
 	    	}
 	    	//Map<String, Object> toLastYear = memberPatentService.getToLastYear(params);
 	    	model.addAttribute("toLastYear", toLastYear);
