@@ -22,6 +22,14 @@ $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#fsfjjyb option[value='${fsfjjyb}']").attr("selected", true); 
 $("#fzt option[value='${fzt}']").attr("selected", true); 
+var userNo="${userNo}";
+if(userNo=="4401"){
+$(".btn_box").hide();
+$(".div_input").hide();
+
+
+
+}
 
 $("#checkAll").click(function(){
 	$("input[name=qyId]").attr("checked",this.checked);
@@ -195,7 +203,7 @@ function pltzjf(){
   	
   <div class="list_info">
   <form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
-    <h2>按条件查询</h2>
+    <h2>${userNo=='4401'?'企业信息':'按条件查询'}</h2>
     <div class="div_input">
         <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}"  class="input_a1" size="20" onfocus="loadCorpName();"/>
          <em>状态：</em>

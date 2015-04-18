@@ -350,6 +350,7 @@ public class  RentalExamineController extends BaseController {
 		map.put("Hjjedx",mb.getHjjedx()+"");
 		map.put("Qysfdj",mb.getQysfdj()+"");
 		map.put("Qydfdj",mb.getQydfdj()+"");
+		map.put("Hjjeznj",mb.getHjjeznj()+"");
 		
 		map.put("Ssql",mb.getSslq()+"");
 		map.put("Ssyhd2",mb.getSsyhd2()+"");
@@ -581,23 +582,36 @@ public class  RentalExamineController extends BaseController {
 	public void OutPtqfqk(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
 		String title="缴费表";
 		List headData =  new ArrayList();
+		headData.add(new Object[] { "Jfyd","缴费月度"});
 		headData.add(new Object[] { "Hybh","企业编号"});
+		headData.add(new Object[] { "Sslqname","所属楼区"});
 		headData.add(new Object[] { "Qymc","企业名称"});
+		headData.add(new Object[] { "Zydy","租用单元"});
+		
+		headData.add(new Object[] { "Qymj","企业面积"});
+		headData.add(new Object[] { "Zjsq","租金属期"});
 		headData.add(new Object[] { "Qyzj","企业租金"});
 		headData.add(new Object[] { "Glfwf","管理服务费"});
+		headData.add(new Object[] { "Glfwfsq","管理服务费属期"});
+		headData.add(new Object[] { "Zlbzj","租赁保证金"});
+		
+		headData.add(new Object[] { "Zxyj","装修押金"});
+		headData.add(new Object[] { "Hjjeznj","合计滞纳金"});
+		headData.add(new Object[] { "Sfsq","水费属期"});
+		
 		headData.add(new Object[] { "Qysf","企业水费"});
+		headData.add(new Object[] { "Dfsq","电费属期"});
 		headData.add(new Object[] { "Qydf","企业电费"});
+		
+		
 		headData.add(new Object[] { "Ssyhd","水上月行度"});
 		headData.add(new Object[] { "Sbyhd","水本月行度"});
 		headData.add(new Object[] { "Shjyl","水合计用量"});
-		headData.add(new Object[] { "Dhjyl","电合计用量"});
-		headData.add(new Object[] { "Qymj","企业面积"});
-		headData.add(new Object[] { "Qtfy","其它费用"});
-		headData.add(new Object[] { "Hjje","合计金额"});
-		headData.add(new Object[] { "Jfyd","缴费月度"});
 		headData.add(new Object[] { "Dsyhd","电上月行度"});
 		headData.add(new Object[] { "Dbyhd","电本月行度"});
-		headData.add(new Object[] { "Zydy","租用单元"});
+		headData.add(new Object[] { "Dhjyl","电合计用量"});
+		
+		headData.add(new Object[] { "Hjje","合计金额"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		params.put("fjfyd", fjfyd);

@@ -65,6 +65,7 @@ function loadQyxx(){
 	            sumzlbzjdj();
 	            sumzxyjdj();
 	            sumhjje();
+	            sumhjjeznj();
 		  		},
 		  		error:function(){
 		  		} 
@@ -232,6 +233,52 @@ if($("#qyzj").val()==""){
 	  $("#hjje").attr("value",sumhjje.toFixed(1));
 	  loadHjjezw();
 	}
+	
+function sumhjjeznj(){
+var qyzjznj;
+var glfwfznj;
+var zlbzjznj;
+var zxyjznj;
+var qysfznj;
+var qydfznj;
+
+   if($("#qyzjznj").val()==""){
+	qyzjznj="0.0";
+	}else{
+	qyzjznj=$("#qyzjznj").val();
+	}
+			if($("#glfwfznj").val()==""){
+	glfwfznj="0.0";
+	}else{
+	glfwfznj=$("#glfwfznj").val();
+	}
+				if($("#zlbzjznj").val()==""){
+	zlbzjznj="0.0";
+	}else{
+	zlbzjznj=$("#zlbzjznj").val();
+	}
+		if($("#zxyjznj").val()==""){
+	zxyjznj="0.0";
+	}else{
+	zxyjznj=$("#zxyjznj").val();
+	}
+	if($("#qysfznj").val()==""){
+	qysfznj="0.0";
+	}else{
+	qysfznj=$("#qysfznj").val();
+	}
+	if($("#qydfznj").val()==""){
+    qydfznj="0.0";
+	}else{
+	qydfznj=$("#qydfznj").val();
+	}
+	
+	
+	
+
+	var sumhjjeznj=parseFloat(qyzjznj)+parseFloat(glfwfznj)+parseFloat(zlbzjznj)+parseFloat(zxyjznj)+parseFloat(qysfznj)+parseFloat(qydfznj);
+	  $("#hjjeznj").attr("value",sumhjjeznj.toFixed(1));
+	}	
 	
 	
 	function sumshjyl(){
@@ -637,7 +684,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qyzj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	     	</td>
 	  	   <td>
-	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}" onchange="sumhjje();"/>
+	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
 	     	</td> 
 	     <td>
 	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" value="${model.zjbz}"/> 
@@ -660,7 +707,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.glfwf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}" onchange="sumhjje();"/>
+	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="glfbz"  id="glfbz" type="text" class="input_a1" value="${model.glfbz}"/>
@@ -683,7 +730,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="zlbzj"  id="zlbzj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.zlbzj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}" onchange="sumhjje();"/>
+	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" class="input_a1" value="${model.zlbzjbz}"/>
@@ -706,7 +753,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="<fmt:formatNumber value="${model.zxyj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" onchange="sumhjje();"/>
+	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" class="input_a1" value="${model.zxyjbz}"/>
@@ -728,7 +775,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qysf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" onchange="sumhjje();"/>
+	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="lsfbz"  id="lsfbz" type="text" class="input_a1" value="${model.sfbz}"/>
@@ -750,7 +797,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="<fmt:formatNumber value="${model.qydf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qydfznj"  id="qydfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}" onchange="sumhjje();"/>
+	   	 	<input name="qydfznj"  id="qydfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ?model.qydfznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="ldfbz"  id="ldfbz" type="text" class="input_a1" value="${model.dfbz}"/>
