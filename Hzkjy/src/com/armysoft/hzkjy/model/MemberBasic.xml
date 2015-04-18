@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb='1' then '需要' else '不需要' end SfjjybName,ID,Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq</sql>
+	case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb='1' then '需要' else '不需要' end SfjjybName,ID,Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_basic 
@@ -72,7 +72,7 @@
 				 <result column="Gxjsqy" property="gxjsqy" />
 				 <result column="Lxryqy" property="lxryqy" />
 				 <result column="Hylb" property="hylb" />
-				 <result column="Synyxzscq" property="synyxzscq" />
+			
 				 <result column="Fmzl" property="fmzl" />
 				 <result column="Wgsj" property="wgsj" />
 				 <result column="Syxx" property="syxx" />

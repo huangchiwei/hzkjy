@@ -55,7 +55,8 @@ public class SysUserController extends BaseController {
 	@RequestMapping(value = PAGE_LIST)
 	public ModelAndView getByPage(@PathVariable int currentPage, SysUser user,HttpServletRequest request) {
 		String userNo = CookieUtil.getUserCookieValue(request,Constants.ADMIN_KEY);
-		if(!"admin".equalsIgnoreCase(userNo)){
+		//if(!"admin".equalsIgnoreCase(userNo)){
+			if(userNo.substring(0, 4).equals("4401")){
 			ModelAndView mv = new ModelAndView("admin/sys/SysUserCenter");
 			mv.addObject("user", sysUserService.getByUserNo(userNo));
 			

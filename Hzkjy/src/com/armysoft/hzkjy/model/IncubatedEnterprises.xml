@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh</sql>
+	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from incubated_enterprises
@@ -42,7 +42,7 @@
 				 <result column="Gxjsqy" property="gxjsqy" />
 			    <result column="Lxryqy" property="lxryqy" />
 			    <result column="Hylb" property="hylb" />
-				 <result column="Synyxzscq" property="synyxzscq" />
+				
 				 <result column="Fmzl" property="fmzl" />
 				 <result column="Wgsj" property="wgsj" />
 				 <result column="Syxx" property="syxx" />
