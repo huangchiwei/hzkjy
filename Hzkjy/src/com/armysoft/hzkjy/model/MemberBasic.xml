@@ -80,7 +80,7 @@
 			</resultMap>
 
 	<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
-		select sum(Synyxzscq) type_last_Count,sum(Fmzl) type_last_Invention,sum(Wgsj) type_last_Appearance,sum(Syxx) type_last_Practical,sum(Rjzzq) type_last_Work 
+		select sum(Fmzl+Wgsj+Syxx+Rjzzq) type_last_Count,sum(Fmzl) type_last_Invention,sum(Wgsj) type_last_Appearance,sum(Syxx) type_last_Practical,sum(Rjzzq) type_last_Work 
 		from member_basic where 1=1
 		<if test="memberNo!=null and memberNo != ''">
 			and Hybh=#{memberNo}
