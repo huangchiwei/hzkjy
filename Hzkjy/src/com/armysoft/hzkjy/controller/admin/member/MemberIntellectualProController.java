@@ -259,7 +259,7 @@ public class  MemberIntellectualProController extends BaseController {
 	    	}
 	    	model.addAttribute("params", params);
 	    	String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
-			if(userNo.substring(0, 4).equals("4401")==false){
+			if(userNo.substring(0, 4).equals("4401")){
 				params.put("memberNo", userNo);
 			}
 	    	//该年度知识产权授权
@@ -278,11 +278,14 @@ public class  MemberIntellectualProController extends BaseController {
 	    	model.addAttribute("toLastYear", toLastYear);
 	    	//现拥有有效知识产权
 	    	Map<String, Object> allYear = new HashMap<String, Object>();//memberPatentService.getAllYear(params);
-	    	allYear.put("type_all_Count", Integer.parseInt(toLastYear.get("type_last_Count").toString())+Integer.parseInt(currentYear.get("type_0_Count").toString())+Integer.parseInt(currentYear.get("type_1_Count").toString()));
-	    	allYear.put("type_all_Invention", Integer.parseInt(toLastYear.get("type_last_Invention").toString())+Integer.parseInt(currentYear.get("type_0_Invention").toString())+Integer.parseInt(currentYear.get("type_1_Invention").toString()));
-	    	allYear.put("type_all_Practical", Integer.parseInt(toLastYear.get("type_last_Practical").toString())+Integer.parseInt(currentYear.get("type_0_Practical").toString())+Integer.parseInt(currentYear.get("type_1_Practical").toString()));
-	    	allYear.put("type_all_Appearance", Integer.parseInt(toLastYear.get("type_last_Appearance").toString())+Integer.parseInt(currentYear.get("type_0_Appearance").toString())+Integer.parseInt(currentYear.get("type_1_Appearance").toString()));
-	    	allYear.put("type_all_Work", Integer.parseInt(toLastYear.get("type_last_Work").toString())+Integer.parseInt(currentYear.get("type_0_Work").toString())+Integer.parseInt(currentYear.get("type_1_Work").toString()));
+	    	//if(toLastYear!=null){
+	    		allYear.put("type_all_Count", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Count").toString():"0")+Integer.parseInt(currentYear.get("type_0_Count").toString())+Integer.parseInt(currentYear.get("type_1_Count").toString()));
+		    	allYear.put("type_all_Invention", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Invention").toString():"0")+Integer.parseInt(currentYear.get("type_0_Invention").toString())+Integer.parseInt(currentYear.get("type_1_Invention").toString()));
+		    	allYear.put("type_all_Practical", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Practical").toString():"0")+Integer.parseInt(currentYear.get("type_0_Practical").toString())+Integer.parseInt(currentYear.get("type_1_Practical").toString()));
+		    	allYear.put("type_all_Appearance", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Appearance").toString():"0")+Integer.parseInt(currentYear.get("type_0_Appearance").toString())+Integer.parseInt(currentYear.get("type_1_Appearance").toString()));
+		    	allYear.put("type_all_Work", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Work").toString():"0")+Integer.parseInt(currentYear.get("type_0_Work").toString())+Integer.parseInt(currentYear.get("type_1_Work").toString()));
+	    	//}
+	    	
 	    	
 	    	model.addAttribute("allYear", allYear);
 	    	//该年获得奖项
@@ -307,7 +310,7 @@ public class  MemberIntellectualProController extends BaseController {
 			/*if(userNo.equals("admin")==false){
 				params.put("memberNo", userNo);
 			}*/
-			if(userNo.substring(0, 4).equals("4401")==false){
+			if(userNo.substring(0, 4).equals("4401")){
 				params.put("memberNo", userNo);
 			}
 	    	//该年度知识产权授权
@@ -326,12 +329,11 @@ public class  MemberIntellectualProController extends BaseController {
 	    	model.addAttribute("toLastYear", toLastYear);
 	    	//现拥有有效知识产权
 	    	Map<String, Object> allYear = new HashMap<String, Object>();//memberPatentService.getAllYear(params);
-	    	allYear.put("type_all_Count", Integer.parseInt(toLastYear.get("type_last_Count").toString())+Integer.parseInt(currentYear.get("type_0_Count").toString())+Integer.parseInt(currentYear.get("type_1_Count").toString()));
-	    	allYear.put("type_all_Invention", Integer.parseInt(toLastYear.get("type_last_Invention").toString())+Integer.parseInt(currentYear.get("type_0_Invention").toString())+Integer.parseInt(currentYear.get("type_1_Invention").toString()));
-	    	allYear.put("type_all_Practical", Integer.parseInt(toLastYear.get("type_last_Practical").toString())+Integer.parseInt(currentYear.get("type_0_Practical").toString())+Integer.parseInt(currentYear.get("type_1_Practical").toString()));
-	    	allYear.put("type_all_Appearance", Integer.parseInt(toLastYear.get("type_last_Appearance").toString())+Integer.parseInt(currentYear.get("type_0_Appearance").toString())+Integer.parseInt(currentYear.get("type_1_Appearance").toString()));
-	    	allYear.put("type_all_Work", Integer.parseInt(toLastYear.get("type_last_Work").toString())+Integer.parseInt(currentYear.get("type_0_Work").toString())+Integer.parseInt(currentYear.get("type_1_Work").toString()));
-	    	
+	    	allYear.put("type_all_Count", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Count").toString():"0")+Integer.parseInt(currentYear.get("type_0_Count").toString())+Integer.parseInt(currentYear.get("type_1_Count").toString()));
+	    	allYear.put("type_all_Invention", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Invention").toString():"0")+Integer.parseInt(currentYear.get("type_0_Invention").toString())+Integer.parseInt(currentYear.get("type_1_Invention").toString()));
+	    	allYear.put("type_all_Practical", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Practical").toString():"0")+Integer.parseInt(currentYear.get("type_0_Practical").toString())+Integer.parseInt(currentYear.get("type_1_Practical").toString()));
+	    	allYear.put("type_all_Appearance", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Appearance").toString():"0")+Integer.parseInt(currentYear.get("type_0_Appearance").toString())+Integer.parseInt(currentYear.get("type_1_Appearance").toString()));
+	    	allYear.put("type_all_Work", Integer.parseInt(toLastYear!=null?toLastYear.get("type_last_Work").toString():"0")+Integer.parseInt(currentYear.get("type_0_Work").toString())+Integer.parseInt(currentYear.get("type_1_Work").toString()));
 	    	//该年获得奖项
 	    	Map<String, Object> inteCurrentYear = memberIntellectualProService.getCurrentYear(params);
 	    	//model.addAttribute("inteCurrentYear", inteCurrentYear);
@@ -355,11 +357,11 @@ public class  MemberIntellectualProController extends BaseController {
 			list.add(memberIntellectualProService.createMap("实用新型(7-12月)", "件",  currentYear.get("type_1_Practical").toString()));
 			list.add(memberIntellectualProService.createMap("外观设计(7-12月)", "个",  currentYear.get("type_1_Appearance").toString()));
 			list.add(memberIntellectualProService.createMap("软件著作权(7-12月)", "个",  currentYear.get("type_1_Work").toString()));
-			list.add(memberIntellectualProService.createMap("到上一年为止拥有有效知识产权数", "件", toLastYear.get("type_last_Count").toString()));
-			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", toLastYear.get("type_last_Invention").toString()));
-			list.add(memberIntellectualProService.createMap("实用新型", "件", toLastYear.get("type_last_Practical").toString()));
-			list.add(memberIntellectualProService.createMap("外观设计", "个", toLastYear.get("type_last_Appearance").toString()));
-			list.add(memberIntellectualProService.createMap("软件著作权", "个", toLastYear.get("type_last_Work").toString()));
+			list.add(memberIntellectualProService.createMap("到上一年为止拥有有效知识产权数", "件", toLastYear!=null?toLastYear.get("type_last_Count").toString():"0"));
+			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", toLastYear!=null?toLastYear.get("type_last_Invention").toString():"0"));
+			list.add(memberIntellectualProService.createMap("实用新型", "件", toLastYear!=null?toLastYear.get("type_last_Practical").toString():"0"));
+			list.add(memberIntellectualProService.createMap("外观设计", "个", toLastYear!=null?toLastYear.get("type_last_Appearance").toString():"0"));
+			list.add(memberIntellectualProService.createMap("软件著作权", "个", toLastYear!=null?toLastYear.get("type_last_Work").toString():"0"));
 			list.add(memberIntellectualProService.createMap("现拥有有效知识产权数", "件", allYear.get("type_all_Count").toString()));
 			list.add(memberIntellectualProService.createMap("其中:发明专利", "件", allYear.get("type_all_Invention").toString()));
 			list.add(memberIntellectualProService.createMap("实用新型", "件", allYear.get("type_all_Practical").toString()));
