@@ -21,7 +21,13 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+var userNo="${userNo}";
+if(userNo=="4401"){
+$("#fhymc").hide();
 
+
+
+}
 $('#checkAll').click(function(){
 	$('input[name="qyId"]').attr("checked",this.checked);
 });
@@ -191,7 +197,7 @@ function loadPageLayer2(title,url){
   	<form id="search_form" action="${ctx}/admin/enterpriseRental/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div_input">
-        <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=20 class="input_a1" onfocus="loadCorpName();"/>
+       <em> ${userNo=='4401'?'':'企业名称：'}</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=20 class="input_a1" onfocus="loadCorpName();"/>
          	
         <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" size=15 onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" maxlength="20"/>

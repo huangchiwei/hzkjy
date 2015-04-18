@@ -83,6 +83,7 @@ public class  MemberBasicController extends BaseController {
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 		params.put("fhybh", userNo);
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		}
 		if(fhymc !="" && fhymc !=null){
 		params.put("fhymc", fhymc);
