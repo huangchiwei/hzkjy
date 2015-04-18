@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>组织架构</title>
+		<title>${category.cateName }</title>
 
 	</head>
 
@@ -13,9 +13,9 @@
 		<div class="content2">
 			<jsp:include page="/WEB-INF/jsp/portal/news/commonLeft.jsp" />
  <div class="list_right">
-  <div class="location"><font color="#393838">当前位置：首页 >&nbsp;园区概况 ></font> <font color="#999999">组织架构</font></div>
+  <div class="location"><font color="#393838">当前位置：首页 >&nbsp;园区概况 ></font> <font color="#999999">${category.cateName }</font></div>
   <div class="list_box">
-   <h1>组织架构</h1>
+   <h1>${category.cateName }</h1>
    <div class="list_box_l2">
       <div class="text">
        ${content}     </div>

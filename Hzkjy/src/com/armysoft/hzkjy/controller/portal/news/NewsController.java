@@ -78,15 +78,11 @@ public class  NewsController extends BaseController {
         model.addAttribute("list", list);
         model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("page", pager);
-		if(cateCode.equals("park_intro")){
-			return "/portal/news/park_intro";
-		}else if(cateCode.equals("park_frame")){
+		if(cateCode.equals("park_frame")||cateCode.equals("park_intro")||cateCode.equals("park_site")){
 			String content="";
 			if(list!=null&&list.size()>0&&list.get(0)!=null) content=list.get(0).get("content").toString();
 			model.addAttribute("content", content);
-			return "/portal/news/park_frame";
-		}if(cateCode.equals("park_site")){
-			return "/portal/news/park_site";
+			return "/portal/news/park_frame_site_intro";
 		}if(cateCode.equals("park_envir")){
 			//获取图片
 			String content="";
@@ -103,6 +99,9 @@ public class  NewsController extends BaseController {
 	
     @RequestMapping(value = "/contactUs.html")
 	public String contactUs(Model model) {
+    	Map<String, Object> params = new HashMap<String, Object>();
+		params.put("adType", "2");
+		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
     	model.addAttribute("cateCode", "contactUs");
 		return "/portal/news/contactUs";
 	}

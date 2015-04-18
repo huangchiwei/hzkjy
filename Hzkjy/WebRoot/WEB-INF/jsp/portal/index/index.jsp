@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>广州市海珠科技产业园有限公司</title>
+<title>首页</title>
 <%--<link href="${ctx}/theme/portal/default/style/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/portal/default/style/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>

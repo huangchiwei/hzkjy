@@ -62,13 +62,13 @@ public class  NewsController extends BaseController {
 	@PermissionsAnno("news_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
-		if(cateCode.equals("park_frame")||cateCode.equals("park_envir")){
+		//if(cateCode.equals("park_frame")||cateCode.equals("park_envir")){
 			model.addAttribute("cateCode", cateCode);			
 			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
 			 model.addAttribute("category", newsService.getCategory(cateCode));
 			return "/admin/news/newsA_U";
-		}
-		Pagination pager = initPage(currentPage);
+		//}
+		/*Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("cateCode", cateCode);
 		model.addAttribute("cateCode", cateCode);
@@ -76,7 +76,7 @@ public class  NewsController extends BaseController {
         model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("page", pager);
 
-		return "/admin/news/newsQ";
+		return "/admin/news/newsQ";*/
 	}
 
 	@PermissionsAnno("news_add")
@@ -129,7 +129,7 @@ public class  NewsController extends BaseController {
 		
 		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
 		entity.setCreateUser(key);
-		if(cateCode.equals("park_frame")||cateCode.equals("park_envir")){
+		//if(cateCode.equals("park_frame")||cateCode.equals("park_envir")){
 			Map<String, Object> e=newsService.getByCateCode(cateCode);
 			if(e!=null){
 				newsService.update(entity);	
@@ -141,14 +141,14 @@ public class  NewsController extends BaseController {
 			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
 			 model.addAttribute("category", newsService.getCategory(cateCode));
 			return "/admin/news/newsA_U";
-		}
+		//}
 		
-		if(type.equalsIgnoreCase("add")){
+		/*if(type.equalsIgnoreCase("add")){
 			newsService.insert(entity);
 		}else if(type.equalsIgnoreCase("update")){
 			newsService.update(entity);	
 		}
-		return "redirect:/admin/news/list/1.html?cateCode="+cateCode;
+		return "redirect:/admin/news/list/1.html?cateCode="+cateCode;*/
 	}
 	 @RequestMapping(value = "/downLoad/{id}.html")
 	  public void downLoad(HttpServletResponse response,HttpServletRequest request,@PathVariable("id") Long id)

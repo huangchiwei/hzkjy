@@ -50,12 +50,15 @@ public class LoginController extends BaseController {
 			HttpServletResponse response,
 			@CookieValue(value = Constants.ADMIN_KEY, required = false) String key) {
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("flag", "1");
 		try {
 			if (StringUtils.hasText(key)) {// 已经登录
 				return map;
 			}
-
+			if(!userNo.startsWith("440")){
+				map.put("flag", "0");
+				map.put("msg", "用户名或密码不正确!");
+				return map;
+			}
 			SysUser user = sysUserService.getByUserNo(userNo);
 			if (user != null
 					&& DigestUtils.md5DigestAsHex(password.getBytes()).equals(
@@ -66,6 +69,7 @@ public class LoginController extends BaseController {
 				}
 				request.getSession(true);
 				super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
+				map.put("flag", "1");
 			} else {
 				map.put("flag", "0");
 				map.put("msg", "用户名或密码不正确!");

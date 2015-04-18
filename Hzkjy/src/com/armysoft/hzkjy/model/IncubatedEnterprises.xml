@@ -51,6 +51,17 @@
 				  <result column="Hybh" property="hybh" />
 			</resultMap>
 			
+			<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
+		select sum(Synyxzscq) type_last_Count,sum(Fmzl) type_last_Invention,sum(Wgsj) type_last_Appearance,sum(Syxx) type_last_Practical,sum(Rjzzq) type_last_Work 
+		from incubated_enterprises where 1=1
+		<if test="memberNo!=null and memberNo != ''">
+			and Hybh=#{memberNo}
+		</if>
+		<if test="ssn!=null and ssn != ''">
+			and Ssn=#{ssn}
+		</if>
+	</select>
+	
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
 select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh
 	 from incubated_enterprises

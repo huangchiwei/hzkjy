@@ -81,19 +81,24 @@ function out(){
 	    </tr>
 	    
 	    <tr>
-	    <td>到上一年为止拥有有效知识产权数</td><td>件</td><td>${toLastYear.type_last_Count }</td>
+	    <td>到上一年为止拥有有效知识产权数</td><td>件</td><td><c:if test="${not empty toLastYear}">${toLastYear.type_last_Count}</c:if>
+	  <c:if test="${ empty toLastYear}">0</c:if></td>
 	    </tr>	    
 	    <tr>
-	    <td>其中:发明专利</td><td>件</td><td>${toLastYear.type_last_Invention }</td>
+	    <td>其中:发明专利</td><td>件</td><td><c:if test="${not empty toLastYear}">${toLastYear.type_last_Invention}</c:if>
+	  <c:if test="${ empty toLastYear}">0</c:if></td>
 	    </tr>
 	    <tr>
-	    <td>实用新型</td><td>件</td><td>${toLastYear.type_last_Practical }</td>
+	    <td>实用新型</td><td>件</td><td><c:if test="${not empty toLastYear}">${toLastYear.type_last_Practical}</c:if>
+	  <c:if test="${ empty toLastYear}">0</c:if></td>
 	    </tr>
 	    <tr>
-	    <td>外观设计</td><td>个</td><td>${toLastYear.type_last_Appearance }</td>
+	    <td>外观设计</td><td>个</td><td><c:if test="${not empty toLastYear}">${toLastYear.type_last_Appearance}</c:if>
+	  <c:if test="${ empty toLastYear}">0</c:if></td>
 	    </tr>
 	    <tr>
-	    <td>软件著作权</td><td>个</td><td>${toLastYear.type_last_Work }</td>
+	    <td>软件著作权</td><td>个</td><td><c:if test="${not empty toLastYear}">${toLastYear.type_last_Work}</c:if>
+	  <c:if test="${ empty toLastYear}">0</c:if></td>
 	    </tr>
 	    
 	     <tr>
