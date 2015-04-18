@@ -14,6 +14,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
 import org.armysoft.core.Pagination;
 import org.armysoft.security.InitResourcesMap;
 import org.armysoft.security.model.sys.SysUser;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
@@ -200,5 +203,19 @@ public class MemberBasicController extends BaseController {
 			model.addAttribute("page", pager);
 		
 			return "portal/member/memberQ";
+		}
+	  
+		/**
+		 * 异步验证邮箱是否已注册
+		 * 
+		 * @param email
+		 * @return
+		 */
+		@RequestMapping("validEmail")
+		@ResponseBody
+		public String validEmail(String email) {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("isFlag", sysUserService.getByEmail(email) == null);
+			return jsonObject.toString();
 		}
 }

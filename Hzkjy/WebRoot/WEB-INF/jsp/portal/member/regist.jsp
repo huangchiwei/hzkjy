@@ -19,6 +19,25 @@ $(function(){
 			$('#qydjzclx').append('<option value="' + item.id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + item.value + '</option>');
 		}
 	});
+	var isFlag = true;
+	$("#email").change(function(){
+		if (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(this.value)){
+			// 发送异步请求
+			$.ajax({
+				url : "${ctx}/portal/memberBasic/validEmail.json?random=" + Math.random(),
+				type : "post",
+				data : "email=" + this.value,
+				dataType : "json",
+				async : false,
+				success : function(data){
+					isFlag = data.isFlag;
+					if (!data.isFlag){
+						alert('该邮箱已注册');
+					}
+				}
+			});
+		}
+	});
 	var telReg = /^0\d{2,3}-?\d{7,8}$/;
 	var phoneReg = /^1[3|4|5|8]\d{9}$/;
 	var strRegex = '^((https|http|ftp|rtsp|mms)?://)' 
@@ -32,112 +51,117 @@ $(function(){
 	+ '((/?)|' // a slash isn't required if there is no file name 
 	+ '(/[0-9a-z_!~*\'().;?:@&=+$,%#-]+)+/?)$'; 
 	var re = new RegExp(strRegex);
+	var obj;
 	$("#sumbit_bt").click(function(){
 		var msg = '';
-		if($.trim($("#qymc").val()) == ''){
+		if(!isFlag){
+			msg = '该邮箱已注册';
+			obj = $("#email");
+		}else if($.trim($("#qymc").val()) == ''){
 			msg = '请填写企业名称';
-			$("#qymc").focus();
+			obj = $("#qymc");
 		}else if($.trim($("#email").val()) == ''){
 			msg = '请填写邮箱';
-			$("#email").focus();
+			obj = $("#email");
 		}else if(!(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test($("#email").val()))){
 			msg = '请填写正确的邮箱';
-			$("#email").focus();
+			obj = $("#email");
 		}else if($("#address").val() != '' && (!re.test($("#address").val()))){
 			msg = '请填写正确的网址';
-			$("#address").focus();
+			obj = $("#address");
 		}else if($("#zydy").val() == ''){
 			msg = '请填写租用地址';
-			$("#zydy").focus();
+			obj = $("#zydy");
 		}else if($("#mj").val() == ''){
 			msg = '请填写租用面积';
-			$("#mj").focus();
+			obj = $("#mj");
 		}else if(!/^\d+$/.test($("#mj").val())){
 			msg = '租用面积请填写数字';
-			$("#mj").focus();
+			obj = $("#mj");
 		}else if($("#zczb").val() == ''){
 			msg = '请填写注册资金';
-			$("#zczb").focus();
+			obj = $("#zczb");
 		}else if(!/^\d+$/.test($("#zczb").val())){
 			msg = '注册资金请填写数字';
-			$("#zczb").focus();
+			obj = $("#zczb");
 		}else if($("#frdb").val() == ''){
 			msg = '请填写法人代表';
-			$("#frdb").focus();
+			obj = $("#frdb");
 		}else if($.trim($("#frlxdh").val()) == ''){
-			$("#frlxdh").focus();
+			obj = $("#frlxdh");
 			msg = '请填写法人电话';
 		}else if ((!telReg.test($("#frlxdh").val())) && (!phoneReg.test($("#frlxdh").val()))){
 			msg = "法人电话格式不正确：区号+电话或手机号码";
-			$("#frlxdh").focus();
+			obj = $("#frlxdh");
 		}else if($("#lxr").val() == ''){
 			msg = '请填写联系人';
-			$("#lxr").focus();
+			obj = $("#lxr");
 		}else if($("#lxrdh").val() == ''){
 			msg = '请填写联系电话';
-			$("#lxrdh").focus();
+			obj = $("#lxrdh");
 		}else if((!telReg.test($("#lxrdh").val())) && (!phoneReg.test($("#lxrdh").val()))){
 			msg = "联系电话格式不正确：区号+电话或手机号码";
-			$("#lxrdh").focus();
+			obj = $("#lxrdh");
 		}else if($("#qydjzclx").val() == '0'){
 			msg = '请选择企业登记注册类型';
-			$("#qydjzclx").focus();
+			obj = $("#qydjzclx");
 		}else if($.trim($("#zzjgdm").val()) == ''){
 			msg = '请填写组织机构代码';
-			$("#zzjgdm").focus();
+			obj = $("#zzjgdm");
 		}else if (!/^[a-zA-Z0-9]{9}$/.test($("#zzjgdm").val())){
 			msg = "组织机构代码由9个字符长度由字母或数字组成";
-			$("#zzjgdm").focus();
+			obj = $("#zzjgdm");
 		}else if($("#qyclsj").val() == ''){
 			msg = '请填写企业成立时间';
-			//$("#qyclsj").focus();
+			obj = $("#qyclsj");
 		}else if($("#htstze").val() == ''){
 			msg = '请填写风险投资额';
-			$("#htstze").focus();
+			obj = $("#htstze");
 		}else if(!/^\d+$/.test($("#htstze").val())){
 			msg = '风险投资额请填写数字';
-			$("#htstze").focus();
+			obj = $("#htstze");
 		}else if($("#dzys").val() == ''){
 			msg = '请填写在孵企业大专人数';
-			$("#dzys").focus();
+			obj = $("#dzys");
 		}else if(!/^\d+$/.test($("#dzys").val())){
 			msg = '在孵企业大专人员请填写数字';
-			$("#dzys").focus();
+			obj = $("#dzys");
 		}else if($("#xnyjdxs").val() == ''){
 			msg = '请填写在孵企业大学应届生人数';
-			$("#xnyjdxs").focus();
+			obj = $("#xnyjdxs");
 		}else if(!/^\d+$/.test($("#xnyjdxs").val())){
 			msg = '在孵企业大学应届生请填写数字';
-			$("#xnyjdxs").focus();
+			obj = $("#xnyjdxs");
 		}else if($("#fmzl").val() == ''){
 			msg = '请填写发明专利';
-			$("#fmzl").focus();
+			obj = $("#fmzl");
 		}else if(!/^\d+$/.test($("#fmzl").val())){
 			msg = '发明专利请填写数字';
-			$("#fmzl").focus();
+			obj = $("#fmzl");
 		}else if($("#wgsj").val() == ''){
 			msg = '请填写外观设计';
-			$("#wgsj").focus();
+			obj = $("#wgsj");
 		}else if(!/^\d+$/.test($("#wgsj").val())){
 			msg = '外观设计请填写数字';
-			$("#wgsj").focus();
+			obj = $("#wgsj");
 		}else if($("#syxx").val() == ''){
 			msg = '请填写实用新型';
-			$("#syxx").focus();
+			obj = $("#syxx");
 		}else if(!/^\d+$/.test($("#syxx").val())){
 			msg = '实用新型请填写数字';
-			$("#syxx").focus();
+			obj = $("#syxx");
 		}else if($("#rjzzq").val() == ''){
 			msg = '请填写软件著作权';
-			$("#rjzzq").focus();
+			obj = $("#rjzzq");
 		}else if(!/^\d+$/.test($("#rjzzq").val())){
 			msg = '软件著作权请填写数字';
-			$("#rjzzq").focus();
+			obj = $("#rjzzq");
 		}
 		if(msg == ''){
 			return true;
 		}
 		alert(msg);
+		obj.focus();
 		return false;
 	});
 	$("#qymc").focus();

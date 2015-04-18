@@ -28,7 +28,7 @@ $(document).ready(function(){
 	$(function(){
 		/** 异步判断登录名是否重复 */
 		var isFlag = true;
-		$("#roleNo").blur(function(){
+		$("#roleNo").change(function(){
 			if (/^\w{6,20}$/.test($.trim(this.value))){
 				// 发送同步请求
 				$.ajax({

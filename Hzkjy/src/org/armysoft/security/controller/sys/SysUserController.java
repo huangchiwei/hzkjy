@@ -31,7 +31,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.CookieUtil;
-import com.armysoft.hzkjy.model.MemberRental;
 
 @Controller
 @RequestMapping("admin/sysUser")
@@ -280,7 +279,7 @@ public class SysUserController extends BaseController {
 		jsonObject.put("isFlag", sysUserService.getByUserNo(userNo) == null);
 		return jsonObject.toString();
 	}
-
+	
 	/**
 	 * 跳转到修改密码页面
 	 * 

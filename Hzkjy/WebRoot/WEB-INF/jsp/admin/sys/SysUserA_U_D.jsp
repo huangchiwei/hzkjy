@@ -27,7 +27,7 @@ $(document).ready(function(){
 	$(function(){
 		/** 异步判断登录名是否重复 */
 		var isFlag = true;
-		$("#userNo").blur(function(){
+		$("#userNo").change(function(){
 			if (/^\w+$/.test($.trim(this.value))){
 				// 发送异步请求
 				$.ajax({
@@ -35,7 +35,7 @@ $(document).ready(function(){
 					type : "post",
 					data : "userNo=" + $.trim(this.value),
 					dataType : "json",
-					async : true,
+					async : false,
 					success : function(data){
 						isFlag = data.isFlag;
 						if (!data.isFlag){
