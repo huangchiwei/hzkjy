@@ -166,9 +166,14 @@ function loadPageLayer2(title,url){
 		  		type:'post',
 		  		dataType:'json',
 		  		async:false,
-		  		
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("设置成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
 		  	});
-	document.getElementById("search_form").submit();
 }
 function pltzjf(){
 	var stuInput = $('input[name="qyId"]:checked');

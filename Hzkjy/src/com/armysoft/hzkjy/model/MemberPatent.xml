@@ -26,7 +26,7 @@
 	</sql>
 
 	<select id="findByKey" resultType="java.util.Map" parameterType="Long">
-		select mp.*,mb.Qymc from member_patent mp,member_basic mb where mp.MemberNo=mb.Hybh and mp.Id = #{id}
+		select mp.*,mb.Qymc from member_patent mp left join member_basic mb on mp.MemberNo=mb.Hybh where 1=1 and mp.Id = #{id}
 	</select>
 	
 	

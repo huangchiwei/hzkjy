@@ -154,11 +154,8 @@ public class  MemberPatentController extends BaseController {
 				  String[] name2 = name1.split(",");
 				  String[] type2 = type1.split(",");
 				  String[] patentNo2 = patentNo1.split(",");
-				  String Fmzl="";
-				  String Wgsj="";
-				  String Syxx="";
-				  String Rjzzq="";
-				  IncubatedEnterprises ie = incubatedEnterprisesService.findIeHybh(MemberNo, entity.getYear().toString());
+				
+				  
 				  for (int i = 0; i < type2.length; i++) {  
 					  MemberPatent mp=new MemberPatent();
 					  mp.setMonth(entity.getMonth());
@@ -169,98 +166,13 @@ public class  MemberPatentController extends BaseController {
 					  mp.setMemberNo(MemberNo);
 					 
 							/*专利各项值累加*/
-							if(ie==null){
-								MemberBasic mb=memberBasicService.findMbHybh(MemberNo);
-								if(type2[i].equals("0")){
-									Fmzl=String.valueOf(Integer.valueOf(mb.getFmzl())+1);
-								}else if(type2[i].equals("1")){
-									Wgsj=String.valueOf(Integer.valueOf(mb.getWgsj())+1);
-								}else if(type2[i].equals("2")){
-									Syxx=String.valueOf(Integer.valueOf(mb.getSyxx())+1);
-								}else if(type2[i].equals("3")){
-									Rjzzq=String.valueOf(Integer.valueOf(mb.getRjzzq())+1);
-								}
-								
-							}else{
-								if(type2[i].equals("0")){
-									Fmzl=String.valueOf(Integer.valueOf(ie.getFmzl())+1);
-								}else if(type2[i].equals("1")){
-									Wgsj=String.valueOf(Integer.valueOf(ie.getWgsj())+1);
-								}else if(type2[i].equals("2")){
-									Syxx=String.valueOf(Integer.valueOf(ie.getSyxx())+1);
-								}else if(type2[i].equals("3")){
-									Rjzzq=String.valueOf(Integer.valueOf(ie.getRjzzq())+1);
-								}
-							}
+							
 							/*end */
 					  memberPatentService.insert(mp);
 					 
 				  }
 				  /*累加值插入到孵化企业*/
-				  if(ie==null){
-					  IncubatedEnterprises ii=new IncubatedEnterprises();
-					  MemberBasic mb=memberBasicService.findMbHybh(MemberNo);
-					 ii.setDzys(mb.getDzys());
-					 if(Fmzl==""){
-						 ii.setFmzl(mb.getFmzl());
-					 }else{
-						 ii.setFmzl(Fmzl);
-					 }
-					
-					 ii.setFrdb(mb.getFrdb());
-					 ii.setFrlxdh(mb.getFrlxdh());
-					 ii.setGxjsqy(mb.getGxjsqy());
-					 ii.setHtstze(mb.getHtstze());
-					 ii.setHylb(mb.getHylb());
-					 ii.setLxr(mb.getLxr());
-					 ii.setLxrlxdh(mb.getLxrdh());
-					 ii.setLxryqy(mb.getLxryqy());
-					 ii.setQyclsj(mb.getQyclsj());
-					 ii.setQydjzclx(mb.getQydjzclx());
-					 ii.setQymc(mb.getQymc());
-					 ii.setQyrzsj(mb.getQyrzsj());
-					 ii.setQyssjsly(mb.getQyssjsly());
-					 
-					 if(Rjzzq==""){
-						 ii.setRjzzq(mb.getRjzzq());
-					 }else{
-						 ii.setRjzzq(Rjzzq);
-					 }
-				
-					 ii.setSsn(entity.getYear().toString());
-					 ii.setSynyxzscq(mb.getSynyxzscq());
-					 
-					 if(Syxx==""){
-						 ii.setSyxx(mb.getSyxx());
-					 }else{
-						 ii.setSyxx(Syxx);
-					 }
-					 
-					 if(Wgsj==""){
-						 ii.setWgsj(mb.getWgsj());
-					 }else{
-						 ii.setWgsj(Wgsj);
-					 }
-					 ii.setXnyjdxs(mb.getXnyjdxs());
-					 ii.setZczb(mb.getZczb());
-					 ii.setZzjgdm(mb.getZzjgdm());
-					 ii.setHybh(MemberNo);
-					 incubatedEnterprisesService.insert(ii);
-				  }else{
-					  if(Fmzl==""){
-							 Fmzl=ie.getFmzl();
-						 }
-					  if(Wgsj==""){
-						  Wgsj=ie.getWgsj();
-						 }
-					  if(Syxx==""){
-						  Syxx=ie.getSyxx();
-						 }
-					  if(Rjzzq==""){
-						  Rjzzq=ie.getRjzzq();
-						 }
-					  memberPatentService.updateType(Fmzl, Wgsj, Syxx, Rjzzq, MemberNo,  entity.getYear().toString());
-				  }
+				  
 				  /*end */
 			}
 		
@@ -283,12 +195,113 @@ public class  MemberPatentController extends BaseController {
 	@ResponseBody
 	public String pass(String ids,HttpServletRequest request) throws ParseException {
 		String[] idArr = ids.split(",");
-		
+		String mpType="";
+		String mpMemberNo="";
+		String mpYear="";
+		  String Fmzl="";
+		  String Wgsj="";
+		  String Syxx="";
+		  String Rjzzq="";
 		for(int id=0;id<idArr.length;id++){
 			Map<String, Object> params = new HashMap<String, Object>();
 	    	params.put("id", idArr[id].trim());
 	    	params.put("status", "1");
 	    	memberPatentService.updateStatus(params);
+	    	Map<String, Object> mp= memberPatentService.findByKey(Long.valueOf(idArr[id].toString()));
+	    	
+	    	mpType=mp.get("Type").toString();
+	    	mpMemberNo=mp.get("MemberNo").toString();
+	    	mpYear=mp.get("Year").toString();
+	    	IncubatedEnterprises ie = incubatedEnterprisesService.findIeHybh(mpMemberNo, mpYear);
+	    	if(ie==null){
+				MemberBasic mb=memberBasicService.findMbHybh(mpMemberNo);
+				if(mpType.equals("0")){
+					Fmzl=String.valueOf(Integer.valueOf(mb.getFmzl())+1);
+				}else if(mpType.equals("1")){
+					Syxx=String.valueOf(Integer.valueOf(mb.getSyxx())+1);
+					
+				}else if(mpType.equals("2")){
+					Wgsj=String.valueOf(Integer.valueOf(mb.getWgsj())+1);
+				}else if(mpType.equals("3")){
+					Rjzzq=String.valueOf(Integer.valueOf(mb.getRjzzq())+1);
+				}
+				
+			}else{
+				if(mpType.equals("0")){
+					Fmzl=String.valueOf(Integer.valueOf(ie.getFmzl())+1);
+				}else if(mpType.equals("1")){
+					Syxx=String.valueOf(Integer.valueOf(ie.getSyxx())+1);
+				}else if(mpType.equals("2")){
+					Wgsj=String.valueOf(Integer.valueOf(ie.getWgsj())+1);
+				}else if(mpType.equals("3")){
+					Rjzzq=String.valueOf(Integer.valueOf(ie.getRjzzq())+1);
+				}
+				
+			}
+	    	if(ie==null){
+				  IncubatedEnterprises ii=new IncubatedEnterprises();
+				  MemberBasic mb=memberBasicService.findMbHybh(mpMemberNo);
+				 ii.setDzys(mb.getDzys());
+				 if(Fmzl==""){
+					 ii.setFmzl(mb.getFmzl());
+				 }else{
+					 ii.setFmzl(Fmzl);
+				 }
+				
+				 ii.setFrdb(mb.getFrdb());
+				 ii.setFrlxdh(mb.getFrlxdh());
+				 ii.setGxjsqy(mb.getGxjsqy());
+				 ii.setHtstze(mb.getHtstze());
+				 ii.setHylb(mb.getHylb());
+				 ii.setLxr(mb.getLxr());
+				 ii.setLxrlxdh(mb.getLxrdh());
+				 ii.setLxryqy(mb.getLxryqy());
+				 ii.setQyclsj(mb.getQyclsj());
+				 ii.setQydjzclx(mb.getQydjzclx());
+				 ii.setQymc(mb.getQymc());
+				 ii.setQyrzsj(mb.getQyrzsj());
+				 ii.setQyssjsly(mb.getQyssjsly());
+				 
+				 if(Rjzzq==""){
+					 ii.setRjzzq(mb.getRjzzq());
+				 }else{
+					 ii.setRjzzq(Rjzzq);
+				 }
+			
+				 ii.setSsn(mpYear);
+				 ii.setSynyxzscq(mb.getSynyxzscq());
+				 
+				 if(Syxx==""){
+					 ii.setSyxx(mb.getSyxx());
+				 }else{
+					 ii.setSyxx(Syxx);
+				 }
+				 
+				 if(Wgsj==""){
+					 ii.setWgsj(mb.getWgsj());
+				 }else{
+					 ii.setWgsj(Wgsj);
+				 }
+				 ii.setXnyjdxs(mb.getXnyjdxs());
+				 ii.setZczb(mb.getZczb());
+				 ii.setZzjgdm(mb.getZzjgdm());
+				 ii.setHybh(mpMemberNo);
+				 incubatedEnterprisesService.insert(ii);
+			  }else{
+				  if(Fmzl==""){
+						 Fmzl=ie.getFmzl();
+					 }
+				  if(Wgsj==""){
+					  Wgsj=ie.getWgsj();
+					 }
+				  if(Syxx==""){
+					  Syxx=ie.getSyxx();
+					 }
+				  if(Rjzzq==""){
+					  Rjzzq=ie.getRjzzq();
+					 }
+				  memberPatentService.updateType(Fmzl, Wgsj, Syxx, Rjzzq, mpMemberNo, mpYear);
+			  }
 		}
 
 		return "";
@@ -319,7 +332,13 @@ public class  MemberPatentController extends BaseController {
 	 */
 	@RequestMapping("/outExcel/1.html")
 	public void outExcel(Model model,Integer year,Integer month,HttpServletRequest request,HttpServletResponse response) {
-		String title=year+"琶洲园区企业专利获得情况"+(month==0?"1~6月":"7~12月");
+		
+		String title;
+		if(month!=null){
+			title=year+"琶洲园区企业专利获得情况"+(month==0?"1~6月":"7~12月");
+		}else{
+			title=year+"琶洲园区企业专利获得情况";
+		}
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "RowNo","序号"});
 		headData.add(new Object[] { "Qymc","企业"});

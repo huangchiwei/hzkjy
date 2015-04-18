@@ -38,6 +38,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.armysoft.security.annotation.PermissionsAnno;
 
+import com.alibaba.fastjson.JSONObject;
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
@@ -351,8 +352,9 @@ public class  ChooseSelectController extends BaseController {
 	
 	@RequestMapping("ZShtg.html")
 	@ResponseBody
-	public String ZShtg(String settime,String examineTime,HttpServletRequest request) throws ParseException {
+	public String ZShtg(String settime,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
 		Map<String, Object> params = new HashMap<String, Object>();
+		JSONObject jsonObject = new JSONObject();
 		List list =service.getJjybsz(params);
 		
 		for(int id=0;id<list.size();id++){
@@ -383,9 +385,15 @@ public class  ChooseSelectController extends BaseController {
 			Eccservice.insert(ert);
 		}
 		
-		request.setAttribute("exl", "ok");
-		String exl="ok";
-		return exl;
+		jsonObject.put("exl","ok");
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 	
 	@RequestMapping(value = "/Zind.html")
