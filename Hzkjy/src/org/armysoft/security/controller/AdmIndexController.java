@@ -32,8 +32,10 @@ public class AdmIndexController {
 				 Constants.ADMIN_KEY));
 			String tcnr="";
 		 if(list!=null){
-				
+			 req.setAttribute("countNum",list.size());
 			 req.setAttribute("bslist", list);
+			 req.setAttribute("userNo", CookieUtil.getUserCookieValue(req,
+					 Constants.ADMIN_KEY));
 			}
 		return "admin/base/" + page;
 	}

@@ -251,6 +251,116 @@
 	font-weight: bold;
 	padding: 10px;
 }
+.content_box .c_b_div {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	padding: 10px;
+}
+.content_box .c_b_box {
+	margin-top: 10px;
+	overflow: hidden;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.content_box  .c_b_box  .c_b_box_left {
+	float: left;
+	width: 350px;
+	border: 1px solid #b7c7cf;
+}
+.content_box .c_b_box .c_b_box_left .c_b_box_title {
+	background-color: #ddf2fe;
+	padding: 7px;
+	font-size: 14px;
+	color: #333333;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #BDE6FD;
+}
+.content_box .c_b_box .c_b_box_left .c_b_box_title .more {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.content_box  .c_b_box  .c_b_box_left  .c_b_box_title  .more  a  {
+	font-size: 12px;
+	text-decoration: none;
+	color: #064DBC;
+}
+
+
+.content_box .c_b_box .c_b_box_right .c_b_box_title {
+	background-color: #ddf2fe;
+	padding: 7px;
+	font-size: 14px;
+	color: #333333;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #BDE6FD;
+}
+.content_box .c_b_box .c_b_box_right .c_b_box_text {
+	padding: 10px;
+}
+.content_box .c_b_box .c_b_box_right .c_b_box_text a {
+	display: block;
+	float: left;
+	padding-right: 10px;
+	padding-left: 5px;
+	padding-bottom: 10px;
+}
+
+.content_box .c_b_box .c_b_box_left .c_b_box_text {
+	padding: 10px;
+}
+.content_box .c_b_box .c_b_box_left .c_b_box_text li {
+	height: 28px;
+	line-height: 28px;
+	background-image: url(../../default/images/dian3.png);
+	background-repeat: no-repeat;
+	background-position: 0px;
+	padding-left: 15px;
+}
+.content_box .c_b_box .c_b_box_left .c_b_box_text li a {
+	font-size: 14px;
+	color: #003399;
+	text-decoration: none;
+}
+.content_box .c_b_box .c_b_box_left .c_b_box_text li a:hover {
+	color: #FF3333;
+	text-decoration: underline;
+}
+.content_box .c_b_box .c_b_box_left .c_b_box_text li span {
+	float: right;
+	color: #666666;
+}
+
+.content_box .c_b_box .c_b_box_right {
+	margin-left: 370px;
+	border: 1px solid #b7c7cf;
+	width: 310px;
+	height: 279px;
+}
+
+.content_box .c_b_div h3 {
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 30px;
+	color: #333333;
+}
+.content_box .c_b_div h4 {
+	font-size: 12px;
+	color: #333333;
+	line-height: 30px;
+}
+.content_box .c_b_div h4 a {
+	color: #0066CC;
+	text-decoration: none;
+}
+.content_box .c_b_div h4 a:hover {
+	color: #FF3300;
+}
+
 .content_box h2 {
 	font-size: 16px;
 	font-weight: bold;
@@ -912,6 +1022,7 @@ text-indent: 2px; //option在FF等非IE浏览器缩进2px
 	padding: 15px;
 	margin-right: auto;
 	margin-left: auto;
+	height:500px;
 }
 .admin_table h1{
 	margin-right: auto;

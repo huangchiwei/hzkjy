@@ -15,7 +15,7 @@ code {font-style:normal;font-weight:normal;}
 cite {font-style:normal;font-weight:normal;}
 caption {font-style:normal;font-weight:normal;}
 address {font-style:normal;font-weight:normal;}
-ul {list-style:none;}
+ul,li {list-style:none;}
 ol {list-style:none;}
 th {text-align:left;}
 caption {text-align:left;}
