@@ -242,6 +242,7 @@ public class  EnterpriseRentalController extends BaseController {
 			}
 			service.insert(entity);
 		} else {
+			entity.setFbzt("已提交");
 			service.update(entity);
 		}
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();

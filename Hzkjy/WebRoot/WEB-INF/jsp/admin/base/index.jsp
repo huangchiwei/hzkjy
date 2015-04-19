@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>广州市海珠科技产业企业管理平台</title>
+<title>${userType=='4401'?'广州市海珠科技产业企业管理平台':'广州市海珠科技产业园后台管理系统'}</title>
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="expires" content="0"/> 
@@ -49,7 +49,7 @@ function switchSysBar(){
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
   <tbody><tr>
     <td valign="top" height="70"><div class="main_top relative">
- <div class="top_logo">广州市海珠科技产业企业管理平台</div>
+ <div class="top_logo">${userType=='4401'?'广州市海珠科技产业企业管理平台':'广州市海珠科技产业园后台管理系统'}</div>
  <div class="top_toolbar">
   <div class="top_t_time"  id="showtime"></div>
   <div class="div">

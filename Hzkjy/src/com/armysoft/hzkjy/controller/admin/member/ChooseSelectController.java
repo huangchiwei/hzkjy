@@ -252,6 +252,8 @@ public class  ChooseSelectController extends BaseController {
 		map.put("Id", mb.getId());
 		map.put("Rzqy", mb.getRzqy() + "");
 		map.put("Hybh", mb.getHybh() + "");
+	  MemberBasic	mc=service.findByHybh(mb.getHybh());
+	 
 		String Hyfl = "";
 		if(mb.getHyfl().equals("1")){
 			Hyfl="生物/医药技术业";
@@ -295,6 +297,8 @@ public class  ChooseSelectController extends BaseController {
 		map.put("Tjfzr", mb.getTjfzr() + "");
 		map.put("Tbrlxdh", mb.getTbrlxdh() + "");
 		map.put("Tbrq", mb.getTbrq() + "");
+		map.put("Zzjgdm", mc.getZzjgdm() + "");
+		 
 
 	}
 	

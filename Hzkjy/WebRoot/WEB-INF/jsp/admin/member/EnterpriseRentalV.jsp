@@ -131,6 +131,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	<tr align="center">
      <th>房号:</th>
      <td colspan="3">
+     <input id="fbzt" name="fbzt" type="hidden" value="${model.fbzt}"/>
      	<input id="zydy" name="zydy" type="text" value="${model.zydy}" class="input_a1"  maxlength="100" />
      </td>
      <th align="center">会员编号：</th>

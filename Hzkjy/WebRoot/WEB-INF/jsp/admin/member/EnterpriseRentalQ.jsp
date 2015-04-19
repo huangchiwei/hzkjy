@@ -24,6 +24,7 @@ $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true);
 var userNo="${userNo}";
 if(userNo=="4401"){
 $("#fhymc").hide();
+$("#pltj").hide();
 
 
 
@@ -204,7 +205,7 @@ function loadPageLayer2(title,url){
 							
         	
         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
-        <input id="" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
+        <input id="pltj" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
     
     </div>

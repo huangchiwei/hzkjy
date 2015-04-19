@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HuiZhi" pageWidth="842" pageHeight="640" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7bd2e781-fb74-4f9a-861e-a35b725d0420">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="244"/>
+	<property name="ireport.y" value="206"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -38,6 +38,7 @@
 	<field name="Tbrlxdh" class="java.lang.String"/>
 	<field name="Tbrq" class="java.lang.String"/>
 	<field name="JjzbY" class="java.lang.String"/>
+	<field name="Zzjgdm" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -444,7 +445,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Hybh}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Zzjgdm}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="98ffcda1-cd55-4946-8a0b-f8d00dba96bc" key="staticText-4" x="637" y="209" width="116" height="27"/>

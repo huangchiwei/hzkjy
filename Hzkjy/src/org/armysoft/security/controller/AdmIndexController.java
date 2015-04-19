@@ -34,8 +34,11 @@ public class AdmIndexController {
 		 if(list!=null){
 			 req.setAttribute("countNum",list.size());
 			 req.setAttribute("bslist", list);
-			 req.setAttribute("userNo", CookieUtil.getUserCookieValue(req,
-					 Constants.ADMIN_KEY));
+			 req.setAttribute("userNo", CookieUtil.getUserCookieValue(req,Constants.ADMIN_KEY));
+			 String userType=CookieUtil.getUserCookieValue(req,Constants.ADMIN_KEY).toString();
+			 if(userType!=null && userType!=""){
+			 req.setAttribute("userType", userType.substring(0, 4));
+			 }
 			}
 		return "admin/base/" + page;
 	}
