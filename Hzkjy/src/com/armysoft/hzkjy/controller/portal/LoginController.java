@@ -51,7 +51,8 @@ public class LoginController extends BaseController {
 			@CookieValue(value = Constants.ADMIN_KEY, required = false) String key) {
 		Map<String,String> map = new HashMap<String,String>();
 		try {
-			if (StringUtils.hasText(key)) {// 已经登录
+			if (StringUtils.hasText(key)) {//已经登录
+				map.put("flag", "1");
 				return map;
 			}
 			if(!userNo.startsWith("440")){
