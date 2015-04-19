@@ -11,6 +11,26 @@
 			rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 	<script>
+	//设为首页
+	
+	function SetHome(obj){
+	
+	    try{
+	        obj.style.behavior='url(#default#homepage)';
+	        obj.setHomePage('http://122.13.2.93:8080/Hzkjy');
+	    }catch(e){
+	        if(window.netscape){
+	            try{
+	                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+	            }catch(e){
+	                alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+	            };
+	        }else{
+	            alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将'http://122.13.2.93:8080/Hzkjy'设置为首页。");
+	        };
+	    };
+	};
+		
 	 function searchFun(){
 			var searchTxt= $("#searchTxt").val();
 			if(searchTxt=="请输入关键词"){
@@ -52,7 +72,7 @@ $(function(){
 <div class="top">
  <div class="top_970">
   <div class="top_right">
-   <div class="i_s_d"><span><a href="#">设为首页</a></span><span><a onclick="addFavorite(window.location,document.title)" style="cursor:pointer">加入收藏</a></span><span><a href="${ctx}/admin/index.html" target="_blank">网站后台</a></span></div>
+   <div class="i_s_d"><span><a  href="javascript:void(0);" onclick="SetHome(this,'http://122.13.2.93:8080/Hzkjy');">设为首页</a></span><span><a onclick="addFavorite(window.location,document.title)" style="cursor:pointer">加入收藏</a></span><span><a href="${ctx}/admin/index.html" target="_blank">网站后台</a></span></div>
    <div class="search">
     <div class="search_box">
      <form action='${ctx}/portal/news/search/1.html' method="post">
