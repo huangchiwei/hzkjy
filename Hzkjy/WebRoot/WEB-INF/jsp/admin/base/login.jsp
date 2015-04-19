@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     
-    <title>广州市海珠科技产业园后管理系统</title>
+    <title>广州市海珠科技产业企业管理平台</title>
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
 <meta http-equiv="expires" content="0"/>
