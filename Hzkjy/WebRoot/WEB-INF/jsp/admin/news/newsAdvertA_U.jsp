@@ -26,6 +26,7 @@ function onchangeFun(value){
 	
 }
 function submitFun(){
+	
 	var title=$("#title").val();
 	if(title==""){
 		alert("标题不允许为空!");
@@ -38,7 +39,7 @@ function submitFun(){
 		$("#linkUrl").focus();
 		return false;
 		}
-	var oriFile=${entity.path};
+	var oriFile="${entity.path}";
 	if(oriFile!=""){
 		var file=$("#file").val();
 		if(file==""){
@@ -66,7 +67,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <div class="btn_box">
   <input type="button" value="返回" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/newsAdvert/list/1.html'"/>
    </div>
-<form id="add_form" action='${ctx }/admin/newsAdvert/save.html'  method="post" enctype="multipart/form-data" onsubmit="return submitFun();">
+<form id="add_form" action='${ctx }/admin/newsAdvert/save.html'  method="post" enctype="multipart/form-data" onsubmit="return submitFun()">
 	<input type="hidden" name="type" value="${type}"/>
 	<input type="hidden" name="id" value="${entity.id}"/>
 
