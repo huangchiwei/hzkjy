@@ -203,7 +203,6 @@ $(function(){
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;电子邮箱：</span>
       <span class="span1"><input name="email" id="email" type="text" size="25" class="input" maxlength="100"/>
-      <a class="easyui-linkbutton easyui-tooltip" title="如：abc@163.com" data-options="iconCls:'icon-help'"></a>
       </span>
      </div>
      <div class="li">
@@ -251,6 +250,7 @@ $(function(){
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;组织机构代码：</span>
       <span class="span1"><input name="zzjgdm" id="zzjgdm" type="text" class="input" size="25" maxlength="30"/>
+      <a class="easyui-linkbutton easyui-tooltip" title="组织机构代码由9个字符长度由字母或数字组成" data-options="iconCls:'icon-help'"></a>
       </span>
      </div>
      <div class="li">
