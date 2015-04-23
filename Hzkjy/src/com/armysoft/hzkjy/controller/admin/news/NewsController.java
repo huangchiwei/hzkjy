@@ -62,7 +62,7 @@ public class  NewsController extends BaseController {
 	@PermissionsAnno("news_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
-		if(cateCode.startsWith("park_")){
+		if(cateCode.startsWith("park_")||cateCode.equals("contact_us")){
 			model.addAttribute("cateCode", cateCode);			
 			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
 			 model.addAttribute("category", newsService.getCategory(cateCode));
@@ -129,7 +129,7 @@ public class  NewsController extends BaseController {
 		
 		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
 		entity.setCreateUser(key);
-		if(cateCode.startsWith("park_")){
+		if(cateCode.startsWith("park_")||cateCode.equals("contact_us")){
 			Map<String, Object> e=newsService.getByCateCode(cateCode);
 			if(e!=null){
 				newsService.update(entity);	

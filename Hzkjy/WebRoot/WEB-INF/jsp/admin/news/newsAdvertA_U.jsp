@@ -22,6 +22,8 @@ function onchangeFun(value){
 		$("#redmsg").html("建议690*90px");
 		}else if(value=="2"){
 		$("#redmsg").html("建议260*70px");
+		}else if(value=="3"){
+		$("#redmsg").html("建议970*100px");
 		}
 	
 }
@@ -40,7 +42,7 @@ function submitFun(){
 		return false;
 		}
 	var oriFile="${entity.path}";
-	if(oriFile!=""){
+	if(oriFile==""){
 		var file=$("#file").val();
 		if(file==""){
 			alert("附件不允许为空!");
@@ -83,6 +85,7 @@ html { overflow:-moz-scrollbars-vertical;}
      	<option value="0" <c:if test="${entity.adType==0}">selected="selected"</c:if>>首页轮播图</option>
      	<option value="1" <c:if test="${entity.adType==1}">selected="selected"</c:if>>首页中间位置图</option>
      	<option value="2" <c:if test="${entity.adType==2}">selected="selected"</c:if>>首页右下角位置图</option>
+     	<option value="3" <c:if test="${entity.adType==3}">selected="selected"</c:if>>首页底部位置图</option>
      	</select>
      </td>
    </tr>
@@ -118,6 +121,9 @@ html { overflow:-moz-scrollbars-vertical;}
 									</c:when>
 										<c:when test="${entity.adType=='2'}">
 										建议260*70px
+									</c:when>
+									<c:when test="${entity.adType=='3'}">
+										建议970*100px
 									</c:when>
 									<c:otherwise>
 									建议970*300px

@@ -49,6 +49,8 @@ public class IndexController extends BaseController{
 		model.addAttribute("adList1",newsAdvertService.getByAdType(params));
 		params.put("adType", "2");
 		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
+		params.put("adType", "3");
+		model.addAttribute("adList3",newsAdvertService.getByAdType(params));
 		//model.addAttribute("adList", newsAdvertService.getByPage(null, pager));
 		
 		params.clear();

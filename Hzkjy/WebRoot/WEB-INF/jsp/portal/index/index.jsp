@@ -112,7 +112,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
       <c:if test="${sta.index<4}">
       <li <c:if test="${sta.index==0}">style="z-index:1"</c:if>><a href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">
        <c:if test="${fn:contains(o.src, 'userfiles')==true}"><img src="${o.src}" width="300" height="200"/></c:if>
-      <c:if test="${fn:contains(o.src, 'userfiles')==false}"><img src="${ctx}/theme/portal/default/images/2.jpg" width="300" height="200" /></c:if>
+      <c:if test="${fn:contains(o.src, 'userfiles')==false}"><img src="${ctx}/theme/portal/default/images/default.png" width="300" height="200" /></c:if>
      </a></li>
       </c:if>
        </c:forEach>
@@ -211,13 +211,13 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
   </div>
   <div class="left_box">
    <div class="left_box_title relative">
-    <h1>友情连接</h1>
+    <h1>友情链接</h1>
     <span>Links</span>
     <div class="more"><a href="#"></a></div>
    </div>
    <div class="links">
   <c:forEach items="${newsLinkList}" varStatus="index" var="o" >  
-    <a href="${o.UrlLink }">${o.Name }</a>
+    <a href="${o.UrlLink }" target="_blank">${o.Name }</a>
     </c:forEach>
    </div>
   </div>
@@ -267,6 +267,7 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
 								</c:choose><%--
   <a href="http://znpp.hzkjcyy.com" target="_blank">
   <img src="${ctx}/theme/portal/default/images/ad_260.png" /></a></div>--%>
+  </div>
   <div class="left_box">
    <div class="left_box_title relative">
     <h4>入驻企业</h4>
@@ -283,10 +284,11 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
      </div>
    </div>
   </div>
- </div>
 </div>
+</div>
+<div class="ad_970"><img src="${ctx}${adList3[0].path}" width="970" height="100" /></div>
 <!--bot-->
 <%--<div class="bot">copyright © 1998-2015 广州市海珠科技产业园 All Rights Reserved 粤ICP备1022679号</div>
-
---%></body>
+--%>
+</body>
 </html>

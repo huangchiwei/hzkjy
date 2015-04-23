@@ -72,7 +72,7 @@ $(function(){
 <div class="top">
  <div class="top_970">
   <div class="top_right">
-   <div class="i_s_d"><span><a  href="javascript:void(0);" onclick="SetHome(this,'http://122.13.2.93:8080/Hzkjy');">设为首页</a></span><span><a onclick="addFavorite(window.location,document.title)" style="cursor:pointer">加入收藏</a></span><span><a href="${ctx}/admin/index.html" target="_blank">网站后台</a></span></div>
+   <div class="i_s_d"><span><a  href="javascript:void(0);" onclick="SetHome(this,'http://122.13.2.93:8080/Hzkjy');">设为首页</a></span><span><a onclick="addFavorite(window.location,document.title)" style="cursor:pointer">加入收藏</a></span><span><a href="${ctx}/admin/index.html" target="_blank">网站后台</a></span><span><a href="http://znpp.hzkjcyy.com/system/login" target="_blank">智能匹配系统后台</a></span></div>
    <div class="search">
     <div class="search_box">
      <form action='${ctx}/portal/news/search/1.html' method="post">
@@ -96,15 +96,67 @@ $(function(){
     <a href='${ctx }/portal/news/list/1.html?cateCode=service_apply' class="relative <c:if test="${cateCode=='service_apply'}">thisclass</c:if>" >项目申报<div class="img_float"></div></a>
     <a href='${ctx }/portal/news/list/1.html?cateCode=service_business' class="relative <c:if test="${cateCode=='service_business'}">thisclass</c:if>" >招商信息<div class="img_float"></div></a>
     <a href='${ctx }/portal/news/list/1.html?cateCode=train_notice' class="relative <c:if test="${cateCode=='train_notice'||cateCode=='train_file'}">thisclass</c:if>" >交流培训<div class="img_float"></div></a>
-   <a href="${ctx }/portal/news/contactUs.html" class="relative <c:if test="${cateCode=='contactUs'}">thisclass</c:if>" >联系我们</a>
+   <a href="${ctx }/portal/news/list/1.html?cateCode=contact_us" class="relative <c:if test="${cateCode=='contactUs'}">thisclass</c:if>" >联系我们</a>
 </div>
 </div>
 
         <decorator:body />
     
 	<!--bot-->
-		<div class="bot">
-		copyright © 1998-2015 广州市海珠科技产业园 All Rights Reserved <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备1022679号</a> </div>
+		<div class="bot">版权所属：广州市海珠科技产业园有限公司&nbsp;&nbsp;&nbsp;ICP备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15012072号</a><br />
+		联系方式：广州市新港东路2429号琶洲科技园&nbsp;&nbsp;&nbsp;电话：020-89232382、020-89232477<br /><script language=JavaScript>
+<!-- 
+var caution = false
+function setCookie(name, value, expires, path, domain, secure) {
+var curCookie = name + "=" + escape(value) +
+((expires) ? "; expires=" + expires.toGMTString() : "") +
+((path) ? "; path=" + path : "") +
+((domain) ? "; domain=" + domain : "") +
+((secure) ? "; secure" : "")
+if (!caution || (name + "=" + escape(value)).length <= 4000)
+document.cookie = curCookie
+else
+if (confirm("Cookie exceeds 4KB and will be cut!"))
+document.cookie = curCookie
+}
+function getCookie(name) {
+var prefix = name + "="
+var cookieStartIndex = document.cookie.indexOf(prefix)
+if (cookieStartIndex == -1)
+return null
+var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
+if (cookieEndIndex == -1)
+cookieEndIndex = document.cookie.length
+return unescape(document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex))
+}
+function deleteCookie(name, path, domain) {
+if (getCookie(name)) {
+document.cookie = name + "=" + 
+((path) ? "; path=" + path : "") +
+((domain) ? "; domain=" + domain : "") +
+"; expires=Thu, 01-Jan-70 00:00:01 GMT"
+}
+}
+function fixDate(date) {
+var base = new Date(0)
+var skew = base.getTime()
+if (skew > 0)
+date.setTime(date.getTime() - skew)
+}
+var now = new Date()
+fixDate(now)
+now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000)
+var visits = getCookie("counter")
+if (!visits)
+visits = 1
+else
+visits = parseInt(visits) + 1
+setCookie("counter", visits, now)
+document.write("您是第&nbsp;" + visits + "&nbsp;位访问本网站的！")
+// -->
+</script>
+
+</div>
  <!--bot_end-->
     </body>
 </html>
