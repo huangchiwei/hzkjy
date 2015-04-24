@@ -153,9 +153,9 @@ var ShowPre1 = new ShowPre({box:"banner_index",Pre:"banner_index_pre",Next:"bann
      <ul>
   
        <c:forEach items="${noticeList}" varStatus="index" var="o" >  
-        <c:if test="${index.index>0}">
+      
           <li><span><fmt:formatDate value="${o.realTime}" pattern="yyyy-MM-dd"/> </span><a href="${ctx }/portal/news/detail/${o.id}.html?cateCode=${o.cateCode}">${fn:substring(o.title, 0, 18)}</a></li>
-       </c:if>
+      
        </c:forEach>
       
       

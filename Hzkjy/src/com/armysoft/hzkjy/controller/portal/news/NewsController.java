@@ -78,7 +78,7 @@ public class  NewsController extends BaseController {
         model.addAttribute("list", list);
         model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("page", pager);
-		if(cateCode.equals("park_frame")||cateCode.equals("park_intro")||cateCode.equals("park_site")||cateCode.equals("contact_us")){
+		if(cateCode.equals("park_frame")||cateCode.equals("park_intro")||cateCode.equals("park_site")||cateCode.equals("contact_us")||cateCode.startsWith("service_inpark_")||cateCode.startsWith("service_outpark_")){
 			String content="";
 			if(list!=null&&list.size()>0&&list.get(0)!=null) content=list.get(0).get("content").toString();
 			model.addAttribute("content", content);
