@@ -4,18 +4,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>广州市海珠科技产业园有限公司</title>
-		<script>
-	
-	function delayURL() {//定时
-		var time = document.getElementById("time");
-		if (time.innerHTML > 0) {
-			time.innerHTML = time.innerHTML - 1;
-		} else {
-			location.href = '${ctx}/portal/index.html';
-		}
-		setTimeout(delayURL, 1000);
-	}
-</script>
 	</head>
 
 	<body>
@@ -26,7 +14,7 @@
 				</h1>
 				<div class="location">
 					当前所在位置：
-					<a href="#">首页</a>&nbsp;&gt;&nbsp;会员注册
+					<a href="${ctx}/portal/index.html">首页</a>&nbsp;&gt;&nbsp;会员注册
 				</div>
 			</div>
 			<div class="reg_ok">
@@ -52,7 +40,7 @@
 						</font>
 					</p>
 					<div class="btn_box">
-					<input onclick="javascript:location.href='${ctx}/portal/index.html'" id="sumbit_bt" type="button" class="btn_login" value="马上登录" />
+					<input onclick="javascript:location.href='${ctx}/admin/index.html'" id="sumbit_bt" type="button" class="btn_login" value="马上登录" />
      				</div>
 				</div>
 

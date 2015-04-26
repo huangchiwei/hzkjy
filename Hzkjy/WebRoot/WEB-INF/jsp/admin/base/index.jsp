@@ -54,7 +54,7 @@ function switchSysBar(){
   <div class="top_t_time"  id="showtime"></div>
   <div class="div">
    <div class="user">${userNo}</div>
-      <div class="home"><a href="javascript:openNew('welcome','${ctx}/centerPage/welcome.html')">首页</a></div>
+      <div class="home"><a href="${ctx}/portal/index.html">首页</a></div>
    <div class="set"><a href="javascript:openNew('修改密码','${ctx}/admin/sysUser/toModifyPwd.html')">修改密码</a></div>
    <div class="quit"><a href="${ctx}/admin/loginOut.html">退出</a></div>
   </div>

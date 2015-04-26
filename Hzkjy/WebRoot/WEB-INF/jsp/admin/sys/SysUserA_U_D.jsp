@@ -13,7 +13,7 @@
 <link type="text/css" rel="stylesheet" href="${ctx}/js/formValidator/style/validatorTidyMode.css" />
 <script src="${ctx}/js/formValidator/formValidator-4.0.1.js" type="text/javascript"></script>
 <script src="${ctx}/js/formValidator/formValidatorRegex.js" type="text/javascript"></script>
-<script language="javascript" src="${ctx}/js/pages/admin/sys/SysUserA_U_D.js" type="text/javascript"></script>
+<script language="javascript" src="${ctx}/js/jsp/sys/SysUserA_U_D.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){

@@ -71,7 +71,7 @@ public class MemberBasicController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("regist")
-	public String regist(MemberBasic entity,String email,String token, Model model,HttpServletRequest req) {
+	public String regist(MemberBasic entity,String email,String token, Model model,HttpServletRequest req,HttpServletResponse response) {
 		Object oldToken = req.getSession().getAttribute("token");
 		if(oldToken != null && oldToken.toString().equals(token)){
 			entity.setQymcpy(Cn2Spell.converterToFirstSpell(StringFilter(entity.getQymc())));
@@ -95,6 +95,7 @@ public class MemberBasicController extends BaseController {
 			user.setStatus(1);
 			user.setCreateDate(new Date());
 			service.insertMemberAndUser(entity,user);
+			super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
 			initResourcesMap.init();
 			model.addAttribute("userNo", entity.getHybh());
 			model.addAttribute("password", Constants.DEFAULT_PASSWORD);

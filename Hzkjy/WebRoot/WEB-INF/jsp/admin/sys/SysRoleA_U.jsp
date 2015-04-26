@@ -14,7 +14,7 @@
 <script src="${ctx}/js/formValidator/formValidator-4.0.1.js" type="text/javascript"></script>
 
 <script src="${ctx}/js/formValidator/formValidatorRegex.js" type="text/javascript"></script>
-<script language="javascript" src="${ctx}/js/pages/admin/sys/SysRoleA_U.js" type="text/javascript"></script>
+<script language="javascript" src="${ctx}/js/jsp/sys/SysRoleA_U.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
