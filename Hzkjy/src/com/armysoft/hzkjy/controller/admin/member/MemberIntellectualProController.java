@@ -146,7 +146,7 @@ public class  MemberIntellectualProController extends BaseController {
 			String[] projectLevelA=entity.getProjectLevel().split(",");
 			String[] applyAmountA=entity.getApplyAmount().split(",");
 			String[] setUpAmountA=entity.getSetUpAmount().split(",");
-			 
+			String[] setProjectTypeA=  entity.getProjectType().split(",");
 			if(entity.getMemberNo()==null||entity.getMemberNo().isEmpty()){
 				String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 				entity.setMemberNo(userNo);
@@ -158,6 +158,7 @@ public class  MemberIntellectualProController extends BaseController {
 				 entity.setProjectLevel(projectLevelA[i]);
 				 entity.setApplyAmount(applyAmountA[i]);
 				 entity.setSetUpAmount(setUpAmountA[i]);
+				 entity.setProjectType(setProjectTypeA[i]);
 					memberIntellectualProService.insert(entity);
 			 }
 		

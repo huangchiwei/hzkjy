@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq</sql>
+	  ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq,Zxyjfph,Zlbzjfph</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from enterprise_rental
@@ -104,11 +104,15 @@
 				                     <result column="Glffph" property="glffph" />
 				                     <result column="Sdfph" property="sdfph" />
 				                     <result column="Kprq" property="kprq" />
+				                     
+				                     <result column="Zxyjfph" property="zxyjfph" />
+				                     <result column="Zlbzjfph" property="zlbzjfph" />
+				                     
 				
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select   ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq
+select   ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq,Zxyjfph,Zlbzjfph
 	 from enterprise_rental
 		where 1 = 1
 		
@@ -125,7 +129,7 @@ select   ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shz
 	</select>		
 	
 	<select id="getFpqsb" resultType="java.util.Map" parameterType="java.util.Map">
-select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技大楼'    when a.sslq='2' then 'A栋'  when a.sslq='3' then 'B栋'  when a.sslq='4' then 'C栋'  when a.sslq='5' then 'D栋'  when a.sslq='6' then 'E栋' end sslqname,case when b.flbh='1' then a.Qyzj when b.flbh='2' then a.Glfwf  when b.flbh='3' then a.Qysf+a.Qydf end flje,case when b.flbh='1' then a.zjfph when b.flbh='2' then a.glffph  when b.flbh='3' then a.sdfph end flfph,' ' qssj,' ' qsbz from enterprise_rental a left join db_fl b on 1=1 ,(Select (@rowNum :=0) ) c  where 1=1 
+select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技大楼'    when a.sslq='2' then 'A栋'  when a.sslq='3' then 'B栋'  when a.sslq='4' then 'C栋'  when a.sslq='5' then 'D栋'  when a.sslq='6' then '琶洲科技创意中心' end sslqname,case when b.flbh='1' then a.Qyzj when b.flbh='2' then a.Glfwf  when b.flbh='3' then a.Qysf+a.Qydf   when b.flbh='4' then a.Zxyj   when b.flbh='5' then a.Zlbzj end flje,case when b.flbh='1' then a.zjfph when b.flbh='2' then a.glffph  when b.flbh='3' then a.sdfph when b.flbh='4' then a.zxyjfph when b.flbh='5' then a.zlbzjfph end flfph,' ' qssj,' ' qsbz from enterprise_rental a left join db_fl b on 1=1 ,(Select (@rowNum :=0) ) c  where 1=1 
 			<if test="fjfyd != null and fjfyd!= ''">
 		and a.Jfyd  = #{fjfyd}
 		</if>
@@ -166,7 +170,7 @@ select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技�
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="enterpriseRental">
-		insert into enterprise_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq)
+		insert into enterprise_rental(Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Zjfph,Glffph,Sdfph,Kprq,Zxyjfph,Zlbzjfph)
 	
 		values(
 			#{hybh} 		
@@ -245,6 +249,9 @@ select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技�
 	          , #{glffph}
 	          , #{sdfph}
 	          , #{kprq}
+	          , #{zxyjfph}
+	          , #{zlbzjfph}
+	    
 
 		  )
 		</insert>
@@ -328,6 +335,8 @@ select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技�
                     ,Glffph = #{glffph}
                     ,Sdfph = #{sdfph}
                     ,Kprq = #{kprq}
+                     ,Zxyjfph = #{zxyjfph}
+                      ,Zlbzjfph = #{zlbzjfph}
 		 							    where ID = #{id}
 	</update>
 

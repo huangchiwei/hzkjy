@@ -43,10 +43,12 @@ import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.DbMessage;
+import com.armysoft.hzkjy.model.IncubatedEnterprises;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.DbMessageService;
+import com.armysoft.hzkjy.service.member.IncubatedEnterprisesService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 
 
@@ -60,6 +62,9 @@ public class  MemberBasicController extends BaseController {
 	private DbMessageService dbservice;
 	@Resource
 	private BsNewsService Bsservice;
+	@Resource
+	private IncubatedEnterprisesService IEservice;
+	
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -135,6 +140,34 @@ public class  MemberBasicController extends BaseController {
 		return "admin/member/MemberBasicV";
 	}
 
+	
+	@RequestMapping(value = "/getNd.html")
+	@ResponseBody
+	public  String getSqsj(HttpServletRequest request,HttpServletResponse response) {
+		String hybh = request.getParameter("hybh");
+		String nd = request.getParameter("nd");
+		IncubatedEnterprises mr=IEservice.findIeHybh(hybh,nd);
+		JSONObject jsonObject = new JSONObject();
+		if(mr!=null){
+			jsonObject.put("fmzl",mr.getFmzl());
+			jsonObject.put("syxx",mr.getSyxx());
+			jsonObject.put("wgsj",mr.getWgsj());
+			jsonObject.put("rjzzq",mr.getRjzzq());
+			jsonObject.put("htstze",mr.getHtstze());
+			jsonObject.put("dzys",mr.getDzys());
+			jsonObject.put("xnyjdxs",mr.getXnyjdxs());
+		}
+		 
+		
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	/**
 	 * 准备添加
 	 * @return

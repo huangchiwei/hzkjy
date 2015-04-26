@@ -121,7 +121,7 @@
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select  case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then 'E栋' end Sslqname,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf ,Fpzl,Kpxm,Fkflx,Fkfsjhm,Fkfmc,Fkfzjlx,Fkfsbh,Fpje,Fz,Kpxmsm,Fpbz
+select  case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end Sslqname,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf ,Fpzl,Kpxm,Fkflx,Fkfsjhm,Fkfmc,Fkfzjlx,Fkfsbh,Fpje,Fz,Kpxmsm,Fpbz
 	 from member_rental
 	where 1=1
 			<if test="fhymc != null and fhymc != ''">
@@ -134,7 +134,7 @@ select  case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  whe
 	</select>	
 	
 <select id="getFpqsb" resultType="java.util.Map" parameterType="java.util.Map">
-select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技大楼'    when a.sslq='2' then 'A栋'  when a.sslq='3' then 'B栋'  when a.sslq='4' then 'C栋'  when a.sslq='5' then 'D栋'  when a.sslq='6' then 'E栋' end Sslqname,case when b.flbh='1' then a.Qyzj when b.flbh='2' then a.Glfwf  when b.flbh='3' then a.Qysf+a.Qydf end flje,case when b.flbh='1' then a.zjfph when b.flbh='2' then a.glffph  when b.flbh='3' then a.sdfph end flfph,' ' qssj,' ' qsbz from member_rental a left join db_fl b on 1=1 ,(Select (@rowNum :=0) ) c  where 1=1 
+select (@rowNum:=@rowNum+1) as rownum,a.*,b.*,case when a.sslq='1' then '科技大楼'    when a.sslq='2' then 'A栋'  when a.sslq='3' then 'B栋'  when a.sslq='4' then 'C栋'  when a.sslq='5' then 'D栋'  when a.sslq='6' then '琶洲科技创意中心' end Sslqname,case when b.flbh='1' then a.Qyzj when b.flbh='2' then a.Glfwf  when b.flbh='3' then a.Qysf+a.Qydf end flje,case when b.flbh='1' then a.zjfph when b.flbh='2' then a.glffph  when b.flbh='3' then a.sdfph end flfph,' ' qssj,' ' qsbz from member_rental a left join db_fl b on 1=1 ,(Select (@rowNum :=0) ) c  where 1=1 
 			<if test="fjfyd != null and fjfyd!= ''">
 		and a.Jfyd  = #{fjfyd}
 		</if>

@@ -164,10 +164,10 @@ function loadPageLayer2(title,url){
     </form>
    <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	    <tr>
-	    <td colspan="8" align="left">${fjjzbNy}的费用明细</td>
+	    <td colspan="9" align="left">${fjjzbNy}的费用明细</td>
 	   </tr>
 	  	<tr >
-	  	<td colspan="7"></td>
+	  	<td colspan="8"></td>
 	  	<td align="left"> 单位：元</td>
 	  	</tr>
 	  	<tr>
@@ -178,6 +178,7 @@ function loadPageLayer2(title,url){
 	  	<td>电费</td>
 	  	<td>租赁保证金</td>
 	  	<td>装修押金</td>
+	  	<td>财务是否审核</td>
 	  	</tr>
 	  <tbody>
 	  <!-- 变量 -->
@@ -204,6 +205,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
+	        <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
 	      </tr>
 	     
       </c:forEach>
@@ -217,6 +219,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	         <td></td>  
       </c:forEach>
 	      </tr>
       </c:if>
@@ -234,6 +237,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
+	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
 	      </tr>
       </c:forEach>
       <tr>
@@ -246,6 +250,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
       </c:forEach>
 	      </tr>
       </c:if>
@@ -263,6 +268,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
+	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
 	      </tr>
       </c:forEach>
       <tr>
@@ -275,6 +281,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
       </c:forEach>
 	      </tr>
       </c:if>
@@ -292,6 +299,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
+	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
 	      </tr>
       </c:forEach>
        <tr>
@@ -304,6 +312,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
       </c:forEach>
 	      </tr>
       </c:if>
@@ -321,6 +330,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
+	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
+	         <td></td>  
 	      </tr>
       </c:forEach>
    <tr>
@@ -333,6 +344,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
       </c:forEach>
 	      </tr>
       </c:if>
@@ -341,7 +353,7 @@ function loadPageLayer2(title,url){
 	      <tr>
 	           
 	       <c:if test="${sta.index=='0'}">
-	        <td rowspan="${Hyfl6count}">E栋</td>
+	        <td rowspan="${Hyfl6count}">琶洲科技创意中心</td>
 	        </c:if>
 	        <td>${mb.Qymc}</td>
 	         <td>${mb.Qyzj}</td>
@@ -350,6 +362,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
+	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
 	      </tr>
       </c:forEach>
        <tr>
@@ -362,6 +375,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
       </c:forEach>
 	      </tr>
       </c:if>
@@ -375,6 +389,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
       </c:forEach>
 	      </tr>
 	</tbody>

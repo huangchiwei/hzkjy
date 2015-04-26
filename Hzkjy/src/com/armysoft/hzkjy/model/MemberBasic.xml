@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb='1' then '需要' else '不需要' end SfjjybName,ID,Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq</sql>
+	case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb='1' then '需要' else '不需要' end SfjjybName,ID,Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq,Zlid,Kjid</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from member_basic 
@@ -77,6 +77,11 @@
 				 <result column="Wgsj" property="wgsj" />
 				 <result column="Syxx" property="syxx" />
 				 <result column="Rjzzq" property="rjzzq" />
+				 
+				  <result column="Zlid" property="zlid" />
+				   <result column="Kjid" property="kjid" />
+				 
+				 
 			</resultMap>
 
 	<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
@@ -212,7 +217,7 @@ select case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb=
 					
 	
 	
-		insert into member_basic(Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq)
+		insert into member_basic(Hybh,Qymc,Qymcpy,Address,Zydy,Mj,Frdb,Zczb,Lxr,Zt,Qyrzsj,Htqxf,Htqxe,Qydjzclx,Lxrdh,Sfjjyb,Zzjgdm,Frlxdh,Qyclsj,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Zlid,Kjid)
 		values(#{hybh} 		
 		, #{qymc} 
 		, #{qymcpy}		
@@ -248,6 +253,9 @@ select case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb=
 		   ,    #{wgsj}
 		   ,    #{syxx}
 		   ,    #{rjzzq}
+		    ,    #{zlid}
+		     ,    #{kjid}
+		 
 		  )
 		</insert>
 
@@ -291,9 +299,23 @@ select case when Zt='1' then '在园' else '出园' end ZtName,case when Sfjjyb=
 		 								,		Wgsj=#{wgsj}
 		 								,		Syxx=#{syxx}
 		 								,		Rjzzq=#{rjzzq}
+		 								,		Zlid=#{zlid}
+		 								,		Kjid=#{kjid}
+		 								
 		 							where ID = #{id}
 	</update>
-
+    <update id="updatekjid" parameterType="java.util.Map">
+		update
+		member_basic set
+		Kjid=#{kjid}
+		where Hybh=#{hybh}
+	</update>
+	<update id="updatezlid" parameterType="java.util.Map">
+		update
+		member_basic set
+		Zlid=#{zlid}
+		where Hybh=#{hybh}
+	</update>
 	<!-- 删除 -->
 	<delete id="delete" parameterType="Long">
 		delete from member_basic where ID = #{ID}

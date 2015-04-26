@@ -35,12 +35,20 @@
    <div class="c_b_box_right">
    <div class="c_b_box_title">快捷操作</div>
    <div class="c_b_box_text">
+   <c:if test="${userType=='4401'}">
+       <a href="${ctx}/admin/sysUser/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a2.png" /></a>
+    <a href="${ctx}/admin/bsNews/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a1.png" /></a>
+    <a href="${ctx}/admin/memberBasic/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a4.png" /></a>
+        <a href="http://znpp.hzkjcyy.com" target="_blank"><img src="${ctx}/theme/admin/default/images/admin_welcome_a5.png" /></a>
+   </c:if>
+   <c:if test="${userType!='4401'}">
     <a href="${ctx}/admin/sysUser/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a2.png" /></a>
     <a href="${ctx}/admin/bsNews/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a1.png" /></a>
     <a href="${ctx}/admin/memberBasic/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a4.png" /></a>
     <a href="${ctx}/admin/newsAdvert/list/1.html"><img src="${ctx}/theme/admin/default/images/admin_welcome_a3.png" /></a>
     <a href="http://znpp.hzkjcyy.com" target="_blank"><img src="${ctx}/theme/admin/default/images/admin_welcome_a5.png" /></a>
     <a href="http://znpp.hzkjcyy.com/system/login/" target="_blank"><img src="${ctx}/theme/admin/default/images/admin_welcome_a6.png" /></a>
+     </c:if>
     </div>
    </div>
   </div>

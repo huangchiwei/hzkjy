@@ -61,10 +61,8 @@ html { overflow:-moz-scrollbars-vertical;}
     <td><select name="month" id="month" class="input_a1"  >
     <option value="0" <c:if test="${entity.Month==0}">selected="selected"</c:if>>1~6月</option>
     <option value="1" <c:if test="${entity.Month==1}">selected="selected"</c:if>>7~12月</option></select></td>
-	 <th>项目类别：</th>
-     <td>
-     	<input id="projectType" class="input_a1"   name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/><font color="red">*</font>
-     </td>
+	 
+  
 	</tr>				
 	</table>
 	<table id="myTable" border="0" cellspacing="0" cellpadding="0"
@@ -76,6 +74,7 @@ html { overflow:-moz-scrollbars-vertical;}
       <th>项目级别：</th>
       <th>申报额度(万)：</th>
        <th>立项资助金额(万)：</th>
+       <th>项目类别：</th>
     </tr>		
     <tr>
     <td> <c:if test="${type=='A'}"><input type="button" value="新增行" class="initial" onclick="addNew();"/></c:if></td>
@@ -110,6 +109,10 @@ html { overflow:-moz-scrollbars-vertical;}
 	   	 <td>
 	   	 	<input name="setUpAmount" size="7" id="setUpAmount" type="text" class="input_a1" value="${entity.SetUpAmount}"/><font color="red">*</font>
 	   	 </td>
+	   	 
+	   	    <td>
+     	<input id="projectType" class="input_a1"   name="projectType" type="text" value="${entity.ProjectType}" maxlength="20"/><font color="red">*</font>
+     </td>
     </tr>
 
  

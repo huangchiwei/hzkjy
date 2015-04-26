@@ -85,7 +85,7 @@
 			</resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select   ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf
+select   case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end Sslqname,case when Fbzt='已审核' then '已审核' else '未审核' end FbztName,case when Sfqf ='1' then '已缴费' else '未缴费' end SfqfName,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf
 	 from enterprise_rental
 		where 1 = 1
 			<if test="fhymc != null and fhymc != ''">

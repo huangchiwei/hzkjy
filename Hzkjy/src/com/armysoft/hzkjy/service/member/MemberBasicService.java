@@ -124,6 +124,15 @@ public class MemberBasicService extends BaseDao {
 		super.defInsert(nameSpace, model);
 	}
 	
+	public void updatekjid(Map<String, Object> params) {
+
+		super.nativeUpdate(nameSpace+".updatekjid", params);
+	}
+	public void updatezlid(Map<String, Object> params) {
+
+		super.nativeUpdate(nameSpace+".updatezlid", params);
+	}
+	
 	/**
 	 * 添加数据
 	 * @param question

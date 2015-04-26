@@ -169,8 +169,9 @@ function loadPageLayer2(title,url){
 	  	 <th>通知标题</th> 
 	  	 <th>有效时间</th> 
 	        <th>通知时间</th>
+	        <th>接收者</th>
 	        <th>是否发布</th>
-	        <th width="6%">操作</th>
+	          <th width="6%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -190,6 +191,14 @@ function loadPageLayer2(title,url){
 	           	<td>${mb.title}</td>
 	        <td><fmt:formatDate value="${mb.activeTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 	        <td><fmt:formatDate value="${mb.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+	         <td>
+	        <c:if test="${mb.qymc != '' && mb.qymc !=null}">
+	                           ${mb.qymc}    
+	          		</c:if>
+	          <c:if test="${mb.qymc == '' || mb.qymc ==null}">
+	                              全部
+	          		</c:if>
+	        </td>
 	        <td>
 	        <c:if test="${mb.isReport == 0}">
 	                               否

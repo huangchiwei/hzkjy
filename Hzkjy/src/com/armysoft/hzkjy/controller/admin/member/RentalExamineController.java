@@ -129,7 +129,7 @@ public class  RentalExamineController extends BaseController {
 			mdd.setShzt("已审核");
 			service.update(mdd);
 			EnterpriseRental ert= new EnterpriseRental();
-		
+		    ert.setSslq(mdd.getSslq());
 			ert.setAccessory("0");
 			ert.setBz(mdd.getBz());
 			ert.setDbyhd(mdd.getDbyhd());
@@ -233,6 +233,8 @@ public class  RentalExamineController extends BaseController {
 			DbMessage dbmessage=dbservice.findByKey(Long.valueOf(2));
 			String content=dbmessage.getMessage();
 			bs.setContent(content);
+			mdd.setFbzt("已发送");
+			service.update(mdd);
 			Bsservice.insert(bs);
 		}
 		

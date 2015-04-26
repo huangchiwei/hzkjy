@@ -224,6 +224,7 @@ function loadPageLayer2(title,url){
 		  		error:function(){
 		  		} 
 		  	});
+		  	document.getElementById("search_form").submit();
 }
 
 </script>

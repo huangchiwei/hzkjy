@@ -131,7 +131,7 @@ from enterprise_rental where 1=1
 		</if>
 </select>
 <select id="getSslqList" resultType="java.util.Map" parameterType="java.util.Map"> 
-       select   case when Sslq='1' then '科技大楼' when Sslq='2' then 'A栋'  when Sslq='3' then 'B栋' when Sslq='4' then 'C栋' when Sslq='5' then 'D栋'  else 'E栋' end HyflName,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf
+       select   case when Sslq='1' then '科技大楼' when Sslq='2' then 'A栋'  when Sslq='3' then 'B栋' when Sslq='4' then 'C栋' when Sslq='5' then 'D栋'  else '琶洲科技创意中心' end HyflName,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf
 	from  enterprise_rental
 		where 1 = 1		
 			<if test="jjzbNy != null and jjzbNy != ''">

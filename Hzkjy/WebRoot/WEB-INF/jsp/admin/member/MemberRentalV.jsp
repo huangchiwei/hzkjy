@@ -654,7 +654,7 @@ html { overflow:-moz-scrollbars-vertical;}
           <option value="3">B栋</option>
           <option value="4">C栋</option>
           <option value="5">D栋</option>
-          <option value="6">E栋</option>
+          <option value="6">琶洲科技创意中心</option>
         </select>
      </td>
     </tr>	
@@ -967,8 +967,9 @@ html { overflow:-moz-scrollbars-vertical;}
        <th>付款方类型：</th>
       <td colspan="3">
          <select name="fkflx"  id="fkflx" style="text-align:center">
-          <option value="1">0 个人</option>
           <option value="2">1 单位</option>
+          <option value="1">0 个人</option>
+         
          </select>
      </td>
      <th>付款方手机号码：</th>
@@ -984,14 +985,14 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>付款方证件类型：</th>
        <td colspan="2">
        <select name="fkfzjlx"  id="fkfzjlx" style="text-align:center">
-          <option value="1">1 护照</option>
+          <option value="1">1 纳税人识别号</option>
           <option value="2">2 通行证</option>
           <option value="3">3 回乡证</option>
           <option value="4">4 台胞证</option>
           <option value="5">5 组织机构代码</option>
           <option value="6">6 身份证</option>
           <option value="7">7 军官证</option>
-          <option value="8">8 纳税人识别号</option>
+          <option value="8">8 护照</option>
           <option value="9">9 其他</option>
          </select>
      </td>

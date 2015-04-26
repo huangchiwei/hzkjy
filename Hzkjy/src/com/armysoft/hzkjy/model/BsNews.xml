@@ -7,16 +7,16 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,CreateTime,ReceiverBh</sql>
+	a.*,b.Qymc </sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
-		from bs_news
+		from bs_news a left join member_basic b on a.ReceiverBh=b.hybh
 		where 1 = 1	
 		<if test="parm.ftitle != null and parm.ftitle != ''">
-		and title  like CONCAT('%', #{parm.ftitle}, '%')
+		and a.title  like CONCAT('%', #{parm.ftitle}, '%')
 		</if>
 		<if test="parm.receiverBh != null and parm.receiverBh != ''">
-		and ReceiverBh  = #{parm.receiverBh}
+		and a.ReceiverBh  = #{parm.receiverBh}
 		</if>
 		
 	</sql>
@@ -32,6 +32,7 @@
 				<result column="IsReport" property="isReport" />
 			    <result column="CreateTime" property="createTime" />
 			      <result column="ReceiverBh" property="receiverBh" />
+			       <result column="Qymc" property="qymc" />
    </resultMap>
 			
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">

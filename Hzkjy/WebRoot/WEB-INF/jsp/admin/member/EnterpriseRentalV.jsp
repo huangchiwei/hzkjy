@@ -164,7 +164,7 @@ html { overflow:-moz-scrollbars-vertical;}
           <option value="3">B栋</option>
           <option value="4">C栋</option>
           <option value="5">D栋</option>
-          <option value="6">E栋</option>
+          <option value="6">琶洲科技创意中心</option>
         </select>
      </td>
     </tr>	
@@ -473,6 +473,16 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>水电发票号：</th>
        <td colspan="2">
      	<input name="sdfph"  id="sdfph" type="text" class="input_a1" value="${model.sdfph}"/>
+     </td>
+    </tr>		
+    <tr align="center">
+       <th>装修押金发票号：</th>
+      <td colspan="3">
+      <input name="zxyjfph"  id="zxyjfph" type="text" class="input_a1" value="${model.zxyjfph}"/>
+     </td>
+     <th>租赁保证金发票号：</th>
+       <td colspan="2">
+     	<input name="zlbzjfph"  id="zlbzjfph" type="text" class="input_a1" value="${model.zlbzjfph}"/>
      </td>
     </tr>						
 					

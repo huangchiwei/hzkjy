@@ -10,6 +10,7 @@ var td2 = $("<td></td>");
 var td3 = $("<td></td>"); 
 var td4 = $("<td></td>");  
 var td5 = $("<td></td>"); 
+var td6 = $("<td></td>"); 
 
 td.append($("<input type='button' value='删除' id='dl"+row_count+"' class='initial' onclick='javascript:del(this);'/>") 
 );
@@ -23,12 +24,15 @@ td4.append($("<input  name='applyAmount' type='text' size='7'  class='input_a1' 
 );  
 td5.append($("<input  name='setUpAmount' type='text' size='7'  class='input_a1' /><font color='red'>*</font>") 
 );  
+td6.append($("<input class='input_a1'   name='projectType' type='text'/><font color='red'>*</font>") 
+);  
 row.append(td); 
 row.append(td1); 
 row.append(td2); 
 row.append(td3); 
 row.append(td4); 
 row.append(td5); 
+row.append(td6); 
 table1.append(row); 
 row_count++; 
 

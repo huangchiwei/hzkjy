@@ -375,6 +375,8 @@ public class  RentReviewController extends BaseController {
 		headData.add(new Object[] { "Dhjyl","电合计用量"});
 		
 		headData.add(new Object[] { "Hjje","合计金额"});
+		headData.add(new Object[] { "FbztName","审核状态"});
+		headData.add(new Object[] { "SfqfName","缴费确认"});
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		params.put("fjfyd", fjfyd);

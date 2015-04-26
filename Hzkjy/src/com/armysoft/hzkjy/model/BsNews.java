@@ -48,8 +48,17 @@ public class  BsNews implements java.io.Serializable {
       private   String creater;   
       private   String content;   
       private   Date activeTime;   
+      private String qymc;
       
-      private String receiverBh;
+      public String getQymc() {
+		return qymc;
+	}
+	public void setQymc(String qymc) {
+		this.qymc = qymc;
+	}
+
+
+	private String receiverBh;
       public String getReceiverBh() {
 		return receiverBh;
 	}

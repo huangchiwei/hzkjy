@@ -36,6 +36,32 @@ $(document).ready(function(){
 		
 });
 
+
+function loadNd(){
+
+ hybh=$("#hybh").val();
+ nd=$("#nd").val();
+ if(nd !="" && hybh !=""){
+ $.ajax({
+				url:'${ctx}/admin/memberBasic/getNd.html?hybh='+hybh+'&nd='+nd+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		$("#fmzl").attr("value",data.fmzl);
+		  		$("#syxx").attr("value",data.syxx);
+		  		$("#wgsj").attr("value",data.wgsj);
+		  		$("#rjzzq").attr("value",data.rjzzq);
+		  		$("#htstze").attr("value",data.htstze);
+		  		$("#dzys").attr("value",data.dzys);
+		  		$("#xnyjdxs").attr("value",data.xnyjdxs);
+		  },
+		  		error:function(){
+		  		} 
+		  		
+		  	});
+ }
+} 
 </script>
 
 
@@ -52,7 +78,7 @@ html { overflow:-moz-scrollbars-vertical;}
 
   <div class="add_info">
 
-   <h2>新增园区企业信息</h2>
+   <h2>新增园区企业信息<input name="nd"  id="nd" type="text" value="${nd}" style="width:60px"  onclick="WdatePicker({dateFmt:'yyyy'});" onchange="loadNd();"/>年</h2> 
     <table id="questTable" border="0" cellspacing="0" cellpadding="0"
 					class="ListTable">
     <tr>
@@ -171,7 +197,7 @@ html { overflow:-moz-scrollbars-vertical;}
 		<input name="htstze"  id="htstze" type="text" class="input_a1" value="${model.htstze}"/>
      </td>
      <th rowspan="2">在孵企业从业人员：</th>
-      <th>大专以上（人）：</th>
+      <th>大专以上（人）：</th> 
      <td>
      <input name="dzys"  id="dzys" type="text" class="input_a1" value="${model.dzys}"/>
      </td>
@@ -233,7 +259,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <input name="wgsj"  id="wgsj" type="text" class="input_a1" value="${model.wgsj}"/>
 	     	</td>
 	    </tr>
-	    
+	     
 	     <tr>
 	     <th>实用新型（件）：</th>
 	     <td>

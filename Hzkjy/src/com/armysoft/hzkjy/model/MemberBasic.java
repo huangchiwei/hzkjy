@@ -3,6 +3,21 @@
 import java.util.Date;
 
 public class MemberBasic implements java.io.Serializable {
+	
+	private Integer zlid;
+	public Integer getZlid() {
+		return zlid;
+	}
+	public void setZlid(Integer zlid) {
+		this.zlid = zlid;
+	}
+	public Integer getKjid() {
+		return kjid;
+	}
+	public void setKjid(Integer kjid) {
+		this.kjid = kjid;
+	}
+	private Integer kjid;
 	private Integer id;
 	private String hybh;
 	private String qymc;
