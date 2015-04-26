@@ -156,6 +156,15 @@ public class  MemberBasicController extends BaseController {
 			jsonObject.put("htstze",mr.getHtstze());
 			jsonObject.put("dzys",mr.getDzys());
 			jsonObject.put("xnyjdxs",mr.getXnyjdxs());
+		}else{
+			MemberBasic mb=service.findByHybh(hybh);
+			jsonObject.put("fmzl",mb.getFmzl());
+			jsonObject.put("syxx",mb.getSyxx());
+			jsonObject.put("wgsj",mb.getWgsj());
+			jsonObject.put("rjzzq",mb.getRjzzq());
+			jsonObject.put("htstze",mb.getHtstze());
+			jsonObject.put("dzys",mb.getDzys());
+			jsonObject.put("xnyjdxs",mb.getXnyjdxs());
 		}
 		 
 		
