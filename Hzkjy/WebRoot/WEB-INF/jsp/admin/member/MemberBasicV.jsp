@@ -113,11 +113,11 @@ html { overflow:-moz-scrollbars-vertical;}
 	     	<th colspan="2">注册资本：</th>
      <td>
      	<input name="zczb"  id="zczb" type="text" class="input_a1" value="${model.zczb}"/>万
-     </td>
-    
+     </td> 
+  
  
 	    </tr>
-	    <tr>
+	    <tr> 
 	        <th>法人代表：</th>
 	   	 <td>
 	   	 	<input name="frdb"  id="frdb" type="text" class="input_a1" value="${model.frdb}"/>

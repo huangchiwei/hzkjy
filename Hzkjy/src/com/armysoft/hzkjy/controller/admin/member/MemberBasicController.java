@@ -363,6 +363,17 @@ public class  MemberBasicController extends BaseController {
 		headData.add(new Object[] { "Hybh","企业编号"});
 		headData.add(new Object[] { "Qymc","企业名称"});
 		headData.add(new Object[] { "Zydy","租用地址"});
+		headData.add(new Object[] { "Mj","面积"});
+		headData.add(new Object[] { "Zczb","注册资本"});
+		headData.add(new Object[] { "Frdb","法人代表"});
+		headData.add(new Object[] { "Frlxdh","联系电话"});
+		headData.add(new Object[] { "Zzjgdm","组织机构代码"});
+		headData.add(new Object[] { "Dzys","大专以上（人）"});
+		headData.add(new Object[] { "Xnyjdxs","吸纳应届大学毕业生（人）"});
+		headData.add(new Object[] { "Fmzl","发明专利（件）"});
+		headData.add(new Object[] { "Wgsj","外观设计（个）"});
+		headData.add(new Object[] { "Syxx","实用新型（件）"});
+		headData.add(new Object[] { "Rjzzq","软件著作权（个）"});
 		headData.add(new Object[] { "Qyrzsj","入驻时间"});
 		headData.add(new Object[] { "Htqxf","合同期限至"});
 		headData.add(new Object[] { "Htqxe","合同期限"});
