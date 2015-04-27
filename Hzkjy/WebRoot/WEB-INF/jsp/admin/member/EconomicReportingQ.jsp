@@ -317,7 +317,7 @@ function plbtgtz(){
 	        <th>利润总额累计数</th>
 	        <th>经济指标年月</th>
 	        <th>状态</th>
-	        <th width="6%">操作</th>
+	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>

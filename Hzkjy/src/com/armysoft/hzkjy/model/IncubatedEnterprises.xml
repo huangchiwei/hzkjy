@@ -63,17 +63,34 @@
 	</select>
 	
 <select id="getCyqy" resultType="java.util.Map" parameterType="java.util.Map">
-select ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh
+select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh
 	 from incubated_enterprises
 		where 1 = 1	
-		<if test="fqymc != null and fqymc!= ''">
-		and qymc  like CONCAT('%', #{fqymc}, '%')
+	<if test="fhymc != null and fhymc != ''">
+		and qymc  like CONCAT('%', #{fhymc}, '%')
 		</if>
-	    <if test="fssn != null and fssn!= ''">
-		and ssn  = #{fssn}
+		
+		<if test="frysjf != null and frysjf != ''">
+			and str_to_date(Qyrzsj,'%Y-%m-%d') &gt;= str_to_date(#{frysjf},'%Y-%m-%d') 
 		</if>
-		 <if test="fqqymc != null and fqqymc!= ''">
-		and qymc  = #{fqqymc}
+		
+		<if test="frysje != null and frysje != ''">
+		and str_to_date(Qyrzsj,'%Y-%m-%d') &lt;= str_to_date(#{frysje},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhtqxf != null and fhtqxf != ''"> 
+		and str_to_date(Htqxf,'%Y-%m-%d') &gt;= str_to_date(#{fhtqxf},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhtqxe != null and fhtqxe != ''">
+		and str_to_date(Htqxe,'%Y-%m-%d') &lt;= str_to_date(#{fhtqxe},'%Y-%m-%d') 
+		</if>
+		
+		<if test="fhybh != null and fhybh!= ''">
+		and hybh  = #{fhymc}
+		</if>
+		<if test="nd != null and nd != ''">
+		and ssn = #{nd}
 		</if>
  order by id desc
 	</select>			

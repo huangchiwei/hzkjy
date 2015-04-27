@@ -357,7 +357,7 @@ public class  MemberBasicController extends BaseController {
 	
 	
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,Integer nd,HttpServletRequest request,HttpServletResponse response) {
 		String title="园区基本资料表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Hybh","企业编号"});
@@ -389,9 +389,15 @@ public class  MemberBasicController extends BaseController {
 		params.put("fhtqxf", fhtqxf);
 		params.put("fhtqxe", fhtqxe);
 		params.put("fsfjjyb", fsfjjyb);
+		params.put("nd", nd);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		List list =null;
+		if(nd!=null && nd>=2005){
+			list =IEservice.getCyqy(params);
+		}else{
+			list =service.getCyqy(params);
+		}
 		
-		List list =service.getCyqy(params);
          ExportExcel1 exportExcel = new ExportExcel1(title,title, headData);
 		
 		exportExcel.exportExcel_Applicant(request, response,list);

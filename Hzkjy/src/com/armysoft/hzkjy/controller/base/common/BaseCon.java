@@ -51,7 +51,7 @@ public class BaseCon {
 
 	public void PageInit(int current) {
 		sList.clear();
-		pUnit.setPageSize(15);
+		pUnit.setPageSize(10);
 		pUnit.setCurrentPage(current);
 		pUnit.setOrderByColumn(getOrderByColumn());
 		pUnit.setOrderByType(getOrderByType());

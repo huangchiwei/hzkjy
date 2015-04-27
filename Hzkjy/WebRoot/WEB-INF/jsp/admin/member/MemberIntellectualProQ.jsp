@@ -136,7 +136,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	        <th >项目名称</th>
 	       <th>立项</th>
 	      <th>审核状态</th>
-	        <th width="6%">操作</th>
+	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
