@@ -37,22 +37,24 @@ import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.model.MemberFasic;
 import com.armysoft.hzkjy.model.News;
 import com.armysoft.hzkjy.model.NewsAdvert;
+import com.armysoft.hzkjy.model.NewsContact;
 import com.armysoft.hzkjy.model.NewsLink;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
+import com.armysoft.hzkjy.service.member.NewsContactService;
 import com.armysoft.hzkjy.service.member.NewsLinkService;
 import com.armysoft.hzkjy.service.member.NewsService;
 
 /**
- * 友情链接
+ * 资讯页左边的联系我们
  * @author Administrator
  *
  */
 @Controller
-@RequestMapping("/admin/newsLink")
-public class  NewsLinkController extends BaseController {
+@RequestMapping("/admin/newsContact")
+public class  NewsContactController extends BaseController {
 
 	@Resource
-	private NewsLinkService newsLinkService;
+	private NewsContactService newsContactService;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -67,71 +69,42 @@ public class  NewsLinkController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@PermissionsAnno("newsLink_list") 
+	@PermissionsAnno("newsContact_list") 
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage,Model model, HttpServletRequest request) {
-		Pagination pager = initPage(currentPage);
-		List<Map<String, Object>> list=newsLinkService.getByPage(null, pager);
-        model.addAttribute("list", list);
-        model.addAttribute("size", list.size());
-		model.addAttribute("page", pager);
-
-		return "/admin/news/newsLinkQ";
+	
+		List<Map<String, Object>> list=newsContactService.getAll();
+		if(list!=null&&list.size()>0){
+			model.addAttribute("entity", list.get(0));
+			model.addAttribute("type", "update");
+		}else{
+			model.addAttribute("type", "add");
+		}
+        
+       String status=request.getParameter("status");
+       if(status!=null&&status.isEmpty()==false){
+    	   model.addAttribute("msg", "保存成功");
+       }
+		return "/admin/news/newsContactU";
 	}
 
-	@PermissionsAnno("newsLink_add")
-	@RequestMapping(value = ADD)
-	public String toAdd(HttpServletRequest request,Model model) {
-		model.addAttribute("type", "add");
-		
-		return "/admin/news/newsLinkA_U";
-	}
-	
-	
-	/**
-	 * ����
-	 * @param entity
-	 * @param model
-	 * @return
-	 */
 
-	@RequestMapping(value = UPDATE)
-	public String update(@PathVariable("id") Long key,Model model) {
-	
-		model.addAttribute("entity", newsLinkService.findByKey(key));
-		 
-		model.addAttribute("type", "update");
-		
-		return "/admin/news/newsLinkA_U";
-	}
-	@PermissionsAnno("newsLink_save")
+
+	@PermissionsAnno("newsContact_save")
 	@RequestMapping(value = SAVE)
-	public String save(HttpServletRequest request,NewsLink entity, Model model,String type,String flag) {
+	public String save(HttpServletRequest request,NewsContact entity, Model model,String type) {
 	
 		
-		String key = super.getCookieValue(request,Constants.ADMIN_KEY);
+		//String key = super.getCookieValue(request,Constants.ADMIN_KEY);
 		//entity.setCreateUser(key);
 		if(type.equalsIgnoreCase("add")){
-			newsLinkService.insert(entity);
+			newsContactService.insert(entity);
 		}else if(type.equalsIgnoreCase("update")){
-			newsLinkService.update(entity);	
+			newsContactService.update(entity);	
 		}
-		return "redirect:/admin/newsLink/list/1.html";
+		return "redirect:/admin/newsContact/list/1.html?status="+type;
 	}
 
-	/**
-	 * ɾ��
-	 * @param key
-	 * @return
-	 */
-
-	@RequestMapping(value = DELETE)
-	public String delete(@PathVariable("id") Long key,Model model) {
-		newsLinkService.delete(key);
-		//model.addAttribute("cateCode", cateCode);
-		return "redirect:/admin/newsLink/list/1.html";
-	}
-	
 	
 
 

@@ -76,7 +76,7 @@ html { overflow:-moz-scrollbars-vertical;}
 
   <div class="add_info">
 
-   <h2>首页广告&gt;&gt;${type == 'add' ? '添加' : '修改'}${category.cateName }</h2>
+   <h2>首页广告&gt;&gt;${type == 'add' ? '添加' : '修改'}</h2>
    <table width="98%" border="0" cellspacing="0" cellpadding="0">
     <tr>
      <th width="100px;">位置：</th>
