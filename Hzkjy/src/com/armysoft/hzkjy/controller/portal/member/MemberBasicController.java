@@ -92,13 +92,13 @@ public class MemberBasicController extends BaseController {
 			user.setUserNo(entity.getHybh());
 			user.setEmail(email);
 			user.setPwd(DigestUtils.md5DigestAsHex(Constants.DEFAULT_PASSWORD.getBytes()));
-			user.setStatus(1);
+			user.setStatus(3);
 			user.setCreateDate(new Date());
 			service.insertMemberAndUser(entity,user);
-			super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
+			//super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
 			initResourcesMap.init();
-			model.addAttribute("userNo", entity.getHybh());
-			model.addAttribute("password", Constants.DEFAULT_PASSWORD);
+			//model.addAttribute("userNo", entity.getHybh());
+			//model.addAttribute("password", Constants.DEFAULT_PASSWORD);
 			req.getSession().removeAttribute("token");
 			return "portal/member/reg_ok";
 		}
@@ -216,7 +216,7 @@ public class MemberBasicController extends BaseController {
 		@ResponseBody
 		public String validEmail(String email) {
 			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("isFlag", sysUserService.getByEmail(email) == null);
+			jsonObject.put("valid", sysUserService.getByEmail(email) == null);
 			return jsonObject.toString();
 		}
 }

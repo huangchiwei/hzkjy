@@ -26,13 +26,8 @@
 						恭喜您，已经注册成功！
 					</h2>
 					<p>
-						您的登录账号：
-						<font class="c_ff0000"><b>${userNo}</b>
-						</font>
-					</p>
-					<p>
-						您的登录密码：
-						<font class="c_ff0000"><b>${password}</b>
+						
+						<font class="c_ff0000"><b>您的账号正在审核中</b>
 						</font>
 					</p>
 					<p>
@@ -40,7 +35,7 @@
 						</font>
 					</p>
 					<div class="btn_box">
-					<input onclick="javascript:location.href='${ctx}/admin/index.html'" id="sumbit_bt" type="button" class="btn_login" value="马上登录" />
+					<input onclick="javascript:location.href='${ctx}/portal/index.html'" id="sumbit_bt" type="button" class="btn_login" value="返回首页" />
      				</div>
 				</div>
 

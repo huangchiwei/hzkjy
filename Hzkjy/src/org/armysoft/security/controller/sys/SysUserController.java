@@ -68,6 +68,9 @@ public class SysUserController extends BaseController {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("phone", user.getPhone());
 		params.put("userName", user.getUserName());
+		if(user.getStatus() != null && user.getStatus() != -1){
+			params.put("status", user.getStatus());
+		}
 		mv.addObject("users", sysUserService.getByPage(params, pager));
 		mv.addObject("page", pager);
 		mv.addObject("tempUser", user);
@@ -246,7 +249,7 @@ public class SysUserController extends BaseController {
 	 * @param status
 	 * @return
 	 */
-	@PermissionsAnno("user_chasta")
+	@PermissionsAnno("us_chasta")
 	@RequestMapping("changeStatus")
 	public String changeStatus(String userNo, Integer status) {
 		if(!"admin".equalsIgnoreCase(userNo)){
