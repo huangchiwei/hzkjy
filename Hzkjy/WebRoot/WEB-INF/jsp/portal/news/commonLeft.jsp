@@ -1,4 +1,5 @@
  <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
   <div class="list_left">
   <c:choose>
@@ -129,11 +130,11 @@
  </div>
   <div class="list_contus">联系我们</div>
   <div class="list_contus_l">
-    <em>电话：020-89232382</em>
-    <em>传真：020-89232138</em>
+    <em>电话：${fn:substring(ncEntity.Tel, 0, 20)}</em>
+    <em>传真：${fn:substring(ncEntity.Max, 0, 20)}</em>
   </div>
   <div class="list_contus_c">
-  <em>地址：广州市海珠区新港东路2429</em></div>
+  <em>地址：${fn:substring(ncEntity.Address, 0, 20)}</em></div>
   
  </div>
  

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -36,6 +37,7 @@ import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
+import com.armysoft.hzkjy.service.member.NewsContactService;
 
 @Controller("PortalMemberBasicController")
 @RequestMapping("portal/memberBasic")
@@ -48,6 +50,8 @@ public class MemberBasicController extends BaseController {
 	private SysUserService sysUserService;
 	@Resource
 	private InitResourcesMap initResourcesMap;
+	@Resource
+	private NewsContactService newsContactService;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -195,7 +199,13 @@ public class MemberBasicController extends BaseController {
 	  }
 	  @RequestMapping(value = PAGE_LIST)
 		public String getByPage(@PathVariable Integer currentPage,Model model, HttpServletRequest request) {
-			Pagination pager = initPage(currentPage);
+		//左边的联系我们
+	    	List<Map<String, Object>> ncList=newsContactService.getAll();
+			if(ncList!=null&&ncList.size()>0){
+				model.addAttribute("ncEntity",ncList.get(0));
+			}
+		  
+		  Pagination pager = initPage(currentPage);
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("adType", "2");
 			model.addAttribute("adList2",newsAdvertService.getByAdType(params));
