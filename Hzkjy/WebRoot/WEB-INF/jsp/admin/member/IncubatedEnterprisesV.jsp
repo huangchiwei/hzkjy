@@ -63,6 +63,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th class="w100">企业名称:</th>
      <td>
+     <input type="hidden" id="hybh" name="hybh" value="${model.hybh!=null && model.hybh!=''?model.hybh:mc.hybh}"/>
      	<input id="qymc" name="qymc" type="text" class="input_a1" value="${model.qymc!=null && model.qymc!=''?model.qymc:mc.qymc}" maxlength="100" />
      </td>
      

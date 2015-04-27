@@ -38,8 +38,8 @@ function delConfirm(roleNo){
 </head>
 
 <body>
+<div class="admin_table">
 <div class="content_box">
- <div class="list_info relative">
 <div class="btn_box">
 	<pm:hasPermission permValue="role_save">
      <input id="add_bt" type="button" value="添加" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/sysRole/add/new.html'"/>

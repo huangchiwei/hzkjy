@@ -61,7 +61,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	     <th>序号</th>
 	  		 <th>信息名</th> 
 	  		 <th>信息内容</th> 
-	        <th width="6%">操作</th>
+	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -80,10 +80,10 @@ html { overflow:-moz-scrollbars-vertical;}
 	        <td>${sta.index + 1}</td>
 	      	<td>${mb.messagename}</td>
 	      	<td>
-	      	<c:if test="${fn:length(mb.message) > 70 }">  
-	      	${fn:substring(mb.message, 0, 70)}...
+	      	<c:if test="${fn:length(mb.message) > 45 }">  
+	      	${fn:substring(mb.message, 0, 45)}...
  </c:if> 
- <c:if test="${fn:length(mb.message) <= 70 }">  
+ <c:if test="${fn:length(mb.message) <= 45 }">  
 	      ${mb.message}
  </c:if> 
 	      	</td>

@@ -139,7 +139,7 @@ function loadPageLayer2(title,url){
 	        <th>企业所属技术领域</th>
 	        <th>法人代表</th>
 	        <th>年份</th>
-	        <th width="6%">操作</th>
+	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>

@@ -17,17 +17,32 @@
 <body>
 <div class="content_box">
  <div class="c_b_div">
-   <h3>欢迎您&nbsp;<font color="#FF3333">${userNo}</font>，晚上好！</h3>
+   <h3>欢迎您&nbsp;<font color="#FF3333">${userNo}</font>，<%
+Calendar cal = Calendar.getInstance();
+  int hour = cal.get(Calendar.HOUR_OF_DAY);
+  if (hour >= 6 && hour < 8) {
+   out.print("早上好，给您开心的一天！");
+  } else if (hour >= 8 && hour < 12) {
+   out.print("上午好，你对生活好点，生活才会对你好点！");
+  } else if (hour >= 12 && hour < 14) {
+   out.print("中午好，又到吃饭的时候了！");
+  } else if (hour >= 14 && hour < 19) {
+   out.print("下午好，美好的一天快要过去了！");
+  } else {
+   out.print("夜深了，早点休息哦！");
+  }
+%></h3>
    <h4>您现在有&nbsp;<font color="#FF3300">${countNum}</font>&nbsp;条未读信息&nbsp;&nbsp;<a href="${ctx}/admin/bsNews/list/1.html">查看</a></h4>
   </div>
   <div class="c_b_box">
    <div class="c_b_box_left">
-    <div class="c_b_box_title relative">通知<div class="more"><a href="#">更多>></a></div>
+    <div class="c_b_box_title relative">通知<div class="more"><a href="${ctx}/admin/bsNews/list/1.html">更多>></a></div>
     </div>
     <div class="c_b_box_text">
      <ul>
      <c:forEach items="${bslist}" var="mb" varStatus="sta">
-     <li><span><fmt:formatDate value="${mb.createTime}" pattern="yyyy-MM-dd" /></span><a href="${ctx}/admin/bsNews/add/new.html?id=${mb.id}" style="text-decoration:none;">${mb.title}</a></li>
+     <li><span><fmt:formatDate value="${mb.createTime}" pattern="yyyy-MM-dd" /></span><a href="${ctx}/admin/bsNews/add/new.html?id=${mb.id}" style="text-decoration:none;">
+     ${fn:length(mb.content) > 23 ? fn:substring(mb.content,0,23) : mb.content} ${fn:length(mb.content) > 23 ? '...' : ''}</a></li>
       </c:forEach>
      </ul>
     </div>

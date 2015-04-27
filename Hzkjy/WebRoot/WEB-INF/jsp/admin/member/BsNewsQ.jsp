@@ -171,7 +171,7 @@ function loadPageLayer2(title,url){
 	        <th>通知时间</th>
 	        <th>接收者</th>
 	        <th>是否发布</th>
-	          <th width="6%">操作</th>
+	          <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>

@@ -271,7 +271,7 @@ function loadPageLayer2(title,url){
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th>发布状态</th>
-	        <th width="6%">操作</th>
+	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>

@@ -230,7 +230,8 @@ function pltzjf(){
 								 size="15" class="input_a1" maxlength="20"/>
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
          <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
-         <input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/>
+       <!--   <input id="add_bt" type="button" value="导入Excel" class="initial" style="cursor:hand" onclick="loadPageLayer('导入会员资料','${ctx}/admin/memberBasic/Find.html');"/>--> 
+         <input name="nd"  id="nd" type="text" value="${nd}" style="width:60px"  onclick="WdatePicker({dateFmt:'yyyy'});" onchange="loadNd();"/>年
          <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
              <em>通知选项：</em>
          <select name="fmessage"  id="fmessage" style="text-align:center" class="input_a1">
