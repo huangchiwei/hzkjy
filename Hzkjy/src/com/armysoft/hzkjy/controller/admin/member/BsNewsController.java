@@ -103,6 +103,8 @@ public class  BsNewsController extends BaseController {
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
 		
 		BsNews mb=service.findByKey(id);
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}

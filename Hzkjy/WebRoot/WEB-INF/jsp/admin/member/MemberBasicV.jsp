@@ -32,8 +32,7 @@ $(document).ready(function(){
 	 $("#gxjsqy option[value='${model.gxjsqy}']").attr("selected", true); 
 	 $("#lxryqy option[value='${model.lxryqy}']").attr("selected", true); 
 	formInitConfig("add_form",3000);
-	autoValidate();
-		
+	loadNd();
 });
 
 
@@ -78,7 +77,7 @@ html { overflow:-moz-scrollbars-vertical;}
 
   <div class="add_info">
 
-   <h2>新增园区企业信息<input name="nd"  id="nd" type="text" value="${nd}" style="width:60px"  onclick="WdatePicker({dateFmt:'yyyy'});" onchange="loadNd();"/>年</h2> 
+   <h2>新增园区企业信息<input name="nd"  id="nd" type="text" value="${nd!='' && nd !=null?nd:year}" style="width:60px"  onclick="WdatePicker({dateFmt:'yyyy'});" onchange="loadNd();"/>年</h2> 
     <table id="questTable" border="0" cellspacing="0" cellpadding="0"
 					class="ListTable">
     <tr>

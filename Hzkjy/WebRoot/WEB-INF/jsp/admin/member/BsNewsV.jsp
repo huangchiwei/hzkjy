@@ -188,6 +188,7 @@ html { overflow:-moz-scrollbars-vertical;}
   </div>
   </form>
 </div>
+<c:if test="${tzgl_updt == true}">
 <script type="text/javascript">
 	var editor;
 	editor= CKEDITOR.replace("content"); 
@@ -203,5 +204,6 @@ html { overflow:-moz-scrollbars-vertical;}
 }
 
 </script>
+</c:if>
 </body>
 </html>

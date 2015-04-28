@@ -225,6 +225,12 @@ public class  MemberBasicController extends BaseController {
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
 		
 		MemberBasic mb=service.findByKey(id);
+		IncubatedEnterprises ie=IEservice.findIeHybhM(mb.getHybh());
+		if(ie!=null){
+		request.setAttribute("year", ie.getSsn());
+		}else{
+			request.setAttribute("year", "2015");
+		}
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
