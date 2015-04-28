@@ -26,12 +26,12 @@
    * 			  指明哪个iframe       
    * @return
    */
-  function openNew(iframe,plugin, url) {
+  function openNew(iframe,plugin, url,id) {
   	//var obj=window.parent.document;
   	// obj.openNew(iframe,plugin, url);
   	//alert("d");
   //	self.parent.frames[iframe].openNew(plugin, url);
-	  self.parent.openNew(plugin, url);
+	  self.parent.openNew(plugin, url,id);
   }
  
   
@@ -59,7 +59,7 @@
 					zTree.expandNode(treeNode);
 					return false;
 				} else {
-					openNew('I2',treeNode.name,"${ctx}/" + treeNode.file);
+					openNew('I2',treeNode.name,"${ctx}/" + treeNode.file,treeNode.id);
 				//openNew('I2',treeNode.name,"${ctx}/" + treeNode.file + "/1.html");
 					return true;
 				}
