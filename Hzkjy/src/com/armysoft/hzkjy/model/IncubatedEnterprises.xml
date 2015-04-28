@@ -97,6 +97,11 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 	<select id="findIeHybh" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
 		select * from incubated_enterprises where Hybh= #{hybh} and  Ssn = #{ssn} ORDER BY id DESC LIMIT 1 
 	</select>
+	<select id="findIeHybhM" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
+		select * from incubated_enterprises  where Hybh= #{hybh}  ORDER BY Ssn DESC LIMIT 1 
+	</select>
+	
+	
 	<select id="sumCount" resultType="int" parameterType="java.util.Map">
 		select count(*) 
 		from incubated_enterprises

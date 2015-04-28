@@ -65,6 +65,7 @@ public class SysUserController extends BaseController {
 		ModelAndView mv = new ModelAndView("admin/sys/SysUserQ");
 		// 初始化分页实体
 		Pagination pager = initPage(currentPage);
+		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("phone", user.getPhone());
 		params.put("userName", user.getUserName());

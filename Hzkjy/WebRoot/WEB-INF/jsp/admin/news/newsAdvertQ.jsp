@@ -7,6 +7,7 @@
 <title>userList</title>
 <link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 

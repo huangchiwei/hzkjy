@@ -64,6 +64,12 @@ public class IncubatedEnterprisesService extends BaseDao {
 		return super.nativeSelectOne(nameSpace + ".findIeHybh", params);
 	}
 	
+	public IncubatedEnterprises findIeHybhM(String hybh) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("hybh", hybh);
+		return super.nativeSelectOne(nameSpace + ".findIeHybhM", params);
+	}
+	
 	public List  getCyqy(Map<String, Object> params) {
 	return super.nativeList(nameSpace + ".getCyqy", params);
 	}
