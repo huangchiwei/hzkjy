@@ -98,6 +98,7 @@ public class MemberBasicController extends BaseController {
 			user.setPwd(DigestUtils.md5DigestAsHex(Constants.DEFAULT_PASSWORD.getBytes()));
 			user.setStatus(3);
 			user.setCreateDate(new Date());
+			user.setCreater(user);
 			service.insertMemberAndUser(entity,user);
 			//super.setCookie(response, Constants.ADMIN_KEY, user.getUserNo());
 			initResourcesMap.init();

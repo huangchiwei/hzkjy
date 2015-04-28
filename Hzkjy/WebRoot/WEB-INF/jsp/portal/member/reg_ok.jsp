@@ -23,15 +23,14 @@
 				</h1>
 				<div class="reg_b_ts_b">
 					<h2>
-						恭喜您，已经注册成功！
+						注册信息已成功提交
 					</h2>
 					<p>
-						
 						<font class="c_ff0000"><b>您的账号正在审核中</b>
 						</font>
 					</p>
 					<p>
-						<font class="c_2c6abf"><b>请保存好您的账号与密码！</b>
+						<font class="c_ff0000"><b>审核结果会以邮件方式通知，请注意查收！</b>
 						</font>
 					</p>
 					<div class="btn_box">

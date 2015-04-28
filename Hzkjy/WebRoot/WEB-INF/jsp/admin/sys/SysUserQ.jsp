@@ -11,7 +11,6 @@
 <link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
-<script type="text/javascript" src="${ctx}/js/jsp/base/default_tr.js"></script>
 <style type="text/css">
 html { overflow:-moz-scrollbars-vertical;}
 </style>
@@ -59,8 +58,17 @@ function delConfirm(userNo){
 	  }
 	});
 }
-function changeStatus(userNo,status){
-	location.href='${ctx}/admin/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
+function changeStatus(userNo,status,toDo){
+	$.ajax({
+				url:'${ctx}/admin/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status + '&toDo=' + toDo,
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  			if(data.flag == 1)
+		  				$('#search_form').submit();
+		  		}
+		  	});
 }
 
 function find(){    
@@ -142,13 +150,13 @@ function find(){
 	        <td>
 	        	<c:choose>
 	        		<c:when test="${user.status == 1}">
-	        			<a title="点击冻结" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',2)"</c:if>>激活</a>
+	        			<a title="点击冻结" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',2,'')"</c:if>>激活</a>
 	        		</c:when>
 	        		<c:when test="${user.status == 2}">
-	        			<a title="点击激活" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',1)"</c:if>>冻结</a>
+	        			<a title="点击激活" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',1,'')"</c:if>>冻结</a>
 	        		</c:when>
 	        		<c:when test="${user.status == 3}">
-	        			<a title="点击激活" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',1)"</c:if>>待激活</a>
+	        			<a title="点击激活" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',1,'jihuo')"</c:if>>待激活</a>
 	        		</c:when>
 	        	</c:choose>
 	        </td>

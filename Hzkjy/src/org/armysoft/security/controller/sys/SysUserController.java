@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.CookieUtil;
+import com.armysoft.hzkjy.service.member.MemberBasicService;
 
 @Controller
 @RequestMapping("admin/sysUser")
@@ -42,6 +43,8 @@ public class SysUserController extends BaseController {
 	private SysRoleService sysRoleService;
 	@Resource
 	private InitResourcesMap initResourcesMap;
+	@Resource
+	private MemberBasicService memberBasicService;
 	
 	/**
 	 * 条件分页查询用户
@@ -251,7 +254,8 @@ public class SysUserController extends BaseController {
 	 */
 	@PermissionsAnno("us_chasta")
 	@RequestMapping("changeStatus")
-	public String changeStatus(String userNo, Integer status) {
+	@ResponseBody
+	public String changeStatus(String userNo, Integer status,String toDo) {
 		if(!"admin".equalsIgnoreCase(userNo)){
 			sysUserService.updateStatus(userNo, status);
 			if(status == Constants.USER_ACTIVE){
@@ -262,11 +266,17 @@ public class SysUserController extends BaseController {
 						addRoles.add(role.getRoleNo());
 					}
 				initResourcesMap.updateResourcesMap(userNo, null, addRoles);//更新用户权限
+				if(StringUtils.hasText(toDo)){
+					SysUser user = sysUserService.getByUserNo(userNo);
+					memberBasicService.sendPassWord(user.getEmail(), userNo, Constants.DEFAULT_PASSWORD);
+				}
 			}else{
 				initResourcesMap.cleanResourcesMap(userNo);//清除用户权限
 			}
 		}
-		return "redirect:/admin/sysUser/list/1.html";
+		JSONObject json = new JSONObject();
+		json.put("flag", 1);
+		return json.toString();
 	}
 
 	/**

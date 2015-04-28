@@ -20,7 +20,7 @@ public final class Constants {
 	public static final String VERIFY_CODE = "verify_code";
 	/** 分隔符 */
 	public static final String SEPARATOR = "_";
-	public static final Integer USER_ACTIVE = 1;
+	public static final int USER_ACTIVE = 1;
 	/**默认密码*/
 	public static final String DEFAULT_PASSWORD = "888888";
 	public static String systemPath = "D:/gzjkjy_upfile/";
