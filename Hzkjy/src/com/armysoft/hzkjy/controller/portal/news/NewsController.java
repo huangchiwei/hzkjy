@@ -37,6 +37,7 @@ import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.model.MemberFasic;
 import com.armysoft.hzkjy.model.News;
 import com.armysoft.hzkjy.service.member.NewsAdvertService;
+import com.armysoft.hzkjy.service.member.NewsContactService;
 import com.armysoft.hzkjy.service.member.NewsService;
 
 
@@ -48,6 +49,9 @@ public class  NewsController extends BaseController {
 	private NewsAdvertService newsAdvertService;
 	@Resource
 	private NewsService newsService;
+	@Resource
+	private NewsContactService newsContactService;
+	
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
@@ -66,8 +70,14 @@ public class  NewsController extends BaseController {
     @RequestMapping(value = PAGE_LIST)
 	public String list(@PathVariable Integer currentPage,String cateCode,Model model, HttpServletRequest request) {
     	
+		//左边的联系我们
+    	List<Map<String, Object>> ncList=newsContactService.getAll();
+		if(ncList!=null&&ncList.size()>0){
+			model.addAttribute("ncEntity",ncList.get(0));
+		}
 		
 		Pagination pager = initPage(currentPage);
+		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("adType", "2");
 		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
@@ -108,6 +118,12 @@ public class  NewsController extends BaseController {
 
 	@RequestMapping(value = "/detail/{id}.html")
 	public String detail(@PathVariable("id") Long key,Model model,String cateCode) {
+		//左边的联系我们
+    	List<Map<String, Object>> ncList=newsContactService.getAll();
+		if(ncList!=null&&ncList.size()>0){
+			model.addAttribute("ncEntity",ncList.get(0));
+		}
+		
 		model.addAttribute("cateCode", cateCode);
 		model.addAttribute("entity", newsService.findByKey(key));
 		 model.addAttribute("category", newsService.getCategory(cateCode));
@@ -119,6 +135,12 @@ public class  NewsController extends BaseController {
 	}
 	@RequestMapping(value = "/search/{currentPage}.html")
 	public String search(@PathVariable Integer currentPage,Model model,String searchTxt) {
+		//左边的联系我们
+    	List<Map<String, Object>> ncList=newsContactService.getAll();
+		if(ncList!=null&&ncList.size()>0){
+			model.addAttribute("ncEntity",ncList.get(0));
+		}
+		
 		model.addAttribute("searchTxt", searchTxt);
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();

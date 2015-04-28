@@ -4,10 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>广州市海珠科技产业园有限公司</title>
-<link rel="stylesheet" type="text/css" href="${ctx}/js/easyui/easyui.css"/>
-<link rel="stylesheet" type="text/css" href="${ctx}/js/easyui/icon.css"/>
-<script type="text/javascript" src="${ctx}/js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
 <script>
 var registTypeJson = [{id:'0',value:'内资'},{id:'110',value:'国有'},{id:'120',value:'集体'},{id:'130',value:'股份合作'},{id:'141',value:'国有联营'},{id:'142',value:'集体联营'},{id:'143',value:'国有与集体联营'},{id:'149',value:'其他联营 '},{id:'151',value:'国有独资联营'},{id:'159',value:'其他有限责任公司'},{id:'160',value:'股份有好公司'},{id:'171',value:'私营独资'},{id:'172',value:'私营合伙'},{id:'173',value:'私营有限责任公司'},{id:'174',value:'私营股份有限公司'},{id:'190',value:'其他'},{id:'0',value:'港澳台商投资'},{id:'210',value:'与港澳台商合资经营'},{id:'220',value:'与港澳台商合作经营'},{id:'230',value:'港澳台商独资'},{id:'240',value:'港澳台商投资股份有限公司'},{id:'290',value:'其他港澳台商投资'},{id:'0',value:'外商投资'},{id:'310',value:'中外合资经营'},{id:'320',value:'中外合作经营'},{id:'330',value:'外资企业'},{id:'340',value:'外商投资股份有限公司'},{id:'390',value:'其他外商投资'}];
 $(function(){
@@ -30,8 +28,8 @@ $(function(){
 				dataType : "json",
 				async : false,
 				success : function(data){
-					isFlag = data.isFlag;
-					if (!data.isFlag){
+					isFlag = data.valid;
+					if (!data.valid){
 						alert('该邮箱已注册');
 					}
 				}
@@ -207,8 +205,7 @@ $(function(){
      </div>
      <div class="li">
       <span class="span">企业网址：</span>
-      <span class="span1"><input id="address" name="address" type="text" class="input" size="18" maxlength="100"/>
-      <a class="easyui-linkbutton easyui-tooltip" title="该网址将链接到科技园前台网站，以便于企业间互相了解，创造更多的合作机会！" data-options="iconCls:'icon-help'"></a>
+      <span class="span1"><input id="address" name="address" type="text" class="input" size="18" maxlength="100" onclick="layer.tips('该网址将链接到科技园前台网站，以便于企业间互相了解，创造更多的合作机会！', this , {guide: 0, time: 2});"/>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;租用地址：</span>
       <span class="span1"><input id="zydy" name="zydy" type="text" class="input" size="25" maxlength="100"/>
@@ -249,8 +246,7 @@ $(function(){
       </select>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;组织机构代码：</span>
-      <span class="span1"><input name="zzjgdm" id="zzjgdm" type="text" class="input" size="25" maxlength="30"/>
-      <a class="easyui-linkbutton easyui-tooltip" title="组织机构代码由9个字符长度由字母或数字组成" data-options="iconCls:'icon-help'"></a>
+      <span class="span1"><input name="zzjgdm" id="zzjgdm" type="text" class="input" size="25" maxlength="30" onclick="layer.tips('组织机构代码由9个字符长度由字母或数字组成', this , {guide: 0, time: 2});"/>
       </span>
      </div>
      <div class="li">

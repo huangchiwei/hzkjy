@@ -11,12 +11,15 @@
 	</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
-		from sys_user where status &lt;&gt; 3
+		from sys_user where 1 = 1
 			<if test="parm.userName != null and parm.userName != ''">
 				and UserName like CONCAT('%', #{parm.userName}, '%')
 			</if>
 			<if test="parm.phone != null and parm.phone != ''">
 				and Phone like CONCAT('%', #{parm.phone}, '%')
+			</if>
+			<if test="parm.status != null and parm.status != ''">
+				and Status = #{parm.status}
 			</if>
 		order by CreateDate desc
 	</sql>

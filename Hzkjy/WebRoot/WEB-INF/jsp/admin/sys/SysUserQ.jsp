@@ -11,7 +11,6 @@
 <link href="${ctx}/theme/admin/default/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/layer/layer.min.js"></script>
-<script type="text/javascript" src="${ctx}/js/jsp/base/default_tr.js"></script>
 <style type="text/css">
 html { overflow:-moz-scrollbars-vertical;}
 </style>
@@ -59,8 +58,17 @@ function delConfirm(userNo){
 	  }
 	});
 }
-function changeStatus(userNo,status){
-	location.href='${ctx}/admin/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
+function changeStatus(userNo,status,toDo){
+	$.ajax({
+				url:'${ctx}/admin/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status + '&toDo=' + toDo,
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  			if(data.flag == 1)
+		  				$('#search_form').submit();
+		  		}
+		  	});
 }
 
 function find(){    
@@ -74,7 +82,7 @@ function find(){
 <div class="admin_table">
 <div class="content_box">
   <div class="btn_box">
-  	<pm:hasPermission permValue="user_save">
+  	<pm:hasPermission permValue="us_save">
   		<input id="add_bt" type="button" value="添加" class="initial" style="cursor:hand" onclick="javascript:location.href='${ctx}/admin/sysUser/add/new.html'"/>
   	</pm:hasPermission>
      
@@ -89,9 +97,18 @@ function find(){
           <input name="userName" type="text" class="input_a1" value="${tempUser.userName}"/>
         </dd>
         <dt>手机：</dt>
-        <dd class="w_bf_20">
+        <dd>
           <input name="phone" type="text" class="input_a1" value="${tempUser.phone}"/> 
-            <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
+        </dd>
+        <dt>状态：</dt>
+        <dd class="w_bf_20">
+        	<select name="status">
+        		<option value="-1">--状态--</option>
+        		<option value="3" ${tempUser.status == 3 ? 'selected="selected"' : ''}>待激活</option>
+        		<option value="1" ${tempUser.status == 1 ? 'selected="selected"' : ''}>激活</option>
+        		<option value="2" ${tempUser.status == 2 ? 'selected="selected"' : ''}>冻结</option>
+        	</select>
+        	<input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
            <input id="" type="button" value="重置密码" class="initial" onclick="pltjsh()"/>
         </dd>
       </dl>
@@ -131,12 +148,17 @@ function find(){
 	        <td>${user.email}</td>
 	        <td>${user.phone}</td>
 	        <td>
-	          		<c:if test="${user.status == 1}">
-	          			<input type="image" src="${ctx}/theme/admin/default/images/prompt.png" title="激活" <c:if test="${user_chasta == true}">onclick="changeStatus('${user.userNo}',2)"</c:if>/>
-	          		</c:if>
-	          		<c:if test="${user.status == 2}">
-	          			<input type="image" src="${ctx}/theme/admin/default/images/freeze_icon.png" title="冻结" <c:if test="${user_chasta == true}">onclick="changeStatus('${user.userNo}',1)"</c:if>/>
-	          		</c:if>
+	        	<c:choose>
+	        		<c:when test="${user.status == 1}">
+	        			<a title="点击冻结" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',2,'')"</c:if>>激活</a>
+	        		</c:when>
+	        		<c:when test="${user.status == 2}">
+	        			<a title="点击激活" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',1,'')"</c:if>>冻结</a>
+	        		</c:when>
+	        		<c:when test="${user.status == 3}">
+	        			<a title="点击激活" href="#" <c:if test="${us_chasta == true}">onclick="changeStatus('${user.userNo}',1,'jihuo')"</c:if>>待激活</a>
+	        		</c:when>
+	        	</c:choose>
 	        </td>
 	        <td>
 	         	<fmt:formatDate value="${user.createDate}"
