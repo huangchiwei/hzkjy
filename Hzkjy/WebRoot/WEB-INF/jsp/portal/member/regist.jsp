@@ -17,7 +17,7 @@ $(function(){
 			$('#qydjzclx').append('<option value="' + item.id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + item.value + '</option>');
 		}
 	});
-	var isFlag = true;
+	var isFlag = false;
 	$("#email").change(function(){
 		if (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(this.value)){
 			// 发送异步请求
@@ -30,12 +30,19 @@ $(function(){
 				success : function(data){
 					isFlag = data.valid;
 					if (!data.valid){
-						alert('该邮箱已注册');
+						$('#email_img').css('display','none');
+						layer.tips('该邮箱已注册', document.getElementById('email') , {guide: 0, time: 3});
+					}else{
+						$('#email_img').css('display','');
 					}
 				}
 			});
+		}else{
+			isFlag = false;
+			$('#email_img').css('display','none');
 		}
 	});
+	//var str1 = "((http|ftp|https)://)(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?"
 	var telReg = /^0\d{2,3}-?\d{7,8}$/;
 	var phoneReg = /^1[3|4|5|8]\d{9}$/;
 	var strRegex = '^((https|http|ftp|rtsp|mms)?://)' 
@@ -58,17 +65,17 @@ $(function(){
 			return false;
 		}
 		var msg = '';
-		if(!isFlag){
-			msg = '该邮箱已注册';
-			obj = $("#email");
-		}else if($.trim($("#qymc").val()) == ''){
+		if($.trim($("#qymc").val()) == ''){
 			msg = '请填写企业名称';
 			obj = $("#qymc");
-		}else if($.trim($("#email").val()) == ''){
-			msg = '请填写邮箱';
-			obj = $("#email");
 		}else if(!(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test($("#email").val()))){
 			msg = '请填写正确的邮箱';
+			obj = $("#email");
+		}else if(!isFlag){
+			msg = '该邮箱已注册';
+			obj = $("#email");
+		}else if($.trim($("#email").val()) == ''){
+			msg = '请填写邮箱';
 			obj = $("#email");
 		}else if($("#address").val() != '' && (!re.test($("#address").val()))){
 			msg = '请填写正确的网址';
@@ -165,11 +172,147 @@ $(function(){
 			return true;
 		}
 		token = true;
-		alert(msg);
-		obj.focus();
+		if(obj.attr('id') != 'qyclsj')
+			obj.focus();
+		layer.tips(msg, obj[0] , {guide: 0, time: 3});
 		return false;
 	});
 	$("#qymc").focus();
+	
+	$('#qymc').change(function(){
+		if($.trim(this.value) == ''){
+			$('#qymc_img').css('display','none');
+		}else{
+			$('#qymc_img').css('display','');
+		}
+	});
+	$('#address').change(function(){
+		if(this.value == ''){
+			$('#address_img').css('display','none');
+		}else if(re.test(this.value)){
+			$('#address_img').css('display','');
+		}
+	});
+	$('#zydy').change(function(){
+		if(this.value == ''){
+			$('#zydy_img').css('display','none');
+		}else{
+			$('#zydy_img').css('display','');
+		}
+	});
+	$('#mj').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#mj_img').css('display','none');
+		}else{
+			$('#mj_img').css('display','');
+		}
+	});
+	$('#zczb').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#zczb_img').css('display','none');
+		}else{
+			$('#zczb_img').css('display','');
+		}
+	});
+	$('#frdb').change(function(){
+		if(this.value == ''){
+			$('#frdb_img').css('display','none');
+		}else{
+			$('#frdb_img').css('display','');
+		}
+	});
+	$('#frlxdh').change(function(){
+		if(this.value == '' || ((!telReg.test(this.value)) && (!phoneReg.test(this.value)))){
+			$('#frlxdh_img').css('display','none');
+		}else{
+			$('#frlxdh_img').css('display','');
+		}
+	});
+	$('#lxr').change(function(){
+		if(this.value == ''){
+			$('#lxr_img').css('display','none');
+		}else{
+			$('#lxr_img').css('display','');
+		}
+	});
+	$('#lxrdh').change(function(){
+		if(this.value == '' || ((!telReg.test(this.value)) && (!phoneReg.test(this.value)))){
+			$('#lxrdh_img').css('display','none');
+		}else{
+			$('#lxrdh_img').css('display','');
+		}
+	});
+	$('#qydjzclx').change(function(){
+		if(this.value == '0'){
+			$('#qydjzclx_img').css('display','none');
+		}else{
+			$('#qydjzclx_img').css('display','');
+		}
+	});
+	$('#zzjgdm').change(function(){
+		if(this.value == '' || (!/^[a-zA-Z0-9]{9}$/.test(this.value))){
+			$('#zzjgdm_img').css('display','none');
+		}else{
+			$('#zzjgdm_img').css('display','');
+		}
+	});
+	$('#qyclsj').blur(function(){
+		if(this.value == ''){
+			$('#qyclsj_img').css('display','none');
+		}else{
+			$('#qyclsj_img').css('display','');
+		}
+	});
+	$('#htstze').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#htstze_img').css('display','none');
+		}else{
+			$('#htstze_img').css('display','');
+		}
+	});
+	$('#dzys').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#dzys_img').css('display','none');
+		}else{
+			$('#dzys_img').css('display','');
+		}
+	});
+	$('#xnyjdxs').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#xnyjdxs_img').css('display','none');
+		}else{
+			$('#xnyjdxs_img').css('display','');
+		}
+	});
+	$('#fmzl').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#fmzl_img').css('display','none');
+		}else{
+			$('#fmzl_img').css('display','');
+		}
+	});
+	$('#wgsj').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#wgsj_img').css('display','none');
+		}else{
+			$('#wgsj_img').css('display','');
+		}
+	});
+	$('#syxx').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#syxx_img').css('display','none');
+		}else{
+			$('#syxx_img').css('display','');
+		}
+	});
+	$('#rjzzq').change(function(){
+		if(this.value == '' || (!/^\d+$/.test(this.value))){
+			$('#rjzzq_img').css('display','none');
+		}else{
+			$('#rjzzq_img').css('display','');
+		}
+	});
+	
 });
 </script>
 </head>
@@ -197,44 +340,55 @@ $(function(){
      <div class="li">
      
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业名称：</span>
-      <span class="span1"><input name="qymc" id="qymc" type="text" class="input" size="25" maxlength="100"/>
+      <span class="span1">
+      <input name="qymc" id="qymc" type="text" class="input" size="25" maxlength="100"/>
+      <img id="qymc_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;电子邮箱：</span>
-      <span class="span1"><input name="email" id="email" type="text" size="25" class="input" maxlength="100"/>
+      <span class="span1">
+      <input name="email" id="email" type="text" size="25" class="input" maxlength="100"/>
+      <img id="email_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
       <span class="span">企业网址：</span>
-      <span class="span1"><input id="address" name="address" type="text" class="input" size="18" maxlength="100" onclick="layer.tips('该网址将链接到科技园前台网站，以便于企业间互相了解，创造更多的合作机会！', this , {guide: 0, time: 2});"/>
+      <span class="span1"><input id="address" name="address" type="text" class="input" size="18" maxlength="100" onclick="layer.tips('该网址将链接到科技园前台网站，以便于企业间互相了解，创造更多的合作机会！', this , {guide: 0, time: 3});"/>
+      <img id="address_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;租用地址：</span>
       <span class="span1"><input id="zydy" name="zydy" type="text" class="input" size="25" maxlength="100"/>
+      <img id="zydy_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;租用面积：</span>
       <span class="span1"><input name="mj" id="mj" type="text" class="input" size="18" maxlength="20"/>
+      <img id="mj_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       <em>平方米</em>
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;注册资本：</span>
       <span class="span1"><input name="zczb" id="zczb" type="text" class="input" size="10" maxlength="20"/><em>万元</em>
+      <img id="zczb_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;法人代表：</span>
       <span class="span1"><input name="frdb" id="frdb" type="text" class="input" size="18" maxlength="20"/>
+      <img id="frdb_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;法人联系电话：</span>
-      <span class="span1"><input name="frlxdh" id="frlxdh" type="text" class="input" size="10" maxlength="20"/>
-      <em>如：020-12345678</em>
+      <span class="span1"><input name="frlxdh" id="frlxdh" type="text" class="input" size="25" maxlength="20" onclick="layer.tips('区号+电话或手机号码,如：020-88888888', this , {guide: 0, time: 3})"/>
+      <img id="frlxdh_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;联系人：</span>
       <span class="span1"><input name="lxr" id="lxr" type="text" class="input" size="18" maxlength="20"/>
+      <img id="lxr_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;联系电话：</span>
-      <span class="span1"><input name="lxrdh" id="lxrdh" type="text" class="input" size="10" maxlength="20"/><em>如：020-12345678</em>
+      <span class="span1"><input name="lxrdh" id="lxrdh" type="text" class="input" size="25" maxlength="20" onclick="layer.tips('区号+电话或手机号码,如：020-88888888', this , {guide: 0, time: 3})"/>
+      <img id="lxrdh_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      
@@ -244,28 +398,34 @@ $(function(){
       <select name="qydjzclx" id="qydjzclx" class="input">
       	<option value="0" disabled="disabled" >-- 请选择 --</option>
       </select>
+      <img id="qydjzclx_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;组织机构代码：</span>
-      <span class="span1"><input name="zzjgdm" id="zzjgdm" type="text" class="input" size="25" maxlength="30" onclick="layer.tips('组织机构代码由9个字符长度由字母或数字组成', this , {guide: 0, time: 2});"/>
+      <span class="span1"><input name="zzjgdm" id="zzjgdm" type="text" class="input" size="25" maxlength="30" onclick="layer.tips('组织机构代码由9个字符长度由字母或数字组成', this , {guide: 0, time: 3});"/>
+      <img id="zzjgdm_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;企业成立时间：</span>
       <span class="span1">
       	<input name="qyclsj" id="qyclsj" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="input" size="18" />
+      <img id="qyclsj_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;获天使或风险投资额：</span>
       <span class="span1"><input name="htstze" id="htstze" type="text" class="input" size="18" maxlength="20"/>
-      <em>万元</em></span>
+      <em>万元</em>
+      <img id="htstze_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" /></span>
      </div>
      <div class="li">
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;在孵企业大专以上人员：</span>
       <span class="span1">
       	<input name="dzys" id="dzys" type="text" class="input" size="18" maxlength="20"/>
-      	<em>人</em></span>
+      	<em>人</em>
+      	<img id="dzys_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" /></span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;在孵企业大学应届生：</span>
       <span class="span1"><input name="xnyjdxs" id="xnyjdxs" type="text" class="input" size="18" maxlength="20"/>
       <em>人</em>
+      <img id="xnyjdxs_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
@@ -309,11 +469,13 @@ $(function(){
       <span class="span1">
 		<input id="fmzl" name="fmzl" type="text" class="input" size="18" maxlength="20"/>
 		<em>件</em>
+		<img id="fmzl_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;外观设计：</span>
       <span class="span1">
       	<input name="wgsj" id="wgsj" type="text" class="input" size="18" maxlength="20"/>
       	<em>个</em>
+      	<img id="wgsj_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
      <div class="li">
@@ -321,11 +483,13 @@ $(function(){
       <span class="span1">
 		<input id="syxx" name="syxx" type="text" class="input" size="18" maxlength="20"/>
 		<em>件</em>
+		<img id="syxx_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
       <span class="span"><font class=" c_ff0000">*</font>&nbsp;&nbsp;软件著作权：</span>
       <span class="span1">
       	<input name="rjzzq" id="rjzzq" type="text" class="input" size="18" maxlength="20"/>
       	<em>个</em>
+      	<img id="rjzzq_img" style="display: none" src="${ctx}/theme/default/images/zhengque.jpg" />
       </span>
      </div>
       
