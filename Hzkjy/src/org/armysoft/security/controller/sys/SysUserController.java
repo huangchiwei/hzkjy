@@ -31,7 +31,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.CookieUtil;
-import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.gzjr.hzkjy.util.mail.SendEmailThread;
 
 @Controller
@@ -44,8 +43,6 @@ public class SysUserController extends BaseController {
 	private SysRoleService sysRoleService;
 	@Resource
 	private InitResourcesMap initResourcesMap;
-	@Resource
-	private MemberBasicService memberBasicService;
 	
 	/**
 	 * 条件分页查询用户
@@ -270,7 +267,6 @@ public class SysUserController extends BaseController {
 				initResourcesMap.updateResourcesMap(userNo, null, addRoles);//更新用户权限
 				if(StringUtils.hasText(toDo)){
 					SysUser user = sysUserService.getByUserNo(userNo);
-					//memberBasicService.sendPassWord(user.getEmail(), userNo, Constants.DEFAULT_PASSWORD);
 					new SendEmailThread(user.getEmail(), userNo, Constants.DEFAULT_PASSWORD).start();
 				}
 			}else{
