@@ -21,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.armysoft.core.Pagination;
+import org.armysoft.security.annotation.PermissionsAnno;
+import org.armysoft.security.model.sys.SysUser;
+import org.armysoft.security.service.sys.SysUserService;
 import org.armysoft.springmvc.controller.BaseController;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -33,11 +36,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import org.armysoft.security.annotation.PermissionsAnno;
-
 import com.alibaba.fastjson.JSONObject;
 import com.armysoft.hzkjy.base.common.Constants;
-import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
@@ -45,11 +45,11 @@ import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.IncubatedEnterprises;
 import com.armysoft.hzkjy.model.MemberBasic;
-import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.DbMessageService;
 import com.armysoft.hzkjy.service.member.IncubatedEnterprisesService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
+import com.gzjr.hzkjy.util.mail.SendEmailThread;
 
 
 @Controller
@@ -64,6 +64,8 @@ public class  MemberBasicController extends BaseController {
 	private BsNewsService Bsservice;
 	@Resource
 	private IncubatedEnterprisesService IEservice;
+	@Resource
+	private SysUserService sysUserService;
 	
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
@@ -263,6 +265,10 @@ public class  MemberBasicController extends BaseController {
 		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 		System.out.println(entity.getId());
 		service.update(entity);
+		//激活和发送邮件
+		SysUser user = sysUserService.getByUserNo(entity.getHybh());
+		sysUserService.updateStatus(user.getUserNo(), Constants.USER_ACTIVE);
+		new SendEmailThread(user.getEmail(), user.getUserNo(), Constants.DEFAULT_PASSWORD).start();
 		return "redirect://admin/memberBasic/list/1.html";
 	}
 	@PermissionsAnno("mb_save")

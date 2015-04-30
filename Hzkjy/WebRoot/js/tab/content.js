@@ -157,18 +157,18 @@ function removeElement(tab,plugin){
 	}
     
 }
- function openNew(plugin, url) {
-        	
-	 if (tabs.length >= 8) {
-			alert( '最多可以同时打开8个tab');
-			return;
-		}
+ function openNew(plugin, url,id) {
 	 if(exits(plugin)==true){
 		 refresh_select(plugin,true);
 		  top.frames['I1'].selectTreeTab(plugin);
 		 return;
-	 }
-            var tabName="tab"+tabs.length;
+	 }	
+	 if (tabs.length >= 10) {
+			alert( '最多可以同时打开10个tab');
+			return;
+		}
+	 
+            var tabName="tab"+id;
             var contentName=tabName+"_content";
             // hide other tabs
             $("#tabs li").removeClass("current");
@@ -187,7 +187,7 @@ function removeElement(tab,plugin){
           
 
             var content = '<iframe scrolling="auto" frameborder="0" id="iframe'
-    			+  tabs.length + '" src="'+url+'" style="width:100%;height:100%;"></iframe>';
+    			+ id + '" src="'+url+'" style="width:100%;height:100%;"></iframe>';
             $("#content").append("<p id='" + contentName + "'>" + 
             		content + "</p>");
             

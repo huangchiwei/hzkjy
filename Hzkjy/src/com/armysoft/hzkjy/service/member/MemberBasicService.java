@@ -1,5 +1,4 @@
 ﻿package com.armysoft.hzkjy.service.member;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,6 @@ import org.armysoft.ibatis.dao.BaseDao;
 import org.armysoft.security.model.sys.SysUser;
 import org.armysoft.security.service.sys.SysUserService;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.model.MemberBasic;
@@ -192,25 +190,4 @@ public class MemberBasicService extends BaseDao {
 		
 	}
 	
-
-	public void sendPassWord(String email,String userNo,String pwd) {
-		  MailSenderInfo mailInfo = new MailSenderInfo();  
-		   mailInfo.setMailServerHost(Constants.mailPros.getProperty("mail.serverHost"));    
-		     mailInfo.setMailServerPort(Constants.mailPros.getProperty("mail.serverPort"));    
-		     mailInfo.setValidate(true);    
-		     mailInfo.setUserName(Constants.mailPros.getProperty("mail.userName"));    
-		     mailInfo.setPassword(Constants.mailPros.getProperty("mail.password"));//您的邮箱密码    
-		    mailInfo.setFromAddress(Constants.mailPros.getProperty("mail.fromAddress"));  
-		    mailInfo.setToAddress(email);  
-	    	 mailInfo.setSubject("广州市海珠科技产业园信息提示"); //邮箱标题
-	    	 //String resetUrl=Constants.mailPros.getProperty("mail.resetUrl")+"userNo="+sysUser.get("UserNo").toString()+"&mailSeq="+sysUser.get("MailSeq").toString();
-	    	 mailInfo.setContent("尊敬的用户" + ",您好，您的账号已审核通过，登录账号是：" + userNo + ",密码是：" + pwd + ",登录后请及时修改密码。");   
-		    
-		        //这个类主要来发送邮件   
-		     SimpleMailSender sms = new SimpleMailSender();   
-		         sms.sendTextMail(mailInfo);//发送文体格式    
-		         //sms.sendHtmlMail(mailInfo);//发送html格式   
-		
-	}
-
 }
