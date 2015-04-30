@@ -13,7 +13,7 @@
  <script type="text/javascript" src="${ctx}/js/tab/content.js"></script>
 <script language=Javascript>
 $(function(){
-	openNew('welcome','${ctx}/admin/welcome.html');
+	openNew('welcome','${ctx}/admin/welcome.html','welcome');
 });
   function time(){
     //获得显示时间的div
@@ -54,8 +54,8 @@ function switchSysBar(){
   <div class="top_t_time"  id="showtime"></div>
   <div class="div">
    <div class="user">${userNo}</div>
-      <div class="home"><a href="${ctx}/portal/index.html">首页</a></div>
-   <div class="set"><a href="javascript:openNew('修改密码','${ctx}/admin/sysUser/toModifyPwd.html')">修改密码</a></div>
+      <div class="home"><a href="javascript:openNew('welcome','${ctx}/admin/welcome.html','welcome');">首页</a></div>
+   <div class="set"><a href="javascript:openNew('修改密码','${ctx}/admin/sysUser/toModifyPwd.html','tomodifypwd')">修改密码</a></div>
    <div class="quit"><a href="${ctx}/admin/loginOut.html">退出</a></div>
   </div>
  </div>
@@ -74,11 +74,11 @@ function switchSysBar(){
                   <!-- Tabs go here -->
                 </ul>
                 <div class="div_icon"><a href="#" onclick="refresh();"><img src="${ctx}/theme/admin/default/images/refresh.png" alt="刷新当前页面" border="0"></a>
-                <a href="#" onclick="closeAllTab();openNew('welcome','${ctx}/admin/welcome.html');"><img src="${ctx}/theme/admin/default/images/close_all.png" alt="关闭所有页面" border="0"></a></div>
+                <a href="#" onclick="closeAllTab();openNew('welcome','${ctx}/admin/welcome.html','welcome');"><img src="${ctx}/theme/admin/default/images/close_all.png" alt="关闭所有页面" border="0"></a></div>
               </div>
             </div>
-            <div id="content" class="wra_bother" style="height:85%;">
-          <p id="tabundefined_content"><iframe scrolling="auto" frameborder="0" id="iframeundefined" src="${ctx}/admin/welcome.html" style="width:100%;height:100%;"></iframe></p>
+           <div id="content" class="wra_bother" style="height:85%;">
+          <!--<p id="tabundefined_content"><iframe scrolling="auto" frameborder="0" id="iframeundefined" src="${ctx}/admin/welcome.html" style="width:100%;height:100%;"></iframe></p>-->
           </div>
           </td>
         </tr>
