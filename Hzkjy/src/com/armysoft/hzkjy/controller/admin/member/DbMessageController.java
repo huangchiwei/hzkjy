@@ -66,6 +66,7 @@ public class  DbMessageController extends BaseController {
 	public String getByPage(@PathVariable Integer currentPage,String fzt,String fsfjjyb,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			DbMessage entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
+		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
 		model.addAttribute("list", service.getByPage(params, pager));
 		model.addAttribute("page", pager);

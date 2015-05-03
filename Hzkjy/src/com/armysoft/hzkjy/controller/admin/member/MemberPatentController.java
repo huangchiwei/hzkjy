@@ -71,6 +71,7 @@ public class  MemberPatentController extends BaseController {
     @RequestMapping(value = PAGE_LIST)
 	public String getByPage(@PathVariable Integer currentPage, HttpServletRequest request, Model model,String year,String month) {
 		Pagination pager = initPage(currentPage);
+		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
 		if(year!=null)
 			params.put("year", year);

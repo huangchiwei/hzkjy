@@ -66,6 +66,7 @@ public class  BsNewsController extends BaseController {
 	public String getByPage(@PathVariable Integer currentPage,String ftitle,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			BsNews entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
+		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
 		if(ftitle !="" && ftitle !=null){
 		params.put("ftitle", ftitle);

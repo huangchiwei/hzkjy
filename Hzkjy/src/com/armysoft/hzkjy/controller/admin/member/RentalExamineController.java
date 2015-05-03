@@ -93,6 +93,7 @@ public class  RentalExamineController extends BaseController {
 	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
 			RentalExamine entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
+		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
 		if(fhymc !="" && fhymc !=null){
 			params.put("fhymc", fhymc);

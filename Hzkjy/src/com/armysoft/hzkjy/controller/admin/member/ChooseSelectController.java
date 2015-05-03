@@ -88,6 +88,7 @@ public class  ChooseSelectController extends BaseController {
 	public String getByPage(@PathVariable Integer currentPage,String fhymc,String frysjf,String frysje, String fhtqxf,String fhtqxe,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			MemberBasic entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
+		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
