@@ -45,11 +45,13 @@ import com.armysoft.hzkjy.model.BsNews;
 import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.IncubatedEnterprises;
 import com.armysoft.hzkjy.model.MemberBasic;
+import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.DbMessageService;
 import com.armysoft.hzkjy.service.member.IncubatedEnterprisesService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.gzjr.hzkjy.util.mail.SendEmailThread;
+import com.gzjr.hzkjy.util.mail.SendnpEmailThread;
 
 
 @Controller
@@ -270,6 +272,25 @@ public class  MemberBasicController extends BaseController {
 		sysUserService.updateStatus(user.getUserNo(), Constants.USER_ACTIVE);
 		new SendEmailThread(user.getEmail(), user.getUserNo(), Constants.DEFAULT_PASSWORD).start();
 		return "redirect://admin/memberBasic/list/1.html";
+	}
+	
+	
+	@RequestMapping("Shbtg.html")
+	@ResponseBody
+	public String Shbtg(String id,MemberBasic entity, Model model,HttpServletRequest request,HttpServletResponse response) throws ParseException {
+		MemberBasic mb=service.findByKey(Long.valueOf(id));
+		JSONObject jsonObject = new JSONObject();
+		SysUser user = sysUserService.getByUserNo(mb.getHybh());
+		new SendnpEmailThread(user.getEmail(), user.getUserNo(), Constants.DEFAULT_PASSWORD).start();
+		jsonObject.put("exl","ok");
+		response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 	@PermissionsAnno("mb_save")
 	@RequestMapping(value = SAVE)

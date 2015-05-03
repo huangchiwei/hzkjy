@@ -61,6 +61,23 @@ function loadNd(){
 		  	});
  }
 } 
+
+function shbtg(){
+	var id = '${model.id}';
+	$.ajax({
+				url:'${ctx}/admin/memberBasic/Shbtg.html?id='+id+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("邮件发送成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  	});
+}
 </script>
 
 
@@ -274,6 +291,8 @@ html { overflow:-moz-scrollbars-vertical;}
    
        <div class="div_submit">
 					<input id="sumbit_bt" name="" type="submit" value="审核"
+						class="photo_btn" />
+						<input type="reset" value="审核不通过" onclick="shbtg();"
 						class="photo_btn" />
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
