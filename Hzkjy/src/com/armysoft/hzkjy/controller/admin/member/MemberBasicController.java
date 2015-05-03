@@ -154,6 +154,15 @@ public class  MemberBasicController extends BaseController {
 		IncubatedEnterprises mr=IEservice.findIeHybh(hybh,nd);
 		JSONObject jsonObject = new JSONObject();
 		if(mr!=null){
+			
+			jsonObject.put("qymc",mr.getQymc());
+			jsonObject.put("zczb",mr.getZczb());
+			jsonObject.put("frdb",mr.getFrdb());
+			jsonObject.put("frlxdh",mr.getFrlxdh());
+			jsonObject.put("lxr",mr.getLxr()); 
+			jsonObject.put("lxrdh",mr.getLxrlxdh());
+			jsonObject.put("qyrzsj",mr.getQyrzsj());
+			
 			jsonObject.put("fmzl",mr.getFmzl());
 			jsonObject.put("syxx",mr.getSyxx());
 			jsonObject.put("wgsj",mr.getWgsj());
@@ -161,7 +170,7 @@ public class  MemberBasicController extends BaseController {
 			jsonObject.put("htstze",mr.getHtstze());
 			jsonObject.put("dzys",mr.getDzys());
 			jsonObject.put("xnyjdxs",mr.getXnyjdxs());
-		}else{
+		}else if(nd.equals("2015")){
 			MemberBasic mb=service.findByHybh(hybh);
 			jsonObject.put("fmzl",mb.getFmzl());
 			jsonObject.put("syxx",mb.getSyxx());
@@ -170,6 +179,32 @@ public class  MemberBasicController extends BaseController {
 			jsonObject.put("htstze",mb.getHtstze());
 			jsonObject.put("dzys",mb.getDzys());
 			jsonObject.put("xnyjdxs",mb.getXnyjdxs());
+			
+
+			jsonObject.put("qymc",mb.getQymc());
+			jsonObject.put("zczb",mb.getZczb());
+			jsonObject.put("frdb",mb.getFrdb());
+			jsonObject.put("frlxdh",mb.getFrlxdh());
+			jsonObject.put("lxr",mb.getLxr()); 
+			jsonObject.put("lxrdh",mb.getLxrdh());
+			jsonObject.put("qyrzsj",mb.getQyrzsj());
+			
+		}else{
+			jsonObject.put("fmzl","");
+			jsonObject.put("syxx","");
+			jsonObject.put("wgsj","");
+			jsonObject.put("rjzzq","");
+			jsonObject.put("htstze","");
+			jsonObject.put("dzys","");
+			jsonObject.put("xnyjdxs","");
+			
+			jsonObject.put("qymc","");
+			jsonObject.put("zczb","");
+			jsonObject.put("frdb","");
+			jsonObject.put("frlxdh","");
+			jsonObject.put("lxr",""); 
+			jsonObject.put("lxrdh","");
+			jsonObject.put("qyrzsj","");
 		}
 		 
 		

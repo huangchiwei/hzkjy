@@ -54,6 +54,14 @@ function loadNd(){
 		  		$("#htstze").attr("value",data.htstze);
 		  		$("#dzys").attr("value",data.dzys);
 		  		$("#xnyjdxs").attr("value",data.xnyjdxs);
+		  		$("#qymc").attr("value",data.qymc);
+		  		$("#zczb").attr("value",data.zczb);
+		  		$("#frdb").attr("value",data.frdb);
+		  		$("#frlxdh").attr("value",data.frlxdh);
+		  		$("#lxr").attr("value",data.lxr);
+		  		$("#lxrdh").attr("value",data.lxrdh);
+		  		$("#qyrzsj").attr("value",data.qyrzsj);
+		  			
 		  },
 		  		error:function(){
 		  		} 
