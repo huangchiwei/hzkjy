@@ -21,7 +21,37 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
+$('#checkAll').click(function(){
+		$('input[name="qyId"]').attr("checked",this.checked);
+	});
 });
+
+function pass(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要审核的 孵化企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/incubatedEnterprises/pass.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("审核成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 function find(){    
 	$("#search_form").attr("action","${ctx}/admin/incubatedEnterprises/list/1.html");
 	document.getElementById("search_form").submit();
@@ -125,12 +155,14 @@ function loadPageLayer2(title,url){
 							<input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
          <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
            <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
+            <input id="" type="button" value="批量审核" class="initial" onclick="pass()"/>
     </div>
     
     </form>
      <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
+	  		<th  width="5%"><input type="checkbox" id="checkAll"/>全选</th>
 	  	<th>序号</th>
 	  	 <th>企业名称</th> 
 	        <th>组织机构代码</th>
@@ -139,6 +171,7 @@ function loadPageLayer2(title,url){
 	        <th>企业所属技术领域</th>
 	        <th>法人代表</th>
 	        <th>年份</th>
+	        <th>审核状态</th>
 	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
@@ -155,6 +188,7 @@ function loadPageLayer2(title,url){
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/incubatedEnterprises/add/new.html?id=${mb.id}'">
+	      <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>  
 	           	<td>${sta.index + 1}</td>
 	           	<td>${mb.qymc}</td>
 	        <td>${mb.zzjgdm}</td>
@@ -172,12 +206,15 @@ function loadPageLayer2(title,url){
 	         </td>
 	        <td>${mb.frdb}</td>
 	        <td>${mb.ssn}</td>
+	        <td>${mb.shzt}</td>
 	        <td>
-	          	<c:if test="${fhqytb_updt == true}">
+	       <c:if test="${userNo!= '4401' || mb.shzt!='已审核'}">
+	         <c:if test="${fhqytb_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/incubatedEnterprises/add/new.html?id=${mb.id}'"/>
 		          	</div>
 	          	</c:if>
+	          	 </c:if>
 	          	<c:if test="${fhqytb_del == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/del_icon.png" title="删除" onclick="delConfirm('${mb.id}')"/>
@@ -187,7 +224,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="7"></td>
+        <td colspan="9"></td>
       <td>总计</td>
       <td><c:if test="${not empty zj}">${zj }</c:if><c:if test="${not empty zj}">0</c:if>家</td>
     
@@ -195,7 +232,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="9">
+			<td colspan="11">
 				<div class="page">
 					<p:pager/>
 				</div>

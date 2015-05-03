@@ -549,7 +549,7 @@ public class  RentalExamineController extends BaseController {
 //		
 //	}
 	@RequestMapping("/outfpxt/1.html")
-	public void outfpxt(Model model,String fhymc,String fjfyd,String fkpxm,HttpServletRequest request,HttpServletResponse response) {
+	public void outfpxt(Model model,String fhymc,String fjfyd,String fkpxm,String fpzl,HttpServletRequest request,HttpServletResponse response) {
 		String title="发票系统表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "rownum","序号(*)"});
@@ -572,7 +572,29 @@ public class  RentalExamineController extends BaseController {
 		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
-		List list =service.getFpxt(params);
+		List list=null;
+		if(fkpxm.equals("1")){
+			if(fpzl.equals("1")){
+				 list =service.getFpzly1(params);
+			}else{
+				 list =service.getFpzly2(params);
+			}
+			
+		}else if(fkpxm.equals("2")){
+			if(fpzl.equals("1")){
+				 list =service.getFpglf1(params);
+			}else{
+				 list =service.getFpglf2(params);
+			}
+			
+		}else if(fkpxm.equals("3")){
+			
+			 if(fpzl.equals("1")){
+				 list =service.getFpdly1(params);
+			}else{
+				 list =service.getFpdly2(params);
+			}
+		}
          ExportExcel3 exportExcel = new ExportExcel3(title,title, headData);
 		
 		exportExcel.exportExcel_Applicant(request, response,list);

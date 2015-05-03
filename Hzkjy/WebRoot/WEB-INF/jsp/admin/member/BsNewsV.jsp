@@ -119,9 +119,9 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th >标题：</th>
      <td>
-     	<input id="title" name="title" type="text" value="${model.title}"  maxlength="100" style="width:160px" />
+     	<input id="title" name="title" type="text" value="${model.title}" readonly=${userNo== '4401'?true:false} maxlength="100" style="width:160px" />
      </td>
-     
+     <c:if test="${userNo!= '4401'}">
       <th>是否全部通知：</th>
      <td>
      	 <select name="iseveryone"  id="iseveryone" style="text-align:center">
@@ -129,16 +129,17 @@ html { overflow:-moz-scrollbars-vertical;}
           <option value="1">是</option>
         </select>
      </td>
+     </c:if>
      
     
     </tr>
        <tr>
      <th>有效时间：</th>
      <td>
-     <input id="activeTime" name="activeTime" size="22" class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" 
+     <input id="activeTime" name="activeTime" size="22" readonly=${userNo== '4401'?true:false} class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" 
      	value="<fmt:formatDate value="${model.activeTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" maxlength="20"/>
      </td>
-     
+     <c:if test="${userNo!= '4401'}">
      <th>是否发布：</th>
      <td>
       <select name="isReport"  id="isReport" style="text-align:center">
@@ -146,7 +147,7 @@ html { overflow:-moz-scrollbars-vertical;}
           <option value="1">是</option>
         </select>
      </td>
-    
+    </c:if>
     </tr>
     
     <tr>
@@ -155,12 +156,14 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>接收者：</th>
      <td>
-     	<input id="receiver" name="receiver" type="text" value="${model.receiver}" maxlength="100" style="width:160px" onfocus="loadCorpName();" onblur="loadQyxx();" />
+     	<input id="receiver" name="receiver" type="text" value="${model.receiver}" maxlength="100" style="width:160px" onfocus="loadCorpName();" onblur="loadQyxx();" readonly=${userNo== '4401'?true:false} />
      </td>
+     <c:if test="${userNo!= '4401'}">
       <th>接收者编号;</th>
      <td>
        <input id="receiverBh" name="receiverBh" type="text" value="${model.receiverBh}"  maxlength="100" style="width:160px"  readonly/> 
       </td>
+      </c:if>
     </tr>
     <%--
     <tr> <th>阅读次数：</th>
@@ -174,7 +177,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td></tr>
 	  --%><tr>
 	  <th>内容</th>
-	  <td colspan="3"><textarea id="content" name="content" rows="3" cols="120" >${model.content }</textarea>
+	  <td colspan="3"><textarea id="content" name="content" rows="3" cols="120"  readonly=${userNo== '4401'?true:false}>${model.content }</textarea>
 	  </td>
 	  </tr>
    

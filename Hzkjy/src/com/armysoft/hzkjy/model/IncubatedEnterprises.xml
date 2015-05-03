@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh</sql>
+	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh,Shzt</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from incubated_enterprises
@@ -49,6 +49,8 @@
 				 <result column="Rjzzq" property="rjzzq" />
 				 <result column="Ssn" property="ssn" />
 				  <result column="Hybh" property="hybh" />
+				  <result column="Shzt" property="shzt" />
+				  
 			</resultMap>
 			
 			<select id="getToLastYear" resultType="java.util.Map" parameterType="java.util.Map">
@@ -133,7 +135,7 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="incubatedEnterprises">
-		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh)
+		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh,Shzt)
 		values(#{qymc} 		
 		, #{zzjgdm} 		
 		, #{frdb} 		
@@ -158,6 +160,8 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 		 ,		#{rjzzq}
 		 ,		#{ssn}
 		 ,		#{hybh}
+		  ,		#{shzt}
+		 
 		 
 		  )
 		</insert>
@@ -189,6 +193,8 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 		 ,Rjzzq=#{rjzzq}
 		 ,Ssn=#{ssn}
 		 ,Hybh=#{hybh}
+		 ,Shzt=#{shzt}
+		 
 		 
 		 							where ID = #{id}
 	</update>

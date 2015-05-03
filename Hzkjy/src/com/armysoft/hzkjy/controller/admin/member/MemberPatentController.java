@@ -202,6 +202,7 @@ public class  MemberPatentController extends BaseController {
 		  String Wgsj="";
 		  String Syxx="";
 		  String Rjzzq="";
+		  String upYear="";
 		for(int id=0;id<idArr.length;id++){
 			Map<String, Object> params = new HashMap<String, Object>();
 	    	params.put("id", idArr[id].trim());
@@ -213,31 +214,59 @@ public class  MemberPatentController extends BaseController {
 	    	mpMemberNo=mp.get("MemberNo").toString();
 	    	mpYear=mp.get("Year").toString();
 	    	IncubatedEnterprises ie = incubatedEnterprisesService.findIeHybh(mpMemberNo, mpYear);
-	    	if(ie==null){
-				MemberBasic mb=memberBasicService.findMbHybh(mpMemberNo);
-				if(mpType.equals("0")){
-					Fmzl=String.valueOf(Integer.valueOf(mb.getFmzl())+1);
-				}else if(mpType.equals("1")){
-					Syxx=String.valueOf(Integer.valueOf(mb.getSyxx())+1);
-					
-				}else if(mpType.equals("2")){
-					Wgsj=String.valueOf(Integer.valueOf(mb.getWgsj())+1);
-				}else if(mpType.equals("3")){
-					Rjzzq=String.valueOf(Integer.valueOf(mb.getRjzzq())+1);
-				}
-				
-			}else{
+	    	IncubatedEnterprises ie2 =null;
+	    	if(ie!=null){
 				if(mpType.equals("0")){
 					Fmzl=String.valueOf(Integer.valueOf(ie.getFmzl())+1);
 				}else if(mpType.equals("1")){
 					Syxx=String.valueOf(Integer.valueOf(ie.getSyxx())+1);
+					
 				}else if(mpType.equals("2")){
 					Wgsj=String.valueOf(Integer.valueOf(ie.getWgsj())+1);
 				}else if(mpType.equals("3")){
 					Rjzzq=String.valueOf(Integer.valueOf(ie.getRjzzq())+1);
 				}
-				
 			}
+	    	if(ie==null){
+	    		
+	    		if(Integer.valueOf(mpYear)>2015){
+	    			for(int i=Integer.valueOf(mpYear);i>2015;i--){
+	    				upYear=String.valueOf(i);
+	    			    ie2 = incubatedEnterprisesService.findIeHybh(mpMemberNo, upYear);
+	    			    if(ie2!=null) {
+					        break;
+					     }
+	    			}
+	    		}
+	    			MemberBasic mb=memberBasicService.findMbHybh(mpMemberNo);
+	    		
+	    		
+				if(ie2!=null){
+					if(mpType.equals("0")){
+						Fmzl=String.valueOf(Integer.valueOf(ie2.getFmzl())+1);
+					}else if(mpType.equals("1")){
+						Syxx=String.valueOf(Integer.valueOf(ie2.getSyxx())+1);
+						
+					}else if(mpType.equals("2")){
+						Wgsj=String.valueOf(Integer.valueOf(ie2.getWgsj())+1);
+					}else if(mpType.equals("3")){
+						Rjzzq=String.valueOf(Integer.valueOf(ie2.getRjzzq())+1);
+					}
+					
+				}else{
+					if(mpType.equals("0")){
+						Fmzl=String.valueOf(Integer.valueOf(mb.getFmzl())+1);
+					}else if(mpType.equals("1")){
+						Syxx=String.valueOf(Integer.valueOf(mb.getSyxx())+1);
+					}else if(mpType.equals("2")){
+						Wgsj=String.valueOf(Integer.valueOf(mb.getWgsj())+1);
+					}else if(mpType.equals("3")){
+						Rjzzq=String.valueOf(Integer.valueOf(mb.getRjzzq())+1);
+					}
+					
+				}
+				}
+				
 	    	if(ie==null){
 				  IncubatedEnterprises ii=new IncubatedEnterprises();
 				  MemberBasic mb=memberBasicService.findMbHybh(mpMemberNo);

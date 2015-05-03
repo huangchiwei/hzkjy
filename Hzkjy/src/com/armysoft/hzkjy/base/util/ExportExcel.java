@@ -107,7 +107,7 @@ public class ExportExcel {
 				for (int j=0 ;j<columnCount;j++){
 					value.delete(0, value.length());
 						if (rowData[j]==null){
-							 value.append("空");
+							 value.append("");
 						  }else{
 							  if (rowData[j].equals(Double.NaN)){
 								     value.append("0.0");

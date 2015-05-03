@@ -7,8 +7,10 @@ import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -198,22 +200,23 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("qyzj",mr.getQyzj());
 			jsonObject.put("qyzjdj",mr.getQyzjdj());
 			
-			String[] zjsqall=mr.getZjsq().split("/");
+			String[] zjsqallf=mr.getZjsq().substring(0, 8).split("/");
+			String[] zjsqalle=mr.getZjsq().substring(9, 17).split("/");
 			String newzjsqy="";
 			String newzjsqn="";
 			String newzjsq="";
+			String newzjsqallf="";
+			String newzjsqalle="";
+			String newzjsqallf1="";
+			String newzjsqalle1="";
 			String[] zjsqdall;
-			if(zjsqall!=null){
-				System.out.println(zjsqall[0].toString());
-				if(zjsqall[1].toString().equals("12")){
-					newzjsqy="1";
-					newzjsqn=String.valueOf(Integer.valueOf(zjsqall[0].toString())+1);
-				}else{
-					newzjsqy=String.valueOf(Integer.valueOf(zjsqall[1].toString())+1);
-					newzjsqn=zjsqall[0].toString();
-				}
-				zjsqdall=zjsqall[2].toString().split("~");
-				newzjsq=newzjsqn+"/"+newzjsqy+"/"+zjsqdall[0].toString()+"~"+newzjsqn+"/"+newzjsqy+"/"+zjsqall[4].toString();
+			if(zjsqallf!=null){
+				newzjsqallf="20"+zjsqallf[0].toString()+"-"+zjsqallf[1].toString()+"-"+zjsqallf[2].toString();
+				newzjsqalle="20"+zjsqalle[0].toString()+"-"+zjsqalle[1].toString()+"-"+zjsqalle[2].toString();
+				newzjsqallf1=GetSysDate("yyyy-MM-dd",  newzjsqallf,   0,   1,   0);
+				newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   0);
+				newzjsq=newzjsqallf1.substring(2, 4)+"/"+newzjsqallf1.substring(5,7)+"/"+newzjsqallf1.substring(8,10)+"~"
+				+newzjsqalle1.substring(2, 4)+"/"+newzjsqalle1.substring(5,7)+"/"+newzjsqalle1.substring(8,10);
 				jsonObject.put("zjsq",newzjsq);
 			}
 			
@@ -226,22 +229,23 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("glfwf",mr.getGlfwf());
 			jsonObject.put("glfwfdj",mr.getGlfwfdj());
 			
-			String[] glfsqall=mr.getGlfsq().split("/");
+			String[] glfsqallf=mr.getGlfsq().substring(0, 8).split("/");
+			String[] glfsqalle=mr.getGlfsq().substring(9, 17).split("/");
 			String newglfsqy="";
 			String newglfsqn="";
 			String newglfsq="";
+			String newqlfsqallf="";
+			String newqlfsqalle="";
+			String newqlfsqallf1="";
+			String newqlfsqalle1="";
 			String[] glfsqdall;
-			if(glfsqall!=null){
-				System.out.println(glfsqall[0].toString());
-				if(glfsqall[1].toString().equals("12")){
-					newglfsqy="1";
-					newglfsqn=String.valueOf(Integer.valueOf(glfsqall[0].toString())+1);
-				}else{
-					newglfsqy=String.valueOf(Integer.valueOf(glfsqall[1].toString())+1);
-					newglfsqn=glfsqall[0].toString();
-				}
-				glfsqdall=glfsqall[2].toString().split("~");
-				newglfsq=newglfsqn+"/"+newglfsqy+"/"+glfsqdall[0].toString()+"~"+newglfsqn+"/"+newglfsqy+"/"+glfsqall[4].toString();
+			if(glfsqallf!=null){
+				newqlfsqallf="20"+glfsqallf[0].toString()+"-"+glfsqallf[1].toString()+"-"+glfsqallf[2].toString();
+				newqlfsqalle="20"+glfsqalle[0].toString()+"-"+glfsqalle[1].toString()+"-"+glfsqalle[2].toString();
+				newqlfsqallf1=GetSysDate("yyyy-MM-dd",  newqlfsqallf,   0,   1,   0);
+				newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   0);
+				newglfsq=newqlfsqallf1.substring(2, 4)+"/"+newqlfsqallf1.substring(5,7)+"/"+newqlfsqallf1.substring(8,10)+"~"
+				+newqlfsqalle1.substring(2, 4)+"/"+newqlfsqalle1.substring(5,7)+"/"+newqlfsqalle1.substring(8,10);
 				jsonObject.put("glfsq",newglfsq);
 			}
 			
@@ -254,22 +258,20 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("zlbzj",mr.getZlbzj());
 			jsonObject.put("zlbzjdj",mr.getZlbzjdj());
 			
-			String[] zlbzjsqall=mr.getZlbzjsq().split("/");
-			String newzlbzjsqy="";
-			String newzlbzjsqn="";
+			String[] zlbzjsqallf=mr.getZlbzjsq().substring(0, 8).split("/");
+			String[] zlbzjsqalle=mr.getZlbzjsq().substring(9, 17).split("/");
 			String newzlbzjsq="";
-			String[] zlbzjsqdall;
-			if(zlbzjsqall!=null){
-				System.out.println(zlbzjsqall[0].toString());
-				if(zlbzjsqall[1].toString().equals("12")){
-					newzlbzjsqy="1";
-					newzlbzjsqn=String.valueOf(Integer.valueOf(zlbzjsqall[0].toString())+1);
-				}else{
-					newzlbzjsqy=String.valueOf(Integer.valueOf(zlbzjsqall[1].toString())+1);
-					newzlbzjsqn=zlbzjsqall[0].toString();
-				}
-				zlbzjsqdall=zlbzjsqall[2].toString().split("~");
-				newzlbzjsq=newzlbzjsqn+"/"+newzlbzjsqy+"/"+zlbzjsqdall[0].toString()+"~"+newzlbzjsqn+"/"+newzlbzjsqy+"/"+zlbzjsqall[4].toString();
+			String newzlbzjsqallf="";
+			String newzlbzjsqalle="";
+			String newzlbzjsqallf1="";
+			String newzlbzjsqalle1="";
+			if(zlbzjsqallf!=null){
+				newzlbzjsqallf="20"+zlbzjsqallf[0].toString()+"-"+zlbzjsqallf[1].toString()+"-"+zlbzjsqallf[2].toString();
+				newzlbzjsqalle="20"+zlbzjsqalle[0].toString()+"-"+zlbzjsqalle[1].toString()+"-"+zlbzjsqalle[2].toString();
+				newzlbzjsqallf1=GetSysDate("yyyy-MM-dd",  newzlbzjsqallf,   0,   1,   0);
+				newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   0);
+				newzlbzjsq=newzlbzjsqallf1.substring(2, 4)+"/"+newzlbzjsqallf1.substring(5,7)+"/"+newzlbzjsqallf1.substring(8,10)+"~"
+				+newzlbzjsqalle1.substring(2, 4)+"/"+newzlbzjsqalle1.substring(5,7)+"/"+newzlbzjsqalle1.substring(8,10);
 				jsonObject.put("zlbzjsq",newzlbzjsq);
 			}
 			jsonObject.put("zlbzjznj",mr.getZlbzjznj());
@@ -282,64 +284,58 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("zxyjdj",mr.getZxyjdj());
 			jsonObject.put("zxyjsq",mr.getZxyjsq());
 			
-			String[] zxyjsqall=mr.getZxyjsq().split("/");
-			String newzxyjsqy="";
-			String newzxyjsqn="";
+			String[] zxyjsqallf=mr.getZxyjsq().substring(0, 8).split("/");
+			String[] zxyjsqalle=mr.getZxyjsq().substring(9, 17).split("/");
 			String newzxyjsq="";
-			String[] zxyjsqdall;
-			if(zxyjsqall!=null){
-				System.out.println(zxyjsqall[0].toString());
-				if(zxyjsqall[1].toString().equals("12")){
-					newzxyjsqy="1";
-					newzxyjsqn=String.valueOf(Integer.valueOf(zxyjsqall[0].toString())+1);
-				}else{
-					newzxyjsqy=String.valueOf(Integer.valueOf(zxyjsqall[1].toString())+1);
-					newzxyjsqn=zxyjsqall[0].toString();
-				}
-				zxyjsqdall=zxyjsqall[2].toString().split("~");
-				newzxyjsq=newzxyjsqn+"/"+newzxyjsqy+"/"+zxyjsqdall[0].toString()+"~"+newzxyjsqn+"/"+newzxyjsqy+"/"+zxyjsqall[4].toString();
+			String newzxyjsqallf="";
+			String newzxyjsqalle="";
+			String newzxyjsqallf1="";
+			String newzxyjsqalle1="";
+			if(zxyjsqallf!=null){
+				newzxyjsqallf="20"+zxyjsqallf[0].toString()+"-"+zxyjsqallf[1].toString()+"-"+zxyjsqallf[2].toString();
+				newzxyjsqalle="20"+zxyjsqalle[0].toString()+"-"+zxyjsqalle[1].toString()+"-"+zxyjsqalle[2].toString();
+				newzxyjsqallf1=GetSysDate("yyyy-MM-dd",  newzxyjsqallf,   0,   1,   0);
+				newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   0);
+				newzxyjsq=newzxyjsqallf1.substring(2, 4)+"/"+newzxyjsqallf1.substring(5,7)+"/"+newzxyjsqallf1.substring(8,10)+"~"
+				+newzxyjsqalle1.substring(2, 4)+"/"+newzxyjsqalle1.substring(5,7)+"/"+newzxyjsqalle1.substring(8,10);
 				jsonObject.put("zxyjsq",newzxyjsq);
 			}
 			jsonObject.put("zxyjznj",mr.getZxyjznj());
 			jsonObject.put("zxyjbz",mr.getZxyjbz());
 			
-			String[] sfsqall=mr.getSfsq().split("/");
-			String newsfsqy="";
-			String newsfsqn="";
-			String newsfsq="";
-			String[] sfsqdall;
-			if(sfsqall!=null){
-				System.out.println(sfsqall[0].toString());
-				if(sfsqall[1].toString().equals("12")){
-					newsfsqy="1";
-					newsfsqn=String.valueOf(Integer.valueOf(sfsqall[0].toString())+1);
-				}else{
-					newsfsqy=String.valueOf(Integer.valueOf(sfsqall[1].toString())+1);
-					newsfsqn=sfsqall[0].toString();
-				}
-				sfsqdall=sfsqall[2].toString().split("~");
-				newsfsq=newsfsqn+"/"+newsfsqy+"/"+sfsqdall[0].toString()+"~"+newsfsqn+"/"+newsfsqy+"/"+sfsqall[4].toString();
-				jsonObject.put("sfsq",newsfsq);
+			String[] sfsqsqallf=mr.getSfsq().substring(0, 8).split("/");
+			String[] sfsqsqalle=mr.getSfsq().substring(9, 17).split("/");
+			String newsfsqsq="";
+			String newsfsqsqallf="";
+			String newsfsqsqalle="";
+			String newsfsqsqallf1="";
+			String newsfsqsqalle1="";
+			if(sfsqsqallf!=null){
+				newsfsqsqallf="20"+sfsqsqallf[0].toString()+"-"+sfsqsqallf[1].toString()+"-"+sfsqsqallf[2].toString();
+				newsfsqsqalle="20"+sfsqsqalle[0].toString()+"-"+sfsqsqalle[1].toString()+"-"+sfsqsqalle[2].toString();
+				newsfsqsqallf1=GetSysDate("yyyy-MM-dd",  newsfsqsqallf,   0,   1,   0);
+				newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   0);
+				newsfsqsq=newsfsqsqallf1.substring(2, 4)+"/"+newsfsqsqallf1.substring(5,7)+"/"+newsfsqsqallf1.substring(8,10)+"~"
+				+newsfsqsqalle1.substring(2, 4)+"/"+newsfsqsqalle1.substring(5,7)+"/"+newsfsqsqalle1.substring(8,10);
+				jsonObject.put("sfsq",newsfsqsq);
 			}
 			
 		
-			String[] dfsqall=mr.getDfsq().split("/");
-			String newdfsqy="";
-			String newdfsqn="";
-			String newdfsq="";
-			String[] dfsqdall;
-			if(dfsqall!=null){
-				System.out.println(dfsqall[0].toString());
-				if(dfsqall[1].toString().equals("12")){
-					newdfsqy="1";
-					newdfsqn=String.valueOf(Integer.valueOf(dfsqall[0].toString())+1);
-				}else{
-					newdfsqy=String.valueOf(Integer.valueOf(dfsqall[1].toString())+1);
-					newdfsqn=dfsqall[0].toString();
-				}
-				dfsqdall=dfsqall[2].toString().split("~");
-				newdfsq=newdfsqn+"/"+newdfsqy+"/"+dfsqdall[0].toString()+"~"+newdfsqn+"/"+newdfsqy+"/"+dfsqall[4].toString();
-				jsonObject.put("dfsq",newdfsq);
+			String[] dfsqsqallf=mr.getDfsq().substring(0, 8).split("/");
+			String[] dfsqsqalle=mr.getDfsq().substring(9, 17).split("/");
+			String newdfsqsq="";
+			String newdfsqsqallf="";
+			String newdfsqsqalle="";
+			String newdfsqsqallf1="";
+			String newdfsqsqalle1="";
+			if(dfsqsqallf!=null){
+				newdfsqsqallf="20"+dfsqsqallf[0].toString()+"-"+dfsqsqallf[1].toString()+"-"+dfsqsqallf[2].toString();
+				newdfsqsqalle="20"+dfsqsqalle[0].toString()+"-"+dfsqsqalle[1].toString()+"-"+dfsqsqalle[2].toString();
+				newdfsqsqallf1=GetSysDate("yyyy-MM-dd",  newdfsqsqallf,   0,   1,   0);
+				newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   0);
+				newdfsqsq=newdfsqsqallf1.substring(2, 4)+"/"+newdfsqsqallf1.substring(5,7)+"/"+newdfsqsqallf1.substring(8,10)+"~"
+				+newdfsqsqalle1.substring(2, 4)+"/"+newdfsqsqalle1.substring(5,7)+"/"+newdfsqsqalle1.substring(8,10);
+				jsonObject.put("dfsq",newdfsqsq);
 			}
 			
 			jsonObject.put("qysfdj",mr.getQysfdj());
@@ -363,6 +359,23 @@ public class  MemberRentalController extends BaseController {
 		} 
 		return null;
 	}
+	
+	public static   String   GetSysDate(String   format,   String   StrDate,   int   year,   int   month,  int   day)   {   
+      Calendar   cal   =   Calendar.getInstance();   
+      SimpleDateFormat   sFmt   =   new   SimpleDateFormat(format);   
+      cal.setTime(sFmt.parse(   (StrDate),   new   ParsePosition(0)));   
+      if   (day   !=   0)   {   
+      cal.add(cal.DATE,   day);   
+      }   
+      if   (month   !=   0)   {   
+      cal.add(cal.MONTH,   month);   
+      }   
+      if   (year   !=   0)   {   
+      cal.add(cal.YEAR,   year);   
+      }   
+return   sFmt.format(cal.getTime());   
+}   
+
 
 	/**
 	 * 保存

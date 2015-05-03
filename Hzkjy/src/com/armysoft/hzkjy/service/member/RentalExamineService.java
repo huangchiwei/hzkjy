@@ -75,6 +75,28 @@ public class RentalExamineService extends BaseDao {
 	public List  getFpxt(Map<String, Object> params) {
 		return super.nativeList(nameSpace + ".getFpxt", params);
 		}
+	
+	public List  getFpzly1(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpzly1", params);
+		}
+	public List  getFpzly2(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpzly2", params);
+		}
+	public List  getFpglf1(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpglf1", params);
+		}
+	public List  getFpglf2(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpglf2", params);
+		}
+	public List  getFpdly1(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpdly1", params);
+		}
+	public List  getFpdly2(Map<String, Object> params) {
+		return super.nativeList(nameSpace + ".getFpdly2", params);
+		}
+	
+	
+	
 	public Integer CountHybh(String hybh1,String hybh2) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("hybh1", hybh1);

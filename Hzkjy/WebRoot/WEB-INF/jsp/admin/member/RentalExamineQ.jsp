@@ -209,11 +209,15 @@ function corpAutocomplete(data){
         <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" size=15 maxlength="20"/>
         <em>开票项目：</em><select name="fkpxm"  class="input_a1" id="fkpxm" style="text-align:center">
-        <option value=""></option>
 		 <option value="1">0706 租赁业</option>
           <option value="2">0799 其他服务业</option>
           <option value="3">0701 代理业</option>
-        </select>								 
+        </select>	
+        <em>开票项目：</em>
+           <select name="fpzl"  id="fpzl" style="text-align:center">
+          <option value="1">10000004 广东省地方税收通用发票（电子-单联平推式）</option>
+          <option value="2">10000005 广东省地方税收通用发票（电子-两联打孔式）</option>
+        </select>							 
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
          <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
          <input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/>

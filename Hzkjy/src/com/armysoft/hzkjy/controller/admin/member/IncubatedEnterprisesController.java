@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.armysoft.security.annotation.PermissionsAnno;
 
+import com.alibaba.fastjson.JSONObject;
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
@@ -37,6 +38,7 @@ import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
 import com.armysoft.hzkjy.model.IncubatedEnterprises;
 import com.armysoft.hzkjy.model.MemberBasic;
+import com.armysoft.hzkjy.model.MemberRental;
 import com.armysoft.hzkjy.service.member.IncubatedEnterprisesService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 
@@ -85,6 +87,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 			}
         model.addAttribute("list", service.getByPage(params, pager));
 		request.setAttribute("zj",service.getCount(params));
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		model.addAttribute("page", pager);
 		model.addAttribute("model", entity);
 		return "admin/member/IncubatedEnterprisesQ";
@@ -106,20 +109,43 @@ public class  IncubatedEnterprisesController extends BaseController {
 	 * 准备添加
 	 * @return
 	 */
-
+	@RequestMapping("pass.html")
+	@ResponseBody
+	public String ZShtg(String ids,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
+		JSONObject jsonObject = new JSONObject();
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			IncubatedEnterprises mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setShzt("已审核");
+			service.update(mdd);
+		}
+		
+		jsonObject.put("exl","ok");
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
-		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		IncubatedEnterprises mb=service.findByKey(id);
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}else{
-			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			
 			if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 				MemberBasic mc=mbservice.findByHybh(userNo);
 				model.addAttribute("mc", mc);
 				}
 		}
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		return "admin/member/IncubatedEnterprisesV";
 	}
 	
@@ -129,6 +155,79 @@ public class  IncubatedEnterprisesController extends BaseController {
 	 * @param model
 	 * @return
 	 */
+	@RequestMapping(value = "/getSqsj.html")
+	@ResponseBody
+	public  String getSqsj(HttpServletRequest request,HttpServletResponse response) {
+		String hybh = request.getParameter("hybh");
+		String ssn = request.getParameter("ssn");
+		Integer nyear;
+		Integer nmonth;
+		String nym;
+		JSONObject jsonObject = new JSONObject();
+		if(Integer.valueOf(ssn)<=2016){
+			MemberBasic mb=mbservice.findByHybh(hybh);
+			jsonObject.put("zzjgdm",mb.getZzjgdm());
+			jsonObject.put("frdb",mb.getFrdb());
+			jsonObject.put("zczb",mb.getZczb());
+			jsonObject.put("qyclsj",mb.getQyclsj());
+			jsonObject.put("qyrzsj",mb.getQyrzsj());
+			jsonObject.put("lxr",mb.getLxr());
+			jsonObject.put("lxrlxdh",mb.getLxrdh());
+			jsonObject.put("qydjzclx",mb.getQydjzclx());
+			jsonObject.put("frlxdh",mb.getFrlxdh());
+			
+			jsonObject.put("htstze",mb.getHtstze());
+			jsonObject.put("dzys",mb.getDzys());
+			jsonObject.put("xnyjdxs",mb.getXnyjdxs());
+			jsonObject.put("qyssjsly",mb.getQyssjsly());
+			jsonObject.put("hylb",mb.getHylb());
+			jsonObject.put("gxjsqy",mb.getGxjsqy());
+			jsonObject.put("lxryqy",mb.getLxryqy());
+			jsonObject.put("fmzl",mb.getFmzl());
+			jsonObject.put("wgsj",mb.getWgsj());
+			jsonObject.put("syxx",mb.getSyxx());
+			jsonObject.put("rjzzq",mb.getRjzzq());
+			
+			
+		}else{
+			IncubatedEnterprises ie=service.findIeHybh(hybh, String.valueOf(Integer.valueOf(ssn)-1));
+			jsonObject.put("zzjgdm",ie.getZzjgdm());
+			jsonObject.put("frdb",ie.getFrdb());
+			jsonObject.put("zczb",ie.getZczb());
+			jsonObject.put("qyclsj",ie.getQyclsj());
+			jsonObject.put("qyrzsj",ie.getQyrzsj());
+			jsonObject.put("lxr",ie.getLxr());
+			jsonObject.put("lxrlxdh",ie.getLxrlxdh());
+			jsonObject.put("frlxdh",ie.getFrlxdh());
+			jsonObject.put("qydjzclx",ie.getQydjzclx());
+			
+			
+			jsonObject.put("htstze",ie.getHtstze());
+			jsonObject.put("dzys",ie.getDzys());
+			jsonObject.put("xnyjdxs",ie.getXnyjdxs());
+			jsonObject.put("qyssjsly",ie.getQyssjsly());
+			jsonObject.put("hylb",ie.getHylb());
+			jsonObject.put("gxjsqy",ie.getGxjsqy());
+			jsonObject.put("lxryqy",ie.getLxryqy());
+			jsonObject.put("fmzl",ie.getFmzl());
+			jsonObject.put("wgsj",ie.getWgsj());
+			jsonObject.put("syxx",ie.getSyxx());
+			jsonObject.put("rjzzq",ie.getRjzzq());
+		}
+		
+		
+		
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+
+	
 	@PermissionsAnno("fhqytb_updt")
 	@RequestMapping(value = UPDATE)
 	public String update(@PathVariable("id") Integer key,IncubatedEnterprises entity, Model model) {

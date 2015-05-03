@@ -108,6 +108,7 @@ public class  BsNewsController extends BaseController {
 		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		return "admin/member/BsNewsV";
 	}
 	

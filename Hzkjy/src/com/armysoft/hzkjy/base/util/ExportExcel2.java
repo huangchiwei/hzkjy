@@ -558,7 +558,7 @@ public class ExportExcel2 {
 					 for (int j=0 ;j<columnCount1;j++){
 						value.delete(0, value.length());
 							if (p.get(columnField1[j])==null){
-								 value.append("空");
+								 value.append("");
 							  }else{
 						   value.append(p.get(columnField1[j]).toString());
 	                    }
