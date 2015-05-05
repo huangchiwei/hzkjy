@@ -7,12 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>content</title>
-<link href="${ctx}/adminthemes/css/style.css" type="text/css"
-			rel="stylesheet" />
-		<link href="${ctx}/adminthemes/default/css/master.css"
-			rel="stylesheet" type="text/css" />
-		<link href="${ctx}/adminthemes/default/css/default.css"
-			rel="stylesheet" type="text/css" />
+<link href="${ctx}/adminthemes/css/style.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
+<link href="../../theme/admin/default/css/master.css" rel="stylesheet" type="text/css" />
+<link href="../../theme/admin/default/css/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/js/date/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${ctx }/js/jquery.select.js" charset="GBK"></script>
@@ -555,26 +554,26 @@ function rtnn(val){
 	    sumhjje();
 	}
 	function sumqydf2(){ 
-	var qydfdj;
+	var qydfdj2;
    if($("#qydfdj2").val()==""){
-	qydfdj="0.0";
+	qydfdj2="0.0";
 	}else{
-	qydfdj=$("#qydfdj2").val();
+	qydfdj2=$("#qydfdj2").val();
 	}
 	  if($("#dhjyl2").val()==""){
-	dhjyl="0.0";
+	dhjyl2="0.0";
 	}else{
-	dhjyl=$("#dhjyl2").val();
+	dhjyl2=$("#dhjyl2").val();
 	}
 	 if($("#lqydf").val()==""){
 	lqydf="0.0";
 	}else{
-	lqydf=$("#lqydf2").val();
+	lqydf=$("#lqydf").val();
 	}
-		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
-		var sumqydf2=parseFloat(lqydf)+sumqydf;
-		$("#qydf").attr("value",sumqydf2.toFixed(1));
-	  $("#lqydf2").attr("value",sumqydf.toFixed(1));
+		var sumqydf2=parseFloat(qydfdj2)*parseFloat(dhjyl2);
+		var sumqydf=parseFloat(lqydf)+sumqydf2;
+		$("#qydf").attr("value",sumqydf.toFixed(1));
+	  $("#lqydf2").attr("value",sumqydf2.toFixed(1));
 	    sumhjje();
 	}
 	function sumfy(){
@@ -608,22 +607,22 @@ html { overflow:-moz-scrollbars-vertical;}
    <pm:hasPermission permValue="zjlr_updt">
 	       	<c:set var="zjlr_updt" value="true"/>
 	    </pm:hasPermission>
+   <div class="content_box">
   <div class="add_info" id="addinfo">
-
    <h2>新增缴费通知单</h2>
-    <table id="questTable" border="0" cellspacing="0" cellpadding="0"
-					class="ListTable" >
+    <table width="100%" border="0" cellpadding="0" cellspacing="1"
+					class="ListTable" id="questTable" >
 	<tr align="center">
      <th>房号:</th>
      <td colspan="3">
-     	<input id="zydy" name="zydy" type="text" value="${model.zydy}" class="input_a1"  maxlength="100" />
+     	<input name="zydy" type="text" class="input_a1" id="zydy" value="${model.zydy}" size="15"  maxlength="100" />
      </td>
    
      <th align="center">会员编号：</th>
      <td colspan="2">
      <input id="shzt" name="shzt" type="hidden" value="${model.shzt}" />
       <input id="fbzt" name="fbzt" type="hidden" value="${model.fbzt}" />
-     	<input id="hybh" name="hybh" type="text" value="${model.hybh}" class="input_a1"  maxlength="20" readonly="true" />
+     	<input name="hybh" type="text" class="input_a1" id="hybh" value="${model.hybh}" size="15"  maxlength="20" readonly="true" />
      </td>
 
   
@@ -631,24 +630,24 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr align="center">
      <th>用户:</th>
      <td colspan="3">
-     	<input id="qymc" name="qymc" type="text" value="${model.qymc}"  class="input_a1"  maxlength="100"  onfocus="loadCorpName();" onblur="loadQyxx();" />
+     	<input name="qymc" type="text"  class="input_a1" id="qymc"  onfocus="loadCorpName();" onblur="loadQyxx();" value="${model.qymc}" size="15"  maxlength="100" />
      </td>
      
      <th>建筑面积：</th>
      <td colspan="2">
-     	<input id="qymj" name="qymj" type="text" value="${model.qymj}" class="input_a1"  maxlength="20" onchange="sumfy();"/>㎡
-     </td>
+     	<input name="qymj" type="text" class="input_a1" id="qymj" onchange="sumfy();" value="${model.qymj}" size="15"  maxlength="20"/>
+&nbsp;㎡ </td>
 
   
     </tr>	
     <tr align="center">
        <th>缴费年月：</th>
       <td colspan="3">
-     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" onclick="WdatePicker({dateFmt:'yyyy-MM'});" onchange="loadSqsj();"/>
+     <input name="jfyd" type="text" class="input_a1"  id="jfyd" onchange="loadSqsj();" onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${model.jfyd}" size="15"/>
      </td>
      <th>所属楼区：</th>
        <td colspan="2">
-     	 <select name="sslq"  id="sslq" style="text-align:center">
+     	 <select name="sslq"  id="sslq" class="input_a1">
           <option value="1">科技大楼</option>
           <option value="2">A栋</option>
           <option value="3">B栋</option>
@@ -658,7 +657,7 @@ html { overflow:-moz-scrollbars-vertical;}
         </select>
      </td>
     </tr>	
-    <tr align="center">
+    <tr>
      <th>序号：</th>
       <th>项目：</th>
      <th>单价：</th>
@@ -671,20 +670,20 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>1</td>
 	      <td>
-	     <input name="zjmc"  id="zjmc" type="text" class="input_a1"  size=12 value="${model.zjmc!='' && model.zjmc !=null?model.zjmc:'租金'}" />
+	     <input name="zjmc"  id="zjmc" type="text" class="input_a1"  size=12 <c:if test="${not empty model.zjmc}">value="${model.zjmc}"</c:if> <c:if test="${ empty model.zjmc}">value="租金"</c:if> />
 	     	</td> 
 	         <td>
-	     <input name="qyzjdj"  id="qyzjdj" type="text" class="input_a1" size=12 value="${model.qyzjdj}" onchange="sumzj();"/>元/平方
-	     	</td>
+	     <input name="qyzjdj"  id="qyzjdj" type="text" class="input_a1" size=5 value="${model.qyzjdj}" onchange="sumzj();"/>
+元/平方 </td>
 	 
 	        <td>
-	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" size=20 value="${model.zjsq}" />
+	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" size=10 value="${model.zjsq}" />
 	     	</td> 
 	     <td>
 	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" size=12 value="<fmt:formatNumber value="${model.qyzj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	     	</td>
 	  	   <td>
-	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" size=12 value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
+	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" size=12  <c:if test="${not empty model.qyzjznj}">value="${model.qyzjznj}"</c:if> <c:if test="${ empty model.qyzjznj}">value="0.0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	     	</td> 
 	     <td>
 	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" size=12 value="${model.zjbz}"/> 
@@ -694,20 +693,20 @@ html { overflow:-moz-scrollbars-vertical;}
 	    <tr align="center">
 	    <td>2</td>
 	      <td>
-	     <input name="glfwfmc"  id="glfwfmc" type="text" size=12 class="input_a1" value="${model.glfwfmc!='' && model.glfwfmc !=null?model.glfwfmc:'管理服务费'}" />
+	     <input name="glfwfmc"  id="glfwfmc" type="text" size=12 class="input_a1" <c:if test="${not empty model.glfwfmc}">value="${model.glfwfmc}"</c:if> <c:if test="${ empty model.glfwfmc}">value="管理服务费"</c:if> />
 	     	</td>
 	     <td>
-	     <input name="glfwfdj"  id="glfwfdj" type="text" size=12 class="input_a1" value="${model.glfwfdj}" onchange="sumglfwfdj();"/>元/平方
-	     	</td>
+	     <input name="glfwfdj"  id="glfwfdj" type="text" size=5 class="input_a1" value="${model.glfwfdj}" onchange="sumglfwfdj();"/>
+元/平方 </td>
 	     
 	      <td>
-	   	 	<input name="glfsq"  id="glfsq" type="text" size=20 class="input_a1" value="${model.glfsq}"/>
+	   	 	<input name="glfsq"  id="glfsq" type="text" size=10 class="input_a1" value="${model.glfsq}"/>
 	   	 </td>
 	   	 <td>
 	   	 	<input name="glfwf"  id="glfwf" type="text" size=12 class="input_a1" value="<fmt:formatNumber value="${model.glfwf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" size=12 class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
+	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" size=12 class="input_a1" <c:if test="${not empty model.glfwfznj}">value="${model.glfwfznj}"</c:if> <c:if test="${ empty model.glfwfznj}">value="0.0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="glfbz"  id="glfbz" type="text" size=12 class="input_a1" value="${model.glfbz}"/>
@@ -717,20 +716,20 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>3</td>
 	        <td>
-	     <input name="zlbzjmc"  id="zlbzjmc" type="text" size=12 class="input_a1" value="${model.zlbzjmc!='' && model.zlbzjmc !=null?model.zlbzjmc:'租赁保证金'}" />
+	     <input name="zlbzjmc"  id="zlbzjmc" type="text" size=12 class="input_a1" <c:if test="${not empty model.zlbzjmc}">value="${model.zlbzjmc}"</c:if> <c:if test="${ empty model.zlbzjmc}">value="租赁保证金"</c:if>/>
 	     	</td>
 	     <td>
-	     <input name="zlbzjdj"  id="zlbzjdj" type="text" size=12 class="input_a1" value="${model.zlbzjdj}" onchange="sumzlbzjdj();"/>元/平方
-	     	</td>
+	     <input name="zlbzjdj"  id="zlbzjdj" type="text" size="5" class="input_a1" value="${model.zlbzjdj}" onchange="sumzlbzjdj();"/>
+元/平方 </td>
 	     
 	      <td>
-	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" size=20 class="input_a1" value="${model.zlbzjsq}"/>
+	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" size=10 class="input_a1" value="${model.zlbzjsq}"/>
 	   	 </td>
 	   	 <td>
 	   	 	<input name="zlbzj"  id="zlbzj" type="text" size=12 class="input_a1" value="<fmt:formatNumber value="${model.zlbzj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" size=12 class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
+	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" size=12 class="input_a1"  <c:if test="${not empty model.zlbzjznj}">value="${model.zlbzjznj}"</c:if> <c:if test="${ empty model.zlbzjznj}">value="0.0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" size=12 class="input_a1" value="${model.zlbzjbz}"/>
@@ -740,20 +739,20 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>4</td>
 	       <td>
-	     <input name="zxyjmc"  id="zxyjmc" type="text" size=12 class="input_a1" value="${model.zxyjmc!='' && model.zxyjmc !=null?model.zxyjmc:'装修押金'}" />
+	     <input name="zxyjmc"  id="zxyjmc" type="text" size=12 class="input_a1" <c:if test="${not empty model.zxyjmc}">value="${model.zxyjmc}"</c:if>  <c:if test="${ empty model.zxyjmc}">value="装修押金"</c:if> />
 	     	</td>
 	     <td>
-	     <input name="zxyjdj"  id="zxyjdj" type="text" size=12 class="input_a1" value="${model.zxyjdj}" onchange="sumzxyjdj();" />元/平方
-	     	</td>
+	     <input name="zxyjdj"  id="zxyjdj" type="text" size=5 class="input_a1" value="${model.zxyjdj}" onchange="sumzxyjdj();" />
+元/平方 </td>
 	    
 	      <td>
-	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" size=20 class="input_a1" value="${model.zxyjsq}"/>
+	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" size=10 class="input_a1" value="${model.zxyjsq}"/>
 	   	 </td>
 	   	 <td>
 	   	 	<input name="zxyj"  id="zxyj" type="text" size=12 class="input_a1" value="<fmt:formatNumber value="${model.zxyj}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" size=12 class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
+	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" size=12 class="input_a1"  <c:if test="${not empty model.zxyjznj}">value="${model.zxyjznj}"</c:if>  <c:if test="${ empty model.zxyjznj}">value="0.0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" size=12 class="input_a1" value="${model.zxyjbz}"/>
@@ -763,19 +762,19 @@ html { overflow:-moz-scrollbars-vertical;}
 	         <tr align="center">
 	         <td>5</td>
 	              <td>
-	     <input name="sfmc"  id="sfmc" type="text" size=12 class="input_a1" value="${model.sfmc!='' && model.sfmc !=null?model.sfmc:'水费'}" />
+	     <input name="sfmc"  id="sfmc" type="text" size=12 class="input_a1" <c:if test="${not empty model.sfmc}">value="${model.sfmc}"</c:if> <c:if test="${ empty model.sfmc}">value="水费"</c:if> />
 	     	</td>
 	     <td>
 	     	</td>
 	 
 	      <td>
-	   	 	<input name="sfsq"  id="sfsq" type="text" size=20 class="input_a1" value="${model.sfsq}"/>
+	   	 	<input name="sfsq"  id="sfsq" type="text" size=10 class="input_a1" value="${model.sfsq}"/>
 	   	 </td>
 	   	 <td>
 	   	 	<input name="qysf"  id="qysf" type="text" size=12 class="input_a1" value="<fmt:formatNumber value="${model.qysf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qysfznj"  id="qysfznj" type="text" size=12 class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
+	   	 	<input name="qysfznj"  id="qysfznj" type="text" size=12 class="input_a1" <c:if test="${not empty model.qysfznj}">value="${model.qysfznj}"</c:if> <c:if test="${ empty model.qysfznj}">value="0.0"</c:if>  onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="lsfbz"  id="lsfbz" type="text" size=12 class="input_a1" value="${model.sfbz}"/>
@@ -785,19 +784,19 @@ html { overflow:-moz-scrollbars-vertical;}
 	        <tr align="center">
 	        <td>6</td>
 	           <td>
-	     <input name="dfmc"  id="dfmc" type="text" size=12 class="input_a1" value="${model.dfmc!='' && model.dfmc !=null?model.dfmc:'电费'}" />
+	     <input name="dfmc"  id="dfmc" type="text" size=12 class="input_a1" <c:if test="${not empty model.dfmc}">value="${model.dfmc}"</c:if> <c:if test="${ empty model.dfmc}">value="电费"</c:if>  />
 	     	</td>
 	     <td>
 	     	</td>
 	  
 	      <td>
-	   	 	<input name="dfsq"  id="dfsq" type="text" size=20 class="input_a1" value="${model.dfsq}"/>
+	   	 	<input name="dfsq"  id="dfsq" type="text" size=10 class="input_a1" value="${model.dfsq}"/>
 	   	 </td>
 	   	 <td>
 	   	 	<input name="qydf"  id="qydf" type="text" size=12 class="input_a1" value="<fmt:formatNumber value="${model.qydf}" pattern="#.#" minFractionDigits="1" />"  onblur="rtnn(this);sumhjje();"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qydfznj"  id="qydfznj" type="text" size=12 class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ?model.qydfznj:'0.0'}" onchange="sumhjje();sumhjjeznj();"/>
+	   	 	<input name="qydfznj"  id="qydfznj" type="text" size=12 class="input_a1" <c:if test="${not empty model.qydfznj}">value="${model.qydfznj}"</c:if> <c:if test="${ empty model.qydfznj}">value="0.0"</c:if>  onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
 	   	 <td>
 	   	 	<input name="ldfbz"  id="ldfbz" type="text" size=12 class="input_a1" value="${model.dfbz}"/>
@@ -806,11 +805,11 @@ html { overflow:-moz-scrollbars-vertical;}
 	          <tr>
      <td colspan="4">小写：</td>
      <td align="center">
-     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="<fmt:formatNumber value="${model.hjje}" pattern="#.#" minFractionDigits="1" />" onchange="loadHjjezw();"/>
-     </td>
+     	<input name="hjje" type="text" class="input_a1"  id="hjje" value="<fmt:formatNumber value="${model.hjje}" pattern="#.#" minFractionDigits="1" />
+" onchange="loadHjjezw();"/> </td>
     
-       <td align="center"><input name="hjjeznj"  id="hjjeznj" type="text" size=12 class="input_a1" value="${model.hjjeznj!='' && model.hjjeznj != null ? model.hjjeznj:'0.0'}" /></td>
-      <td align="center"><input name="bz"  id="bz" type="text" size=12 class="input_a1" value="${model.bz}"/></td>
+       <td align="center"></td>
+      <td align="center"></td>
     </tr>
      <tr>
      <td colspan="3">合计金额（人民币大写）：</td>
@@ -852,6 +851,7 @@ html { overflow:-moz-scrollbars-vertical;}
        <td>
      	<input name="lqysf"  id="lqysf" type="text" size=12 class="input_a1" value="<fmt:formatNumber value="${model.lqysf}" pattern="#.#" minFractionDigits="1" />" />
      </td>
+     
      
      <td>
      	<input name="sfbz"  id="sfbz" type="text" size=12 class="input_a1" value="${model.sfbz}" onchange="onchangebz();"/>
@@ -944,8 +944,8 @@ html { overflow:-moz-scrollbars-vertical;}
   
   </div>
   <div class="add_info" id="addinfo1">
-       <table id="questTable" border="0" cellspacing="0" cellpadding="0"
-					class="ListTable" >
+       <table width="100%" border="0" cellpadding="0" cellspacing="1"
+					class="ListTable" id="questTable" >
        <tr align="center">
        <th>发票种类：</th>
       <td colspan="3">
@@ -980,7 +980,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr align="center">
        <th>付款方名称：</th>
       <td colspan="3">
-      <input name="fkfmc"  id="fkfmc" type="text" class="input_a1" value="${model.fkfmc!='' && model.fkfmc !=null?model.fkfmc:model.qymc}"/>
+      <input name="fkfmc"  id="fkfmc" type="text" class="input_a1" <c:if test="${not empty model.fkfmc}">value="${model.fkfmc}"</c:if> <c:if test="${ empty model.fkfmc}">value="${model.qymc}"</c:if>/>
      </td>
      <th>付款方证件类型：</th>
        <td colspan="2">
@@ -1006,7 +1006,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
      <th>合计金额：</th>
        <td colspan="2">
-      <input name="fpje"  id="fpje" type="text" class="input_a1" value="${model.fpje!='' && model.fpje !=null?model.fpje:model.hjje}"/>
+      <input name="fpje"  id="fpje" type="text" class="input_a1" <c:if test="${not empty model.fpje}">value="${model.fpje}"</c:if> <c:if test="${not empty model.fpje}">value="${model.hjje}"</c:if>/>
      </td>
     </tr>	
     
@@ -1032,13 +1032,13 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>								
 					
 					</table>
-       </div>
+      </div>
   <div class="div_submit">
 					<input id="sumbit_bt" name="" type="submit" value="提  交"
 						class="photo_btn" />
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
-				</div>
+		</div></div>
   </form>
 </div>
 

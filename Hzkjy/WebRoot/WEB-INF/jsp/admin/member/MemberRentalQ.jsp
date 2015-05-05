@@ -242,8 +242,8 @@ function loadPageLayer2(title,url){
   	<form id="search_form" action="${ctx}/admin/memberRental/list/1.html" method="post">
     <h2>按条件查询</h2>
   <div class="div_input">
-       <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=20  class="input_a1" onfocus="loadCorpName();"/>
-        <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" size=15 onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
+       <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=18  class="input_a1" onfocus="loadCorpName();"/>
+        <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" size=10 onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" maxlength="20"/>
    	       <input id="add_bt" type="button" value="查询" class="initial" onclick="find()"/>
          <input id="add_bt" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
@@ -254,7 +254,7 @@ function loadPageLayer2(title,url){
     </div>
     
     </form>
-     <table width="98%" border="0" cellpadding="0" cellspacing="1">
+     <table width="100%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
 	  	<th><input type="checkbox" id="checkAll"/>全选</th>
@@ -271,7 +271,7 @@ function loadPageLayer2(title,url){
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th>发布状态</th>
-	        <th width="8%">操作</th>
+	        <th width="9%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -318,7 +318,8 @@ function loadPageLayer2(title,url){
       <tr>
         <td colspan="12"></td>
       <td>总计</td>
-      <td>${zj!=''?zj:'0'}家</td>
+      <td><c:if test="${not empty zj}">${zj}</c:if>
+	  <c:if test="${ empty zj}">0</c:if>家</td>
     
       </tr>
 	</tbody>

@@ -265,15 +265,17 @@ public class  MemberBasicController extends BaseController {
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
 		
 		MemberBasic mb=service.findByKey(id);
-		IncubatedEnterprises ie=IEservice.findIeHybhM(mb.getHybh());
-		if(ie!=null){
-		request.setAttribute("year", ie.getSsn());
-		}else{
-			request.setAttribute("year", "2015");
-		}
-		if(mb!=null){
+		request.setAttribute("year", Calendar.getInstance().get(Calendar.YEAR));
+		if(mb!=null&&mb.getHybh().isEmpty()==false){
+			IncubatedEnterprises ie=IEservice.findIeHybhM(mb.getHybh());
+			if(ie!=null){
+				request.setAttribute("year", ie.getSsn());
+				}
 			model.addAttribute("model", mb);
 		}
+		
+		
+		
 		return "admin/member/MemberBasicV";
 	}
 	

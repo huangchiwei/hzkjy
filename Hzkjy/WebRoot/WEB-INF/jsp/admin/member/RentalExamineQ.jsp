@@ -214,7 +214,9 @@ function corpAutocomplete(data){
           <option value="3">0701 代理业</option>
         </select>	
         <em>开票项目：</em>
-           <select name="fpzl"  id="fpzl" style="text-align:center">
+        </div>
+        <div class="div_input">
+           <select name="fpzl"  id="fpzl" class="input_a1">
           <option value="1">10000004 广东省地方税收通用发票（电子-单联平推式）</option>
           <option value="2">10000005 广东省地方税收通用发票（电子-两联打孔式）</option>
         </select>							 
@@ -227,7 +229,7 @@ function corpAutocomplete(data){
     </div>
     
     </form>
-      <table width="98%" border="0" cellpadding="0" cellspacing="1">
+      <table width="100%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
 	  	<th><input type="checkbox" id="checkAll"/>全选</th>
@@ -242,7 +244,7 @@ function corpAutocomplete(data){
 	        <th>租赁保证金</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
-	        <th width="8%">操作</th>
+	        <th width="9%">操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
@@ -287,7 +289,8 @@ function corpAutocomplete(data){
       <tr>
         <td colspan="11"></td>
       <td>总计</td>
-      <td>${zj!=''?zj:'0'}家</td>
+      <td><c:if test="${not empty zj}">${zj}</c:if>
+	  <c:if test="${ empty zj}">0</c:if>家</td>
     
       </tr>
 	</tbody>
