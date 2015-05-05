@@ -21,7 +21,7 @@ html { overflow:-moz-scrollbars-vertical;}
 $(document).ready(function(){
 $("#fssq option[value='${fssq}']").attr("selected", true); 
 $("#ffzjgNo option[value='${ffzjgNo}']").attr("selected", true); 
-
+$("#fsslq option[value='${fsslq}']").attr("selected", true); 
 $("#checkAll").click(function(){
 	$("input[name=qyId]").attr("checked",this.checked);
 });
@@ -245,6 +245,16 @@ function loadPageLayer2(title,url){
        <em>企业名称：</em><input type="text" id="fhymc" name="fhymc" value="${fhymc}" size=20  class="input_a1" onfocus="loadCorpName();"/>
         <em>费用所属年月：</em><input id="fjfyd" name="fjfyd" type="text" size=15 onclick="WdatePicker({dateFmt:'yyyy-MM'});" value="${fjfyd}"
 								 class="input_a1" maxlength="20"/>
+		<em>所属楼区：</em>		 
+								  <select name="sslq"  id="fsslq" style="text-align:center">
+								   <option value="">请选择</option>
+          <option value="1">科技大楼</option>
+          <option value="2">A栋</option>
+          <option value="3">B栋</option>
+          <option value="4">C栋</option>
+          <option value="5">D栋</option>
+          <option value="6">琶洲科技创意中心</option>
+        </select>
    	       <input id="add_bt" type="button" value="查询" class="initial" onclick="find()"/>
          <input id="add_bt" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>
          <input id="add_bt" type="button" value="通知发送" class="initial" onclick="pltzjf()"/>

@@ -7,7 +7,7 @@
 
 	<!-- 表列名 -->
 	<sql id="columns">	
-	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh,Shzt</sql>
+	ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh,Shzt,Sshzt</sql>
 	<!-- 通用条件sql语句 -->
 	<sql id="condition" >
 		from incubated_enterprises
@@ -50,6 +50,8 @@
 				 <result column="Ssn" property="ssn" />
 				  <result column="Hybh" property="hybh" />
 				  <result column="Shzt" property="shzt" />
+				  <result column="Sshzt" property="sshzt" />
+				  
 				  
 			</resultMap>
 			
@@ -99,8 +101,11 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 	<select id="findIeHybh" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
 		select * from incubated_enterprises where Hybh= #{hybh} and  Ssn = #{ssn} ORDER BY id DESC LIMIT 1 
 	</select>
+	<select id="findIeHybhS" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
+		select * from incubated_enterprises where Sshzt='已审核' and Hybh= #{hybh} and  Ssn = #{ssn} ORDER BY id DESC LIMIT 1 
+	</select>
 	<select id="findIeHybhM" resultMap="incubatedEnterprisesMap" parameterType="java.util.Map">
-		select * from incubated_enterprises  where Hybh= #{hybh}  ORDER BY Ssn DESC LIMIT 1 
+		select * from incubated_enterprises  where Sshzt='已审核' and Hybh= #{hybh}  ORDER BY Ssn DESC LIMIT 1 
 	</select>
 	
 	
@@ -135,7 +140,7 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="incubatedEnterprises">
-		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh,Shzt)
+		insert into incubated_enterprises(Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh,Qydjzclx,Htstze,Dzys,Xnyjdxs,Qyssjsly,Gxjsqy,Lxryqy,Hylb,Synyxzscq,Fmzl,Wgsj,Syxx,Rjzzq,Ssn,Hybh,Shzt,Sshzt)
 		values(#{qymc} 		
 		, #{zzjgdm} 		
 		, #{frdb} 		
@@ -161,7 +166,8 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 		 ,		#{ssn}
 		 ,		#{hybh}
 		  ,		#{shzt}
-		 
+		  ,		#{sshzt}
+		
 		 
 		  )
 		</insert>
@@ -194,6 +200,8 @@ select '在园' ZtName,ID,Qymc,Zzjgdm,Frdb,Zczb,Frlxdh,Qyclsj,Lxr,Qyrzsj,Lxrlxdh
 		 ,Ssn=#{ssn}
 		 ,Hybh=#{hybh}
 		 ,Shzt=#{shzt}
+		  ,Sshzt=#{sshzt}
+		  
 		 
 		 
 		 							where ID = #{id}

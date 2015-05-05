@@ -66,8 +66,7 @@ public class  RentalExamineController extends BaseController {
 	private RentalExamineService service;
 	@Resource
 	private MemberBasicService Mbservice;
-	@Resource
-	private EnterpriseRentalService Erservice;
+	
 	
 	@Resource
 	private BsNewsService Bsservice;
@@ -129,79 +128,7 @@ public class  RentalExamineController extends BaseController {
 			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
 			mdd.setShzt("已审核");
 			service.update(mdd);
-			EnterpriseRental ert= new EnterpriseRental();
-		    ert.setSslq(mdd.getSslq());
-			ert.setAccessory("0");
-			ert.setBz(mdd.getBz());
-			ert.setDbyhd(mdd.getDbyhd());
-			ert.setDfbz(mdd.getDfbz());
-			ert.setDfsq(mdd.getDfsq());
-			ert.setDhjyl(mdd.getDhjyl());
-			ert.setDsyhd(mdd.getDsyhd());
-			ert.setFbzt("未提交");
-			ert.setGlfbz(mdd.getGlfbz());
-			ert.setGlfsq(mdd.getGlfsq());
-			ert.setGlfwf(mdd.getGlfwf());
-			ert.setGlfwfdj(mdd.getGlfwfdj());
-			ert.setGlfwfznj(mdd.getGlfwfznj());
-			ert.setHjje(mdd.getHjje());
-			ert.setHjjedx(mdd.getHjjedx());
-			ert.setHjjeznj(mdd.getHjjeznj());
-			ert.setHybh(mdd.getHybh());
-			ert.setJfyd(mdd.getJfyd());
-			ert.setJnje("0");
-			ert.setQydf(mdd.getQydf());
-			ert.setQydfznj(mdd.getQydfznj());
-			ert.setQymc(mdd.getQymc());
-			ert.setQymj(mdd.getQymj());
-			ert.setQysf(mdd.getQysf());
-			ert.setQysfznj(mdd.getQysfznj());
-			ert.setSbyhd(mdd.getSbyhd());
-			ert.setZjbz(mdd.getZjbz());
-			ert.setZjsq(mdd.getZjsq());
-			ert.setZlbzj(mdd.getZlbzj());
-			ert.setZlbzjbz(mdd.getZlbzjbz());
-			ert.setZlbzjdj(mdd.getZlbzjdj());
-			ert.setZlbzjznj(mdd.getZlbzjznj());
-			ert.setZxyj(mdd.getZxyj());
-			ert.setZxyjbz(mdd.getZxyjbz());
-			ert.setZxyjdj(mdd.getZxyjdj());
-			ert.setZxyjdj(mdd.getZxyjdj());
-			ert.setZxyjsq(mdd.getZxyjsq());
-			ert.setZxyjznj(mdd.getZxyjznj());
-			ert.setZydy(mdd.getZydy());
-			ert.setSfqf("0");
-			ert.setSsyhd(mdd.getSsyhd());
-			ert.setShjyl(mdd.getShjyl());
-			ert.setQydfdj(mdd.getQydfdj());
-			ert.setQysfdj(mdd.getQysfdj());
-		    ert.setSfsq(mdd.getSfsq());
-		    ert.setQyzj(mdd.getQyzj());
-		    ert.setQyzjdj(mdd.getQyzjdj());
-		    ert.setZlbzjsq(mdd.getZlbzjsq());
-		    ert.setXxbz(mdd.getXxbz());
-		    ert.setLqydf(mdd.getLqydf());
-		    ert.setLqysf(mdd.getLqysf());
-		    ert.setSslq(mdd.getSslq());
-		    ert.setSsyhd2(mdd.getSsyhd2());
-		    ert.setSbyhd2(mdd.getSbyhd2());
-		    ert.setShjyl2(mdd.getShjyl2());
-		   ert.setQysfdj2(mdd.getQysfdj2());
-		ert.setLqydf2(mdd.getLqydf2());
-		ert.setLqysf2(mdd.getLqysf2());
-		ert.setSfbz2(mdd.getSfbz2());
-		ert.setDsyhd2(mdd.getDsyhd2());
-	    ert.setZjmc(mdd.getZjmc());
-			ert.setDbyhd2(mdd.getDbyhd2());
-			ert.setDhjyl2(mdd.getDhjyl2());
-			ert.setQydfdj2(mdd.getQydfdj2());
-			ert.setDfbz2(mdd.getDfbz2());
-			ert.setDfmc(mdd.getDfmc());
-			ert.setSfmc(mdd.getSfmc());
-			ert.setZxyjmc(mdd.getZxyjmc());
-			ert.setZlbzjmc(mdd.getZlbzjmc());
-			ert.setGlfwfmc(mdd.getGlfwfmc());
-			Erservice.insert(ert);
+			
 		}
 		
 		request.setAttribute("exl", "ok");

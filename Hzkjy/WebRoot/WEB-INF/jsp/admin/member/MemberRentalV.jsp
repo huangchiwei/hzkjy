@@ -555,26 +555,26 @@ function rtnn(val){
 	    sumhjje();
 	}
 	function sumqydf2(){ 
-	var qydfdj;
+	var qydfdj2;
    if($("#qydfdj2").val()==""){
-	qydfdj="0.0";
+	qydfdj2="0.0";
 	}else{
-	qydfdj=$("#qydfdj2").val();
+	qydfdj2=$("#qydfdj2").val();
 	}
 	  if($("#dhjyl2").val()==""){
-	dhjyl="0.0";
+	dhjyl2="0.0";
 	}else{
-	dhjyl=$("#dhjyl2").val();
+	dhjyl2=$("#dhjyl2").val();
 	}
 	 if($("#lqydf").val()==""){
 	lqydf="0.0";
 	}else{
-	lqydf=$("#lqydf2").val();
+	lqydf=$("#lqydf").val();
 	}
-		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
-		var sumqydf2=parseFloat(lqydf)+sumqydf;
-		$("#qydf").attr("value",sumqydf2.toFixed(1));
-	  $("#lqydf2").attr("value",sumqydf.toFixed(1));
+		var sumqydf2=parseFloat(qydfdj2)*parseFloat(dhjyl2);
+		var sumqydf=parseFloat(lqydf)+sumqydf2;
+		$("#qydf").attr("value",sumqydf.toFixed(1));
+	  $("#lqydf2").attr("value",sumqydf2.toFixed(1));
 	    sumhjje();
 	}
 	function sumfy(){
@@ -809,8 +809,8 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="hjje"  id="hjje" type="text" class="input_a1" value="<fmt:formatNumber value="${model.hjje}" pattern="#.#" minFractionDigits="1" />" onchange="loadHjjezw();"/>
      </td>
     
-       <td align="center"><input name="hjjeznj"  id="hjjeznj" type="text" size=12 class="input_a1" value="${model.hjjeznj!='' && model.hjjeznj != null ? model.hjjeznj:'0.0'}" /></td>
-      <td align="center"><input name="bz"  id="bz" type="text" size=12 class="input_a1" value="${model.bz}"/></td>
+       <td align="center"></td>
+      <td align="center"></td>
     </tr>
      <tr>
      <td colspan="3">合计金额（人民币大写）：</td>

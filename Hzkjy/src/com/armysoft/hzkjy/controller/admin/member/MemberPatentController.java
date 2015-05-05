@@ -73,17 +73,18 @@ public class  MemberPatentController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
-		if(year!=null)
-			params.put("year", year);
-			else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
-			if(month!=null)
-			params.put("month", month);
+//		if(year!=null)
+//			params.put("year", year);
+//			else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
+//			if(month!=null)
+//			params.put("month", month);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(userNo.substring(0, 4).equals("4401"))
 		params.put("memberNo", userNo);
         model.addAttribute("list", memberPatentService.getByPage(params, pager));
 		model.addAttribute("page", pager);
 		model.addAttribute("params", params);
+		request.setAttribute("userNo",userNo.substring(0, 4));
 		System.out.println(System.getProperty("java.endorsed.dirs"));
 		return "admin/member/MemberPatentQ";
 	}
@@ -270,52 +271,100 @@ public class  MemberPatentController extends BaseController {
 				
 	    	if(ie==null){
 				  IncubatedEnterprises ii=new IncubatedEnterprises();
+				  if(ie2!=null){
+					  ii.setDzys(ie2.getDzys());
+						 if(Fmzl==""){
+							 ii.setFmzl(ie2.getFmzl());
+						 }else{
+							 ii.setFmzl(Fmzl);
+						 }
+						
+						 ii.setFrdb(ie2.getFrdb());
+						 ii.setFrlxdh(ie2.getFrlxdh());
+						 ii.setGxjsqy(ie2.getGxjsqy());
+						 ii.setHtstze(ie2.getHtstze());
+						 ii.setHylb(ie2.getHylb());
+						 ii.setLxr(ie2.getLxr());
+						 ii.setLxrlxdh(ie2.getLxrlxdh());
+						 ii.setLxryqy(ie2.getLxryqy());
+						 ii.setQyclsj(ie2.getQyclsj());
+						 ii.setQydjzclx(ie2.getQydjzclx());
+						 ii.setQymc(ie2.getQymc());
+						 ii.setQyrzsj(ie2.getQyrzsj());
+						 ii.setQyssjsly(ie2.getQyssjsly());
+						 
+						 if(Rjzzq==""){
+							 ii.setRjzzq(ie2.getRjzzq());
+						 }else{
+							 ii.setRjzzq(Rjzzq);
+						 }
+					
+						 ii.setSsn(mpYear);
+						 ii.setSynyxzscq(ie2.getSynyxzscq());
+						 
+						 if(Syxx==""){
+							 ii.setSyxx(ie2.getSyxx());
+						 }else{
+							 ii.setSyxx(Syxx);
+						 }
+						 
+						 if(Wgsj==""){
+							 ii.setWgsj(ie2.getWgsj());
+						 }else{
+							 ii.setWgsj(Wgsj);
+						 }
+						 ii.setXnyjdxs(ie2.getXnyjdxs());
+						 ii.setZczb(ie2.getZczb());
+						 ii.setZzjgdm(ie2.getZzjgdm());
+						 ii.setHybh(mpMemberNo);
+					}else{
 				  MemberBasic mb=memberBasicService.findMbHybh(mpMemberNo);
-				 ii.setDzys(mb.getDzys());
-				 if(Fmzl==""){
-					 ii.setFmzl(mb.getFmzl());
-				 }else{
-					 ii.setFmzl(Fmzl);
-				 }
+				  ii.setDzys(mb.getDzys());
+					 if(Fmzl==""){
+						 ii.setFmzl(mb.getFmzl());
+					 }else{
+						 ii.setFmzl(Fmzl);
+					 }
+					
+					 ii.setFrdb(mb.getFrdb());
+					 ii.setFrlxdh(mb.getFrlxdh());
+					 ii.setGxjsqy(mb.getGxjsqy());
+					 ii.setHtstze(mb.getHtstze());
+					 ii.setHylb(mb.getHylb());
+					 ii.setLxr(mb.getLxr());
+					 ii.setLxrlxdh(mb.getLxrdh());
+					 ii.setLxryqy(mb.getLxryqy());
+					 ii.setQyclsj(mb.getQyclsj());
+					 ii.setQydjzclx(mb.getQydjzclx());
+					 ii.setQymc(mb.getQymc());
+					 ii.setQyrzsj(mb.getQyrzsj());
+					 ii.setQyssjsly(mb.getQyssjsly());
+					 
+					 if(Rjzzq==""){
+						 ii.setRjzzq(mb.getRjzzq());
+					 }else{
+						 ii.setRjzzq(Rjzzq);
+					 }
 				
-				 ii.setFrdb(mb.getFrdb());
-				 ii.setFrlxdh(mb.getFrlxdh());
-				 ii.setGxjsqy(mb.getGxjsqy());
-				 ii.setHtstze(mb.getHtstze());
-				 ii.setHylb(mb.getHylb());
-				 ii.setLxr(mb.getLxr());
-				 ii.setLxrlxdh(mb.getLxrdh());
-				 ii.setLxryqy(mb.getLxryqy());
-				 ii.setQyclsj(mb.getQyclsj());
-				 ii.setQydjzclx(mb.getQydjzclx());
-				 ii.setQymc(mb.getQymc());
-				 ii.setQyrzsj(mb.getQyrzsj());
-				 ii.setQyssjsly(mb.getQyssjsly());
-				 
-				 if(Rjzzq==""){
-					 ii.setRjzzq(mb.getRjzzq());
-				 }else{
-					 ii.setRjzzq(Rjzzq);
-				 }
-			
-				 ii.setSsn(mpYear);
-				 ii.setSynyxzscq(mb.getSynyxzscq());
-				 
-				 if(Syxx==""){
-					 ii.setSyxx(mb.getSyxx());
-				 }else{
-					 ii.setSyxx(Syxx);
-				 }
-				 
-				 if(Wgsj==""){
-					 ii.setWgsj(mb.getWgsj());
-				 }else{
-					 ii.setWgsj(Wgsj);
-				 }
-				 ii.setXnyjdxs(mb.getXnyjdxs());
-				 ii.setZczb(mb.getZczb());
-				 ii.setZzjgdm(mb.getZzjgdm());
-				 ii.setHybh(mpMemberNo);
+					 ii.setSsn(mpYear);
+					 ii.setSynyxzscq(mb.getSynyxzscq());
+					 
+					 if(Syxx==""){
+						 ii.setSyxx(mb.getSyxx());
+					 }else{
+						 ii.setSyxx(Syxx);
+					 }
+					 
+					 if(Wgsj==""){
+						 ii.setWgsj(mb.getWgsj());
+					 }else{
+						 ii.setWgsj(Wgsj);
+					 }
+					 ii.setXnyjdxs(mb.getXnyjdxs());
+					 ii.setZczb(mb.getZczb());
+					 ii.setZzjgdm(mb.getZzjgdm());
+					 ii.setHybh(mpMemberNo);
+					}
 				 incubatedEnterprisesService.insert(ii);
 			  }else{
 				  if(Fmzl==""){

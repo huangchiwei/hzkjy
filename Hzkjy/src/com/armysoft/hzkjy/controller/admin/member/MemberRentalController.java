@@ -44,6 +44,7 @@ import com.armysoft.hzkjy.base.util.NumberToCN;
 import com.armysoft.hzkjy.model.EnterpriseRental;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.EnterpriseRentalService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 import com.armysoft.hzkjy.service.member.MemberRentalService;
 
@@ -51,7 +52,8 @@ import com.alibaba.fastjson.JSONObject;
 @Controller
 @RequestMapping("admin/memberRental")
 public class  MemberRentalController extends BaseController {
-
+	@Resource
+	private EnterpriseRentalService Erservice;
 	@Resource
 	private MemberRentalService service;
 	@Resource
@@ -72,7 +74,7 @@ public class  MemberRentalController extends BaseController {
 	 */
 	@PermissionsAnno("zjlr_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,
+	public String getByPage(@PathVariable Integer currentPage,Model model,String fhymc,String fjfyd,String fsslq,
 			MemberRental entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		pager.setPageSize(10);
@@ -84,6 +86,10 @@ public class  MemberRentalController extends BaseController {
 		if(fjfyd !="" && fjfyd !=null){
 			params.put("fjfyd", fjfyd);
 			request.setAttribute("fjfyd", fjfyd);
+			}
+		if(fsslq !="" && fsslq !=null){
+			params.put("fsslq", fsslq);
+			request.setAttribute("fsslq", fsslq);
 			}
 		
         model.addAttribute("list", service.getByPage(params, pager));
@@ -449,6 +455,79 @@ return   sFmt.format(cal.getTime());
 			MemberRental mdd= service.findByKey(Long.valueOf(idArr[id]));
 			mdd.setShzt("已提交");
 			service.update(mdd);
+			EnterpriseRental ert= new EnterpriseRental();
+		    ert.setSslq(mdd.getSslq());
+			ert.setAccessory("0");
+			ert.setBz(mdd.getBz());
+			ert.setDbyhd(mdd.getDbyhd());
+			ert.setDfbz(mdd.getDfbz());
+			ert.setDfsq(mdd.getDfsq());
+			ert.setDhjyl(mdd.getDhjyl());
+			ert.setDsyhd(mdd.getDsyhd());
+			ert.setFbzt("未提交");
+			ert.setGlfbz(mdd.getGlfbz());
+			ert.setGlfsq(mdd.getGlfsq());
+			ert.setGlfwf(mdd.getGlfwf());
+			ert.setGlfwfdj(mdd.getGlfwfdj());
+			ert.setGlfwfznj(mdd.getGlfwfznj());
+			ert.setHjje(mdd.getHjje());
+			ert.setHjjedx(mdd.getHjjedx());
+			ert.setHjjeznj(mdd.getHjjeznj());
+			ert.setHybh(mdd.getHybh());
+			ert.setJfyd(mdd.getJfyd());
+			ert.setJnje("0");
+			ert.setQydf(mdd.getQydf());
+			ert.setQydfznj(mdd.getQydfznj());
+			ert.setQymc(mdd.getQymc());
+			ert.setQymj(mdd.getQymj());
+			ert.setQysf(mdd.getQysf());
+			ert.setQysfznj(mdd.getQysfznj());
+			ert.setSbyhd(mdd.getSbyhd());
+			ert.setZjbz(mdd.getZjbz());
+			ert.setZjsq(mdd.getZjsq());
+			ert.setZlbzj(mdd.getZlbzj());
+			ert.setZlbzjbz(mdd.getZlbzjbz());
+			ert.setZlbzjdj(mdd.getZlbzjdj());
+			ert.setZlbzjznj(mdd.getZlbzjznj());
+			ert.setZxyj(mdd.getZxyj());
+			ert.setZxyjbz(mdd.getZxyjbz());
+			ert.setZxyjdj(mdd.getZxyjdj());
+			ert.setZxyjdj(mdd.getZxyjdj());
+			ert.setZxyjsq(mdd.getZxyjsq());
+			ert.setZxyjznj(mdd.getZxyjznj());
+			ert.setZydy(mdd.getZydy());
+			ert.setSfqf("0");
+			ert.setSsyhd(mdd.getSsyhd());
+			ert.setShjyl(mdd.getShjyl());
+			ert.setQydfdj(mdd.getQydfdj());
+			ert.setQysfdj(mdd.getQysfdj());
+		    ert.setSfsq(mdd.getSfsq());
+		    ert.setQyzj(mdd.getQyzj());
+		    ert.setQyzjdj(mdd.getQyzjdj());
+		    ert.setZlbzjsq(mdd.getZlbzjsq());
+		    ert.setXxbz(mdd.getXxbz());
+		    ert.setLqydf(mdd.getLqydf());
+		    ert.setLqysf(mdd.getLqysf());
+		    ert.setSslq(mdd.getSslq());
+		    ert.setSsyhd2(mdd.getSsyhd2());
+		    ert.setSbyhd2(mdd.getSbyhd2());
+		    ert.setShjyl2(mdd.getShjyl2());
+		   ert.setQysfdj2(mdd.getQysfdj2());
+		ert.setLqydf2(mdd.getLqydf2());
+		ert.setLqysf2(mdd.getLqysf2());
+		ert.setSfbz2(mdd.getSfbz2());
+		ert.setDsyhd2(mdd.getDsyhd2());
+	    ert.setZjmc(mdd.getZjmc());
+			ert.setDbyhd2(mdd.getDbyhd2());
+			ert.setDhjyl2(mdd.getDhjyl2());
+			ert.setQydfdj2(mdd.getQydfdj2());
+			ert.setDfbz2(mdd.getDfbz2());
+			ert.setDfmc(mdd.getDfmc());
+			ert.setSfmc(mdd.getSfmc());
+			ert.setZxyjmc(mdd.getZxyjmc());
+			ert.setZlbzjmc(mdd.getZlbzjmc());
+			ert.setGlfwfmc(mdd.getGlfwfmc());
+			Erservice.insert(ert);
 		}
 		
 		request.setAttribute("exl", "ok");
@@ -535,7 +614,7 @@ return   sFmt.format(cal.getTime());
 		
 	}
 	@RequestMapping("/outPtqfqk/1.html")
-	public void OutPtqfqk(Model model,String fhymc,String fjfyd,HttpServletRequest request,HttpServletResponse response) {
+	public void OutPtqfqk(Model model,String fhymc,String fjfyd,String fsslq,HttpServletRequest request,HttpServletResponse response) {
 		String title="缴费表";
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "Jfyd","缴费月度"});
@@ -574,6 +653,7 @@ return   sFmt.format(cal.getTime());
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fhymc", fhymc);
 		params.put("fjfyd", fjfyd);
+		params.put("fsslq", fsslq);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		
 		List list =service.getCyqy(params);

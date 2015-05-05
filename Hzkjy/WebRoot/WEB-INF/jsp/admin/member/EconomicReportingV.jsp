@@ -545,7 +545,7 @@ html { overflow:-moz-scrollbars-vertical;}
    </table>
   
    <div class="div_submit">
-					<input id="sumbit_bt" name="" type="submit" value="提  交"
+					<input id="sumbit_bt" name="" type="submit" value=${userNo=='4401'?"提交":"审核"}
 						class="photo_btn" />
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />

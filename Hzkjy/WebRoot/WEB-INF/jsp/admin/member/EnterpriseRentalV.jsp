@@ -106,7 +106,11 @@ function corpAutocomplete(data){
 			 
 	});
 }
-
+function zcsave(){
+var id = '${model.id}';
+    document.forms[0].action = '${ctx}/admin/enterpriseRental/zsave.html?id='+id;
+    document.forms[0].submit();
+}
 
 </script>
 
@@ -304,8 +308,8 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="hjje"  id="hjje" type="text" class="input_a1" value="${model.hjje}" onchange="loadHjjezw();"/>
      </td>
     
-       <td align="center"><input name="hjjeznj"  id="hjjeznj" type="text" class="input_a1" value="${model.hjjeznj!='' && model.hjjeznj != null ? model.hjjeznj:'0.0'}" /></td>
-      <td align="center"><input name="bz"  id="bz" type="text" class="input_a1" value="${model.bz}"/></td>
+       <td align="center"></td>
+      <td align="center"></td>
     </tr>
      <tr>
      <td colspan="3">合计金额（人民币大写）：</td>
@@ -489,10 +493,13 @@ html { overflow:-moz-scrollbars-vertical;}
 					</table>
        </div>
         <div class="div_submit">
-					<input id="sumbit_bt" name="" type="submit" value="提  交"
+					<input id="sumbit_bt" name="" type="submit" value=${userNo=='4401'?"提交":"审核"}
 						class="photo_btn" />
+						<input type="reset" value="暂存" onclick="zcsave();"
+						class="photo_btn" />	
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
+						
 				</div>
   </form>
 </div>

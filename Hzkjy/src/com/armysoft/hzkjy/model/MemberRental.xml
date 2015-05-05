@@ -22,6 +22,10 @@
 			<if test="parm.fjfyd != null and parm.fjfyd!= ''">
 		and Jfyd  = #{parm.fjfyd}
 		</if>
+		
+		<if test="parm.fsslq!= null and parm.fsslq!= ''">
+		and Sslq  = #{parm.fsslq}
+		</if>
 	</sql>
 	<!-- 实体映射 -->
 	<resultMap id="memberRentalMap" type="memberRental">
@@ -130,6 +134,10 @@ select  case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  whe
 			<if test="fjfyd != null and fjfyd!= ''">
 		and Jfyd  = #{fjfyd}
 		</if>
+			<if test="fsslq!= null and fsslq!= ''">
+		and Sslq  = #{fsslq}
+		</if>
+		
  order by id desc
 	</select>	
 	

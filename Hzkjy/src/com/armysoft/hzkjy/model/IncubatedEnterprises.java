@@ -5,6 +5,13 @@ import java.util.Date;
 public class IncubatedEnterprises implements java.io.Serializable {
 	private Integer id;
 	private String shzt;
+	private String sshzt;
+	public String getSshzt() {
+		return sshzt;
+	}
+	public void setSshzt(String sshzt) {
+		this.sshzt = sshzt;
+	}
 	public String getShzt() {
 		return shzt;
 	}

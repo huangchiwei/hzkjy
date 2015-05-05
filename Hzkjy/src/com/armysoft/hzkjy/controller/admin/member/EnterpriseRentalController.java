@@ -167,6 +167,31 @@ public class  EnterpriseRentalController extends BaseController {
 		}else{
 			entity.setSfqf("0");
 		}
+		entity.setFbzt("已提交");
+		service.update(entity);
+		
+		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		if(userNo.substring(0, 4).equals("cwry")){
+			return "redirect://admin/rentReview/list/1.html";
+		}else{
+			return "redirect://admin/enterpriseRental/list/1.html";
+		}
+	}
+	
+	@RequestMapping("zsave.html")
+	public String zcsave(String id,@RequestParam("files") MultipartFile[] files,EnterpriseRental entity, Model model,HttpServletRequest request) throws Exception {
+		entity.setId(Integer.valueOf(id));
+		
+		String fileName ;
+		String FmPicture = "";
+			
+		upFile(entity,request);
+		if(Double.valueOf(entity.getHjje())-Double.valueOf(entity.getJnje()) == Double.valueOf(0)){
+			entity.setSfqf("1");
+		}else{
+			entity.setSfqf("0");
+		}
 		service.update(entity);
 		
 		

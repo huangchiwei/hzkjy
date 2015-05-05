@@ -153,7 +153,7 @@ function loadPageLayer2(title,url){
   		<input id="add_bt" type="button" value="添加" class="initial" onclick="javascript:location.href='${ctx}/admin/bsNews/add/new.html'"/>
      
   </div>
-  <div class="list_info">
+ <div class="list_info">
   	<form id="search_form" action="${ctx}/admin/memberBasic/list/1.html" method="post">
     <h2>按条件查询</h2>
     <div class="div_input">
@@ -162,7 +162,7 @@ function loadPageLayer2(title,url){
     </div>
     
     </form>
-      <table width="98%" border="0" cellpadding="0" cellspacing="1">
+        <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <thead>
 	  	<tr>
 	  	<th>序号</th>

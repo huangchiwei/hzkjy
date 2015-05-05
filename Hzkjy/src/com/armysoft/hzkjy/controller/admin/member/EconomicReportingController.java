@@ -120,7 +120,8 @@ public class  EconomicReportingController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
-		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		EccIndicator mb=service.findByKey(id);
 		if(mb!=null){
 			model.addAttribute("model", mb);
@@ -148,6 +149,7 @@ public class  EconomicReportingController extends BaseController {
 //		Cn2Spell cn2Spell = new Cn2Spell();
 //		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 //		System.out.println(entity.getId());
+		entity.setShzt("已提交");
 		service.update(entity);
 		return "redirect://admin/economicReporting/list/1.html";
 	}

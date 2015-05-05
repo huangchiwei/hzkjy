@@ -72,9 +72,9 @@ public class  MemberBasicController extends BaseController {
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
-        dateFormat.setLenient(true);   
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
-    }  
+       dateFormat.setLenient(true);   
+       binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
+   }  
 	/**
 	 * 条件分页查询
 	 * @param currentPage
@@ -151,7 +151,7 @@ public class  MemberBasicController extends BaseController {
 	public  String getSqsj(HttpServletRequest request,HttpServletResponse response) {
 		String hybh = request.getParameter("hybh");
 		String nd = request.getParameter("nd");
-		IncubatedEnterprises mr=IEservice.findIeHybh(hybh,nd);
+		IncubatedEnterprises mr=IEservice.findIeHybhS(hybh,nd);
 		JSONObject jsonObject = new JSONObject();
 		if(mr!=null){
 			
@@ -263,7 +263,7 @@ public class  MemberBasicController extends BaseController {
 
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
-		
+		if(id!=null){
 		MemberBasic mb=service.findByKey(id);
 		IncubatedEnterprises ie=IEservice.findIeHybhM(mb.getHybh());
 		if(ie!=null){
@@ -271,8 +271,10 @@ public class  MemberBasicController extends BaseController {
 		}else{
 			request.setAttribute("year", "2015");
 		}
+		
 		if(mb!=null){
 			model.addAttribute("model", mb);
+		}
 		}
 		return "admin/member/MemberBasicV";
 	}
@@ -374,6 +376,17 @@ public class  MemberBasicController extends BaseController {
 		return "redirect://admin/memberBasic/list/1.html";
 	}
 	
+	
+		@RequestMapping("Zcsave.html")
+	public String zcsave(String id,MemberBasic entity, Model model) throws ParseException {
+			entity.setId(Integer.valueOf(id));
+			
+			Cn2Spell cn2Spell = new Cn2Spell();
+			entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
+			System.out.println(entity.getId());
+			service.update(entity);
+			return "redirect://admin/memberBasic/list/1.html";
+	}
 	
 	@RequestMapping(value = "/Zind.html")
 	public String Zind(HttpServletRequest request) {

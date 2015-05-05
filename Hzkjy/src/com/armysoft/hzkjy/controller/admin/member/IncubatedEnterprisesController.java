@@ -6,7 +6,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +38,12 @@ import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
 import com.armysoft.hzkjy.base.util.ExportExcel1;
 import com.armysoft.hzkjy.base.util.ImportExcel;
+import com.armysoft.hzkjy.model.BsNews;
+import com.armysoft.hzkjy.model.DbMessage;
 import com.armysoft.hzkjy.model.IncubatedEnterprises;
 import com.armysoft.hzkjy.model.MemberBasic;
 import com.armysoft.hzkjy.model.MemberRental;
+import com.armysoft.hzkjy.service.member.BsNewsService;
 import com.armysoft.hzkjy.service.member.IncubatedEnterprisesService;
 import com.armysoft.hzkjy.service.member.MemberBasicService;
 
@@ -46,7 +51,8 @@ import com.armysoft.hzkjy.service.member.MemberBasicService;
 @Controller
 @RequestMapping("admin/incubatedEnterprises")
 public class  IncubatedEnterprisesController extends BaseController {
-
+	@Resource
+	private BsNewsService Bsservice;
 	@Resource
 	private IncubatedEnterprisesService service;
 	@Resource
@@ -132,6 +138,86 @@ public class  IncubatedEnterprisesController extends BaseController {
 		} 
 		return null;
 	}
+	@RequestMapping("spass.html")
+	@ResponseBody
+	public String ZSShtg(String ids,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
+		JSONObject jsonObject = new JSONObject();
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			IncubatedEnterprises mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setSshzt("已审核");
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			bs.setTitle("孵化企业填报已通过通知");
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getQymc());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			String content="贵公司"+mdd.getSsn()+"年的孵化企业填报已通过";
+			bs.setContent(content);
+			Bsservice.insert(bs);
+			service.update(mdd);
+		}
+		
+		jsonObject.put("exl","ok");
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	@RequestMapping("sspass.html")
+	@ResponseBody
+	public String ZSSShtg(String ids,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
+		JSONObject jsonObject = new JSONObject();
+		String[] idArr = ids.split(",");
+		
+		for(int id=0;id<idArr.length;id++){
+			IncubatedEnterprises mdd= service.findByKey(Long.valueOf(idArr[id]));
+			mdd.setSshzt("不通过");
+			
+			Date now = new Date(); 
+			String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+			BsNews bs=new BsNews();
+			bs.setCreater(userNo);
+			GregorianCalendar gcNew=new GregorianCalendar();
+		    gcNew.set(Calendar.MONTH, gcNew.get(Calendar.MONTH)+1);
+		    Date dtFrom=gcNew.getTime();
+			bs.setCreateTime(now);
+			bs.setTitle("孵化企业填报未通过通知");
+			bs.setActiveTime(dtFrom);
+			bs.setIseveryone("0");
+			bs.setReceiver(mdd.getQymc());
+			bs.setReceiverBh(mdd.getHybh());
+			bs.setIsReport("1");
+			String content="贵公司"+mdd.getSsn()+"年的孵化企业填报不通过，请如实修改";
+			bs.setContent(content);
+			Bsservice.insert(bs);
+			service.update(mdd);
+		}
+		
+		jsonObject.put("exl","ok");
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	
 	@RequestMapping(value = ADD)
 	public String toAdd(Long id,HttpServletRequest request,Model model) {
@@ -170,8 +256,10 @@ public class  IncubatedEnterprisesController extends BaseController {
 			jsonObject.put("zzjgdm",mb.getZzjgdm());
 			jsonObject.put("frdb",mb.getFrdb());
 			jsonObject.put("zczb",mb.getZczb());
-			jsonObject.put("qyclsj",mb.getQyclsj());
-			jsonObject.put("qyrzsj",mb.getQyrzsj());
+			SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+
+			jsonObject.put("qyclsj",df.format(mb.getQyclsj()));
+			jsonObject.put("qyrzsj",df.format(mb.getQyrzsj()));
 			jsonObject.put("lxr",mb.getLxr());
 			jsonObject.put("lxrlxdh",mb.getLxrdh());
 			jsonObject.put("qydjzclx",mb.getQydjzclx());
@@ -195,8 +283,9 @@ public class  IncubatedEnterprisesController extends BaseController {
 			jsonObject.put("zzjgdm",ie.getZzjgdm());
 			jsonObject.put("frdb",ie.getFrdb());
 			jsonObject.put("zczb",ie.getZczb());
-			jsonObject.put("qyclsj",ie.getQyclsj());
-			jsonObject.put("qyrzsj",ie.getQyrzsj());
+			SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+			jsonObject.put("qyclsj",df.format(ie.getQyclsj()));
+			jsonObject.put("qyrzsj",df.format(ie.getQyrzsj()));
 			jsonObject.put("lxr",ie.getLxr());
 			jsonObject.put("lxrlxdh",ie.getLxrlxdh());
 			jsonObject.put("frlxdh",ie.getFrlxdh());

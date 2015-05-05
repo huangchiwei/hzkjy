@@ -32,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.CookieUtil;
 import com.gzjr.hzkjy.util.mail.SendEmailThread;
+import com.gzjr.hzkjy.util.mail.UpdatepMailSender;
 
 @Controller
 @RequestMapping("admin/sysUser")
@@ -99,6 +100,7 @@ public class SysUserController extends BaseController {
 			String newPwd="888888";
 			mdd.setPwd(DigestUtils.md5DigestAsHex(newPwd.getBytes()));
 			sysUserService.updatepassword(mdd);
+			new UpdatepMailSender(mdd.getEmail(), mdd.getUserNo(), Constants.DEFAULT_PASSWORD).start();
 		}
 		
 		request.setAttribute("exl", "ok");

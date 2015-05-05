@@ -52,6 +52,58 @@ function pass(){
 		  	});
 	document.getElementById("search_form").submit();
 }
+function pass2(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要审核的 孵化企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/incubatedEnterprises/spass.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("审核成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
+function pass3(){
+	var stuInput = $('input[name="qyId"]:checked');
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要审核的 孵化企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/incubatedEnterprises/sspass.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("不通过成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  		
+		  	});
+	document.getElementById("search_form").submit();
+}
 function find(){    
 	$("#search_form").attr("action","${ctx}/admin/incubatedEnterprises/list/1.html");
 	document.getElementById("search_form").submit();
@@ -156,6 +208,8 @@ function loadPageLayer2(title,url){
          <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
            <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
             <input id="" type="button" value="批量审核" class="initial" onclick="pass()"/>
+            <input id="" type="button" value="批量二审" class="initial" onclick="pass2()"/>
+            <input id="" type="button" value="二审不通过" class="initial" onclick="pass3()"/>
     </div>
     
     </form>
@@ -172,6 +226,7 @@ function loadPageLayer2(title,url){
 	        <th>法人代表</th>
 	        <th>年份</th>
 	        <th>审核状态</th>
+	        <th>二审状态</th>
 	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
@@ -207,8 +262,9 @@ function loadPageLayer2(title,url){
 	        <td>${mb.frdb}</td>
 	        <td>${mb.ssn}</td>
 	        <td>${mb.shzt}</td>
+	         <td>${mb.sshzt}</td>
 	        <td>
-	       <c:if test="${userNo!= '4401' || mb.shzt!='已审核'}">
+	       <c:if test="${userNo!= '4401' || mb.sshzt!='已审核'}">
 	         <c:if test="${fhqytb_updt == true}">
 		          	<div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/incubatedEnterprises/add/new.html?id=${mb.id}'"/>
@@ -224,15 +280,15 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="9"></td>
+        <td colspan="10"></td>
       <td>总计</td>
-      <td><c:if test="${not empty zj}">${zj }</c:if><c:if test="${not empty zj}">0</c:if>家</td>
+      <td><c:if test="${not empty zj}">${zj }</c:if><c:if test="${empty zj}">0</c:if>家</td>
     
       </tr>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="11">
+			<td colspan="12">
 				<div class="page">
 					<p:pager/>
 				</div>

@@ -2,6 +2,8 @@
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class MemberBasic implements java.io.Serializable {
 	
 	private Integer zlid;

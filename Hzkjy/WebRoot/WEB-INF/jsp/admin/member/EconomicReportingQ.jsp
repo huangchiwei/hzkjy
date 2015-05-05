@@ -286,7 +286,7 @@ function plbtgtz(){
      	value="${fjjzbNy}" maxlength="20"/>
         	
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
-          <input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/>
+          <!-- <input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/> -->
           <c:if test="${jjybtb_sh == true}">
           <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
           </c:if>

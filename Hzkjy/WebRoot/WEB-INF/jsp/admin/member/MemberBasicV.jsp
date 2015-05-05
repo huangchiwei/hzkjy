@@ -60,7 +60,6 @@ function loadNd(){
 		  		$("#frlxdh").attr("value",data.frlxdh);
 		  		$("#lxr").attr("value",data.lxr);
 		  		$("#lxrdh").attr("value",data.lxrdh);
-		  		$("#qyrzsj").attr("value",data.qyrzsj);
 		  			
 		  },
 		  		error:function(){
@@ -85,6 +84,11 @@ function shbtg(){
 		  		error:function(){
 		  		} 
 		  	});
+}
+function zcsave(){
+var id = '${model.id}';
+    document.forms[0].action = '${ctx}/admin/memberBasic/Zcsave.html?id='+id;
+    document.forms[0].submit();
 }
 </script>
 
@@ -173,7 +177,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
      <th colspan="2">企业入驻时间：</th>
      <td>
-     	<input id="qyrzsj" name="qyrzsj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.qyrzsj}"
+     	<input id="qyrzsj" name="qyrzsj" type="text" onclick="WdatePicker();" value="<fmt:formatDate value="${model.qyrzsj}" 
 								pattern="yyyy-MM-dd" />" class="input_a1" maxlength="20"/>
      </td>
     
@@ -302,6 +306,9 @@ html { overflow:-moz-scrollbars-vertical;}
 						class="photo_btn" />
 						<input type="reset" value="审核不通过" onclick="shbtg();"
 						class="photo_btn" />
+							<input type="reset" value="暂存" onclick="zcsave();"
+						class="photo_btn" />
+						
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
 				</div>
