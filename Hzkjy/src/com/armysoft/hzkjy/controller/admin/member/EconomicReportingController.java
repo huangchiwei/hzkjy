@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.armysoft.security.annotation.PermissionsAnno;
 
+import com.alibaba.fastjson.JSONObject;
 import com.armysoft.hzkjy.base.common.Constants;
 import com.armysoft.hzkjy.base.common.WebConstant;
 import com.armysoft.hzkjy.base.util.Cn2Spell;
@@ -74,7 +75,7 @@ public class  EconomicReportingController extends BaseController {
 	 */
 	@PermissionsAnno("jjybtb_list") 
     @RequestMapping(value = PAGE_LIST)
-	public String getByPage(@PathVariable Integer currentPage,String fjjzbNy,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
+	public String getByPage(@PathVariable Integer currentPage,String fjjzbNy,String fqymc,String fssq,String ffzjgNo, String hybh1,String dwmc,String cyqy,String hylbNo,String hyzcNo,String ssq,String fzjgNo,Model model,
 			EccIndicator entity, HttpServletRequest request) {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -85,6 +86,10 @@ public class  EconomicReportingController extends BaseController {
 		if(fjjzbNy !="" && fjjzbNy !=null){
 			params.put("fjjzbNy", fjjzbNy);
 			request.setAttribute("fjjzbNy", fjjzbNy);
+			}
+		if(fqymc !="" && fqymc !=null){
+			params.put("fqymc", fqymc);
+			request.setAttribute("fqymc", fqymc);
 			}
 //		if(ftitle !="" && ftitle !=null){
 //		params.put("ftitle", ftitle);
@@ -135,7 +140,25 @@ public class  EconomicReportingController extends BaseController {
 		 List<Map<String,Object>> selectedVCorpInfoList= service.getSelectedCorpNameList("1");
 		return selectedVCorpInfoList;
 	}
-
+	@RequestMapping("Plsc.html")
+	@ResponseBody
+	public String delete(String ids, HttpServletRequest request,HttpServletResponse response) {
+		JSONObject jsonObject = new JSONObject();
+		String[] idArr = ids.split(",");
+		for(int id=0;id<idArr.length;id++){
+			service.delete(Long.valueOf(idArr[id]));
+		}
+		
+		jsonObject.put("exl","ok");
+		response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	/**
 	 * 保存
 	 * @param entity
@@ -160,6 +183,7 @@ public class  EconomicReportingController extends BaseController {
 			service.insert(entity);
 			
 		} else {
+			entity.setShzt("已提交");
 			service.update(entity);
 		}
 		return "redirect://admin/economicReporting/list/1.html";

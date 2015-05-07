@@ -133,6 +133,16 @@ public class EccIndicatorService extends BaseDao {
 		
 		
 	}
+	public String countCy(String jjzbNy) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("jjzbNy", jjzbNy);
+		
+	   return super.nativeSelectOne(nameSpace + ".countCy", params);
+		
+		
+	}
+	
+	
 	public  List countHyflList(String jjzbNy,String type,String zt) {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("jjzbNy", jjzbNy);
@@ -142,6 +152,21 @@ public class EccIndicatorService extends BaseDao {
 		
 		
 	}
+	
+	public  List countCyList(String jjzbNy) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("jjzbNy", jjzbNy);
+	   return super.nativeList(nameSpace + ".countCyList", params);
+		
+		
+	}
+	
+	
+	public List  getCyList(String jjzbNy) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("jjzbNy", jjzbNy);
+		return super.nativeList(nameSpace + ".getCyList", params);
+		}
 	
 	public List  getHyflList(String jjzbNy,String type,String zt) {
 		Map<String,Object> params = new HashMap<String, Object>();

@@ -19,6 +19,10 @@
 			<if test="parm.fjjzbNy != null and parm.fjjzbNy != ''">
 		and JjzbNy  = #{parm.fjjzbNy}
 		</if>
+		<if test="parm.fqymc != null and parm.fqymc != ''">
+		and Rzqy  = #{parm.fqymc}
+		</if>
+		
 		order by Hyfl
 	</sql>
 	<!-- 实体映射 -->
@@ -114,7 +118,19 @@ from ecc_indicator where 1=1
 		and Zt  = #{zt}
 		</if>
 </select>
-		
+		<select id="countCy" resultType="String" parameterType="java.util.Map">
+ select count(*) from (select * from  (select  b.*  from member_basic a left join ecc_indicator b
+        on a.hybh=b.hybh where substr(b.JjzbNy,1,4)= substr(NOW(),1,4) and a.Zt='0' 
+        <if test="jjzbNy != null and jjzbNy != ''">
+		and b.JjzbNy &lt; #{jjzbNy}
+		</if>
+           order by b.JjzbNy  desc)  t  where t.hybh not in (select hybh from ecc_indicator where 1=1
+            <if test="jjzbNy != null and jjzbNy != ''">
+		and JjzbNy = #{jjzbNy}
+		</if> 
+		)
+		group by t.hybh) t
+</select>
 		
     <select id="getHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 
        select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,Rzqy,Hyfl,Zczj,JgmzsrBys,JgmzsrLjs,LrzeBys,LrzeLjs,NsBys,NsLjs,LszeBys,LszeLjs,Ch,Zgs,Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt,ChLjs,YfjfLjs,GxjscpsrLjs,GyzczLjs,GyzjzLjs,Tbr,Dwfzr,Tjfzr,Tbrlxdh,Tbrq,Zt
@@ -130,6 +146,52 @@ from ecc_indicator where 1=1
 		and Zt  = #{zt}
 		</if>
 		order by id desc 
+		</select>	
+		
+	<select id="getCyList" resultType="java.util.Map" parameterType="java.util.Map"> 
+       select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电子与信息业'  when Hyfl='3' then '新材料技术/新材料业' when Hyfl='4' then '展览服务' when Hyfl='6' then '工业'  else '其他' end HyflName,ID ,Hybh ,
+       Rzqy,Hyfl,Zczj,'0' JgmzsrBys,JgmzsrLjs,'0' LrzeBys,LrzeLjs,'0' NsBys,NsLjs,'0' LszeBys,LszeLjs,Ch,Zgs, Yfjf,Gxjscpsr,Gyzcz,Gyzjz,JjzbNy,Shzt,ChLjs,
+       YfjfLjs,GxjscpsrLjs,GyzczLjs,GyzjzLjs,Tbr,Dwfzr,Tjfzr,Tbrlxdh,Tbrq,Zt from (select  b.*  from member_basic a left join ecc_indicator b
+        on a.hybh=b.hybh where substr(b.JjzbNy,1,4)= substr(NOW(),1,4) and a.Zt='0' 
+        <if test="jjzbNy != null and jjzbNy != ''">
+		and b.JjzbNy &lt; #{jjzbNy}
+		</if>
+        
+           order by b.JjzbNy  desc)  t where t.hybh not in (select hybh from ecc_indicator where 1=1
+            <if test="jjzbNy != null and jjzbNy != ''">
+		and JjzbNy = #{jjzbNy}
+		</if>
+        ) group by t.hybh
+		</select>		
+		
+		 <select id="countCyList" resultType="java.util.Map" parameterType="java.util.Map"> 
+         select sum(Zczj)  sumZczj ,
+                 '0'  sumJgmzsrBys,
+                 sum(JgmzsrLjs)  sumJgmzsrLjs,
+                 '0'   sumLrzeBys,
+                 sum(LrzeLjs)  sumLrzeLjs ,
+                 '0'   sumNsBys ,
+                 sum(NsLjs)  sumNsLjs,
+                 '0'   sumLszeBys,
+                 sum(LszeLjs)  sumLszeLjs,
+                 sum(Ch)  sumCh,
+                 sum(Zgs)  sumZgs,
+                 sum(Yfjf)  sumYfjf,
+                 sum(Gxjscpsr)  sumGxjscpsr,
+                 sum(Gyzcz)  sumGyzcz,
+                 sum(Gyzjz)  sumGyzjz  
+         from ( select * from (select  b.*  from member_basic a left join ecc_indicator b
+        on a.hybh=b.hybh where substr(b.JjzbNy,1,4)= substr(NOW(),1,4) and a.Zt='0' 
+        <if test="jjzbNy != null and jjzbNy != ''">
+		and b.JjzbNy &lt; #{jjzbNy}
+		</if>
+           order by b.JjzbNy  desc)  t where t.hybh not in (select hybh from ecc_indicator where 1=1
+            <if test="jjzbNy != null and jjzbNy != ''">
+		and JjzbNy = #{jjzbNy}
+		</if>
+		)
+		group by t.hybh) f
+		
 		</select>	
 		
 		 <select id="countHyflList" resultType="java.util.Map" parameterType="java.util.Map"> 

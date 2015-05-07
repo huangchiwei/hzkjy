@@ -281,8 +281,20 @@ public class  RentalExamineController extends BaseController {
 		map.put("Qysfdj",mb.getQysfdj()+"");
 		map.put("Qydfdj",mb.getQydfdj()+"");
 		map.put("Hjjeznj",mb.getHjjeznj()+"");
+		if(mb.getSslq().equals("1")){
+			map.put("Sslq","科技大楼");
+		}else if(mb.getSslq().equals("2")){
+			map.put("Sslq","A栋");
+		}else if(mb.getSslq().equals("3")){
+			map.put("Sslq","B栋");
+		}else if(mb.getSslq().equals("4")){
+			map.put("Sslq","C栋");
+		}else if(mb.getSslq().equals("5")){
+			map.put("Sslq","D栋");
+		}else{
+			map.put("Sslq","琶洲科技创意中心");
+		}
 		
-		map.put("Ssql",mb.getSslq()+"");
 		map.put("Ssyhd2",mb.getSsyhd2()+"");
 		map.put("Sbyhd2",mb.getSbyhd2()+"");
 		map.put("Shjyl2",mb.getShjyl2()+"");

@@ -164,14 +164,13 @@ function loadPageLayer2(title,url){
     </form>
    <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	  <tr>
-	    <td colspan="17" align="left"> <font color="red">广州市海珠区科技产业基地入驻企业经济指标月报表</font></td><td align="left">  <font color="red">资料保密</font></td>
+	    <td colspan="16" align="left"> <font color="red">广州市海珠区科技产业基地入驻企业经济指标月报表</font></td><td align="left">  <font color="red">资料保密</font></td>
 	   </tr>
 	    <tr>
-	    <td colspan="17" align="left">单位名称（公章）：广州市海珠科技产业园有限公司</td><td align="left">  单位：万元</td>
+	    <td colspan="16" align="left">单位名称（公章）：广州市海珠科技产业园有限公司</td><td align="left">  单位：万元</td>
 	   </tr>
 	  	<tr >
 	  	<td rowspan="3">行业分类</td>
-	  	 <td rowspan="3">编号</td> 
 	  	 <td rowspan="3">入驻企业</td> 
 	  	 <td colspan="15">${fjjzbNy} 底累计</td>
 	  	</tr>
@@ -216,7 +215,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl1count}">生物/医药技术业</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -237,7 +235,7 @@ function loadPageLayer2(title,url){
 	     
       </c:forEach>
        <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl1List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -265,7 +263,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl2count}">电子与信息业</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -285,7 +282,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl2List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -313,7 +310,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl3count}">新材料技术/新材料业</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -333,7 +329,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl3List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -361,7 +357,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl4count}">展览服务</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -381,7 +376,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
        <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl4List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -409,7 +404,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl5count}">其他</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -429,7 +423,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
    <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl5List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -457,7 +451,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl6count}">工业</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -477,7 +470,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
        <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl6List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -505,7 +498,6 @@ function loadPageLayer2(title,url){
 	       <c:if test="${sta.index=='0'}">
 	        <td rowspan="${Hyfl7count}">出园企业</td>
 	        </c:if>
-	         <td>${mb.Hybh}</td>
 	        <td>${mb.Rzqy}</td>
 	        <td>${mb.Zczj}</td>
 	        <td>${mb.JgmzsrBys}</td> 
@@ -525,7 +517,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
        <tr>
-	      <td colspan="3">小计</td>
+	      <td colspan="2">小计</td>
 	      
 	      <c:forEach items="${countHyfl7List}" var="mb" varStatus="sta">
 	          <td>${mb.sumZczj }</td>
@@ -547,25 +539,28 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:if>
       <tr>
-	      <td colspan="3">琶洲园区合计：</td>
+	      <td colspan="2">琶洲园区合计：</td>
 	      
 	      <c:forEach items="${countHyfl8List}" var="mb" varStatus="sta">
-	          <td>${mb.sumZczj }</td>
-	        <td>${mb.sumJgmzsrBys}</td> 
-	        <td>${mb.sumJgmzsrLjs}</td>
-	        <td>${mb.sumLrzeBys}</td>  
-	        <td>${mb.sumLrzeLjs}</td>
-	        <td>${mb.sumNsBys}</td>    
-	        <td>${mb.sumNsLjs}</td>
-	        <td>${mb.sumLszeBys}</td>    
-	        <td>${mb.sumLszeLjs}</td>     
-	         <td>${mb.sumCh}</td>
-	         <td>${mb.sumZgs}</td>
-	         <td>${mb.sumYfjf}</td>
-	         <td>${mb.sumGxjscpsr}</td>
-	         <td>${mb.sumGyzcz}</td>
-	         <td>${mb.sumGyzjz}</td>
+	      <c:forEach items="${countHyfl7List}" var="mc" varStatus="stb">
+	      
+	          <td>${mb.sumZczj+mc.sumZczj}</td>
+	        <td>${mb.sumJgmzsrBys+mb.sumJgmzsrBys}</td> 
+	        <td>${mb.sumJgmzsrLjs+mb.sumJgmzsrLjs}</td>
+	        <td>${mb.sumLrzeBys+mb.sumLrzeBys}</td>  
+	        <td>${mb.sumLrzeLjs+mb.sumLrzeLjs}</td>
+	        <td>${mb.sumNsBys+mb.sumNsBys}</td>    
+	        <td>${mb.sumNsLjs+mb.sumNsLjs}</td>
+	        <td>${mb.sumLszeBys+mb.sumLszeBys}</td>    
+	        <td>${mb.sumLszeLjs+mb.sumLszeLjs}</td>     
+	         <td>${mb.sumCh+mb.sumCh}</td>
+	         <td>${mb.sumZgs+mb.sumZgs}</td>
+	         <td>${mb.sumYfjf+mb.sumYfjf}</td>
+	         <td>${mb.sumGxjscpsr+mb.sumGxjscpsr}</td>
+	         <td>${mb.sumGyzcz+mb.sumGyzcz}</td>
+	         <td>${mb.sumGyzjz+mb.sumGyzjz}</td>
       </c:forEach>
+       </c:forEach>
 	      </tr>
 	</tbody>
     </table>

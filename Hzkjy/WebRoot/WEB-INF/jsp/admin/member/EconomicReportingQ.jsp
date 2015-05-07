@@ -74,7 +74,7 @@ function loadCorpName(){
 			}
 }
 function corpAutocomplete(data){
-	$("#fhymc").autocomplete(data,{
+	$("#fqymc").autocomplete(data,{
 			 minChars:0,
 			matchContains: true,
 			//autoFill:true,
@@ -258,6 +258,32 @@ function plbtgtz(){
 		  	});
 	document.getElementById("search_form").submit();
 }
+
+	function plsc(){
+	var stuInput = $("input[name=qyId]:checked");
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要删除的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/economicReporting/Plsc.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("删除成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  	});
+		  	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
@@ -284,17 +310,19 @@ function plbtgtz(){
       <div class="div_input">
          <em>经济指标年月：</em> <input id="fjjzbNy" name="fjjzbNy" size="15"  class="input_a1" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" type="text" 
      	value="${fjjzbNy}" maxlength="20"/>
-        	
+        <em>企业名称：</em><input name="fqymc" type="text"  class="input_a1" id="fqymc"  onfocus="loadCorpName();"  value="${fqymc}" size="30"  maxlength="100" />
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
           <!-- <input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/> -->
           <c:if test="${jjybtb_sh == true}">
           <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
+         
           </c:if>
            <c:if test="${jjybtb_th == true}">
           <input id="" type="button" value="批量退回" class="initial" onclick="pZShth();"/>
           </c:if>
           <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
           <c:if test="${jjybtb_tg == true}">
+           <input id="add_bt" type="button" value="批量删除" class="initial" onclick="plsc()"/>
           <input id="" type="button" value="通过发送" class="initial" onclick="pltgtz()"/>
           </c:if>
           <c:if test="${jjybtb_btg == true}">

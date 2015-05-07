@@ -136,7 +136,7 @@ html { overflow:-moz-scrollbars-vertical;}
      <th>房号:</th>
      <td colspan="3">
      <input id="fbzt" name="fbzt" type="hidden" value="${model.fbzt}"/>
-     	<input id="zydy" name="zydy" type="text" value="${model.zydy}" class="input_a1"  maxlength="100" />
+     	<input id="zydy" name="zydy" type="text" value="${model.zydy}" class="input_a1"  maxlength="100"  readonly="true" />
      </td>
      <th align="center">会员编号：</th>
      <td colspan="2">
@@ -146,11 +146,11 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr align="center">
      <th>用户:</th>
      <td colspan="3">
-     	<input id="qymc" name="qymc" type="text" value="${model.qymc}"  class="input_a1"  maxlength="100"  onfocus="loadCorpName();" onblur="loadQyxx();" />
+     	<input id="qymc" name="qymc" type="text" value="${model.qymc}"  class="input_a1"  maxlength="100"  onfocus="loadCorpName();" onblur="loadQyxx();"  readonly="true" />
      </td>
      <th>建筑面积：</th>
      <td colspan="2">
-     	<input id="qymj" name="qymj" type="text" value="${model.qymj}" class="input_a1"  maxlength="20" onchange="sumfy();"/>㎡
+     	<input id="qymj" name="qymj" type="text" value="${model.qymj}" class="input_a1"  maxlength="20" onchange="sumfy();" readonly="true" />㎡
      </td>
 
   
@@ -158,7 +158,7 @@ html { overflow:-moz-scrollbars-vertical;}
      <tr align="center">
        <th>缴费年月：</th>
       <td colspan="3">
-     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" onclick="WdatePicker({dateFmt:'yyyy-MM'});" onchange="loadSqsj();"/>
+     <input name="jfyd"  id="jfyd" type="text" class="input_a1" value="${model.jfyd}" readonly="true" />
      </td>
      <th>所属楼区：</th>
        <td colspan="2">
@@ -184,128 +184,128 @@ html { overflow:-moz-scrollbars-vertical;}
 	     <tr align="center">
 	     <td>1</td>
 	    <td>
-	     <input name="zjmc"  id="zjmc" type="text" class="input_a1" value="${model.zjmc!='' && model.zjmc !=null?model.zjmc:'租金'}" />
+	     <input name="zjmc"  id="zjmc" type="text" class="input_a1" value="${model.zjmc!='' && model.zjmc !=null?model.zjmc:'租金'}"  readonly="true" />
 	     	</td> 
 	     <td colspan="2">
-	    <input name="qyzjdj"  id="qyzjdj" type="hidden" class="input_a1" value="${model.qyzjdj}" onchange="sumzj();"/>
-	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" value="${model.zjsq}" />
+	    <input name="qyzjdj"  id="qyzjdj" type="hidden" class="input_a1" value="${model.qyzjdj}" onchange="sumzj();" readonly="true" />
+	     <input name="zjsq"  id="zjsq" type="text" class="input_a1" value="${model.zjsq}" readonly="true"  />
 	     	</td> 
 	     <td>
-	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}"/>
+	     <input name="qyzj"  id="qyzj" type="text" class="input_a1" value="${model.qyzj}" readonly="true" />
 	     	</td>
 	  	   <td>
-	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}"/>
+	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}" readonly="true" />
 	     	</td> 
 	     <td>
-	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" value="${model.zjbz}"/> 
+	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" value="${model.zjbz}" readonly="true"/> 
 	     	</td> 	
 	    
 	    </tr>
 	    <tr align="center">
 	    <td>2</td>
 	    <td>
-	     <input name="glfwfmc"  id="glfwfmc" type="text" class="input_a1" value="${model.glfwfmc!='' && model.glfwfmc !=null?model.glfwfmc:'管理服务费'}" />
+	     <input name="glfwfmc"  id="glfwfmc" type="text" class="input_a1" value="${model.glfwfmc!='' && model.glfwfmc !=null?model.glfwfmc:'管理服务费'}"  readonly="true"/>
 	     	</td>
 	     <td colspan="2">
-	       <input name="glfwfdj"  id="glfwfdj" type="hidden" class="input_a1" value="${model.glfwfdj}" />
-	   	 	<input name="glfsq"  id="glfsq" type="text" class="input_a1" value="${model.glfsq}"/>
+	       <input name="glfwfdj"  id="glfwfdj" type="hidden" class="input_a1" value="${model.glfwfdj}" readonly="true"/>
+	   	 	<input name="glfsq"  id="glfsq" type="text" class="input_a1" value="${model.glfsq}" readonly="true"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}" />
+	   	 	<input name="glfwf"  id="glfwf" type="text" class="input_a1" value="${model.glfwf}" readonly="true"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}"/>
+	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}" readonly="true"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="glfbz"  id="glfbz" type="text" class="input_a1" value="${model.glfbz}"/>
+	   	 	<input name="glfbz"  id="glfbz" type="text" class="input_a1" value="${model.glfbz}" readonly="true"/>
 	   	 </td>
 	    </tr>
 	    
 	     <tr align="center">
 	     <td>3</td>
 	     <td>
-	     <input name="zlbzjmc"  id="zlbzjmc" type="text" class="input_a1" value="${model.zlbzjmc!='' && model.zlbzjmc !=null?model.zlbzjmc:'租赁保证金'}" />
+	     <input name="zlbzjmc"  id="zlbzjmc" type="text" class="input_a1" value="${model.zlbzjmc!='' && model.zlbzjmc !=null?model.zlbzjmc:'租赁保证金'}" readonly="true" />
 	     	</td>
 	     
 	      <td colspan="2">
-	      <input name="zlbzjdj"  id="zlbzjdj" type="hidden" class="input_a1" value="${model.zlbzjdj}"/>
-	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" class="input_a1" value="${model.zlbzjsq}"/>
+	      <input name="zlbzjdj"  id="zlbzjdj" type="hidden" class="input_a1" value="${model.zlbzjdj}" readonly="true"/>
+	   	 	<input name="zlbzjsq"  id="zlbzjsq" type="text" class="input_a1" value="${model.zlbzjsq}" readonly="true"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="zlbzj"  id="zlbzj" type="text" class="input_a1" value="${model.zlbzj}" />
+	   	 	<input name="zlbzj"  id="zlbzj" type="text" class="input_a1" value="${model.zlbzj}" readonly="true"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}"/>
+	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}" readonly="true"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" class="input_a1" value="${model.zlbzjbz}"/>
+	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" class="input_a1" value="${model.zlbzjbz}" readonly="true"/>
 	   	 </td>
 	    </tr>
 	    
 	     <tr align="center">
 	     <td>4</td>
 	       <td>
-	     <input name="zxyjmc"  id="zxyjmc" type="text" class="input_a1" value="${model.zxyjmc!='' && model.zxyjmc !=null?model.zxyjmc:'装修押金'}" />
+	     <input name="zxyjmc"  id="zxyjmc" type="text" class="input_a1" value="${model.zxyjmc!='' && model.zxyjmc !=null?model.zxyjmc:'装修押金'}"  readonly="true"/>
 	     	</td>
 	    
 	      <td colspan="2">
-	       <input name="zxyjdj"  id="zxyjdj" type="hidden" class="input_a1" value="${model.zxyjdj}" />
-	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" class="input_a1" value="${model.zxyjsq}"/>
+	       <input name="zxyjdj"  id="zxyjdj" type="hidden" class="input_a1" value="${model.zxyjdj}" readonly="true"/>
+	   	 	<input name="zxyjsq"  id="zxyjsq" type="text" class="input_a1" value="${model.zxyjsq}" readonly="true"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="${model.zxyj}"/>
+	   	 	<input name="zxyj"  id="zxyj" type="text" class="input_a1" value="${model.zxyj}" readonly="true"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}"/>
+	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" readonly="true"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" class="input_a1" value="${model.zxyjbz}"/>
+	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" class="input_a1" value="${model.zxyjbz}" readonly="true"/>
 	   	 </td>
 	    </tr>
 	    
 	         <tr align="center">
 	         <td>5</td>
 	              <td>
-	     <input name="sfmc"  id="sfmc" type="text" class="input_a1" value="${model.sfmc!='' && model.sfmc !=null?model.sfmc:'水费'}" />
+	     <input name="sfmc"  id="sfmc" type="text" class="input_a1" value="${model.sfmc!='' && model.sfmc !=null?model.sfmc:'水费'}"  readonly="true"/>
 	     	</td>
 	 
 	      <td colspan="2">
-	   	 	<input name="sfsq"  id="sfsq" type="text" class="input_a1" value="${model.sfsq}"/>
+	   	 	<input name="sfsq"  id="sfsq" type="text" class="input_a1" value="${model.sfsq}" readonly="true"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}"/>
+	   	 	<input name="qysf"  id="qysf" type="text" class="input_a1" value="${model.qysf}" readonly="true"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}"/>
+	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" readonly="true"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+	   	 	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}" readonly="true"/>
 	   	 </td>
 	    </tr>
 	    
 	        <tr align="center">
 	        <td>6</td>
 	         <td>
-	     <input name="dfmc"  id="dfmc" type="text" class="input_a1" value="${model.dfmc!='' && model.dfmc !=null?model.dfmc:'电费'}" />
+	     <input name="dfmc"  id="dfmc" type="text" class="input_a1" value="${model.dfmc!='' && model.dfmc !=null?model.dfmc:'电费'}" readonly="true"/>
 	     	</td>
 	  
 	      <td colspan="2">
-	   	 	<input name="dfsq"  id="dfsq" type="text" class="input_a1" value="${model.dfsq}"/>
+	   	 	<input name="dfsq"  id="dfsq" type="text" class="input_a1" value="${model.dfsq}" readonly="true"/>
 	   	 </td>
 	   	 <td>
-	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}"  onblur="rtnn(this);sumhjje();"/>
+	   	 	<input name="qydf"  id="qydf" type="text" class="input_a1" value="${model.qydf}"  onblur="rtnn(this);sumhjje();" readonly="true"/>
 	   	 </td>
 	      <td>
-	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}"/>
+	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}" readonly="true"/>
 	   	 </td> 
 	   	 <td>
-	   	 	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+	   	 	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}" readonly="true"/>
 	   	 </td>
 	    </tr>
 	          <tr>
      <td colspan="4">小写：</td>
      <td align="center">
-     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="${model.hjje}" onchange="loadHjjezw();"/>
+     	<input name="hjje"  id="hjje" type="text" class="input_a1" value="${model.hjje}" onchange="loadHjjezw();" readonly="true"/>
      </td>
     
        <td align="center"></td>
@@ -314,7 +314,7 @@ html { overflow:-moz-scrollbars-vertical;}
      <tr>
      <td colspan="3">合计金额（人民币大写）：</td>
      <td colspan="4">
-     	<input name="hjjedx"  id="hjjedx" type="text" class="input_a1" value="${model.hjjedx}" style="width:400px" />
+     	<input name="hjjedx"  id="hjjedx" type="text" class="input_a1" value="${model.hjjedx}" style="width:400px"  readonly="true"/>
      </td>
     </tr>
     <tr>
@@ -337,46 +337,46 @@ html { overflow:-moz-scrollbars-vertical;}
 	    <tr>
 	    <th>水1：</th>
 	     <td>
-     	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}" />吨
+     	<input name="ssyhd"  id="ssyhd" type="text" class="input_a1" value="${model.ssyhd}" readonly="true"/>吨
      </td>
      <td>
-     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}"/>吨
+     	<input name="sbyhd"  id="sbyhd" type="text" class="input_a1" value="${model.sbyhd}" readonly="true"/>吨
      </td>
       <td>
-     	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}"/>吨
+     	<input name="shjyl"  id="shjyl" type="text" class="input_a1" value="${model.shjyl}" readonly="true"/>吨
      </td>
      <td>
-     	<input name="qysfdj"  id="qysfdj" type="text" class="input_a1" value="${model.qysfdj}"/>元/吨
+     	<input name="qysfdj"  id="qysfdj" type="text" class="input_a1" value="${model.qysfdj}" readonly="true"/>元/吨
      </td>
        <td>
-     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="${model.qysf}" />
+     	<input name="lqysf"  id="lqysf" type="text" class="input_a1" value="${model.qysf}" readonly="true"/>
      </td>
      
      <td>
-     	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}"/>
+     	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}" readonly="true"/>
      </td>
       
 	    </tr>
 	      <tr>
 	    <th>水2：</th>
 	     <td>
-     	<input name="ssyhd2"  id="ssyhd2" type="text" class="input_a1" value="${model.ssyhd2}"  onblur="rtnn(this);sumshjyl2();"/>吨
+     	<input name="ssyhd2"  id="ssyhd2" type="text" class="input_a1" value="${model.ssyhd2}"  readonly="true" onblur="rtnn(this);sumshjyl2();"/>吨
      </td>
       <td>
-     	<input name="sbyhd2"  id="sbyhd2" type="text" class="input_a1" value="${model.sbyhd2}"  onblur="rtnn(this);sumshjyl2();sumqysf2();"/>吨
+     	<input name="sbyhd2"  id="sbyhd2" type="text" class="input_a1" value="${model.sbyhd2}"  readonly="true" onblur="rtnn(this);sumshjyl2();sumqysf2();"/>吨
      </td>
       <td>
-     	<input name="shjyl2"  id="shjyl2" type="text" class="input_a1" value="${model.shjyl2}" onchange="sumqysf2();"/>吨
+     	<input name="shjyl2"  id="shjyl2" type="text" class="input_a1" value="${model.shjyl2}" readonly="true" onchange="sumqysf2();"/>吨
      </td>
      <td>
-     	<input name="qysfdj2"  id="qysfdj2" type="text" class="input_a1" value="${model.qysfdj2}" onchange="sumqysf2();"/>元/吨
+     	<input name="qysfdj2"  id="qysfdj2" type="text" class="input_a1" value="${model.qysfdj2}" readonly="true" onchange="sumqysf2();"/>元/吨
      </td>
        <td>
-     	<input name="lqysf2"  id="lqysf2" type="text" class="input_a1" value="<fmt:formatNumber value="${model.lqysf2}" pattern="#.#" minFractionDigits="1" />" />
+     	<input name="lqysf2"  id="lqysf2" type="text" class="input_a1" value="${model.lqysf2}" readonly="true" />
      </td>
      
      <td>
-     	<input name="sfbz2"  id="sfbz2" type="text" class="input_a1" value="${model.sfbz2}" onchange="onchangebz();"/>
+     	<input name="sfbz2"  id="sfbz2" type="text" class="input_a1" value="${model.sfbz2}" readonly="true" onchange="onchangebz();"/>
      </td>
       
 	    </tr>
@@ -385,46 +385,46 @@ html { overflow:-moz-scrollbars-vertical;}
 	    <tr>
 	    <th>电1：</th>
 	   <td>
-     	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" value="${model.dsyhd}"/>度
+     	<input name="dsyhd"  id="dsyhd" type="text" class="input_a1" readonly="true" value="${model.dsyhd}"/>度
      </td>
      <td>
-     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" value="${model.dbyhd}"/>度
+     	<input name="dbyhd"  id="dbyhd" type="text" class="input_a1" readonly="true" value="${model.dbyhd}"/>度
      </td>
      <td>
-     	<input name="dhjyl"  id="dhjyl" type="text" class="input_a1" value="${model.dhjyl}" />度
+     	<input name="dhjyl"  id="dhjyl" type="text" class="input_a1" readonly="true" value="${model.dhjyl}" />度
      </td>
      <td>
-     	<input name="qydfdj"  id="qydfdj" type="text" class="input_a1" value="${model.qydfdj}"/>元/度
+     	<input name="qydfdj"  id="qydfdj" type="text" class="input_a1" readonly="true" value="${model.qydfdj}"/>元/度
      </td>
        <td>
-     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" value="${model.qydf}" />
+     	<input name="lqydf"  id="lqydf" type="text" class="input_a1" readonly="true" value="${model.qydf}" />
      </td>
      
      <td>
-     	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}"/>
+     	<input name="dfbz"  id="dfbz" type="text" class="input_a1" readonly="true" value="${model.dfbz}"/>
      </td>
       
 	    </tr>  
 	      <tr>
 	    <th>电2：</th>
 	   <td>
-     	<input name="dsyhd2"  id="dsyhd2" type="text" class="input_a1" value="${model.dsyhd2}" onblur="rtnn(this);sumdhjyl2();"/>度
+     	<input name="dsyhd2"  id="dsyhd2" type="text" class="input_a1" readonly="true" value="${model.dsyhd2}" onblur="rtnn(this);sumdhjyl2();"/>度
      </td>
      <td>
-     	<input name="dbyhd2"  id="dbyhd2" type="text" class="input_a1" value="${model.dbyhd2}" onblur="rtnn(this);sumdhjyl2();sumqydf2();"/>度
+     	<input name="dbyhd2"  id="dbyhd2" type="text" class="input_a1" readonly="true" value="${model.dbyhd2}" onblur="rtnn(this);sumdhjyl2();sumqydf2();"/>度
      </td>
      <td>
-     	<input name="dhjyl2"  id="dhjyl2" type="text" class="input_a1" value="${model.dhjyl2}"  onchange="sumqydf2();"/>度
+     	<input name="dhjyl2"  id="dhjyl2" type="text" class="input_a1" readonly="true" value="${model.dhjyl2}"  onchange="sumqydf2();"/>度
      </td>
      <td>
-     	<input name="qydfdj2"  id="qydfdj2" type="text" class="input_a1" value="${model.qydfdj2}" onchange="sumqydf2();"/>元/度
+     	<input name="qydfdj2"  id="qydfdj2" type="text" class="input_a1" readonly="true" value="${model.qydfdj2}" onchange="sumqydf2();"/>元/度
      </td>
        <td>
-     	<input name="lqydf2"  id="lqydf2" type="text" class="input_a1" value="<fmt:formatNumber value="${model.lqydf2}" pattern="#.#" minFractionDigits="1" />" />
+     	<input name="lqydf2"  id="lqydf2" type="text" class="input_a1" readonly="true" value="<fmt:formatNumber value="${model.lqydf2}" pattern="#.#" minFractionDigits="1" />" />
      </td>
       
      <td>
-     	<input name="dfbz2"  id="dfbz2" type="text" class="input_a1" value="${model.dfbz2}" onchange="onchangebz();"/>
+     	<input name="dfbz2"  id="dfbz2" type="text" class="input_a1" readonly="true" value="${model.dfbz2}" onchange="onchangebz();"/>
      </td>
       
 	    </tr>  

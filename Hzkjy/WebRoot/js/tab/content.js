@@ -188,7 +188,7 @@ function removeElement(tab,plugin){
 
             var content = '<iframe scrolling="auto" frameborder="0" id="iframe'
     			+ id + '" src="'+url+'" style="width:100%;height:100%;"></iframe>';
-            $("#content").append("<p id='" + contentName + "'>" + 
+            $("#content").append("<p id='" + contentName + "' >" + 
             		content + "</p>");
             
             // set the newly added tab as current

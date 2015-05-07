@@ -119,7 +119,7 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th >标题：</th>
      <td>
-     	<input id="title" name="title" type="text" value="${model.title}" readonly=${userNo== '4401'?true:false} maxlength="100" style="width:160px" />
+     	<input id="title" name="title" type="text" value="${model.title}" <c:if test="${userNo== '4401'}">readonly</c:if> maxlength="100" style="width:160px" />
      </td>
      <c:if test="${userNo!= '4401'}">
       <th>是否全部通知：</th>
@@ -136,7 +136,7 @@ html { overflow:-moz-scrollbars-vertical;}
        <tr>
      <th>有效时间：</th>
      <td>
-     <input id="activeTime" name="activeTime" size="22" readonly=${userNo== '4401'?true:false} class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" 
+     <input id="activeTime" name="activeTime" size="22"  <c:if test="${userNo== '4401'}">readonly</c:if> class="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" 
      	value="<fmt:formatDate value="${model.activeTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" maxlength="20"/>
      </td>
      <c:if test="${userNo!= '4401'}">
@@ -156,7 +156,7 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>接收者：</th>
      <td>
-     	<input id="receiver" name="receiver" type="text" value="${model.receiver}" maxlength="100" style="width:160px" onfocus="loadCorpName();" onblur="loadQyxx();" readonly=${userNo== '4401'?true:false} />
+     	<input id="receiver" name="receiver" type="text" value="${model.receiver}" maxlength="100" style="width:160px" onfocus="loadCorpName();" onblur="loadQyxx();" <c:if test="${userNo== '4401'}">readonly</c:if> />
      </td>
      <c:if test="${userNo!= '4401'}">
       <th>接收者编号;</th>
@@ -177,7 +177,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td></tr>
 	  --%><tr>
 	  <th>内容</th>
-	  <td colspan="3"><textarea id="content" name="content" rows="3" cols="120"  readonly=${userNo== '4401'?true:false}>${model.content }</textarea>
+	  <td colspan="3"><textarea id="content" name="content" rows="3" cols="120"   <c:if test="${userNo== '4401'}">readonly</c:if>>${model.content }</textarea>
 	  </td>
 	  </tr>
    

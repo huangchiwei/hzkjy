@@ -272,10 +272,11 @@ public class  MemberBasicController extends BaseController {
 			request.setAttribute("year", "2015");
 		}
 		
-		if(mb!=null){
 			model.addAttribute("model", mb);
 		}
-		}
+		
+		
+		
 		return "admin/member/MemberBasicV";
 	}
 	

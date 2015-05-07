@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportHuiZhi" pageWidth="842" pageHeight="800" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7bd2e781-fb74-4f9a-861e-a35b725d0420">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="220"/>
+	<property name="ireport.y" value="295"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -70,6 +70,7 @@
 	<field name="Lqydf" class="java.lang.String"/>
 	<field name="Lqysf" class="java.lang.String"/>
 	<field name="Hjjeznj" class="java.lang.String"/>
+	<field name="Sslq" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1514,7 +1515,35 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Hjjeznj}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e819a39d-f58f-45ec-93f5-d5a1fe6010bd" key="staticText-4" x="516" y="113" width="99" height="27"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" size="12" isBold="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[所属楼区:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="cdeff1b6-87c9-49d7-81bb-c36b1e861029" key="textField-1" x="614" y="113" width="131" height="27"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sslq}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

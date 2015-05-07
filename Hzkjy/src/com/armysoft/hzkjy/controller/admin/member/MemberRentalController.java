@@ -206,7 +206,7 @@ public class  MemberRentalController extends BaseController {
 		if(mr!=null){
 			jsonObject.put("qyzj",mr.getQyzj());
 			jsonObject.put("qyzjdj",mr.getQyzjdj());
-			
+			if(mr.getZjsq()!=null && mr.getZjsq()!="" && !mr.getZjsq().equals("0")){
 			String[] zjsqallf=mr.getZjsq().substring(0, 8).split("/");
 			String[] zjsqalle=mr.getZjsq().substring(9, 17).split("/");
 			String newzjsqy="";
@@ -225,6 +225,13 @@ public class  MemberRentalController extends BaseController {
 				newzjsq=newzjsqallf1.substring(2, 4)+"/"+newzjsqallf1.substring(5,7)+"/"+newzjsqallf1.substring(8,10)+"~"
 				+newzjsqalle1.substring(2, 4)+"/"+newzjsqalle1.substring(5,7)+"/"+newzjsqalle1.substring(8,10);
 				jsonObject.put("zjsq",newzjsq);
+			}
+			}else{
+				if(mr.getZjsq().equals("0")){
+					jsonObject.put("zjsq",0);
+				}else{
+					jsonObject.put("zjsq","");
+				}
 			}
 			
 			jsonObject.put("qyzjznj",mr.getQyzjznj());
@@ -264,7 +271,7 @@ public class  MemberRentalController extends BaseController {
 			
 			jsonObject.put("zlbzj",mr.getZlbzj());
 			jsonObject.put("zlbzjdj",mr.getZlbzjdj());
-			
+			if(mr.getZlbzjsq()!=null && mr.getZlbzjsq()!="" && !mr.getZlbzjsq().equals("0")){
 			String[] zlbzjsqallf=mr.getZlbzjsq().substring(0, 8).split("/");
 			String[] zlbzjsqalle=mr.getZlbzjsq().substring(9, 17).split("/");
 			String newzlbzjsq="";
@@ -281,6 +288,13 @@ public class  MemberRentalController extends BaseController {
 				+newzlbzjsqalle1.substring(2, 4)+"/"+newzlbzjsqalle1.substring(5,7)+"/"+newzlbzjsqalle1.substring(8,10);
 				jsonObject.put("zlbzjsq",newzlbzjsq);
 			}
+			}else{
+				if(mr.getZlbzjsq().equals("0")){
+					jsonObject.put("zlbzjsq",0);
+				}else{
+					jsonObject.put("zlbzjsq","");
+				}
+			}
 			jsonObject.put("zlbzjznj",mr.getZlbzjznj());
 			jsonObject.put("zlbzjbz",mr.getZlbzjbz());
 			
@@ -290,7 +304,7 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("zxyj",mr.getZxyj());
 			jsonObject.put("zxyjdj",mr.getZxyjdj());
 			jsonObject.put("zxyjsq",mr.getZxyjsq());
-			
+			if(mr.getZxyjsq()!=null && mr.getZxyjsq()!="" && !mr.getZxyjsq().equals("0")){
 			String[] zxyjsqallf=mr.getZxyjsq().substring(0, 8).split("/");
 			String[] zxyjsqalle=mr.getZxyjsq().substring(9, 17).split("/");
 			String newzxyjsq="";
@@ -306,6 +320,13 @@ public class  MemberRentalController extends BaseController {
 				newzxyjsq=newzxyjsqallf1.substring(2, 4)+"/"+newzxyjsqallf1.substring(5,7)+"/"+newzxyjsqallf1.substring(8,10)+"~"
 				+newzxyjsqalle1.substring(2, 4)+"/"+newzxyjsqalle1.substring(5,7)+"/"+newzxyjsqalle1.substring(8,10);
 				jsonObject.put("zxyjsq",newzxyjsq);
+			}
+			}else{
+				if(mr.getZxyjsq().equals("0")){
+					jsonObject.put("zxyjsq",0);
+				}else{
+					jsonObject.put("zxyjsq","");
+				}
 			}
 			jsonObject.put("zxyjznj",mr.getZxyjznj());
 			jsonObject.put("zxyjbz",mr.getZxyjbz());
@@ -351,8 +372,8 @@ public class  MemberRentalController extends BaseController {
 			jsonObject.put("qydfdj2",mr.getQydfdj2());
 			jsonObject.put("dsyhd",mr.getDbyhd());
 			jsonObject.put("ssyhd",mr.getSbyhd());
-			jsonObject.put("dsyhd2",mr.getSbyhd2());
-			jsonObject.put("ssyhd2",mr.getDbyhd2());
+			jsonObject.put("dsyhd2",mr.getDbyhd2());
+			jsonObject.put("ssyhd2",mr.getSbyhd2());
 			
 		}
 		 
@@ -435,6 +456,25 @@ return   sFmt.format(cal.getTime());
 			return "redirect://admin/memberRental/list/1.html";
 		}
 	}
+	@RequestMapping("Plsc.html")
+	@ResponseBody
+	public String delete(String ids, HttpServletRequest request,HttpServletResponse response) {
+		JSONObject jsonObject = new JSONObject();
+		String[] idArr = ids.split(",");
+		for(int id=0;id<idArr.length;id++){
+			service.delete(Long.valueOf(idArr[id]));
+		}
+		
+		jsonObject.put("exl","ok");
+		response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	
 //	@RequestMapping(value = "/ZShtg.html")
 //	@ResponseBody
@@ -456,6 +496,7 @@ return   sFmt.format(cal.getTime());
 			mdd.setShzt("已提交");
 			service.update(mdd);
 			EnterpriseRental ert= new EnterpriseRental();
+			ert.setQyzjznj(mdd.getQyzjznj());
 		    ert.setSslq(mdd.getSslq());
 			ert.setAccessory("0");
 			ert.setBz(mdd.getBz());
