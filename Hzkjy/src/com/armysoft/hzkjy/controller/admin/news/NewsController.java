@@ -47,7 +47,7 @@ public class  NewsController extends BaseController {
 	private NewsService newsService;
 	@InitBinder   
     public void initBinder(WebDataBinder binder) {   
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");   
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");   
         dateFormat.setLenient(true);   
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
@@ -79,7 +79,7 @@ public class  NewsController extends BaseController {
 		return "/admin/news/newsQ";
 	}
 
-	@PermissionsAnno("news_add")
+	//@PermissionsAnno("news_add")
 	@RequestMapping(value = ADD)
 	public String toAdd(HttpServletRequest request,Model model,String cateCode) {
 		model.addAttribute("type", "add");
@@ -105,7 +105,7 @@ public class  NewsController extends BaseController {
 		return "/admin/news/newsA_U";
 	}
 	
-	@PermissionsAnno("news_save")
+	//@PermissionsAnno("news_save")
 	@RequestMapping(value = SAVE)
 	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type,String flag) {
 		if(flag!=null&&flag.equals("1")){
