@@ -1,6 +1,13 @@
 package com.armysoft.hzkjy.model;
 import java.util.Date;
 public class  EnterpriseRental implements java.io.Serializable {
+	private String qfje;
+	public String getQfje() {
+		return qfje;
+	}
+	public void setQfje(String qfje) {
+		this.qfje = qfje;
+	}
 	private String zjfph;
 	private String zxyjfph;
 	public String getZxyjfph() {

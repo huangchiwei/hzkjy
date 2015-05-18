@@ -80,6 +80,7 @@ public class  EconomicReportingController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		if(userNo !="" && userNo !=null && userNo.substring(0, 4).equals("4401")){
 		params.put("fhybh", userNo);
 		}
@@ -190,7 +191,7 @@ public class  EconomicReportingController extends BaseController {
 	}
 	
 	
-	@PermissionsAnno("jjybtb_tg")
+
 	@RequestMapping("Tgtz.html")
 	@ResponseBody
 	public String Tgtz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
@@ -223,7 +224,7 @@ public class  EconomicReportingController extends BaseController {
 		String exl="ok";
 		return exl;
 	}
-	@PermissionsAnno("jjybtb_btg")
+
 	@RequestMapping("Btgtz.html")
 	@ResponseBody
 	public String Btgtz(String ids,String examineTime,HttpServletRequest request) throws ParseException {
@@ -297,7 +298,6 @@ public class  EconomicReportingController extends BaseController {
 		return exl;
 	}
 	
-	@PermissionsAnno("jjybtb_sh")
 	@RequestMapping("ZShtg.html")
 	@ResponseBody
 	public String ZShtg(String ids,String examineTime,HttpServletRequest request) throws ParseException {

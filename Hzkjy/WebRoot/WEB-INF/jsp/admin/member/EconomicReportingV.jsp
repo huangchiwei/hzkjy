@@ -28,10 +28,19 @@
 <link type="text/css" rel="stylesheet" href="${ctx}/js/formValidator/style/validatorTidyMode.css" />
 <script src="${ctx}/js/formValidator/formValidator-4.0.1.js" type="text/javascript"></script>
 <script src="${ctx}/js/formValidator/formValidatorRegex.js" type="text/javascript"></script> 
+
 <script type="text/javascript">
 $(document).ready(function(){
-	 $("#hyfl option[value='${model.hyfl}']").attr("selected", true);  
+      var userNo='${userNo}';
+      var shzt='${model.shzt}';
 	 
+  if(userNo=='4401' && shzt =='已审核'){
+	   $("#add_form input").attr("disabled",true);
+	  $("#add_form select").attr("disabled",true);
+	 }
+	 $("#hyflname option[value='${model.hyfl}']").attr("selected", true);  
+	$("#back_bt").attr("disabled",false);
+	
 	formInitConfig("add_form",3000);
 	autoValidate();
 		
@@ -298,10 +307,154 @@ function changeSecond(){
 	 
 	  
 	}
-	
+
+
+
 </script>
 
-	
+	<script type="text/javascript">
+	function check1(){
+ var temp=/^\d+(\.\d+)?$/;
+ var jgmzsrBys = document.getElementById("jgmzsrBys");
+ if(temp.test(jgmzsrBys.value)==false){
+ alert("营业收入（本月数）不能为负数");
+ $("#jgmzsrBys").attr("value","0.00");
+ }
+ }
+ function check2(){
+ var temp=/^\d+(\.\d+)?$/;
+ var jgmzsrLjs = document.getElementById("jgmzsrLjs");
+ if(temp.test(jgmzsrLjs.value)==false){
+ alert("营业收入（累计数）不能为负数");
+  $("#jgmzsrLjs").attr("value","0.00");
+   }
+ }
+ function check3(){
+ var temp=/^\d+(\.\d+)?$/;
+var ch = document.getElementById("ch");
+if(temp.test(ch.value)==false){
+ alert("创汇（本月数）不能为负数");
+ $("#ch").attr("value","0.00");
+ }
+ }
+ function check4(){
+ var temp=/^\d+(\.\d+)?$/;
+var chLjs = document.getElementById("chLjs");
+if(temp.test(chLjs.value)==false){
+ alert("创汇（累计数）不能为负数");
+ $("#chLjs").attr("value","0.00");
+ }
+ }
+   function check5(){
+ var temp=/^\d+(\.\d+)?$/;
+ var nsBys = document.getElementById("nsBys");
+if(temp.test(nsBys.value)==false){
+ alert("纳税（本月数）不能为负数");
+ $("#nsBys").attr("value","0.00");
+ }
+ }
+      function check6(){
+ var temp=/^\d+(\.\d+)?$/;
+  var nsLjs = document.getElementById("nsLjs");
+if(temp.test(nsLjs.value)==false){
+ alert("纳税（累计数）不能为负数");
+ $("#nsLjs").attr("value","0.00");
+ }
+ }
+ 
+       function check7(){
+ var temp=/^\d+(\.\d+)?$/;
+  var yfjf = document.getElementById("yfjf");
+if(temp.test(yfjf.value)==false){
+ alert("研发经费（本月数）不能为负数");
+ $("#yfjf").attr("value","0.00");
+ }
+ }
+        function check8(){
+ var temp=/^\d+(\.\d+)?$/;
+ var yfjfLjs = document.getElementById("yfjfLjs");
+if(temp.test(yfjfLjs.value)==false){
+ alert("研发经费（累计数）不能为负数");
+ $("#yfjfLjs").attr("value","0.00");
+ }
+ }
+           function check9(){
+ var temp=/^\d+(\.\d+)?$/;
+ var gxjscpsr = document.getElementById("gxjscpsr");
+if(temp.test(gxjscpsr.value)==false){
+ alert("高新技术产品收入（本月数）不能为负数");
+ $("#gxjscpsr").attr("value","0.00");
+ }
+ }
+              function check10(){
+ var temp=/^\d+(\.\d+)?$/;
+ var gxjscpsrLjs = document.getElementById("gxjscpsrLjs");
+if(temp.test(gxjscpsrLjs.value)==false){
+ alert("高新技术产品收入（累计数）不能为负数");
+ $("#gxjscpsrLjs").attr("value","0.00");
+ }
+ }
+       function check11(){
+ var temp=/^\d+(\.\d+)?$/;
+var gyzcz = document.getElementById("gyzcz");
+ if(temp.test(gyzcz.value)==false){
+ alert("工业总产值（本月数）不能为负数");
+ $("#gyzcz").attr("value","0.00");
+ }
+ }
+           function check12(){
+ var temp=/^\d+(\.\d+)?$/;
+  var gyzczLjs = document.getElementById("gyzczLjs");
+  if(temp.test(gyzczLjs.value)==false){
+ alert(" 工业总产值（累计数）不能为负数");
+ $("#gyzczLjs").attr("value","0.00");
+ }
+ }   
+       function check13(){
+ var temp=/^\d+(\.\d+)?$/;
+    var gyzjz = document.getElementById("gyzjz");
+   if(temp.test(gyzjz.value)==false){
+ alert(" 工业增加值（本月数）不能为负数");
+ $("#gyzjz").attr("value","0.00");
+ }
+ }   
+           function check14(){
+ var temp=/^\d+(\.\d+)?$/;
+    var gyzjzLjs = document.getElementById("gyzjzLjs");
+    if(temp.test(gyzjzLjs.value)==false){
+ alert(" 工业增加值（累计数）不能为负数");
+ $("#gyzjzLjs").attr("value","0.00");
+ }
+ }    
+       
+     
+    
+      
+         
+     
+
+
+
+
+
+
+
+
+
+
+
+
+ function check(){
+
+ var telReg = /^0\d{2,3}-?\d{7,8}$/;
+var phoneReg = /^1[3|4|5|8]\d{9}$/;
+if((!telReg.test($("#tbrlxdh").val())) && (!phoneReg.test($("#tbrlxdh").val()))){
+			alert("联系电话格式不正确：区号+电话或手机号码");
+			$("#tbrlxdh").attr("value","");
+			}
+
+}
+</script>
 
 
 <style type="text/css">
@@ -337,12 +490,12 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th >企业名称：</th>
      <td>
-     	<input id="rzqy" name="rzqy" type="text" value="${model.rzqy}"  maxlength="100" style="width:160px" class="input_a1" onfocus="loadCorpName();" onblur="loadQyxx();" />
+     	<input id="rzqy" name="rzqy" type="text" value="${model.rzqy}"  maxlength="100" style="width:160px" class="input_a1" onfocus="loadCorpName();" onblur="loadQyxx();" readonly />
      </td>
      
       <th>会员编号：</th>
      <td>
-     	<input id="hybh" name="hybh" type="text" value="${model.hybh}"  maxlength="100" style="width:160px" class="input_a1" />
+     	<input id="hybh" name="hybh" type="text" value="${model.hybh}"  maxlength="100" style="width:160px" class="input_a1" readonly/>
      </td>
      
     
@@ -350,7 +503,8 @@ html { overflow:-moz-scrollbars-vertical;}
        <tr>
      <th>行业分类：</th>
      <td>
-     <select name="hyfl"  id="hyfl" style="text-align:center"  class="input_a1">
+     <input name="hyfl"  id="hyfl" type="hidden" class="input_a1" value="${model.hyfl}" />
+     <select name="hyflname"  id="hyflname" style="text-align:center"  class="input_a1" disabled>
            <option value="1">生物/医药技术业</option>
           <option value="2">电子与信息业</option>
           <option value="3">新材料技术/新材料业</option>
@@ -374,11 +528,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>营业收入（本月数）：</th>
      <td>
-     	<input id="jgmzsrBys" name="jgmzsrBys" type="text" value="${model.jgmzsrBys}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();" />（万元）
+     	<input id="jgmzsrBys" name="jgmzsrBys" type="text" value="${model.jgmzsrBys}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();check1();" />（万元）
      </td>
       <th>营业收入（累计数）：</th>
      <td>
-       <input id="jgmzsrLjs" name="jgmzsrLjs" type="text" value="${model.jgmzsrLjs}"  maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>（万元）
+       <input id="jgmzsrLjs" name="jgmzsrLjs" type="text" value="${model.jgmzsrLjs}"  maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();check2();"/>（万元）
       </td>
     </tr>
     <tr>
@@ -399,12 +553,12 @@ html { overflow:-moz-scrollbars-vertical;}
       <tr>
      <th>创汇（本月数）：</th>
      <td>
-     	<input title="创汇：一般是指出口创汇，是指出售给外贸部门或直接出售给外商的产品或商品的总金额。包括来料加工装配出口，境内外技术合同实现金额及在国内以外汇计价的商品出售和技术服务的总额等。" id="ch" name="ch" type="text" value="${model.ch}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>（万元）
+     	<input title="创汇：一般是指出口创汇，是指出售给外贸部门或直接出售给外商的产品或商品的总金额。包括来料加工装配出口，境内外技术合同实现金额及在国内以外汇计价的商品出售和技术服务的总额等。" id="ch" name="ch" type="text" value="${model.ch}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();check3();"/>（万元）
      </td>
       <th>创汇（累计数）：</th>
      <td>
      <input id="shzt" name="shzt" type="hidden" value="${model.shzt}"/>
-     	<input id="chLjs" name="chLjs" type="text" value="${model.chLjs}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();"/>（万元）
+     	<input id="chLjs" name="chLjs" type="text" value="${model.chLjs}" maxlength="100" style="width:160px" class="input_a1" onblur="changeSecond();check4();"/>（万元）
      </td>
        </tr>
      <tr>
@@ -413,11 +567,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>纳税（本月数）：</th> 
      <td>
-    <input title="纳税=企业交给国家的所有税金" id="nsBys" name="nsBys" type="text" value="${model.nsBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();"/>（万元）
+    <input title="纳税=企业交给国家的所有税金" id="nsBys" name="nsBys" type="text" value="${model.nsBys}" maxlength="100" style="width:160px" class="input_a1" onchange="sum();changeSecond();check5();"/>（万元）
      </td>
       <th>纳税（累计数）：</th>
      <td>
-       <input id="nsLjs" name="nsLjs" type="text" value="${model.nsLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();"/>（万元）
+       <input id="nsLjs" name="nsLjs" type="text" value="${model.nsLjs}"  maxlength="100" style="width:160px" class="input_a1" onchange="sumlj();changeSecond();check6();"/>（万元）
       </td>
     </tr>
     
@@ -425,18 +579,18 @@ html { overflow:-moz-scrollbars-vertical;}
       <tr>
     <th>研发经费（本月数）：</th>
      <td>
-     	<input title="研发经费：指企业在产品、技术、材料、工艺、标准的研究、开发过程中发生的各项费用。" id="yfjf" name="yfjf" type="text" value="${model.yfjf}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
+     	<input title="研发经费：指企业在产品、技术、材料、工艺、标准的研究、开发过程中发生的各项费用。" id="yfjf" name="yfjf" type="text" value="${model.yfjf}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check7();"/>（万元）
      </td>
      <th>研发经费（累计数）：</th>
      <td>
-     	<input id="yfjfLjs" name="yfjfLjs" type="text" value="${model.yfjfLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
+     	<input id="yfjfLjs" name="yfjfLjs" type="text" value="${model.yfjfLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check8();"/>（万元）
      </td> 
      </tr>
      <tr>
-   
+
      
     
-     <th>利税总额（本月数）：</th> 
+     <th>利税总额（本月数）：</th>    
      <td>
      	<input title="利税总额=利润总额+纳税" id="lszeBys" name="lszeBys" type="text" value="${model.lszeBys}" maxlength="100" style="width:160px" class="input_a1" readonly="true"  onblur="changeSecond();"/>（万元）
      </td>
@@ -448,11 +602,11 @@ html { overflow:-moz-scrollbars-vertical;}
     <tr>
      <th>高新技术产品收入（本月数）：</th>
      <td>
-       <input title="高新技术产品收入：是指企业通过技术创新、开展研发活动所形成的符合《重点领域》要求的产品（服务）所获得的收入与企业技术性收入的总和。" id="gxjscpsr" name="gxjscpsr" type="text" value="${model.gxjscpsr}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
+       <input title="高新技术产品收入：是指企业通过技术创新、开展研发活动所形成的符合《重点领域》要求的产品（服务）所获得的收入与企业技术性收入的总和。" id="gxjscpsr" name="gxjscpsr" type="text" value="${model.gxjscpsr}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check9();"/>（万元） 
       </td>
       <th>高新技术产品收入（累计数）：</th>
      <td>
-       <input id="gxjscpsrLjs" name="gxjscpsrLjs" type="text" value="${model.gxjscpsrLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
+       <input id="gxjscpsrLjs" name="gxjscpsrLjs" type="text" value="${model.gxjscpsrLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check10();"/>（万元） 
       </td>
     </tr>
       <tr>
@@ -461,11 +615,11 @@ html { overflow:-moz-scrollbars-vertical;}
     
     <th>工业总产值（本月数）：</th>
      <td>
-     	<input title="工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
+     	<input title="工业总产值：是以货币表现的工业企业在报告期内生产的工业产品总量。" id="gyzcz" name="gyzcz" type="text" value="${model.gyzcz}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check11();"/>（万元）
      </td>
      <th>工业总产值（累计数）：</th>
      <td>
-     	<input id="gyzczLjs" name="gyzczLjs" type="text" value="${model.gyzczLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元）
+     	<input id="gyzczLjs" name="gyzczLjs" type="text" value="${model.gyzczLjs}" maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check12();"/>（万元）
      </td>
     </tr>
     
@@ -476,11 +630,11 @@ html { overflow:-moz-scrollbars-vertical;}
      
       <th>工业增加值（本月数）：</th> 
      <td>
-       <input title="工业增加值：工业增加值是指工业企业在报告期内以货币形式表现的工业生产活动的最终成果；是工业企业全部生产活动的总成果扣除了在生产过程中消耗或转移的物质产品和劳务价值后的余额；是工业企业生产过程中新增加的价值。" id="gyzjz" name="gyzjz" type="text" value="${model.gyzjz}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
+       <input title="工业增加值：工业增加值是指工业企业在报告期内以货币形式表现的工业生产活动的最终成果；是工业企业全部生产活动的总成果扣除了在生产过程中消耗或转移的物质产品和劳务价值后的余额；是工业企业生产过程中新增加的价值。" id="gyzjz" name="gyzjz" type="text" value="${model.gyzjz}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check13();"/>（万元） 
       </td>
       <th>工业增加值（累计数）：</th>
      <td>
-       <input id="gyzjzLjs" name="gyzjzLjs" type="text" value="${model.gyzjzLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();"/>（万元） 
+       <input id="gyzjzLjs" name="gyzjzLjs" type="text" value="${model.gyzjzLjs}"  maxlength="100" style="width:160px" class="input_a1"  onblur="changeSecond();check14();"/>（万元） 
       </td>
     </tr>
     
@@ -539,15 +693,17 @@ html { overflow:-moz-scrollbars-vertical;}
     
      <th>联系电话：</th>
      <td>
-     <input id="tbrlxdh" name="tbrlxdh" type="text" value="${model.tbrlxdh}"  maxlength="100" style="width:160px" class="input_a1"/> 
+     <input id="tbrlxdh" name="tbrlxdh" type="text" value="${model.tbrlxdh}"  maxlength="100" style="width:160px" class="input_a1" onblur="check();"/> 
      </td>
     </tr>
    </table>
   
    <div class="div_submit">
+                  <c:if test="${userNo!= '4401' || model.shzt!='已审核'}">
 					<input id="sumbit_bt" name="" type="submit" value=${userNo=='4401'?"提交":"审核"}
 						class="photo_btn" />
-					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
+						</c:if>
+					<input type="reset" id="back_bt"  value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
 				</div>
   </div>

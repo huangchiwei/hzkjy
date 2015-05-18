@@ -220,8 +220,17 @@ public class  MemberRentalController extends BaseController {
 			if(zjsqallf!=null){
 				newzjsqallf="20"+zjsqallf[0].toString()+"-"+zjsqallf[1].toString()+"-"+zjsqallf[2].toString();
 				newzjsqalle="20"+zjsqalle[0].toString()+"-"+zjsqalle[1].toString()+"-"+zjsqalle[2].toString();
+				if(zjsqalle[1].toString().equals("02") &&  Integer.valueOf(zjsqalle[0])/4==0 && zjsqalle[2].toString().equals("29")){
+					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   2);
+				}else if(zjsqalle[1].toString().equals("02") &&  Integer.valueOf(zjsqalle[0])/4!=0 && zjsqalle[2].toString().equals("28")){
+					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   3);
+				}else if((zjsqalle[1].toString().equals("04") || zjsqalle[1].toString().equals("06")  || zjsqalle[1].toString().equals("08") || zjsqalle[1].toString().equals("10")) &&  zjsqalle[2].toString().equals("30")){
+					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   1);
+				}else{
+					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   0);
+				}
 				newzjsqallf1=GetSysDate("yyyy-MM-dd",  newzjsqallf,   0,   1,   0);
-				newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   0);
+				
 				newzjsq=newzjsqallf1.substring(2, 4)+"/"+newzjsqallf1.substring(5,7)+"/"+newzjsqallf1.substring(8,10)+"~"
 				+newzjsqalle1.substring(2, 4)+"/"+newzjsqalle1.substring(5,7)+"/"+newzjsqalle1.substring(8,10);
 				jsonObject.put("zjsq",newzjsq);
@@ -256,8 +265,19 @@ public class  MemberRentalController extends BaseController {
 			if(glfsqallf!=null){
 				newqlfsqallf="20"+glfsqallf[0].toString()+"-"+glfsqallf[1].toString()+"-"+glfsqallf[2].toString();
 				newqlfsqalle="20"+glfsqalle[0].toString()+"-"+glfsqalle[1].toString()+"-"+glfsqalle[2].toString();
+				
+				if(glfsqalle[1].toString().equals("02") &&  Integer.valueOf(glfsqalle[0])/4==0 && glfsqalle[2].toString().equals("29")){
+					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   2);
+				}else if(glfsqalle[1].toString().equals("02") &&  Integer.valueOf(glfsqalle[0])/4!=0 && glfsqalle[2].toString().equals("28")){
+					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   3);
+				}else if((glfsqalle[1].toString().equals("04") || glfsqalle[1].toString().equals("06")  || glfsqalle[1].toString().equals("08") || glfsqalle[1].toString().equals("10")) &&  glfsqalle[2].toString().equals("30")){
+					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   1);
+				}else{
+					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   0);
+				}
+				
 				newqlfsqallf1=GetSysDate("yyyy-MM-dd",  newqlfsqallf,   0,   1,   0);
-				newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   0);
+//				newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   0);
 				newglfsq=newqlfsqallf1.substring(2, 4)+"/"+newqlfsqallf1.substring(5,7)+"/"+newqlfsqallf1.substring(8,10)+"~"
 				+newqlfsqalle1.substring(2, 4)+"/"+newqlfsqalle1.substring(5,7)+"/"+newqlfsqalle1.substring(8,10);
 				jsonObject.put("glfsq",newglfsq);
@@ -282,8 +302,19 @@ public class  MemberRentalController extends BaseController {
 			if(zlbzjsqallf!=null){
 				newzlbzjsqallf="20"+zlbzjsqallf[0].toString()+"-"+zlbzjsqallf[1].toString()+"-"+zlbzjsqallf[2].toString();
 				newzlbzjsqalle="20"+zlbzjsqalle[0].toString()+"-"+zlbzjsqalle[1].toString()+"-"+zlbzjsqalle[2].toString();
+				
+				if(zlbzjsqalle[1].toString().equals("02") &&  Integer.valueOf(zlbzjsqalle[0])/4==0 && zlbzjsqalle[2].toString().equals("29")){
+					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   2);
+				}else if(zlbzjsqalle[1].toString().equals("02") &&  Integer.valueOf(zlbzjsqalle[0])/4!=0 && zlbzjsqalle[2].toString().equals("28")){
+					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   3);
+				}else if((zlbzjsqalle[1].toString().equals("04") || zlbzjsqalle[1].toString().equals("06")  || zlbzjsqalle[1].toString().equals("08") || zlbzjsqalle[1].toString().equals("10")) &&  zlbzjsqalle[2].toString().equals("30")){
+					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   1);
+				}else{
+					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   0);
+				}
+				
 				newzlbzjsqallf1=GetSysDate("yyyy-MM-dd",  newzlbzjsqallf,   0,   1,   0);
-				newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   0);
+//				newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   0);
 				newzlbzjsq=newzlbzjsqallf1.substring(2, 4)+"/"+newzlbzjsqallf1.substring(5,7)+"/"+newzlbzjsqallf1.substring(8,10)+"~"
 				+newzlbzjsqalle1.substring(2, 4)+"/"+newzlbzjsqalle1.substring(5,7)+"/"+newzlbzjsqalle1.substring(8,10);
 				jsonObject.put("zlbzjsq",newzlbzjsq);
@@ -315,8 +346,19 @@ public class  MemberRentalController extends BaseController {
 			if(zxyjsqallf!=null){
 				newzxyjsqallf="20"+zxyjsqallf[0].toString()+"-"+zxyjsqallf[1].toString()+"-"+zxyjsqallf[2].toString();
 				newzxyjsqalle="20"+zxyjsqalle[0].toString()+"-"+zxyjsqalle[1].toString()+"-"+zxyjsqalle[2].toString();
+				
+				if(zxyjsqalle[1].toString().equals("02") &&  Integer.valueOf(zxyjsqalle[0])/4==0 && zxyjsqalle[2].toString().equals("29")){
+					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",  newzxyjsqalle,   0,   1,   2);
+				}else if(zxyjsqalle[1].toString().equals("02") &&  Integer.valueOf(zxyjsqalle[0])/4!=0 && zxyjsqalle[2].toString().equals("28")){
+					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   3);
+				}else if((zxyjsqalle[1].toString().equals("04") || zxyjsqalle[1].toString().equals("06")  || zxyjsqalle[1].toString().equals("08") || zxyjsqalle[1].toString().equals("10")) &&  zxyjsqalle[2].toString().equals("30")){
+					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   1);
+				}else{
+					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   0);
+				}
+				
 				newzxyjsqallf1=GetSysDate("yyyy-MM-dd",  newzxyjsqallf,   0,   1,   0);
-				newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   0);
+				//newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   0);
 				newzxyjsq=newzxyjsqallf1.substring(2, 4)+"/"+newzxyjsqallf1.substring(5,7)+"/"+newzxyjsqallf1.substring(8,10)+"~"
 				+newzxyjsqalle1.substring(2, 4)+"/"+newzxyjsqalle1.substring(5,7)+"/"+newzxyjsqalle1.substring(8,10);
 				jsonObject.put("zxyjsq",newzxyjsq);
@@ -330,7 +372,7 @@ public class  MemberRentalController extends BaseController {
 			}
 			jsonObject.put("zxyjznj",mr.getZxyjznj());
 			jsonObject.put("zxyjbz",mr.getZxyjbz());
-			
+			if(mr.getSfsq()!=null && mr.getSfsq()!="" && !mr.getSfsq().equals("0")){
 			String[] sfsqsqallf=mr.getSfsq().substring(0, 8).split("/");
 			String[] sfsqsqalle=mr.getSfsq().substring(9, 17).split("/");
 			String newsfsqsq="";
@@ -338,17 +380,34 @@ public class  MemberRentalController extends BaseController {
 			String newsfsqsqalle="";
 			String newsfsqsqallf1="";
 			String newsfsqsqalle1="";
-			if(sfsqsqallf!=null){
+			if(sfsqsqallf!=null ){
 				newsfsqsqallf="20"+sfsqsqallf[0].toString()+"-"+sfsqsqallf[1].toString()+"-"+sfsqsqallf[2].toString();
 				newsfsqsqalle="20"+sfsqsqalle[0].toString()+"-"+sfsqsqalle[1].toString()+"-"+sfsqsqalle[2].toString();
+				
+				if(sfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(sfsqsqalle[0])/4==0 && sfsqsqalle[2].toString().equals("29")){
+					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   2);
+				}else if(sfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(sfsqsqalle[0])/4!=0 && sfsqsqalle[2].toString().equals("28")){
+					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   3);
+				}else if((sfsqsqalle[1].toString().equals("04") || sfsqsqalle[1].toString().equals("06")  || sfsqsqalle[1].toString().equals("08") || sfsqsqalle[1].toString().equals("10")) &&  glfsqalle[2].toString().equals("30")){
+					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   1);
+				}else{
+					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   0);
+				}
 				newsfsqsqallf1=GetSysDate("yyyy-MM-dd",  newsfsqsqallf,   0,   1,   0);
-				newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   0);
+				//newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   0);
 				newsfsqsq=newsfsqsqallf1.substring(2, 4)+"/"+newsfsqsqallf1.substring(5,7)+"/"+newsfsqsqallf1.substring(8,10)+"~"
 				+newsfsqsqalle1.substring(2, 4)+"/"+newsfsqsqalle1.substring(5,7)+"/"+newsfsqsqalle1.substring(8,10);
 				jsonObject.put("sfsq",newsfsqsq);
 			}
+			}else{
+				if(mr.getSfsq().equals("0")){
+					jsonObject.put("sfsq",0);
+				}else{
+					jsonObject.put("sfsq","");
+				}
+			}
 			
-		
+			if(mr.getDfsq()!=null && mr.getDfsq()!="" && !mr.getDfsq().equals("0")){
 			String[] dfsqsqallf=mr.getDfsq().substring(0, 8).split("/");
 			String[] dfsqsqalle=mr.getDfsq().substring(9, 17).split("/");
 			String newdfsqsq="";
@@ -359,11 +418,30 @@ public class  MemberRentalController extends BaseController {
 			if(dfsqsqallf!=null){
 				newdfsqsqallf="20"+dfsqsqallf[0].toString()+"-"+dfsqsqallf[1].toString()+"-"+dfsqsqallf[2].toString();
 				newdfsqsqalle="20"+dfsqsqalle[0].toString()+"-"+dfsqsqalle[1].toString()+"-"+dfsqsqalle[2].toString();
+				
+				if(dfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(dfsqsqalle[0])/4==0 && dfsqsqalle[2].toString().equals("29")){
+					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   2);
+				}else if(dfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(dfsqsqalle[0])/4!=0 && dfsqsqalle[2].toString().equals("28")){
+					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   3);
+				}else if((dfsqsqalle[1].toString().equals("04") || dfsqsqalle[1].toString().equals("06")  || dfsqsqalle[1].toString().equals("08") || dfsqsqalle[1].toString().equals("10")) &&  dfsqsqalle[2].toString().equals("30")){
+					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",  newdfsqsqalle,   0,   1,   1);
+				}else{
+					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",  newdfsqsqalle,   0,   1,   0);
+				}
+				
+				
 				newdfsqsqallf1=GetSysDate("yyyy-MM-dd",  newdfsqsqallf,   0,   1,   0);
-				newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   0);
+				//newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   0);
 				newdfsqsq=newdfsqsqallf1.substring(2, 4)+"/"+newdfsqsqallf1.substring(5,7)+"/"+newdfsqsqallf1.substring(8,10)+"~"
 				+newdfsqsqalle1.substring(2, 4)+"/"+newdfsqsqalle1.substring(5,7)+"/"+newdfsqsqalle1.substring(8,10);
 				jsonObject.put("dfsq",newdfsqsq);
+			}
+			}else{
+				if(mr.getDfsq().equals("0")){
+					jsonObject.put("dfsq",0);
+				}else{
+					jsonObject.put("dfsq","");
+				}
 			}
 			
 			jsonObject.put("qysfdj",mr.getQysfdj());
@@ -392,15 +470,17 @@ public class  MemberRentalController extends BaseController {
       Calendar   cal   =   Calendar.getInstance();   
       SimpleDateFormat   sFmt   =   new   SimpleDateFormat(format);   
       cal.setTime(sFmt.parse(   (StrDate),   new   ParsePosition(0)));   
+      if   (year   !=   0)   {   
+          cal.add(cal.YEAR,   year);   
+          }  
+      if   (month   !=   0)   {   
+          cal.add(cal.MONTH,   month);   
+          }   
       if   (day   !=   0)   {   
       cal.add(cal.DATE,   day);   
       }   
-      if   (month   !=   0)   {   
-      cal.add(cal.MONTH,   month);   
-      }   
-      if   (year   !=   0)   {   
-      cal.add(cal.YEAR,   year);   
-      }   
+     
+       
 return   sFmt.format(cal.getTime());   
 }   
 
@@ -688,6 +768,7 @@ return   sFmt.format(cal.getTime());
 		headData.add(new Object[] { "Dhjyl","电合计用量"});
 		
 		headData.add(new Object[] { "Hjje","合计金额"});
+		headData.add(new Object[] { "Sdhj","水电合计"});
 		
 		
 		

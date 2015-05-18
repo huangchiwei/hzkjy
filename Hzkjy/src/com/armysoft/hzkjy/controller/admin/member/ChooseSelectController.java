@@ -401,6 +401,31 @@ public class  ChooseSelectController extends BaseController {
 		return null;
 	}
 	
+	
+	@RequestMapping("Ishas.html")
+	@ResponseBody
+	public String Ishas(String settime,String examineTime,HttpServletRequest request,HttpServletResponse response) throws ParseException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		JSONObject jsonObject = new JSONObject();
+		Integer countyear=Eccservice.CountYear(settime);
+		if(countyear>0){
+			jsonObject.put("exl","no");
+		}else{
+			jsonObject.put("exl","ok");
+		}
+		
+		
+		
+		 response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
+	
 	@RequestMapping(value = "/Zind.html")
 	public String Zind(HttpServletRequest request) {
 		return "admin/member/MemberBasicZ";

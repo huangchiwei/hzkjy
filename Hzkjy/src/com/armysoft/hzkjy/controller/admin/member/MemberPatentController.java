@@ -38,7 +38,7 @@ import com.armysoft.hzkjy.service.member.MemberIntellectualProService;
 import com.armysoft.hzkjy.service.member.MemberPatentService;
 
 /**
- * 专利
+ * 涓撳埄
  * @author Administrator
  *
  */
@@ -60,7 +60,7 @@ public class  MemberPatentController extends BaseController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
     }  
 	/**
-	 * 条件分页查询
+	 * 鏉′欢鍒嗛〉鏌ヨ
 	 * @param currentPage
 	 * @param model
 	 * @param entity
@@ -73,11 +73,12 @@ public class  MemberPatentController extends BaseController {
 		Pagination pager = initPage(currentPage);
 		pager.setPageSize(10);
 		Map<String, Object> params = new HashMap<String, Object>();
-//		if(year!=null)
-//			params.put("year", year);
-//			else params.put("year",  Calendar.getInstance().get(Calendar.YEAR));
-//			if(month!=null)
-//			params.put("month", month);
+		if(year!=null){
+			params.put("year", year);
+		}
+			if(month!=null){
+			params.put("month", month);
+			}
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
 		if(userNo.substring(0, 4).equals("4401"))
 		params.put("memberNo", userNo);
@@ -100,7 +101,7 @@ public class  MemberPatentController extends BaseController {
 	}
 	
 	/**
-	 * 准备添加
+	 * 鍑嗗娣诲姞
 	 * @return
 	 */
 
@@ -111,13 +112,14 @@ public class  MemberPatentController extends BaseController {
 			List<Map<String,Object>> list=memberBasicService.getAllMember();
 			model.addAttribute("list", list);
 		}*/
+		
 		model.addAttribute("ptype", "A");
 		return "admin/member/MemberPatentA_U";
 	}
 	
 
 	/**
-	 * 保存
+	 * 淇濆瓨
 	 * @param entity
 	 * @param model
 	 * @return
@@ -129,6 +131,8 @@ public class  MemberPatentController extends BaseController {
 			List<Map<String,Object>> list=memberBasicService.getAllMember();
 			model.addAttribute("list", list);
 		}*/
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		model.addAttribute("ptype", "U");
 		model.addAttribute("entity",memberPatentService.findByKey(key));
 		return "admin/member/MemberPatentA_U";
@@ -167,13 +171,13 @@ public class  MemberPatentController extends BaseController {
 					  mp.setPatentNo(patentNo2[i]);
 					  mp.setMemberNo(MemberNo);
 					 
-							/*专利各项值累加*/
+							/*涓撳埄鍚勯」鍊肩疮鍔�/
 							
 							/*end */
 					  memberPatentService.insert(mp);
 					 
 				  }
-				  /*累加值插入到孵化企业*/
+				  /*绱姞鍊兼彃鍏ュ埌瀛靛寲浼佷笟*/
 				  
 				  /*end */
 			}
@@ -183,7 +187,7 @@ public class  MemberPatentController extends BaseController {
 	}
 	
 	/**
-	 * 删除
+	 * 鍒犻櫎
 	 * @param key
 	 * @return
 	 */
@@ -403,7 +407,7 @@ public class  MemberPatentController extends BaseController {
 	}
 	
 	/**
-	 * 导出excel
+	 * 瀵煎嚭excel
 	 * @param model
 	 * @param fhymc
 	 * @param request
@@ -414,17 +418,17 @@ public class  MemberPatentController extends BaseController {
 		
 		String title;
 		if(month!=null){
-			title=year+"琶洲园区企业专利获得情况"+(month==0?"1~6月":"7~12月");
+			title=year+"琶洲园区企业科技项目申报情况（1-6月）"+(month==0?"1-6月":"7-12月");
 		}else{
-			title=year+"琶洲园区企业专利获得情况";
+			title=year+"琶洲园区企业科技项目申报情况";
 		}
 		List headData =  new ArrayList();
 		headData.add(new Object[] { "RowNo","序号"});
 		headData.add(new Object[] { "Qymc","企业"});
-		headData.add(new Object[] { "Type","专利类别"});
-		headData.add(new Object[] { "Name","专利名称"});
-		headData.add(new Object[] { "PatentNo","专利编号"});
-		//headData.add(new Object[] { "ApplyTime","获取时间"});
+		headData.add(new Object[] { "Type","项目级别"});
+		headData.add(new Object[] { "Name","项目名称"});
+		headData.add(new Object[] { "PatentNo","是否立项"});
+		//headData.add(new Object[] { "ApplyTime","鑾峰彇鏃堕棿"});
 
 		
 		Map<String, Object> params = new HashMap<String, Object>();

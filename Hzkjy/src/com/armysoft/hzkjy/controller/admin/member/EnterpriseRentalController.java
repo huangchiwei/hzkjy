@@ -3,6 +3,8 @@ package com.armysoft.hzkjy.controller.admin.member;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -105,7 +107,27 @@ public class  EnterpriseRentalController extends BaseController {
 		model.addAttribute("model", service.findByKey(key));
 		return "admin/member/EnterpriseRentalV";
 	}
-
+  
+	
+	@RequestMapping("Plsc.html")
+	@ResponseBody
+	public String delete(String ids, HttpServletRequest request,HttpServletResponse response) {
+		JSONObject jsonObject = new JSONObject();
+		String[] idArr = ids.split(",");
+		for(int id=0;id<idArr.length;id++){
+			service.delete(Long.valueOf(idArr[id]));
+		}
+		
+		jsonObject.put("exl","ok");
+		response.setContentType("text/html;charset=UTF-8");   
+		 try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	/**
 	 * 准备添加
 	 * @return
@@ -162,7 +184,15 @@ public class  EnterpriseRentalController extends BaseController {
 		String FmPicture = "";
 			
 		upFile(entity,request);
-		if(Double.valueOf(entity.getHjje())-Double.valueOf(entity.getJnje()) == Double.valueOf(0)){
+	
+		if(entity.getJnje()!=null){
+		
+		Double qfje=Double.valueOf(entity.getHjje())-Double.valueOf(entity.getJnje());
+		DecimalFormat df=new DecimalFormat(".##");
+		String qfjes= df.format(qfje) ; 
+		entity.setQfje(qfjes);
+		}
+		if(Double.valueOf(entity.getHjje())-Double.valueOf(entity.getJnje()) <= Double.valueOf(0)){
 			entity.setSfqf("1");
 		}else{
 			entity.setSfqf("0");

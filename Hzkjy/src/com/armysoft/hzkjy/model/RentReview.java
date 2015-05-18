@@ -1,6 +1,13 @@
 package com.armysoft.hzkjy.model;
 import java.util.Date;
 public class  RentReview implements java.io.Serializable {
+	private String qfje;
+	public String getQfje() {
+		return qfje;
+	}
+	public void setQfje(String qfje) {
+		this.qfje = qfje;
+	}
 	private Integer id;
     public Integer getId() {
 		return id;

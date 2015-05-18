@@ -188,6 +188,32 @@ function loadPageLayer2(title,url){
 		location.href='${ctx}/sys/sysUser/changeStatus.html?userNo=' + userNo + '&status=' + status;
 	}
    
+   
+   	function plsc(){
+	var stuInput = $("input[name=qyId]:checked");
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要删除的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/enterpriseRental/Plsc.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("删除成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  	});
+		  	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
@@ -206,6 +232,7 @@ function loadPageLayer2(title,url){
         	
         <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
       <!--  <input id="pltj" type="button" value="批量提交" class="initial" onclick="pltjsh()"/>  -->
+        <input id="add_bt" type="button" value="批量删除" class="initial" onclick="plsc()"/>
         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
     
     </div>
@@ -226,6 +253,7 @@ function loadPageLayer2(title,url){
 	        <th>租赁保证金</th>
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
+	         <th>欠费金额</th>
 	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
@@ -254,6 +282,7 @@ function loadPageLayer2(title,url){
 	         <td>${mb.zlbzj}元</td>
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.fbzt}</td>
+	         <td><font color="red">${mb.qfje}</font></td>
 	        <td>
 	          	<c:if test="${qyzjlr_updt == true}">
 		          	<div class="btn_icon">
@@ -269,7 +298,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="11"></td>
+        <td colspan="12"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -277,7 +306,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="13">
+			<td colspan="14">
 				<div class="page">
 					<p:pager/>
 				</div>

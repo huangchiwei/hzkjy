@@ -164,10 +164,10 @@ function loadPageLayer2(title,url){
     </form>
    <table width="98%" border="0" cellpadding="0" cellspacing="1">
 	    <tr>
-	    <td colspan="9" align="left">${fjjzbNy}的费用明细</td>
+	    <td colspan="10" align="left">${fjjzbNy}的费用明细</td>
 	   </tr>
 	  	<tr >
-	  	<td colspan="8"></td>
+	  	<td colspan="9"></td>
 	  	<td align="left"> 单位：元</td>
 	  	</tr>
 	  	<tr>
@@ -178,7 +178,8 @@ function loadPageLayer2(title,url){
 	  	<td>电费</td>
 	  	<td>租赁保证金</td>
 	  	<td>装修押金</td>
-	  	<td>财务是否审核</td>
+	  	 <td>缴费确认</td> 
+	     <td>欠费金额</td>
 	  	</tr>
 	  <tbody>
 	  <!-- 变量 -->
@@ -205,7 +206,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
-	        <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
+	         <td>${mb.Sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.Qfje}</font></td>
 	      </tr>
 	     
       </c:forEach>
@@ -219,6 +221,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	         <td></td>  
 	         <td></td>  
       </c:forEach>
 	      </tr>
@@ -237,7 +240,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
-	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
+	         <td>${mb.Sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.Qfje}</font></td>
 	      </tr>
       </c:forEach>
       <tr>
@@ -250,6 +254,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
 	        <td></td>  
       </c:forEach>
 	      </tr>
@@ -268,7 +273,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
-	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
+	       <td>${mb.Sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.Qfje}</font></td>
 	      </tr>
       </c:forEach>
       <tr>
@@ -281,6 +287,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
 	        <td></td>  
       </c:forEach>
 	      </tr>
@@ -299,7 +306,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
-	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
+	         <td>${mb.Sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.Qfje}</font></td>
 	      </tr>
       </c:forEach>
        <tr>
@@ -312,6 +320,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
 	        <td></td>  
       </c:forEach>
 	      </tr>
@@ -330,8 +339,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
-	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
-	         <td></td>  
+	         <td>${mb.Sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.Qfje}</font></td>
 	      </tr>
       </c:forEach>
    <tr>
@@ -344,6 +353,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
 	        <td></td>  
       </c:forEach>
 	      </tr>
@@ -362,7 +372,8 @@ function loadPageLayer2(title,url){
 	        <td>${mb.Qydf}</td> 
 	        <td>${mb.Zlbzj}</td>
 	        <td>${mb.Zxyj}</td>  
-	         <td>${mb.Fbzt!='' && mb.Fbzt!=null?mb.Fbzt:'未审核'}</td>  
+	        <td>${mb.Sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.Qfje}</font></td>
 	      </tr>
       </c:forEach>
        <tr>
@@ -375,6 +386,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
 	        <td></td>  
       </c:forEach>
 	      </tr>
@@ -389,6 +401,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.sumQydf}</td>  
 	        <td>${mb.sumZlbzj}</td>
 	        <td>${mb.sumZxyj}</td>
+	        <td></td>  
 	        <td></td>  
       </c:forEach>
 	      </tr>

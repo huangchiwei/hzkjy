@@ -304,7 +304,7 @@ html { overflow:-moz-scrollbars-vertical;}
    </table>
      
    <div class="div_submit">
-    <c:if test="${userNo!= '4401' || mb.sshzt!='已审核'}">
+    <c:if test="${userNo!= '4401' || model.sshzt!='已审核'}">
 					<input id="sumbit_bt" name="" type="submit" value="提  交"
 						class="photo_btn" />
 						</c:if>

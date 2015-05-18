@@ -68,6 +68,12 @@ public class EccIndicatorService extends BaseDao {
 	}
 	
 	
+	public Integer CountYear(String jfny) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("jfny", jfny);
+		return super.nativeSelectOne(nameSpace + ".CountYear", params);
+	}
+	
 	public List  getCyqy(Map<String, Object> params) {
 	return super.nativeList(nameSpace + ".getCyqy", params);
 	}

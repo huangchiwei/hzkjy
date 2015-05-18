@@ -281,6 +281,7 @@ public class  RentalExamineController extends BaseController {
 		map.put("Qysfdj",mb.getQysfdj()+"");
 		map.put("Qydfdj",mb.getQydfdj()+"");
 		map.put("Hjjeznj",mb.getHjjeznj()+"");
+		map.put("Sdhj",mb.getSdhj()+"");
 		if(mb.getSslq().equals("1")){
 			map.put("Sslq","科技大楼");
 		}else if(mb.getSslq().equals("2")){

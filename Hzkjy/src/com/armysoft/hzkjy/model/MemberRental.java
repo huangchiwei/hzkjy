@@ -3,6 +3,13 @@ package com.armysoft.hzkjy.model;
 import java.util.Date;
 
 public class MemberRental implements java.io.Serializable {
+	private String sdhj;
+	public String getSdhj() {
+		return sdhj;
+	}
+	public void setSdhj(String sdhj) {
+		this.sdhj = sdhj;
+	}
 	private Integer id;
     private String hybh;
 	private String qymc;

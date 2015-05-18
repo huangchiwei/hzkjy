@@ -205,11 +205,13 @@ function loadPageLayer2(title,url){
         <em>年份：</em><input id="fssn" name="fssn" type="text" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy'});" size=15  value="${fssn}"
 								 class="input_a1" maxlength="20"/>
 							<input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
-         <input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
+			<input id="add_bt" type="button" value="清空" class="initial" onclick="clean();"/>
+          <c:if test="${userNo!= '4401'}">
            <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
             <input id="" type="button" value="批量审核" class="initial" onclick="pass()"/>
             <input id="" type="button" value="批量二审" class="initial" onclick="pass2()"/>
             <input id="" type="button" value="二审不通过" class="initial" onclick="pass3()"/>
+            </c:if>
     </div>
     
     </form>

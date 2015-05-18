@@ -277,7 +277,8 @@ public class  RentStatisticsController extends BaseController {
 		headData.add(new Object[] { "Qydf","电费"});//技工贸总收入
 		headData.add(new Object[] { "Zlbzj","租赁保证金"});//技工贸总收入
 		headData.add(new Object[] { "Zxyj","装修押金"});//利润总额
-		
+		headData.add(new Object[] { "Sfqfname","缴费确认"});//利润总额
+		headData.add(new Object[] { "Qfje","欠费金额"});//利润总额
 		
 		List headData1 =  new ArrayList();
 		headData1.add(new Object[] { "sumQymc","位置"});
@@ -287,7 +288,8 @@ public class  RentStatisticsController extends BaseController {
 		headData1.add(new Object[] { "sumQydf","电费"});//技工贸总收入
 		headData1.add(new Object[] { "sumZlbzj","租赁保证金"});//技工贸总收入
 		headData1.add(new Object[] { "sumZxyj","装修押金"});//利润总额
-	
+		headData1.add(new Object[] { "Sfqfname","缴费确认"});//利润总额
+		headData1.add(new Object[] { "Qfje","欠费金额"});//利润总额
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("fjjzbNy",fjjzbNy);
 		List Hyfl1List= service.getSslqList(fjjzbNy,"1");

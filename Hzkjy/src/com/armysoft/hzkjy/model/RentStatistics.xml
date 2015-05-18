@@ -130,8 +130,8 @@ from enterprise_rental where 1=1
 		and Sslq  = #{type}
 		</if>
 </select>
-<select id="getSslqList" resultType="java.util.Map" parameterType="java.util.Map"> 
-       select   case when Sslq='1' then '科技大楼' when Sslq='2' then 'A栋'  when Sslq='3' then 'B栋' when Sslq='4' then 'C栋' when Sslq='5' then 'D栋'  else '琶洲科技创意中心' end HyflName,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf
+<select id="getSslqList" resultType="java.util.Map" parameterType="java.util.Map">
+       select case when sfqf='1' then '已缴费' else '未缴费' end Sfqfname, case when Fbzt='已审核' then '已审核' else '未审核' end Fbztname, case when Sslq='1' then '科技大楼' when Sslq='2' then 'A栋'  when Sslq='3' then 'B栋' when Sslq='4' then 'C栋' when Sslq='5' then 'D栋'  else '琶洲科技创意中心' end HyflName,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,Sbyhd,Shjyl,Dhjyl,Qymj,Hjje,Shzt,Fbzt,Jfyd,Dsyhd,Dbyhd,Zydy,Zjsq,Glfsq,Sfsq,Dfsq,Zjbz,Glfbz,Sfbz,Dfbz,Zlbzj,Zxyj,Glfwfdj,Qyzjdj,Zlbzjdj,Zxyjdj,Qyzjznj,Glfwfznj,Qysfznj,Zlbzjznj,Zxyjznj,Qydfznj,Hjjedx,Zlbzjsq,Zxyjsq,Zlbzjbz,Zxyjbz,Hjjeznj,Bz,Qydfdj,Qysfdj,Jnje,Accessory,Sfqf,Xxbz,Sslq,Ssyhd2,Sbyhd2,Shjyl2,Qysfdj2,Lqysf2,Sfbz2,Dsyhd2,Dbyhd2,Dhjyl2,Qydfdj2,Lqydf2,Dfbz2,Zjmc,Glfwfmc,Zlbzjmc,Zxyjmc,Sfmc,Dfmc,Lqysf,Lqydf,Qfje
 	from  enterprise_rental
 		where 1 = 1		
 			<if test="jjzbNy != null and jjzbNy != ''">

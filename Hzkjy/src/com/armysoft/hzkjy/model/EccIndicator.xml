@@ -96,6 +96,9 @@ select case when Hyfl='1' then '生物/医药技术业' when Hyfl='2' then '电�
 	<select id="HybhCount" resultType="int" parameterType="java.util.Map">
 		select count(*) from member_basic where  substr(Hybh,1,2)= #{hybh1} and  substr(Hybh,3,2) = #{hybh2}
 	</select>
+		<select id="CountYear" resultType="int" parameterType="java.util.Map">
+		select count(*) from ecc_indicator where  JjzbNy = #{jfny}
+	</select>
 	
 	<select id="getSelectedCorpNameList" parameterType="String" resultType="java.util.Map" >
 		select hybh,qymc,qymcpy from member_basic where Zt=#{value} ORDER BY hybh DESC 

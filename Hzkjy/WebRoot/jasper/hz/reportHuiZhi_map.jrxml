@@ -71,6 +71,7 @@
 	<field name="Lqysf" class="java.lang.String"/>
 	<field name="Hjjeznj" class="java.lang.String"/>
 	<field name="Sslq" class="java.lang.String"/>
+	<field name="Sdhj" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -635,20 +636,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Dfbz}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="4e34af3d-2ef0-4bc9-a958-2a127954805b" key="staticText-9" x="574" y="365" width="195" height="27"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="宋体" size="12" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
 			<staticText>
 				<reportElement uuid="c1720f9a-6ed8-4aa6-bf54-af5c51b073db" key="staticText-9" x="64" y="473" width="705" height="27"/>
 				<box>
@@ -1503,19 +1490,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Dfmc}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement uuid="a8ac2a48-4ddc-4875-96e1-f9b5be5fa87a" key="textField-1" x="468" y="365" width="106" height="27"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
-				</textElement>
-			</textField>
 			<staticText>
 				<reportElement uuid="e819a39d-f58f-45ec-93f5-d5a1fe6010bd" key="staticText-4" x="516" y="113" width="99" height="27"/>
 				<box>
@@ -1544,6 +1518,34 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Sslq}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7d3c2962-4379-408d-8e06-0bdd226a7668" key="staticText-12" x="468" y="365" width="106" height="27"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" size="12" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[水电合计：]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="f1be07bf-b8c0-4ddd-8cb0-3c1ab91340bc" key="textField-1" x="574" y="365" width="195" height="27"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sdhj}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

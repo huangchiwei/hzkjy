@@ -162,6 +162,13 @@ function loadPageLayer2(title,url){
 		return;
 	}
 	$.ajax({
+				url:'${ctx}/admin/chooseSelect/Ishas.html?settime='+settime+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  			$.ajax({
 				url:'${ctx}/admin/chooseSelect/ZShtg.html?settime='+settime+'&random='+Math.random(),
 		  		type:'post',
 		  		dataType:'json',
@@ -174,6 +181,14 @@ function loadPageLayer2(title,url){
 		  		error:function(){
 		  		} 
 		  	});
+		  		}else{
+		  			alert("该月份已设置无需再设置");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  	});
+
 }
 function pltzjf(){
 	var stuInput = $('input[name="qyId"]:checked');

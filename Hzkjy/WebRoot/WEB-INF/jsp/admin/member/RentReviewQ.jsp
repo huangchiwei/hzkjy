@@ -188,6 +188,32 @@ function loadPageLayer2(title,url){
 	document.getElementById("search_form").submit();
     }  
 
+
+function plsc(){
+	var stuInput = $("input[name=qyId]:checked");
+	var ids = '';
+	$.each(stuInput,function(i,item){
+		ids += item.value + ",";
+	});
+	if(ids == ''){
+		alert('请选择要删除的企业。');
+		return;
+	}
+	$.ajax({
+				url:'${ctx}/admin/enterpriseRental/Plsc.html?ids='+ids+'&random='+Math.random(),
+		  		type:'post',
+		  		dataType:'json',
+		  		async:false,
+		  		success:function(data){
+		  		if(data.exl=="ok"){
+		  		alert("删除成功");
+		  		}
+		  		},
+		  		error:function(){
+		  		} 
+		  	});
+		  	document.getElementById("search_form").submit();
+}
 </script>
 </head>
 
@@ -214,6 +240,7 @@ function loadPageLayer2(title,url){
         	
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
         <input id="" type="button" value="批量审核" class="initial" onclick="pltjsh()"/>
+         <input id="add_bt" type="button" value="批量删除" class="initial" onclick="plsc()"/>
         <input id="add_bt" type="button" value="导出Excel" class="initial" onclick="out();"/>
             <input id="add_bt" type="button" value="导出发票签收表" class="initial" onclick="outfpqs()"/>
     </div>
@@ -231,6 +258,7 @@ function loadPageLayer2(title,url){
 	        <th>缴费年月</th>
 	        <th>审核状态</th>
 	        <th>缴费确认</th> 
+	         <th>欠费金额</th>
 	        <th width="8%">操作</th>
 	  	</tr>
 	  </thead>
@@ -256,6 +284,7 @@ function loadPageLayer2(title,url){
 	        <td>${mb.jfyd}</td>
 	        <td>${mb.fbzt}</td>
 	        <td>${mb.sfqf=='1'?'已缴费':'未缴费'}</td>
+	         <td><font color="red">${mb.qfje}</font></td>
 	        <td>
 	          	<c:if test="${qyjfsh_updt == true}">
 		          	<div class="btn_icon">
@@ -271,7 +300,7 @@ function loadPageLayer2(title,url){
 	      </tr>
       </c:forEach>
       <tr>
-        <td colspan="8"></td>
+        <td colspan="9"></td>
       <td>总计</td>
       <td>${zj!=''?zj:'0'}家</td>
     
@@ -279,7 +308,7 @@ function loadPageLayer2(title,url){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="10">
+			<td colspan="11">
 				<div class="page">
 					<p:pager/>
 				</div>

@@ -21,6 +21,21 @@
 
 
 <script type="text/javascript" >
+
+$(document).ready(function(){
+      var userNo='${userNo}';
+	  var status='${entity.Status}';
+  if(userNo=='4401' &&  status=='1'){
+	  $("#add_form input").attr("disabled",true);
+	  $("#add_form select").attr("disabled",true);
+	 }
+	 $("#hyflname option[value='${model.hyfl}']").attr("selected", true);  
+	$("#back_bt").attr("disabled",false);
+	
+	formInitConfig("add_form",3000);
+	autoValidate();
+		
+});
 var ctx="${ctx}";
 
 </script>
@@ -100,9 +115,11 @@ html { overflow:-moz-scrollbars-vertical;}
     </tr>
    </table>   
   <div class="div_submit">
+        <c:if test="${userNo!= '4401' || entity.Status!= '1'}">
 					<input id="sumbit_bt" name="" type="submit" value="提  交"
 						class="photo_btn" />
-					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
+						</c:if>
+					<input type="reset" id="back_bt" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
 				</div>
   

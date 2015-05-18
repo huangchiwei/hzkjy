@@ -18,7 +18,7 @@
 		<if test="parm.receiverBh != null and parm.receiverBh != ''">
 		and a.ReceiverBh  = #{parm.receiverBh}
 		</if>
-		
+		order by a.id desc
 	</sql>
 	<!-- 实体映射 -->
 	<resultMap id="bsNewsMap" type="bsNews">
@@ -58,7 +58,7 @@ select ID ,Title ,Receiver,Iseveryone,ActiveTime,Content,Creater,IsReport,Create
 		</if>
 		)
 		or (Iseveryone='1')
-		order by id desc LIMIT 8
+		order by createTime  desc LIMIT 8
 	</select>
 	
 	<select id="findByHybh" resultMap="bsNewsMap" parameterType="String">

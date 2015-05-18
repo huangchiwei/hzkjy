@@ -130,6 +130,7 @@ public class  MemberIntellectualProController extends BaseController {
 			List<Map<String,Object>> list=memberBasicService.getAllMember();
 			model.addAttribute("list", list);
 		}
+		request.setAttribute("userNo", userNo.substring(0, 4));
 		model.addAttribute("type", "U");
 		model.addAttribute("entity",memberIntellectualProService.findByKey(key));
 		return "admin/member/MemberIntellectualProA_U";

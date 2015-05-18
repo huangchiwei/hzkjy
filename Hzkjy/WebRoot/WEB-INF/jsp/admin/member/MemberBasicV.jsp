@@ -264,12 +264,15 @@ html { overflow:-moz-scrollbars-vertical;}
      
    
 <div class="div_submit">
-					<input id="sumbit_bt" name="" type="submit" value="审核"
+                   <c:if test="${userNo!= '4401'}">
+					<input id="sumbit_bt" name="" type="submit" value=${userNo=='4401'?"提交":"审核"}
 						class="photo_btn" />
-						<input type="reset" value="审核不通过" onclick="shbtg();"
+						 
+						 <input type="reset" value="审核不通过" onclick="shbtg();"
 						class="photo_btn" />
 							<input type="reset" value="暂存" onclick="zcsave();"
 						class="photo_btn" />
+						</c:if>
 						
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />

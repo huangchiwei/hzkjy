@@ -28,15 +28,19 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+$("#sslqname option[value='${model.sslq}']").attr("selected", true); 
 var userNo="${userNo}";
+if(userNo=="4401"){
+$("#texta").attr("disabled",true);
+}
 if(userNo=="cwry"){
-$("#addinfo").find("input,select,textarea").attr("readonly",true);
+
 }else{
  $("#addinfo1").hide();
 }
 	formInitConfig("add_form",3000);
 	autoValidate();
-	$("#sslq option[value='${model.sslq}']").attr("selected", true); 
+	
 		
 });
 
@@ -162,7 +166,9 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
      <th>所属楼区：</th>
        <td colspan="2">
-     	 <select name="sslq"  id="sslq" style="text-align:center">
+       
+        <input name="sslq"  id="sslq" type="hidden" class="input_a1" value="${model.sslq}" />
+     	 <select name="sslqname"  id="sslqname" style="text-align:center" disabled>
           <option value="1">科技大楼</option>
           <option value="2">A栋</option>
           <option value="3">B栋</option>
@@ -318,7 +324,7 @@ html { overflow:-moz-scrollbars-vertical;}
      </td>
     </tr>
     <tr>
-    	  <td colspan="7"><textarea name="a" style="width:90%;height:45px;color:red;">说明：1、费用采用现金或支票、公对公转账形式支付，租金水电费支票抬头写：广州市海珠科技产业园有限公司；帐号：635357744247 ，中国银行海珠支行                                                                                        2、请于每月5日前交纳以上列表之费用，逾期按每日5‰收取滞纳金；                                                                                                                                                                         3、如已交纳该款，可不予理会此单； </textarea></td>
+    	  <td colspan="7"><textarea name="texta" id="texta" style="width:90%;height:45px;color:red;">说明：1、费用采用现金或支票、公对公转账形式支付，租金水电费支票抬头写：广州市海珠科技产业园有限公司；帐号：635357744247 ，中国银行海珠支行                                                                                        2、请于每月5日前交纳以上列表之费用，逾期按每日5‰收取滞纳金；                                                                                                                                                                         3、如已交纳该款，可不予理会此单； </textarea></td>
     </tr>
     <tr>
     	  <td colspan="7">附件：</td>
@@ -493,10 +499,11 @@ html { overflow:-moz-scrollbars-vertical;}
 					</table>
        </div>
         <div class="div_submit">
-					<input id="sumbit_bt" name="" type="submit" value=${userNo=='4401'?"提交":"审核"}
+        <input id="sumbit_bt" name="" type="submit" value=${userNo=='4401'?"提交":"审核"}
 						class="photo_btn" />
 						<input type="reset" value="暂存" onclick="zcsave();"
 						class="photo_btn" />	
+				
 					<input type="reset" value="返回" onclick="javascript:history.back(-1);"
 						class="photo_btn" />
 						

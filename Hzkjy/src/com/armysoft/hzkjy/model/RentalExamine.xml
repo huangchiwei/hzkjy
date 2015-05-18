@@ -111,7 +111,7 @@ select  (@rowNum:=@rowNum+1) as rownum,ID,Hybh,Qymc,Qyzj,Glfwf,Qysf,Qydf,Ssyhd,S
 select  (@rowNum:=@rowNum+1) as rownum,ID,Hybh,Jfyd,Qymc Fkfmc,'10000004 广东省地方税收通用发票（电子-单联平推式）' Fpzlname,'1 单位' Fkflxname,'0706租赁业' Kpxmname,'8 纳税人识别号' Fkfzjlxname,Qyzj Hjje,Qyzj Fpje,
 case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end Fpbz,
 
-concat(20,SUBSTRING(zjsq,1,2),'年',SUBSTRING(zjsq,4,2),'月',SUBSTRING(zjsq,7,2),'日-20',SUBSTRING(zjsq,10,2),'年',SUBSTRING(zjsq,13,2),'月',SUBSTRING(zjsq,16,2),'日')  Kpxmsm
+concat(20,SUBSTRING(zjsq,1,2),'年',SUBSTRING(zjsq,4,2),'月',SUBSTRING(zjsq,7,2),'日-20',SUBSTRING(zjsq,10,2),'年',SUBSTRING(zjsq,13,2),'月',SUBSTRING(zjsq,16,2),'日租金')  Kpxmsm
 from member_rental,(Select (@rowNum :=0) ) c  
 	   where 1 = 1
 			<if test="fhymc != null and fhymc != ''">
@@ -121,13 +121,12 @@ from member_rental,(Select (@rowNum :=0) ) c
 		and Jfyd  = #{fjfyd}
 		</if>
 		
- order by id desc
 	</select>	
 	<select id="getFpzly2" resultType="java.util.Map" parameterType="java.util.Map">
 select  (@rowNum:=@rowNum+1) as rownum,ID,Hybh,Jfyd,Qymc Fkfmc,'10000005 广东省地方税收通用发票（电子-两联打孔式）' Fpzlname,'1 单位' Fkflxname,'0706租赁业' Kpxmname,'8 纳税人识别号' Fkfzjlxname,Qyzj Hjje,Qyzj Fpje,
 case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end Fpbz,
 
-concat(20,SUBSTRING(zjsq,1,2),'年',SUBSTRING(zjsq,4,2),'月',SUBSTRING(zjsq,7,2),'日-20',SUBSTRING(zjsq,10,2),'年',SUBSTRING(zjsq,13,2),'月',SUBSTRING(zjsq,16,2),'日')  Kpxmsm
+concat(20,SUBSTRING(zjsq,1,2),'年',SUBSTRING(zjsq,4,2),'月',SUBSTRING(zjsq,7,2),'日-20',SUBSTRING(zjsq,10,2),'年',SUBSTRING(zjsq,13,2),'月',SUBSTRING(zjsq,16,2),'日租金')  Kpxmsm
 from member_rental,(Select (@rowNum :=0) ) c  
 	   where 1 = 1
 			<if test="fhymc != null and fhymc != ''">
@@ -137,14 +136,13 @@ from member_rental,(Select (@rowNum :=0) ) c
 		and Jfyd  = #{fjfyd}
 		</if>
 		
- order by id desc
 	</select>	
 	
 		<select id="getFpglf1" resultType="java.util.Map" parameterType="java.util.Map">
 select  (@rowNum:=@rowNum+1) as rownum,ID,Hybh,Jfyd,Qymc Fkfmc,'10000004 广东省地方税收通用发票（电子-单联平推式）' Fpzlname,'1 单位' Fkflxname,'0799 其他服务业' Kpxmname,'8 纳税人识别号' Fkfzjlxname,glfwf Hjje,glfwf Fpje,
 case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end Fpbz,
 
-concat(20,SUBSTRING(glfsq,1,2),'年',SUBSTRING(glfsq,4,2),'月',SUBSTRING(glfsq,7,2),'日-20',SUBSTRING(glfsq,10,2),'年',SUBSTRING(glfsq,13,2),'月',SUBSTRING(glfsq,16,2),'日')  Kpxmsm
+concat(20,SUBSTRING(glfsq,1,2),'年',SUBSTRING(glfsq,4,2),'月',SUBSTRING(glfsq,7,2),'日-20',SUBSTRING(glfsq,10,2),'年',SUBSTRING(glfsq,13,2),'月',SUBSTRING(glfsq,16,2),'日管理服务费')  Kpxmsm
 from member_rental,(Select (@rowNum :=0) ) c  
 	   where 1 = 1
 			<if test="fhymc != null and fhymc != ''">
@@ -159,7 +157,7 @@ from member_rental,(Select (@rowNum :=0) ) c
 select  (@rowNum:=@rowNum+1) as rownum,ID,Hybh,Jfyd,Qymc Fkfmc,'10000005 广东省地方税收通用发票（电子-两联打孔式）' Fpzlname,'1 单位' Fkflxname,'0799 其他服务业' Kpxmname,'8 纳税人识别号' Fkfzjlxname,glfwf Hjje,glfwf Fpje,
 case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end Fpbz,
 
-concat(20,SUBSTRING(glfsq,1,2),'年',SUBSTRING(glfsq,4,2),'月',SUBSTRING(glfsq,7,2),'日-20',SUBSTRING(glfsq,10,2),'年',SUBSTRING(glfsq,13,2),'月',SUBSTRING(glfsq,16,2),'日')  Kpxmsm
+concat(20,SUBSTRING(glfsq,1,2),'年',SUBSTRING(glfsq,4,2),'月',SUBSTRING(glfsq,7,2),'日-20',SUBSTRING(glfsq,10,2),'年',SUBSTRING(glfsq,13,2),'月',SUBSTRING(glfsq,16,2),'日管理服务费')  Kpxmsm
 from member_rental,(Select (@rowNum :=0) ) c  
 	   where 1 = 1
 			<if test="fhymc != null and fhymc != ''">
@@ -180,11 +178,13 @@ case when f.flbh=1 then '1 单位' else '' end Fkflxname,
 case when f.flbh=1 then '0701 代理业'  else '' end Kpxmname,
 case when f.flbh=1 then '8 纳税人识别号'  else '' end Fkfzjlxname,
  case when f.flbh=1 then qysf+qydf+0   end Hjje,case when f.flbh=1 then qysf else qydf  end Fpje,
-case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end  Fpbz,
-case when sslq='1' then
-concat(20,SUBSTRING(sfsq,1,2),'年',SUBSTRING(sfsq,4,2),'月',SUBSTRING(sfsq,7,2),'日-20',SUBSTRING(sfsq,10,2),'年',SUBSTRING(sfsq,13,2),'月',SUBSTRING(sfsq,16,2),'日')  
+case when f.flbh=1 then
+ case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心'  end 
+ else ''  end Fpbz,
+case when f.flbh='1' then
+concat(20,SUBSTRING(sfsq,1,2),'年',SUBSTRING(sfsq,4,2),'月',SUBSTRING(sfsq,7,2),'日-20',SUBSTRING(sfsq,10,2),'年',SUBSTRING(sfsq,13,2),'月',SUBSTRING(sfsq,16,2),'日水费')  
 else 
-concat(20,SUBSTRING(dfsq,1,2),'年',SUBSTRING(dfsq,4,2),'月',SUBSTRING(dfsq,7,2),'日-20',SUBSTRING(dfsq,10,2),'年',SUBSTRING(dfsq,13,2),'月',SUBSTRING(dfsq,16,2),'日')  end 
+concat(20,SUBSTRING(dfsq,1,2),'年',SUBSTRING(dfsq,4,2),'月',SUBSTRING(dfsq,7,2),'日-20',SUBSTRING(dfsq,10,2),'年',SUBSTRING(dfsq,13,2),'月',SUBSTRING(dfsq,16,2),'日电费')  end 
 Kpxmsm
 from member_rental  left join ( select flbh from db_fl where  flbh=1 or flbh =2)  f on 1=1,(Select (@rowNum :=0) ) c  
 	   where 1 = 1
@@ -197,18 +197,20 @@ from member_rental  left join ( select flbh from db_fl where  flbh=1 or flbh =2)
 		</select>	
 		<select id="getFpdly2" resultType="java.util.Map" parameterType="java.util.Map">
 select  
-case when f.flbh=1 then (@rowNum:=@rowNum+1)+0   end as rownum,ID,Hybh,Jfyd,
+case when f.flbh=1 then (@rowNum:=@rowNum+1)+0  end as rownum,ID,Hybh,Jfyd,
 case when f.flbh=1 then Qymc else '' end Fkfmc,
 case when f.flbh=1 then '10000005 广东省地方税收通用发票（电子-两联打孔式）' else '' end  Fpzlname,
 case when f.flbh=1 then '1 单位' else '' end Fkflxname,
 case when f.flbh=1 then '0701 代理业'  else '' end Kpxmname,
 case when f.flbh=1 then '8 纳税人识别号'  else '' end Fkfzjlxname,
  case when f.flbh=1 then qysf+qydf+0   end Hjje,case when f.flbh=1 then qysf else qydf  end Fpje,
-case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心' end  Fpbz,
-case when sslq='1' then
-concat(20,SUBSTRING(sfsq,1,2),'年',SUBSTRING(sfsq,4,2),'月',SUBSTRING(sfsq,7,2),'日-20',SUBSTRING(sfsq,10,2),'年',SUBSTRING(sfsq,13,2),'月',SUBSTRING(sfsq,16,2),'日')  
+case when f.flbh=1 then
+ case when sslq='1' then '科技大楼'    when sslq='2' then 'A栋'  when sslq='3' then 'B栋'  when sslq='4' then 'C栋'  when sslq='5' then 'D栋'  when sslq='6' then '琶洲科技创意中心'  end 
+ else ''  end Fpbz,
+case when f.flbh='1' then
+concat(20,SUBSTRING(sfsq,1,2),'年',SUBSTRING(sfsq,4,2),'月',SUBSTRING(sfsq,7,2),'日-20',SUBSTRING(sfsq,10,2),'年',SUBSTRING(sfsq,13,2),'月',SUBSTRING(sfsq,16,2),'日水费')  
 else 
-concat(20,SUBSTRING(dfsq,1,2),'年',SUBSTRING(dfsq,4,2),'月',SUBSTRING(dfsq,7,2),'日-20',SUBSTRING(dfsq,10,2),'年',SUBSTRING(dfsq,13,2),'月',SUBSTRING(dfsq,16,2),'日')  end 
+concat(20,SUBSTRING(dfsq,1,2),'年',SUBSTRING(dfsq,4,2),'月',SUBSTRING(dfsq,7,2),'日-20',SUBSTRING(dfsq,10,2),'年',SUBSTRING(dfsq,13,2),'月',SUBSTRING(dfsq,16,2),'日电费')  end 
 Kpxmsm
 from member_rental  left join ( select flbh from db_fl where  flbh=1 or flbh =2)  f on 1=1,(Select (@rowNum :=0) ) c  
 	   where 1 = 1

@@ -313,16 +313,13 @@ function plbtgtz(){
         <em>企业名称：</em><input name="fqymc" type="text"  class="input_a1" id="fqymc"  onfocus="loadCorpName();"  value="${fqymc}" size="30"  maxlength="100" />
          <input id="add_bt" type="button" value="查询" class="initial" onclick="find();"/>
           <!-- <input id="" type="button" value="批量提交" class="initial" onclick="pZShtt();"/> -->
-          <c:if test="${jjybtb_sh == true}">
-          <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
-         
-          </c:if>
            <c:if test="${jjybtb_th == true}">
           <input id="" type="button" value="批量退回" class="initial" onclick="pZShth();"/>
           </c:if>
           <input id="" type="button" value="批量打印" class="initial" onclick="printHuiZhiList()"/>
           <c:if test="${jjybtb_tg == true}">
            <input id="add_bt" type="button" value="批量删除" class="initial" onclick="plsc()"/>
+             <input id="" type="button" value="批量审核" class="initial" onclick="pZShtg();"/>
           <input id="" type="button" value="通过发送" class="initial" onclick="pltgtz()"/>
           </c:if>
           <c:if test="${jjybtb_btg == true}">
@@ -361,7 +358,11 @@ function plbtgtz(){
 	    </pm:hasPermission>
       <c:forEach items="${list}" var="mb" varStatus="sta">
 	      <tr ondblclick="javascript:location.href='${ctx}/admin/economicReporting/add/new.html?id=${mb.id}'">
-	        <td><input type="checkbox" value="${mb.id}" name="qyId"/></td>   
+	        <td>
+	        <c:if test="${userNo!='4401' || mb.shzt=='已审核'}">
+	        <input type="checkbox" value="${mb.id}" name="qyId"/>
+	        </c:if>
+	        </td>   
 	        <td>
 	        <c:if test="${mb.hyfl=='1'}">生物/医药技术业</c:if>
 	        <c:if test="${mb.hyfl=='2'}">电子与信息业</c:if>

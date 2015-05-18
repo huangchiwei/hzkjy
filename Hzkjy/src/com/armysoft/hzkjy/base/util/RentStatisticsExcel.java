@@ -128,6 +128,10 @@ public class RentStatisticsExcel {
 	         wsheet.addCell(new Label(6, 3, "租赁保证金",wcfFQ)); 
 	         wsheet.mergeCells(7, 3, 7, 3);//合并垮了3列。
 	         wsheet.addCell(new Label(7, 3, "装修押金",wcfFQ)); 
+	         wsheet.mergeCells(8, 3, 8, 3);//合并垮了3列。
+	         wsheet.addCell(new Label(8, 3, "缴费确认",wcfFQ));
+	         wsheet.mergeCells(9, 3, 9, 3);//合并垮了3列。
+	         wsheet.addCell(new Label(9, 3, "欠费金额",wcfFQ));
 			for(int i=0;i<columnCount;i++){
 				wsheet.setColumnView(i, 10); // 作用是指定第i+1列的宽度，比如： // 将第�?��的宽度设�?0 sheet.setColumnView( 0 , 30 );.setColumnView( 0 , 30 );
 			}			

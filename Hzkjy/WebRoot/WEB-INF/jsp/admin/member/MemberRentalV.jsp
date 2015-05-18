@@ -451,6 +451,22 @@ function rtnn(val){
 	  $("#zlbzj").attr("value",sumzlbzjdj.toFixed(1));
 	    sumhjje();
 	}
+	function sumhjsd(){
+	if($("#qysf").val()==""){
+	qysf="0";
+	}else{
+	qysf=$("#qysf").val();
+	}
+	
+	if($("#qydf").val()==""){
+	qydf="0";
+	}else{
+	qydf=$("#qydf").val();
+	}
+	
+	var sumsdhj=parseFloat(qysf)+parseFloat(qydf);
+	 $("#sdhj").attr("value",sumsdhj.toFixed(1));
+	}
 	function sumzxyjdj(){
 	var zxyjdj;
    if($("#zxyjdj").val()==""){
@@ -496,9 +512,10 @@ function rtnn(val){
 		var sumqysf=parseFloat(qysfdj)*parseFloat(shjyl);
 		var sumqysf2=parseFloat(qysfdj2)*parseFloat(shjyl2);
 			var sumqysf3=parseFloat(sumqysf.toFixed(1))+parseFloat(sumqysf2.toFixed(1));
-	  $("#qysf").attr("value",sumqysf3);
+	  $("#qysf").attr("value",sumqysf3.toFixed(1));
 	  $("#lqysf").attr("value",sumqysf.toFixed(1));
 	    sumhjje();
+	    sumhjsd();
 	}
 		function sumqysf2(){
 	var qysfdj;
@@ -525,9 +542,10 @@ function rtnn(val){
 		var sumqysf=parseFloat(qysfdj)*parseFloat(shjyl);
 		var sumqysf2=parseFloat(qysfdj2)*parseFloat(shjyl2);
 		var sumqysf3=parseFloat(sumqysf.toFixed(1))+parseFloat(sumqysf2.toFixed(1));
-		 $("#qysf").attr("value",sumqysf3);
+		 $("#qysf").attr("value",sumqysf3.toFixed(1));
 	  $("#lqysf2").attr("value",sumqysf2.toFixed(1));
 	    sumhjje();
+	    sumhjsd();
 	}
 		function sumqydf(){ 
 	var qydfdj;
@@ -560,9 +578,10 @@ function rtnn(val){
 		var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
 		var sumqydf2=parseFloat(qydfdj2)*parseFloat(dhjyl2);
 		var sumqydf3=parseFloat(sumqydf.toFixed(1))+parseFloat(sumqydf2.toFixed(1));
-	  $("#qydf").attr("value",sumqydf3);
+	  $("#qydf").attr("value",sumqydf3.toFixed(1));
 	  $("#lqydf").attr("value",sumqydf.toFixed(1));
 	    sumhjje();
+	    sumhjsd();
 	}
 	function sumqydf2(){ 
 	var qydfdj2;
@@ -594,9 +613,10 @@ function rtnn(val){
 	    var sumqydf=parseFloat(qydfdj)*parseFloat(dhjyl);
 		var sumqydf2=parseFloat(qydfdj2)*parseFloat(dhjyl2);
 		var sumqydf3=parseFloat(sumqydf.toFixed(1))+parseFloat(sumqydf2.toFixed(1));
-		$("#qydf").attr("value",sumqydf3);
+		$("#qydf").attr("value",sumqydf3.toFixed(1));
 	  $("#lqydf2").attr("value",sumqydf2.toFixed(1));
 	    sumhjje();
+	    sumhjsd();
 	}
 	function sumfy(){
 	sumzj();
@@ -830,8 +850,8 @@ html { overflow:-moz-scrollbars-vertical;}
      	<input name="hjje" type="text" class="input_a1"  id="hjje" value="<fmt:formatNumber value="${model.hjje}" pattern="#.#" minFractionDigits="1" />
 " onchange="loadHjjezw();"/> </td>
     
-       <td align="center"></td>
-      <td align="center"></td>
+       <td align="center">水电合计</td>
+      <td align="center"><input name="sdhj"  id="sdhj" type="text" size=12 class="input_a1" value="${model.sdhj}"/></td>
     </tr>
      <tr>
      <td colspan="3">合计金额（人民币大写）：</td>

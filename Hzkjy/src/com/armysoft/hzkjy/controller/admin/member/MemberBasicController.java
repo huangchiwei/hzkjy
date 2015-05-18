@@ -275,8 +275,8 @@ public class  MemberBasicController extends BaseController {
 			model.addAttribute("model", mb);
 		}
 		
-		
-		
+		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY);
+		request.setAttribute("userNo",userNo.substring(0, 4));
 		return "admin/member/MemberBasicV";
 	}
 	
