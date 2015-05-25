@@ -66,7 +66,7 @@ public class  NewsController extends BaseController {
 			model.addAttribute("cateCode", cateCode);			
 			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
 			 model.addAttribute("category", newsService.getCategory(cateCode));
-			return "/admin/news/newsA_U";
+			return "/admin/news/newsA_U_D";
 		}
 		Pagination pager = initPage(currentPage);
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -85,7 +85,7 @@ public class  NewsController extends BaseController {
 		model.addAttribute("type", "add");
 		model.addAttribute("cateCode", cateCode);
 		 model.addAttribute("category", newsService.getCategory(cateCode));
-		return "/admin/news/newsA_U";
+		return "/admin/news/newsA_U_D";
 	}
 	
 	
@@ -102,9 +102,16 @@ public class  NewsController extends BaseController {
 		model.addAttribute("entity", newsService.findByKey(key));
 		 model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("type", "update");
-		return "/admin/news/newsA_U";
+		return "/admin/news/newsA_U_D";
 	}
-	
+	@RequestMapping(value = DETAIL)
+	public String detail(@PathVariable("id") Long key,Model model,String cateCode) {
+		model.addAttribute("cateCode", cateCode);
+		model.addAttribute("entity", newsService.findByKey(key));
+		 model.addAttribute("category", newsService.getCategory(cateCode));
+		model.addAttribute("type", "detail");
+		return "/admin/news/newsA_U_D";
+	}
 	//@PermissionsAnno("news_save")
 	@RequestMapping(value = SAVE)
 	public String save(HttpServletRequest request,News entity, Model model,String cateCode,String type,String flag) {
@@ -140,7 +147,7 @@ public class  NewsController extends BaseController {
 			model.addAttribute("cateCode", cateCode);			
 			 model.addAttribute("entity", newsService.getByCateCode(cateCode));
 			 model.addAttribute("category", newsService.getCategory(cateCode));
-			return "/admin/news/newsA_U";
+			return "/admin/news/newsA_U_D";
 		}
 		
 		if(type.equalsIgnoreCase("add")){
