@@ -52,8 +52,8 @@ $(function(){
 		}else if($("#mj").val() == ''){
 			msg = '请填写租用面积';
 			obj = $("#mj");
-		}else if(!/^\d+$/.test($("#mj").val())){
-			msg = '租用面积请填写数字';
+		}else if(!/^\d+([\.]\d{1,2})?$/.test($("#mj").val())){
+			msg = '租用面积请填写数字,最多两位小数.';
 			obj = $("#mj");
 		}else if($("#zczb").val() == ''){
 			msg = '请填写注册资金';
@@ -167,7 +167,7 @@ $(function(){
 		}
 	});
 	$('#mj').change(function(){
-		if(this.value == '' || (!/^\d+$/.test(this.value))){
+		if(this.value == '' || (!/^\d+([\.]\d{1,2})?$/.test(this.value))){
 			$('#mj_img').css('display','none');
 		}else{
 			$('#mj_img').css('display','');

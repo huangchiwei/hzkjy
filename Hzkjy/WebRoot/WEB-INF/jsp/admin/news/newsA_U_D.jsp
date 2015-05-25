@@ -95,20 +95,22 @@ html { overflow:-moz-scrollbars-vertical;}
       <c:if test="${cateCode=='train_file'}">
   <tr >
       <th>附件上传：</th>
-     <td  colspan="6">
+     <td  colspan="6"><c:if test="${type!='detail'}">
      <input  id="flag" name="flag" type="hidden"   value="0"/>
       <input  id="file" name="file" type="file"  onchange="changeFlag()" value="${entity.filePath}"/>&nbsp;&nbsp;<font color="red">*</font>
-      <font color="red"><c:if test="${ empty entity.filePath }">未上传附件</c:if>
-      <c:if test="${not empty entity.filePath }">已上传的附件(限一份):<a href="${ctx}/admin/news/downLoad/${entity.id}.html">${fn:substringAfter(entity.filePath, '/userfiles/trainFile/')}</a></c:if></font> 
+      <font color="red"><c:if test="${ empty entity.filePath }">未上传附件</c:if></font>
+      </c:if>
+      <c:if test="${not empty entity.filePath }"><font color="red">已上传的附件(限一份):</font><a href="${ctx}/admin/news/downLoad/${entity.id}.html">${fn:substringAfter(entity.filePath, '/userfiles/trainFile/')}</a></c:if> 
      </td>
     </tr>
     </c:if>
    
    </table>
-  
+  <c:if test="${type!='detail'}">
    <p class="div_submit">
 				    <input id="sumbit_bt" name="" type="image" src="${ctx}/theme/default/images/submit.png"/>&nbsp;&nbsp;<b><font color="red" ><c:if test="${not empty msg}">${msg}</c:if></font></b>
 				</p>
+				</c:if>
   </div>
   </form>
 </div>

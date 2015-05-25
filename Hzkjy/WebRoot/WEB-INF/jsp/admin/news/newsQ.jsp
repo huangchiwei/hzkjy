@@ -79,6 +79,11 @@ html { overflow:-moz-scrollbars-vertical;}
 	   
 	       
 	        <td>
+	        <c:if test="${cateCode=='train_file'}">
+	          <div class="btn_icon">
+		          	 <input type="image" src="${ctx}/theme/default/images/file_icon.png" title="详细" onclick="javascript:location.href='${ctx}/admin/news/detail/${o.id}.html?cateCode=${cateCode}'"/>
+		          	</div>
+		    </c:if>
 	       <div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/news/update/${o.id}.html?cateCode=${cateCode}'"/>
 		          	</div>
