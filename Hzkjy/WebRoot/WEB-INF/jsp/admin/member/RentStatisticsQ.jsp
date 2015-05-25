@@ -17,6 +17,7 @@
 <link href="${ctx}/js/jquery_autocomplete/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 html { overflow:-moz-scrollbars-vertical;}
+
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -170,8 +171,8 @@ function loadPageLayer2(title,url){
 	  	<td colspan="9"></td>
 	  	<td align="left"> 单位：元</td>
 	  	</tr>
-	  	<tr>
-	  	<td colspan="2">位置</td>
+	  	<tr >
+	  	<td colspan="2" >位置</td>
 	  	<td>租金</td>
 	  	<td>管理服务费/管理费/物业管理费</td>
 	  	<td>水费/水电公摊费</td>

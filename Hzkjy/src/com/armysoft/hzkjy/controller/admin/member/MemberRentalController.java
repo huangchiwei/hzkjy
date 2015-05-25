@@ -220,11 +220,11 @@ public class  MemberRentalController extends BaseController {
 			if(zjsqallf!=null){
 				newzjsqallf="20"+zjsqallf[0].toString()+"-"+zjsqallf[1].toString()+"-"+zjsqallf[2].toString();
 				newzjsqalle="20"+zjsqalle[0].toString()+"-"+zjsqalle[1].toString()+"-"+zjsqalle[2].toString();
-				if(zjsqalle[1].toString().equals("02") &&  Integer.valueOf(zjsqalle[0])/4==0 && zjsqalle[2].toString().equals("29")){
+				if(zjsqalle[1].toString().equals("02") && Integer.valueOf(zjsqalle[0])%4==0 && zjsqalle[2].toString().equals("29")){
 					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   2);
-				}else if(zjsqalle[1].toString().equals("02") &&  Integer.valueOf(zjsqalle[0])/4!=0 && zjsqalle[2].toString().equals("28")){
+				}else if(zjsqalle[1].toString().equals("02") &&  Integer.valueOf(zjsqalle[0])%4!=0 && zjsqalle[2].toString().equals("28")){
 					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   3);
-				}else if((zjsqalle[1].toString().equals("04") || zjsqalle[1].toString().equals("06")  || zjsqalle[1].toString().equals("08") || zjsqalle[1].toString().equals("10")) &&  zjsqalle[2].toString().equals("30")){
+				}else if((zjsqalle[1].toString().equals("04") || zjsqalle[1].toString().equals("06")  || zjsqalle[1].toString().equals("09") || zjsqalle[1].toString().equals("11")) &&  zjsqalle[2].toString().equals("30")){
 					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   1);
 				}else{
 					newzjsqalle1=GetSysDate("yyyy-MM-dd",   newzjsqalle,   0,   1,   0);
@@ -266,11 +266,11 @@ public class  MemberRentalController extends BaseController {
 				newqlfsqallf="20"+glfsqallf[0].toString()+"-"+glfsqallf[1].toString()+"-"+glfsqallf[2].toString();
 				newqlfsqalle="20"+glfsqalle[0].toString()+"-"+glfsqalle[1].toString()+"-"+glfsqalle[2].toString();
 				
-				if(glfsqalle[1].toString().equals("02") &&  Integer.valueOf(glfsqalle[0])/4==0 && glfsqalle[2].toString().equals("29")){
+				if(glfsqalle[1].toString().equals("02") &&  Integer.valueOf(glfsqalle[0])%4==0 && glfsqalle[2].toString().equals("29")){
 					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   2);
-				}else if(glfsqalle[1].toString().equals("02") &&  Integer.valueOf(glfsqalle[0])/4!=0 && glfsqalle[2].toString().equals("28")){
+				}else if(glfsqalle[1].toString().equals("02") &&  Integer.valueOf(glfsqalle[0])%4!=0 && glfsqalle[2].toString().equals("28")){
 					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   3);
-				}else if((glfsqalle[1].toString().equals("04") || glfsqalle[1].toString().equals("06")  || glfsqalle[1].toString().equals("08") || glfsqalle[1].toString().equals("10")) &&  glfsqalle[2].toString().equals("30")){
+				}else if((glfsqalle[1].toString().equals("04") || glfsqalle[1].toString().equals("06")  || glfsqalle[1].toString().equals("09") || glfsqalle[1].toString().equals("11")) &&  glfsqalle[2].toString().equals("30")){
 					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   1);
 				}else{
 					newqlfsqalle1=GetSysDate("yyyy-MM-dd",   newqlfsqalle,   0,   1,   0);
@@ -303,11 +303,11 @@ public class  MemberRentalController extends BaseController {
 				newzlbzjsqallf="20"+zlbzjsqallf[0].toString()+"-"+zlbzjsqallf[1].toString()+"-"+zlbzjsqallf[2].toString();
 				newzlbzjsqalle="20"+zlbzjsqalle[0].toString()+"-"+zlbzjsqalle[1].toString()+"-"+zlbzjsqalle[2].toString();
 				
-				if(zlbzjsqalle[1].toString().equals("02") &&  Integer.valueOf(zlbzjsqalle[0])/4==0 && zlbzjsqalle[2].toString().equals("29")){
+				if(zlbzjsqalle[1].toString().equals("02") &&  Integer.valueOf(zlbzjsqalle[0])%4==0 && zlbzjsqalle[2].toString().equals("29")){
 					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   2);
-				}else if(zlbzjsqalle[1].toString().equals("02") &&  Integer.valueOf(zlbzjsqalle[0])/4!=0 && zlbzjsqalle[2].toString().equals("28")){
+				}else if(zlbzjsqalle[1].toString().equals("02") &&  Integer.valueOf(zlbzjsqalle[0])%4!=0 && zlbzjsqalle[2].toString().equals("28")){
 					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   3);
-				}else if((zlbzjsqalle[1].toString().equals("04") || zlbzjsqalle[1].toString().equals("06")  || zlbzjsqalle[1].toString().equals("08") || zlbzjsqalle[1].toString().equals("10")) &&  zlbzjsqalle[2].toString().equals("30")){
+				}else if((zlbzjsqalle[1].toString().equals("04") || zlbzjsqalle[1].toString().equals("06")  || zlbzjsqalle[1].toString().equals("09") || zlbzjsqalle[1].toString().equals("11")) &&  zlbzjsqalle[2].toString().equals("30")){
 					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   1);
 				}else{
 					newzlbzjsqalle1=GetSysDate("yyyy-MM-dd",   newzlbzjsqalle,   0,   1,   0);
@@ -347,11 +347,11 @@ public class  MemberRentalController extends BaseController {
 				newzxyjsqallf="20"+zxyjsqallf[0].toString()+"-"+zxyjsqallf[1].toString()+"-"+zxyjsqallf[2].toString();
 				newzxyjsqalle="20"+zxyjsqalle[0].toString()+"-"+zxyjsqalle[1].toString()+"-"+zxyjsqalle[2].toString();
 				
-				if(zxyjsqalle[1].toString().equals("02") &&  Integer.valueOf(zxyjsqalle[0])/4==0 && zxyjsqalle[2].toString().equals("29")){
+				if(zxyjsqalle[1].toString().equals("02") &&  Integer.valueOf(zxyjsqalle[0])%4==0 && zxyjsqalle[2].toString().equals("29")){
 					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",  newzxyjsqalle,   0,   1,   2);
-				}else if(zxyjsqalle[1].toString().equals("02") &&  Integer.valueOf(zxyjsqalle[0])/4!=0 && zxyjsqalle[2].toString().equals("28")){
+				}else if(zxyjsqalle[1].toString().equals("02") &&  Integer.valueOf(zxyjsqalle[0])%4!=0 && zxyjsqalle[2].toString().equals("28")){
 					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   3);
-				}else if((zxyjsqalle[1].toString().equals("04") || zxyjsqalle[1].toString().equals("06")  || zxyjsqalle[1].toString().equals("08") || zxyjsqalle[1].toString().equals("10")) &&  zxyjsqalle[2].toString().equals("30")){
+				}else if((zxyjsqalle[1].toString().equals("04") || zxyjsqalle[1].toString().equals("06")  || zxyjsqalle[1].toString().equals("09") || zxyjsqalle[1].toString().equals("11")) &&  zxyjsqalle[2].toString().equals("30")){
 					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   1);
 				}else{
 					newzxyjsqalle1=GetSysDate("yyyy-MM-dd",   newzxyjsqalle,   0,   1,   0);
@@ -384,11 +384,11 @@ public class  MemberRentalController extends BaseController {
 				newsfsqsqallf="20"+sfsqsqallf[0].toString()+"-"+sfsqsqallf[1].toString()+"-"+sfsqsqallf[2].toString();
 				newsfsqsqalle="20"+sfsqsqalle[0].toString()+"-"+sfsqsqalle[1].toString()+"-"+sfsqsqalle[2].toString();
 				
-				if(sfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(sfsqsqalle[0])/4==0 && sfsqsqalle[2].toString().equals("29")){
+				if(sfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(sfsqsqalle[0])%4==0 && sfsqsqalle[2].toString().equals("29")){
 					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   2);
-				}else if(sfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(sfsqsqalle[0])/4!=0 && sfsqsqalle[2].toString().equals("28")){
+				}else if(sfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(sfsqsqalle[0])%4!=0 && sfsqsqalle[2].toString().equals("28")){
 					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   3);
-				}else if((sfsqsqalle[1].toString().equals("04") || sfsqsqalle[1].toString().equals("06")  || sfsqsqalle[1].toString().equals("08") || sfsqsqalle[1].toString().equals("10")) &&  glfsqalle[2].toString().equals("30")){
+				}else if((sfsqsqalle[1].toString().equals("04") || sfsqsqalle[1].toString().equals("06")  || sfsqsqalle[1].toString().equals("09") || sfsqsqalle[1].toString().equals("11")) &&  glfsqalle[2].toString().equals("30")){
 					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   1);
 				}else{
 					newsfsqsqalle1=GetSysDate("yyyy-MM-dd",   newsfsqsqalle,   0,   1,   0);
@@ -419,11 +419,11 @@ public class  MemberRentalController extends BaseController {
 				newdfsqsqallf="20"+dfsqsqallf[0].toString()+"-"+dfsqsqallf[1].toString()+"-"+dfsqsqallf[2].toString();
 				newdfsqsqalle="20"+dfsqsqalle[0].toString()+"-"+dfsqsqalle[1].toString()+"-"+dfsqsqalle[2].toString();
 				
-				if(dfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(dfsqsqalle[0])/4==0 && dfsqsqalle[2].toString().equals("29")){
+				if(dfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(dfsqsqalle[0])%4==0 && dfsqsqalle[2].toString().equals("29")){
 					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   2);
-				}else if(dfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(dfsqsqalle[0])/4!=0 && dfsqsqalle[2].toString().equals("28")){
+				}else if(dfsqsqalle[1].toString().equals("02") &&  Integer.valueOf(dfsqsqalle[0])%4!=0 && dfsqsqalle[2].toString().equals("28")){
 					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",   newdfsqsqalle,   0,   1,   3);
-				}else if((dfsqsqalle[1].toString().equals("04") || dfsqsqalle[1].toString().equals("06")  || dfsqsqalle[1].toString().equals("08") || dfsqsqalle[1].toString().equals("10")) &&  dfsqsqalle[2].toString().equals("30")){
+				}else if((dfsqsqalle[1].toString().equals("04") || dfsqsqalle[1].toString().equals("06")  || dfsqsqalle[1].toString().equals("09") || dfsqsqalle[1].toString().equals("11")) &&  dfsqsqalle[2].toString().equals("30")){
 					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",  newdfsqsqalle,   0,   1,   1);
 				}else{
 					newdfsqsqalle1=GetSysDate("yyyy-MM-dd",  newdfsqsqalle,   0,   1,   0);

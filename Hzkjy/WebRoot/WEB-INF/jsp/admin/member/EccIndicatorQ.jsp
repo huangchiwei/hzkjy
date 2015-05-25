@@ -545,20 +545,20 @@ function loadPageLayer2(title,url){
 	      <c:forEach items="${countHyfl7List}" var="mc" varStatus="stb">
 	      
 	          <td>${mb.sumZczj+mc.sumZczj}</td>
-	        <td>${mb.sumJgmzsrBys+mb.sumJgmzsrBys}</td> 
-	        <td>${mb.sumJgmzsrLjs+mb.sumJgmzsrLjs}</td>
-	        <td>${mb.sumLrzeBys+mb.sumLrzeBys}</td>  
-	        <td>${mb.sumLrzeLjs+mb.sumLrzeLjs}</td>
-	        <td>${mb.sumNsBys+mb.sumNsBys}</td>    
-	        <td>${mb.sumNsLjs+mb.sumNsLjs}</td>
-	        <td>${mb.sumLszeBys+mb.sumLszeBys}</td>    
-	        <td>${mb.sumLszeLjs+mb.sumLszeLjs}</td>     
-	         <td>${mb.sumCh+mb.sumCh}</td>
-	         <td>${mb.sumZgs+mb.sumZgs}</td>
-	         <td>${mb.sumYfjf+mb.sumYfjf}</td>
-	         <td>${mb.sumGxjscpsr+mb.sumGxjscpsr}</td>
-	         <td>${mb.sumGyzcz+mb.sumGyzcz}</td>
-	         <td>${mb.sumGyzjz+mb.sumGyzjz}</td>
+	        <td>${mb.sumJgmzsrBys+mc.sumJgmzsrBys}</td> 
+	        <td>${mb.sumJgmzsrLjs+mc.sumJgmzsrLjs}</td>
+	        <td>${mb.sumLrzeBys+mc.sumLrzeBys}</td>  
+	        <td>${mb.sumLrzeLjs+mc.sumLrzeLjs}</td>
+	        <td>${mb.sumNsBys+mc.sumNsBys}</td>    
+	        <td>${mb.sumNsLjs+mc.sumNsLjs}</td>
+	        <td>${mb.sumLszeBys+mc.sumLszeBys}</td>    
+	        <td>${mb.sumLszeLjs+mc.sumLszeLjs}</td>     
+	         <td>${mb.sumCh+mc.sumCh}</td>
+	         <td>${mb.sumZgs+mc.sumZgs}</td>
+	         <td>${mb.sumYfjf+mc.sumYfjf}</td>
+	         <td>${mb.sumGxjscpsr+mc.sumGxjscpsr}</td>
+	         <td>${mb.sumGyzcz+mc.sumGyzcz}</td>
+	         <td>${mb.sumGyzjz+mc.sumGyzjz}</td>
       </c:forEach>
        </c:forEach>
 	      </tr>
