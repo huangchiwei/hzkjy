@@ -323,7 +323,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 	public String update(@PathVariable("id") Integer key,IncubatedEnterprises entity, Model model) {
 		entity.setId(key);
 		service.update(entity);
-		return "redirect://admin/incubatedEnterprises/list/1.html";
+		return "redirect:/admin/incubatedEnterprises/list/1.html";
 	}
 	@PermissionsAnno("fhqytb_save")
 	@RequestMapping(value = SAVE)
@@ -333,7 +333,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/incubatedEnterprises/list/1.html";
+		return "redirect:/admin/incubatedEnterprises/list/1.html";
 	}
 	
 	/**
@@ -345,7 +345,7 @@ public class  IncubatedEnterprisesController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/incubatedEnterprises/list/1.html";
+		return "redirect:/admin/incubatedEnterprises/list/1.html";
 	}
 	
 	

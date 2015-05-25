@@ -115,7 +115,7 @@ public class  DbMessageController extends BaseController {
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		entity.setCreater(userNo);
 		service.update(entity);
-		return "redirect://admin/dbMessage/list/1.html";
+		return "redirect:/admin/dbMessage/list/1.html";
 	}
 	@PermissionsAnno("mb_save")
 	@RequestMapping(value = SAVE)
@@ -129,7 +129,7 @@ public class  DbMessageController extends BaseController {
 			entity.setCreater(userNo);
 			service.update(entity);
 		}
-		return "redirect://admin/dbMessage/list/1.html";
+		return "redirect:/admin/dbMessage/list/1.html";
 	}
 	
 	/**
@@ -141,7 +141,7 @@ public class  DbMessageController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/dbMessage/list/1.html";
+		return "redirect:/admin/dbMessage/list/1.html";
 	}
 	
 	

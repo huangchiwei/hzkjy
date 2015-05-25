@@ -498,9 +498,9 @@ return   sFmt.format(cal.getTime());
 		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentalExamine/list/1.html";
+			return "redirect:/admin/rentalExamine/list/1.html";
 		}else{
-			return "redirect://admin/memberRental/list/1.html";
+			return "redirect:/admin/memberRental/list/1.html";
 		}
 		
 	}
@@ -515,9 +515,9 @@ return   sFmt.format(cal.getTime());
 		}
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentalExamine/list/1.html";
+			return "redirect:/admin/rentalExamine/list/1.html";
 		}else{
-			return "redirect://admin/memberRental/list/1.html";
+			return "redirect:/admin/memberRental/list/1.html";
 		}
 	}
 	
@@ -531,9 +531,9 @@ return   sFmt.format(cal.getTime());
 		service.delete(key);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentalExamine/list/1.html";
+			return "redirect:/admin/rentalExamine/list/1.html";
 		}else{
-			return "redirect://admin/memberRental/list/1.html";
+			return "redirect:/admin/memberRental/list/1.html";
 		}
 	}
 	@RequestMapping("Plsc.html")

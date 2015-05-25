@@ -727,8 +727,8 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	   <td>
 	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" size=12  <c:if test="${not empty model.qyzjznj}">value="${model.qyzjznj}"</c:if> <c:if test="${ empty model.qyzjznj}">value="0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	     	</td> 
-	     <td>
-	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" size=12 value="${model.zjbz}"/> 
+	     <td rowspan="6">
+	     <textarea id="zjbz" name="zjbz" rows="12" cols="20" >${model.zjbz}</textarea>
 	     	</td> 	
 	    
 	    </tr>
@@ -750,9 +750,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" size=12 class="input_a1" <c:if test="${not empty model.glfwfznj}">value="${model.glfwfznj}"</c:if> <c:if test="${ empty model.glfwfznj}">value="0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="glfbz"  id="glfbz" type="text" size=12 class="input_a1" value="${model.glfbz}"/>
-	   	 </td>
+	   	
 	    </tr>
 	    
 	     <tr align="center">
@@ -773,9 +771,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" size=12 class="input_a1"  <c:if test="${not empty model.zlbzjznj}">value="${model.zlbzjznj}"</c:if> <c:if test="${ empty model.zlbzjznj}">value="0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" size=12 class="input_a1" value="${model.zlbzjbz}"/>
-	   	 </td>
+	   	 
 	    </tr>
 	    
 	     <tr align="center">
@@ -796,9 +792,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" size=12 class="input_a1"  <c:if test="${not empty model.zxyjznj}">value="${model.zxyjznj}"</c:if>  <c:if test="${ empty model.zxyjznj}">value="0"</c:if> onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" size=12 class="input_a1" value="${model.zxyjbz}"/>
-	   	 </td>
+	   	 
 	    </tr>
 	    
 	         <tr align="center">
@@ -818,9 +812,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="qysfznj"  id="qysfznj" type="text" size=12 class="input_a1" <c:if test="${not empty model.qysfznj}">value="${model.qysfznj}"</c:if> <c:if test="${ empty model.qysfznj}">value="0"</c:if>  onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="lsfbz"  id="lsfbz" type="text" size=12 class="input_a1" value="${model.sfbz}"/>
-	   	 </td>
+	   	
 	    </tr>
 	    
 	        <tr align="center">
@@ -840,9 +832,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="qydfznj"  id="qydfznj" type="text" size=12 class="input_a1" <c:if test="${not empty model.qydfznj}">value="${model.qydfznj}"</c:if> <c:if test="${ empty model.qydfznj}">value="0"</c:if>  onchange="sumhjje();sumhjjeznj();"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="ldfbz"  id="ldfbz" type="text" size=12 class="input_a1" value="${model.dfbz}"/>
-	   	 </td>
+	   	
 	    </tr>
 	          <tr>
      <td colspan="4">小写：</td>

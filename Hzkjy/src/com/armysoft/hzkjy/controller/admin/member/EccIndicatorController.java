@@ -196,7 +196,7 @@ public class  EccIndicatorController extends BaseController {
 //		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 //		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://admin/eccIndicator/list/1.html";
+		return "redirect:/admin/eccIndicator/list/1.html";
 	}
 	@PermissionsAnno("jjybtj_save")
 	@RequestMapping(value = SAVE)
@@ -207,7 +207,7 @@ public class  EccIndicatorController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/eccIndicator/list/1.html";
+		return "redirect:/admin/eccIndicator/list/1.html";
 	}
 	
 	/**
@@ -219,7 +219,7 @@ public class  EccIndicatorController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/eccIndicator/list/1.html";
+		return "redirect:/admin/eccIndicator/list/1.html";
 	}
 	
 	

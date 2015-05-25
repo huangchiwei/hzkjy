@@ -202,9 +202,10 @@ html { overflow:-moz-scrollbars-vertical;}
 	  	   <td>
 	     <input name="qyzjznj"  id="qyzjznj" type="text" class="input_a1" value="${model.qyzjznj!='' && model.qyzjznj != null?model.qyzjznj:'0.0'}" readonly="true" />
 	     	</td> 
-	     <td>
-	     <input name="zjbz"  id="zjbz" type="text" class="input_a1" value="${model.zjbz}" readonly="true"/> 
+	     <td rowspan="6">
+	     <textarea id="zjbz" name="zjbz" rows="12" cols="20"  readonly="true">${model.zjbz}</textarea>
 	     	</td> 	
+	    
 	    
 	    </tr>
 	    <tr align="center">
@@ -222,9 +223,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="glfwfznj"  id="glfwfznj" type="text" class="input_a1" value="${model.glfwfznj!='' && model.glfwfznj != null?model.glfwfznj:'0.0'}" readonly="true"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="glfbz"  id="glfbz" type="text" class="input_a1" value="${model.glfbz}" readonly="true"/>
-	   	 </td>
+	   
 	    </tr>
 	    
 	     <tr align="center">
@@ -243,9 +242,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="zlbzjznj"  id="zlbzjznj" type="text" class="input_a1" value="${model.zlbzjznj!='' && model.zlbzjznj != null?model.zlbzjznj:'0.0'}" readonly="true"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="zlbzjbz"  id="zlbzjbz" type="text" class="input_a1" value="${model.zlbzjbz}" readonly="true"/>
-	   	 </td>
+	   	
 	    </tr>
 	    
 	     <tr align="center">
@@ -264,9 +261,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="zxyjznj"  id="zxyjznj" type="text" class="input_a1" value="${model.zxyjznj!='' && model.zxyjznj != null?model.zxyjznj:'0.0'}" readonly="true"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="zxyjbz"  id="zxyjbz" type="text" class="input_a1" value="${model.zxyjbz}" readonly="true"/>
-	   	 </td>
+	   	
 	    </tr>
 	    
 	         <tr align="center">
@@ -284,9 +279,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="qysfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qysfznj!='' && model.qysfznj != null?model.qysfznj:'0.0'}" readonly="true"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="sfbz"  id="sfbz" type="text" class="input_a1" value="${model.sfbz}" readonly="true"/>
-	   	 </td>
+	   	
 	    </tr>
 	    
 	        <tr align="center">
@@ -304,9 +297,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	      <td>
 	   	 	<input name="qydfznj"  id="qysfznj" type="text" class="input_a1" value="${model.qydfznj!='' && model.qydfznj != null ? model.qydfznj:'0.0'}" readonly="true"/>
 	   	 </td> 
-	   	 <td>
-	   	 	<input name="dfbz"  id="dfbz" type="text" class="input_a1" value="${model.dfbz}" readonly="true"/>
-	   	 </td>
+	   	 
 	    </tr>
 	          <tr>
      <td colspan="4">小写：</td>

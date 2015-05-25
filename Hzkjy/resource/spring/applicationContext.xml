@@ -19,9 +19,9 @@
 		init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="username" value="root" />
-		<property name="password" value="kjy#12213293" />
+		<property name="password" value="123456" />
 		<property name="url"
-			value="jdbc:mysql://122.13.2.93:3306/hzkjy?Unicode=true&amp;characterEncoding=UTF-8" />
+			value="jdbc:mysql://localhost:3306/hzkjy?Unicode=true&amp;characterEncoding=UTF-8" />
 
 		<property name="maxActive" value="20" />
 		<property name="initialSize" value="1" />

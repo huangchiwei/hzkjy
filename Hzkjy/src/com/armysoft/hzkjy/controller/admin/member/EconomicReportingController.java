@@ -175,7 +175,7 @@ public class  EconomicReportingController extends BaseController {
 //		System.out.println(entity.getId());
 		entity.setShzt("已提交");
 		service.update(entity);
-		return "redirect://admin/economicReporting/list/1.html";
+		return "redirect:/admin/economicReporting/list/1.html";
 	}
 	@PermissionsAnno("jjybtb_save")
 	@RequestMapping(value = SAVE)
@@ -187,7 +187,7 @@ public class  EconomicReportingController extends BaseController {
 			entity.setShzt("已提交");
 			service.update(entity);
 		}
-		return "redirect://admin/economicReporting/list/1.html";
+		return "redirect:/admin/economicReporting/list/1.html";
 	}
 	
 	
@@ -267,7 +267,7 @@ public class  EconomicReportingController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/economicReporting/list/1.html";
+		return "redirect:/admin/economicReporting/list/1.html";
 	}
 	
 	

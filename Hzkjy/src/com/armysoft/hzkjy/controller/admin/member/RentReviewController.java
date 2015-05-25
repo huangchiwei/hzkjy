@@ -173,7 +173,7 @@ public class  RentReviewController extends BaseController {
 			entity.setSfqf("0");
 		}
 		service.update(entity);
-		return "redirect://admin/rentReview/list/1.html";
+		return "redirect:/admin/rentReview/list/1.html";
 	}
 	 public void upFile(EnterpriseRental entity,HttpServletRequest request)throws Exception{
 		  
@@ -254,7 +254,7 @@ public class  RentReviewController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/rentReview/list/1.html";
+		return "redirect:/admin/rentReview/list/1.html";
 	}
 	
 	/**
@@ -266,7 +266,7 @@ public class  RentReviewController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/rentReview/list/1.html";
+		return "redirect:/admin/rentReview/list/1.html";
 	}
 	
 	@RequestMapping("ZShtg.html")

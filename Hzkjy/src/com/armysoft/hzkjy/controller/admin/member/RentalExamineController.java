@@ -422,7 +422,7 @@ public class  RentalExamineController extends BaseController {
 	public String update(@PathVariable("id") Integer key,MemberRental entity, Model model) {
 		entity.setId(key);
 		service.update(entity);
-		return "redirect://admin/rentalExamine/list/1.html";
+		return "redirect:/admin/rentalExamine/list/1.html";
 	}
 	@PermissionsAnno("shzj_save")
 	@RequestMapping(value = SAVE)
@@ -433,7 +433,7 @@ public class  RentalExamineController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/rentalExamine/list/1.html";
+		return "redirect:/admin/rentalExamine/list/1.html";
 	}
 	
 	/**
@@ -445,7 +445,7 @@ public class  RentalExamineController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/rentalExamine/list/1.html";
+		return "redirect:/admin/rentalExamine/list/1.html";
 	}
 	
 	

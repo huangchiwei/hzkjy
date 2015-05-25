@@ -164,7 +164,7 @@ public class  MemberIntellectualProController extends BaseController {
 			 }
 		
 		}
-		return "redirect://admin/memberIntellectualPro/list/1.html";
+		return "redirect:/admin/memberIntellectualPro/list/1.html";
 	}
 	
 	/**
@@ -175,7 +175,7 @@ public class  MemberIntellectualProController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		memberIntellectualProService.delete(key);
-		return "redirect://admin/memberIntellectualPro/list/1.html";
+		return "redirect:/admin/memberIntellectualPro/list/1.html";
 	}
 	@PermissionsAnno("pass")
 	@RequestMapping("pass.html")

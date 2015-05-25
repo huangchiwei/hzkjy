@@ -183,7 +183,7 @@ public class  MemberPatentController extends BaseController {
 			}
 		
 		}
-		return "redirect://admin/memberPatent/list/1.html";
+		return "redirect:/admin/memberPatent/list/1.html";
 	}
 	
 	/**
@@ -194,7 +194,7 @@ public class  MemberPatentController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		memberPatentService.delete(key);
-		return "redirect://admin/memberPatent/list/1.html";
+		return "redirect:/admin/memberPatent/list/1.html";
 	}
 	@PermissionsAnno("pass")
 	@RequestMapping("pass.html")

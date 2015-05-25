@@ -134,7 +134,7 @@ public class  BsNewsController extends BaseController {
 //		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 //		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://admin/bsNews/list/1.html";
+		return "redirect:/admin/bsNews/list/1.html";
 	}
 	@PermissionsAnno("tzgl_save")
 	@RequestMapping(value = SAVE)
@@ -149,7 +149,7 @@ public class  BsNewsController extends BaseController {
 			entity.setCreateTime(now);
 			service.update(entity);
 		}
-		return "redirect://admin/bsNews/list/1.html";
+		return "redirect:/admin/bsNews/list/1.html";
 	}
 	
 	/**
@@ -161,7 +161,7 @@ public class  BsNewsController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/bsNews/list/1.html";
+		return "redirect:/admin/bsNews/list/1.html";
 	}
 	
 	

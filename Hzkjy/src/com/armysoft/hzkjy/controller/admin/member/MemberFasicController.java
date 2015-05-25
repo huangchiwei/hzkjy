@@ -146,7 +146,7 @@ public class  MemberFasicController extends BaseController {
 		entity.setQymcpy(cn2Spell.converterToFirstSpell(entity.getQymc()));
 		System.out.println(entity.getId());
 		service.update(entity);
-		return "redirect://admin/memberFasic/list/1.html";
+		return "redirect:/admin/memberFasic/list/1.html";
 	}
 	@PermissionsAnno("hy_save")
 	@RequestMapping(value = SAVE)
@@ -171,7 +171,7 @@ public class  MemberFasicController extends BaseController {
 		} else {
 			service.update(entity);
 		}
-		return "redirect://admin/memberFasic/list/1.html";
+		return "redirect:/admin/memberFasic/list/1.html";
 	}
 	
 	/**
@@ -183,7 +183,7 @@ public class  MemberFasicController extends BaseController {
 	@RequestMapping(value = DELETE)
 	public String delete(@PathVariable("id") Long key) {
 		service.delete(key);
-		return "redirect://admin/memberFasic/list/1.html";
+		return "redirect:/admin/memberFasic/list/1.html";
 	}
 	
 	

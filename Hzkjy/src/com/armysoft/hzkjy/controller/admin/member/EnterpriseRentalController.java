@@ -203,9 +203,9 @@ public class  EnterpriseRentalController extends BaseController {
 		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentReview/list/1.html";
+			return "redirect:/admin/rentReview/list/1.html";
 		}else{
-			return "redirect://admin/enterpriseRental/list/1.html";
+			return "redirect:/admin/enterpriseRental/list/1.html";
 		}
 	}
 	
@@ -227,9 +227,9 @@ public class  EnterpriseRentalController extends BaseController {
 		
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentReview/list/1.html";
+			return "redirect:/admin/rentReview/list/1.html";
 		}else{
-			return "redirect://admin/enterpriseRental/list/1.html";
+			return "redirect:/admin/enterpriseRental/list/1.html";
 		}
 	}
 	 public void upFile(EnterpriseRental entity,HttpServletRequest request)throws Exception{
@@ -302,9 +302,9 @@ public class  EnterpriseRentalController extends BaseController {
 		}
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentReview/list/1.html";
+			return "redirect:/admin/rentReview/list/1.html";
 		}else{
-			return "redirect://admin/enterpriseRental/list/1.html";
+			return "redirect:/admin/enterpriseRental/list/1.html";
 		}
 	}
 	
@@ -318,9 +318,9 @@ public class  EnterpriseRentalController extends BaseController {
 		service.delete(key);
 		String userNo = super.getCookieValue(request, Constants.ADMIN_KEY).toLowerCase();
 		if(userNo.substring(0, 4).equals("cwry")){
-			return "redirect://admin/rentalExamine/list/1.html";
+			return "redirect:/admin/rentalExamine/list/1.html";
 		}else{
-			return "redirect://admin/memberRental/list/1.html";
+			return "redirect:/admin/memberRental/list/1.html";
 		}
 	}
 	
