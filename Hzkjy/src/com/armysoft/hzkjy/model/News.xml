@@ -19,6 +19,7 @@
 		<if test="parm.searchTxt!= null and parm.searchTxt != ''">
 			or title like CONCAT('%', #{parm.searchTxt}, '%') or content like CONCAT('%', #{parm.searchTxt}, '%')
 		</if>
+		order by realTime desc
 	</sql>
 	<select id="getLikePrefixCode" resultType="java.util.Map" parameterType="java.util.Map">
 		select n.*,nc.cateName from news n,news_category nc where n.cateCode=nc.cateCode and n.cateCode like CONCAT( #{prefixCode}, '%')
@@ -39,11 +40,11 @@
 	</select>
 	<select id="getCategory" resultType="java.util.Map"
 		parameterType="String">
-		select * from news_category where cateCode = #{cateCode}
+		select * from news_category where cateCode = #{cateCode} 
 	</select>
 	<select id="getByCateCode" resultType="java.util.Map"
 		parameterType="String">
-		select * from news where cateCode = #{cateCode}
+		select * from news where cateCode = #{cateCode} order by realTime desc
 	</select>
 	<!-- 保存 -->
 	<insert id="insert" parameterType="news">
@@ -87,9 +88,9 @@
 		</if>
 		where id = #{id}
 	</update>
-	<update id="updateClicks" parameterType="Integer">
+	<update id="updateClicksById" parameterType="Long">
 		update news set
-		clicks=#{clicks}
+		clicks=clicks+1
 		where id = #{id}
 	</update>
 	<!-- 删除 -->

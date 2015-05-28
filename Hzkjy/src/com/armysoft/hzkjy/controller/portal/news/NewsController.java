@@ -92,6 +92,8 @@ public class  NewsController extends BaseController {
 			String content="";
 			if(list!=null&&list.size()>0&&list.get(0)!=null) content=list.get(0).get("content").toString();
 			model.addAttribute("content", content);
+			//阅读次数加1
+			newsService.updateClicksById(Long.parseLong(list.get(0).get("id").toString()));
 			return "/portal/news/newsOneU";
 		}else{
 			return "/portal/news/list";
@@ -125,12 +127,20 @@ public class  NewsController extends BaseController {
 		}
 		
 		model.addAttribute("cateCode", cateCode);
-		model.addAttribute("entity", newsService.findByKey(key));
+		Map<String, Object> entity=newsService.findByKey(key);
+		model.addAttribute("entity",entity );
+		if(entity.get("filePath")!=null&&cateCode.equals("train_file")){
+			String fileName=entity.get("filePath").toString().replace("/userfiles/trainFile/", "");
+			model.addAttribute("filePath",fileName.substring(fileName.indexOf("_")+1, fileName.length()));
+		}
 		 model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("type", "update");
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("adType", "2");
 		model.addAttribute("adList2",newsAdvertService.getByAdType(params));
+		
+		//阅读次数加1
+		newsService.updateClicksById(key);
 		return "/portal/news/detail";
 	}
 	@RequestMapping(value = "/search/{currentPage}.html")
@@ -165,7 +175,7 @@ public class  NewsController extends BaseController {
 		      String realPath = request.getSession().getServletContext().getRealPath(news.get("filePath").toString());
 		     String fileName=news.get("filePath").toString().substring(news.get("filePath").toString().lastIndexOf("/")+1);
 		     // realPath = URLEncoder.encode(realPath, "UTF-8");
-		      response.addHeader("Content-Disposition", "attachment;filename=" +fileName );
+		      response.addHeader("Content-Disposition", "attachment;filename=" +fileName.substring(fileName.indexOf("_")+1, fileName.length()) );
 		      OutputStream out = response.getOutputStream();
 		      InputStream inputStream = new FileInputStream(realPath);
 		      byte[] buffer = new byte[1024];

@@ -57,7 +57,7 @@ html { overflow:-moz-scrollbars-vertical;}
 	  		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 	        <th>标题</th>
 	        <th>文档原始时间</th>
-	        <th>阅读次数</th>
+	        
 	     
 	        <th>创建用户</th>
 	     
@@ -73,17 +73,13 @@ html { overflow:-moz-scrollbars-vertical;}
 	        <td>${o.title}</td>
 	        <td><fmt:formatDate value="${o.realTime}"
 								pattern="yyyy-MM-dd" /></td>
-	        <td>${o.clicks}</td>
+	       
 	        
 	        <td>${o.createUser}</td>
 	   
 	       
 	        <td>
-	        <c:if test="${cateCode=='train_file'}">
-	          <div class="btn_icon">
-		          	 <input type="image" src="${ctx}/theme/default/images/file_icon.png" title="详细" onclick="javascript:location.href='${ctx}/admin/news/detail/${o.id}.html?cateCode=${cateCode}'"/>
-		          	</div>
-		    </c:if>
+	     
 	       <div class="btn_icon">
 		          	 <input type="image" src="${ctx}/theme/default/images/edit_icon.png" title="修改" onclick="javascript:location.href='${ctx}/admin/news/update/${o.id}.html?cateCode=${cateCode}'"/>
 		          	</div>

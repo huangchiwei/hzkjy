@@ -42,6 +42,7 @@ public class NewsAdvertService extends BaseDao {
 		return super.nativeList(nameSpace+".getByAdType", params);
 	}
 	
+	
 	/**
 	 * ������
 	 * @param question
@@ -59,7 +60,7 @@ public class NewsAdvertService extends BaseDao {
 
 		super.defUpdate(nameSpace, model);
 	}
-
+	
 	/**
 	 * ɾ��
 	 * @param id

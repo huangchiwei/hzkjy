@@ -107,9 +107,15 @@ public class  NewsController extends BaseController {
 	@RequestMapping(value = DETAIL)
 	public String detail(@PathVariable("id") Long key,Model model,String cateCode) {
 		model.addAttribute("cateCode", cateCode);
-		model.addAttribute("entity", newsService.findByKey(key));
+		Map<String, Object> entity=newsService.findByKey(key);
+		model.addAttribute("entity", entity);
+		if(entity.get("filePath")!=null&&cateCode.equals("train_file")){
+			String fileName=entity.get("filePath").toString().replace("/userfiles/trainFile/", "");
+			model.addAttribute("filePath",fileName.substring(fileName.indexOf("_")+1, fileName.length()));
+		}
 		 model.addAttribute("category", newsService.getCategory(cateCode));
 		model.addAttribute("type", "detail");
+		
 		return "/admin/news/newsA_U_D";
 	}
 	//@PermissionsAnno("news_save")

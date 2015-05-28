@@ -98,9 +98,9 @@ html { overflow:-moz-scrollbars-vertical;}
      <td  colspan="6"><c:if test="${type!='detail'}">
      <input  id="flag" name="flag" type="hidden"   value="0"/>
       <input  id="file" name="file" type="file"  onchange="changeFlag()" value="${entity.filePath}"/>&nbsp;&nbsp;<font color="red">*</font>
-      <font color="red"><c:if test="${ empty entity.filePath }">未上传附件</c:if></font>
+      <font color="red"><c:if test="${ empty filePath }">未上传附件</c:if></font>
       </c:if>
-      <c:if test="${not empty entity.filePath }"><font color="red">已上传的附件(限一份):</font><a href="${ctx}/admin/news/downLoad/${entity.id}.html">${fn:substringAfter(entity.filePath, '/userfiles/trainFile/')}</a></c:if> 
+      <c:if test="${not empty filePath}"><font color="red">已上传的附件(限一份):</font><a href="${ctx}/admin/news/downLoad/${entity.id}.html">${filePath}</a></c:if> 
      </td>
     </tr>
     </c:if>

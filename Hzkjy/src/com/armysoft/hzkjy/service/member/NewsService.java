@@ -67,7 +67,10 @@ public class NewsService extends BaseDao {
 
 		super.defUpdate(nameSpace, model);
 	}
+	public void updateClicksById(Long id) {
 
+		super.nativeUpdate(nameSpace+".updateClicksById", id);
+	}
 	/**
 	 * ɾ��
 	 * @param id

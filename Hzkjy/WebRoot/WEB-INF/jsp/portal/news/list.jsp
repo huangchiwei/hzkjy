@@ -6,16 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>${category.cateName }列表页</title>
-	<script>
-	function downloadFile(id){
-		var userNo="${cookie.admin_key.value}";
-		if(userNo==""){
-			alert("请先登录再下载.");
-			return false;
-			}
-		window.location.href="${ctx}/portal/news/downLoad/"+id+".html";
-	}
-	</script>
+	
 	</head>
 
 	<body>
@@ -36,6 +27,9 @@
 							<li>
 								<span><fmt:formatDate value="${o.realTime}"
 										pattern="yyyy-MM-dd" /> </span>
+											<a
+											href="${ctx}/portal/news/detail/${o.id}.html?cateCode=${cateCode}">${fn:substring(o.title, 0, 40)}</a>
+										<%--
 							<c:choose>
 									<c:when test="${cateCode=='train_file'}">
 										<a onclick="downloadFile('${o.id}')" style="cursor:pointer;">${fn:substring(o.title, 0, 40)}</a>
@@ -47,7 +41,7 @@
 								</c:choose>
 
 
-							</li>
+							--%></li>
 						</c:forEach>
 
 					</ul>
