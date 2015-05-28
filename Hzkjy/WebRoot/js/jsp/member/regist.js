@@ -1,4 +1,4 @@
-var registTypeJson = [{id:'0',value:'内资'},{id:'110',value:'国有'},{id:'120',value:'集体'},{id:'130',value:'股份合作'},{id:'141',value:'国有联营'},{id:'142',value:'集体联营'},{id:'143',value:'国有与集体联营'},{id:'149',value:'其他联营 '},{id:'151',value:'国有独资联营'},{id:'159',value:'其他有限责任公司'},{id:'160',value:'股份有好公司'},{id:'171',value:'私营独资'},{id:'172',value:'私营合伙'},{id:'173',value:'私营有限责任公司'},{id:'174',value:'私营股份有限公司'},{id:'190',value:'其他'},{id:'0',value:'港澳台商投资'},{id:'210',value:'与港澳台商合资经营'},{id:'220',value:'与港澳台商合作经营'},{id:'230',value:'港澳台商独资'},{id:'240',value:'港澳台商投资股份有限公司'},{id:'290',value:'其他港澳台商投资'},{id:'0',value:'外商投资'},{id:'310',value:'中外合资经营'},{id:'320',value:'中外合作经营'},{id:'330',value:'外资企业'},{id:'340',value:'外商投资股份有限公司'},{id:'390',value:'其他外商投资'}];
+var registTypeJson = [{id:'0',value:'内资'},{id:'110',value:'国有'},{id:'120',value:'集体'},{id:'130',value:'股份合作'},{id:'141',value:'国有联营'},{id:'142',value:'集体联营'},{id:'143',value:'国有与集体联营'},{id:'149',value:'其他联营 '},{id:'151',value:'国有独资联营'},{id:'159',value:'其他有限责任公司'},{id:'160',value:'股份有限公司'},{id:'171',value:'私营独资'},{id:'172',value:'私营合伙'},{id:'173',value:'私营有限责任公司'},{id:'174',value:'私营股份有限公司'},{id:'190',value:'其他'},{id:'0',value:'港澳台商投资'},{id:'210',value:'与港澳台商合资经营'},{id:'220',value:'与港澳台商合作经营'},{id:'230',value:'港澳台商独资'},{id:'240',value:'港澳台商投资股份有限公司'},{id:'290',value:'其他港澳台商投资'},{id:'0',value:'外商投资'},{id:'310',value:'中外合资经营'},{id:'320',value:'中外合作经营'},{id:'330',value:'外资企业'},{id:'340',value:'外商投资股份有限公司'},{id:'390',value:'其他外商投资'}];
 var isFlag = false;
 $(function(){
 	$.each(registTypeJson,function(i,item){
@@ -8,10 +8,10 @@ $(function(){
 			$('#qydjzclx').append('<option value="' + item.id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + item.value + '</option>');
 		}
 	});
-	//var str1 = "((http|ftp|https)://)(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?"
+	var strRegex = "((http|ftp|https)://)(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?"
 	var telReg = /^0\d{2,3}-?\d{7,8}$/;
 	var phoneReg = /^1[3|4|5|8]\d{9}$/;
-	var strRegex = '^((https|http|ftp|rtsp|mms)?://)' 
+	/*var strRegex = '^((https|http|ftp|rtsp|mms)?://)' 
 	+ '?(([0-9a-z_!~*\'().&=+$%-]+: )?[0-9a-z_!~*\'().&=+$%-]+@)?' //ftp的user@ 
 	+ '(([0-9]{1,3}.){3}[0-9]{1,3}' // IP形式的URL- 199.194.52.184 
 	+ '|' // 允许IP和DOMAIN（域名） 
@@ -20,7 +20,7 @@ $(function(){
 	+ '[a-z]{2,6})' // first level domain- .com or .museum 
 	+ '(:[0-9]{1,4})?' // 端口- :80 
 	+ '((/?)|' // a slash isn't required if there is no file name 
-	+ '(/[0-9a-z_!~*\'().;?:@&=+$,%#-]+)+/?)$'; 
+	+ '(/[0-9a-z_!~*\'().;?:@&=+$,%#-]+)+/?)$'; */
 	var re = new RegExp(strRegex);
 	var obj;
 	var token = true;
@@ -34,6 +34,9 @@ $(function(){
 		if($.trim($("#qymc").val()) == ''){
 			msg = '请填写企业名称';
 			obj = $("#qymc");
+		}else if($("#address").val() != '' && (!re.test($("#address").val()))){
+			msg = '请填写正确的网址，以http://开头';
+			obj = $("#address");
 		}else if($.trim($("#email").val()) == ''){
 			msg = '请填写邮箱';
 			obj = $("#email");
@@ -43,9 +46,6 @@ $(function(){
 		}else if(!isFlag){
 			msg = '该邮箱已注册';
 			obj = $("#email");
-		}else if($("#address").val() != '' && (!re.test($("#address").val()))){
-			msg = '请填写正确的网址';
-			obj = $("#address");
 		}else if($("#zydy").val() == ''){
 			msg = '请填写租用地址';
 			obj = $("#zydy");
@@ -157,6 +157,8 @@ $(function(){
 			$('#address_img').css('display','none');
 		}else if(re.test(this.value)){
 			$('#address_img').css('display','');
+		}else if(!re.test(this.value)){
+			$('#address_img').css('display','none');
 		}
 	});
 	$('#zydy').change(function(){
